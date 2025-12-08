@@ -861,8 +861,9 @@ export namespace Entity {
      * - `alloy` - Alloy. See https://alloy.com for more information.
      * - `middesk` - Middesk. See https://middesk.com for more information.
      * - `oscilar` - Oscilar. See https://oscilar.com for more information.
+     * - `persona` - Persona. See https://withpersona.com for more information.
      */
-    vendor: 'alloy' | 'middesk' | 'oscilar';
+    vendor: 'alloy' | 'middesk' | 'oscilar' | 'persona';
   }
 
   /**
@@ -2080,8 +2081,9 @@ export namespace EntityCreateParams {
      * - `alloy` - Alloy. See https://alloy.com for more information.
      * - `middesk` - Middesk. See https://middesk.com for more information.
      * - `oscilar` - Oscilar. See https://oscilar.com for more information.
+     * - `persona` - Persona. See https://withpersona.com for more information.
      */
-    vendor: 'alloy' | 'middesk' | 'oscilar';
+    vendor: 'alloy' | 'middesk' | 'oscilar' | 'persona';
   }
 
   /**
@@ -2835,8 +2837,9 @@ export namespace EntityUpdateParams {
      * - `alloy` - Alloy. See https://alloy.com for more information.
      * - `middesk` - Middesk. See https://middesk.com for more information.
      * - `oscilar` - Oscilar. See https://oscilar.com for more information.
+     * - `persona` - Persona. See https://withpersona.com for more information.
      */
-    vendor: 'alloy' | 'middesk' | 'oscilar';
+    vendor: 'alloy' | 'middesk' | 'oscilar' | 'persona';
   }
 
   /**
