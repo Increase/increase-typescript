@@ -23,6 +23,8 @@ import {
   CardAuthorizationCreateResponse,
   CardAuthorizations,
 } from './card-authorizations';
+import * as CardBalanceInquiriesAPI from './card-balance-inquiries';
+import { CardBalanceInquiries, CardBalanceInquiryCreateParams } from './card-balance-inquiries';
 import * as CardDisputesAPI from './card-disputes';
 import { CardDisputeActionParams, CardDisputes } from './card-disputes';
 import * as CardFuelConfirmationsAPI from './card-fuel-confirmations';
@@ -97,6 +99,8 @@ export class Simulations extends APIResource {
   cardAuthorizations: CardAuthorizationsAPI.CardAuthorizations = new CardAuthorizationsAPI.CardAuthorizations(
     this._client,
   );
+  cardBalanceInquiries: CardBalanceInquiriesAPI.CardBalanceInquiries =
+    new CardBalanceInquiriesAPI.CardBalanceInquiries(this._client);
   cardAuthorizationExpirations: CardAuthorizationExpirationsAPI.CardAuthorizationExpirations =
     new CardAuthorizationExpirationsAPI.CardAuthorizationExpirations(this._client);
   cardSettlements: CardSettlementsAPI.CardSettlements = new CardSettlementsAPI.CardSettlements(this._client);
@@ -145,6 +149,7 @@ export class Simulations extends APIResource {
 Simulations.InterestPayments = InterestPayments;
 Simulations.AccountTransfers = AccountTransfers;
 Simulations.CardAuthorizations = CardAuthorizations;
+Simulations.CardBalanceInquiries = CardBalanceInquiries;
 Simulations.CardAuthorizationExpirations = CardAuthorizationExpirations;
 Simulations.CardSettlements = CardSettlements;
 Simulations.CardReversals = CardReversals;
@@ -185,6 +190,11 @@ export declare namespace Simulations {
     CardAuthorizations as CardAuthorizations,
     type CardAuthorizationCreateResponse as CardAuthorizationCreateResponse,
     type CardAuthorizationCreateParams as CardAuthorizationCreateParams,
+  };
+
+  export {
+    CardBalanceInquiries as CardBalanceInquiries,
+    type CardBalanceInquiryCreateParams as CardBalanceInquiryCreateParams,
   };
 
   export {
