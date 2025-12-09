@@ -721,6 +721,12 @@ Methods:
 
 - <code title="post /simulations/card_authorizations">client.simulations.cardAuthorizations.<a href="./src/resources/simulations/card-authorizations.ts">create</a>({ ...params }) -> CardAuthorizationCreateResponse</code>
 
+## CardBalanceInquiries
+
+Methods:
+
+- <code title="post /simulations/card_balance_inquiries">client.simulations.cardBalanceInquiries.<a href="./src/resources/simulations/card-balance-inquiries.ts">create</a>({ ...params }) -> CardPayment</code>
+
 ## CardAuthorizationExpirations
 
 Methods:
