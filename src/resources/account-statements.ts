@@ -97,6 +97,8 @@ export interface AccountStatement {
    * `account_statement`.
    */
   type: 'account_statement';
+
+  [k: string]: unknown;
 }
 
 export interface AccountStatementListParams extends PageParams {

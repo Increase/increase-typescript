@@ -242,6 +242,8 @@ export interface BalanceLookup {
    * `balance_lookup`.
    */
   type: 'balance_lookup';
+
+  [k: string]: unknown;
 }
 
 export interface AccountCreateParams {

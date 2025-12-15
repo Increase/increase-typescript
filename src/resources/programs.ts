@@ -102,6 +102,8 @@ export interface Program {
    * was last updated.
    */
   updated_at: string;
+
+  [k: string]: unknown;
 }
 
 export interface ProgramListParams extends PageParams {}
