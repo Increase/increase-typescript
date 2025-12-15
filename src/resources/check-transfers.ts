@@ -584,9 +584,17 @@ export namespace CheckTransfer {
        * - `in_transit` - The check is in transit.
        * - `processed_for_delivery` - The check has been processed for delivery.
        * - `delivered` - The check has been delivered.
+       * - `delivery_issue` - There is an issue preventing delivery. The delivery will be
+       *   attempted again if possible. If the issue cannot be resolved, the check will
+       *   be returned to sender.
        * - `returned_to_sender` - Delivery failed and the check was returned to sender.
        */
-      category: 'in_transit' | 'processed_for_delivery' | 'delivered' | 'returned_to_sender';
+      category:
+        | 'in_transit'
+        | 'processed_for_delivery'
+        | 'delivered'
+        | 'delivery_issue'
+        | 'returned_to_sender';
 
       /**
        * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
