@@ -123,7 +123,8 @@ export interface File {
    *   processing by Increase and submission to the Federal Reserve.
    * - `mailed_check_image` - An image of a check that was mailed to a recipient.
    * - `check_attachment` - A document to be printed on an additional page and mailed
-   *   with a check that you've requested Increase print.
+   *   with a check that you've requested Increase print. This must be a PDF whose
+   *   pages are all US letter size and all have the same orientation.
    * - `check_voucher_image` - An image to be used as the check voucher image, which
    *   is printed in the middle of the trifold area of a check. This must be a
    *   2550x1100 pixel PNG.
@@ -220,7 +221,8 @@ export interface FileCreateParams {
    * - `check_image_back` - An image of the back of a check, used for check deposits.
    * - `mailed_check_image` - An image of a check that was mailed to a recipient.
    * - `check_attachment` - A document to be printed on an additional page and mailed
-   *   with a check that you've requested Increase print.
+   *   with a check that you've requested Increase print. This must be a PDF whose
+   *   pages are all US letter size and all have the same orientation.
    * - `check_voucher_image` - An image to be used as the check voucher image, which
    *   is printed in the middle of the trifold area of a check. This must be a
    *   2550x1100 pixel PNG.
