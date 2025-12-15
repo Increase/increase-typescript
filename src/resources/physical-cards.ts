@@ -324,10 +324,18 @@ export namespace PhysicalCard {
          * - `in_transit` - The physical card is in transit.
          * - `processed_for_delivery` - The physical card has been processed for delivery.
          * - `delivered` - The physical card has been delivered.
+         * - `delivery_issue` - There is an issue preventing delivery. The delivery will be
+         *   attempted again if possible. If the issue cannot be resolved, the physical
+         *   card will be returned to sender.
          * - `returned_to_sender` - Delivery failed and the physical card was returned to
          *   sender.
          */
-        category: 'in_transit' | 'processed_for_delivery' | 'delivered' | 'returned_to_sender';
+        category:
+          | 'in_transit'
+          | 'processed_for_delivery'
+          | 'delivered'
+          | 'delivery_issue'
+          | 'returned_to_sender';
 
         /**
          * The city where the event took place.
