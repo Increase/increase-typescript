@@ -364,6 +364,11 @@ export namespace Entity {
     beneficial_owners: Array<Corporation.BeneficialOwner>;
 
     /**
+     * An email address for the business.
+     */
+    email: string | null;
+
+    /**
      * The two-letter United States Postal Service (USPS) abbreviation for the
      * corporation's state of incorporation.
      */
@@ -1260,6 +1265,12 @@ export namespace EntityCreateParams {
       | 'publicly_traded_company'
       | 'public_entity'
       | 'other';
+
+    /**
+     * An email address for the business. Not every program requires an email for
+     * submitted Entities.
+     */
+    email?: string;
 
     /**
      * The two-letter United States Postal Service (USPS) abbreviation for the
@@ -2648,6 +2659,12 @@ export namespace EntityUpdateParams {
      * are disallowed.
      */
     address?: Corporation.Address;
+
+    /**
+     * An email address for the business. Not every program requires an email for
+     * submitted Entities.
+     */
+    email?: string;
 
     /**
      * The North American Industry Classification System (NAICS) code for the

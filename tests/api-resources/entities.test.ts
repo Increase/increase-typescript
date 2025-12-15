@@ -64,6 +64,7 @@ describe('resource entities', () => {
         name: 'National Phonograph Company',
         tax_identifier: '602214076',
         beneficial_ownership_exemption_reason: 'regulated_financial_institution',
+        email: 'dev@stainless.com',
         incorporation_state: 'NY',
         industry_code: 'x',
         website: 'https://example.com',
