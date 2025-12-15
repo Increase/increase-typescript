@@ -561,6 +561,12 @@ export namespace CheckTransfer {
       name: string | null;
 
       /**
+       * The shipper's phone number to be used in case of delivery issues. Only used for
+       * FedEx overnight shipping.
+       */
+      phone: string | null;
+
+      /**
        * The postal code of the check's destination.
        */
       postal_code: string | null;
@@ -909,9 +915,9 @@ export namespace CheckTransferCreateParams {
       name?: string;
 
       /**
-       * The phone number to associate with the check's destination address. The number
-       * is only used when `shipping_method` is `fedex_overnight` and will be supplied to
-       * FedEx to be used in case of delivery issues.
+       * The phone number to associate with the check's destination address. The phone
+       * number is only used when `shipping_method` is `fedex_overnight` and will be
+       * supplied to FedEx to be used in case of delivery issues.
        */
       phone?: string;
     }
@@ -958,6 +964,13 @@ export namespace CheckTransferCreateParams {
        * The second line of the return address.
        */
       line2?: string;
+
+      /**
+       * The phone number to associate with the shipper. The phone number is only used
+       * when `shipping_method` is `fedex_overnight` and will be supplied to FedEx to be
+       * used in case of delivery issues.
+       */
+      phone?: string;
     }
   }
 
