@@ -1,5 +1,32 @@
 # Changelog
 
+## 0.379.0 (2025-12-15)
+
+Full Changelog: [v0.378.0...v0.379.0](https://github.com/Increase/increase-typescript/compare/v0.378.0...v0.379.0)
+
+### Features
+
+* **api:** api update ([82e6c04](https://github.com/Increase/increase-typescript/commit/82e6c04d01d3ba178f84d9fab9ac8b6ed1937c09))
+* **api:** api update ([bb35122](https://github.com/Increase/increase-typescript/commit/bb35122bb1ecdb375112598b6d0793f06edf3363))
+* **api:** api update ([6328f09](https://github.com/Increase/increase-typescript/commit/6328f0919980ef7f36b183043ff15a29dbe1f539))
+* **api:** api update ([7d741de](https://github.com/Increase/increase-typescript/commit/7d741de4e772bab6075aa8a280c56edbae48be1a))
+* **api:** api update ([a585de6](https://github.com/Increase/increase-typescript/commit/a585de64ff3d12a77bd7cb742846eddb3a82193b))
+* **api:** api update ([e7d0b9d](https://github.com/Increase/increase-typescript/commit/e7d0b9d309eb7cb13a23d9364472c8166d980665))
+* **api:** api update ([2b388c8](https://github.com/Increase/increase-typescript/commit/2b388c8e1e093a625caaf0bfaba1ee6abcd77e18))
+* **api:** api update ([5027ab0](https://github.com/Increase/increase-typescript/commit/5027ab077918c230fc63337df8af95ab4794e789))
+
+
+### Bug Fixes
+
+* **mcp:** correct code tool API endpoint ([9e259cd](https://github.com/Increase/increase-typescript/commit/9e259cda174b02e7b9708a4a529a0b99517a81a2))
+* **mcp:** return correct lines on typescript errors ([c9710ad](https://github.com/Increase/increase-typescript/commit/c9710ad6735cca7ecf80eb0e77881b44bb2cb296))
+
+
+### Chores
+
+* **internal:** codegen related update ([db1fc02](https://github.com/Increase/increase-typescript/commit/db1fc0214b7e4d6bdb8a4140da47c6c519f9a3bb))
+* **internal:** codegen related update ([96fa26b](https://github.com/Increase/increase-typescript/commit/96fa26bb0175cab4cadbad7bfc0795fe62b64d98))
+
 ## 0.378.0 (2025-12-04)
 
 Full Changelog: [v0.1.0...v0.378.0](https://github.com/Increase/increase-typescript/compare/v0.1.0...v0.378.0)
