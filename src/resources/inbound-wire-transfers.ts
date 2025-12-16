@@ -223,8 +223,9 @@ export namespace InboundWireTransfer {
      * - `duplicate` - The inbound wire transfer was a duplicate.
      * - `creditor_request` - The recipient of the wire transfer requested the funds be
      *   returned to the sender.
+     * - `transaction_forbidden` - The account cannot currently receive inbound wires.
      */
-    reason: 'duplicate' | 'creditor_request';
+    reason: 'duplicate' | 'creditor_request' | 'transaction_forbidden';
 
     /**
      * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -300,8 +301,9 @@ export interface InboundWireTransferReverseParams {
    * - `duplicate` - The inbound wire transfer was a duplicate.
    * - `creditor_request` - The recipient of the wire transfer requested the funds be
    *   returned to the sender.
+   * - `transaction_forbidden` - The account cannot currently receive inbound wires.
    */
-  reason: 'duplicate' | 'creditor_request';
+  reason: 'duplicate' | 'creditor_request' | 'transaction_forbidden';
 }
 
 export declare namespace InboundWireTransfers {
