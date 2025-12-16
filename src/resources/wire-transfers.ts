@@ -568,9 +568,9 @@ export namespace WireTransfer {
     return_reason_additional_information: string | null;
 
     /**
-     * A code provided by the sending bank giving a reason for the reversal. It will
-     * generally be one of the codes defined in the ISO20022
-     * `ExternalReturnReason1Code` code set, but this is not enforced by the network.
+     * A code provided by the sending bank giving a reason for the reversal. The common
+     * return reason codes are
+     * [documented here](/documentation/wire-reversals#reversal-reason-codes).
      */
     return_reason_code: string | null;
 
