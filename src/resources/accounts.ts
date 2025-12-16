@@ -283,6 +283,8 @@ export interface AccountUpdateParams {
    * The new name of the Account.
    */
   name?: string;
+
+  [k: string]: unknown;
 }
 
 export interface AccountListParams extends PageParams {
