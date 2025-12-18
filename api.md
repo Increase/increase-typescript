@@ -896,6 +896,12 @@ Methods:
 
 - <code title="post /simulations/documents">client.simulations.documents.<a href="./src/resources/simulations/documents.ts">create</a>({ ...params }) -> Document</code>
 
+## Exports
+
+Methods:
+
+- <code title="post /simulations/exports">client.simulations.exports.<a href="./src/resources/simulations/exports.ts">create</a>({ ...params }) -> Export</code>
+
 ## CardTokens
 
 Methods:

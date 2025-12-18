@@ -57,10 +57,10 @@ export class Exports extends APIResource {
 export type ExportsPage = Page<Export>;
 
 /**
- * Exports are batch summaries of your Increase data. You can make them from the
- * API or dashboard. Since they can take a while, they are generated
- * asynchronously. We send a webhook when they are ready. For more information,
- * please read our
+ * Exports are generated files. Some exports can contain a lot of data, like a CSV
+ * of your transactions. Others can be a single document, like a tax form. Since
+ * they can take a while, they are generated asynchronously. We send a webhook when
+ * they are ready. For more information, please read our
  * [Exports documentation](https://increase.com/documentation/exports).
  */
 export interface Export {
@@ -163,6 +163,8 @@ export interface ExportCreateParams {
    * - `entity_csv` - Export a CSV of entities with a given status.
    * - `vendor_csv` - Export a CSV of vendors added to the third-party risk
    *   management dashboard.
+   * - `account_verification_letter` - A PDF of an account verification letter.
+   * - `funding_instructions` - A PDF of funding instructions.
    */
   category:
     | 'account_statement_ofx'
@@ -171,7 +173,9 @@ export interface ExportCreateParams {
     | 'balance_csv'
     | 'bookkeeping_account_balance_csv'
     | 'entity_csv'
-    | 'vendor_csv';
+    | 'vendor_csv'
+    | 'account_verification_letter'
+    | 'funding_instructions';
 
   /**
    * Options for the created export. Required if `category` is equal to
@@ -184,6 +188,12 @@ export interface ExportCreateParams {
    * `account_statement_ofx`.
    */
   account_statement_ofx?: ExportCreateParams.AccountStatementOfx;
+
+  /**
+   * Options for the created export. Required if `category` is equal to
+   * `account_verification_letter`.
+   */
+  account_verification_letter?: ExportCreateParams.AccountVerificationLetter;
 
   /**
    * Options for the created export. Required if `category` is equal to
@@ -201,6 +211,12 @@ export interface ExportCreateParams {
    * Options for the created export. Required if `category` is equal to `entity_csv`.
    */
   entity_csv?: ExportCreateParams.EntityCsv;
+
+  /**
+   * Options for the created export. Required if `category` is equal to
+   * `funding_instructions`.
+   */
+  funding_instructions?: ExportCreateParams.FundingInstructions;
 
   /**
    * Options for the created export. Required if `category` is equal to
@@ -288,6 +304,22 @@ export namespace ExportCreateParams {
        */
       on_or_before?: string;
     }
+  }
+
+  /**
+   * Options for the created export. Required if `category` is equal to
+   * `account_verification_letter`.
+   */
+  export interface AccountVerificationLetter {
+    /**
+     * The Account Number to create a letter for.
+     */
+    account_number_id: string;
+
+    /**
+     * The date of the balance to include in the letter. Defaults to the current date.
+     */
+    balance_date?: string;
   }
 
   /**
@@ -410,6 +442,17 @@ export namespace ExportCreateParams {
        */
       in: Array<'active' | 'archived' | 'disabled'>;
     }
+  }
+
+  /**
+   * Options for the created export. Required if `category` is equal to
+   * `funding_instructions`.
+   */
+  export interface FundingInstructions {
+    /**
+     * The Account Number to create funding instructions for.
+     */
+    account_number_id: string;
   }
 
   /**
