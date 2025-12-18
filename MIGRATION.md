@@ -105,7 +105,6 @@ client.example.list(undefined, { headers: { ... } });
 - `client.programs.list()`
 - `client.accountStatements.list()`
 - `client.files.list()`
-- `client.documents.list()`
 - `client.exports.list()`
 - `client.events.list()`
 - `client.eventSubscriptions.list()`
