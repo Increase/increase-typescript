@@ -484,18 +484,6 @@ Methods:
 
 - <code title="post /file_links">client.fileLinks.<a href="./src/resources/file-links.ts">create</a>({ ...params }) -> FileLink</code>
 
-# Documents
-
-Types:
-
-- <code><a href="./src/resources/documents.ts">Document</a></code>
-
-Methods:
-
-- <code title="post /documents">client.documents.<a href="./src/resources/documents.ts">create</a>({ ...params }) -> Document</code>
-- <code title="get /documents/{document_id}">client.documents.<a href="./src/resources/documents.ts">retrieve</a>(documentID) -> Document</code>
-- <code title="get /documents">client.documents.<a href="./src/resources/documents.ts">list</a>({ ...params }) -> DocumentsPage</code>
-
 # Exports
 
 Types:
@@ -889,12 +877,6 @@ Methods:
 Methods:
 
 - <code title="post /simulations/account_statements">client.simulations.accountStatements.<a href="./src/resources/simulations/account-statements.ts">create</a>({ ...params }) -> AccountStatement</code>
-
-## Documents
-
-Methods:
-
-- <code title="post /simulations/documents">client.simulations.documents.<a href="./src/resources/simulations/documents.ts">create</a>({ ...params }) -> Document</code>
 
 ## Exports
 
