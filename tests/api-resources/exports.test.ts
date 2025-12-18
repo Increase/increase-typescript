@@ -36,6 +36,7 @@ describe('resource exports', () => {
           on_or_before: '2019-12-27T18:11:19.117Z',
         },
       },
+      account_verification_letter: { account_number_id: 'account_number_id', balance_date: '2019-12-27' },
       balance_csv: {
         account_id: 'account_id',
         created_at: {
@@ -56,6 +57,7 @@ describe('resource exports', () => {
         },
       },
       entity_csv: { status: { in: ['active'] } },
+      funding_instructions: { account_number_id: 'account_number_id' },
       transaction_csv: {
         account_id: 'account_in71c4amph0vgo2qllky',
         created_at: {

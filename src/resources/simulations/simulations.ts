@@ -51,6 +51,8 @@ import {
 } from './digital-wallet-token-requests';
 import * as DocumentsAPI from './documents';
 import { DocumentCreateParams, Documents } from './documents';
+import * as ExportsAPI from './exports';
+import { ExportCreateParams, Exports } from './exports';
 import * as InboundACHTransfersAPI from './inbound-ach-transfers';
 import { InboundACHTransferCreateParams, InboundACHTransfers } from './inbound-ach-transfers';
 import * as InboundCheckDepositsAPI from './inbound-check-deposits';
@@ -143,6 +145,7 @@ export class Simulations extends APIResource {
     this._client,
   );
   documents: DocumentsAPI.Documents = new DocumentsAPI.Documents(this._client);
+  exports: ExportsAPI.Exports = new ExportsAPI.Exports(this._client);
   cardTokens: CardTokensAPI.CardTokens = new CardTokensAPI.CardTokens(this._client);
 }
 
@@ -176,6 +179,7 @@ Simulations.InboundMailItems = InboundMailItems;
 Simulations.Programs = Programs;
 Simulations.AccountStatements = AccountStatements;
 Simulations.Documents = Documents;
+Simulations.Exports = Exports;
 Simulations.CardTokens = CardTokens;
 
 export declare namespace Simulations {
@@ -297,6 +301,8 @@ export declare namespace Simulations {
   };
 
   export { Documents as Documents, type DocumentCreateParams as DocumentCreateParams };
+
+  export { Exports as Exports, type ExportCreateParams as ExportCreateParams };
 
   export { CardTokens as CardTokens, type CardTokenCreateParams as CardTokenCreateParams };
 }
