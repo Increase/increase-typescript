@@ -157,13 +157,6 @@ export {
   type DigitalWalletTokensPage,
 } from './digital-wallet-tokens';
 export {
-  Documents,
-  type Document,
-  type DocumentCreateParams,
-  type DocumentListParams,
-  type DocumentsPage,
-} from './documents';
-export {
   Entities,
   type Entity,
   type EntityCreateParams,

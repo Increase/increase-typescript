@@ -176,13 +176,6 @@ import {
   DigitalWalletTokensPage,
 } from './resources/digital-wallet-tokens';
 import {
-  Document,
-  DocumentCreateParams,
-  DocumentListParams,
-  Documents,
-  DocumentsPage,
-} from './resources/documents';
-import {
   Entities,
   EntitiesPage,
   Entity,
@@ -1159,7 +1152,6 @@ export class Increase {
   accountStatements: API.AccountStatements = new API.AccountStatements(this);
   files: API.Files = new API.Files(this);
   fileLinks: API.FileLinks = new API.FileLinks(this);
-  documents: API.Documents = new API.Documents(this);
   exports: API.Exports = new API.Exports(this);
   events: API.Events = new API.Events(this);
   eventSubscriptions: API.EventSubscriptions = new API.EventSubscriptions(this);
@@ -1218,7 +1210,6 @@ Increase.Programs = Programs;
 Increase.AccountStatements = AccountStatements;
 Increase.Files = Files;
 Increase.FileLinks = FileLinks;
-Increase.Documents = Documents;
 Increase.Exports = Exports;
 Increase.Events = Events;
 Increase.EventSubscriptions = EventSubscriptions;
@@ -1558,14 +1549,6 @@ export declare namespace Increase {
     FileLinks as FileLinks,
     type FileLink as FileLink,
     type FileLinkCreateParams as FileLinkCreateParams,
-  };
-
-  export {
-    Documents as Documents,
-    type Document as Document,
-    type DocumentsPage as DocumentsPage,
-    type DocumentCreateParams as DocumentCreateParams,
-    type DocumentListParams as DocumentListParams,
   };
 
   export {
