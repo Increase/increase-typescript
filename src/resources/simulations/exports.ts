@@ -7,12 +7,15 @@ import { RequestOptions } from '../../internal/request-options';
 
 export class Exports extends APIResource {
   /**
-   * Simulates a tax form export being generated.
+   * Many exports are created by you via POST /exports or in the Dashboard. Some
+   * exports are created automatically by Increase. For example, tax documents are
+   * published once a year. In sandbox, you can trigger the arrival of an export that
+   * would normally only be created automatically via this simulation.
    *
    * @example
    * ```ts
    * const _export = await client.simulations.exports.create({
-   *   account_id: 'account_in71c4amph0vgo2qllky',
+   *   category: 'form_1099_int',
    * });
    * ```
    */
@@ -23,9 +26,30 @@ export class Exports extends APIResource {
 
 export interface ExportCreateParams {
   /**
-   * The identifier of the Account the tax document is for.
+   * The type of Export to create.
+   *
+   * - `form_1099_int` - A PDF of an Internal Revenue Service Form 1099-INT.
    */
-  account_id: string;
+  category: 'form_1099_int';
+
+  /**
+   * Options for the created export. Required if `category` is equal to
+   * `form_1099_int`.
+   */
+  form_1099_int?: ExportCreateParams.Form1099Int;
+}
+
+export namespace ExportCreateParams {
+  /**
+   * Options for the created export. Required if `category` is equal to
+   * `form_1099_int`.
+   */
+  export interface Form1099Int {
+    /**
+     * The identifier of the Account the tax document is for.
+     */
+    account_id: string;
+  }
 }
 
 export declare namespace Exports {
