@@ -1134,6 +1134,12 @@ export namespace CardDispute {
       created_at: string;
 
       /**
+       * The free-form explanation provided to Increase to provide more context for the
+       * user submission. This field is not sent directly to the card networks.
+       */
+      explanation: string | null;
+
+      /**
        * The date and time at which Increase requested further information from the user
        * for the Visa Card Dispute.
        */
@@ -3060,6 +3066,12 @@ export interface CardDisputeCreateParams {
   attachment_files?: Array<CardDisputeCreateParams.AttachmentFile>;
 
   /**
+   * The free-form explanation provided to Increase to provide more context for the
+   * user submission. This field is not sent directly to the card networks.
+   */
+  explanation?: string;
+
+  /**
    * The Visa-specific parameters for the dispute. Required if and only if `network`
    * is `visa`.
    */
@@ -4899,6 +4911,12 @@ export interface CardDisputeSubmitUserSubmissionParams {
    * The files to be attached to the user submission.
    */
   attachment_files?: Array<CardDisputeSubmitUserSubmissionParams.AttachmentFile>;
+
+  /**
+   * The free-form explanation provided to Increase to provide more context for the
+   * user submission. This field is not sent directly to the card networks.
+   */
+  explanation?: string;
 
   /**
    * The Visa-specific parameters for the dispute. Required if and only if `network`
