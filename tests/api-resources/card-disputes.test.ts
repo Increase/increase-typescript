@@ -564,7 +564,10 @@ describe('resource cardDisputes', () => {
           reason:
             'The pre-arbitration received from the merchantdoes not explain how they obtained permission to charge the card.',
         },
-        user_prearbitration: { reason: 'x', category_change: { category: 'authorization', reason: 'x' } },
+        user_prearbitration: {
+          reason: 'x',
+          category_change: { category: 'authorization', reason: 'x' },
+        },
       },
     });
   });

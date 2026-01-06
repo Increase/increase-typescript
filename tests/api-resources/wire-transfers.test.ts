@@ -30,15 +30,34 @@ describe('resource wireTransfers', () => {
       amount: 100,
       creditor: {
         name: 'Ian Crease',
-        address: { unstructured: { line1: '33 Liberty Street', line2: 'New York', line3: 'NY 10045' } },
+        address: {
+          unstructured: {
+            line1: '33 Liberty Street',
+            line2: 'New York',
+            line3: 'NY 10045',
+          },
+        },
       },
       remittance: {
         category: 'unstructured',
-        tax: { date: '2019-12-27', identification_number: 'xxxxxxxxx', type_code: 'xxxxx' },
+        tax: {
+          date: '2019-12-27',
+          identification_number: 'xxxxxxxxx',
+          type_code: 'xxxxx',
+        },
         unstructured: { message: 'New account transfer' },
       },
       account_number: '987654321',
-      debtor: { name: 'x', address: { unstructured: { line1: 'x', line2: 'x', line3: 'x' } } },
+      debtor: {
+        name: 'x',
+        address: {
+          unstructured: {
+            line1: 'x',
+            line2: 'x',
+            line3: 'x',
+          },
+        },
+      },
       external_account_id: 'external_account_id',
       inbound_wire_drawdown_request_id: 'inbound_wire_drawdown_request_id',
       require_approval: true,
