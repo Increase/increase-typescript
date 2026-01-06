@@ -225,6 +225,7 @@ export class InvalidAPIKeyError extends AuthenticationError {
   /**
    * - `deleted_credential` - deleted_credential
    * - `expired_credential` - expired_credential
+   * - `ip_not_allowed` - ip_not_allowed
    * - `no_credential` - no_credential
    * - `no_header` - no_header
    * - `no_api_access` - no_api_access
@@ -233,6 +234,7 @@ export class InvalidAPIKeyError extends AuthenticationError {
   reason:
     | 'deleted_credential'
     | 'expired_credential'
+    | 'ip_not_allowed'
     | 'no_credential'
     | 'no_header'
     | 'no_api_access'
