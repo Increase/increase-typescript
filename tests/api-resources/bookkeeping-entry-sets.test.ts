@@ -63,7 +63,12 @@ describe('resource bookkeepingEntrySets', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.bookkeepingEntrySets.list(
-        { cursor: 'cursor', idempotency_key: 'x', limit: 1, transaction_id: 'transaction_id' },
+        {
+          cursor: 'cursor',
+          idempotency_key: 'x',
+          limit: 1,
+          transaction_id: 'transaction_id',
+        },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(Increase.NotFoundError);

@@ -12,9 +12,17 @@ describe('resource wireDrawdownRequests', () => {
     const responsePromise = client.wireDrawdownRequests.create({
       account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
       amount: 10000,
-      creditor_address: { city: 'New York', country: 'US', line1: '33 Liberty Street' },
+      creditor_address: {
+        city: 'New York',
+        country: 'US',
+        line1: '33 Liberty Street',
+      },
       creditor_name: 'National Phonograph Company',
-      debtor_address: { city: 'New York', country: 'US', line1: '33 Liberty Street' },
+      debtor_address: {
+        city: 'New York',
+        country: 'US',
+        line1: '33 Liberty Street',
+      },
       debtor_name: 'Ian Crease',
       unstructured_remittance_information: 'Invoice 29582',
     });
@@ -84,7 +92,12 @@ describe('resource wireDrawdownRequests', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.wireDrawdownRequests.list(
-        { cursor: 'cursor', idempotency_key: 'x', limit: 1, status: { in: ['pending_submission'] } },
+        {
+          cursor: 'cursor',
+          idempotency_key: 'x',
+          limit: 1,
+          status: { in: ['pending_submission'] },
+        },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(Increase.NotFoundError);

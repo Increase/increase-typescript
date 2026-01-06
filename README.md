@@ -73,13 +73,22 @@ import Increase, { toFile } from 'increase';
 const client = new Increase();
 
 // If you have access to Node `fs` we recommend using `fs.createReadStream()`:
-await client.files.create({ file: fs.createReadStream('my/file.txt'), purpose: 'check_image_front' });
+await client.files.create({
+  file: fs.createReadStream('my/file.txt'),
+  purpose: 'check_image_front',
+});
 
 // Or if you have the web `File` API you can pass a `File` instance:
-await client.files.create({ file: new File(['my bytes'], 'file.txt'), purpose: 'check_image_front' });
+await client.files.create({
+  file: new File(['my bytes'], 'file.txt'),
+  purpose: 'check_image_front',
+});
 
 // You can also pass a `fetch` `Response`:
-await client.files.create({ file: await fetch('https://somesite/file.txt'), purpose: 'check_image_front' });
+await client.files.create({
+  file: await fetch('https://somesite/file.txt'),
+  purpose: 'check_image_front',
+});
 
 // Finally, if none of the above are convenient, you can use our `toFile` helper:
 await client.files.create({
@@ -140,7 +149,11 @@ const client = new Increase({
 });
 
 // Or, configure per-request:
-await client.accounts.create({ name: 'New Account!', entity_id: 'entity_n8y8tnk2p9339ti393yi', program_id: 'program_i2v2os4mwza1oetokh9i' }, {
+await client.accounts.create({
+  name: 'New Account!',
+  entity_id: 'entity_n8y8tnk2p9339ti393yi',
+  program_id: 'program_i2v2os4mwza1oetokh9i',
+}, {
   maxRetries: 5,
 });
 ```
@@ -157,7 +170,11 @@ const client = new Increase({
 });
 
 // Override per-request:
-await client.accounts.create({ name: 'New Account!', entity_id: 'entity_n8y8tnk2p9339ti393yi', program_id: 'program_i2v2os4mwza1oetokh9i' }, {
+await client.accounts.create({
+  name: 'New Account!',
+  entity_id: 'entity_n8y8tnk2p9339ti393yi',
+  program_id: 'program_i2v2os4mwza1oetokh9i',
+}, {
   timeout: 5 * 1000,
 });
 ```

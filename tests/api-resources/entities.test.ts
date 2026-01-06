@@ -23,7 +23,13 @@ describe('resource entities', () => {
     const response = await client.entities.create({
       structure: 'corporation',
       corporation: {
-        address: { city: 'New York', line1: '33 Liberty Street', state: 'NY', zip: '10045', line2: 'x' },
+        address: {
+          city: 'New York',
+          line1: '33 Liberty Street',
+          state: 'NY',
+          zip: '10045',
+          line2: 'x',
+        },
         beneficial_owners: [
           {
             individual: {
@@ -52,7 +58,11 @@ describe('resource entities', () => {
                   back_file_id: 'back_file_id',
                   expiration_date: '2019-12-27',
                 },
-                passport: { country: 'x', expiration_date: '2019-12-27', file_id: 'file_id' },
+                passport: {
+                  country: 'x',
+                  expiration_date: '2019-12-27',
+                  file_id: 'file_id',
+                },
               },
               name: 'Ian Crease',
               confirmed_no_us_tax_id: true,
@@ -71,7 +81,13 @@ describe('resource entities', () => {
       },
       description: 'x',
       government_authority: {
-        address: { city: 'x', line1: 'x', state: 'x', zip: 'x', line2: 'x' },
+        address: {
+          city: 'x',
+          line1: 'x',
+          state: 'x',
+          zip: 'x',
+          line2: 'x',
+        },
         authorized_persons: [{ name: 'x' }],
         category: 'municipality',
         name: 'x',
@@ -81,7 +97,13 @@ describe('resource entities', () => {
       joint: {
         individuals: [
           {
-            address: { city: 'x', line1: 'x', state: 'x', zip: 'x', line2: 'x' },
+            address: {
+              city: 'x',
+              line1: 'x',
+              state: 'x',
+              zip: 'x',
+              line2: 'x',
+            },
             date_of_birth: '2019-12-27',
             identification: {
               method: 'social_security_number',
@@ -99,7 +121,11 @@ describe('resource entities', () => {
                 back_file_id: 'back_file_id',
                 expiration_date: '2019-12-27',
               },
-              passport: { country: 'x', expiration_date: '2019-12-27', file_id: 'file_id' },
+              passport: {
+                country: 'x',
+                expiration_date: '2019-12-27',
+                file_id: 'file_id',
+              },
             },
             name: 'x',
             confirmed_no_us_tax_id: true,
@@ -107,7 +133,13 @@ describe('resource entities', () => {
         ],
       },
       natural_person: {
-        address: { city: 'x', line1: 'x', state: 'x', zip: 'x', line2: 'x' },
+        address: {
+          city: 'x',
+          line1: 'x',
+          state: 'x',
+          zip: 'x',
+          line2: 'x',
+        },
         date_of_birth: '2019-12-27',
         identification: {
           method: 'social_security_number',
@@ -125,24 +157,46 @@ describe('resource entities', () => {
             back_file_id: 'back_file_id',
             expiration_date: '2019-12-27',
           },
-          passport: { country: 'x', expiration_date: '2019-12-27', file_id: 'file_id' },
+          passport: {
+            country: 'x',
+            expiration_date: '2019-12-27',
+            file_id: 'file_id',
+          },
         },
         name: 'x',
         confirmed_no_us_tax_id: true,
       },
       risk_rating: { rated_at: '2019-12-27T18:11:19.117Z', rating: 'low' },
       supplemental_documents: [{ file_id: 'file_makxrc67oh9l6sg7w9yc' }],
-      terms_agreements: [{ agreed_at: '2019-12-27T18:11:19.117Z', ip_address: 'x', terms_url: 'x' }],
+      terms_agreements: [
+        {
+          agreed_at: '2019-12-27T18:11:19.117Z',
+          ip_address: 'x',
+          terms_url: 'x',
+        },
+      ],
       third_party_verification: { reference: 'x', vendor: 'alloy' },
       trust: {
-        address: { city: 'x', line1: 'x', state: 'x', zip: 'x', line2: 'x' },
+        address: {
+          city: 'x',
+          line1: 'x',
+          state: 'x',
+          zip: 'x',
+          line2: 'x',
+        },
         category: 'revocable',
         name: 'x',
         trustees: [
           {
             structure: 'individual',
             individual: {
-              address: { city: 'x', line1: 'x', state: 'x', zip: 'x', line2: 'x' },
+              address: {
+                city: 'x',
+                line1: 'x',
+                state: 'x',
+                zip: 'x',
+                line2: 'x',
+              },
               date_of_birth: '2019-12-27',
               identification: {
                 method: 'social_security_number',
@@ -160,7 +214,11 @@ describe('resource entities', () => {
                   back_file_id: 'back_file_id',
                   expiration_date: '2019-12-27',
                 },
-                passport: { country: 'x', expiration_date: '2019-12-27', file_id: 'file_id' },
+                passport: {
+                  country: 'x',
+                  expiration_date: '2019-12-27',
+                  file_id: 'file_id',
+                },
               },
               name: 'x',
               confirmed_no_us_tax_id: true,
@@ -170,7 +228,13 @@ describe('resource entities', () => {
         formation_document_file_id: 'formation_document_file_id',
         formation_state: 'x',
         grantor: {
-          address: { city: 'x', line1: 'x', state: 'x', zip: 'x', line2: 'x' },
+          address: {
+            city: 'x',
+            line1: 'x',
+            state: 'x',
+            zip: 'x',
+            line2: 'x',
+          },
           date_of_birth: '2019-12-27',
           identification: {
             method: 'social_security_number',
@@ -188,7 +252,11 @@ describe('resource entities', () => {
               back_file_id: 'back_file_id',
               expiration_date: '2019-12-27',
             },
-            passport: { country: 'x', expiration_date: '2019-12-27', file_id: 'file_id' },
+            passport: {
+              country: 'x',
+              expiration_date: '2019-12-27',
+              file_id: 'file_id',
+            },
           },
           name: 'x',
           confirmed_no_us_tax_id: true,
@@ -297,7 +365,11 @@ describe('resource entities', () => {
     const responsePromise = client.entities.createBeneficialOwner('entity_n8y8tnk2p9339ti393yi', {
       beneficial_owner: {
         individual: {
-          address: { city: 'New York', country: 'US', line1: '33 Liberty Street' },
+          address: {
+            city: 'New York',
+            country: 'US',
+            line1: '33 Liberty Street',
+          },
           date_of_birth: '1970-01-31',
           identification: { method: 'social_security_number', number: '078051120' },
           name: 'Ian Crease',
@@ -343,7 +415,11 @@ describe('resource entities', () => {
               back_file_id: 'back_file_id',
               expiration_date: '2019-12-27',
             },
-            passport: { country: 'x', expiration_date: '2019-12-27', file_id: 'file_id' },
+            passport: {
+              country: 'x',
+              expiration_date: '2019-12-27',
+              file_id: 'file_id',
+            },
           },
           name: 'Ian Crease',
           confirmed_no_us_tax_id: true,
@@ -356,7 +432,12 @@ describe('resource entities', () => {
 
   test('updateAddress: only required params', async () => {
     const responsePromise = client.entities.updateAddress('entity_n8y8tnk2p9339ti393yi', {
-      address: { city: 'New York', line1: '33 Liberty Street', state: 'NY', zip: '10045' },
+      address: {
+        city: 'New York',
+        line1: '33 Liberty Street',
+        state: 'NY',
+        zip: '10045',
+      },
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -369,13 +450,23 @@ describe('resource entities', () => {
 
   test('updateAddress: required and optional params', async () => {
     const response = await client.entities.updateAddress('entity_n8y8tnk2p9339ti393yi', {
-      address: { city: 'New York', line1: '33 Liberty Street', state: 'NY', zip: '10045', line2: 'Unit 2' },
+      address: {
+        city: 'New York',
+        line1: '33 Liberty Street',
+        state: 'NY',
+        zip: '10045',
+        line2: 'Unit 2',
+      },
     });
   });
 
   test('updateBeneficialOwnerAddress: only required params', async () => {
     const responsePromise = client.entities.updateBeneficialOwnerAddress('entity_n8y8tnk2p9339ti393yi', {
-      address: { city: 'New York', country: 'US', line1: '33 Liberty Street' },
+      address: {
+        city: 'New York',
+        country: 'US',
+        line1: '33 Liberty Street',
+      },
       beneficial_owner_id: 'entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7',
     });
     const rawResponse = await responsePromise.asResponse();
