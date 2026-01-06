@@ -328,6 +328,12 @@ export interface Entity {
   supplemental_documents: Array<SupplementalDocumentsAPI.EntitySupplementalDocument>;
 
   /**
+   * The terms that the Entity agreed to. Not all programs are required to submit
+   * this data.
+   */
+  terms_agreements: Array<Entity.TermsAgreement>;
+
+  /**
    * If you are using a third-party service for identity verification, you can use
    * this field to associate this Entity with the identifier that represents them in
    * that service.
@@ -849,6 +855,23 @@ export namespace Entity {
     rating: 'low' | 'medium' | 'high';
   }
 
+  export interface TermsAgreement {
+    /**
+     * The timestamp of when the Entity agreed to the terms.
+     */
+    agreed_at: string;
+
+    /**
+     * The IP address the Entity accessed reviewed the terms from.
+     */
+    ip_address: string;
+
+    /**
+     * The URL of the terms agreement. This link will be provided by your bank partner.
+     */
+    terms_url: string;
+  }
+
   /**
    * If you are using a third-party service for identity verification, you can use
    * this field to associate this Entity with the identifier that represents them in
@@ -1201,6 +1224,12 @@ export interface EntityCreateParams {
    * Additional documentation associated with the entity.
    */
   supplemental_documents?: Array<EntityCreateParams.SupplementalDocument>;
+
+  /**
+   * The terms that the Entity agreed to. Not all programs are required to submit
+   * this data.
+   */
+  terms_agreements?: Array<EntityCreateParams.TermsAgreement>;
 
   /**
    * If you are using a third-party service for identity verification, you can use
@@ -2073,6 +2102,23 @@ export namespace EntityCreateParams {
      * The identifier of the File containing the document.
      */
     file_id: string;
+  }
+
+  export interface TermsAgreement {
+    /**
+     * The timestamp of when the Entity agreed to the terms.
+     */
+    agreed_at: string;
+
+    /**
+     * The IP address the Entity accessed reviewed the terms from.
+     */
+    ip_address: string;
+
+    /**
+     * The URL of the terms agreement. This link will be provided by your bank partner.
+     */
+    terms_url: string;
   }
 
   /**

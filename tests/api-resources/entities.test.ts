@@ -132,6 +132,7 @@ describe('resource entities', () => {
       },
       risk_rating: { rated_at: '2019-12-27T18:11:19.117Z', rating: 'low' },
       supplemental_documents: [{ file_id: 'file_makxrc67oh9l6sg7w9yc' }],
+      terms_agreements: [{ agreed_at: '2019-12-27T18:11:19.117Z', ip_address: 'x', terms_url: 'x' }],
       third_party_verification: { reference: 'x', vendor: 'alloy' },
       trust: {
         address: { city: 'x', line1: 'x', state: 'x', zip: 'x', line2: 'x' },
