@@ -2676,6 +2676,11 @@ export namespace CardDispute {
           cardholder_cancellation: ConsumerServicesNotAsDescribed.CardholderCancellation;
 
           /**
+           * Explanation of what was ordered and was not as described.
+           */
+          explanation: string;
+
+          /**
            * Merchant resolution attempted.
            *
            * - `attempted` - Attempted.
@@ -4577,6 +4582,11 @@ export namespace CardDisputeCreateParams {
       cardholder_cancellation: ConsumerServicesNotAsDescribed.CardholderCancellation;
 
       /**
+       * Explanation of what was ordered and was not as described.
+       */
+      explanation: string;
+
+      /**
        * Merchant resolution attempted.
        *
        * - `attempted` - Attempted.
@@ -6459,6 +6469,11 @@ export namespace CardDisputeSubmitUserSubmissionParams {
          * Cardholder cancellation.
          */
         cardholder_cancellation: ConsumerServicesNotAsDescribed.CardholderCancellation;
+
+        /**
+         * Explanation of what was ordered and was not as described.
+         */
+        explanation: string;
 
         /**
          * Merchant resolution attempted.
