@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.395.0 (2026-01-07)
+
+Full Changelog: [v0.394.0...v0.395.0](https://github.com/Increase/increase-typescript/compare/v0.394.0...v0.395.0)
+
+### Features
+
+* **api:** api update ([efcf35a](https://github.com/Increase/increase-typescript/commit/efcf35abad1157d931ec8d7519f3c23f7f37ab65))
+
+
+### Chores
+
+* break long lines in snippets into multiline ([494eea5](https://github.com/Increase/increase-typescript/commit/494eea5b7c136267a238187849467f4242d6b46d))
+
 ## 0.394.0 (2026-01-06)
 
 Full Changelog: [v0.393.0...v0.394.0](https://github.com/Increase/increase-typescript/compare/v0.393.0...v0.394.0)
