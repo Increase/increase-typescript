@@ -2713,6 +2713,12 @@ export namespace EntityUpdateParams {
     email?: string;
 
     /**
+     * The two-letter United States Postal Service (USPS) abbreviation for the
+     * corporation's state of incorporation.
+     */
+    incorporation_state?: string;
+
+    /**
      * The North American Industry Classification System (NAICS) code for the
      * corporation's primary line of business. This is a number, like `5132` for
      * `Software Publishers`. A full list of classification codes is available
