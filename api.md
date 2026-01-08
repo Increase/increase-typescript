@@ -349,6 +349,20 @@ Methods:
 - <code title="get /inbound_fednow_transfers/{inbound_fednow_transfer_id}">client.inboundFednowTransfers.<a href="./src/resources/inbound-fednow-transfers.ts">retrieve</a>(inboundFednowTransferID) -> InboundFednowTransfer</code>
 - <code title="get /inbound_fednow_transfers">client.inboundFednowTransfers.<a href="./src/resources/inbound-fednow-transfers.ts">list</a>({ ...params }) -> InboundFednowTransfersPage</code>
 
+# SwiftTransfers
+
+Types:
+
+- <code><a href="./src/resources/swift-transfers.ts">SwiftTransfer</a></code>
+
+Methods:
+
+- <code title="post /swift_transfers">client.swiftTransfers.<a href="./src/resources/swift-transfers.ts">create</a>({ ...params }) -> SwiftTransfer</code>
+- <code title="get /swift_transfers/{swift_transfer_id}">client.swiftTransfers.<a href="./src/resources/swift-transfers.ts">retrieve</a>(swiftTransferID) -> SwiftTransfer</code>
+- <code title="get /swift_transfers">client.swiftTransfers.<a href="./src/resources/swift-transfers.ts">list</a>({ ...params }) -> SwiftTransfersPage</code>
+- <code title="post /swift_transfers/{swift_transfer_id}/approve">client.swiftTransfers.<a href="./src/resources/swift-transfers.ts">approve</a>(swiftTransferID) -> SwiftTransfer</code>
+- <code title="post /swift_transfers/{swift_transfer_id}/cancel">client.swiftTransfers.<a href="./src/resources/swift-transfers.ts">cancel</a>(swiftTransferID) -> SwiftTransfer</code>
+
 # CheckDeposits
 
 Types:
