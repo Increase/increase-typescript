@@ -97,6 +97,7 @@ client.example.list(undefined, { headers: { ... } });
 - `client.inboundRealTimePaymentsTransfers.list()`
 - `client.fednowTransfers.list()`
 - `client.inboundFednowTransfers.list()`
+- `client.swiftTransfers.list()`
 - `client.checkDeposits.list()`
 - `client.lockboxes.list()`
 - `client.inboundMailItems.list()`

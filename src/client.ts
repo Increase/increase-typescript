@@ -350,6 +350,13 @@ import {
   SupplementalDocumentListParams,
   SupplementalDocuments,
 } from './resources/supplemental-documents';
+import {
+  SwiftTransfer,
+  SwiftTransferCreateParams,
+  SwiftTransferListParams,
+  SwiftTransfers,
+  SwiftTransfersPage,
+} from './resources/swift-transfers';
 import { Transaction, TransactionListParams, Transactions, TransactionsPage } from './resources/transactions';
 import {
   WireDrawdownRequest,
@@ -1141,6 +1148,7 @@ export class Increase {
     new API.InboundRealTimePaymentsTransfers(this);
   fednowTransfers: API.FednowTransfers = new API.FednowTransfers(this);
   inboundFednowTransfers: API.InboundFednowTransfers = new API.InboundFednowTransfers(this);
+  swiftTransfers: API.SwiftTransfers = new API.SwiftTransfers(this);
   checkDeposits: API.CheckDeposits = new API.CheckDeposits(this);
   lockboxes: API.Lockboxes = new API.Lockboxes(this);
   inboundMailItems: API.InboundMailItems = new API.InboundMailItems(this);
@@ -1199,6 +1207,7 @@ Increase.RealTimePaymentsTransfers = RealTimePaymentsTransfers;
 Increase.InboundRealTimePaymentsTransfers = InboundRealTimePaymentsTransfers;
 Increase.FednowTransfers = FednowTransfers;
 Increase.InboundFednowTransfers = InboundFednowTransfers;
+Increase.SwiftTransfers = SwiftTransfers;
 Increase.CheckDeposits = CheckDeposits;
 Increase.Lockboxes = Lockboxes;
 Increase.InboundMailItems = InboundMailItems;
@@ -1457,6 +1466,14 @@ export declare namespace Increase {
     type InboundFednowTransfer as InboundFednowTransfer,
     type InboundFednowTransfersPage as InboundFednowTransfersPage,
     type InboundFednowTransferListParams as InboundFednowTransferListParams,
+  };
+
+  export {
+    SwiftTransfers as SwiftTransfers,
+    type SwiftTransfer as SwiftTransfer,
+    type SwiftTransfersPage as SwiftTransfersPage,
+    type SwiftTransferCreateParams as SwiftTransferCreateParams,
+    type SwiftTransferListParams as SwiftTransferListParams,
   };
 
   export {
