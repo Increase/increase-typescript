@@ -339,6 +339,13 @@ export {
   type EntitySupplementalDocumentsPage,
 } from './supplemental-documents';
 export {
+  SwiftTransfers,
+  type SwiftTransfer,
+  type SwiftTransferCreateParams,
+  type SwiftTransferListParams,
+  type SwiftTransfersPage,
+} from './swift-transfers';
+export {
   Transactions,
   type Transaction,
   type TransactionListParams,
