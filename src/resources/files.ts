@@ -152,6 +152,7 @@ export interface File {
    * - `entity_supplemental_document` - A supplemental document associated an an
    *   Entity.
    * - `export` - The results of an Export you requested via the dashboard or API.
+   * - `fee_statement` - A fee statement.
    * - `unusual_activity_report_attachment` - An attachment to an Unusual Activity
    *   Report.
    * - `deposit_account_control_agreement` - A document granting another entity
@@ -188,6 +189,7 @@ export interface File {
     | 'document_request'
     | 'entity_supplemental_document'
     | 'export'
+    | 'fee_statement'
     | 'unusual_activity_report_attachment'
     | 'deposit_account_control_agreement'
     | 'proof_of_authorization_request_submission'
@@ -350,6 +352,7 @@ export namespace FileListParams {
       | 'document_request'
       | 'entity_supplemental_document'
       | 'export'
+      | 'fee_statement'
       | 'unusual_activity_report_attachment'
       | 'deposit_account_control_agreement'
       | 'proof_of_authorization_request_submission'
