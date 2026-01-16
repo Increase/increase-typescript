@@ -515,11 +515,13 @@ Methods:
 Types:
 
 - <code><a href="./src/resources/events.ts">Event</a></code>
+- <code><a href="./src/resources/events.ts">UnwrapWebhookEvent</a></code>
 
 Methods:
 
 - <code title="get /events/{event_id}">client.events.<a href="./src/resources/events.ts">retrieve</a>(eventID) -> Event</code>
 - <code title="get /events">client.events.<a href="./src/resources/events.ts">list</a>({ ...params }) -> EventsPage</code>
+- <code>client.events.<a href="./src/resources/events.ts">unwrap</a>(body) -> void</code>
 
 # EventSubscriptions
 

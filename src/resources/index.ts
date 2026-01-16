@@ -178,7 +178,7 @@ export {
   type EventSubscriptionListParams,
   type EventSubscriptionsPage,
 } from './event-subscriptions';
-export { Events, type Event, type EventListParams, type EventsPage } from './events';
+export { Events, type Event, type UnwrapWebhookEvent, type EventListParams, type EventsPage } from './events';
 export {
   Exports,
   type Export,
