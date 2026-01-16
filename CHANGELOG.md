@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.400.0 (2026-01-16)
+
+Full Changelog: [v0.399.0...v0.400.0](https://github.com/Increase/increase-typescript/compare/v0.399.0...v0.400.0)
+
+### Features
+
+* **api:** api update ([0fb897b](https://github.com/Increase/increase-typescript/commit/0fb897bdb96308426fd372364a0bd4994d2230ed))
+
+
+### Chores
+
+* **internal:** upgrade babel, qs, js-yaml ([38297d8](https://github.com/Increase/increase-typescript/commit/38297d8ca2b4bd85009cf686f2c6d7a4e697861c))
+
 ## 0.399.0 (2026-01-14)
 
 Full Changelog: [v0.398.0...v0.399.0](https://github.com/Increase/increase-typescript/compare/v0.398.0...v0.399.0)
