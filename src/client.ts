@@ -197,7 +197,7 @@ import {
   EventSubscriptions,
   EventSubscriptionsPage,
 } from './resources/event-subscriptions';
-import { Event, EventListParams, Events, EventsPage } from './resources/events';
+import { Event, EventListParams, Events, EventsPage, UnwrapWebhookEvent } from './resources/events';
 import { Export, ExportCreateParams, ExportListParams, Exports, ExportsPage } from './resources/exports';
 import {
   ExternalAccount,
@@ -1579,6 +1579,7 @@ export declare namespace Increase {
   export {
     Events as Events,
     type Event as Event,
+    type UnwrapWebhookEvent as UnwrapWebhookEvent,
     type EventsPage as EventsPage,
     type EventListParams as EventListParams,
   };
