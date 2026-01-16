@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../core/resource';
+import { Webhook } from 'standardwebhooks';
 import { APIPromise } from '../core/api-promise';
 import { Page, type PageParams, PagePromise } from '../core/pagination';
 import { RequestOptions } from '../internal/request-options';
@@ -37,6 +38,19 @@ export class Events extends APIResource {
     options?: RequestOptions,
   ): PagePromise<EventsPage, Event> {
     return this._client.getAPIList('/events', Page<Event>, { query, ...options });
+  }
+
+  unwrap(
+    body: string,
+    { headers, key }: { headers: Record<string, string>; key?: string },
+  ): UnwrapWebhookEvent {
+    if (headers !== undefined) {
+      const keyStr: string | null = key === undefined ? this._client.webhookSecret : key;
+      if (keyStr === null) throw new Error('Webhook key must not be null in order to unwrap');
+      const wh = new Webhook(keyStr);
+      wh.verify(body, headers);
+    }
+    return JSON.parse(body) as UnwrapWebhookEvent;
   }
 }
 
@@ -338,6 +352,8 @@ export interface Event {
   type: 'event';
 }
 
+export type UnwrapWebhookEvent = unknown;
+
 export interface EventListParams extends PageParams {
   /**
    * Filter Events to those belonging to the object with the provided identifier.
@@ -489,5 +505,10 @@ export namespace EventListParams {
 }
 
 export declare namespace Events {
-  export { type Event as Event, type EventsPage as EventsPage, type EventListParams as EventListParams };
+  export {
+    type Event as Event,
+    type UnwrapWebhookEvent as UnwrapWebhookEvent,
+    type EventsPage as EventsPage,
+    type EventListParams as EventListParams,
+  };
 }

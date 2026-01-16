@@ -1,5 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+import { Webhook } from 'standardwebhooks';
+
 import Increase from 'increase';
 
 const client = new Increase({
@@ -49,5 +51,34 @@ describe('resource events', () => {
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(Increase.NotFoundError);
+  });
+
+  test('unwrap', async () => {
+    const key = 'whsec_c2VjcmV0Cg==';
+    const payload = '{}';
+    const msgID = '1';
+    const timestamp = new Date();
+    const wh = new Webhook(key);
+    const signature = wh.sign(msgID, timestamp, payload);
+    const headers: Record<string, string> = {
+      'webhook-signature': signature,
+      'webhook-id': msgID,
+      'webhook-timestamp': String(Math.floor(timestamp.getTime() / 1000)),
+    };
+    client.events.unwrap(payload, { headers, key });
+    expect(() => {
+      const wrongKey = 'whsec_aaaaaaaaaa==';
+      client.events.unwrap(payload, { headers, key: wrongKey });
+    }).toThrow('No matching signature found');
+    expect(() => {
+      const badSig = wh.sign(msgID, timestamp, 'some other payload');
+      client.events.unwrap(payload, { headers: { ...headers, 'webhook-signature': badSig }, key });
+    }).toThrow('No matching signature found');
+    expect(() => {
+      client.events.unwrap(payload, { headers: { ...headers, 'webhook-timestamp': '5' }, key });
+    }).toThrow('Message timestamp too old');
+    expect(() => {
+      client.events.unwrap(payload, { headers: { ...headers, 'webhook-id': 'wrong' }, key });
+    }).toThrow('No matching signature found');
   });
 });
