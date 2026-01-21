@@ -656,28 +656,13 @@ export namespace CheckTransfer {
    */
   export interface Submission {
     /**
-     * Per USPS requirements, Increase will standardize the address to USPS standards
-     * and check it against the USPS National Change of Address (NCOA) database before
-     * mailing it. This indicates what modifications, if any, were made to the address
-     * before printing and mailing the check.
-     *
-     * - `none` - No address correction took place.
-     * - `standardization` - The address was standardized.
-     * - `standardization_with_address_change` - The address was first standardized and
-     *   then changed because the recipient moved.
-     * - `error` - An error occurred while correcting the address. This typically means
-     *   the USPS could not find that address. The address was not changed.
-     */
-    address_correction_action: 'none' | 'standardization' | 'standardization_with_address_change' | 'error';
-
-    /**
      * The address we submitted to the printer. This is what is physically printed on
      * the check.
      */
     submitted_address: Submission.SubmittedAddress;
 
     /**
-     * When this check transfer was submitted to our check printer.
+     * When this check was submitted to our check printer.
      */
     submitted_at: string;
 

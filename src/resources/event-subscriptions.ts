@@ -230,6 +230,8 @@ export interface EventSubscription {
    *   created.
    * - `physical_card_profile.updated` - Occurs whenever a Physical Card Profile is
    *   updated.
+   * - `physical_check.created` - Occurs whenever a Physical Check is created.
+   * - `physical_check.updated` - Occurs whenever a Physical Check is updated.
    * - `program.created` - Occurs whenever a Program is created.
    * - `program.updated` - Occurs whenever a Program is updated.
    * - `proof_of_authorization_request.created` - Occurs whenever a Proof of
@@ -349,6 +351,8 @@ export interface EventSubscription {
     | 'physical_card.updated'
     | 'physical_card_profile.created'
     | 'physical_card_profile.updated'
+    | 'physical_check.created'
+    | 'physical_check.updated'
     | 'program.created'
     | 'program.updated'
     | 'proof_of_authorization_request.created'
@@ -530,6 +534,8 @@ export interface EventSubscriptionCreateParams {
    *   created.
    * - `physical_card_profile.updated` - Occurs whenever a Physical Card Profile is
    *   updated.
+   * - `physical_check.created` - Occurs whenever a Physical Check is created.
+   * - `physical_check.updated` - Occurs whenever a Physical Check is updated.
    * - `program.created` - Occurs whenever a Program is created.
    * - `program.updated` - Occurs whenever a Program is updated.
    * - `proof_of_authorization_request.created` - Occurs whenever a Proof of
@@ -649,6 +655,8 @@ export interface EventSubscriptionCreateParams {
     | 'physical_card.updated'
     | 'physical_card_profile.created'
     | 'physical_card_profile.updated'
+    | 'physical_check.created'
+    | 'physical_check.updated'
     | 'program.created'
     | 'program.updated'
     | 'proof_of_authorization_request.created'
