@@ -55,7 +55,8 @@ describe('resource events', () => {
 
   test('unwrap', async () => {
     const key = 'whsec_c2VjcmV0Cg==';
-    const payload = '{}';
+    const payload =
+      '{"id":"event_001dzz0r20rzr4zrhrr1364hy80","associated_object_id":"account_in71c4amph0vgo2qllky","associated_object_type":"account","category":"account.created","created_at":"2020-01-31T23:59:59Z","type":"event"}';
     const msgID = '1';
     const timestamp = new Date();
     const wh = new Webhook(key);
