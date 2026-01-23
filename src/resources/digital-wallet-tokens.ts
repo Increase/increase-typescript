@@ -76,6 +76,11 @@ export interface DigitalWalletToken {
   device: DigitalWalletToken.Device;
 
   /**
+   * The redacted Dynamic Primary Account Number.
+   */
+  dynamic_primary_account_number: DigitalWalletToken.DynamicPrimaryAccountNumber | null;
+
+  /**
    * This indicates if payments can be made with the Digital Wallet Token.
    *
    * - `active` - The digital wallet token is active.
@@ -162,6 +167,21 @@ export namespace DigitalWalletToken {
      * Name of the device, for example "My Work Phone".
      */
     name: string | null;
+  }
+
+  /**
+   * The redacted Dynamic Primary Account Number.
+   */
+  export interface DynamicPrimaryAccountNumber {
+    /**
+     * The first 6 digits of the token's Dynamic Primary Account Number.
+     */
+    first6: string;
+
+    /**
+     * The last 4 digits of the token's Dynamic Primary Account Number.
+     */
+    last4: string;
   }
 
   export interface Update {
