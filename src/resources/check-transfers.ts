@@ -402,21 +402,12 @@ export namespace CheckTransfer {
    */
   export interface Mailing {
     /**
-     * The ID of the file corresponding to an image of the check that was mailed, if
-     * available.
-     */
-    image_id: string | null;
-
-    /**
      * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
      * the check was mailed.
      */
     mailed_at: string;
 
-    /**
-     * The tracking number of the shipment, if available for the shipping method.
-     */
-    tracking_number: string | null;
+    [k: string]: unknown;
   }
 
   /**
@@ -656,6 +647,12 @@ export namespace CheckTransfer {
    */
   export interface Submission {
     /**
+     * The ID of the file corresponding to an image of the check that was mailed, if
+     * available.
+     */
+    preview_file_id: string | null;
+
+    /**
      * The address we submitted to the printer. This is what is physically printed on
      * the check.
      */
@@ -665,6 +662,11 @@ export namespace CheckTransfer {
      * When this check was submitted to our check printer.
      */
     submitted_at: string;
+
+    /**
+     * The tracking number for the check shipment.
+     */
+    tracking_number: string | null;
 
     [k: string]: unknown;
   }
