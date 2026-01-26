@@ -266,13 +266,15 @@ export namespace InboundCheckDeposit {
      * - `duplicate_presentment` - The check was a duplicate presentment.
      * - `endorsement_missing` - The check was not endorsed.
      * - `endorsement_irregular` - The check was not endorsed by the payee.
+     * - `refer_to_maker` - The maker of the check requested its return.
      */
     reason:
       | 'altered_or_fictitious'
       | 'not_authorized'
       | 'duplicate_presentment'
       | 'endorsement_missing'
-      | 'endorsement_irregular';
+      | 'endorsement_irregular'
+      | 'refer_to_maker';
 
     /**
      * The time at which the deposit was returned.
@@ -338,13 +340,15 @@ export interface InboundCheckDepositReturnParams {
    * - `duplicate_presentment` - The check was a duplicate presentment.
    * - `endorsement_missing` - The check was not endorsed.
    * - `endorsement_irregular` - The check was not endorsed by the payee.
+   * - `refer_to_maker` - The maker of the check requested its return.
    */
   reason:
     | 'altered_or_fictitious'
     | 'not_authorized'
     | 'duplicate_presentment'
     | 'endorsement_missing'
-    | 'endorsement_irregular';
+    | 'endorsement_irregular'
+    | 'refer_to_maker';
 }
 
 export declare namespace InboundCheckDeposits {
