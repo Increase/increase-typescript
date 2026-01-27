@@ -4126,6 +4126,7 @@ export namespace Transaction {
        * - `error` - Error
        * - `error_correction` - Error correction
        * - `fees` - Fees
+       * - `general_ledger_transfer` - General ledger transfer
        * - `interest` - Interest
        * - `negative_balance_forgiveness` - Negative balance forgiveness
        * - `sample_funds` - Sample funds
@@ -4145,6 +4146,7 @@ export namespace Transaction {
         | 'error'
         | 'error_correction'
         | 'fees'
+        | 'general_ledger_transfer'
         | 'interest'
         | 'negative_balance_forgiveness'
         | 'sample_funds'
