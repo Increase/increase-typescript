@@ -1090,6 +1090,11 @@ export namespace CardPayment {
          * we verified it against.
          */
         cardholder_address: Verification.CardholderAddress;
+
+        /**
+         * Cardholder name provided in the authorization request.
+         */
+        cardholder_name: Verification.CardholderName | null;
       }
 
       export namespace Verification {
@@ -1156,6 +1161,26 @@ export namespace CardPayment {
             | 'match'
             | 'no_match'
             | 'postal_code_match_address_not_checked';
+        }
+
+        /**
+         * Cardholder name provided in the authorization request.
+         */
+        export interface CardholderName {
+          /**
+           * The first name provided for verification in the authorization request.
+           */
+          provided_first_name: string | null;
+
+          /**
+           * The last name provided for verification in the authorization request.
+           */
+          provided_last_name: string | null;
+
+          /**
+           * The middle name provided for verification in the authorization request.
+           */
+          provided_middle_name: string | null;
         }
       }
     }
@@ -1769,6 +1794,11 @@ export namespace CardPayment {
          * we verified it against.
          */
         cardholder_address: Verification.CardholderAddress;
+
+        /**
+         * Cardholder name provided in the authorization request.
+         */
+        cardholder_name: Verification.CardholderName | null;
       }
 
       export namespace Verification {
@@ -1835,6 +1865,26 @@ export namespace CardPayment {
             | 'match'
             | 'no_match'
             | 'postal_code_match_address_not_checked';
+        }
+
+        /**
+         * Cardholder name provided in the authorization request.
+         */
+        export interface CardholderName {
+          /**
+           * The first name provided for verification in the authorization request.
+           */
+          provided_first_name: string | null;
+
+          /**
+           * The last name provided for verification in the authorization request.
+           */
+          provided_last_name: string | null;
+
+          /**
+           * The middle name provided for verification in the authorization request.
+           */
+          provided_middle_name: string | null;
         }
       }
     }
@@ -2552,6 +2602,11 @@ export namespace CardPayment {
          * we verified it against.
          */
         cardholder_address: Verification.CardholderAddress;
+
+        /**
+         * Cardholder name provided in the authorization request.
+         */
+        cardholder_name: Verification.CardholderName | null;
       }
 
       export namespace Verification {
@@ -2618,6 +2673,26 @@ export namespace CardPayment {
             | 'match'
             | 'no_match'
             | 'postal_code_match_address_not_checked';
+        }
+
+        /**
+         * Cardholder name provided in the authorization request.
+         */
+        export interface CardholderName {
+          /**
+           * The first name provided for verification in the authorization request.
+           */
+          provided_first_name: string | null;
+
+          /**
+           * The last name provided for verification in the authorization request.
+           */
+          provided_last_name: string | null;
+
+          /**
+           * The middle name provided for verification in the authorization request.
+           */
+          provided_middle_name: string | null;
         }
       }
     }
@@ -3255,6 +3330,11 @@ export namespace CardPayment {
          * we verified it against.
          */
         cardholder_address: Verification.CardholderAddress;
+
+        /**
+         * Cardholder name provided in the authorization request.
+         */
+        cardholder_name: Verification.CardholderName | null;
       }
 
       export namespace Verification {
@@ -3321,6 +3401,26 @@ export namespace CardPayment {
             | 'match'
             | 'no_match'
             | 'postal_code_match_address_not_checked';
+        }
+
+        /**
+         * Cardholder name provided in the authorization request.
+         */
+        export interface CardholderName {
+          /**
+           * The first name provided for verification in the authorization request.
+           */
+          provided_first_name: string | null;
+
+          /**
+           * The last name provided for verification in the authorization request.
+           */
+          provided_last_name: string | null;
+
+          /**
+           * The middle name provided for verification in the authorization request.
+           */
+          provided_middle_name: string | null;
         }
       }
     }
@@ -6012,6 +6112,11 @@ export namespace CardPayment {
          * we verified it against.
          */
         cardholder_address: Verification.CardholderAddress;
+
+        /**
+         * Cardholder name provided in the authorization request.
+         */
+        cardholder_name: Verification.CardholderName | null;
       }
 
       export namespace Verification {
@@ -6078,6 +6183,26 @@ export namespace CardPayment {
             | 'match'
             | 'no_match'
             | 'postal_code_match_address_not_checked';
+        }
+
+        /**
+         * Cardholder name provided in the authorization request.
+         */
+        export interface CardholderName {
+          /**
+           * The first name provided for verification in the authorization request.
+           */
+          provided_first_name: string | null;
+
+          /**
+           * The last name provided for verification in the authorization request.
+           */
+          provided_last_name: string | null;
+
+          /**
+           * The middle name provided for verification in the authorization request.
+           */
+          provided_middle_name: string | null;
         }
       }
     }
