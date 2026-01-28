@@ -575,7 +575,7 @@ describe('resource cardDisputes', () => {
   });
 
   test('withdraw', async () => {
-    const responsePromise = client.cardDisputes.withdraw('card_dispute_h9sc95nbl1cgltpp7men');
+    const responsePromise = client.cardDisputes.withdraw('card_dispute_h9sc95nbl1cgltpp7men', {});
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;

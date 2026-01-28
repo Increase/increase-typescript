@@ -74,6 +74,7 @@ export {
   type CardDisputeCreateParams,
   type CardDisputeListParams,
   type CardDisputeSubmitUserSubmissionParams,
+  type CardDisputeWithdrawParams,
   type CardDisputesPage,
 } from './card-disputes';
 export {

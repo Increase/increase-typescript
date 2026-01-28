@@ -92,6 +92,7 @@ import {
   CardDisputeCreateParams,
   CardDisputeListParams,
   CardDisputeSubmitUserSubmissionParams,
+  CardDisputeWithdrawParams,
   CardDisputes,
   CardDisputesPage,
 } from './resources/card-disputes';
@@ -1306,6 +1307,7 @@ export declare namespace Increase {
     type CardDisputeCreateParams as CardDisputeCreateParams,
     type CardDisputeListParams as CardDisputeListParams,
     type CardDisputeSubmitUserSubmissionParams as CardDisputeSubmitUserSubmissionParams,
+    type CardDisputeWithdrawParams as CardDisputeWithdrawParams,
   };
 
   export {

@@ -88,8 +88,12 @@ export class CardDisputes extends APIResource {
    * );
    * ```
    */
-  withdraw(cardDisputeID: string, options?: RequestOptions): APIPromise<CardDispute> {
-    return this._client.post(path`/card_disputes/${cardDisputeID}/withdraw`, options);
+  withdraw(
+    cardDisputeID: string,
+    body: CardDisputeWithdrawParams,
+    options?: RequestOptions,
+  ): APIPromise<CardDispute> {
+    return this._client.post(path`/card_disputes/${cardDisputeID}/withdraw`, { body, ...options });
   }
 }
 
@@ -198,6 +202,12 @@ export interface CardDispute {
    * dispute.
    */
   win: CardDispute.Win | null;
+
+  /**
+   * If the Card Dispute has been withdrawn, this will contain details of the
+   * withdrawal.
+   */
+  withdrawal: CardDispute.Withdrawal | null;
 }
 
 export namespace CardDispute {
@@ -3039,6 +3049,17 @@ export namespace CardDispute {
      * the Card Dispute was won.
      */
     won_at: string;
+  }
+
+  /**
+   * If the Card Dispute has been withdrawn, this will contain details of the
+   * withdrawal.
+   */
+  export interface Withdrawal {
+    /**
+     * The explanation for the withdrawal of the Card Dispute.
+     */
+    explanation: string | null;
   }
 }
 
@@ -6821,6 +6842,13 @@ export namespace CardDisputeSubmitUserSubmissionParams {
   }
 }
 
+export interface CardDisputeWithdrawParams {
+  /**
+   * The explanation for withdrawing the Card Dispute.
+   */
+  explanation?: string;
+}
+
 export declare namespace CardDisputes {
   export {
     type CardDispute as CardDispute,
@@ -6828,5 +6856,6 @@ export declare namespace CardDisputes {
     type CardDisputeCreateParams as CardDisputeCreateParams,
     type CardDisputeListParams as CardDisputeListParams,
     type CardDisputeSubmitUserSubmissionParams as CardDisputeSubmitUserSubmissionParams,
+    type CardDisputeWithdrawParams as CardDisputeWithdrawParams,
   };
 }
