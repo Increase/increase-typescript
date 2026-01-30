@@ -14,8 +14,8 @@ export class IntrafiExclusions extends APIResource {
    * ```ts
    * const intrafiExclusion =
    *   await client.intrafiExclusions.create({
-   *     bank_name: 'Example Bank',
    *     entity_id: 'entity_n8y8tnk2p9339ti393yi',
+   *     fdic_certificate_number: '314159',
    *   });
    * ```
    */
@@ -89,7 +89,7 @@ export interface IntrafiExclusion {
   /**
    * The name of the excluded institution.
    */
-  bank_name: string;
+  bank_name: string | null;
 
   /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -143,14 +143,17 @@ export interface IntrafiExclusion {
 
 export interface IntrafiExclusionCreateParams {
   /**
-   * The name of the financial institution to be excluded.
-   */
-  bank_name: string;
-
-  /**
    * The identifier of the Entity whose deposits will be excluded.
    */
   entity_id: string;
+
+  /**
+   * The FDIC certificate number of the financial institution to be excluded. An FDIC
+   * certificate number uniquely identifies a financial institution, and is different
+   * than a routing number. To find one, we recommend searching by Bank Name using
+   * the [FDIC's bankfind tool](https://banks.data.fdic.gov/bankfind-suite/bankfind).
+   */
+  fdic_certificate_number: string;
 
   [k: string]: unknown;
 }

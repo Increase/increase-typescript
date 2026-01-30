@@ -10,8 +10,8 @@ const client = new Increase({
 describe('resource intrafiExclusions', () => {
   test('create: only required params', async () => {
     const responsePromise = client.intrafiExclusions.create({
-      bank_name: 'Example Bank',
       entity_id: 'entity_n8y8tnk2p9339ti393yi',
+      fdic_certificate_number: '314159',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -24,8 +24,8 @@ describe('resource intrafiExclusions', () => {
 
   test('create: required and optional params', async () => {
     const response = await client.intrafiExclusions.create({
-      bank_name: 'Example Bank',
       entity_id: 'entity_n8y8tnk2p9339ti393yi',
+      fdic_certificate_number: '314159',
     });
   });
 
