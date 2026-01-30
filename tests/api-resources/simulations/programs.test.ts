@@ -23,6 +23,7 @@ describe('resource programs', () => {
     const response = await client.simulations.programs.create({
       name: 'For Benefit Of',
       bank: 'blue_ridge_bank',
+      lending_maximum_extendable_credit: 0,
       reserve_account_id: 'reserve_account_id',
     });
   });
