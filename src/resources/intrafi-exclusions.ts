@@ -126,8 +126,10 @@ export interface IntrafiExclusion {
    * - `pending` - The exclusion is being added to the IntraFi network.
    * - `completed` - The exclusion has been added to the IntraFi network.
    * - `archived` - The exclusion has been removed from the IntraFi network.
+   * - `ineligible` - The exclusion wasn't eligible to be added to the IntraFi
+   *   network.
    */
-  status: 'pending' | 'completed' | 'archived';
+  status: 'pending' | 'completed' | 'archived' | 'ineligible';
 
   /**
    * When this was exclusion was submitted to IntraFi by Increase.
