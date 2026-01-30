@@ -162,7 +162,7 @@ export interface Account {
    *   support@increase.com to set up a loan program.
    * - `deposits` - An account funded by deposits.
    */
-  funding: 'loan' | 'deposits' | null;
+  funding: 'loan' | 'deposits';
 
   /**
    * The idempotency key you chose for this object. This value is unique across
