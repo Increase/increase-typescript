@@ -76,6 +76,11 @@ export interface AccountStatement {
   file_id: string;
 
   /**
+   * The loan balances.
+   */
+  loan: AccountStatement.Loan | null;
+
+  /**
    * The Account's balance at the start of its statement period.
    */
   starting_balance: number;
@@ -97,8 +102,29 @@ export interface AccountStatement {
    * `account_statement`.
    */
   type: 'account_statement';
+}
 
-  [k: string]: unknown;
+export namespace AccountStatement {
+  /**
+   * The loan balances.
+   */
+  export interface Loan {
+    /**
+     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the loan
+     * payment is due.
+     */
+    due_at: string | null;
+
+    /**
+     * The total amount due on the loan.
+     */
+    due_balance: number;
+
+    /**
+     * The amount past due on the loan.
+     */
+    past_due_balance: number;
+  }
 }
 
 export interface AccountStatementListParams extends PageParams {

@@ -87,6 +87,11 @@ export interface Program {
   interest_rate: string;
 
   /**
+   * The lending details for the program.
+   */
+  lending: Program.Lending | null;
+
+  /**
    * The name of the Program.
    */
   name: string;
@@ -102,8 +107,18 @@ export interface Program {
    * was last updated.
    */
   updated_at: string;
+}
 
-  [k: string]: unknown;
+export namespace Program {
+  /**
+   * The lending details for the program.
+   */
+  export interface Lending {
+    /**
+     * The maximum extendable credit of the program.
+     */
+    maximum_extendable_credit: number;
+  }
 }
 
 export interface ProgramListParams extends PageParams {}
