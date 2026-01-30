@@ -49,11 +49,14 @@ export interface ProgramCreateParams {
     | 'twin_city_bank';
 
   /**
+   * The maximum extendable credit of the program being added.
+   */
+  lending_maximum_extendable_credit?: number;
+
+  /**
    * The identifier of the Account the Program should be added to is for.
    */
   reserve_account_id?: string;
-
-  [k: string]: unknown;
 }
 
 export declare namespace Programs {
