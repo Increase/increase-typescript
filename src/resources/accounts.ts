@@ -274,12 +274,6 @@ export interface AccountCreateParams {
 
 export interface AccountUpdateParams {
   /**
-   * The new credit limit of the Account, if and only if the Account is a loan
-   * account.
-   */
-  credit_limit?: number;
-
-  /**
    * The new name of the Account.
    */
   name?: string;
