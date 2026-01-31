@@ -328,7 +328,7 @@ export namespace ExportCreateParams {
    */
   export interface BalanceCsv {
     /**
-     * Filter exported Transactions to the specified Account.
+     * Filter exported Balances to the specified Account.
      */
     account_id?: string;
 
@@ -338,7 +338,7 @@ export namespace ExportCreateParams {
     created_at?: BalanceCsv.CreatedAt;
 
     /**
-     * Filter exported Transactions to the specified Program.
+     * Filter exported Balances to the specified Program.
      */
     program_id?: string;
   }
@@ -380,7 +380,8 @@ export namespace ExportCreateParams {
    */
   export interface BookkeepingAccountBalanceCsv {
     /**
-     * Filter exported Transactions to the specified Bookkeeping Account.
+     * Filter exported Bookkeeping Account Balances to the specified Bookkeeping
+     * Account.
      */
     bookkeeping_account_id?: string;
 
