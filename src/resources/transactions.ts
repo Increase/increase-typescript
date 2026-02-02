@@ -169,6 +169,20 @@ export namespace Transaction {
     ach_transfer_return: Source.ACHTransferReturn | null;
 
     /**
+     * A Blockchain Off-Ramp Transfer Settlement object. This field will be present in
+     * the JSON response if and only if `category` is equal to
+     * `blockchain_offramp_transfer_settlement`.
+     */
+    blockchain_offramp_transfer_settlement: Source.BlockchainOfframpTransferSettlement | null;
+
+    /**
+     * A Blockchain On-Ramp Transfer Intention object. This field will be present in
+     * the JSON response if and only if `category` is equal to
+     * `blockchain_onramp_transfer_intention`.
+     */
+    blockchain_onramp_transfer_intention: Source.BlockchainOnrampTransferIntention | null;
+
+    /**
      * A Legacy Card Dispute Acceptance object. This field will be present in the JSON
      * response if and only if `category` is equal to `card_dispute_acceptance`.
      * Contains the details of a successful Card Dispute.
@@ -313,6 +327,12 @@ export namespace Transaction {
      *   be under the `card_push_transfer_acceptance` object.
      * - `account_revenue_payment` - Account Revenue Payment: details will be under the
      *   `account_revenue_payment` object.
+     * - `blockchain_onramp_transfer_intention` - Blockchain On-Ramp Transfer
+     *   Intention: details will be under the `blockchain_onramp_transfer_intention`
+     *   object.
+     * - `blockchain_offramp_transfer_settlement` - Blockchain Off-Ramp Transfer
+     *   Settlement: details will be under the `blockchain_offramp_transfer_settlement`
+     *   object.
      * - `other` - The Transaction was made for an undocumented or deprecated reason.
      */
     category:
@@ -351,6 +371,8 @@ export namespace Transaction {
       | 'swift_transfer_return'
       | 'card_push_transfer_acceptance'
       | 'account_revenue_payment'
+      | 'blockchain_onramp_transfer_intention'
+      | 'blockchain_offramp_transfer_settlement'
       | 'other';
 
     /**
@@ -915,6 +937,44 @@ export namespace Transaction {
 
       /**
        * The identifier of the ACH Transfer associated with this return.
+       */
+      transfer_id: string;
+
+      [k: string]: unknown;
+    }
+
+    /**
+     * A Blockchain Off-Ramp Transfer Settlement object. This field will be present in
+     * the JSON response if and only if `category` is equal to
+     * `blockchain_offramp_transfer_settlement`.
+     */
+    export interface BlockchainOfframpTransferSettlement {
+      /**
+       * The identifier of the Blockchain Address the funds were received at.
+       */
+      source_blockchain_address_id: string;
+
+      /**
+       * The identifier of the Blockchain Off-Ramp Transfer that led to this Transaction.
+       */
+      transfer_id: string;
+
+      [k: string]: unknown;
+    }
+
+    /**
+     * A Blockchain On-Ramp Transfer Intention object. This field will be present in
+     * the JSON response if and only if `category` is equal to
+     * `blockchain_onramp_transfer_intention`.
+     */
+    export interface BlockchainOnrampTransferIntention {
+      /**
+       * The blockchain address the funds were sent to.
+       */
+      destination_blockchain_address: string;
+
+      /**
+       * The identifier of the Blockchain On-Ramp Transfer that led to this Transaction.
        */
       transfer_id: string;
 
@@ -4359,6 +4419,8 @@ export namespace TransactionListParams {
       | 'swift_transfer_return'
       | 'card_push_transfer_acceptance'
       | 'account_revenue_payment'
+      | 'blockchain_onramp_transfer_intention'
+      | 'blockchain_offramp_transfer_settlement'
       | 'other'
     >;
   }
