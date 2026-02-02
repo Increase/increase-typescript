@@ -336,11 +336,6 @@ export namespace ExportCreateParams {
      * Filter results by time range on the `created_at` attribute.
      */
     created_at?: BalanceCsv.CreatedAt;
-
-    /**
-     * Filter exported Balances to the specified Program.
-     */
-    program_id?: string;
   }
 
   export namespace BalanceCsv {
