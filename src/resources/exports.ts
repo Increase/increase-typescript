@@ -425,25 +425,7 @@ export namespace ExportCreateParams {
   /**
    * Options for the created export. Required if `category` is equal to `entity_csv`.
    */
-  export interface EntityCsv {
-    /**
-     * Entity statuses to filter by.
-     */
-    status?: EntityCsv.Status;
-  }
-
-  export namespace EntityCsv {
-    /**
-     * Entity statuses to filter by.
-     */
-    export interface Status {
-      /**
-       * Entity statuses to filter by. For GET requests, this should be encoded as a
-       * comma-delimited string, such as `?in=one,two,three`.
-       */
-      in: Array<'active' | 'archived' | 'disabled'>;
-    }
-  }
+  export interface EntityCsv {}
 
   /**
    * Options for the created export. Required if `category` is equal to
