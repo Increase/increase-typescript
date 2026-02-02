@@ -470,11 +470,6 @@ export namespace ExportCreateParams {
      * Filter results by time range on the `created_at` attribute.
      */
     created_at?: TransactionCsv.CreatedAt;
-
-    /**
-     * Filter exported Transactions to the specified Program.
-     */
-    program_id?: string;
   }
 
   export namespace TransactionCsv {
