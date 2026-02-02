@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.415.1 (2026-02-02)
+
+Full Changelog: [v0.415.0...v0.415.1](https://github.com/Increase/increase-typescript/compare/v0.415.0...v0.415.1)
+
+### Bug Fixes
+
+* **client:** avoid memory leak with abort signals ([4659608](https://github.com/Increase/increase-typescript/commit/4659608efe220049613e76563b1551d7c8a71576))
+
 ## 0.415.0 (2026-01-31)
 
 Full Changelog: [v0.414.0...v0.415.0](https://github.com/Increase/increase-typescript/compare/v0.414.0...v0.415.0)
