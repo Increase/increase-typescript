@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.417.0 (2026-02-02)
+
+Full Changelog: [v0.416.0...v0.417.0](https://github.com/Increase/increase-typescript/compare/v0.416.0...v0.417.0)
+
+### Features
+
+* **api:** api update ([e8f6a93](https://github.com/Increase/increase-typescript/commit/e8f6a93eee85a35d202f177c76e00ffc562f25c0))
+
 ## 0.416.0 (2026-02-02)
 
 Full Changelog: [v0.415.1...v0.416.0](https://github.com/Increase/increase-typescript/compare/v0.415.1...v0.416.0)
