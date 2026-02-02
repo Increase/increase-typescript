@@ -201,6 +201,20 @@ export namespace PendingTransaction {
     ach_transfer_instruction: Source.ACHTransferInstruction | null;
 
     /**
+     * A Blockchain Off-Ramp Transfer Intention object. This field will be present in
+     * the JSON response if and only if `category` is equal to
+     * `blockchain_offramp_transfer_intention`.
+     */
+    blockchain_offramp_transfer_intention: Source.BlockchainOfframpTransferIntention | null;
+
+    /**
+     * A Blockchain On-Ramp Transfer Instruction object. This field will be present in
+     * the JSON response if and only if `category` is equal to
+     * `blockchain_onramp_transfer_instruction`.
+     */
+    blockchain_onramp_transfer_instruction: Source.BlockchainOnrampTransferInstruction | null;
+
+    /**
      * A Card Authorization object. This field will be present in the JSON response if
      * and only if `category` is equal to `card_authorization`. Card Authorizations are
      * temporary holds placed on a customers funds with the intent to later clear a
@@ -245,6 +259,12 @@ export namespace PendingTransaction {
      *   under the `swift_transfer_instruction` object.
      * - `card_push_transfer_instruction` - Card Push Transfer Instruction: details
      *   will be under the `card_push_transfer_instruction` object.
+     * - `blockchain_onramp_transfer_instruction` - Blockchain On-Ramp Transfer
+     *   Instruction: details will be under the
+     *   `blockchain_onramp_transfer_instruction` object.
+     * - `blockchain_offramp_transfer_intention` - Blockchain Off-Ramp Transfer
+     *   Intention: details will be under the `blockchain_offramp_transfer_intention`
+     *   object.
      * - `other` - The Pending Transaction was made for an undocumented or deprecated
      *   reason.
      */
@@ -262,6 +282,8 @@ export namespace PendingTransaction {
       | 'inbound_wire_transfer_reversal'
       | 'swift_transfer_instruction'
       | 'card_push_transfer_instruction'
+      | 'blockchain_onramp_transfer_instruction'
+      | 'blockchain_offramp_transfer_intention'
       | 'other';
 
     /**
@@ -377,6 +399,48 @@ export namespace PendingTransaction {
       transfer_id: string;
 
       [k: string]: unknown;
+    }
+
+    /**
+     * A Blockchain Off-Ramp Transfer Intention object. This field will be present in
+     * the JSON response if and only if `category` is equal to
+     * `blockchain_offramp_transfer_intention`.
+     */
+    export interface BlockchainOfframpTransferIntention {
+      /**
+       * The identifier of the Blockchain Address the funds were received at.
+       */
+      source_blockchain_address_id: string;
+
+      /**
+       * The identifier of the Blockchain Off-Ramp Transfer that led to this Transaction.
+       */
+      transfer_id: string;
+
+      [k: string]: unknown;
+    }
+
+    /**
+     * A Blockchain On-Ramp Transfer Instruction object. This field will be present in
+     * the JSON response if and only if `category` is equal to
+     * `blockchain_onramp_transfer_instruction`.
+     */
+    export interface BlockchainOnrampTransferInstruction {
+      /**
+       * The transfer amount in USD cents.
+       */
+      amount: number;
+
+      /**
+       * The blockchain address the funds are being sent to.
+       */
+      destination_blockchain_address: string;
+
+      /**
+       * The identifier of the Blockchain On-Ramp Transfer that led to this Pending
+       * Transaction.
+       */
+      transfer_id: string;
     }
 
     /**
@@ -1419,6 +1483,8 @@ export namespace PendingTransactionListParams {
       | 'inbound_wire_transfer_reversal'
       | 'swift_transfer_instruction'
       | 'card_push_transfer_instruction'
+      | 'blockchain_onramp_transfer_instruction'
+      | 'blockchain_offramp_transfer_intention'
       | 'other'
     >;
   }
