@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.416.0 (2026-02-02)
+
+Full Changelog: [v0.415.1...v0.416.0](https://github.com/Increase/increase-typescript/compare/v0.415.1...v0.416.0)
+
+### Features
+
+* **api:** api update ([4c60706](https://github.com/Increase/increase-typescript/commit/4c60706a79419054ef4ac056766e2286348e163d))
+* **api:** api update ([288b974](https://github.com/Increase/increase-typescript/commit/288b9747b170578db267f5a3e3b17650073c8d63))
+* **api:** api update ([a40dc82](https://github.com/Increase/increase-typescript/commit/a40dc82f050adaab9a0bc13f734c45538c8c0035))
+
+
+### Chores
+
+* **client:** do not parse responses with empty content-length ([78fc1cd](https://github.com/Increase/increase-typescript/commit/78fc1cd1e0b2c542d557e198d87a9740c84f8eaf))
+
 ## 0.415.1 (2026-02-02)
 
 Full Changelog: [v0.415.0...v0.415.1](https://github.com/Increase/increase-typescript/compare/v0.415.0...v0.415.1)
