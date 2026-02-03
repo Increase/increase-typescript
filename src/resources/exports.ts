@@ -154,18 +154,6 @@ export interface Export {
   entity_csv: Export.EntityCsv | null;
 
   /**
-   * A URL at which the Export's file can be downloaded. This will be present when
-   * the Export's status transitions to `complete`.
-   */
-  file_download_url: string | null;
-
-  /**
-   * The File containing the contents of the Export. This will be present when the
-   * Export's status transitions to `complete`.
-   */
-  file_id: string | null;
-
-  /**
    * Details of the Form 1099-INT export. This field will be present when the
    * `category` is equal to `form_1099_int`.
    */
@@ -189,6 +177,12 @@ export interface Export {
    * about [idempotency](https://increase.com/documentation/idempotency-keys).
    */
   idempotency_key: string | null;
+
+  /**
+   * The result of the Export. This will be present when the Export's status
+   * transitions to `complete`.
+   */
+  result: Export.Result | null;
 
   /**
    * The status of the Export.
@@ -424,6 +418,17 @@ export namespace Export {
      * The Account Number to create funding instructions for.
      */
     account_number_id: string;
+  }
+
+  /**
+   * The result of the Export. This will be present when the Export's status
+   * transitions to `complete`.
+   */
+  export interface Result {
+    /**
+     * The File containing the contents of the Export.
+     */
+    file_id: string;
   }
 
   /**
