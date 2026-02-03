@@ -2730,6 +2730,11 @@ export namespace EntityUpdateParams {
      * The legal name of the corporation.
      */
     name?: string;
+
+    /**
+     * The Employer Identification Number (EIN) for the corporation.
+     */
+    tax_identifier?: string;
   }
 
   export namespace Corporation {
