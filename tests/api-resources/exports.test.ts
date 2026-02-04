@@ -97,7 +97,7 @@ describe('resource exports', () => {
     await expect(
       client.exports.list(
         {
-          category: { in: ['account_statement_ofx'] },
+          category: 'account_statement_ofx',
           created_at: {
             after: '2019-12-27T18:11:19.117Z',
             before: '2019-12-27T18:11:19.117Z',
@@ -105,6 +105,8 @@ describe('resource exports', () => {
             on_or_before: '2019-12-27T18:11:19.117Z',
           },
           cursor: 'cursor',
+          form_1099_int: { account_id: 'account_id' },
+          form_1099_misc: { account_id: 'account_id' },
           idempotency_key: 'x',
           limit: 1,
           status: { in: ['pending'] },
