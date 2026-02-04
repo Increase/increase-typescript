@@ -1215,7 +1215,7 @@ export interface EntityCreateParams {
   natural_person?: EntityCreateParams.NaturalPerson;
 
   /**
-   * An assessment of the entity’s potential risk of involvement in financial crimes,
+   * An assessment of the entity's potential risk of involvement in financial crimes,
    * such as money laundering.
    */
   risk_rating?: EntityCreateParams.RiskRating;
@@ -2077,7 +2077,7 @@ export namespace EntityCreateParams {
   }
 
   /**
-   * An assessment of the entity’s potential risk of involvement in financial crimes,
+   * An assessment of the entity's potential risk of involvement in financial crimes,
    * such as money laundering.
    */
   export interface RiskRating {
