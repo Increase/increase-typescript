@@ -201,6 +201,13 @@ export namespace PendingTransaction {
     ach_transfer_instruction: Source.ACHTransferInstruction | null;
 
     /**
+     * A Blockchain Off-Ramp Transfer Instruction object. This field will be present in
+     * the JSON response if and only if `category` is equal to
+     * `blockchain_offramp_transfer_instruction`.
+     */
+    blockchain_offramp_transfer_instruction: Source.BlockchainOfframpTransferInstruction | null;
+
+    /**
      * A Blockchain Off-Ramp Transfer Intention object. This field will be present in
      * the JSON response if and only if `category` is equal to
      * `blockchain_offramp_transfer_intention`.
@@ -262,6 +269,9 @@ export namespace PendingTransaction {
      * - `blockchain_onramp_transfer_instruction` - Blockchain On-Ramp Transfer
      *   Instruction: details will be under the
      *   `blockchain_onramp_transfer_instruction` object.
+     * - `blockchain_offramp_transfer_instruction` - Blockchain Off-Ramp Transfer
+     *   Instruction: details will be under the
+     *   `blockchain_offramp_transfer_instruction` object.
      * - `blockchain_offramp_transfer_intention` - Blockchain Off-Ramp Transfer
      *   Intention: details will be under the `blockchain_offramp_transfer_intention`
      *   object.
@@ -283,6 +293,7 @@ export namespace PendingTransaction {
       | 'swift_transfer_instruction'
       | 'card_push_transfer_instruction'
       | 'blockchain_onramp_transfer_instruction'
+      | 'blockchain_offramp_transfer_instruction'
       | 'blockchain_offramp_transfer_intention'
       | 'other';
 
@@ -395,6 +406,25 @@ export namespace PendingTransaction {
 
       /**
        * The identifier of the ACH Transfer that led to this Pending Transaction.
+       */
+      transfer_id: string;
+
+      [k: string]: unknown;
+    }
+
+    /**
+     * A Blockchain Off-Ramp Transfer Instruction object. This field will be present in
+     * the JSON response if and only if `category` is equal to
+     * `blockchain_offramp_transfer_instruction`.
+     */
+    export interface BlockchainOfframpTransferInstruction {
+      /**
+       * The identifier of the Blockchain Address the funds were received at.
+       */
+      source_blockchain_address_id: string;
+
+      /**
+       * The identifier of the Blockchain Off-Ramp Transfer that led to this Transaction.
        */
       transfer_id: string;
 
@@ -1484,6 +1514,7 @@ export namespace PendingTransactionListParams {
       | 'swift_transfer_instruction'
       | 'card_push_transfer_instruction'
       | 'blockchain_onramp_transfer_instruction'
+      | 'blockchain_offramp_transfer_instruction'
       | 'blockchain_offramp_transfer_intention'
       | 'other'
     >;
