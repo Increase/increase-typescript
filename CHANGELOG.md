@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.422.1 (2026-02-05)
+
+Full Changelog: [v0.422.0...v0.422.1](https://github.com/Increase/increase-typescript/compare/v0.422.0...v0.422.1)
+
+### Bug Fixes
+
+* **client:** avoid removing abort listener too early ([dc68ef0](https://github.com/Increase/increase-typescript/commit/dc68ef07b130fd9f354b6e9d366c85770c91c36c))
+
+
+### Chores
+
+* **client:** restructure abort controller binding ([f590fa4](https://github.com/Increase/increase-typescript/commit/f590fa42faf311f091159d5176c0f50acbb61546))
+
 ## 0.422.0 (2026-02-04)
 
 Full Changelog: [v0.421.0...v0.422.0](https://github.com/Increase/increase-typescript/compare/v0.421.0...v0.422.0)
