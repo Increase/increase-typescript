@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.423.0 (2026-02-05)
+
+Full Changelog: [v0.422.1...v0.423.0](https://github.com/Increase/increase-typescript/compare/v0.422.1...v0.423.0)
+
+### Features
+
+* **api:** api update ([9b3f73e](https://github.com/Increase/increase-typescript/commit/9b3f73e97229f75fe52e620d1790e6b96e45b1f6))
+
+
+### Chores
+
+* **internal:** fix pagination internals not accepting option promises ([3704f7e](https://github.com/Increase/increase-typescript/commit/3704f7e1a6cef9bbcabaa029cdebbbc558b98d60))
+
 ## 0.422.1 (2026-02-05)
 
 Full Changelog: [v0.422.0...v0.422.1](https://github.com/Increase/increase-typescript/compare/v0.422.0...v0.422.1)
