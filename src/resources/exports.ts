@@ -211,6 +211,8 @@ export interface Export {
    * is equal to `vendor_csv`.
    */
   vendor_csv: Export.VendorCsv | null;
+
+  [k: string]: unknown;
 }
 
 export namespace Export {
