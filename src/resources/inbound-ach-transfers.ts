@@ -301,6 +301,8 @@ export interface InboundACHTransfer {
    * `inbound_ach_transfer`.
    */
   type: 'inbound_ach_transfer';
+
+  [k: string]: unknown;
 }
 
 export namespace InboundACHTransfer {

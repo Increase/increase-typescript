@@ -129,6 +129,8 @@ export interface Lockbox {
    * `lockbox`.
    */
   type: 'lockbox';
+
+  [k: string]: unknown;
 }
 
 export namespace Lockbox {
@@ -211,6 +213,8 @@ export interface LockboxUpdateParams {
    * The recipient name you choose for the Lockbox.
    */
   recipient_name?: string;
+
+  [k: string]: unknown;
 }
 
 export interface LockboxListParams extends PageParams {
