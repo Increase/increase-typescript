@@ -260,11 +260,6 @@ export namespace FednowTransfer {
    */
   export interface CreatedBy {
     /**
-     * If present, details about the API key that created the transfer.
-     */
-    api_key: CreatedBy.APIKey | null;
-
-    /**
      * The type of object that created this transfer.
      *
      * - `api_key` - An API key. Details will be under the `api_key` object.
@@ -276,14 +271,19 @@ export namespace FednowTransfer {
     category: 'api_key' | 'oauth_application' | 'user';
 
     /**
+     * If present, details about the API key that created the transfer.
+     */
+    api_key?: CreatedBy.APIKey | null;
+
+    /**
      * If present, details about the OAuth Application that created the transfer.
      */
-    oauth_application: CreatedBy.OAuthApplication | null;
+    oauth_application?: CreatedBy.OAuthApplication | null;
 
     /**
      * If present, details about the User that created the transfer.
      */
-    user: CreatedBy.User | null;
+    user?: CreatedBy.User | null;
   }
 
   export namespace CreatedBy {

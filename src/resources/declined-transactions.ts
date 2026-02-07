@@ -131,18 +131,6 @@ export namespace DeclinedTransaction {
    */
   export interface Source {
     /**
-     * An ACH Decline object. This field will be present in the JSON response if and
-     * only if `category` is equal to `ach_decline`.
-     */
-    ach_decline: Source.ACHDecline | null;
-
-    /**
-     * A Card Decline object. This field will be present in the JSON response if and
-     * only if `category` is equal to `card_decline`.
-     */
-    card_decline: Source.CardDecline | null;
-
-    /**
      * The type of the resource. We may add additional possible values for this enum
      * over time; your application should be able to handle such additions gracefully.
      *
@@ -174,42 +162,54 @@ export namespace DeclinedTransaction {
       | 'other';
 
     /**
+     * An ACH Decline object. This field will be present in the JSON response if and
+     * only if `category` is equal to `ach_decline`.
+     */
+    ach_decline?: Source.ACHDecline | null;
+
+    /**
+     * A Card Decline object. This field will be present in the JSON response if and
+     * only if `category` is equal to `card_decline`.
+     */
+    card_decline?: Source.CardDecline | null;
+
+    /**
      * A Check Decline object. This field will be present in the JSON response if and
      * only if `category` is equal to `check_decline`.
      */
-    check_decline: Source.CheckDecline | null;
+    check_decline?: Source.CheckDecline | null;
 
     /**
      * A Check Deposit Rejection object. This field will be present in the JSON
      * response if and only if `category` is equal to `check_deposit_rejection`.
      */
-    check_deposit_rejection: Source.CheckDepositRejection | null;
+    check_deposit_rejection?: Source.CheckDepositRejection | null;
 
     /**
      * An Inbound FedNow Transfer Decline object. This field will be present in the
      * JSON response if and only if `category` is equal to
      * `inbound_fednow_transfer_decline`.
      */
-    inbound_fednow_transfer_decline: Source.InboundFednowTransferDecline | null;
+    inbound_fednow_transfer_decline?: Source.InboundFednowTransferDecline | null;
 
     /**
      * An Inbound Real-Time Payments Transfer Decline object. This field will be
      * present in the JSON response if and only if `category` is equal to
      * `inbound_real_time_payments_transfer_decline`.
      */
-    inbound_real_time_payments_transfer_decline: Source.InboundRealTimePaymentsTransferDecline | null;
+    inbound_real_time_payments_transfer_decline?: Source.InboundRealTimePaymentsTransferDecline | null;
 
     /**
      * If the category of this Transaction source is equal to `other`, this field will
      * contain an empty object, otherwise it will contain null.
      */
-    other: Source.Other | null;
+    other?: Source.Other | null;
 
     /**
      * A Wire Decline object. This field will be present in the JSON response if and
      * only if `category` is equal to `wire_decline`.
      */
-    wire_decline: Source.WireDecline | null;
+    wire_decline?: Source.WireDecline | null;
 
     [k: string]: unknown;
   }

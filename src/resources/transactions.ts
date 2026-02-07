@@ -127,131 +127,6 @@ export namespace Transaction {
    */
   export interface Source {
     /**
-     * An Account Revenue Payment object. This field will be present in the JSON
-     * response if and only if `category` is equal to `account_revenue_payment`. An
-     * Account Revenue Payment represents a payment made to an account from the bank.
-     * Account revenue is a type of non-interest income.
-     */
-    account_revenue_payment: Source.AccountRevenuePayment | null;
-
-    /**
-     * An Account Transfer Intention object. This field will be present in the JSON
-     * response if and only if `category` is equal to `account_transfer_intention`. Two
-     * Account Transfer Intentions are created from each Account Transfer. One
-     * decrements the source account, and the other increments the destination account.
-     */
-    account_transfer_intention: Source.AccountTransferIntention | null;
-
-    /**
-     * An ACH Transfer Intention object. This field will be present in the JSON
-     * response if and only if `category` is equal to `ach_transfer_intention`. An ACH
-     * Transfer Intention is created from an ACH Transfer. It reflects the intention to
-     * move money into or out of an Increase account via the ACH network.
-     */
-    ach_transfer_intention: Source.ACHTransferIntention | null;
-
-    /**
-     * An ACH Transfer Rejection object. This field will be present in the JSON
-     * response if and only if `category` is equal to `ach_transfer_rejection`. An ACH
-     * Transfer Rejection is created when an ACH Transfer is rejected by Increase. It
-     * offsets the ACH Transfer Intention. These rejections are rare.
-     */
-    ach_transfer_rejection: Source.ACHTransferRejection | null;
-
-    /**
-     * An ACH Transfer Return object. This field will be present in the JSON response
-     * if and only if `category` is equal to `ach_transfer_return`. An ACH Transfer
-     * Return is created when an ACH Transfer is returned by the receiving bank. It
-     * offsets the ACH Transfer Intention. ACH Transfer Returns usually occur within
-     * the first two business days after the transfer is initiated, but can occur much
-     * later.
-     */
-    ach_transfer_return: Source.ACHTransferReturn | null;
-
-    /**
-     * A Blockchain Off-Ramp Transfer Settlement object. This field will be present in
-     * the JSON response if and only if `category` is equal to
-     * `blockchain_offramp_transfer_settlement`.
-     */
-    blockchain_offramp_transfer_settlement: Source.BlockchainOfframpTransferSettlement | null;
-
-    /**
-     * A Blockchain On-Ramp Transfer Intention object. This field will be present in
-     * the JSON response if and only if `category` is equal to
-     * `blockchain_onramp_transfer_intention`.
-     */
-    blockchain_onramp_transfer_intention: Source.BlockchainOnrampTransferIntention | null;
-
-    /**
-     * A Legacy Card Dispute Acceptance object. This field will be present in the JSON
-     * response if and only if `category` is equal to `card_dispute_acceptance`.
-     * Contains the details of a successful Card Dispute.
-     */
-    card_dispute_acceptance: Source.CardDisputeAcceptance | null;
-
-    /**
-     * A Card Dispute Financial object. This field will be present in the JSON response
-     * if and only if `category` is equal to `card_dispute_financial`. Financial event
-     * related to a Card Dispute.
-     */
-    card_dispute_financial: Source.CardDisputeFinancial | null;
-
-    /**
-     * A Legacy Card Dispute Loss object. This field will be present in the JSON
-     * response if and only if `category` is equal to `card_dispute_loss`. Contains the
-     * details of a lost Card Dispute.
-     */
-    card_dispute_loss: Source.CardDisputeLoss | null;
-
-    /**
-     * A Card Financial object. This field will be present in the JSON response if and
-     * only if `category` is equal to `card_financial`. Card Financials are temporary
-     * holds placed on a customers funds with the intent to later clear a transaction.
-     */
-    card_financial: Source.CardFinancial | null;
-
-    /**
-     * A Card Push Transfer Acceptance object. This field will be present in the JSON
-     * response if and only if `category` is equal to `card_push_transfer_acceptance`.
-     * A Card Push Transfer Acceptance is created when an Outbound Card Push Transfer
-     * sent from Increase is accepted by the receiving bank.
-     */
-    card_push_transfer_acceptance: Source.CardPushTransferAcceptance | null;
-
-    /**
-     * A Card Refund object. This field will be present in the JSON response if and
-     * only if `category` is equal to `card_refund`. Card Refunds move money back to
-     * the cardholder. While they are usually connected to a Card Settlement an
-     * acquirer can also refund money directly to a card without relation to a
-     * transaction.
-     */
-    card_refund: Source.CardRefund | null;
-
-    /**
-     * A Card Revenue Payment object. This field will be present in the JSON response
-     * if and only if `category` is equal to `card_revenue_payment`. Card Revenue
-     * Payments reflect earnings from fees on card transactions.
-     */
-    card_revenue_payment: Source.CardRevenuePayment | null;
-
-    /**
-     * A Card Settlement object. This field will be present in the JSON response if and
-     * only if `category` is equal to `card_settlement`. Card Settlements are card
-     * transactions that have cleared and settled. While a settlement is usually
-     * preceded by an authorization, an acquirer can also directly clear a transaction
-     * without first authorizing it.
-     */
-    card_settlement: Source.CardSettlement | null;
-
-    /**
-     * A Cashback Payment object. This field will be present in the JSON response if
-     * and only if `category` is equal to `cashback_payment`. A Cashback Payment
-     * represents the cashback paid to a cardholder for a given period. Cashback is
-     * usually paid monthly for the prior month's transactions.
-     */
-    cashback_payment: Source.CashbackPayment | null;
-
-    /**
      * The type of the resource. We may add additional possible values for this enum
      * over time; your application should be able to handle such additions gracefully.
      *
@@ -376,13 +251,138 @@ export namespace Transaction {
       | 'other';
 
     /**
+     * An Account Revenue Payment object. This field will be present in the JSON
+     * response if and only if `category` is equal to `account_revenue_payment`. An
+     * Account Revenue Payment represents a payment made to an account from the bank.
+     * Account revenue is a type of non-interest income.
+     */
+    account_revenue_payment?: Source.AccountRevenuePayment | null;
+
+    /**
+     * An Account Transfer Intention object. This field will be present in the JSON
+     * response if and only if `category` is equal to `account_transfer_intention`. Two
+     * Account Transfer Intentions are created from each Account Transfer. One
+     * decrements the source account, and the other increments the destination account.
+     */
+    account_transfer_intention?: Source.AccountTransferIntention | null;
+
+    /**
+     * An ACH Transfer Intention object. This field will be present in the JSON
+     * response if and only if `category` is equal to `ach_transfer_intention`. An ACH
+     * Transfer Intention is created from an ACH Transfer. It reflects the intention to
+     * move money into or out of an Increase account via the ACH network.
+     */
+    ach_transfer_intention?: Source.ACHTransferIntention | null;
+
+    /**
+     * An ACH Transfer Rejection object. This field will be present in the JSON
+     * response if and only if `category` is equal to `ach_transfer_rejection`. An ACH
+     * Transfer Rejection is created when an ACH Transfer is rejected by Increase. It
+     * offsets the ACH Transfer Intention. These rejections are rare.
+     */
+    ach_transfer_rejection?: Source.ACHTransferRejection | null;
+
+    /**
+     * An ACH Transfer Return object. This field will be present in the JSON response
+     * if and only if `category` is equal to `ach_transfer_return`. An ACH Transfer
+     * Return is created when an ACH Transfer is returned by the receiving bank. It
+     * offsets the ACH Transfer Intention. ACH Transfer Returns usually occur within
+     * the first two business days after the transfer is initiated, but can occur much
+     * later.
+     */
+    ach_transfer_return?: Source.ACHTransferReturn | null;
+
+    /**
+     * A Blockchain Off-Ramp Transfer Settlement object. This field will be present in
+     * the JSON response if and only if `category` is equal to
+     * `blockchain_offramp_transfer_settlement`.
+     */
+    blockchain_offramp_transfer_settlement?: Source.BlockchainOfframpTransferSettlement | null;
+
+    /**
+     * A Blockchain On-Ramp Transfer Intention object. This field will be present in
+     * the JSON response if and only if `category` is equal to
+     * `blockchain_onramp_transfer_intention`.
+     */
+    blockchain_onramp_transfer_intention?: Source.BlockchainOnrampTransferIntention | null;
+
+    /**
+     * A Legacy Card Dispute Acceptance object. This field will be present in the JSON
+     * response if and only if `category` is equal to `card_dispute_acceptance`.
+     * Contains the details of a successful Card Dispute.
+     */
+    card_dispute_acceptance?: Source.CardDisputeAcceptance | null;
+
+    /**
+     * A Card Dispute Financial object. This field will be present in the JSON response
+     * if and only if `category` is equal to `card_dispute_financial`. Financial event
+     * related to a Card Dispute.
+     */
+    card_dispute_financial?: Source.CardDisputeFinancial | null;
+
+    /**
+     * A Legacy Card Dispute Loss object. This field will be present in the JSON
+     * response if and only if `category` is equal to `card_dispute_loss`. Contains the
+     * details of a lost Card Dispute.
+     */
+    card_dispute_loss?: Source.CardDisputeLoss | null;
+
+    /**
+     * A Card Financial object. This field will be present in the JSON response if and
+     * only if `category` is equal to `card_financial`. Card Financials are temporary
+     * holds placed on a customers funds with the intent to later clear a transaction.
+     */
+    card_financial?: Source.CardFinancial | null;
+
+    /**
+     * A Card Push Transfer Acceptance object. This field will be present in the JSON
+     * response if and only if `category` is equal to `card_push_transfer_acceptance`.
+     * A Card Push Transfer Acceptance is created when an Outbound Card Push Transfer
+     * sent from Increase is accepted by the receiving bank.
+     */
+    card_push_transfer_acceptance?: Source.CardPushTransferAcceptance | null;
+
+    /**
+     * A Card Refund object. This field will be present in the JSON response if and
+     * only if `category` is equal to `card_refund`. Card Refunds move money back to
+     * the cardholder. While they are usually connected to a Card Settlement an
+     * acquirer can also refund money directly to a card without relation to a
+     * transaction.
+     */
+    card_refund?: Source.CardRefund | null;
+
+    /**
+     * A Card Revenue Payment object. This field will be present in the JSON response
+     * if and only if `category` is equal to `card_revenue_payment`. Card Revenue
+     * Payments reflect earnings from fees on card transactions.
+     */
+    card_revenue_payment?: Source.CardRevenuePayment | null;
+
+    /**
+     * A Card Settlement object. This field will be present in the JSON response if and
+     * only if `category` is equal to `card_settlement`. Card Settlements are card
+     * transactions that have cleared and settled. While a settlement is usually
+     * preceded by an authorization, an acquirer can also directly clear a transaction
+     * without first authorizing it.
+     */
+    card_settlement?: Source.CardSettlement | null;
+
+    /**
+     * A Cashback Payment object. This field will be present in the JSON response if
+     * and only if `category` is equal to `cashback_payment`. A Cashback Payment
+     * represents the cashback paid to a cardholder for a given period. Cashback is
+     * usually paid monthly for the prior month's transactions.
+     */
+    cashback_payment?: Source.CashbackPayment | null;
+
+    /**
      * A Check Deposit Acceptance object. This field will be present in the JSON
      * response if and only if `category` is equal to `check_deposit_acceptance`. A
      * Check Deposit Acceptance is created when a Check Deposit is processed and its
      * details confirmed. Check Deposits may be returned by the receiving bank, which
      * will appear as a Check Deposit Return.
      */
-    check_deposit_acceptance: Source.CheckDepositAcceptance | null;
+    check_deposit_acceptance?: Source.CheckDepositAcceptance | null;
 
     /**
      * A Check Deposit Return object. This field will be present in the JSON response
@@ -392,7 +392,7 @@ export namespace Transaction {
      * reasons, including insufficient funds or a mismatched account number. Usually,
      * checks are returned within the first 7 days after the deposit is made.
      */
-    check_deposit_return: Source.CheckDepositReturn | null;
+    check_deposit_return?: Source.CheckDepositReturn | null;
 
     /**
      * A Check Transfer Deposit object. This field will be present in the JSON response
@@ -400,7 +400,7 @@ export namespace Transaction {
      * is a check drawn on an Increase account that has been deposited by an external
      * bank account. These types of checks are not pre-registered.
      */
-    check_transfer_deposit: Source.CheckTransferDeposit | null;
+    check_transfer_deposit?: Source.CheckTransferDeposit | null;
 
     /**
      * A FedNow Transfer Acknowledgement object. This field will be present in the JSON
@@ -408,14 +408,14 @@ export namespace Transaction {
      * `fednow_transfer_acknowledgement`. A FedNow Transfer Acknowledgement is created
      * when a FedNow Transfer sent from Increase is acknowledged by the receiving bank.
      */
-    fednow_transfer_acknowledgement: Source.FednowTransferAcknowledgement | null;
+    fednow_transfer_acknowledgement?: Source.FednowTransferAcknowledgement | null;
 
     /**
      * A Fee Payment object. This field will be present in the JSON response if and
      * only if `category` is equal to `fee_payment`. A Fee Payment represents a payment
      * made to Increase.
      */
-    fee_payment: Source.FeePayment | null;
+    fee_payment?: Source.FeePayment | null;
 
     /**
      * An Inbound ACH Transfer Intention object. This field will be present in the JSON
@@ -423,7 +423,7 @@ export namespace Transaction {
      * Inbound ACH Transfer Intention is created when an ACH transfer is initiated at
      * another bank and received by Increase.
      */
-    inbound_ach_transfer: Source.InboundACHTransfer | null;
+    inbound_ach_transfer?: Source.InboundACHTransfer | null;
 
     /**
      * An Inbound ACH Transfer Return Intention object. This field will be present in
@@ -432,7 +432,7 @@ export namespace Transaction {
      * Intention is created when an ACH transfer is initiated at another bank and
      * returned by Increase.
      */
-    inbound_ach_transfer_return_intention: Source.InboundACHTransferReturnIntention | null;
+    inbound_ach_transfer_return_intention?: Source.InboundACHTransferReturnIntention | null;
 
     /**
      * An Inbound Check Adjustment object. This field will be present in the JSON
@@ -440,7 +440,7 @@ export namespace Transaction {
      * Inbound Check Adjustment is created when Increase receives an adjustment for a
      * check or return deposited through Check21.
      */
-    inbound_check_adjustment: Source.InboundCheckAdjustment | null;
+    inbound_check_adjustment?: Source.InboundCheckAdjustment | null;
 
     /**
      * An Inbound Check Deposit Return Intention object. This field will be present in
@@ -449,7 +449,7 @@ export namespace Transaction {
      * Intention is created when Increase receives an Inbound Check and the User
      * requests that it be returned.
      */
-    inbound_check_deposit_return_intention: Source.InboundCheckDepositReturnIntention | null;
+    inbound_check_deposit_return_intention?: Source.InboundCheckDepositReturnIntention | null;
 
     /**
      * An Inbound FedNow Transfer Confirmation object. This field will be present in
@@ -458,7 +458,7 @@ export namespace Transaction {
      * is created when a FedNow transfer is initiated at another bank and received by
      * Increase.
      */
-    inbound_fednow_transfer_confirmation: Source.InboundFednowTransferConfirmation | null;
+    inbound_fednow_transfer_confirmation?: Source.InboundFednowTransferConfirmation | null;
 
     /**
      * An Inbound Real-Time Payments Transfer Confirmation object. This field will be
@@ -467,7 +467,7 @@ export namespace Transaction {
      * Payments Transfer Confirmation is created when a Real-Time Payments transfer is
      * initiated at another bank and received by Increase.
      */
-    inbound_real_time_payments_transfer_confirmation: Source.InboundRealTimePaymentsTransferConfirmation | null;
+    inbound_real_time_payments_transfer_confirmation?: Source.InboundRealTimePaymentsTransferConfirmation | null;
 
     /**
      * An Inbound Wire Reversal object. This field will be present in the JSON response
@@ -476,7 +476,7 @@ export namespace Transaction {
      * Increase. The other bank is sending the money back. This most often happens when
      * the original destination account details were incorrect.
      */
-    inbound_wire_reversal: Source.InboundWireReversal | null;
+    inbound_wire_reversal?: Source.InboundWireReversal | null;
 
     /**
      * An Inbound Wire Transfer Intention object. This field will be present in the
@@ -484,7 +484,7 @@ export namespace Transaction {
      * Inbound Wire Transfer Intention is created when a wire transfer is initiated at
      * another bank and received by Increase.
      */
-    inbound_wire_transfer: Source.InboundWireTransfer | null;
+    inbound_wire_transfer?: Source.InboundWireTransfer | null;
 
     /**
      * An Inbound Wire Transfer Reversal Intention object. This field will be present
@@ -493,7 +493,7 @@ export namespace Transaction {
      * created when Increase has received a wire and the User requests that it be
      * reversed.
      */
-    inbound_wire_transfer_reversal: Source.InboundWireTransferReversal | null;
+    inbound_wire_transfer_reversal?: Source.InboundWireTransferReversal | null;
 
     /**
      * An Interest Payment object. This field will be present in the JSON response if
@@ -501,20 +501,20 @@ export namespace Transaction {
      * represents a payment of interest on an account. Interest is usually paid
      * monthly.
      */
-    interest_payment: Source.InterestPayment | null;
+    interest_payment?: Source.InterestPayment | null;
 
     /**
      * An Internal Source object. This field will be present in the JSON response if
      * and only if `category` is equal to `internal_source`. A transaction between the
      * user and Increase. See the `reason` attribute for more information.
      */
-    internal_source: Source.InternalSource | null;
+    internal_source?: Source.InternalSource | null;
 
     /**
      * If the category of this Transaction source is equal to `other`, this field will
      * contain an empty object, otherwise it will contain null.
      */
-    other: Source.Other | null;
+    other?: Source.Other | null;
 
     /**
      * A Real-Time Payments Transfer Acknowledgement object. This field will be present
@@ -523,35 +523,35 @@ export namespace Transaction {
      * Acknowledgement is created when a Real-Time Payments Transfer sent from Increase
      * is acknowledged by the receiving bank.
      */
-    real_time_payments_transfer_acknowledgement: Source.RealTimePaymentsTransferAcknowledgement | null;
+    real_time_payments_transfer_acknowledgement?: Source.RealTimePaymentsTransferAcknowledgement | null;
 
     /**
      * A Sample Funds object. This field will be present in the JSON response if and
      * only if `category` is equal to `sample_funds`. Sample funds for testing
      * purposes.
      */
-    sample_funds: Source.SampleFunds | null;
+    sample_funds?: Source.SampleFunds | null;
 
     /**
      * A Swift Transfer Intention object. This field will be present in the JSON
      * response if and only if `category` is equal to `swift_transfer_intention`. A
      * Swift Transfer initiated via Increase.
      */
-    swift_transfer_intention: Source.SwiftTransferIntention | null;
+    swift_transfer_intention?: Source.SwiftTransferIntention | null;
 
     /**
      * A Swift Transfer Return object. This field will be present in the JSON response
      * if and only if `category` is equal to `swift_transfer_return`. A Swift Transfer
      * Return is created when a Swift Transfer is returned by the receiving bank.
      */
-    swift_transfer_return: Source.SwiftTransferReturn | null;
+    swift_transfer_return?: Source.SwiftTransferReturn | null;
 
     /**
      * A Wire Transfer Intention object. This field will be present in the JSON
      * response if and only if `category` is equal to `wire_transfer_intention`. A Wire
      * Transfer initiated via Increase and sent to a different bank.
      */
-    wire_transfer_intention: Source.WireTransferIntention | null;
+    wire_transfer_intention?: Source.WireTransferIntention | null;
 
     [k: string]: unknown;
   }
