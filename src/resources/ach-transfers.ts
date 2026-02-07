@@ -384,13 +384,13 @@ export namespace ACHTransfer {
     /**
      * Unstructured `payment_related_information` passed through with the transfer.
      */
-    freeform: Addenda.Freeform | null;
+    freeform?: Addenda.Freeform | null;
 
     /**
      * Structured ASC X12 820 remittance advice records. Please reach out to
      * [support@increase.com](mailto:support@increase.com) for more information.
      */
-    payment_order_remittance_advice: Addenda.PaymentOrderRemittanceAdvice | null;
+    payment_order_remittance_advice?: Addenda.PaymentOrderRemittanceAdvice | null;
   }
 
   export namespace Addenda {
@@ -481,11 +481,6 @@ export namespace ACHTransfer {
    */
   export interface CreatedBy {
     /**
-     * If present, details about the API key that created the transfer.
-     */
-    api_key: CreatedBy.APIKey | null;
-
-    /**
      * The type of object that created this transfer.
      *
      * - `api_key` - An API key. Details will be under the `api_key` object.
@@ -497,14 +492,19 @@ export namespace ACHTransfer {
     category: 'api_key' | 'oauth_application' | 'user';
 
     /**
+     * If present, details about the API key that created the transfer.
+     */
+    api_key?: CreatedBy.APIKey | null;
+
+    /**
      * If present, details about the OAuth Application that created the transfer.
      */
-    oauth_application: CreatedBy.OAuthApplication | null;
+    oauth_application?: CreatedBy.OAuthApplication | null;
 
     /**
      * If present, details about the User that created the transfer.
      */
-    user: CreatedBy.User | null;
+    user?: CreatedBy.User | null;
   }
 
   export namespace CreatedBy {
