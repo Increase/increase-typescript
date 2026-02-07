@@ -703,24 +703,28 @@ export namespace Transaction {
        * bank back to Increase.
        *
        * - `insufficient_fund` - Code R01. Insufficient funds in the receiving account.
-       *   Sometimes abbreviated to NSF.
+       *   Sometimes abbreviated to "NSF."
        * - `no_account` - Code R03. The account does not exist or the receiving bank was
        *   unable to locate it.
        * - `account_closed` - Code R02. The account is closed at the receiving bank.
        * - `invalid_account_number_structure` - Code R04. The account number is invalid
        *   at the receiving bank.
-       * - `account_frozen_entry_returned_per_ofac_instruction` - Code R16. The account
-       *   at the receiving bank was frozen per the Office of Foreign Assets Control.
-       * - `credit_entry_refused_by_receiver` - Code R23. The receiving bank account
-       *   refused a credit transfer.
+       * - `account_frozen_entry_returned_per_ofac_instruction` - Code R16. This return
+       *   code has two separate meanings. (1) The receiving bank froze the account or
+       *   (2) the Office of Foreign Assets Control (OFAC) instructed the receiving bank
+       *   to return the entry.
+       * - `credit_entry_refused_by_receiver` - Code R23. The receiving bank refused the
+       *   credit transfer.
        * - `unauthorized_debit_to_consumer_account_using_corporate_sec_code` - Code R05.
        *   The receiving bank rejected because of an incorrect Standard Entry Class code.
+       *   Consumer accounts cannot be debited as `corporate_credit_or_debit` or
+       *   `corporate_trade_exchange`.
        * - `corporate_customer_advised_not_authorized` - Code R29. The corporate customer
        *   at the receiving bank reversed the transfer.
        * - `payment_stopped` - Code R08. The receiving bank stopped payment on this
        *   transfer.
-       * - `non_transaction_account` - Code R20. The receiving bank account does not
-       *   perform transfers.
+       * - `non_transaction_account` - Code R20. The account is not eligible for ACH,
+       *   such as a savings account with transaction limits.
        * - `uncollected_funds` - Code R09. The receiving bank account does not have
        *   enough available balance for the transfer.
        * - `routing_number_check_digit_error` - Code R28. The routing number is
@@ -728,14 +732,13 @@ export namespace Transaction {
        * - `customer_advised_unauthorized_improper_ineligible_or_incomplete` - Code R10.
        *   The customer at the receiving bank reversed the transfer.
        * - `amount_field_error` - Code R19. The amount field is incorrect or too large.
-       * - `authorization_revoked_by_customer` - Code R07. The customer at the receiving
-       *   institution informed their bank that they have revoked authorization for a
-       *   previously authorized transfer.
+       * - `authorization_revoked_by_customer` - Code R07. The customer revoked their
+       *   authorization for a previously authorized transfer.
        * - `invalid_ach_routing_number` - Code R13. The routing number is invalid.
        * - `file_record_edit_criteria` - Code R17. The receiving bank is unable to
        *   process a field in the transfer.
-       * - `enr_invalid_individual_name` - Code R45. The individual name field was
-       *   invalid.
+       * - `enr_invalid_individual_name` - Code R45. A rare return reason. The individual
+       *   name field was invalid.
        * - `returned_per_odfi_request` - Code R06. The originating financial institution
        *   asked for this transfer to be returned. The receiving bank is complying with
        *   the request.
@@ -830,8 +833,8 @@ export namespace Transaction {
        *   a malformed credit entry.
        * - `return_of_improper_debit_entry` - Code R35. A rare return reason. Return of a
        *   malformed debit entry.
-       * - `return_of_xck_entry` - Code R33. A rare return reason. Return of a Destroyed
-       *   Check ("XKC") entry.
+       * - `return_of_xck_entry` - Code R33. A rare return reason. Return of a destroyed
+       *   check ("XCK") entry.
        * - `source_document_presented_for_payment` - Code R37. A rare return reason. The
        *   source document related to this ACH, usually an ACH check conversion, was
        *   presented to the bank.
