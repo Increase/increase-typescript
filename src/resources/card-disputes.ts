@@ -327,33 +327,6 @@ export namespace CardDispute {
         | 'user_withdrawal_submitted';
 
       /**
-       * A Card Dispute Chargeback Accepted Visa Network Event object. This field will be
-       * present in the JSON response if and only if `category` is equal to
-       * `chargeback_accepted`. Contains the details specific to a chargeback accepted
-       * Visa Card Dispute Network Event, which represents that a chargeback has been
-       * accepted by the merchant.
-       */
-      chargeback_accepted: NetworkEvent.ChargebackAccepted | null;
-
-      /**
-       * A Card Dispute Chargeback Submitted Visa Network Event object. This field will
-       * be present in the JSON response if and only if `category` is equal to
-       * `chargeback_submitted`. Contains the details specific to a chargeback submitted
-       * Visa Card Dispute Network Event, which represents that a chargeback has been
-       * submitted to the network.
-       */
-      chargeback_submitted: NetworkEvent.ChargebackSubmitted | null;
-
-      /**
-       * A Card Dispute Chargeback Timed Out Visa Network Event object. This field will
-       * be present in the JSON response if and only if `category` is equal to
-       * `chargeback_timed_out`. Contains the details specific to a chargeback timed out
-       * Visa Card Dispute Network Event, which represents that the chargeback has timed
-       * out in the user's favor.
-       */
-      chargeback_timed_out: NetworkEvent.ChargebackTimedOut | null;
-
-      /**
        * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
        * the Visa Card Dispute Network Event was created.
        */
@@ -365,6 +338,33 @@ export namespace CardDispute {
       dispute_financial_transaction_id: string | null;
 
       /**
+       * A Card Dispute Chargeback Accepted Visa Network Event object. This field will be
+       * present in the JSON response if and only if `category` is equal to
+       * `chargeback_accepted`. Contains the details specific to a chargeback accepted
+       * Visa Card Dispute Network Event, which represents that a chargeback has been
+       * accepted by the merchant.
+       */
+      chargeback_accepted?: NetworkEvent.ChargebackAccepted | null;
+
+      /**
+       * A Card Dispute Chargeback Submitted Visa Network Event object. This field will
+       * be present in the JSON response if and only if `category` is equal to
+       * `chargeback_submitted`. Contains the details specific to a chargeback submitted
+       * Visa Card Dispute Network Event, which represents that a chargeback has been
+       * submitted to the network.
+       */
+      chargeback_submitted?: NetworkEvent.ChargebackSubmitted | null;
+
+      /**
+       * A Card Dispute Chargeback Timed Out Visa Network Event object. This field will
+       * be present in the JSON response if and only if `category` is equal to
+       * `chargeback_timed_out`. Contains the details specific to a chargeback timed out
+       * Visa Card Dispute Network Event, which represents that the chargeback has timed
+       * out in the user's favor.
+       */
+      chargeback_timed_out?: NetworkEvent.ChargebackTimedOut | null;
+
+      /**
        * A Card Dispute Merchant Pre-Arbitration Decline Submitted Visa Network Event
        * object. This field will be present in the JSON response if and only if
        * `category` is equal to `merchant_prearbitration_decline_submitted`. Contains the
@@ -372,7 +372,7 @@ export namespace CardDispute {
        * Dispute Network Event, which represents that the user has declined the
        * merchant's request for a prearbitration request decision in their favor.
        */
-      merchant_prearbitration_decline_submitted: NetworkEvent.MerchantPrearbitrationDeclineSubmitted | null;
+      merchant_prearbitration_decline_submitted?: NetworkEvent.MerchantPrearbitrationDeclineSubmitted | null;
 
       /**
        * A Card Dispute Merchant Pre-Arbitration Received Visa Network Event object. This
@@ -381,7 +381,7 @@ export namespace CardDispute {
        * prearbitration received Visa Card Dispute Network Event, which represents that
        * the merchant has issued a prearbitration request in the user's favor.
        */
-      merchant_prearbitration_received: NetworkEvent.MerchantPrearbitrationReceived | null;
+      merchant_prearbitration_received?: NetworkEvent.MerchantPrearbitrationReceived | null;
 
       /**
        * A Card Dispute Merchant Pre-Arbitration Timed Out Visa Network Event object.
@@ -391,7 +391,7 @@ export namespace CardDispute {
        * represents that the user has timed out responding to the merchant's
        * prearbitration request.
        */
-      merchant_prearbitration_timed_out: NetworkEvent.MerchantPrearbitrationTimedOut | null;
+      merchant_prearbitration_timed_out?: NetworkEvent.MerchantPrearbitrationTimedOut | null;
 
       /**
        * A Card Dispute Re-presented Visa Network Event object. This field will be
@@ -400,7 +400,7 @@ export namespace CardDispute {
        * Network Event, which represents that the merchant has declined the user's
        * chargeback and has re-presented the payment.
        */
-      represented: NetworkEvent.Represented | null;
+      represented?: NetworkEvent.Represented | null;
 
       /**
        * A Card Dispute Re-presentment Timed Out Visa Network Event object. This field
@@ -409,7 +409,7 @@ export namespace CardDispute {
        * time-out Visa Card Dispute Network Event, which represents that the user did not
        * respond to the re-presentment by the merchant within the time limit.
        */
-      representment_timed_out: NetworkEvent.RepresentmentTimedOut | null;
+      representment_timed_out?: NetworkEvent.RepresentmentTimedOut | null;
 
       /**
        * A Card Dispute User Pre-Arbitration Accepted Visa Network Event object. This
@@ -418,7 +418,7 @@ export namespace CardDispute {
        * prearbitration accepted Visa Card Dispute Network Event, which represents that
        * the merchant has accepted the user's prearbitration request in the user's favor.
        */
-      user_prearbitration_accepted: NetworkEvent.UserPrearbitrationAccepted | null;
+      user_prearbitration_accepted?: NetworkEvent.UserPrearbitrationAccepted | null;
 
       /**
        * A Card Dispute User Pre-Arbitration Declined Visa Network Event object. This
@@ -427,7 +427,7 @@ export namespace CardDispute {
        * prearbitration declined Visa Card Dispute Network Event, which represents that
        * the merchant has declined the user's prearbitration request.
        */
-      user_prearbitration_declined: NetworkEvent.UserPrearbitrationDeclined | null;
+      user_prearbitration_declined?: NetworkEvent.UserPrearbitrationDeclined | null;
 
       /**
        * A Card Dispute User Pre-Arbitration Submitted Visa Network Event object. This
@@ -436,7 +436,7 @@ export namespace CardDispute {
        * prearbitration submitted Visa Card Dispute Network Event, which represents that
        * the user's request for prearbitration has been submitted to the network.
        */
-      user_prearbitration_submitted: NetworkEvent.UserPrearbitrationSubmitted | null;
+      user_prearbitration_submitted?: NetworkEvent.UserPrearbitrationSubmitted | null;
 
       /**
        * A Card Dispute User Pre-Arbitration Timed Out Visa Network Event object. This
@@ -445,7 +445,7 @@ export namespace CardDispute {
        * prearbitration timed out Visa Card Dispute Network Event, which represents that
        * the merchant has timed out responding to the user's prearbitration request.
        */
-      user_prearbitration_timed_out: NetworkEvent.UserPrearbitrationTimedOut | null;
+      user_prearbitration_timed_out?: NetworkEvent.UserPrearbitrationTimedOut | null;
 
       /**
        * A Card Dispute User Withdrawal Submitted Visa Network Event object. This field
@@ -454,7 +454,7 @@ export namespace CardDispute {
        * submitted Visa Card Dispute Network Event, which represents that the user's
        * request to withdraw the dispute has been submitted to the network.
        */
-      user_withdrawal_submitted: NetworkEvent.UserWithdrawalSubmitted | null;
+      user_withdrawal_submitted?: NetworkEvent.UserWithdrawalSubmitted | null;
     }
 
     export namespace NetworkEvent {
@@ -1130,14 +1130,6 @@ export namespace CardDispute {
       category: 'chargeback' | 'merchant_prearbitration_decline' | 'user_prearbitration';
 
       /**
-       * A Visa Card Dispute Chargeback User Submission Chargeback Details object. This
-       * field will be present in the JSON response if and only if `category` is equal to
-       * `chargeback`. Contains the details specific to a Visa chargeback User Submission
-       * for a Card Dispute.
-       */
-      chargeback: UserSubmission.Chargeback | null;
-
-      /**
        * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
        * the Visa Card Dispute User Submission was created.
        */
@@ -1162,14 +1154,6 @@ export namespace CardDispute {
       further_information_requested_reason: string | null;
 
       /**
-       * A Visa Card Dispute Merchant Pre-Arbitration Decline User Submission object.
-       * This field will be present in the JSON response if and only if `category` is
-       * equal to `merchant_prearbitration_decline`. Contains the details specific to a
-       * merchant prearbitration decline Visa Card Dispute User Submission.
-       */
-      merchant_prearbitration_decline: UserSubmission.MerchantPrearbitrationDecline | null;
-
-      /**
        * The status of the Visa Card Dispute User Submission.
        *
        * - `abandoned` - The User Submission was abandoned.
@@ -1187,12 +1171,28 @@ export namespace CardDispute {
       updated_at: string;
 
       /**
+       * A Visa Card Dispute Chargeback User Submission Chargeback Details object. This
+       * field will be present in the JSON response if and only if `category` is equal to
+       * `chargeback`. Contains the details specific to a Visa chargeback User Submission
+       * for a Card Dispute.
+       */
+      chargeback?: UserSubmission.Chargeback | null;
+
+      /**
+       * A Visa Card Dispute Merchant Pre-Arbitration Decline User Submission object.
+       * This field will be present in the JSON response if and only if `category` is
+       * equal to `merchant_prearbitration_decline`. Contains the details specific to a
+       * merchant prearbitration decline Visa Card Dispute User Submission.
+       */
+      merchant_prearbitration_decline?: UserSubmission.MerchantPrearbitrationDecline | null;
+
+      /**
        * A Visa Card Dispute User-Initiated Pre-Arbitration User Submission object. This
        * field will be present in the JSON response if and only if `category` is equal to
        * `user_prearbitration`. Contains the details specific to a user-initiated
        * pre-arbitration Visa Card Dispute User Submission.
        */
-      user_prearbitration: UserSubmission.UserPrearbitration | null;
+      user_prearbitration?: UserSubmission.UserPrearbitration | null;
     }
 
     export namespace UserSubmission {

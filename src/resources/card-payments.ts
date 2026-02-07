@@ -98,99 +98,6 @@ export interface CardPayment {
 export namespace CardPayment {
   export interface Element {
     /**
-     * A Card Authentication object. This field will be present in the JSON response if
-     * and only if `category` is equal to `card_authentication`. Card Authentications
-     * are attempts to authenticate a transaction or a card with 3DS.
-     */
-    card_authentication: Element.CardAuthentication | null;
-
-    /**
-     * A Card Authorization object. This field will be present in the JSON response if
-     * and only if `category` is equal to `card_authorization`. Card Authorizations are
-     * temporary holds placed on a customers funds with the intent to later clear a
-     * transaction.
-     */
-    card_authorization: Element.CardAuthorization | null;
-
-    /**
-     * A Card Authorization Expiration object. This field will be present in the JSON
-     * response if and only if `category` is equal to `card_authorization_expiration`.
-     * Card Authorization Expirations are cancellations of authorizations that were
-     * never settled by the acquirer.
-     */
-    card_authorization_expiration: Element.CardAuthorizationExpiration | null;
-
-    /**
-     * A Card Balance Inquiry object. This field will be present in the JSON response
-     * if and only if `category` is equal to `card_balance_inquiry`. Card Balance
-     * Inquiries are transactions that allow merchants to check the available balance
-     * on a card without placing a hold on funds, commonly used when a customer
-     * requests their balance at an ATM.
-     */
-    card_balance_inquiry: Element.CardBalanceInquiry | null;
-
-    /**
-     * A Card Decline object. This field will be present in the JSON response if and
-     * only if `category` is equal to `card_decline`.
-     */
-    card_decline: Element.CardDecline | null;
-
-    /**
-     * A Card Financial object. This field will be present in the JSON response if and
-     * only if `category` is equal to `card_financial`. Card Financials are temporary
-     * holds placed on a customers funds with the intent to later clear a transaction.
-     */
-    card_financial: Element.CardFinancial | null;
-
-    /**
-     * A Card Fuel Confirmation object. This field will be present in the JSON response
-     * if and only if `category` is equal to `card_fuel_confirmation`. Card Fuel
-     * Confirmations update the amount of a Card Authorization after a fuel pump
-     * transaction is completed.
-     */
-    card_fuel_confirmation: Element.CardFuelConfirmation | null;
-
-    /**
-     * A Card Increment object. This field will be present in the JSON response if and
-     * only if `category` is equal to `card_increment`. Card Increments increase the
-     * pending amount of an authorized transaction.
-     */
-    card_increment: Element.CardIncrement | null;
-
-    /**
-     * A Card Refund object. This field will be present in the JSON response if and
-     * only if `category` is equal to `card_refund`. Card Refunds move money back to
-     * the cardholder. While they are usually connected to a Card Settlement an
-     * acquirer can also refund money directly to a card without relation to a
-     * transaction.
-     */
-    card_refund: Element.CardRefund | null;
-
-    /**
-     * A Card Reversal object. This field will be present in the JSON response if and
-     * only if `category` is equal to `card_reversal`. Card Reversals cancel parts of
-     * or the entirety of an existing Card Authorization.
-     */
-    card_reversal: Element.CardReversal | null;
-
-    /**
-     * A Card Settlement object. This field will be present in the JSON response if and
-     * only if `category` is equal to `card_settlement`. Card Settlements are card
-     * transactions that have cleared and settled. While a settlement is usually
-     * preceded by an authorization, an acquirer can also directly clear a transaction
-     * without first authorizing it.
-     */
-    card_settlement: Element.CardSettlement | null;
-
-    /**
-     * An Inbound Card Validation object. This field will be present in the JSON
-     * response if and only if `category` is equal to `card_validation`. Inbound Card
-     * Validations are requests from a merchant to verify that a card number and
-     * optionally its address and/or Card Verification Value are valid.
-     */
-    card_validation: Element.CardValidation | null;
-
-    /**
      * The type of the resource. We may add additional possible values for this enum
      * over time; your application should be able to handle such additions gracefully.
      *
@@ -241,10 +148,103 @@ export namespace CardPayment {
     created_at: string;
 
     /**
+     * A Card Authentication object. This field will be present in the JSON response if
+     * and only if `category` is equal to `card_authentication`. Card Authentications
+     * are attempts to authenticate a transaction or a card with 3DS.
+     */
+    card_authentication?: Element.CardAuthentication | null;
+
+    /**
+     * A Card Authorization object. This field will be present in the JSON response if
+     * and only if `category` is equal to `card_authorization`. Card Authorizations are
+     * temporary holds placed on a customers funds with the intent to later clear a
+     * transaction.
+     */
+    card_authorization?: Element.CardAuthorization | null;
+
+    /**
+     * A Card Authorization Expiration object. This field will be present in the JSON
+     * response if and only if `category` is equal to `card_authorization_expiration`.
+     * Card Authorization Expirations are cancellations of authorizations that were
+     * never settled by the acquirer.
+     */
+    card_authorization_expiration?: Element.CardAuthorizationExpiration | null;
+
+    /**
+     * A Card Balance Inquiry object. This field will be present in the JSON response
+     * if and only if `category` is equal to `card_balance_inquiry`. Card Balance
+     * Inquiries are transactions that allow merchants to check the available balance
+     * on a card without placing a hold on funds, commonly used when a customer
+     * requests their balance at an ATM.
+     */
+    card_balance_inquiry?: Element.CardBalanceInquiry | null;
+
+    /**
+     * A Card Decline object. This field will be present in the JSON response if and
+     * only if `category` is equal to `card_decline`.
+     */
+    card_decline?: Element.CardDecline | null;
+
+    /**
+     * A Card Financial object. This field will be present in the JSON response if and
+     * only if `category` is equal to `card_financial`. Card Financials are temporary
+     * holds placed on a customers funds with the intent to later clear a transaction.
+     */
+    card_financial?: Element.CardFinancial | null;
+
+    /**
+     * A Card Fuel Confirmation object. This field will be present in the JSON response
+     * if and only if `category` is equal to `card_fuel_confirmation`. Card Fuel
+     * Confirmations update the amount of a Card Authorization after a fuel pump
+     * transaction is completed.
+     */
+    card_fuel_confirmation?: Element.CardFuelConfirmation | null;
+
+    /**
+     * A Card Increment object. This field will be present in the JSON response if and
+     * only if `category` is equal to `card_increment`. Card Increments increase the
+     * pending amount of an authorized transaction.
+     */
+    card_increment?: Element.CardIncrement | null;
+
+    /**
+     * A Card Refund object. This field will be present in the JSON response if and
+     * only if `category` is equal to `card_refund`. Card Refunds move money back to
+     * the cardholder. While they are usually connected to a Card Settlement an
+     * acquirer can also refund money directly to a card without relation to a
+     * transaction.
+     */
+    card_refund?: Element.CardRefund | null;
+
+    /**
+     * A Card Reversal object. This field will be present in the JSON response if and
+     * only if `category` is equal to `card_reversal`. Card Reversals cancel parts of
+     * or the entirety of an existing Card Authorization.
+     */
+    card_reversal?: Element.CardReversal | null;
+
+    /**
+     * A Card Settlement object. This field will be present in the JSON response if and
+     * only if `category` is equal to `card_settlement`. Card Settlements are card
+     * transactions that have cleared and settled. While a settlement is usually
+     * preceded by an authorization, an acquirer can also directly clear a transaction
+     * without first authorizing it.
+     */
+    card_settlement?: Element.CardSettlement | null;
+
+    /**
+     * An Inbound Card Validation object. This field will be present in the JSON
+     * response if and only if `category` is equal to `card_validation`. Inbound Card
+     * Validations are requests from a merchant to verify that a card number and
+     * optionally its address and/or Card Verification Value are valid.
+     */
+    card_validation?: Element.CardValidation | null;
+
+    /**
      * If the category of this Transaction source is equal to `other`, this field will
      * contain an empty object, otherwise it will contain null.
      */
-    other: Element.Other | null;
+    other?: Element.Other | null;
   }
 
   export namespace Element {

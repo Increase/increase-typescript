@@ -189,46 +189,6 @@ export namespace PendingTransaction {
    */
   export interface Source {
     /**
-     * An Account Transfer Instruction object. This field will be present in the JSON
-     * response if and only if `category` is equal to `account_transfer_instruction`.
-     */
-    account_transfer_instruction: Source.AccountTransferInstruction | null;
-
-    /**
-     * An ACH Transfer Instruction object. This field will be present in the JSON
-     * response if and only if `category` is equal to `ach_transfer_instruction`.
-     */
-    ach_transfer_instruction: Source.ACHTransferInstruction | null;
-
-    /**
-     * A Blockchain Off-Ramp Transfer Instruction object. This field will be present in
-     * the JSON response if and only if `category` is equal to
-     * `blockchain_offramp_transfer_instruction`.
-     */
-    blockchain_offramp_transfer_instruction: Source.BlockchainOfframpTransferInstruction | null;
-
-    /**
-     * A Blockchain On-Ramp Transfer Instruction object. This field will be present in
-     * the JSON response if and only if `category` is equal to
-     * `blockchain_onramp_transfer_instruction`.
-     */
-    blockchain_onramp_transfer_instruction: Source.BlockchainOnrampTransferInstruction | null;
-
-    /**
-     * A Card Authorization object. This field will be present in the JSON response if
-     * and only if `category` is equal to `card_authorization`. Card Authorizations are
-     * temporary holds placed on a customers funds with the intent to later clear a
-     * transaction.
-     */
-    card_authorization: Source.CardAuthorization | null;
-
-    /**
-     * A Card Push Transfer Instruction object. This field will be present in the JSON
-     * response if and only if `category` is equal to `card_push_transfer_instruction`.
-     */
-    card_push_transfer_instruction: Source.CardPushTransferInstruction | null;
-
-    /**
      * The type of the resource. We may add additional possible values for this enum
      * over time; your application should be able to handle such additions gracefully.
      *
@@ -287,22 +247,62 @@ export namespace PendingTransaction {
       | 'other';
 
     /**
+     * An Account Transfer Instruction object. This field will be present in the JSON
+     * response if and only if `category` is equal to `account_transfer_instruction`.
+     */
+    account_transfer_instruction?: Source.AccountTransferInstruction | null;
+
+    /**
+     * An ACH Transfer Instruction object. This field will be present in the JSON
+     * response if and only if `category` is equal to `ach_transfer_instruction`.
+     */
+    ach_transfer_instruction?: Source.ACHTransferInstruction | null;
+
+    /**
+     * A Blockchain Off-Ramp Transfer Instruction object. This field will be present in
+     * the JSON response if and only if `category` is equal to
+     * `blockchain_offramp_transfer_instruction`.
+     */
+    blockchain_offramp_transfer_instruction?: Source.BlockchainOfframpTransferInstruction | null;
+
+    /**
+     * A Blockchain On-Ramp Transfer Instruction object. This field will be present in
+     * the JSON response if and only if `category` is equal to
+     * `blockchain_onramp_transfer_instruction`.
+     */
+    blockchain_onramp_transfer_instruction?: Source.BlockchainOnrampTransferInstruction | null;
+
+    /**
+     * A Card Authorization object. This field will be present in the JSON response if
+     * and only if `category` is equal to `card_authorization`. Card Authorizations are
+     * temporary holds placed on a customers funds with the intent to later clear a
+     * transaction.
+     */
+    card_authorization?: Source.CardAuthorization | null;
+
+    /**
+     * A Card Push Transfer Instruction object. This field will be present in the JSON
+     * response if and only if `category` is equal to `card_push_transfer_instruction`.
+     */
+    card_push_transfer_instruction?: Source.CardPushTransferInstruction | null;
+
+    /**
      * A Check Deposit Instruction object. This field will be present in the JSON
      * response if and only if `category` is equal to `check_deposit_instruction`.
      */
-    check_deposit_instruction: Source.CheckDepositInstruction | null;
+    check_deposit_instruction?: Source.CheckDepositInstruction | null;
 
     /**
      * A Check Transfer Instruction object. This field will be present in the JSON
      * response if and only if `category` is equal to `check_transfer_instruction`.
      */
-    check_transfer_instruction: Source.CheckTransferInstruction | null;
+    check_transfer_instruction?: Source.CheckTransferInstruction | null;
 
     /**
      * A FedNow Transfer Instruction object. This field will be present in the JSON
      * response if and only if `category` is equal to `fednow_transfer_instruction`.
      */
-    fednow_transfer_instruction: Source.FednowTransferInstruction | null;
+    fednow_transfer_instruction?: Source.FednowTransferInstruction | null;
 
     /**
      * An Inbound Funds Hold object. This field will be present in the JSON response if
@@ -310,7 +310,7 @@ export namespace PendingTransaction {
      * certain transaction types to account for return windows where funds might still
      * be clawed back by the sending institution.
      */
-    inbound_funds_hold: Source.InboundFundsHold | null;
+    inbound_funds_hold?: Source.InboundFundsHold | null;
 
     /**
      * An Inbound Wire Transfer Reversal object. This field will be present in the JSON
@@ -318,39 +318,39 @@ export namespace PendingTransaction {
      * An Inbound Wire Transfer Reversal is created when Increase has received a wire
      * and the User requests that it be reversed.
      */
-    inbound_wire_transfer_reversal: Source.InboundWireTransferReversal | null;
+    inbound_wire_transfer_reversal?: Source.InboundWireTransferReversal | null;
 
     /**
      * If the category of this Transaction source is equal to `other`, this field will
      * contain an empty object, otherwise it will contain null.
      */
-    other: Source.Other | null;
+    other?: Source.Other | null;
 
     /**
      * A Real-Time Payments Transfer Instruction object. This field will be present in
      * the JSON response if and only if `category` is equal to
      * `real_time_payments_transfer_instruction`.
      */
-    real_time_payments_transfer_instruction: Source.RealTimePaymentsTransferInstruction | null;
+    real_time_payments_transfer_instruction?: Source.RealTimePaymentsTransferInstruction | null;
 
     /**
      * A Swift Transfer Instruction object. This field will be present in the JSON
      * response if and only if `category` is equal to `swift_transfer_instruction`.
      */
-    swift_transfer_instruction: Source.SwiftTransferInstruction | null;
+    swift_transfer_instruction?: Source.SwiftTransferInstruction | null;
 
     /**
      * An User Initiated Hold object. This field will be present in the JSON response
      * if and only if `category` is equal to `user_initiated_hold`. Created when a user
      * initiates a hold on funds in their account.
      */
-    user_initiated_hold: { [key: string]: unknown } | null;
+    user_initiated_hold?: { [key: string]: unknown } | null;
 
     /**
      * A Wire Transfer Instruction object. This field will be present in the JSON
      * response if and only if `category` is equal to `wire_transfer_instruction`.
      */
-    wire_transfer_instruction: Source.WireTransferInstruction | null;
+    wire_transfer_instruction?: Source.WireTransferInstruction | null;
 
     [k: string]: unknown;
   }
