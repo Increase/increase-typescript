@@ -184,6 +184,8 @@ export interface DigitalCardProfile {
    * `digital_card_profile`.
    */
   type: 'digital_card_profile';
+
+  [k: string]: unknown;
 }
 
 export namespace DigitalCardProfile {

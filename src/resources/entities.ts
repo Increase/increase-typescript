@@ -350,6 +350,8 @@ export interface Entity {
    * `entity`.
    */
   type: 'entity';
+
+  [k: string]: unknown;
 }
 
 export namespace Entity {
