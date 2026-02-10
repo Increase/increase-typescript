@@ -121,6 +121,7 @@ export interface Export {
    * - `funding_instructions` - A PDF of funding instructions.
    * - `form_1099_int` - A PDF of an Internal Revenue Service Form 1099-INT.
    * - `form_1099_misc` - A PDF of an Internal Revenue Service Form 1099-MISC.
+   * - `voided_check` - A PDF of a voided check.
    */
   category:
     | 'account_statement_ofx'
@@ -134,7 +135,8 @@ export interface Export {
     | 'account_verification_letter'
     | 'funding_instructions'
     | 'form_1099_int'
-    | 'form_1099_misc';
+    | 'form_1099_misc'
+    | 'voided_check';
 
   /**
    * The time the Export was created.
@@ -211,6 +213,12 @@ export interface Export {
    * is equal to `vendor_csv`.
    */
   vendor_csv: Export.VendorCsv | null;
+
+  /**
+   * Details of the voided check export. This field will be present when the
+   * `category` is equal to `voided_check`.
+   */
+  voided_check: Export.VoidedCheck | null;
 
   [k: string]: unknown;
 }
@@ -471,6 +479,31 @@ export namespace Export {
    * is equal to `vendor_csv`.
    */
   export interface VendorCsv {}
+
+  /**
+   * Details of the voided check export. This field will be present when the
+   * `category` is equal to `voided_check`.
+   */
+  export interface VoidedCheck {
+    /**
+     * The Account Number for the voided check.
+     */
+    account_number_id: string;
+
+    /**
+     * The payer information printed on the check.
+     */
+    payer: Array<VoidedCheck.Payer>;
+  }
+
+  export namespace VoidedCheck {
+    export interface Payer {
+      /**
+       * The contents of the line.
+       */
+      line: string;
+    }
+  }
 }
 
 export interface ExportCreateParams {
@@ -491,6 +524,7 @@ export interface ExportCreateParams {
    *   management dashboard.
    * - `account_verification_letter` - A PDF of an account verification letter.
    * - `funding_instructions` - A PDF of funding instructions.
+   * - `voided_check` - A PDF of a voided check.
    */
   category:
     | 'account_statement_ofx'
@@ -501,7 +535,8 @@ export interface ExportCreateParams {
     | 'entity_csv'
     | 'vendor_csv'
     | 'account_verification_letter'
-    | 'funding_instructions';
+    | 'funding_instructions'
+    | 'voided_check';
 
   /**
    * Options for the created export. Required if `category` is equal to
@@ -554,6 +589,12 @@ export interface ExportCreateParams {
    * Options for the created export. Required if `category` is equal to `vendor_csv`.
    */
   vendor_csv?: ExportCreateParams.VendorCsv;
+
+  /**
+   * Options for the created export. Required if `category` is equal to
+   * `voided_check`.
+   */
+  voided_check?: ExportCreateParams.VoidedCheck;
 
   [k: string]: unknown;
 }
@@ -810,6 +851,31 @@ export namespace ExportCreateParams {
    * Options for the created export. Required if `category` is equal to `vendor_csv`.
    */
   export interface VendorCsv {}
+
+  /**
+   * Options for the created export. Required if `category` is equal to
+   * `voided_check`.
+   */
+  export interface VoidedCheck {
+    /**
+     * The Account Number for the voided check.
+     */
+    account_number_id: string;
+
+    /**
+     * The payer information to be printed on the check.
+     */
+    payer?: Array<VoidedCheck.Payer>;
+  }
+
+  export namespace VoidedCheck {
+    export interface Payer {
+      /**
+       * The contents of the line.
+       */
+      line: string;
+    }
+  }
 }
 
 export interface ExportListParams extends PageParams {
@@ -834,6 +900,7 @@ export interface ExportListParams extends PageParams {
    * - `funding_instructions` - A PDF of funding instructions.
    * - `form_1099_int` - A PDF of an Internal Revenue Service Form 1099-INT.
    * - `form_1099_misc` - A PDF of an Internal Revenue Service Form 1099-MISC.
+   * - `voided_check` - A PDF of a voided check.
    */
   category?:
     | 'account_statement_ofx'
@@ -847,7 +914,8 @@ export interface ExportListParams extends PageParams {
     | 'account_verification_letter'
     | 'funding_instructions'
     | 'form_1099_int'
-    | 'form_1099_misc';
+    | 'form_1099_misc'
+    | 'voided_check';
 
   created_at?: ExportListParams.CreatedAt;
 
