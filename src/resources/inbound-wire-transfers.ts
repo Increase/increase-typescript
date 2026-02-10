@@ -80,6 +80,11 @@ export interface InboundWireTransfer {
   id: string;
 
   /**
+   * If the transfer is accepted, this will contain details of the acceptance.
+   */
+  acceptance: InboundWireTransfer.Acceptance | null;
+
+  /**
    * The Account to which the transfer belongs.
    */
   account_id: string;
@@ -169,8 +174,7 @@ export interface InboundWireTransfer {
   instruction_identification: string | null;
 
   /**
-   * Information about the reversal of the inbound wire transfer if it has been
-   * reversed.
+   * If the transfer is reversed, this will contain details of the reversal.
    */
   reversal: InboundWireTransfer.Reversal | null;
 
@@ -213,8 +217,23 @@ export interface InboundWireTransfer {
 
 export namespace InboundWireTransfer {
   /**
-   * Information about the reversal of the inbound wire transfer if it has been
-   * reversed.
+   * If the transfer is accepted, this will contain details of the acceptance.
+   */
+  export interface Acceptance {
+    /**
+     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+     * the transfer was accepted.
+     */
+    accepted_at: string;
+
+    /**
+     * The identifier of the transaction for the accepted transfer.
+     */
+    transaction_id: string;
+  }
+
+  /**
+   * If the transfer is reversed, this will contain details of the reversal.
    */
   export interface Reversal {
     /**
