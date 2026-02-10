@@ -121,6 +121,8 @@ export interface Export {
    * - `funding_instructions` - A PDF of funding instructions.
    * - `form_1099_int` - A PDF of an Internal Revenue Service Form 1099-INT.
    * - `form_1099_misc` - A PDF of an Internal Revenue Service Form 1099-MISC.
+   * - `fee_csv` - Export a CSV of fees. The time range must not include any fees
+   *   that are part of an open fee statement.
    * - `voided_check` - A PDF of a voided check.
    */
   category:
@@ -136,6 +138,7 @@ export interface Export {
     | 'funding_instructions'
     | 'form_1099_int'
     | 'form_1099_misc'
+    | 'fee_csv'
     | 'voided_check';
 
   /**
@@ -154,6 +157,12 @@ export interface Export {
    * is equal to `entity_csv`.
    */
   entity_csv: Export.EntityCsv | null;
+
+  /**
+   * Details of the fee CSV export. This field will be present when the `category` is
+   * equal to `fee_csv`.
+   */
+  fee_csv: Export.FeeCsv | null;
 
   /**
    * Details of the Form 1099-INT export. This field will be present when the
@@ -371,6 +380,36 @@ export namespace Export {
    * is equal to `entity_csv`.
    */
   export interface EntityCsv {}
+
+  /**
+   * Details of the fee CSV export. This field will be present when the `category` is
+   * equal to `fee_csv`.
+   */
+  export interface FeeCsv {
+    /**
+     * Filter fees by their created date. The time range must not include any fees that
+     * are part of an open fee statement.
+     */
+    created_at: FeeCsv.CreatedAt | null;
+  }
+
+  export namespace FeeCsv {
+    /**
+     * Filter fees by their created date. The time range must not include any fees that
+     * are part of an open fee statement.
+     */
+    export interface CreatedAt {
+      /**
+       * Filter fees created after this time.
+       */
+      after: string | null;
+
+      /**
+       * Filter fees created before this time.
+       */
+      before: string | null;
+    }
+  }
 
   /**
    * Details of the Form 1099-INT export. This field will be present when the
@@ -900,6 +939,8 @@ export interface ExportListParams extends PageParams {
    * - `funding_instructions` - A PDF of funding instructions.
    * - `form_1099_int` - A PDF of an Internal Revenue Service Form 1099-INT.
    * - `form_1099_misc` - A PDF of an Internal Revenue Service Form 1099-MISC.
+   * - `fee_csv` - Export a CSV of fees. The time range must not include any fees
+   *   that are part of an open fee statement.
    * - `voided_check` - A PDF of a voided check.
    */
   category?:
@@ -915,6 +956,7 @@ export interface ExportListParams extends PageParams {
     | 'funding_instructions'
     | 'form_1099_int'
     | 'form_1099_misc'
+    | 'fee_csv'
     | 'voided_check';
 
   created_at?: ExportListParams.CreatedAt;
