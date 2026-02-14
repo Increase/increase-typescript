@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.434.0 (2026-02-14)
+
+Full Changelog: [v0.433.0...v0.434.0](https://github.com/Increase/increase-typescript/compare/v0.433.0...v0.434.0)
+
+### Features
+
+* **api:** api update ([94af3e3](https://github.com/Increase/increase-typescript/commit/94af3e34782fa9ce833798ff7589d8de30c2a248))
+
+
+### Chores
+
+* **internal:** avoid type checking errors with ts-reset ([07408e5](https://github.com/Increase/increase-typescript/commit/07408e5b7cdc71d1f6efb5072b3393c33879e3b3))
+
 ## 0.433.0 (2026-02-10)
 
 Full Changelog: [v0.432.0...v0.433.0](https://github.com/Increase/increase-typescript/compare/v0.432.0...v0.433.0)
