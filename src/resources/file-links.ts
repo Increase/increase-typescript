@@ -75,7 +75,7 @@ export interface FileLinkCreateParams {
 
   /**
    * The time at which the File Link will expire. The default is 1 hour from the time
-   * of the request. The maxiumum is 1 day from the time of the request.
+   * of the request. The maximum is 1 day from the time of the request.
    */
   expires_at?: string;
 

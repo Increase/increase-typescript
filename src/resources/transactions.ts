@@ -330,7 +330,7 @@ export namespace Transaction {
     /**
      * A Card Financial object. This field will be present in the JSON response if and
      * only if `category` is equal to `card_financial`. Card Financials are temporary
-     * holds placed on a customers funds with the intent to later clear a transaction.
+     * holds placed on a customer's funds with the intent to later clear a transaction.
      */
     card_financial?: Source.CardFinancial | null;
 
@@ -345,7 +345,7 @@ export namespace Transaction {
     /**
      * A Card Refund object. This field will be present in the JSON response if and
      * only if `category` is equal to `card_refund`. Card Refunds move money back to
-     * the cardholder. While they are usually connected to a Card Settlement an
+     * the cardholder. While they are usually connected to a Card Settlement, an
      * acquirer can also refund money directly to a card without relation to a
      * transaction.
      */
@@ -1101,7 +1101,7 @@ export namespace Transaction {
     /**
      * A Card Financial object. This field will be present in the JSON response if and
      * only if `category` is equal to `card_financial`. Card Financials are temporary
-     * holds placed on a customers funds with the intent to later clear a transaction.
+     * holds placed on a customer's funds with the intent to later clear a transaction.
      */
     export interface CardFinancial {
       /**
@@ -1849,7 +1849,7 @@ export namespace Transaction {
     /**
      * A Card Refund object. This field will be present in the JSON response if and
      * only if `category` is equal to `card_refund`. Card Refunds move money back to
-     * the cardholder. While they are usually connected to a Card Settlement an
+     * the cardholder. While they are usually connected to a Card Settlement, an
      * acquirer can also refund money directly to a card without relation to a
      * transaction.
      */
@@ -1885,7 +1885,7 @@ export namespace Transaction {
       currency: 'USD';
 
       /**
-       * Interchange assessed as a part of this transaciton.
+       * Interchange assessed as a part of this transaction.
        */
       interchange: CardRefund.Interchange | null;
 
@@ -1983,7 +1983,7 @@ export namespace Transaction {
       }
 
       /**
-       * Interchange assessed as a part of this transaciton.
+       * Interchange assessed as a part of this transaction.
        */
       export interface Interchange {
         /**
@@ -2724,7 +2724,7 @@ export namespace Transaction {
 
       /**
        * Surcharge amount details, if applicable. The amount is positive if the surcharge
-       * is added to to the overall transaction amount (surcharge), and negative if the
+       * is added to the overall transaction amount (surcharge), and negative if the
        * surcharge is deducted from the overall transaction amount (discount).
        */
       surcharge: CardSettlement.Surcharge | null;
@@ -3347,7 +3347,7 @@ export namespace Transaction {
 
       /**
        * Surcharge amount details, if applicable. The amount is positive if the surcharge
-       * is added to to the overall transaction amount (surcharge), and negative if the
+       * is added to the overall transaction amount (surcharge), and negative if the
        * surcharge is deducted from the overall transaction amount (discount).
        */
       export interface Surcharge {
