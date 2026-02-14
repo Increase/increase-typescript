@@ -134,7 +134,7 @@ export interface BookkeepingAccount {
 }
 
 /**
- * Represents a request to lookup the balance of an Bookkeeping Account at a given
+ * Represents a request to lookup the balance of a Bookkeeping Account at a given
  * point in time.
  */
 export interface BookkeepingBalanceLookup {

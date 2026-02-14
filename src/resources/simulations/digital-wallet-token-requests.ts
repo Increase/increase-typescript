@@ -6,7 +6,7 @@ import { RequestOptions } from '../../internal/request-options';
 
 export class DigitalWalletTokenRequests extends APIResource {
   /**
-   * Simulates a user attempting add a [Card](#cards) to a digital wallet such as
+   * Simulates a user attempting to add a [Card](#cards) to a digital wallet such as
    * Apple Pay.
    *
    * @example

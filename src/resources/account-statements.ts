@@ -66,7 +66,7 @@ export interface AccountStatement {
   created_at: string;
 
   /**
-   * The Account's balance at the start of its statement period.
+   * The Account's balance at the end of its statement period.
    */
   ending_balance: number;
 

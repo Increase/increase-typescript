@@ -41,7 +41,7 @@ export class InboundMailItems extends APIResource {
   }
 
   /**
-   * Action a Inbound Mail Item
+   * Action an Inbound Mail Item
    *
    * @example
    * ```ts

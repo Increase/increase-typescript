@@ -157,7 +157,7 @@ export namespace CardPayment {
     /**
      * A Card Authorization object. This field will be present in the JSON response if
      * and only if `category` is equal to `card_authorization`. Card Authorizations are
-     * temporary holds placed on a customers funds with the intent to later clear a
+     * temporary holds placed on a customer's funds with the intent to later clear a
      * transaction.
      */
     card_authorization?: Element.CardAuthorization | null;
@@ -188,7 +188,7 @@ export namespace CardPayment {
     /**
      * A Card Financial object. This field will be present in the JSON response if and
      * only if `category` is equal to `card_financial`. Card Financials are temporary
-     * holds placed on a customers funds with the intent to later clear a transaction.
+     * holds placed on a customer's funds with the intent to later clear a transaction.
      */
     card_financial?: Element.CardFinancial | null;
 
@@ -210,7 +210,7 @@ export namespace CardPayment {
     /**
      * A Card Refund object. This field will be present in the JSON response if and
      * only if `category` is equal to `card_refund`. Card Refunds move money back to
-     * the cardholder. While they are usually connected to a Card Settlement an
+     * the cardholder. While they are usually connected to a Card Settlement, an
      * acquirer can also refund money directly to a card without relation to a
      * transaction.
      */
@@ -453,7 +453,7 @@ export namespace CardPayment {
     /**
      * A Card Authorization object. This field will be present in the JSON response if
      * and only if `category` is equal to `card_authorization`. Card Authorizations are
-     * temporary holds placed on a customers funds with the intent to later clear a
+     * temporary holds placed on a customer's funds with the intent to later clear a
      * transaction.
      */
     export interface CardAuthorization {
@@ -2700,7 +2700,7 @@ export namespace CardPayment {
     /**
      * A Card Financial object. This field will be present in the JSON response if and
      * only if `category` is equal to `card_financial`. Card Financials are temporary
-     * holds placed on a customers funds with the intent to later clear a transaction.
+     * holds placed on a customer's funds with the intent to later clear a transaction.
      */
     export interface CardFinancial {
       /**
@@ -3895,7 +3895,7 @@ export namespace CardPayment {
     /**
      * A Card Refund object. This field will be present in the JSON response if and
      * only if `category` is equal to `card_refund`. Card Refunds move money back to
-     * the cardholder. While they are usually connected to a Card Settlement an
+     * the cardholder. While they are usually connected to a Card Settlement, an
      * acquirer can also refund money directly to a card without relation to a
      * transaction.
      */
@@ -3931,7 +3931,7 @@ export namespace CardPayment {
       currency: 'USD';
 
       /**
-       * Interchange assessed as a part of this transaciton.
+       * Interchange assessed as a part of this transaction.
        */
       interchange: CardRefund.Interchange | null;
 
@@ -4029,7 +4029,7 @@ export namespace CardPayment {
       }
 
       /**
-       * Interchange assessed as a part of this transaciton.
+       * Interchange assessed as a part of this transaction.
        */
       export interface Interchange {
         /**
@@ -4907,7 +4907,7 @@ export namespace CardPayment {
 
       /**
        * Surcharge amount details, if applicable. The amount is positive if the surcharge
-       * is added to to the overall transaction amount (surcharge), and negative if the
+       * is added to the overall transaction amount (surcharge), and negative if the
        * surcharge is deducted from the overall transaction amount (discount).
        */
       surcharge: CardSettlement.Surcharge | null;
@@ -5530,7 +5530,7 @@ export namespace CardPayment {
 
       /**
        * Surcharge amount details, if applicable. The amount is positive if the surcharge
-       * is added to to the overall transaction amount (surcharge), and negative if the
+       * is added to the overall transaction amount (surcharge), and negative if the
        * surcharge is deducted from the overall transaction amount (discount).
        */
       export interface Surcharge {
