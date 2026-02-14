@@ -71,7 +71,7 @@ export interface BookkeepingEntry {
   created_at: string;
 
   /**
-   * The identifier for the Account the Entry belongs to.
+   * The identifier for the Entry Set the Entry belongs to.
    */
   entry_set_id: string;
 

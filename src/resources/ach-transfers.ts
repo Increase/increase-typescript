@@ -224,7 +224,7 @@ export interface ACHTransfer {
   individual_id: string | null;
 
   /**
-   * The name of the transfer recipient. This value is information and not verified
+   * The name of the transfer recipient. This value is informational and not verified
    * by the recipient's bank.
    */
   individual_name: string | null;
@@ -1009,7 +1009,7 @@ export namespace ACHTransfer {
 
     /**
      * When the transfer is expected to settle in the recipient's account. Credits may
-     * be available sooner, at the receiving banks discretion. The FedACH schedule is
+     * be available sooner, at the receiving bank's discretion. The FedACH schedule is
      * published
      * [here](https://www.frbservices.org/resources/resource-centers/same-day-ach/fedach-processing-schedule.html).
      */

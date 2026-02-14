@@ -701,7 +701,7 @@ export namespace InboundACHTransfer {
     updated_account_number: string | null;
 
     /**
-     * The new account number provided in the notification of change.
+     * The new routing number provided in the notification of change.
      */
     updated_routing_number: string | null;
   }

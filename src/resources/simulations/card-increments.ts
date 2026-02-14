@@ -31,7 +31,7 @@ export interface CardIncrementCreateParams {
   amount: number;
 
   /**
-   * The identifier of the Card Payment to create a increment on.
+   * The identifier of the Card Payment to create an increment on.
    */
   card_payment_id: string;
 
