@@ -455,6 +455,8 @@ export interface CardUpdateParams {
    * - `canceled` - The card is permanently canceled.
    */
   status?: 'active' | 'disabled' | 'canceled';
+
+  [k: string]: unknown;
 }
 
 export namespace CardUpdateParams {
