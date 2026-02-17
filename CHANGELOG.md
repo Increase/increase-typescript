@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.435.0 (2026-02-17)
+
+Full Changelog: [v0.434.0...v0.435.0](https://github.com/Increase/increase-typescript/compare/v0.434.0...v0.435.0)
+
+### Features
+
+* **api:** api update ([db811e4](https://github.com/Increase/increase-typescript/commit/db811e40e301f47dec124af6cb9bc8e3c94eb984))
+
+
+### Chores
+
+* **internal/client:** fix form-urlencoded requests ([372473c](https://github.com/Increase/increase-typescript/commit/372473c5925daadb3cea2ae7eea5f98bf0336805))
+
 ## 0.434.0 (2026-02-14)
 
 Full Changelog: [v0.433.0...v0.434.0](https://github.com/Increase/increase-typescript/compare/v0.433.0...v0.434.0)
