@@ -25,7 +25,7 @@ export { CardRefunds, type CardRefundCreateParams } from './card-refunds';
 export { CardReversals, type CardReversalCreateParams } from './card-reversals';
 export { CardSettlements, type CardSettlementCreateParams } from './card-settlements';
 export { CardTokens, type CardTokenCreateParams } from './card-tokens';
-export { CheckDeposits } from './check-deposits';
+export { CheckDeposits, type CheckDepositSubmitParams } from './check-deposits';
 export { CheckTransfers } from './check-transfers';
 export {
   DigitalWalletTokenRequests,
