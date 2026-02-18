@@ -52,7 +52,47 @@ export class CheckDeposits extends APIResource {
    *   );
    * ```
    */
-  submit(checkDepositID: string, options?: RequestOptions): APIPromise<CheckDepositsAPI.CheckDeposit> {
-    return this._client.post(path`/simulations/check_deposits/${checkDepositID}/submit`, options);
+  submit(
+    checkDepositID: string,
+    body: CheckDepositSubmitParams,
+    options?: RequestOptions,
+  ): APIPromise<CheckDepositsAPI.CheckDeposit> {
+    return this._client.post(path`/simulations/check_deposits/${checkDepositID}/submit`, {
+      body,
+      ...options,
+    });
   }
+}
+
+export interface CheckDepositSubmitParams {
+  /**
+   * If set, the simulation will use these values for the check's scanned MICR data.
+   */
+  scan?: CheckDepositSubmitParams.Scan;
+}
+
+export namespace CheckDepositSubmitParams {
+  /**
+   * If set, the simulation will use these values for the check's scanned MICR data.
+   */
+  export interface Scan {
+    /**
+     * The account number to be returned in the check deposit's scan data.
+     */
+    account_number: string;
+
+    /**
+     * The routing number to be returned in the check deposit's scan data.
+     */
+    routing_number: string;
+
+    /**
+     * The auxiliary on-us data to be returned in the check deposit's scan data.
+     */
+    auxiliary_on_us?: string;
+  }
+}
+
+export declare namespace CheckDeposits {
+  export { type CheckDepositSubmitParams as CheckDepositSubmitParams };
 }

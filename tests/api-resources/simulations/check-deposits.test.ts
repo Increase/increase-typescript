@@ -31,7 +31,7 @@ describe('resource checkDeposits', () => {
   });
 
   test('submit', async () => {
-    const responsePromise = client.simulations.checkDeposits.submit('check_deposit_f06n9gpg7sxn8t19lfc1');
+    const responsePromise = client.simulations.checkDeposits.submit('check_deposit_f06n9gpg7sxn8t19lfc1', {});
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
