@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.437.1 (2026-02-23)
+
+Full Changelog: [v0.437.0...v0.437.1](https://github.com/Increase/increase-typescript/compare/v0.437.0...v0.437.1)
+
+### Bug Fixes
+
+* **docs/contributing:** correct pnpm link command ([61607cb](https://github.com/Increase/increase-typescript/commit/61607cbcdca6ef8c4592a87c57b8f42d1e8e2397))
+
 ## 0.437.0 (2026-02-23)
 
 Full Changelog: [v0.436.0...v0.437.0](https://github.com/Increase/increase-typescript/compare/v0.436.0...v0.437.0)
