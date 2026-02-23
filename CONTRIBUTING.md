@@ -60,7 +60,7 @@ $ yarn link increase
 # With pnpm
 $ pnpm link --global
 $ cd ../my-package
-$ pnpm link -—global increase
+$ pnpm link --global increase
 ```
 
 ## Running tests
