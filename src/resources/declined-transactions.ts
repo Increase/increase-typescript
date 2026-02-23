@@ -1302,6 +1302,8 @@ export namespace DeclinedTransaction {
        * - `suspected_fraud` - This check is suspected to be fraudulent.
        * - `deposit_window_expired` - This check's deposit window has expired.
        * - `requested_by_user` - The check was rejected at the user's request.
+       * - `international` - The check is not a U.S. domestic check and cannot be
+       *   processed.
        * - `unknown` - The check was rejected for an unknown reason.
        */
       reason:
@@ -1315,6 +1317,7 @@ export namespace DeclinedTransaction {
         | 'suspected_fraud'
         | 'deposit_window_expired'
         | 'requested_by_user'
+        | 'international'
         | 'unknown';
 
       /**
