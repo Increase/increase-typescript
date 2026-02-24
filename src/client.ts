@@ -790,7 +790,11 @@ export class Increase {
       throw new Errors.APIConnectionError({ cause: response });
     }
 
-    const responseInfo = `[${requestLogID}${retryLogStr}] ${req.method} ${url} ${
+    const specialHeaders = [...response.headers.entries()]
+      .filter(([name]) => name === 'Idempotent-Replayed')
+      .map(([name, value]) => ', ' + name + ': ' + JSON.stringify(value))
+      .join('');
+    const responseInfo = `[${requestLogID}${retryLogStr}${specialHeaders}] ${req.method} ${url} ${
       response.ok ? 'succeeded' : 'failed'
     } with status ${response.status} in ${headersTime - startTime}ms`;
 
