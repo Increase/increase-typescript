@@ -331,6 +331,12 @@ export interface WireDrawdownRequestCreateParams {
    */
   debtor_routing_number?: string;
 
+  /**
+   * A free-form reference string set by the sender mirrored back in the subsequent
+   * wire transfer.
+   */
+  end_to_end_identification?: string;
+
   [k: string]: unknown;
 }
 
