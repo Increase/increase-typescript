@@ -16,10 +16,13 @@ export class APIError<
   /** JSON body of the response that caused the error */
   readonly error: TError;
 
+  readonly idempotentReplayed: string | null | undefined;
+
   constructor(status: TStatus, error: TError, message: string | undefined, headers: THeaders) {
     super(`${APIError.makeMessage(status, error, message)}`);
     this.status = status;
     this.headers = headers;
+    this.idempotentReplayed = headers?.get('Idempotent-Replayed');
     this.error = error;
   }
 
