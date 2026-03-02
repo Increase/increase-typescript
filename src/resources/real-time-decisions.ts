@@ -1922,6 +1922,31 @@ export namespace RealTimeDecisionActionParams {
      *   cardholder.
      */
     result: 'success' | 'failure';
+
+    /**
+     * If your application was able to deliver the one-time code, this contains
+     * metadata about the delivery.
+     */
+    success?: CardAuthenticationChallenge.Success;
+  }
+
+  export namespace CardAuthenticationChallenge {
+    /**
+     * If your application was able to deliver the one-time code, this contains
+     * metadata about the delivery.
+     */
+    export interface Success {
+      /**
+       * The email address that was used to deliver the one-time code to the cardholder.
+       */
+      email?: string;
+
+      /**
+       * The phone number that was used to deliver the one-time code to the cardholder
+       * via SMS.
+       */
+      phone?: string;
+    }
   }
 
   /**
