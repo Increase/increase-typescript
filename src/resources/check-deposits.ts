@@ -96,6 +96,12 @@ export interface CheckDeposit {
   deposit_acceptance: CheckDeposit.DepositAcceptance | null;
 
   /**
+   * If the deposit or the return was adjusted by the receiving institution, this
+   * will contain details of the adjustments.
+   */
+  deposit_adjustments: Array<CheckDeposit.DepositAdjustment>;
+
+  /**
    * If your deposit is rejected by Increase, this will contain details as to why it
    * was rejected.
    */
@@ -222,6 +228,39 @@ export namespace CheckDeposit {
     serial_number: string | null;
 
     [k: string]: unknown;
+  }
+
+  export interface DepositAdjustment {
+    /**
+     * The time at which the adjustment was received.
+     */
+    adjusted_at: string;
+
+    /**
+     * The amount of the adjustment.
+     */
+    amount: number;
+
+    /**
+     * The reason for the adjustment.
+     *
+     * - `late_return` - The return was initiated too late and the receiving
+     *   institution has responded with a Late Return Claim.
+     * - `wrong_payee_credit` - The check was deposited to the wrong payee and the
+     *   depositing institution has reimbursed the funds with a Wrong Payee Credit.
+     * - `adjusted_amount` - The check was deposited with a different amount than what
+     *   was written on the check.
+     * - `non_conforming_item` - The recipient was not able to process the check. This
+     *   usually happens for e.g., low quality images.
+     * - `paid` - The check has already been deposited elsewhere and so this is a
+     *   duplicate.
+     */
+    reason: 'late_return' | 'wrong_payee_credit' | 'adjusted_amount' | 'non_conforming_item' | 'paid';
+
+    /**
+     * The id of the transaction for the adjustment.
+     */
+    transaction_id: string;
   }
 
   /**
