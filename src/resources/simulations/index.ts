@@ -9,6 +9,11 @@ export {
 export { AccountStatements, type AccountStatementCreateParams } from './account-statements';
 export { AccountTransfers } from './account-transfers';
 export {
+  CardAuthentications,
+  type CardAuthenticationCreateParams,
+  type CardAuthenticationChallengeAttemptsParams,
+} from './card-authentications';
+export {
   CardAuthorizationExpirations,
   type CardAuthorizationExpirationCreateParams,
 } from './card-authorization-expirations';

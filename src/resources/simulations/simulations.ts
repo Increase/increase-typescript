@@ -12,6 +12,12 @@ import {
   ACHTransferSettleParams,
   ACHTransfers,
 } from './ach-transfers';
+import * as CardAuthenticationsAPI from './card-authentications';
+import {
+  CardAuthenticationChallengeAttemptsParams,
+  CardAuthenticationCreateParams,
+  CardAuthentications,
+} from './card-authentications';
 import * as CardAuthorizationExpirationsAPI from './card-authorization-expirations';
 import {
   CardAuthorizationExpirationCreateParams,
@@ -109,6 +115,8 @@ export class Simulations extends APIResource {
   cardFuelConfirmations: CardFuelConfirmationsAPI.CardFuelConfirmations =
     new CardFuelConfirmationsAPI.CardFuelConfirmations(this._client);
   cardRefunds: CardRefundsAPI.CardRefunds = new CardRefundsAPI.CardRefunds(this._client);
+  cardAuthentications: CardAuthenticationsAPI.CardAuthentications =
+    new CardAuthenticationsAPI.CardAuthentications(this._client);
   cardDisputes: CardDisputesAPI.CardDisputes = new CardDisputesAPI.CardDisputes(this._client);
   physicalCards: PhysicalCardsAPI.PhysicalCards = new PhysicalCardsAPI.PhysicalCards(this._client);
   digitalWalletTokenRequests: DigitalWalletTokenRequestsAPI.DigitalWalletTokenRequests =
@@ -156,6 +164,7 @@ Simulations.CardReversals = CardReversals;
 Simulations.CardIncrements = CardIncrements;
 Simulations.CardFuelConfirmations = CardFuelConfirmations;
 Simulations.CardRefunds = CardRefunds;
+Simulations.CardAuthentications = CardAuthentications;
 Simulations.CardDisputes = CardDisputes;
 Simulations.PhysicalCards = PhysicalCards;
 Simulations.DigitalWalletTokenRequests = DigitalWalletTokenRequests;
@@ -217,6 +226,12 @@ export declare namespace Simulations {
   };
 
   export { CardRefunds as CardRefunds, type CardRefundCreateParams as CardRefundCreateParams };
+
+  export {
+    CardAuthentications as CardAuthentications,
+    type CardAuthenticationCreateParams as CardAuthenticationCreateParams,
+    type CardAuthenticationChallengeAttemptsParams as CardAuthenticationChallengeAttemptsParams,
+  };
 
   export { CardDisputes as CardDisputes, type CardDisputeActionParams as CardDisputeActionParams };
 
