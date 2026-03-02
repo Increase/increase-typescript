@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.442.0 (2026-03-02)
+
+Full Changelog: [v0.441.0...v0.442.0](https://github.com/Increase/increase-typescript/compare/v0.441.0...v0.442.0)
+
+### Features
+
+* **api:** api update ([6f97cdf](https://github.com/Increase/increase-typescript/commit/6f97cdf1bc20e77db9a0f47b7442c4b74aad7def))
+
+
+### Chores
+
+* **internal:** move stringifyQuery implementation to internal function ([b8d1774](https://github.com/Increase/increase-typescript/commit/b8d1774d40dcad926400b4b98a9361ce2573ac25))
+
 ## 0.441.0 (2026-02-24)
 
 Full Changelog: [v0.440.0...v0.441.0](https://github.com/Increase/increase-typescript/compare/v0.440.0...v0.441.0)
