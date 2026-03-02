@@ -134,6 +134,11 @@ export interface FednowTransfer {
   created_by: FednowTransfer.CreatedBy | null;
 
   /**
+   * The creditor's address.
+   */
+  creditor_address: FednowTransfer.CreditorAddress | null;
+
+  /**
    * The name of the transfer's recipient. This is set by the sender when creating
    * the transfer.
    */
@@ -316,6 +321,31 @@ export namespace FednowTransfer {
        */
       email: string;
     }
+  }
+
+  /**
+   * The creditor's address.
+   */
+  export interface CreditorAddress {
+    /**
+     * The city, district, town, or village of the address.
+     */
+    city: string | null;
+
+    /**
+     * The first line of the address.
+     */
+    line1: string | null;
+
+    /**
+     * The ZIP code of the address.
+     */
+    postal_code: string | null;
+
+    /**
+     * The address state.
+     */
+    state: string | null;
   }
 
   /**
