@@ -265,6 +265,48 @@ export namespace CardPayment {
       id: string;
 
       /**
+       * The city of the cardholder billing address associated with the card used for
+       * this purchase.
+       */
+      billing_address_city: string | null;
+
+      /**
+       * The country of the cardholder billing address associated with the card used for
+       * this purchase.
+       */
+      billing_address_country: string | null;
+
+      /**
+       * The first line of the cardholder billing address associated with the card used
+       * for this purchase.
+       */
+      billing_address_line1: string | null;
+
+      /**
+       * The second line of the cardholder billing address associated with the card used
+       * for this purchase.
+       */
+      billing_address_line2: string | null;
+
+      /**
+       * The third line of the cardholder billing address associated with the card used
+       * for this purchase.
+       */
+      billing_address_line3: string | null;
+
+      /**
+       * The postal code of the cardholder billing address associated with the card used
+       * for this purchase.
+       */
+      billing_address_postal_code: string | null;
+
+      /**
+       * The US state of the cardholder billing address associated with the card used for
+       * this purchase.
+       */
+      billing_address_state: string | null;
+
+      /**
        * The identifier of the Card.
        */
       card_id: string;
