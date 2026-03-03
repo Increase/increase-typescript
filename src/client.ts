@@ -181,13 +181,10 @@ import {
   EntitiesPage,
   Entity,
   EntityArchiveBeneficialOwnerParams,
-  EntityConfirmParams,
   EntityCreateBeneficialOwnerParams,
   EntityCreateParams,
   EntityListParams,
-  EntityUpdateAddressParams,
   EntityUpdateBeneficialOwnerAddressParams,
-  EntityUpdateIndustryCodeParams,
   EntityUpdateParams,
 } from './resources/entities';
 import {
@@ -1551,11 +1548,8 @@ export declare namespace Increase {
     type EntityUpdateParams as EntityUpdateParams,
     type EntityListParams as EntityListParams,
     type EntityArchiveBeneficialOwnerParams as EntityArchiveBeneficialOwnerParams,
-    type EntityConfirmParams as EntityConfirmParams,
     type EntityCreateBeneficialOwnerParams as EntityCreateBeneficialOwnerParams,
-    type EntityUpdateAddressParams as EntityUpdateAddressParams,
     type EntityUpdateBeneficialOwnerAddressParams as EntityUpdateBeneficialOwnerAddressParams,
-    type EntityUpdateIndustryCodeParams as EntityUpdateIndustryCodeParams,
   };
 
   export {
