@@ -367,13 +367,8 @@ export namespace CardPayment {
 
       /**
        * The device channel of the card authentication attempt.
-       *
-       * - `app` - The authentication attempt was made from an app.
-       * - `browser` - The authentication attempt was made from a browser.
-       * - `three_ds_requestor_initiated` - The authentication attempt was initiated by
-       *   the 3DS Requestor.
        */
-      device_channel: 'app' | 'browser' | 'three_ds_requestor_initiated' | null;
+      device_channel: CardAuthentication.DeviceChannel;
 
       /**
        * The merchant identifier (commonly abbreviated as MID) of the merchant the card
@@ -503,6 +498,61 @@ export namespace CardPayment {
            * - `failed` - The attempt was unsuccessful.
            */
           outcome: 'successful' | 'failed';
+        }
+      }
+
+      /**
+       * The device channel of the card authentication attempt.
+       */
+      export interface DeviceChannel {
+        /**
+         * Fields specific to the browser device channel.
+         */
+        browser: DeviceChannel.Browser | null;
+
+        /**
+         * The category of the device channel.
+         *
+         * - `app` - The authentication attempt was made from an app.
+         * - `browser` - The authentication attempt was made from a browser.
+         * - `three_ds_requestor_initiated` - The authentication attempt was initiated by
+         *   the 3DS Requestor.
+         */
+        category: 'app' | 'browser' | 'three_ds_requestor_initiated';
+      }
+
+      export namespace DeviceChannel {
+        /**
+         * Fields specific to the browser device channel.
+         */
+        export interface Browser {
+          /**
+           * The accept header from the cardholder's browser.
+           */
+          accept_header: string | null;
+
+          /**
+           * The IP address of the cardholder's browser.
+           */
+          ip_address: string | null;
+
+          /**
+           * Whether JavaScript is enabled in the cardholder's browser.
+           *
+           * - `enabled` - JavaScript is enabled in the cardholder's browser.
+           * - `disabled` - JavaScript is not enabled in the cardholder's browser.
+           */
+          javascript_enabled: 'enabled' | 'disabled' | null;
+
+          /**
+           * The language of the cardholder's browser.
+           */
+          language: string | null;
+
+          /**
+           * The user agent of the cardholder's browser.
+           */
+          user_agent: string | null;
         }
       }
     }
