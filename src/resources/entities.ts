@@ -831,8 +831,9 @@ export namespace Entity {
      * - `middesk` - Middesk. See https://middesk.com for more information.
      * - `oscilar` - Oscilar. See https://oscilar.com for more information.
      * - `persona` - Persona. See https://withpersona.com for more information.
+     * - `taktile` - Taktile. See https://taktile.com for more information.
      */
-    vendor: 'alloy' | 'middesk' | 'oscilar' | 'persona';
+    vendor: 'alloy' | 'middesk' | 'oscilar' | 'persona' | 'taktile';
   }
 
   /**
@@ -2080,8 +2081,9 @@ export namespace EntityCreateParams {
      * - `middesk` - Middesk. See https://middesk.com for more information.
      * - `oscilar` - Oscilar. See https://oscilar.com for more information.
      * - `persona` - Persona. See https://withpersona.com for more information.
+     * - `taktile` - Taktile. See https://taktile.com for more information.
      */
-    vendor: 'alloy' | 'middesk' | 'oscilar' | 'persona';
+    vendor: 'alloy' | 'middesk' | 'oscilar' | 'persona' | 'taktile';
   }
 
   /**
@@ -2853,8 +2855,9 @@ export namespace EntityUpdateParams {
      * - `middesk` - Middesk. See https://middesk.com for more information.
      * - `oscilar` - Oscilar. See https://oscilar.com for more information.
      * - `persona` - Persona. See https://withpersona.com for more information.
+     * - `taktile` - Taktile. See https://taktile.com for more information.
      */
-    vendor: 'alloy' | 'middesk' | 'oscilar' | 'persona';
+    vendor: 'alloy' | 'middesk' | 'oscilar' | 'persona' | 'taktile';
   }
 
   /**
