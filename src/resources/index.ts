@@ -164,11 +164,8 @@ export {
   type EntityUpdateParams,
   type EntityListParams,
   type EntityArchiveBeneficialOwnerParams,
-  type EntityConfirmParams,
   type EntityCreateBeneficialOwnerParams,
-  type EntityUpdateAddressParams,
   type EntityUpdateBeneficialOwnerAddressParams,
-  type EntityUpdateIndustryCodeParams,
   type EntitiesPage,
 } from './entities';
 export {

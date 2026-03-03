@@ -350,17 +350,6 @@ describe('resource entities', () => {
     });
   });
 
-  test('confirm', async () => {
-    const responsePromise = client.entities.confirm('entity_n8y8tnk2p9339ti393yi', {});
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
   test('createBeneficialOwner: only required params', async () => {
     const responsePromise = client.entities.createBeneficialOwner('entity_n8y8tnk2p9339ti393yi', {
       beneficial_owner: {
@@ -430,36 +419,6 @@ describe('resource entities', () => {
     });
   });
 
-  test('updateAddress: only required params', async () => {
-    const responsePromise = client.entities.updateAddress('entity_n8y8tnk2p9339ti393yi', {
-      address: {
-        city: 'New York',
-        line1: '33 Liberty Street',
-        state: 'NY',
-        zip: '10045',
-      },
-    });
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('updateAddress: required and optional params', async () => {
-    const response = await client.entities.updateAddress('entity_n8y8tnk2p9339ti393yi', {
-      address: {
-        city: 'New York',
-        line1: '33 Liberty Street',
-        state: 'NY',
-        zip: '10045',
-        line2: 'Unit 2',
-      },
-    });
-  });
-
   test('updateBeneficialOwnerAddress: only required params', async () => {
     const responsePromise = client.entities.updateBeneficialOwnerAddress('entity_n8y8tnk2p9339ti393yi', {
       address: {
@@ -489,25 +448,6 @@ describe('resource entities', () => {
         zip: '10045',
       },
       beneficial_owner_id: 'entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7',
-    });
-  });
-
-  test('updateIndustryCode: only required params', async () => {
-    const responsePromise = client.entities.updateIndustryCode('entity_n8y8tnk2p9339ti393yi', {
-      industry_code: '5132',
-    });
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('updateIndustryCode: required and optional params', async () => {
-    const response = await client.entities.updateIndustryCode('entity_n8y8tnk2p9339ti393yi', {
-      industry_code: '5132',
     });
   });
 });
