@@ -437,11 +437,8 @@ Methods:
 - <code title="get /entities">client.entities.<a href="./src/resources/entities.ts">list</a>({ ...params }) -> EntitiesPage</code>
 - <code title="post /entities/{entity_id}/archive">client.entities.<a href="./src/resources/entities.ts">archive</a>(entityID) -> Entity</code>
 - <code title="post /entities/{entity_id}/archive_beneficial_owner">client.entities.<a href="./src/resources/entities.ts">archiveBeneficialOwner</a>(entityID, { ...params }) -> Entity</code>
-- <code title="post /entities/{entity_id}/confirm">client.entities.<a href="./src/resources/entities.ts">confirm</a>(entityID, { ...params }) -> Entity</code>
 - <code title="post /entities/{entity_id}/create_beneficial_owner">client.entities.<a href="./src/resources/entities.ts">createBeneficialOwner</a>(entityID, { ...params }) -> Entity</code>
-- <code title="post /entities/{entity_id}/update_address">client.entities.<a href="./src/resources/entities.ts">updateAddress</a>(entityID, { ...params }) -> Entity</code>
 - <code title="post /entities/{entity_id}/update_beneficial_owner_address">client.entities.<a href="./src/resources/entities.ts">updateBeneficialOwnerAddress</a>(entityID, { ...params }) -> Entity</code>
-- <code title="post /entities/{entity_id}/update_industry_code">client.entities.<a href="./src/resources/entities.ts">updateIndustryCode</a>(entityID, { ...params }) -> Entity</code>
 
 # SupplementalDocuments
 

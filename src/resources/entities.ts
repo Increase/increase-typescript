@@ -105,22 +105,6 @@ export class Entities extends APIResource {
   }
 
   /**
-   * Depending on your program, you may be required to re-confirm an Entity's details
-   * on a recurring basis. After making any required updates, call this endpoint to
-   * record that your user confirmed their details.
-   *
-   * @example
-   * ```ts
-   * const entity = await client.entities.confirm(
-   *   'entity_n8y8tnk2p9339ti393yi',
-   * );
-   * ```
-   */
-  confirm(entityID: string, body: EntityConfirmParams, options?: RequestOptions): APIPromise<Entity> {
-    return this._client.post(path`/entities/${entityID}/confirm`, { body, ...options });
-  }
-
-  /**
    * Create a beneficial owner for a corporate Entity
    *
    * @example
@@ -157,32 +141,6 @@ export class Entities extends APIResource {
   }
 
   /**
-   * Update a Natural Person or Corporation's address
-   *
-   * @example
-   * ```ts
-   * const entity = await client.entities.updateAddress(
-   *   'entity_n8y8tnk2p9339ti393yi',
-   *   {
-   *     address: {
-   *       city: 'New York',
-   *       line1: '33 Liberty Street',
-   *       state: 'NY',
-   *       zip: '10045',
-   *     },
-   *   },
-   * );
-   * ```
-   */
-  updateAddress(
-    entityID: string,
-    body: EntityUpdateAddressParams,
-    options?: RequestOptions,
-  ): APIPromise<Entity> {
-    return this._client.post(path`/entities/${entityID}/update_address`, { body, ...options });
-  }
-
-  /**
    * Update the address for a beneficial owner belonging to a corporate Entity
    *
    * @example
@@ -211,25 +169,6 @@ export class Entities extends APIResource {
       body,
       ...options,
     });
-  }
-
-  /**
-   * Update the industry code for a corporate Entity
-   *
-   * @example
-   * ```ts
-   * const entity = await client.entities.updateIndustryCode(
-   *   'entity_n8y8tnk2p9339ti393yi',
-   *   { industry_code: '5132' },
-   * );
-   * ```
-   */
-  updateIndustryCode(
-    entityID: string,
-    body: EntityUpdateIndustryCodeParams,
-    options?: RequestOptions,
-  ): APIPromise<Entity> {
-    return this._client.post(path`/entities/${entityID}/update_industry_code`, { body, ...options });
   }
 }
 
@@ -3029,14 +2968,6 @@ export interface EntityArchiveBeneficialOwnerParams {
   beneficial_owner_id: string;
 }
 
-export interface EntityConfirmParams {
-  /**
-   * When your user confirmed the Entity's details. If not provided, the current time
-   * will be used.
-   */
-  confirmed_at?: string;
-}
-
 export interface EntityCreateBeneficialOwnerParams {
   /**
    * The identifying details of anyone controlling or owning 25% or more of the
@@ -3278,48 +3209,6 @@ export namespace EntityCreateBeneficialOwnerParams {
   }
 }
 
-export interface EntityUpdateAddressParams {
-  /**
-   * The entity's physical address. Mail receiving locations like PO Boxes and PMB's
-   * are disallowed.
-   */
-  address: EntityUpdateAddressParams.Address;
-}
-
-export namespace EntityUpdateAddressParams {
-  /**
-   * The entity's physical address. Mail receiving locations like PO Boxes and PMB's
-   * are disallowed.
-   */
-  export interface Address {
-    /**
-     * The city of the address.
-     */
-    city: string;
-
-    /**
-     * The first line of the address. This is usually the street number and street.
-     */
-    line1: string;
-
-    /**
-     * The two-letter United States Postal Service (USPS) abbreviation for the state of
-     * the address.
-     */
-    state: string;
-
-    /**
-     * The ZIP code of the address.
-     */
-    zip: string;
-
-    /**
-     * The second line of the address. This might be the floor or room number.
-     */
-    line2?: string;
-  }
-}
-
 export interface EntityUpdateBeneficialOwnerAddressParams {
   /**
    * The individual's physical address. Mail receiving locations like PO Boxes and
@@ -3373,16 +3262,6 @@ export namespace EntityUpdateBeneficialOwnerAddressParams {
   }
 }
 
-export interface EntityUpdateIndustryCodeParams {
-  /**
-   * The North American Industry Classification System (NAICS) code for the
-   * corporation's primary line of business. This is a number, like `5132` for
-   * `Software Publishers`. A full list of classification codes is available
-   * [here](https://increase.com/documentation/data-dictionary#north-american-industry-classification-system-codes).
-   */
-  industry_code: string;
-}
-
 export declare namespace Entities {
   export {
     type Entity as Entity,
@@ -3391,10 +3270,7 @@ export declare namespace Entities {
     type EntityUpdateParams as EntityUpdateParams,
     type EntityListParams as EntityListParams,
     type EntityArchiveBeneficialOwnerParams as EntityArchiveBeneficialOwnerParams,
-    type EntityConfirmParams as EntityConfirmParams,
     type EntityCreateBeneficialOwnerParams as EntityCreateBeneficialOwnerParams,
-    type EntityUpdateAddressParams as EntityUpdateAddressParams,
     type EntityUpdateBeneficialOwnerAddressParams as EntityUpdateBeneficialOwnerAddressParams,
-    type EntityUpdateIndustryCodeParams as EntityUpdateIndustryCodeParams,
   };
 }
