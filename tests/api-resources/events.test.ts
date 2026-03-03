@@ -53,13 +53,13 @@ describe('resource events', () => {
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
-  test('unwrap', async () => {
+  test('unwrap', () => {
     const key = 'whsec_c2VjcmV0Cg==';
     const payload =
       '{"id":"event_001dzz0r20rzr4zrhrr1364hy80","associated_object_id":"account_in71c4amph0vgo2qllky","associated_object_type":"account","category":"account.created","created_at":"2020-01-31T23:59:59Z","type":"event"}';
     const msgID = '1';
     const timestamp = new Date();
-    const wh = new Webhook(key);
+    const wh = new Webhook('whsec_c2VjcmV0Cg==');
     const signature = wh.sign(msgID, timestamp, payload);
     const headers: Record<string, string> = {
       'webhook-signature': signature,
@@ -67,19 +67,41 @@ describe('resource events', () => {
       'webhook-timestamp': String(Math.floor(timestamp.getTime() / 1000)),
     };
     client.events.unwrap(payload, { headers, key });
+    client.withOptions({ webhookSecret: key }).events.unwrap(payload, { headers });
+    client.withOptions({ webhookSecret: 'whsec_aaaaaaaaaa==' }).events.unwrap(payload, { headers, key });
     expect(() => {
       const wrongKey = 'whsec_aaaaaaaaaa==';
       client.events.unwrap(payload, { headers, key: wrongKey });
+    }).toThrow('No matching signature found');
+    expect(() => {
+      const wrongKey = 'whsec_aaaaaaaaaa==';
+      client.withOptions({ webhookSecret: wrongKey }).events.unwrap(payload, { headers });
     }).toThrow('No matching signature found');
     expect(() => {
       const badSig = wh.sign(msgID, timestamp, 'some other payload');
       client.events.unwrap(payload, { headers: { ...headers, 'webhook-signature': badSig }, key });
     }).toThrow('No matching signature found');
     expect(() => {
+      const badSig = wh.sign(msgID, timestamp, 'some other payload');
+      client
+        .withOptions({ webhookSecret: key })
+        .events.unwrap(payload, { headers: { ...headers, 'webhook-signature': badSig } });
+    }).toThrow('No matching signature found');
+    expect(() => {
       client.events.unwrap(payload, { headers: { ...headers, 'webhook-timestamp': '5' }, key });
     }).toThrow('Message timestamp too old');
     expect(() => {
+      client
+        .withOptions({ webhookSecret: key })
+        .events.unwrap(payload, { headers: { ...headers, 'webhook-timestamp': '5' } });
+    }).toThrow('Message timestamp too old');
+    expect(() => {
       client.events.unwrap(payload, { headers: { ...headers, 'webhook-id': 'wrong' }, key });
+    }).toThrow('No matching signature found');
+    expect(() => {
+      client
+        .withOptions({ webhookSecret: key })
+        .events.unwrap(payload, { headers: { ...headers, 'webhook-id': 'wrong' } });
     }).toThrow('No matching signature found');
   });
 });
