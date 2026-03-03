@@ -275,6 +275,16 @@ export namespace CardPayment {
       card_payment_id: string;
 
       /**
+       * The email address of the cardholder.
+       */
+      cardholder_email: string | null;
+
+      /**
+       * The name of the cardholder.
+       */
+      cardholder_name: string | null;
+
+      /**
        * The category of the card authentication attempt.
        *
        * - `payment_authentication` - The authentication attempt is for a payment.
