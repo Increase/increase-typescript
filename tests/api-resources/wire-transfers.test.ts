@@ -104,6 +104,7 @@ describe('resource wireTransfers', () => {
           external_account_id: 'external_account_id',
           idempotency_key: 'x',
           limit: 1,
+          status: { in: ['pending_approval'] },
         },
         { path: '/_stainless_unknown_path' },
       ),
