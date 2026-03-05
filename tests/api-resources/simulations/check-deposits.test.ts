@@ -8,6 +8,20 @@ const client = new Increase({
 });
 
 describe('resource checkDeposits', () => {
+  test('adjustment', async () => {
+    const responsePromise = client.simulations.checkDeposits.adjustment(
+      'check_deposit_f06n9gpg7sxn8t19lfc1',
+      {},
+    );
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
   test('reject', async () => {
     const responsePromise = client.simulations.checkDeposits.reject('check_deposit_f06n9gpg7sxn8t19lfc1');
     const rawResponse = await responsePromise.asResponse();
