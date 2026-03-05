@@ -393,6 +393,12 @@ export namespace CardPayment {
       merchant_name: string;
 
       /**
+       * The ID of a prior Card Authentication that the requestor used to authenticate
+       * this cardholder for a previous transaction.
+       */
+      prior_card_authentication_id: string | null;
+
+      /**
        * The purchase amount in minor units.
        */
       purchase_amount: number | null;
