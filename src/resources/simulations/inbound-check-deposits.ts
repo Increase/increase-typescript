@@ -4,6 +4,7 @@ import { APIResource } from '../../core/resource';
 import * as InboundCheckDepositsAPI from '../inbound-check-deposits';
 import { APIPromise } from '../../core/api-promise';
 import { RequestOptions } from '../../internal/request-options';
+import { path } from '../../internal/utils/path';
 
 export class InboundCheckDeposits extends APIResource {
   /**
@@ -30,6 +31,29 @@ export class InboundCheckDeposits extends APIResource {
     options?: RequestOptions,
   ): APIPromise<InboundCheckDepositsAPI.InboundCheckDeposit> {
     return this._client.post('/simulations/inbound_check_deposits', { body, ...options });
+  }
+
+  /**
+   * Simulates an adjustment on an Inbound Check Deposit. The Inbound Check Deposit
+   * must have a `status` of `accepted`.
+   *
+   * @example
+   * ```ts
+   * const inboundCheckDeposit =
+   *   await client.simulations.inboundCheckDeposits.adjustment(
+   *     'inbound_check_deposit_zoshvqybq0cjjm31mra',
+   *   );
+   * ```
+   */
+  adjustment(
+    inboundCheckDepositID: string,
+    body: InboundCheckDepositAdjustmentParams,
+    options?: RequestOptions,
+  ): APIPromise<InboundCheckDepositsAPI.InboundCheckDeposit> {
+    return this._client.post(path`/simulations/inbound_check_deposits/${inboundCheckDepositID}/adjustment`, {
+      body,
+      ...options,
+    });
   }
 }
 
@@ -63,6 +87,33 @@ export interface InboundCheckDepositCreateParams {
   payee_name_analysis?: 'name_matches' | 'does_not_match' | 'not_evaluated';
 }
 
+export interface InboundCheckDepositAdjustmentParams {
+  /**
+   * The adjustment amount in cents. Defaults to the amount of the Inbound Check
+   * Deposit.
+   */
+  amount?: number;
+
+  /**
+   * The reason for the adjustment. Defaults to `wrong_payee_credit`.
+   *
+   * - `late_return` - The return was initiated too late and the receiving
+   *   institution has responded with a Late Return Claim.
+   * - `wrong_payee_credit` - The check was deposited to the wrong payee and the
+   *   depositing institution has reimbursed the funds with a Wrong Payee Credit.
+   * - `adjusted_amount` - The check was deposited with a different amount than what
+   *   was written on the check.
+   * - `non_conforming_item` - The recipient was not able to process the check. This
+   *   usually happens for e.g., low quality images.
+   * - `paid` - The check has already been deposited elsewhere and so this is a
+   *   duplicate.
+   */
+  reason?: 'late_return' | 'wrong_payee_credit' | 'adjusted_amount' | 'non_conforming_item' | 'paid';
+}
+
 export declare namespace InboundCheckDeposits {
-  export { type InboundCheckDepositCreateParams as InboundCheckDepositCreateParams };
+  export {
+    type InboundCheckDepositCreateParams as InboundCheckDepositCreateParams,
+    type InboundCheckDepositAdjustmentParams as InboundCheckDepositAdjustmentParams,
+  };
 }

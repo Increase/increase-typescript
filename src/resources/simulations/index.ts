@@ -43,7 +43,11 @@ export {
 } from './digital-wallet-token-requests';
 export { Exports, type ExportCreateParams } from './exports';
 export { InboundACHTransfers, type InboundACHTransferCreateParams } from './inbound-ach-transfers';
-export { InboundCheckDeposits, type InboundCheckDepositCreateParams } from './inbound-check-deposits';
+export {
+  InboundCheckDeposits,
+  type InboundCheckDepositCreateParams,
+  type InboundCheckDepositAdjustmentParams,
+} from './inbound-check-deposits';
 export { InboundFednowTransfers, type InboundFednowTransferCreateParams } from './inbound-fednow-transfers';
 export { InboundMailItems, type InboundMailItemCreateParams } from './inbound-mail-items';
 export {

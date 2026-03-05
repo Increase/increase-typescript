@@ -60,7 +60,11 @@ import { ExportCreateParams, Exports } from './exports';
 import * as InboundACHTransfersAPI from './inbound-ach-transfers';
 import { InboundACHTransferCreateParams, InboundACHTransfers } from './inbound-ach-transfers';
 import * as InboundCheckDepositsAPI from './inbound-check-deposits';
-import { InboundCheckDepositCreateParams, InboundCheckDeposits } from './inbound-check-deposits';
+import {
+  InboundCheckDepositAdjustmentParams,
+  InboundCheckDepositCreateParams,
+  InboundCheckDeposits,
+} from './inbound-check-deposits';
 import * as InboundFednowTransfersAPI from './inbound-fednow-transfers';
 import { InboundFednowTransferCreateParams, InboundFednowTransfers } from './inbound-fednow-transfers';
 import * as InboundMailItemsAPI from './inbound-mail-items';
@@ -280,6 +284,7 @@ export declare namespace Simulations {
   export {
     InboundCheckDeposits as InboundCheckDeposits,
     type InboundCheckDepositCreateParams as InboundCheckDepositCreateParams,
+    type InboundCheckDepositAdjustmentParams as InboundCheckDepositAdjustmentParams,
   };
 
   export {
