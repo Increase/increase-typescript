@@ -46,7 +46,7 @@ import { CardSettlementCreateParams, CardSettlements } from './card-settlements'
 import * as CardTokensAPI from './card-tokens';
 import { CardTokenCreateParams, CardTokens } from './card-tokens';
 import * as CheckDepositsAPI from './check-deposits';
-import { CheckDepositSubmitParams, CheckDeposits } from './check-deposits';
+import { CheckDepositAdjustmentParams, CheckDepositSubmitParams, CheckDeposits } from './check-deposits';
 import * as CheckTransfersAPI from './check-transfers';
 import { CheckTransfers } from './check-transfers';
 import * as DigitalWalletTokenRequestsAPI from './digital-wallet-token-requests';
@@ -297,7 +297,11 @@ export declare namespace Simulations {
     type InboundFednowTransferCreateParams as InboundFednowTransferCreateParams,
   };
 
-  export { CheckDeposits as CheckDeposits, type CheckDepositSubmitParams as CheckDepositSubmitParams };
+  export {
+    CheckDeposits as CheckDeposits,
+    type CheckDepositAdjustmentParams as CheckDepositAdjustmentParams,
+    type CheckDepositSubmitParams as CheckDepositSubmitParams,
+  };
 
   export {
     InboundMailItems as InboundMailItems,

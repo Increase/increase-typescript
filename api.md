@@ -877,6 +877,7 @@ Methods:
 
 Methods:
 
+- <code title="post /simulations/check_deposits/{check_deposit_id}/adjustment">client.simulations.checkDeposits.<a href="./src/resources/simulations/check-deposits.ts">adjustment</a>(checkDepositID, { ...params }) -> CheckDeposit</code>
 - <code title="post /simulations/check_deposits/{check_deposit_id}/reject">client.simulations.checkDeposits.<a href="./src/resources/simulations/check-deposits.ts">reject</a>(checkDepositID) -> CheckDeposit</code>
 - <code title="post /simulations/check_deposits/{check_deposit_id}/return">client.simulations.checkDeposits.<a href="./src/resources/simulations/check-deposits.ts">return</a>(checkDepositID) -> CheckDeposit</code>
 - <code title="post /simulations/check_deposits/{check_deposit_id}/submit">client.simulations.checkDeposits.<a href="./src/resources/simulations/check-deposits.ts">submit</a>(checkDepositID, { ...params }) -> CheckDeposit</code>
