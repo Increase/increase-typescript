@@ -379,7 +379,7 @@ export namespace Entity {
       /**
        * The identifier of this beneficial owner.
        */
-      beneficial_owner_id: string;
+      id: string;
 
       /**
        * This person's role or title within the entity.
