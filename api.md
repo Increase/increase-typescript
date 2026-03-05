@@ -854,6 +854,7 @@ Methods:
 Methods:
 
 - <code title="post /simulations/inbound_check_deposits">client.simulations.inboundCheckDeposits.<a href="./src/resources/simulations/inbound-check-deposits.ts">create</a>({ ...params }) -> InboundCheckDeposit</code>
+- <code title="post /simulations/inbound_check_deposits/{inbound_check_deposit_id}/adjustment">client.simulations.inboundCheckDeposits.<a href="./src/resources/simulations/inbound-check-deposits.ts">adjustment</a>(inboundCheckDepositID, { ...params }) -> InboundCheckDeposit</code>
 
 ## RealTimePaymentsTransfers
 

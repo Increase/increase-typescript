@@ -31,4 +31,18 @@ describe('resource inboundCheckDeposits', () => {
       payee_name_analysis: 'name_matches',
     });
   });
+
+  test('adjustment', async () => {
+    const responsePromise = client.simulations.inboundCheckDeposits.adjustment(
+      'inbound_check_deposit_zoshvqybq0cjjm31mra',
+      {},
+    );
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
 });
