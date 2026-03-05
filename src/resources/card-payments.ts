@@ -416,6 +416,71 @@ export namespace CardPayment {
       real_time_decision_id: string | null;
 
       /**
+       * The 3DS requestor authentication indicator describes why the authentication
+       * attempt is performed, such as for a recurring transaction.
+       *
+       * - `payment_transaction` - The authentication is for a payment transaction.
+       * - `recurring_transaction` - The authentication is for a recurring transaction.
+       * - `installment_transaction` - The authentication is for an installment
+       *   transaction.
+       * - `add_card` - The authentication is for adding a card.
+       * - `maintain_card` - The authentication is for maintaining a card.
+       * - `emv_token_cardholder_verification` - The authentication is for EMV token
+       *   cardholder verification.
+       * - `billing_agreement` - The authentication is for a billing agreement.
+       */
+      requestor_authentication_indicator:
+        | 'payment_transaction'
+        | 'recurring_transaction'
+        | 'installment_transaction'
+        | 'add_card'
+        | 'maintain_card'
+        | 'emv_token_cardholder_verification'
+        | 'billing_agreement'
+        | null;
+
+      /**
+       * Indicates whether a challenge is requested for this transaction.
+       *
+       * - `no_preference` - No preference.
+       * - `no_challenge_requested` - No challenge requested.
+       * - `challenge_requested_3ds_requestor_preference` - Challenge requested, 3DS
+       *   Requestor preference.
+       * - `challenge_requested_mandate` - Challenge requested, mandate.
+       * - `no_challenge_requested_transactional_risk_analysis_already_performed` - No
+       *   challenge requested, transactional risk analysis already performed.
+       * - `no_challenge_requested_data_share_only` - No challenge requested, data share
+       *   only.
+       * - `no_challenge_requested_strong_consumer_authentication_already_performed` - No
+       *   challenge requested, strong consumer authentication already performed.
+       * - `no_challenge_requested_utilize_whitelist_exemption_if_no_challenge_required` -
+       *   No challenge requested, utilize whitelist exemption if no challenge required.
+       * - `challenge_requested_whitelist_prompt_requested_if_challenge_required` -
+       *   Challenge requested, whitelist prompt requested if challenge required.
+       */
+      requestor_challenge_indicator:
+        | 'no_preference'
+        | 'no_challenge_requested'
+        | 'challenge_requested_3ds_requestor_preference'
+        | 'challenge_requested_mandate'
+        | 'no_challenge_requested_transactional_risk_analysis_already_performed'
+        | 'no_challenge_requested_data_share_only'
+        | 'no_challenge_requested_strong_consumer_authentication_already_performed'
+        | 'no_challenge_requested_utilize_whitelist_exemption_if_no_challenge_required'
+        | 'challenge_requested_whitelist_prompt_requested_if_challenge_required'
+        | null;
+
+      /**
+       * The name of the 3DS requestor.
+       */
+      requestor_name: string;
+
+      /**
+       * The URL of the 3DS requestor.
+       */
+      requestor_url: string;
+
+      /**
        * The status of the card authentication.
        *
        * - `denied` - The authentication attempt was denied.
