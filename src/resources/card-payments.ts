@@ -265,6 +265,12 @@ export namespace CardPayment {
       id: string;
 
       /**
+       * A unique identifier assigned by the Access Control Server (us) for this
+       * transaction.
+       */
+      access_control_server_transaction_id: string;
+
+      /**
        * The city of the cardholder billing address associated with the card used for
        * this purchase.
        */
@@ -369,6 +375,12 @@ export namespace CardPayment {
        * The device channel of the card authentication attempt.
        */
       device_channel: CardAuthentication.DeviceChannel;
+
+      /**
+       * A unique identifier assigned by the Directory Server (the card network) for this
+       * transaction.
+       */
+      directory_server_transaction_id: string;
 
       /**
        * The merchant identifier (commonly abbreviated as MID) of the merchant the card
@@ -481,6 +493,41 @@ export namespace CardPayment {
       requestor_url: string;
 
       /**
+       * The city of the shipping address associated with this purchase.
+       */
+      shipping_address_city: string | null;
+
+      /**
+       * The country of the shipping address associated with this purchase.
+       */
+      shipping_address_country: string | null;
+
+      /**
+       * The first line of the shipping address associated with this purchase.
+       */
+      shipping_address_line1: string | null;
+
+      /**
+       * The second line of the shipping address associated with this purchase.
+       */
+      shipping_address_line2: string | null;
+
+      /**
+       * The third line of the shipping address associated with this purchase.
+       */
+      shipping_address_line3: string | null;
+
+      /**
+       * The postal code of the shipping address associated with this purchase.
+       */
+      shipping_address_postal_code: string | null;
+
+      /**
+       * The US state of the shipping address associated with this purchase.
+       */
+      shipping_address_state: string | null;
+
+      /**
        * The status of the card authentication.
        *
        * - `denied` - The authentication attempt was denied.
@@ -507,6 +554,29 @@ export namespace CardPayment {
         | 'timed_out_awaiting_challenge'
         | 'errored'
         | 'exceeded_attempt_threshold';
+
+      /**
+       * A unique identifier assigned by the 3DS Server initiating the authentication
+       * attempt for this transaction.
+       */
+      three_d_secure_server_transaction_id: string;
+
+      /**
+       * The type of transaction being authenticated.
+       *
+       * - `goods_service_purchase` - Purchase of goods or services.
+       * - `check_acceptance` - Check acceptance.
+       * - `account_funding` - Account funding.
+       * - `quasi_cash_transaction` - Quasi-cash transaction.
+       * - `prepaid_activation_and_load` - Prepaid activation and load.
+       */
+      transaction_type:
+        | 'goods_service_purchase'
+        | 'check_acceptance'
+        | 'account_funding'
+        | 'quasi_cash_transaction'
+        | 'prepaid_activation_and_load'
+        | null;
 
       /**
        * A constant representing the object's type. For this resource it will always be
@@ -590,6 +660,11 @@ export namespace CardPayment {
          *   the 3DS Requestor.
          */
         category: 'app' | 'browser' | 'three_ds_requestor_initiated';
+
+        /**
+         * Fields specific to merchant initiated transactions.
+         */
+        merchant_initiated: DeviceChannel.MerchantInitiated | null;
       }
 
       export namespace DeviceChannel {
@@ -624,6 +699,55 @@ export namespace CardPayment {
            * The user agent of the cardholder's browser.
            */
           user_agent: string | null;
+        }
+
+        /**
+         * Fields specific to merchant initiated transactions.
+         */
+        export interface MerchantInitiated {
+          /**
+           * The merchant initiated indicator for the transaction.
+           *
+           * - `recurring_transaction` - Recurring transaction.
+           * - `installment_transaction` - Installment transaction.
+           * - `add_card` - Add card.
+           * - `maintain_card_information` - Maintain card information.
+           * - `account_verification` - Account verification.
+           * - `split_delayed_shipment` - Split or delayed shipment.
+           * - `top_up` - Top up.
+           * - `mail_order` - Mail order.
+           * - `telephone_order` - Telephone order.
+           * - `whitelist_status_check` - Whitelist status check.
+           * - `other_payment` - Other payment.
+           * - `billing_agreement` - Billing agreement.
+           * - `device_binding_status_check` - Device binding status check.
+           * - `card_security_code_status_check` - Card security code status check.
+           * - `delayed_shipment` - Delayed shipment.
+           * - `split_payment` - Split payment.
+           * - `fido_credential_deletion` - FIDO credential deletion.
+           * - `fido_credential_registration` - FIDO credential registration.
+           * - `decoupled_authentication_fallback` - Decoupled authentication fallback.
+           */
+          indicator:
+            | 'recurring_transaction'
+            | 'installment_transaction'
+            | 'add_card'
+            | 'maintain_card_information'
+            | 'account_verification'
+            | 'split_delayed_shipment'
+            | 'top_up'
+            | 'mail_order'
+            | 'telephone_order'
+            | 'whitelist_status_check'
+            | 'other_payment'
+            | 'billing_agreement'
+            | 'device_binding_status_check'
+            | 'card_security_code_status_check'
+            | 'delayed_shipment'
+            | 'split_payment'
+            | 'fido_credential_deletion'
+            | 'fido_credential_registration'
+            | 'decoupled_authentication_fallback';
         }
       }
     }
