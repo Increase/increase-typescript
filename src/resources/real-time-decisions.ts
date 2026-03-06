@@ -138,14 +138,81 @@ export namespace RealTimeDecision {
    */
   export interface CardAuthentication {
     /**
+     * A unique identifier assigned by the Access Control Server (us) for this
+     * transaction.
+     */
+    access_control_server_transaction_id: string;
+
+    /**
      * The identifier of the Account the card belongs to.
      */
     account_id: string;
 
     /**
-     * The identifier of the Card that is being tokenized.
+     * The city of the cardholder billing address associated with the card used for
+     * this purchase.
+     */
+    billing_address_city: string | null;
+
+    /**
+     * The country of the cardholder billing address associated with the card used for
+     * this purchase.
+     */
+    billing_address_country: string | null;
+
+    /**
+     * The first line of the cardholder billing address associated with the card used
+     * for this purchase.
+     */
+    billing_address_line1: string | null;
+
+    /**
+     * The second line of the cardholder billing address associated with the card used
+     * for this purchase.
+     */
+    billing_address_line2: string | null;
+
+    /**
+     * The third line of the cardholder billing address associated with the card used
+     * for this purchase.
+     */
+    billing_address_line3: string | null;
+
+    /**
+     * The postal code of the cardholder billing address associated with the card used
+     * for this purchase.
+     */
+    billing_address_postal_code: string | null;
+
+    /**
+     * The US state of the cardholder billing address associated with the card used for
+     * this purchase.
+     */
+    billing_address_state: string | null;
+
+    /**
+     * The identifier of the Card.
      */
     card_id: string;
+
+    /**
+     * The email address of the cardholder.
+     */
+    cardholder_email: string | null;
+
+    /**
+     * The name of the cardholder.
+     */
+    cardholder_name: string | null;
+
+    /**
+     * The category of the card authentication attempt.
+     *
+     * - `payment_authentication` - The authentication attempt is for a payment.
+     * - `non_payment_authentication` - The authentication attempt is not for a
+     *   payment.
+     */
+    category: 'payment_authentication' | 'non_payment_authentication' | null;
 
     /**
      * Whether or not the authentication attempt was approved.
@@ -158,10 +225,294 @@ export namespace RealTimeDecision {
     decision: 'approve' | 'challenge' | 'deny' | null;
 
     /**
+     * The device channel of the card authentication attempt.
+     */
+    device_channel: CardAuthentication.DeviceChannel;
+
+    /**
+     * A unique identifier assigned by the Directory Server (the card network) for this
+     * transaction.
+     */
+    directory_server_transaction_id: string;
+
+    /**
+     * The merchant identifier (commonly abbreviated as MID) of the merchant the card
+     * is transacting with.
+     */
+    merchant_acceptor_id: string;
+
+    /**
+     * The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
+     * card is transacting with.
+     */
+    merchant_category_code: string;
+
+    /**
+     * The country the merchant resides in.
+     */
+    merchant_country: string;
+
+    /**
+     * The name of the merchant.
+     */
+    merchant_name: string;
+
+    /**
+     * The ID of a prior Card Authentication that the requestor used to authenticate
+     * this cardholder for a previous transaction.
+     */
+    prior_card_authentication_id: string | null;
+
+    /**
+     * The purchase amount in minor units.
+     */
+    purchase_amount: number | null;
+
+    /**
+     * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+     * authentication attempt's purchase currency.
+     */
+    purchase_currency: string | null;
+
+    /**
+     * The 3DS requestor authentication indicator describes why the authentication
+     * attempt is performed, such as for a recurring transaction.
+     *
+     * - `payment_transaction` - The authentication is for a payment transaction.
+     * - `recurring_transaction` - The authentication is for a recurring transaction.
+     * - `installment_transaction` - The authentication is for an installment
+     *   transaction.
+     * - `add_card` - The authentication is for adding a card.
+     * - `maintain_card` - The authentication is for maintaining a card.
+     * - `emv_token_cardholder_verification` - The authentication is for EMV token
+     *   cardholder verification.
+     * - `billing_agreement` - The authentication is for a billing agreement.
+     */
+    requestor_authentication_indicator:
+      | 'payment_transaction'
+      | 'recurring_transaction'
+      | 'installment_transaction'
+      | 'add_card'
+      | 'maintain_card'
+      | 'emv_token_cardholder_verification'
+      | 'billing_agreement'
+      | null;
+
+    /**
+     * Indicates whether a challenge is requested for this transaction.
+     *
+     * - `no_preference` - No preference.
+     * - `no_challenge_requested` - No challenge requested.
+     * - `challenge_requested_3ds_requestor_preference` - Challenge requested, 3DS
+     *   Requestor preference.
+     * - `challenge_requested_mandate` - Challenge requested, mandate.
+     * - `no_challenge_requested_transactional_risk_analysis_already_performed` - No
+     *   challenge requested, transactional risk analysis already performed.
+     * - `no_challenge_requested_data_share_only` - No challenge requested, data share
+     *   only.
+     * - `no_challenge_requested_strong_consumer_authentication_already_performed` - No
+     *   challenge requested, strong consumer authentication already performed.
+     * - `no_challenge_requested_utilize_whitelist_exemption_if_no_challenge_required` -
+     *   No challenge requested, utilize whitelist exemption if no challenge required.
+     * - `challenge_requested_whitelist_prompt_requested_if_challenge_required` -
+     *   Challenge requested, whitelist prompt requested if challenge required.
+     */
+    requestor_challenge_indicator:
+      | 'no_preference'
+      | 'no_challenge_requested'
+      | 'challenge_requested_3ds_requestor_preference'
+      | 'challenge_requested_mandate'
+      | 'no_challenge_requested_transactional_risk_analysis_already_performed'
+      | 'no_challenge_requested_data_share_only'
+      | 'no_challenge_requested_strong_consumer_authentication_already_performed'
+      | 'no_challenge_requested_utilize_whitelist_exemption_if_no_challenge_required'
+      | 'challenge_requested_whitelist_prompt_requested_if_challenge_required'
+      | null;
+
+    /**
+     * The name of the 3DS requestor.
+     */
+    requestor_name: string;
+
+    /**
+     * The URL of the 3DS requestor.
+     */
+    requestor_url: string;
+
+    /**
+     * The city of the shipping address associated with this purchase.
+     */
+    shipping_address_city: string | null;
+
+    /**
+     * The country of the shipping address associated with this purchase.
+     */
+    shipping_address_country: string | null;
+
+    /**
+     * The first line of the shipping address associated with this purchase.
+     */
+    shipping_address_line1: string | null;
+
+    /**
+     * The second line of the shipping address associated with this purchase.
+     */
+    shipping_address_line2: string | null;
+
+    /**
+     * The third line of the shipping address associated with this purchase.
+     */
+    shipping_address_line3: string | null;
+
+    /**
+     * The postal code of the shipping address associated with this purchase.
+     */
+    shipping_address_postal_code: string | null;
+
+    /**
+     * The US state of the shipping address associated with this purchase.
+     */
+    shipping_address_state: string | null;
+
+    /**
+     * A unique identifier assigned by the 3DS Server initiating the authentication
+     * attempt for this transaction.
+     */
+    three_d_secure_server_transaction_id: string;
+
+    /**
+     * The type of transaction being authenticated.
+     *
+     * - `goods_service_purchase` - Purchase of goods or services.
+     * - `check_acceptance` - Check acceptance.
+     * - `account_funding` - Account funding.
+     * - `quasi_cash_transaction` - Quasi-cash transaction.
+     * - `prepaid_activation_and_load` - Prepaid activation and load.
+     */
+    transaction_type:
+      | 'goods_service_purchase'
+      | 'check_acceptance'
+      | 'account_funding'
+      | 'quasi_cash_transaction'
+      | 'prepaid_activation_and_load'
+      | null;
+
+    /**
      * The identifier of the Card Payment this authentication attempt will belong to.
      * Available in the API once the card authentication has completed.
      */
     upcoming_card_payment_id: string;
+  }
+
+  export namespace CardAuthentication {
+    /**
+     * The device channel of the card authentication attempt.
+     */
+    export interface DeviceChannel {
+      /**
+       * Fields specific to the browser device channel.
+       */
+      browser: DeviceChannel.Browser | null;
+
+      /**
+       * The category of the device channel.
+       *
+       * - `app` - The authentication attempt was made from an app.
+       * - `browser` - The authentication attempt was made from a browser.
+       * - `three_ds_requestor_initiated` - The authentication attempt was initiated by
+       *   the 3DS Requestor.
+       */
+      category: 'app' | 'browser' | 'three_ds_requestor_initiated';
+
+      /**
+       * Fields specific to merchant initiated transactions.
+       */
+      merchant_initiated: DeviceChannel.MerchantInitiated | null;
+    }
+
+    export namespace DeviceChannel {
+      /**
+       * Fields specific to the browser device channel.
+       */
+      export interface Browser {
+        /**
+         * The accept header from the cardholder's browser.
+         */
+        accept_header: string | null;
+
+        /**
+         * The IP address of the cardholder's browser.
+         */
+        ip_address: string | null;
+
+        /**
+         * Whether JavaScript is enabled in the cardholder's browser.
+         *
+         * - `enabled` - JavaScript is enabled in the cardholder's browser.
+         * - `disabled` - JavaScript is not enabled in the cardholder's browser.
+         */
+        javascript_enabled: 'enabled' | 'disabled' | null;
+
+        /**
+         * The language of the cardholder's browser.
+         */
+        language: string | null;
+
+        /**
+         * The user agent of the cardholder's browser.
+         */
+        user_agent: string | null;
+      }
+
+      /**
+       * Fields specific to merchant initiated transactions.
+       */
+      export interface MerchantInitiated {
+        /**
+         * The merchant initiated indicator for the transaction.
+         *
+         * - `recurring_transaction` - Recurring transaction.
+         * - `installment_transaction` - Installment transaction.
+         * - `add_card` - Add card.
+         * - `maintain_card_information` - Maintain card information.
+         * - `account_verification` - Account verification.
+         * - `split_delayed_shipment` - Split or delayed shipment.
+         * - `top_up` - Top up.
+         * - `mail_order` - Mail order.
+         * - `telephone_order` - Telephone order.
+         * - `whitelist_status_check` - Whitelist status check.
+         * - `other_payment` - Other payment.
+         * - `billing_agreement` - Billing agreement.
+         * - `device_binding_status_check` - Device binding status check.
+         * - `card_security_code_status_check` - Card security code status check.
+         * - `delayed_shipment` - Delayed shipment.
+         * - `split_payment` - Split payment.
+         * - `fido_credential_deletion` - FIDO credential deletion.
+         * - `fido_credential_registration` - FIDO credential registration.
+         * - `decoupled_authentication_fallback` - Decoupled authentication fallback.
+         */
+        indicator:
+          | 'recurring_transaction'
+          | 'installment_transaction'
+          | 'add_card'
+          | 'maintain_card_information'
+          | 'account_verification'
+          | 'split_delayed_shipment'
+          | 'top_up'
+          | 'mail_order'
+          | 'telephone_order'
+          | 'whitelist_status_check'
+          | 'other_payment'
+          | 'billing_agreement'
+          | 'device_binding_status_check'
+          | 'card_security_code_status_check'
+          | 'delayed_shipment'
+          | 'split_payment'
+          | 'fido_credential_deletion'
+          | 'fido_credential_registration'
+          | 'decoupled_authentication_fallback';
+      }
+    }
   }
 
   /**
