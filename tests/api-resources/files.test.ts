@@ -10,7 +10,7 @@ const client = new Increase({
 describe('resource files', () => {
   test('create: only required params', async () => {
     const responsePromise = client.files.create({
-      file: await toFile(Buffer.from('# my file contents'), 'README.md'),
+      file: await toFile(Buffer.from('Example data'), 'README.md'),
       purpose: 'check_image_front',
     });
     const rawResponse = await responsePromise.asResponse();
@@ -24,7 +24,7 @@ describe('resource files', () => {
 
   test('create: required and optional params', async () => {
     const response = await client.files.create({
-      file: await toFile(Buffer.from('# my file contents'), 'README.md'),
+      file: await toFile(Buffer.from('Example data'), 'README.md'),
       purpose: 'check_image_front',
       description: 'x',
     });
