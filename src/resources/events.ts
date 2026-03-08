@@ -5,6 +5,7 @@ import { Webhook } from 'standardwebhooks';
 import { APIPromise } from '../core/api-promise';
 import { Page, type PageParams, PagePromise } from '../core/pagination';
 import { RequestOptions } from '../internal/request-options';
+import { toBase64 } from '../internal/utils/base64';
 import { path } from '../internal/utils/path';
 
 export class Events extends APIResource {
@@ -47,7 +48,7 @@ export class Events extends APIResource {
     if (headers !== undefined) {
       const keyStr: string | null = key === undefined ? this._client.webhookSecret : key;
       if (keyStr === null) throw new Error('Webhook key must not be null in order to unwrap');
-      const wh = new Webhook(keyStr);
+      const wh = new Webhook('whsec_' + toBase64(keyStr));
       wh.verify(body, headers);
     }
     return JSON.parse(body) as UnwrapWebhookEvent;
