@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.465.0 (2026-03-08)
+
+Full Changelog: [v0.464.0...v0.465.0](https://github.com/Increase/increase-typescript/compare/v0.464.0...v0.465.0)
+
+### Features
+
+* **api:** api update ([a81c262](https://github.com/Increase/increase-typescript/commit/a81c262822f67816453fb2487b1fcc206d28300f))
+
+
+### Chores
+
+* **mcp-server:** improve instructions ([03c1926](https://github.com/Increase/increase-typescript/commit/03c192628c507b29cdb5cf2a9f1673cf8ed44e9f))
+
 ## 0.464.0 (2026-03-06)
 
 Full Changelog: [v0.463.0...v0.464.0](https://github.com/Increase/increase-typescript/compare/v0.463.0...v0.464.0)
