@@ -239,23 +239,23 @@ export namespace RealTimeDecision {
      * The merchant identifier (commonly abbreviated as MID) of the merchant the card
      * is transacting with.
      */
-    merchant_acceptor_id: string;
+    merchant_acceptor_id: string | null;
 
     /**
      * The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
      * card is transacting with.
      */
-    merchant_category_code: string;
+    merchant_category_code: string | null;
 
     /**
      * The country the merchant resides in.
      */
-    merchant_country: string;
+    merchant_country: string | null;
 
     /**
      * The name of the merchant.
      */
-    merchant_name: string;
+    merchant_name: string | null;
 
     /**
      * The ID of a prior Card Authentication that the requestor used to authenticate
