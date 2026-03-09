@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.468.0 (2026-03-09)
+
+Full Changelog: [v0.467.0...v0.468.0](https://github.com/Increase/increase-typescript/compare/v0.467.0...v0.468.0)
+
+### Features
+
+* **api:** api update ([10f904b](https://github.com/Increase/increase-typescript/commit/10f904bf2f0d328f4a1b2a6364e5cc4081121542))
+
+
+### Chores
+
+* **internal:** update dependencies to address dependabot vulnerabilities ([a49f1fc](https://github.com/Increase/increase-typescript/commit/a49f1fce18013fe24567cddf8414849a14ee2d4f))
+
 ## 0.467.0 (2026-03-09)
 
 Full Changelog: [v0.466.0...v0.467.0](https://github.com/Increase/increase-typescript/compare/v0.466.0...v0.467.0)
