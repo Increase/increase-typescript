@@ -206,15 +206,6 @@ export namespace RealTimeDecision {
     cardholder_name: string | null;
 
     /**
-     * The category of the card authentication attempt.
-     *
-     * - `payment_authentication` - The authentication attempt is for a payment.
-     * - `non_payment_authentication` - The authentication attempt is not for a
-     *   payment.
-     */
-    category: 'payment_authentication' | 'non_payment_authentication' | null;
-
-    /**
      * Whether or not the authentication attempt was approved.
      *
      * - `approve` - Approve the authentication attempt without triggering a challenge.
@@ -258,27 +249,15 @@ export namespace RealTimeDecision {
     merchant_name: string | null;
 
     /**
+     * The message category of the card authentication attempt.
+     */
+    message_category: CardAuthentication.MessageCategory;
+
+    /**
      * The ID of a prior Card Authentication that the requestor used to authenticate
      * this cardholder for a previous transaction.
      */
     prior_authenticated_card_payment_id: string | null;
-
-    /**
-     * The purchase amount in minor units.
-     */
-    purchase_amount: number | null;
-
-    /**
-     * The purchase amount in the cardholder's currency (i.e., USD) estimated using
-     * daily conversion rates from the card network.
-     */
-    purchase_amount_cardholder_estimated: number | null;
-
-    /**
-     * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-     * authentication attempt's purchase currency.
-     */
-    purchase_currency: string | null;
 
     /**
      * The 3DS requestor authentication indicator describes why the authentication
@@ -385,23 +364,6 @@ export namespace RealTimeDecision {
      * attempt for this transaction.
      */
     three_d_secure_server_transaction_id: string;
-
-    /**
-     * The type of transaction being authenticated.
-     *
-     * - `goods_service_purchase` - Purchase of goods or services.
-     * - `check_acceptance` - Check acceptance.
-     * - `account_funding` - Account funding.
-     * - `quasi_cash_transaction` - Quasi-cash transaction.
-     * - `prepaid_activation_and_load` - Prepaid activation and load.
-     */
-    transaction_type:
-      | 'goods_service_purchase'
-      | 'check_acceptance'
-      | 'account_funding'
-      | 'quasi_cash_transaction'
-      | 'prepaid_activation_and_load'
-      | null;
 
     /**
      * The identifier of the Card Payment this authentication attempt will belong to.
@@ -517,6 +479,76 @@ export namespace RealTimeDecision {
           | 'fido_credential_deletion'
           | 'fido_credential_registration'
           | 'decoupled_authentication_fallback';
+      }
+    }
+
+    /**
+     * The message category of the card authentication attempt.
+     */
+    export interface MessageCategory {
+      /**
+       * The category of the card authentication attempt.
+       *
+       * - `payment_authentication` - The authentication attempt is for a payment.
+       * - `non_payment_authentication` - The authentication attempt is not for a
+       *   payment.
+       */
+      category: 'payment_authentication' | 'non_payment_authentication';
+
+      /**
+       * Fields specific to non-payment authentication attempts.
+       */
+      non_payment: MessageCategory.NonPayment | null;
+
+      /**
+       * Fields specific to payment authentication attempts.
+       */
+      payment: MessageCategory.Payment | null;
+    }
+
+    export namespace MessageCategory {
+      /**
+       * Fields specific to non-payment authentication attempts.
+       */
+      export interface NonPayment {}
+
+      /**
+       * Fields specific to payment authentication attempts.
+       */
+      export interface Payment {
+        /**
+         * The purchase amount in minor units.
+         */
+        purchase_amount: number;
+
+        /**
+         * The purchase amount in the cardholder's currency (i.e., USD) estimated using
+         * daily conversion rates from the card network.
+         */
+        purchase_amount_cardholder_estimated: number | null;
+
+        /**
+         * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+         * authentication attempt's purchase currency.
+         */
+        purchase_currency: string;
+
+        /**
+         * The type of transaction being authenticated.
+         *
+         * - `goods_service_purchase` - Purchase of goods or services.
+         * - `check_acceptance` - Check acceptance.
+         * - `account_funding` - Account funding.
+         * - `quasi_cash_transaction` - Quasi-cash transaction.
+         * - `prepaid_activation_and_load` - Prepaid activation and load.
+         */
+        transaction_type:
+          | 'goods_service_purchase'
+          | 'check_acceptance'
+          | 'account_funding'
+          | 'quasi_cash_transaction'
+          | 'prepaid_activation_and_load'
+          | null;
       }
     }
   }
