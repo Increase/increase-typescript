@@ -440,6 +440,17 @@ Methods:
 - <code title="post /entities/{entity_id}/create_beneficial_owner">client.entities.<a href="./src/resources/entities.ts">createBeneficialOwner</a>(entityID, { ...params }) -> Entity</code>
 - <code title="post /entities/{entity_id}/update_beneficial_owner_address">client.entities.<a href="./src/resources/entities.ts">updateBeneficialOwnerAddress</a>(entityID, { ...params }) -> Entity</code>
 
+# BeneficialOwners
+
+Types:
+
+- <code><a href="./src/resources/beneficial-owners.ts">EntityBeneficialOwner</a></code>
+
+Methods:
+
+- <code title="get /entity_beneficial_owners/{entity_beneficial_owner_id}">client.beneficialOwners.<a href="./src/resources/beneficial-owners.ts">retrieve</a>(entityBeneficialOwnerID) -> EntityBeneficialOwner</code>
+- <code title="get /entity_beneficial_owners">client.beneficialOwners.<a href="./src/resources/beneficial-owners.ts">list</a>({ ...params }) -> EntityBeneficialOwnersPage</code>
+
 # SupplementalDocuments
 
 Types:

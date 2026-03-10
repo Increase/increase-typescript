@@ -46,6 +46,12 @@ export {
   type AccountsPage,
 } from './accounts';
 export {
+  BeneficialOwners,
+  type EntityBeneficialOwner,
+  type BeneficialOwnerListParams,
+  type EntityBeneficialOwnersPage,
+} from './beneficial-owners';
+export {
   BookkeepingAccounts,
   type BookkeepingAccount,
   type BookkeepingBalanceLookup,

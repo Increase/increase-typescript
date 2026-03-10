@@ -65,6 +65,12 @@ import {
   ACHTransfersPage,
 } from './resources/ach-transfers';
 import {
+  BeneficialOwnerListParams,
+  BeneficialOwners,
+  EntityBeneficialOwner,
+  EntityBeneficialOwnersPage,
+} from './resources/beneficial-owners';
+import {
   BookkeepingAccount,
   BookkeepingAccountBalanceParams,
   BookkeepingAccountCreateParams,
@@ -1178,6 +1184,7 @@ export class Increase {
   routingNumbers: API.RoutingNumbers = new API.RoutingNumbers(this);
   externalAccounts: API.ExternalAccounts = new API.ExternalAccounts(this);
   entities: API.Entities = new API.Entities(this);
+  beneficialOwners: API.BeneficialOwners = new API.BeneficialOwners(this);
   supplementalDocuments: API.SupplementalDocuments = new API.SupplementalDocuments(this);
   programs: API.Programs = new API.Programs(this);
   accountStatements: API.AccountStatements = new API.AccountStatements(this);
@@ -1237,6 +1244,7 @@ Increase.InboundMailItems = InboundMailItems;
 Increase.RoutingNumbers = RoutingNumbers;
 Increase.ExternalAccounts = ExternalAccounts;
 Increase.Entities = Entities;
+Increase.BeneficialOwners = BeneficialOwners;
 Increase.SupplementalDocuments = SupplementalDocuments;
 Increase.Programs = Programs;
 Increase.AccountStatements = AccountStatements;
@@ -1551,6 +1559,13 @@ export declare namespace Increase {
     type EntityArchiveBeneficialOwnerParams as EntityArchiveBeneficialOwnerParams,
     type EntityCreateBeneficialOwnerParams as EntityCreateBeneficialOwnerParams,
     type EntityUpdateBeneficialOwnerAddressParams as EntityUpdateBeneficialOwnerAddressParams,
+  };
+
+  export {
+    BeneficialOwners as BeneficialOwners,
+    type EntityBeneficialOwner as EntityBeneficialOwner,
+    type EntityBeneficialOwnersPage as EntityBeneficialOwnersPage,
+    type BeneficialOwnerListParams as BeneficialOwnerListParams,
   };
 
   export {
