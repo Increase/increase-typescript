@@ -577,6 +577,11 @@ export namespace CardPayment {
         one_time_code: string;
 
         /**
+         * The identifier of the Real-Time Decision used to deliver this challenge.
+         */
+        real_time_decision_id: string | null;
+
+        /**
          * The method used to verify the Card Authentication Challenge.
          *
          * - `text_message` - The one-time code was sent via text message.
