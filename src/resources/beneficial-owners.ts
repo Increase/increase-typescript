@@ -23,6 +23,28 @@ export class BeneficialOwners extends APIResource {
   }
 
   /**
+   * Update a Beneficial Owner
+   *
+   * @example
+   * ```ts
+   * const entityBeneficialOwner =
+   *   await client.beneficialOwners.update(
+   *     'entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7',
+   *   );
+   * ```
+   */
+  update(
+    entityBeneficialOwnerID: string,
+    body: BeneficialOwnerUpdateParams,
+    options?: RequestOptions,
+  ): APIPromise<EntityBeneficialOwner> {
+    return this._client.patch(path`/entity_beneficial_owners/${entityBeneficialOwnerID}`, {
+      body,
+      ...options,
+    });
+  }
+
+  /**
    * List Beneficial Owners
    *
    * @example
@@ -179,6 +201,53 @@ export namespace EntityBeneficialOwner {
   }
 }
 
+export interface BeneficialOwnerUpdateParams {
+  /**
+   * The individual's physical address. Mail receiving locations like PO Boxes and
+   * PMB's are disallowed.
+   */
+  address?: BeneficialOwnerUpdateParams.Address;
+}
+
+export namespace BeneficialOwnerUpdateParams {
+  /**
+   * The individual's physical address. Mail receiving locations like PO Boxes and
+   * PMB's are disallowed.
+   */
+  export interface Address {
+    /**
+     * The city, district, town, or village of the address.
+     */
+    city: string;
+
+    /**
+     * The two-letter ISO 3166-1 alpha-2 code for the country of the address.
+     */
+    country: string;
+
+    /**
+     * The first line of the address. This is usually the street number and street.
+     */
+    line1: string;
+
+    /**
+     * The second line of the address. This might be the floor or room number.
+     */
+    line2?: string;
+
+    /**
+     * The two-letter United States Postal Service (USPS) abbreviation for the US
+     * state, province, or region of the address. Required in certain countries.
+     */
+    state?: string;
+
+    /**
+     * The ZIP or postal code of the address. Required in certain countries.
+     */
+    zip?: string;
+  }
+}
+
 export interface BeneficialOwnerListParams extends PageParams {
   /**
    * The identifier of the Entity to list beneficial owners for. Only `corporation`
@@ -199,6 +268,7 @@ export declare namespace BeneficialOwners {
   export {
     type EntityBeneficialOwner as EntityBeneficialOwner,
     type EntityBeneficialOwnersPage as EntityBeneficialOwnersPage,
+    type BeneficialOwnerUpdateParams as BeneficialOwnerUpdateParams,
     type BeneficialOwnerListParams as BeneficialOwnerListParams,
   };
 }
