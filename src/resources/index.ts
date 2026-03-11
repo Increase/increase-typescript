@@ -48,6 +48,7 @@ export {
 export {
   BeneficialOwners,
   type EntityBeneficialOwner,
+  type BeneficialOwnerUpdateParams,
   type BeneficialOwnerListParams,
   type EntityBeneficialOwnersPage,
 } from './beneficial-owners';
