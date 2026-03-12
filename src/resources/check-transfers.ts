@@ -465,10 +465,9 @@ export namespace CheckTransfer {
     shipping_method: 'usps_first_class' | 'fedex_overnight' | null;
 
     /**
-     * The text that will appear as the signature on the check in cursive font. If
-     * blank, the check will be printed with 'No signature required'.
+     * The signature that will appear on the check.
      */
-    signature_text: string | null;
+    signature: PhysicalCheck.Signature;
 
     /**
      * Tracking updates relating to the physical check's delivery.
@@ -566,6 +565,21 @@ export namespace CheckTransfer {
        * The state of the check's destination.
        */
       state: string | null;
+    }
+
+    /**
+     * The signature that will appear on the check.
+     */
+    export interface Signature {
+      /**
+       * The ID of a File containing a PNG of the signature.
+       */
+      image_file_id: string | null;
+
+      /**
+       * The text that will appear as the signature on the check in cursive font.
+       */
+      text: string | null;
     }
 
     export interface TrackingUpdate {
@@ -865,10 +879,11 @@ export namespace CheckTransferCreateParams {
     shipping_method?: 'usps_first_class' | 'fedex_overnight';
 
     /**
-     * The text that will appear as the signature on the check in cursive font. If not
-     * provided, the check will be printed with 'No signature required'.
+     * The signature that will appear on the check. If not provided, the check will be
+     * printed with 'No Signature Required'. At most one of `text` and `image_file_id`
+     * may be provided.
      */
-    signature_text?: string;
+    signature?: PhysicalCheck.Signature;
 
     [k: string]: unknown;
   }
@@ -966,6 +981,24 @@ export namespace CheckTransferCreateParams {
        * used in case of delivery issues.
        */
       phone?: string;
+    }
+
+    /**
+     * The signature that will appear on the check. If not provided, the check will be
+     * printed with 'No Signature Required'. At most one of `text` and `image_file_id`
+     * may be provided.
+     */
+    export interface Signature {
+      /**
+       * The ID of a File containing a PNG of the signature. This must have
+       * `purpose: check_signature` and be a 1320x120 pixel PNG.
+       */
+      image_file_id?: string;
+
+      /**
+       * The text that will appear as the signature on the check in cursive font.
+       */
+      text?: string;
     }
   }
 
