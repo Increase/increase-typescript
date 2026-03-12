@@ -43,7 +43,7 @@ export class BeneficialOwners extends APIResource {
    * ```ts
    * const entityBeneficialOwner =
    *   await client.beneficialOwners.retrieve(
-   *     'entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7',
+   *     'entity_beneficial_owner_vozma8szzu1sxezp5zq6',
    *   );
    * ```
    */
@@ -58,7 +58,7 @@ export class BeneficialOwners extends APIResource {
    * ```ts
    * const entityBeneficialOwner =
    *   await client.beneficialOwners.update(
-   *     'entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7',
+   *     'entity_beneficial_owner_vozma8szzu1sxezp5zq6',
    *   );
    * ```
    */
@@ -103,7 +103,7 @@ export class BeneficialOwners extends APIResource {
    * ```ts
    * const entityBeneficialOwner =
    *   await client.beneficialOwners.archive(
-   *     'entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7',
+   *     'entity_beneficial_owner_vozma8szzu1sxezp5zq6',
    *   );
    * ```
    */
