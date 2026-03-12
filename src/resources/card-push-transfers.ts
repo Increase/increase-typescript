@@ -177,6 +177,11 @@ export interface CardPushTransfer {
   cancellation: CardPushTransfer.Cancellation | null;
 
   /**
+   * The ID of the Card Token that was used to validate the card.
+   */
+  card_token_id: string;
+
+  /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
    * the transfer was created.
    */
