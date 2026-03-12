@@ -139,6 +139,11 @@ export interface EntityBeneficialOwner {
   created_at: string;
 
   /**
+   * The identifier of the Entity to which this beneficial owner belongs.
+   */
+  entity_id: string;
+
+  /**
    * The idempotency key you chose for this object. This value is unique across
    * Increase and is used to ensure that a request is only processed once. Learn more
    * about [idempotency](https://increase.com/documentation/idempotency-keys).
