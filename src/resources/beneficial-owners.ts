@@ -220,6 +220,11 @@ export interface BeneficialOwnerUpdateParams {
    * A means of verifying the person's identity.
    */
   identification?: BeneficialOwnerUpdateParams.Identification;
+
+  /**
+   * The individual's legal name.
+   */
+  name?: string;
 }
 
 export namespace BeneficialOwnerUpdateParams {
