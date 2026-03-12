@@ -58,7 +58,7 @@ describe('resource checkTransfers', () => {
           phone: 'x',
         },
         shipping_method: 'usps_first_class',
-        signature_text: 'Ian Crease',
+        signature: { image_file_id: 'image_file_id', text: 'Ian Crease' },
       },
       require_approval: true,
       third_party: { recipient_name: 'x' },
