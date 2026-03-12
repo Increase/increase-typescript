@@ -65,6 +65,7 @@ import {
   ACHTransfersPage,
 } from './resources/ach-transfers';
 import {
+  BeneficialOwnerCreateParams,
   BeneficialOwnerListParams,
   BeneficialOwnerUpdateParams,
   BeneficialOwners,
@@ -1562,6 +1563,7 @@ export declare namespace Increase {
     BeneficialOwners as BeneficialOwners,
     type EntityBeneficialOwner as EntityBeneficialOwner,
     type EntityBeneficialOwnersPage as EntityBeneficialOwnersPage,
+    type BeneficialOwnerCreateParams as BeneficialOwnerCreateParams,
     type BeneficialOwnerUpdateParams as BeneficialOwnerUpdateParams,
     type BeneficialOwnerListParams as BeneficialOwnerListParams,
   };
