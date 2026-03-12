@@ -66,6 +66,21 @@ export class BeneficialOwners extends APIResource {
       ...options,
     });
   }
+
+  /**
+   * Archive a Beneficial Owner
+   *
+   * @example
+   * ```ts
+   * const entityBeneficialOwner =
+   *   await client.beneficialOwners.archive(
+   *     'entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7',
+   *   );
+   * ```
+   */
+  archive(entityBeneficialOwnerID: string, options?: RequestOptions): APIPromise<EntityBeneficialOwner> {
+    return this._client.post(path`/entity_beneficial_owners/${entityBeneficialOwnerID}/archive`, options);
+  }
 }
 
 export type EntityBeneficialOwnersPage = Page<EntityBeneficialOwner>;

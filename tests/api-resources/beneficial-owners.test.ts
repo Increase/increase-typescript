@@ -54,4 +54,17 @@ describe('resource beneficialOwners', () => {
       limit: 1,
     });
   });
+
+  test('archive', async () => {
+    const responsePromise = client.beneficialOwners.archive(
+      'entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7',
+    );
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
 });

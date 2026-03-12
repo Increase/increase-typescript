@@ -451,6 +451,7 @@ Methods:
 - <code title="get /entity_beneficial_owners/{entity_beneficial_owner_id}">client.beneficialOwners.<a href="./src/resources/beneficial-owners.ts">retrieve</a>(entityBeneficialOwnerID) -> EntityBeneficialOwner</code>
 - <code title="patch /entity_beneficial_owners/{entity_beneficial_owner_id}">client.beneficialOwners.<a href="./src/resources/beneficial-owners.ts">update</a>(entityBeneficialOwnerID, { ...params }) -> EntityBeneficialOwner</code>
 - <code title="get /entity_beneficial_owners">client.beneficialOwners.<a href="./src/resources/beneficial-owners.ts">list</a>({ ...params }) -> EntityBeneficialOwnersPage</code>
+- <code title="post /entity_beneficial_owners/{entity_beneficial_owner_id}/archive">client.beneficialOwners.<a href="./src/resources/beneficial-owners.ts">archive</a>(entityBeneficialOwnerID) -> EntityBeneficialOwner</code>
 
 # SupplementalDocuments
 
