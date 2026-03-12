@@ -160,8 +160,6 @@ export interface EntityBeneficialOwner {
    * `entity_beneficial_owner`.
    */
   type: 'entity_beneficial_owner';
-
-  [k: string]: unknown;
 }
 
 export namespace EntityBeneficialOwner {

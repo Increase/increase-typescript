@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../core/resource';
-import * as BeneficialOwnersAPI from './beneficial-owners';
 import * as SupplementalDocumentsAPI from './supplemental-documents';
 import { APIPromise } from '../core/api-promise';
 import { Page, type PageParams, PagePromise } from '../core/pagination';
@@ -220,7 +219,7 @@ export namespace Entity {
      * The identifying details of anyone controlling or owning 25% or more of the
      * corporation.
      */
-    beneficial_owners: Array<BeneficialOwnersAPI.EntityBeneficialOwner>;
+    beneficial_owners: Array<Corporation.BeneficialOwner>;
 
     /**
      * An email address for the business.
@@ -285,6 +284,125 @@ export namespace Entity {
        * The ZIP code of the address.
        */
       zip: string;
+    }
+
+    export interface BeneficialOwner {
+      /**
+       * The identifier of this beneficial owner.
+       */
+      id: string;
+
+      /**
+       * This person's role or title within the entity.
+       */
+      company_title: string | null;
+
+      /**
+       * Personal details for the beneficial owner.
+       */
+      individual: BeneficialOwner.Individual;
+
+      /**
+       * Why this person is considered a beneficial owner of the entity.
+       */
+      prongs: Array<'ownership' | 'control'>;
+
+      [k: string]: unknown;
+    }
+
+    export namespace BeneficialOwner {
+      /**
+       * Personal details for the beneficial owner.
+       */
+      export interface Individual {
+        /**
+         * The person's address.
+         */
+        address: Individual.Address;
+
+        /**
+         * The person's date of birth in YYYY-MM-DD format.
+         */
+        date_of_birth: string;
+
+        /**
+         * A means of verifying the person's identity.
+         */
+        identification: Individual.Identification;
+
+        /**
+         * The person's legal name.
+         */
+        name: string;
+      }
+
+      export namespace Individual {
+        /**
+         * The person's address.
+         */
+        export interface Address {
+          /**
+           * The city, district, town, or village of the address.
+           */
+          city: string | null;
+
+          /**
+           * The two-letter ISO 3166-1 alpha-2 code for the country of the address.
+           */
+          country: string;
+
+          /**
+           * The first line of the address.
+           */
+          line1: string;
+
+          /**
+           * The second line of the address.
+           */
+          line2: string | null;
+
+          /**
+           * The two-letter United States Postal Service (USPS) abbreviation for the US
+           * state, province, or region of the address.
+           */
+          state: string | null;
+
+          /**
+           * The ZIP or postal code of the address.
+           */
+          zip: string | null;
+        }
+
+        /**
+         * A means of verifying the person's identity.
+         */
+        export interface Identification {
+          /**
+           * A method that can be used to verify the individual's identity.
+           *
+           * - `social_security_number` - A social security number.
+           * - `individual_taxpayer_identification_number` - An individual taxpayer
+           *   identification number (ITIN).
+           * - `passport` - A passport number.
+           * - `drivers_license` - A driver's license number.
+           * - `other` - Another identifying document.
+           */
+          method:
+            | 'social_security_number'
+            | 'individual_taxpayer_identification_number'
+            | 'passport'
+            | 'drivers_license'
+            | 'other';
+
+          /**
+           * The last 4 digits of the identification number that can be used to verify the
+           * individual's identity.
+           */
+          number_last4: string;
+
+          [k: string]: unknown;
+        }
+      }
     }
   }
 
