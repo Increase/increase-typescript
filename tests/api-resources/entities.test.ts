@@ -331,25 +331,6 @@ describe('resource entities', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('archiveBeneficialOwner: only required params', async () => {
-    const responsePromise = client.entities.archiveBeneficialOwner('entity_n8y8tnk2p9339ti393yi', {
-      beneficial_owner_id: 'entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7',
-    });
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('archiveBeneficialOwner: required and optional params', async () => {
-    const response = await client.entities.archiveBeneficialOwner('entity_n8y8tnk2p9339ti393yi', {
-      beneficial_owner_id: 'entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7',
-    });
-  });
-
   test('createBeneficialOwner: only required params', async () => {
     const responsePromise = client.entities.createBeneficialOwner('entity_n8y8tnk2p9339ti393yi', {
       beneficial_owner: {
@@ -416,38 +397,6 @@ describe('resource entities', () => {
         prongs: ['control'],
         company_title: 'CEO',
       },
-    });
-  });
-
-  test('updateBeneficialOwnerAddress: only required params', async () => {
-    const responsePromise = client.entities.updateBeneficialOwnerAddress('entity_n8y8tnk2p9339ti393yi', {
-      address: {
-        city: 'New York',
-        country: 'US',
-        line1: '33 Liberty Street',
-      },
-      beneficial_owner_id: 'entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7',
-    });
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('updateBeneficialOwnerAddress: required and optional params', async () => {
-    const response = await client.entities.updateBeneficialOwnerAddress('entity_n8y8tnk2p9339ti393yi', {
-      address: {
-        city: 'New York',
-        country: 'US',
-        line1: '33 Liberty Street',
-        line2: 'Unit 2',
-        state: 'NY',
-        zip: '10045',
-      },
-      beneficial_owner_id: 'entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7',
     });
   });
 });
