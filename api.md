@@ -436,7 +436,6 @@ Methods:
 - <code title="patch /entities/{entity_id}">client.entities.<a href="./src/resources/entities.ts">update</a>(entityID, { ...params }) -> Entity</code>
 - <code title="get /entities">client.entities.<a href="./src/resources/entities.ts">list</a>({ ...params }) -> EntitiesPage</code>
 - <code title="post /entities/{entity_id}/archive">client.entities.<a href="./src/resources/entities.ts">archive</a>(entityID) -> Entity</code>
-- <code title="post /entities/{entity_id}/create_beneficial_owner">client.entities.<a href="./src/resources/entities.ts">createBeneficialOwner</a>(entityID, { ...params }) -> Entity</code>
 
 # BeneficialOwners
 
