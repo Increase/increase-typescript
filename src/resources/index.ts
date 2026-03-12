@@ -170,9 +170,7 @@ export {
   type EntityCreateParams,
   type EntityUpdateParams,
   type EntityListParams,
-  type EntityArchiveBeneficialOwnerParams,
   type EntityCreateBeneficialOwnerParams,
-  type EntityUpdateBeneficialOwnerAddressParams,
   type EntitiesPage,
 } from './entities';
 export {

@@ -84,28 +84,6 @@ export class Entities extends APIResource {
   }
 
   /**
-   * Archive a beneficial owner for a corporate Entity
-   *
-   * @example
-   * ```ts
-   * const entity = await client.entities.archiveBeneficialOwner(
-   *   'entity_n8y8tnk2p9339ti393yi',
-   *   {
-   *     beneficial_owner_id:
-   *       'entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7',
-   *   },
-   * );
-   * ```
-   */
-  archiveBeneficialOwner(
-    entityID: string,
-    body: EntityArchiveBeneficialOwnerParams,
-    options?: RequestOptions,
-  ): APIPromise<Entity> {
-    return this._client.post(path`/entities/${entityID}/archive_beneficial_owner`, { body, ...options });
-  }
-
-  /**
    * Create a beneficial owner for a corporate Entity
    *
    * @example
@@ -139,37 +117,6 @@ export class Entities extends APIResource {
     options?: RequestOptions,
   ): APIPromise<Entity> {
     return this._client.post(path`/entities/${entityID}/create_beneficial_owner`, { body, ...options });
-  }
-
-  /**
-   * Update the address for a beneficial owner belonging to a corporate Entity
-   *
-   * @example
-   * ```ts
-   * const entity =
-   *   await client.entities.updateBeneficialOwnerAddress(
-   *     'entity_n8y8tnk2p9339ti393yi',
-   *     {
-   *       address: {
-   *         city: 'New York',
-   *         country: 'US',
-   *         line1: '33 Liberty Street',
-   *       },
-   *       beneficial_owner_id:
-   *         'entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7',
-   *     },
-   *   );
-   * ```
-   */
-  updateBeneficialOwnerAddress(
-    entityID: string,
-    body: EntityUpdateBeneficialOwnerAddressParams,
-    options?: RequestOptions,
-  ): APIPromise<Entity> {
-    return this._client.post(path`/entities/${entityID}/update_beneficial_owner_address`, {
-      body,
-      ...options,
-    });
   }
 }
 
@@ -2842,14 +2789,6 @@ export namespace EntityListParams {
   }
 }
 
-export interface EntityArchiveBeneficialOwnerParams {
-  /**
-   * The identifying details of anyone controlling or owning 25% or more of the
-   * corporation.
-   */
-  beneficial_owner_id: string;
-}
-
 export interface EntityCreateBeneficialOwnerParams {
   /**
    * The identifying details of anyone controlling or owning 25% or more of the
@@ -3091,59 +3030,6 @@ export namespace EntityCreateBeneficialOwnerParams {
   }
 }
 
-export interface EntityUpdateBeneficialOwnerAddressParams {
-  /**
-   * The individual's physical address. Mail receiving locations like PO Boxes and
-   * PMB's are disallowed.
-   */
-  address: EntityUpdateBeneficialOwnerAddressParams.Address;
-
-  /**
-   * The identifying details of anyone controlling or owning 25% or more of the
-   * corporation.
-   */
-  beneficial_owner_id: string;
-}
-
-export namespace EntityUpdateBeneficialOwnerAddressParams {
-  /**
-   * The individual's physical address. Mail receiving locations like PO Boxes and
-   * PMB's are disallowed.
-   */
-  export interface Address {
-    /**
-     * The city, district, town, or village of the address.
-     */
-    city: string;
-
-    /**
-     * The two-letter ISO 3166-1 alpha-2 code for the country of the address.
-     */
-    country: string;
-
-    /**
-     * The first line of the address. This is usually the street number and street.
-     */
-    line1: string;
-
-    /**
-     * The second line of the address. This might be the floor or room number.
-     */
-    line2?: string;
-
-    /**
-     * The two-letter United States Postal Service (USPS) abbreviation for the US
-     * state, province, or region of the address. Required in certain countries.
-     */
-    state?: string;
-
-    /**
-     * The ZIP or postal code of the address. Required in certain countries.
-     */
-    zip?: string;
-  }
-}
-
 export declare namespace Entities {
   export {
     type Entity as Entity,
@@ -3151,8 +3037,6 @@ export declare namespace Entities {
     type EntityCreateParams as EntityCreateParams,
     type EntityUpdateParams as EntityUpdateParams,
     type EntityListParams as EntityListParams,
-    type EntityArchiveBeneficialOwnerParams as EntityArchiveBeneficialOwnerParams,
     type EntityCreateBeneficialOwnerParams as EntityCreateBeneficialOwnerParams,
-    type EntityUpdateBeneficialOwnerAddressParams as EntityUpdateBeneficialOwnerAddressParams,
   };
 }
