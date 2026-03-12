@@ -76,9 +76,7 @@ describe('resource beneficialOwners', () => {
   });
 
   test('retrieve', async () => {
-    const responsePromise = client.beneficialOwners.retrieve(
-      'entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7',
-    );
+    const responsePromise = client.beneficialOwners.retrieve('entity_beneficial_owner_vozma8szzu1sxezp5zq6');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -90,7 +88,7 @@ describe('resource beneficialOwners', () => {
 
   test('update', async () => {
     const responsePromise = client.beneficialOwners.update(
-      'entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7',
+      'entity_beneficial_owner_vozma8szzu1sxezp5zq6',
       {},
     );
     const rawResponse = await responsePromise.asResponse();
@@ -123,9 +121,7 @@ describe('resource beneficialOwners', () => {
   });
 
   test('archive', async () => {
-    const responsePromise = client.beneficialOwners.archive(
-      'entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7',
-    );
+    const responsePromise = client.beneficialOwners.archive('entity_beneficial_owner_vozma8szzu1sxezp5zq6');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
