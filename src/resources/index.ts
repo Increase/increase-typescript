@@ -171,7 +171,6 @@ export {
   type EntityCreateParams,
   type EntityUpdateParams,
   type EntityListParams,
-  type EntityCreateBeneficialOwnerParams,
   type EntitiesPage,
 } from './entities';
 export {

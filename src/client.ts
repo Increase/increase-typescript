@@ -188,7 +188,6 @@ import {
   Entities,
   EntitiesPage,
   Entity,
-  EntityCreateBeneficialOwnerParams,
   EntityCreateParams,
   EntityListParams,
   EntityUpdateParams,
@@ -1556,7 +1555,6 @@ export declare namespace Increase {
     type EntityCreateParams as EntityCreateParams,
     type EntityUpdateParams as EntityUpdateParams,
     type EntityListParams as EntityListParams,
-    type EntityCreateBeneficialOwnerParams as EntityCreateBeneficialOwnerParams,
   };
 
   export {
