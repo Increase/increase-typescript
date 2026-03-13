@@ -87,7 +87,8 @@ export type EntitiesPage = Page<Entity>;
 
 /**
  * Entities are the legal entities that own accounts. They can be people,
- * corporations, partnerships, government authorities, or trusts.
+ * corporations, partnerships, government authorities, or trusts. To learn more,
+ * see [Entities](/documentation/entities).
  */
 export interface Entity {
   /**
@@ -200,6 +201,11 @@ export interface Entity {
    * `entity`.
    */
   type: 'entity';
+
+  /**
+   * The validation results for the entity.
+   */
+  validation: Entity.Validation | null;
 
   [k: string]: unknown;
 }
@@ -1017,6 +1023,119 @@ export namespace Entity {
           [k: string]: unknown;
         }
       }
+    }
+  }
+
+  /**
+   * The validation results for the entity.
+   */
+  export interface Validation {
+    /**
+     * The list of issues that need to be addressed.
+     */
+    issues: Array<Validation.Issue>;
+
+    /**
+     * The validation status for the entity. If the status is `invalid`, the `issues`
+     * array will be populated.
+     *
+     * - `pending` - The submitted data is being validated.
+     * - `valid` - The submitted data is valid.
+     * - `invalid` - Additional information is required to validate the data.
+     */
+    status: 'pending' | 'valid' | 'invalid';
+  }
+
+  export namespace Validation {
+    export interface Issue {
+      /**
+       * Details when the issue is with a beneficial owner's address.
+       */
+      beneficial_owner_address: Issue.BeneficialOwnerAddress | null;
+
+      /**
+       * Details when the issue is with a beneficial owner's identity verification.
+       */
+      beneficial_owner_identity: Issue.BeneficialOwnerIdentity | null;
+
+      /**
+       * The type of issue. We may add additional possible values for this enum over
+       * time; your application should be able to handle such additions gracefully.
+       *
+       * - `entity_tax_identifier` - The entity's tax identifier could not be validated.
+       *   Update the tax ID with the
+       *   [update an entity API](/documentation/api/entities#update-an-entity.corporation.tax_identifier).
+       * - `entity_address` - The entity's address could not be validated. Update the
+       *   address with the
+       *   [update an entity API](/documentation/api/entities#update-an-entity.corporation.address).
+       * - `beneficial_owner_identity` - A beneficial owner's identity could not be
+       *   verified. Update the identification with the
+       *   [update a beneficial owner API](/documentation/api/beneficial-owners#update-a-beneficial-owner).
+       * - `beneficial_owner_address` - A beneficial owner's address could not be
+       *   validated. Update the address with the
+       *   [update a beneficial owner API](/documentation/api/beneficial-owners#update-a-beneficial-owner).
+       */
+      category:
+        | 'entity_tax_identifier'
+        | 'entity_address'
+        | 'beneficial_owner_identity'
+        | 'beneficial_owner_address';
+
+      /**
+       * Details when the issue is with the entity's address.
+       */
+      entity_address: Issue.EntityAddress | null;
+
+      /**
+       * Details when the issue is with the entity's tax ID.
+       */
+      entity_tax_identifier: Issue.EntityTaxIdentifier | null;
+    }
+
+    export namespace Issue {
+      /**
+       * Details when the issue is with a beneficial owner's address.
+       */
+      export interface BeneficialOwnerAddress {
+        /**
+         * The ID of the beneficial owner.
+         */
+        beneficial_owner_id: string;
+
+        /**
+         * The reason the address is invalid.
+         *
+         * - `mailbox_address` - The address is a mailbox or other non-physical address.
+         */
+        reason: 'mailbox_address';
+      }
+
+      /**
+       * Details when the issue is with a beneficial owner's identity verification.
+       */
+      export interface BeneficialOwnerIdentity {
+        /**
+         * The ID of the beneficial owner.
+         */
+        beneficial_owner_id: string;
+      }
+
+      /**
+       * Details when the issue is with the entity's address.
+       */
+      export interface EntityAddress {
+        /**
+         * The reason the address is invalid.
+         *
+         * - `mailbox_address` - The address is a mailbox or other non-physical address.
+         */
+        reason: 'mailbox_address';
+      }
+
+      /**
+       * Details when the issue is with the entity's tax ID.
+       */
+      export interface EntityTaxIdentifier {}
     }
   }
 }
