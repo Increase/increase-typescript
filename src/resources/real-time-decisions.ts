@@ -141,7 +141,7 @@ export namespace RealTimeDecision {
      * A unique identifier assigned by the Access Control Server (us) for this
      * transaction.
      */
-    access_control_server_transaction_id: string;
+    access_control_server_transaction_identifier: string;
 
     /**
      * The identifier of the Account the card belongs to.
@@ -224,7 +224,7 @@ export namespace RealTimeDecision {
      * A unique identifier assigned by the Directory Server (the card network) for this
      * transaction.
      */
-    directory_server_transaction_id: string;
+    directory_server_transaction_identifier: string;
 
     /**
      * The merchant identifier (commonly abbreviated as MID) of the merchant the card
@@ -363,7 +363,7 @@ export namespace RealTimeDecision {
      * A unique identifier assigned by the 3DS Server initiating the authentication
      * attempt for this transaction.
      */
-    three_d_secure_server_transaction_id: string;
+    three_d_secure_server_transaction_identifier: string;
 
     /**
      * The identifier of the Card Payment this authentication attempt will belong to.
