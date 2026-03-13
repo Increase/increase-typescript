@@ -31,11 +31,6 @@ export class IntrafiBalances extends APIResource {
  */
 export interface IntrafiBalance {
   /**
-   * The identifier of this balance.
-   */
-  id: string;
-
-  /**
    * Each entry represents a balance held at a different bank. IntraFi separates the
    * total balance across many participating banks in the network.
    */
@@ -65,15 +60,12 @@ export interface IntrafiBalance {
    * `intrafi_balance`.
    */
   type: 'intrafi_balance';
+
+  [k: string]: unknown;
 }
 
 export namespace IntrafiBalance {
   export interface Balance {
-    /**
-     * The identifier of this balance.
-     */
-    id: string;
-
     /**
      * The balance, in minor units of `currency`, held with this bank.
      */
@@ -95,6 +87,8 @@ export namespace IntrafiBalance {
      * identify the institution.
      */
     fdic_certificate_number: string;
+
+    [k: string]: unknown;
   }
 
   export namespace Balance {
