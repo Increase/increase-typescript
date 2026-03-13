@@ -268,7 +268,7 @@ export namespace CardPayment {
        * A unique identifier assigned by the Access Control Server (us) for this
        * transaction.
        */
-      access_control_server_transaction_id: string;
+      access_control_server_transaction_identifier: string;
 
       /**
        * The city of the cardholder billing address associated with the card used for
@@ -371,7 +371,7 @@ export namespace CardPayment {
        * A unique identifier assigned by the Directory Server (the card network) for this
        * transaction.
        */
-      directory_server_transaction_id: string;
+      directory_server_transaction_identifier: string;
 
       /**
        * The merchant identifier (commonly abbreviated as MID) of the merchant the card
@@ -544,7 +544,7 @@ export namespace CardPayment {
        * A unique identifier assigned by the 3DS Server initiating the authentication
        * attempt for this transaction.
        */
-      three_d_secure_server_transaction_id: string;
+      three_d_secure_server_transaction_identifier: string;
 
       /**
        * A constant representing the object's type. For this resource it will always be
