@@ -166,6 +166,14 @@ export interface CardValidation {
   merchant_state: string;
 
   /**
+   * The card network route used for the validation.
+   *
+   * - `visa` - Visa and Interlink
+   * - `mastercard` - Mastercard and Maestro
+   */
+  route: 'visa' | 'mastercard';
+
+  /**
    * The lifecycle status of the validation.
    *
    * - `requires_attention` - The validation requires attention from an Increase
