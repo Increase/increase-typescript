@@ -254,6 +254,14 @@ export interface CardPushTransfer {
   recipient_name: string;
 
   /**
+   * The card network route used for the transfer.
+   *
+   * - `visa` - Visa and Interlink
+   * - `mastercard` - Mastercard and Maestro
+   */
+  route: 'visa' | 'mastercard';
+
+  /**
    * The city of the sender.
    */
   sender_address_city: string;
