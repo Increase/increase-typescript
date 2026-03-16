@@ -520,6 +520,8 @@ export namespace CardPushTransfer {
      *   for this cardholder.
      * - `transaction_not_allowed_at_terminal` - The transaction is not allowed at this
      *   terminal.
+     * - `transaction_not_supported_or_blocked_by_issuer` - The transaction is not
+     *   supported or has been blocked by the issuer.
      * - `suspected_fraud` - The transaction has been flagged as suspected fraud and
      *   cannot be processed.
      * - `activity_amount_limit_exceeded` - The amount of activity on the card has
@@ -584,6 +586,7 @@ export namespace CardPushTransfer {
       | 'expired_card'
       | 'transaction_not_permitted_to_cardholder'
       | 'transaction_not_allowed_at_terminal'
+      | 'transaction_not_supported_or_blocked_by_issuer'
       | 'suspected_fraud'
       | 'activity_amount_limit_exceeded'
       | 'restricted_card'
