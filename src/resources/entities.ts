@@ -203,7 +203,8 @@ export interface Entity {
   type: 'entity';
 
   /**
-   * The validation results for the entity.
+   * The validation results for the entity. Learn more about
+   * [validations](/documentation/entity-validation).
    */
   validation: Entity.Validation | null;
 
@@ -1027,7 +1028,8 @@ export namespace Entity {
   }
 
   /**
-   * The validation results for the entity.
+   * The validation results for the entity. Learn more about
+   * [validations](/documentation/entity-validation).
    */
   export interface Validation {
     /**
