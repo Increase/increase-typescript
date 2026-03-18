@@ -422,6 +422,7 @@ export namespace CardValidation {
      * - `transaction_does_not_fulfill_anti_money_laundering_requirement` - The
      *   transaction does not meet the anti-money laundering requirements set by the
      *   issuer.
+     * - `blocked_by_cardholder` - The transaction was blocked by the cardholder.
      * - `blocked_first_use` - The first use of the card has been blocked by the
      *   issuer.
      * - `credit_issuer_unavailable` - The credit issuer is currently unavailable to
@@ -481,6 +482,7 @@ export namespace CardValidation {
       | 'restricted_card'
       | 'security_violation'
       | 'transaction_does_not_fulfill_anti_money_laundering_requirement'
+      | 'blocked_by_cardholder'
       | 'blocked_first_use'
       | 'credit_issuer_unavailable'
       | 'negative_card_verification_value_results'
