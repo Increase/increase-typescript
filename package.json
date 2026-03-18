@@ -1,6 +1,6 @@
 {
   "name": "increase",
-  "version": "0.489.0",
+  "version": "0.490.0",
   "description": "The official TypeScript library for the Increase API",
   "author": "Increase <dev-feedback@increase.com>",
   "types": "dist/index.d.ts",
