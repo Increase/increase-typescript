@@ -10,7 +10,6 @@ const client = new Increase({
 describe('resource fednowTransfers', () => {
   test('create: only required params', async () => {
     const responsePromise = client.fednowTransfers.create({
-      account_id: 'account_in71c4amph0vgo2qllky',
       amount: 100,
       creditor_name: 'Ian Crease',
       debtor_name: 'National Phonograph Company',
@@ -28,7 +27,6 @@ describe('resource fednowTransfers', () => {
 
   test('create: required and optional params', async () => {
     const response = await client.fednowTransfers.create({
-      account_id: 'account_in71c4amph0vgo2qllky',
       amount: 100,
       creditor_name: 'Ian Crease',
       debtor_name: 'National Phonograph Company',
