@@ -58,6 +58,7 @@ describe('resource wireDrawdownRequests', () => {
       },
       debtor_name: 'Ian Crease',
       unstructured_remittance_information: 'Invoice 29582',
+      charge_bearer: 'shared',
       debtor_account_number: '987654321',
       debtor_external_account_id: 'debtor_external_account_id',
       debtor_routing_number: '101050001',

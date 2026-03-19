@@ -189,6 +189,8 @@ export interface WireDrawdownRequest {
    * Remittance information the debtor will see as part of the drawdown request.
    */
   unstructured_remittance_information: string;
+
+  [k: string]: unknown;
 }
 
 export namespace WireDrawdownRequest {
@@ -314,6 +316,17 @@ export interface WireDrawdownRequestCreateParams {
    * Remittance information the debtor will see as part of the request.
    */
   unstructured_remittance_information: string;
+
+  /**
+   * Determines who bears the cost of the drawdown request. Defaults to `shared` if
+   * not specified.
+   *
+   * - `shared` - Charges are shared between the debtor and creditor.
+   * - `debtor` - Charges are borne by the debtor.
+   * - `creditor` - Charges are borne by the creditor.
+   * - `service_level` - Charges are determined by the service level.
+   */
+  charge_bearer?: 'shared' | 'debtor' | 'creditor' | 'service_level';
 
   /**
    * The debtor's account number.
