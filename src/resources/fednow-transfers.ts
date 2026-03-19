@@ -13,7 +13,6 @@ export class FednowTransfers extends APIResource {
    * @example
    * ```ts
    * const fednowTransfer = await client.fednowTransfers.create({
-   *   account_id: 'account_in71c4amph0vgo2qllky',
    *   amount: 100,
    *   creditor_name: 'Ian Crease',
    *   debtor_name: 'National Phonograph Company',
@@ -435,11 +434,6 @@ export namespace FednowTransfer {
 }
 
 export interface FednowTransferCreateParams {
-  /**
-   * The identifier for the account that will send the transfer.
-   */
-  account_id: string;
-
   /**
    * The amount, in minor units, to send to the creditor.
    */
