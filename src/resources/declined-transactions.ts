@@ -1429,11 +1429,6 @@ export namespace DeclinedTransaction {
         | 'real_time_payments_not_enabled';
 
       /**
-       * Additional information included with the transfer.
-       */
-      remittance_information: string | null;
-
-      /**
        * The Real-Time Payments network identification of the declined transfer.
        */
       transaction_identification: string;
@@ -1442,6 +1437,13 @@ export namespace DeclinedTransaction {
        * The identifier of the Real-Time Payments Transfer that led to this Transaction.
        */
       transfer_id: string;
+
+      /**
+       * Additional information included with the transfer.
+       */
+      unstructured_remittance_information: string | null;
+
+      [k: string]: unknown;
     }
 
     /**

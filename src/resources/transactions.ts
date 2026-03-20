@@ -3956,11 +3956,6 @@ export namespace Transaction {
       debtor_routing_number: string;
 
       /**
-       * Additional information included with the transfer.
-       */
-      remittance_information: string | null;
-
-      /**
        * The Real-Time Payments network identification of the transfer.
        */
       transaction_identification: string;
@@ -3969,6 +3964,11 @@ export namespace Transaction {
        * The identifier of the Real-Time Payments Transfer that led to this Transaction.
        */
       transfer_id: string;
+
+      /**
+       * Additional information included with the transfer.
+       */
+      unstructured_remittance_information: string | null;
 
       [k: string]: unknown;
     }
@@ -4294,29 +4294,29 @@ export namespace Transaction {
      */
     export interface RealTimePaymentsTransferAcknowledgement {
       /**
+       * The destination account number.
+       */
+      account_number: string;
+
+      /**
        * The transfer amount in USD cents.
        */
       amount: number;
 
       /**
-       * The destination account number.
-       */
-      destination_account_number: string;
-
-      /**
        * The American Bankers' Association (ABA) Routing Transit Number (RTN).
        */
-      destination_routing_number: string;
-
-      /**
-       * Unstructured information that will show on the recipient's bank statement.
-       */
-      remittance_information: string;
+      routing_number: string;
 
       /**
        * The identifier of the Real-Time Payments Transfer that led to this Transaction.
        */
       transfer_id: string;
+
+      /**
+       * Unstructured information that will show on the recipient's bank statement.
+       */
+      unstructured_remittance_information: string;
 
       [k: string]: unknown;
     }
