@@ -12,8 +12,8 @@ describe('resource realTimePaymentsTransfers', () => {
     const responsePromise = client.realTimePaymentsTransfers.create({
       amount: 100,
       creditor_name: 'Ian Crease',
-      remittance_information: 'Invoice 29582',
       source_account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
+      unstructured_remittance_information: 'Invoice 29582',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -28,13 +28,15 @@ describe('resource realTimePaymentsTransfers', () => {
     const response = await client.realTimePaymentsTransfers.create({
       amount: 100,
       creditor_name: 'Ian Crease',
-      remittance_information: 'Invoice 29582',
       source_account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
+      unstructured_remittance_information: 'Invoice 29582',
+      account_number: '987654321',
       debtor_name: 'x',
-      destination_account_number: '987654321',
-      destination_routing_number: '101050001',
+      destination_account_number: 'x',
+      destination_routing_number: 'xxxxxxxxx',
       external_account_id: 'external_account_id',
       require_approval: true,
+      routing_number: '101050001',
       ultimate_creditor_name: 'x',
       ultimate_debtor_name: 'x',
     });

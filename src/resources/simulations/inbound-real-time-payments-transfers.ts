@@ -59,14 +59,16 @@ export interface InboundRealTimePaymentsTransferCreateParams {
   debtor_routing_number?: string;
 
   /**
-   * Additional information included with the transfer.
-   */
-  remittance_information?: string;
-
-  /**
    * The identifier of a pending Request for Payment that this transfer will fulfill.
    */
   request_for_payment_id?: string;
+
+  /**
+   * Additional information included with the transfer.
+   */
+  unstructured_remittance_information?: string;
+
+  [k: string]: unknown;
 }
 
 export declare namespace InboundRealTimePaymentsTransfers {
