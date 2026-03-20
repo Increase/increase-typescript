@@ -16,9 +16,9 @@ export class RealTimePaymentsTransfers extends APIResource {
    *   await client.realTimePaymentsTransfers.create({
    *     amount: 100,
    *     creditor_name: 'Ian Crease',
-   *     remittance_information: 'Invoice 29582',
    *     source_account_number_id:
    *       'account_number_v18nkfqm6afpsrvy82b2',
+   *     unstructured_remittance_information: 'Invoice 29582',
    *   });
    * ```
    */
@@ -126,6 +126,11 @@ export interface RealTimePaymentsTransfer {
   account_id: string;
 
   /**
+   * The destination account number.
+   */
+  account_number: string;
+
+  /**
    * If the transfer is acknowledged by the recipient bank, this will contain
    * supplemental details.
    */
@@ -180,17 +185,6 @@ export interface RealTimePaymentsTransfer {
   debtor_name: string | null;
 
   /**
-   * The destination account number.
-   */
-  destination_account_number: string;
-
-  /**
-   * The destination American Bankers' Association (ABA) Routing Transit Number
-   * (RTN).
-   */
-  destination_routing_number: string;
-
-  /**
    * The identifier of the External Account the transfer was made to, if any.
    */
   external_account_id: string | null;
@@ -217,9 +211,10 @@ export interface RealTimePaymentsTransfer {
   rejection: RealTimePaymentsTransfer.Rejection | null;
 
   /**
-   * Unstructured information that will show on the recipient's bank statement.
+   * The destination American Bankers' Association (ABA) Routing Transit Number
+   * (RTN).
    */
-  remittance_information: string;
+  routing_number: string;
 
   /**
    * The Account Number the recipient will see as having sent the transfer.
@@ -279,6 +274,11 @@ export interface RealTimePaymentsTransfer {
    * sent on behalf of someone who is not the account holder at Increase.
    */
   ultimate_debtor_name: string | null;
+
+  /**
+   * Unstructured information that will show on the recipient's bank statement.
+   */
+  unstructured_remittance_information: string;
 
   [k: string]: unknown;
 }
@@ -519,14 +519,19 @@ export interface RealTimePaymentsTransferCreateParams {
   creditor_name: string;
 
   /**
-   * Unstructured information that will show on the recipient's bank statement.
-   */
-  remittance_information: string;
-
-  /**
    * The identifier of the Account Number from which to send the transfer.
    */
   source_account_number_id: string;
+
+  /**
+   * Unstructured information that will show on the recipient's bank statement.
+   */
+  unstructured_remittance_information: string;
+
+  /**
+   * The destination account number.
+   */
+  account_number?: string;
 
   /**
    * The name of the transfer's sender. If not provided, defaults to the name of the
@@ -534,21 +539,13 @@ export interface RealTimePaymentsTransferCreateParams {
    */
   debtor_name?: string;
 
-  /**
-   * The destination account number.
-   */
   destination_account_number?: string;
 
-  /**
-   * The destination American Bankers' Association (ABA) Routing Transit Number
-   * (RTN).
-   */
   destination_routing_number?: string;
 
   /**
    * The ID of an External Account to initiate a transfer to. If this parameter is
-   * provided, `destination_account_number` and `destination_routing_number` must be
-   * absent.
+   * provided, `account_number` and `routing_number` must be absent.
    */
   external_account_id?: string;
 
@@ -556,6 +553,12 @@ export interface RealTimePaymentsTransferCreateParams {
    * Whether the transfer requires explicit approval via the dashboard or API.
    */
   require_approval?: boolean;
+
+  /**
+   * The destination American Bankers' Association (ABA) Routing Transit Number
+   * (RTN).
+   */
+  routing_number?: string;
 
   /**
    * The name of the ultimate recipient of the transfer. Set this if the creditor is

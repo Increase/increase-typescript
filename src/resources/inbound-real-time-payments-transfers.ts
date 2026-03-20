@@ -123,11 +123,6 @@ export interface InboundRealTimePaymentsTransfer {
   decline: InboundRealTimePaymentsTransfer.Decline | null;
 
   /**
-   * Additional information included with the transfer.
-   */
-  remittance_information: string | null;
-
-  /**
    * The lifecycle status of the transfer.
    *
    * - `pending_confirming` - The transfer is pending confirmation.
@@ -147,6 +142,13 @@ export interface InboundRealTimePaymentsTransfer {
    * `inbound_real_time_payments_transfer`.
    */
   type: 'inbound_real_time_payments_transfer';
+
+  /**
+   * Additional information included with the transfer.
+   */
+  unstructured_remittance_information: string | null;
+
+  [k: string]: unknown;
 }
 
 export namespace InboundRealTimePaymentsTransfer {
