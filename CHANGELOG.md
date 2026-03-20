@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.495.0 (2026-03-20)
+
+Full Changelog: [v0.494.0...v0.495.0](https://github.com/Increase/increase-typescript/compare/v0.494.0...v0.495.0)
+
+### Features
+
+* **api:** api update ([0edf40b](https://github.com/Increase/increase-typescript/commit/0edf40b55b6e2709eeaa54c9f7ca2e54046e37c0))
+
+
+### Chores
+
+* **tests:** bump steady to v0.19.4 ([5207660](https://github.com/Increase/increase-typescript/commit/52076605526b68cf96f90a6b8fcd5ff581fc652b))
+* **tests:** bump steady to v0.19.5 ([8b17aa3](https://github.com/Increase/increase-typescript/commit/8b17aa3d36c5beea1a73a821335a9be60eabae08))
+
+
+### Refactors
+
+* **tests:** switch from prism to steady ([ac01411](https://github.com/Increase/increase-typescript/commit/ac01411d66dc03ea7839d37f7d66e8de9c96794f))
+
 ## 0.494.0 (2026-03-19)
 
 Full Changelog: [v0.493.0...v0.494.0](https://github.com/Increase/increase-typescript/compare/v0.493.0...v0.494.0)
