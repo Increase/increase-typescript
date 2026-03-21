@@ -222,7 +222,9 @@ export namespace InboundMailItemActionParams {
      * The identifier of the Account to deposit the check into. If not provided, the
      * check will be deposited into the Account associated with the Lockbox.
      */
-    account?: string;
+    account_id?: string;
+
+    [k: string]: unknown;
   }
 }
 

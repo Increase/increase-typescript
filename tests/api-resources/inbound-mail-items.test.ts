@@ -66,8 +66,8 @@ describe('resource inboundMailItems', () => {
   test('action: required and optional params', async () => {
     const response = await client.inboundMailItems.action('inbound_mail_item_q6rrg7mmqpplx80zceev', {
       checks: [
-        { action: 'deposit', account: 'account_in71c4amph0vgo2qllky' },
-        { action: 'ignore', account: 'account' },
+        { action: 'deposit', account_id: 'account_in71c4amph0vgo2qllky' },
+        { action: 'ignore', account_id: 'account_id' },
       ],
     });
   });
