@@ -140,6 +140,11 @@ export namespace CardTokenCapabilities {
     domestic_push_transfers: 'supported' | 'not_supported';
 
     /**
+     * The ISO-3166-1 alpha-2 country code of the card's issuing bank.
+     */
+    issuer_country: string;
+
+    /**
      * The card network route the capabilities apply to.
      *
      * - `visa` - Visa and Interlink
