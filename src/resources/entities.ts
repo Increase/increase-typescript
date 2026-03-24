@@ -1827,7 +1827,7 @@ export namespace EntityCreateParams {
         export interface Passport {
           /**
            * The two-character ISO 3166-1 code representing the country that issued the
-           * passport (e.g., `US`).
+           * document (e.g., `US`).
            */
           country: string;
 
@@ -2030,7 +2030,7 @@ export namespace EntityCreateParams {
       export interface Passport {
         /**
          * The two-character ISO 3166-1 code representing the country that issued the
-         * passport (e.g., `US`).
+         * document (e.g., `US`).
          */
         country: string;
 
@@ -2401,7 +2401,7 @@ export namespace EntityCreateParams {
           export interface Passport {
             /**
              * The two-character ISO 3166-1 code representing the country that issued the
-             * passport (e.g., `US`).
+             * document (e.g., `US`).
              */
             country: string;
 
@@ -2601,7 +2601,7 @@ export namespace EntityCreateParams {
         export interface Passport {
           /**
            * The two-character ISO 3166-1 code representing the country that issued the
-           * passport (e.g., `US`).
+           * document (e.g., `US`).
            */
           country: string;
 
