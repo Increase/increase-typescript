@@ -238,14 +238,8 @@ export namespace InboundCheckDeposit {
      *   institution has responded with a Late Return Claim.
      * - `wrong_payee_credit` - The check was deposited to the wrong payee and the
      *   depositing institution has reimbursed the funds with a Wrong Payee Credit.
-     * - `adjusted_amount` - The check was deposited with a different amount than what
-     *   was written on the check.
-     * - `non_conforming_item` - The recipient was not able to process the check. This
-     *   usually happens for e.g., low quality images.
-     * - `paid` - The check has already been deposited elsewhere and so this is a
-     *   duplicate.
      */
-    reason: 'late_return' | 'wrong_payee_credit' | 'adjusted_amount' | 'non_conforming_item' | 'paid';
+    reason: 'late_return' | 'wrong_payee_credit';
 
     /**
      * The id of the transaction for the adjustment.
