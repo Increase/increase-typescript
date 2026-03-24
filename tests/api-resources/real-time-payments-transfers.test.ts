@@ -32,8 +32,6 @@ describe('resource realTimePaymentsTransfers', () => {
       unstructured_remittance_information: 'Invoice 29582',
       account_number: '987654321',
       debtor_name: 'x',
-      destination_account_number: 'x',
-      destination_routing_number: 'xxxxxxxxx',
       external_account_id: 'external_account_id',
       require_approval: true,
       routing_number: '101050001',

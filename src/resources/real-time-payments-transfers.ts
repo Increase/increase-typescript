@@ -539,10 +539,6 @@ export interface RealTimePaymentsTransferCreateParams {
    */
   debtor_name?: string;
 
-  destination_account_number?: string;
-
-  destination_routing_number?: string;
-
   /**
    * The ID of an External Account to initiate a transfer to. If this parameter is
    * provided, `account_number` and `routing_number` must be absent.
