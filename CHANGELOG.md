@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.498.0 (2026-03-24)
+
+Full Changelog: [v0.497.0...v0.498.0](https://github.com/Increase/increase-typescript/compare/v0.497.0...v0.498.0)
+
+### Features
+
+* **api:** api update ([71464e7](https://github.com/Increase/increase-typescript/commit/71464e7fd7fd5e42ad4fdf0bd3ab0347fdf620fd))
+
+
+### Chores
+
+* **ci:** skip lint on metadata-only changes ([fa19775](https://github.com/Increase/increase-typescript/commit/fa19775a02229b81ff8025ffdf8b3bc1ad05f078))
+* **tests:** bump steady to v0.19.7 ([0c34cd6](https://github.com/Increase/increase-typescript/commit/0c34cd6346347177e7d283d9839362c0c05d5967))
+
 ## 0.497.0 (2026-03-23)
 
 Full Changelog: [v0.496.0...v0.497.0](https://github.com/Increase/increase-typescript/compare/v0.496.0...v0.497.0)
