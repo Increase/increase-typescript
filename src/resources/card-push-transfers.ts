@@ -1152,6 +1152,40 @@ export interface CardPushTransferCreateParams {
   source_account_number_id: string;
 
   /**
+   * The legal business name of the merchant (generally your business) sending the
+   * transfer. Required if the card is issued in Canada.
+   */
+  merchant_legal_business_name?: string;
+
+  /**
+   * The street address of the merchant (generally your business) sending the
+   * transfer. Required if the card is issued in Canada.
+   */
+  merchant_street_address?: string;
+
+  /**
+   * The city of the recipient. Required if the card is issued in Canada.
+   */
+  recipient_address_city?: string;
+
+  /**
+   * The first line of the recipient's address. Required if the card is issued in
+   * Canada.
+   */
+  recipient_address_line1?: string;
+
+  /**
+   * The postal code of the recipient. Required if the card is issued in Canada.
+   */
+  recipient_address_postal_code?: string;
+
+  /**
+   * The state or province of the recipient. Required if the card is issued in
+   * Canada.
+   */
+  recipient_address_state?: string;
+
+  /**
    * Whether the transfer requires explicit approval via the dashboard or API.
    */
   require_approval?: boolean;
