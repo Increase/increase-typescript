@@ -25,10 +25,11 @@ describe('resource entities', () => {
       corporation: {
         address: {
           city: 'New York',
+          country: 'x',
           line1: '33 Liberty Street',
+          line2: 'x',
           state: 'NY',
           zip: '10045',
-          line2: 'x',
         },
         beneficial_owners: [
           {
@@ -99,10 +100,11 @@ describe('resource entities', () => {
           {
             address: {
               city: 'x',
+              country: 'x',
               line1: 'x',
+              line2: 'x',
               state: 'x',
               zip: 'x',
-              line2: 'x',
             },
             date_of_birth: '2019-12-27',
             identification: {
@@ -135,10 +137,11 @@ describe('resource entities', () => {
       natural_person: {
         address: {
           city: 'x',
+          country: 'x',
           line1: 'x',
+          line2: 'x',
           state: 'x',
           zip: 'x',
-          line2: 'x',
         },
         date_of_birth: '2019-12-27',
         identification: {
@@ -192,10 +195,11 @@ describe('resource entities', () => {
             individual: {
               address: {
                 city: 'x',
+                country: 'x',
                 line1: 'x',
+                line2: 'x',
                 state: 'x',
                 zip: 'x',
-                line2: 'x',
               },
               date_of_birth: '2019-12-27',
               identification: {
@@ -230,10 +234,11 @@ describe('resource entities', () => {
         grantor: {
           address: {
             city: 'x',
+            country: 'x',
             line1: 'x',
+            line2: 'x',
             state: 'x',
             zip: 'x',
-            line2: 'x',
           },
           date_of_birth: '2019-12-27',
           identification: {
