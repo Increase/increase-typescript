@@ -246,19 +246,21 @@ export namespace Entity {
     industry_code: string | null;
 
     /**
+     * The legal identifier of the corporation.
+     */
+    legal_identifier: Corporation.LegalIdentifier | null;
+
+    /**
      * The legal name of the corporation.
      */
     name: string;
 
     /**
-     * The Employer Identification Number (EIN) for the corporation.
-     */
-    tax_identifier: string | null;
-
-    /**
      * The website of the corporation.
      */
     website: string | null;
+
+    [k: string]: unknown;
   }
 
   export namespace Corporation {
@@ -410,6 +412,26 @@ export namespace Entity {
           [k: string]: unknown;
         }
       }
+    }
+
+    /**
+     * The legal identifier of the corporation.
+     */
+    export interface LegalIdentifier {
+      /**
+       * The category of the legal identifier.
+       *
+       * - `us_employer_identification_number` - The Employer Identification Number (EIN)
+       *   for the company. The EIN is a 9-digit number assigned by the IRS.
+       * - `other` - A legal identifier issued by a foreign government, like a tax
+       *   identification number or registration number.
+       */
+      category: 'us_employer_identification_number' | 'other';
+
+      /**
+       * The identifier of the legal identifier.
+       */
+      value: string;
     }
   }
 
@@ -1238,14 +1260,15 @@ export namespace EntityCreateParams {
     beneficial_owners: Array<Corporation.BeneficialOwner>;
 
     /**
+     * The legal identifier of the corporation. This is usually the Employer
+     * Identification Number (EIN).
+     */
+    legal_identifier: Corporation.LegalIdentifier;
+
+    /**
      * The legal name of the corporation.
      */
     name: string;
-
-    /**
-     * The Employer Identification Number (EIN) for the corporation.
-     */
-    tax_identifier: string;
 
     /**
      * If the entity is exempt from the requirement to submit beneficial owners,
@@ -1290,6 +1313,8 @@ export namespace EntityCreateParams {
      * The website of the corporation.
      */
     website?: string;
+
+    [k: string]: unknown;
   }
 
   export namespace Corporation {
@@ -1550,6 +1575,28 @@ export namespace EntityCreateParams {
           }
         }
       }
+    }
+
+    /**
+     * The legal identifier of the corporation. This is usually the Employer
+     * Identification Number (EIN).
+     */
+    export interface LegalIdentifier {
+      /**
+       * The legal identifier.
+       */
+      value: string;
+
+      /**
+       * The category of the legal identifier. If not provided, the default is
+       * `us_employer_identification_number`.
+       *
+       * - `us_employer_identification_number` - The Employer Identification Number (EIN)
+       *   for the company. The EIN is a 9-digit number assigned by the IRS.
+       * - `other` - A legal identifier issued by a foreign government, like a tax
+       *   identification number or registration number.
+       */
+      category?: 'us_employer_identification_number' | 'other';
     }
   }
 
