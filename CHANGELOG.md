@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.504.0 (2026-03-27)
+
+Full Changelog: [v0.503.0...v0.504.0](https://github.com/Increase/increase-typescript/compare/v0.503.0...v0.504.0)
+
+### Features
+
+* **api:** api update ([5037d97](https://github.com/Increase/increase-typescript/commit/5037d97f0ebb7c9797fc31989ede4dc8066337af))
+
+
+### Chores
+
+* **internal:** update multipart form array serialization ([73130be](https://github.com/Increase/increase-typescript/commit/73130be66c51017b50d0cdd233dc5dc95ffb9bbc))
+
 ## 0.503.0 (2026-03-25)
 
 Full Changelog: [v0.502.0...v0.503.0](https://github.com/Increase/increase-typescript/compare/v0.502.0...v0.503.0)
