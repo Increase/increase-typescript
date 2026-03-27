@@ -1123,7 +1123,7 @@ export namespace Entity {
        *
        * - `entity_tax_identifier` - The entity's tax identifier could not be validated.
        *   Update the tax ID with the
-       *   [update an entity API](/documentation/api/entities#update-an-entity.corporation.tax_identifier).
+       *   [update an entity API](/documentation/api/entities#update-an-entity.corporation.legal_identifier).
        * - `entity_address` - The entity's address could not be validated. Update the
        *   address with the
        *   [update an entity API](/documentation/api/entities#update-an-entity.corporation.address).
@@ -2806,14 +2806,17 @@ export namespace EntityUpdateParams {
     industry_code?: string;
 
     /**
+     * The legal identifier of the corporation. This is usually the Employer
+     * Identification Number (EIN).
+     */
+    legal_identifier?: Corporation.LegalIdentifier;
+
+    /**
      * The legal name of the corporation.
      */
     name?: string;
 
-    /**
-     * The Employer Identification Number (EIN) for the corporation.
-     */
-    tax_identifier?: string;
+    [k: string]: unknown;
   }
 
   export namespace Corporation {
@@ -2852,6 +2855,27 @@ export namespace EntityUpdateParams {
        * The ZIP or postal code of the address. Required in certain countries.
        */
       zip?: string;
+    }
+
+    /**
+     * The legal identifier of the corporation. This is usually the Employer
+     * Identification Number (EIN).
+     */
+    export interface LegalIdentifier {
+      /**
+       * The identifier of the legal identifier.
+       */
+      value: string;
+
+      /**
+       * The category of the legal identifier.
+       *
+       * - `us_employer_identification_number` - The Employer Identification Number (EIN)
+       *   for the company. The EIN is a 9-digit number assigned by the IRS.
+       * - `other` - A legal identifier issued by a foreign government, like a tax
+       *   identification number or registration number.
+       */
+      category?: 'us_employer_identification_number' | 'other';
     }
   }
 
