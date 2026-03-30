@@ -93,8 +93,6 @@ export interface CardPayment {
    * `card_payment`.
    */
   type: 'card_payment';
-
-  [k: string]: unknown;
 }
 
 export namespace CardPayment {
