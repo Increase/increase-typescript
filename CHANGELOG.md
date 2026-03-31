@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.509.1 (2026-03-31)
+
+Full Changelog: [v0.509.0...v0.509.1](https://github.com/Increase/increase-typescript/compare/v0.509.0...v0.509.1)
+
+### Bug Fixes
+
+* **internal:** gitignore generated `oidc` dir ([4f75370](https://github.com/Increase/increase-typescript/commit/4f75370eabe55f70d8c28d015f02900ded90e9eb))
+
 ## 0.509.0 (2026-03-31)
 
 Full Changelog: [v0.508.0...v0.509.0](https://github.com/Increase/increase-typescript/compare/v0.508.0...v0.509.0)
