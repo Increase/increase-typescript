@@ -266,11 +266,11 @@ export namespace DeclinedTransaction {
        * - `group_locked` - Your account is inactive.
        * - `transaction_not_allowed` - The transaction is not allowed per Increase's
        *   terms.
-       * - `user_initiated` - Your integration declined this transfer via the API.
-       * - `insufficient_funds` - Your account contains insufficient funds.
        * - `returned_per_odfi_request` - The originating financial institution asked for
        *   this transfer to be returned. The receiving bank is complying with the
        *   request.
+       * - `user_initiated` - Your integration declined this transfer via the API.
+       * - `insufficient_funds` - Your account contains insufficient funds.
        * - `authorization_revoked_by_customer` - The customer no longer authorizes this
        *   transaction.
        * - `payment_stopped` - The customer asked for the payment to be stopped.
@@ -292,9 +292,9 @@ export namespace DeclinedTransaction {
         | 'entity_not_active'
         | 'group_locked'
         | 'transaction_not_allowed'
+        | 'returned_per_odfi_request'
         | 'user_initiated'
         | 'insufficient_funds'
-        | 'returned_per_odfi_request'
         | 'authorization_revoked_by_customer'
         | 'payment_stopped'
         | 'customer_advised_unauthorized_improper_ineligible_or_incomplete'
