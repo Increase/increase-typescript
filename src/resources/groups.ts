@@ -31,22 +31,6 @@ export interface Group {
   id: string;
 
   /**
-   * If the Group is allowed to create ACH debits.
-   *
-   * - `disabled` - The Group cannot make ACH debits.
-   * - `enabled` - The Group can make ACH debits.
-   */
-  ach_debit_status: 'disabled' | 'enabled';
-
-  /**
-   * If the Group is activated or not.
-   *
-   * - `unactivated` - The Group is not activated.
-   * - `activated` - The Group is activated.
-   */
-  activation_status: 'unactivated' | 'activated';
-
-  /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Group
    * was created.
    */
@@ -57,6 +41,8 @@ export interface Group {
    * `group`.
    */
   type: 'group';
+
+  [k: string]: unknown;
 }
 
 export declare namespace Groups {
