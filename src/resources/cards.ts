@@ -139,6 +139,11 @@ export interface Card {
   account_id: string;
 
   /**
+   * Controls that restrict how this card can be used.
+   */
+  authorization_controls: Card.AuthorizationControls | null;
+
+  /**
    * The Card's billing address.
    */
   billing_address: Card.BillingAddress;
@@ -207,6 +212,185 @@ export interface Card {
 }
 
 export namespace Card {
+  /**
+   * Controls that restrict how this card can be used.
+   */
+  export interface AuthorizationControls {
+    /**
+     * Limits the number of authorizations that can be approved on this card.
+     */
+    maximum_authorization_count: AuthorizationControls.MaximumAuthorizationCount | null;
+
+    /**
+     * Restricts which Merchant Acceptor IDs are allowed or blocked for authorizations
+     * on this card.
+     */
+    merchant_acceptor_identifier: AuthorizationControls.MerchantAcceptorIdentifier | null;
+
+    /**
+     * Restricts which Merchant Category Codes are allowed or blocked for
+     * authorizations on this card.
+     */
+    merchant_category_code: AuthorizationControls.MerchantCategoryCode | null;
+
+    /**
+     * Restricts which merchant countries are allowed or blocked for authorizations on
+     * this card.
+     */
+    merchant_country: AuthorizationControls.MerchantCountry | null;
+
+    /**
+     * Spending limits for this card. The most restrictive limit is applied if multiple
+     * limits match.
+     */
+    spending_limits: Array<AuthorizationControls.SpendingLimit> | null;
+  }
+
+  export namespace AuthorizationControls {
+    /**
+     * Limits the number of authorizations that can be approved on this card.
+     */
+    export interface MaximumAuthorizationCount {
+      /**
+       * The maximum number of authorizations that can be approved on this card over its
+       * lifetime.
+       */
+      all_time: number | null;
+    }
+
+    /**
+     * Restricts which Merchant Acceptor IDs are allowed or blocked for authorizations
+     * on this card.
+     */
+    export interface MerchantAcceptorIdentifier {
+      /**
+       * The Merchant Acceptor IDs that are allowed for authorizations on this card.
+       */
+      allowed: Array<MerchantAcceptorIdentifier.Allowed> | null;
+
+      /**
+       * The Merchant Acceptor IDs that are blocked for authorizations on this card.
+       */
+      blocked: Array<MerchantAcceptorIdentifier.Blocked> | null;
+    }
+
+    export namespace MerchantAcceptorIdentifier {
+      export interface Allowed {
+        /**
+         * The Merchant Acceptor ID.
+         */
+        identifier: string;
+      }
+
+      export interface Blocked {
+        /**
+         * The Merchant Acceptor ID.
+         */
+        identifier: string;
+      }
+    }
+
+    /**
+     * Restricts which Merchant Category Codes are allowed or blocked for
+     * authorizations on this card.
+     */
+    export interface MerchantCategoryCode {
+      /**
+       * The Merchant Category Codes that are allowed for authorizations on this card.
+       */
+      allowed: Array<MerchantCategoryCode.Allowed> | null;
+
+      /**
+       * The Merchant Category Codes that are blocked for authorizations on this card.
+       */
+      blocked: Array<MerchantCategoryCode.Blocked> | null;
+    }
+
+    export namespace MerchantCategoryCode {
+      export interface Allowed {
+        /**
+         * The Merchant Category Code (MCC).
+         */
+        code: string;
+      }
+
+      export interface Blocked {
+        /**
+         * The Merchant Category Code (MCC).
+         */
+        code: string;
+      }
+    }
+
+    /**
+     * Restricts which merchant countries are allowed or blocked for authorizations on
+     * this card.
+     */
+    export interface MerchantCountry {
+      /**
+       * The merchant countries that are allowed for authorizations on this card.
+       */
+      allowed: Array<MerchantCountry.Allowed> | null;
+
+      /**
+       * The merchant countries that are blocked for authorizations on this card.
+       */
+      blocked: Array<MerchantCountry.Blocked> | null;
+    }
+
+    export namespace MerchantCountry {
+      export interface Allowed {
+        /**
+         * The ISO 3166-1 alpha-2 country code.
+         */
+        country: string;
+      }
+
+      export interface Blocked {
+        /**
+         * The ISO 3166-1 alpha-2 country code.
+         */
+        country: string;
+      }
+    }
+
+    export interface SpendingLimit {
+      /**
+       * The interval at which the spending limit is enforced.
+       *
+       * - `all_time` - The spending limit applies over the lifetime of the card.
+       * - `per_transaction` - The spending limit applies per transaction.
+       * - `per_day` - The spending limit applies per day. Resets nightly at midnight
+       *   UTC.
+       * - `per_week` - The spending limit applies per week. Resets weekly on Mondays at
+       *   midnight UTC.
+       * - `per_month` - The spending limit applies per month. Resets on the first of the
+       *   month, midnight UTC.
+       */
+      interval: 'all_time' | 'per_transaction' | 'per_day' | 'per_week' | 'per_month';
+
+      /**
+       * The Merchant Category Codes (MCCs) this spending limit applies to. If not set,
+       * the limit applies to all transactions.
+       */
+      merchant_category_codes: Array<SpendingLimit.MerchantCategoryCode> | null;
+
+      /**
+       * The maximum settlement amount permitted in the given interval.
+       */
+      settlement_amount: number;
+    }
+
+    export namespace SpendingLimit {
+      export interface MerchantCategoryCode {
+        /**
+         * The Merchant Category Code (MCC).
+         */
+        code: string;
+      }
+    }
+  }
+
   /**
    * The Card's billing address.
    */
@@ -338,6 +522,11 @@ export interface CardCreateParams {
   account_id: string;
 
   /**
+   * Controls that restrict how this card can be used.
+   */
+  authorization_controls?: CardCreateParams.AuthorizationControls;
+
+  /**
    * The card's billing address.
    */
   billing_address?: CardCreateParams.BillingAddress;
@@ -366,6 +555,191 @@ export interface CardCreateParams {
 }
 
 export namespace CardCreateParams {
+  /**
+   * Controls that restrict how this card can be used.
+   */
+  export interface AuthorizationControls {
+    /**
+     * Limits the number of authorizations that can be approved on this card.
+     */
+    maximum_authorization_count?: AuthorizationControls.MaximumAuthorizationCount;
+
+    /**
+     * Restricts which Merchant Acceptor IDs are allowed or blocked for authorizations
+     * on this card.
+     */
+    merchant_acceptor_identifier?: AuthorizationControls.MerchantAcceptorIdentifier;
+
+    /**
+     * Restricts which Merchant Category Codes are allowed or blocked for
+     * authorizations on this card.
+     */
+    merchant_category_code?: AuthorizationControls.MerchantCategoryCode;
+
+    /**
+     * Restricts which merchant countries are allowed or blocked for authorizations on
+     * this card.
+     */
+    merchant_country?: AuthorizationControls.MerchantCountry;
+
+    /**
+     * Spending limits for this card. The most restrictive limit is applied if multiple
+     * limits match.
+     */
+    spending_limits?: Array<AuthorizationControls.SpendingLimit>;
+  }
+
+  export namespace AuthorizationControls {
+    /**
+     * Limits the number of authorizations that can be approved on this card.
+     */
+    export interface MaximumAuthorizationCount {
+      /**
+       * The maximum number of authorizations that can be approved on this card over its
+       * lifetime.
+       */
+      all_time: number;
+    }
+
+    /**
+     * Restricts which Merchant Acceptor IDs are allowed or blocked for authorizations
+     * on this card.
+     */
+    export interface MerchantAcceptorIdentifier {
+      /**
+       * The Merchant Acceptor IDs that are allowed for authorizations on this card.
+       * Authorizations with Merchant Acceptor IDs not in this list will be declined.
+       */
+      allowed?: Array<MerchantAcceptorIdentifier.Allowed>;
+
+      /**
+       * The Merchant Acceptor IDs that are blocked for authorizations on this card.
+       * Authorizations with Merchant Acceptor IDs in this list will be declined.
+       */
+      blocked?: Array<MerchantAcceptorIdentifier.Blocked>;
+    }
+
+    export namespace MerchantAcceptorIdentifier {
+      export interface Allowed {
+        /**
+         * The Merchant Acceptor ID.
+         */
+        identifier: string;
+      }
+
+      export interface Blocked {
+        /**
+         * The Merchant Acceptor ID.
+         */
+        identifier: string;
+      }
+    }
+
+    /**
+     * Restricts which Merchant Category Codes are allowed or blocked for
+     * authorizations on this card.
+     */
+    export interface MerchantCategoryCode {
+      /**
+       * The Merchant Category Codes that are allowed for authorizations on this card.
+       * Authorizations with Merchant Category Codes not in this list will be declined.
+       */
+      allowed?: Array<MerchantCategoryCode.Allowed>;
+
+      /**
+       * The Merchant Category Codes that are blocked for authorizations on this card.
+       * Authorizations with Merchant Category Codes in this list will be declined.
+       */
+      blocked?: Array<MerchantCategoryCode.Blocked>;
+    }
+
+    export namespace MerchantCategoryCode {
+      export interface Allowed {
+        /**
+         * The Merchant Category Code.
+         */
+        code: string;
+      }
+
+      export interface Blocked {
+        /**
+         * The Merchant Category Code.
+         */
+        code: string;
+      }
+    }
+
+    /**
+     * Restricts which merchant countries are allowed or blocked for authorizations on
+     * this card.
+     */
+    export interface MerchantCountry {
+      /**
+       * The merchant countries that are allowed for authorizations on this card.
+       * Authorizations with merchant countries not in this list will be declined.
+       */
+      allowed?: Array<MerchantCountry.Allowed>;
+
+      /**
+       * The merchant countries that are blocked for authorizations on this card.
+       * Authorizations with merchant countries in this list will be declined.
+       */
+      blocked?: Array<MerchantCountry.Blocked>;
+    }
+
+    export namespace MerchantCountry {
+      export interface Allowed {
+        /**
+         * The ISO 3166-1 alpha-2 country code.
+         */
+        country: string;
+      }
+
+      export interface Blocked {
+        /**
+         * The ISO 3166-1 alpha-2 country code.
+         */
+        country: string;
+      }
+    }
+
+    export interface SpendingLimit {
+      /**
+       * The interval at which the spending limit is enforced.
+       *
+       * - `all_time` - The spending limit applies over the lifetime of the card.
+       * - `per_transaction` - The spending limit applies per transaction.
+       * - `per_day` - The spending limit applies per day. Resets nightly at midnight
+       *   UTC.
+       * - `per_week` - The spending limit applies per week. Resets weekly on Mondays at
+       *   midnight UTC.
+       * - `per_month` - The spending limit applies per month. Resets on the first of the
+       *   month, midnight UTC.
+       */
+      interval: 'all_time' | 'per_transaction' | 'per_day' | 'per_week' | 'per_month';
+
+      /**
+       * The maximum settlement amount permitted in the given interval.
+       */
+      settlement_amount: number;
+
+      /**
+       * The Merchant Category Codes this spending limit applies to. If not set, the
+       * limit applies to all transactions.
+       */
+      merchant_category_codes?: Array<SpendingLimit.MerchantCategoryCode>;
+    }
+
+    export namespace SpendingLimit {
+      export interface MerchantCategoryCode {
+        /**
+         * The Merchant Category Code.
+         */
+        code: string;
+      }
+    }
+  }
+
   /**
    * The card's billing address.
    */
@@ -425,6 +799,11 @@ export namespace CardCreateParams {
 
 export interface CardUpdateParams {
   /**
+   * Controls that restrict how this card can be used.
+   */
+  authorization_controls?: CardUpdateParams.AuthorizationControls;
+
+  /**
    * The card's updated billing address.
    */
   billing_address?: CardUpdateParams.BillingAddress;
@@ -455,11 +834,194 @@ export interface CardUpdateParams {
    * - `canceled` - The card is permanently canceled.
    */
   status?: 'active' | 'disabled' | 'canceled';
-
-  [k: string]: unknown;
 }
 
 export namespace CardUpdateParams {
+  /**
+   * Controls that restrict how this card can be used.
+   */
+  export interface AuthorizationControls {
+    /**
+     * Limits the number of authorizations that can be approved on this card.
+     */
+    maximum_authorization_count?: AuthorizationControls.MaximumAuthorizationCount;
+
+    /**
+     * Restricts which Merchant Acceptor IDs are allowed or blocked for authorizations
+     * on this card.
+     */
+    merchant_acceptor_identifier?: AuthorizationControls.MerchantAcceptorIdentifier;
+
+    /**
+     * Restricts which Merchant Category Codes are allowed or blocked for
+     * authorizations on this card.
+     */
+    merchant_category_code?: AuthorizationControls.MerchantCategoryCode;
+
+    /**
+     * Restricts which merchant countries are allowed or blocked for authorizations on
+     * this card.
+     */
+    merchant_country?: AuthorizationControls.MerchantCountry;
+
+    /**
+     * Spending limits for this card. The most restrictive limit is applied if multiple
+     * limits match.
+     */
+    spending_limits?: Array<AuthorizationControls.SpendingLimit>;
+  }
+
+  export namespace AuthorizationControls {
+    /**
+     * Limits the number of authorizations that can be approved on this card.
+     */
+    export interface MaximumAuthorizationCount {
+      /**
+       * The maximum number of authorizations that can be approved on this card over its
+       * lifetime.
+       */
+      all_time: number;
+    }
+
+    /**
+     * Restricts which Merchant Acceptor IDs are allowed or blocked for authorizations
+     * on this card.
+     */
+    export interface MerchantAcceptorIdentifier {
+      /**
+       * The Merchant Acceptor IDs that are allowed for authorizations on this card.
+       * Authorizations with Merchant Acceptor IDs not in this list will be declined.
+       */
+      allowed?: Array<MerchantAcceptorIdentifier.Allowed>;
+
+      /**
+       * The Merchant Acceptor IDs that are blocked for authorizations on this card.
+       * Authorizations with Merchant Acceptor IDs in this list will be declined.
+       */
+      blocked?: Array<MerchantAcceptorIdentifier.Blocked>;
+    }
+
+    export namespace MerchantAcceptorIdentifier {
+      export interface Allowed {
+        /**
+         * The Merchant Acceptor ID.
+         */
+        identifier: string;
+      }
+
+      export interface Blocked {
+        /**
+         * The Merchant Acceptor ID.
+         */
+        identifier: string;
+      }
+    }
+
+    /**
+     * Restricts which Merchant Category Codes are allowed or blocked for
+     * authorizations on this card.
+     */
+    export interface MerchantCategoryCode {
+      /**
+       * The Merchant Category Codes that are allowed for authorizations on this card.
+       * Authorizations with Merchant Category Codes not in this list will be declined.
+       */
+      allowed?: Array<MerchantCategoryCode.Allowed>;
+
+      /**
+       * The Merchant Category Codes that are blocked for authorizations on this card.
+       * Authorizations with Merchant Category Codes in this list will be declined.
+       */
+      blocked?: Array<MerchantCategoryCode.Blocked>;
+    }
+
+    export namespace MerchantCategoryCode {
+      export interface Allowed {
+        /**
+         * The Merchant Category Code.
+         */
+        code: string;
+      }
+
+      export interface Blocked {
+        /**
+         * The Merchant Category Code.
+         */
+        code: string;
+      }
+    }
+
+    /**
+     * Restricts which merchant countries are allowed or blocked for authorizations on
+     * this card.
+     */
+    export interface MerchantCountry {
+      /**
+       * The merchant countries that are allowed for authorizations on this card.
+       * Authorizations with merchant countries not in this list will be declined.
+       */
+      allowed?: Array<MerchantCountry.Allowed>;
+
+      /**
+       * The merchant countries that are blocked for authorizations on this card.
+       * Authorizations with merchant countries in this list will be declined.
+       */
+      blocked?: Array<MerchantCountry.Blocked>;
+    }
+
+    export namespace MerchantCountry {
+      export interface Allowed {
+        /**
+         * The ISO 3166-1 alpha-2 country code.
+         */
+        country: string;
+      }
+
+      export interface Blocked {
+        /**
+         * The ISO 3166-1 alpha-2 country code.
+         */
+        country: string;
+      }
+    }
+
+    export interface SpendingLimit {
+      /**
+       * The interval at which the spending limit is enforced.
+       *
+       * - `all_time` - The spending limit applies over the lifetime of the card.
+       * - `per_transaction` - The spending limit applies per transaction.
+       * - `per_day` - The spending limit applies per day. Resets nightly at midnight
+       *   UTC.
+       * - `per_week` - The spending limit applies per week. Resets weekly on Mondays at
+       *   midnight UTC.
+       * - `per_month` - The spending limit applies per month. Resets on the first of the
+       *   month, midnight UTC.
+       */
+      interval: 'all_time' | 'per_transaction' | 'per_day' | 'per_week' | 'per_month';
+
+      /**
+       * The maximum settlement amount permitted in the given interval.
+       */
+      settlement_amount: number;
+
+      /**
+       * The Merchant Category Codes this spending limit applies to. If not set, the
+       * limit applies to all transactions.
+       */
+      merchant_category_codes?: Array<SpendingLimit.MerchantCategoryCode>;
+    }
+
+    export namespace SpendingLimit {
+      export interface MerchantCategoryCode {
+        /**
+         * The Merchant Category Code.
+         */
+        code: string;
+      }
+    }
+  }
+
   /**
    * The card's updated billing address.
    */
