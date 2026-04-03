@@ -178,18 +178,6 @@ export interface Account {
   informational_entity_id: string | null;
 
   /**
-   * The interest accrued but not yet paid, expressed as a string containing a
-   * floating-point value.
-   */
-  interest_accrued: string;
-
-  /**
-   * The latest [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which
-   * interest was accrued.
-   */
-  interest_accrued_at: string | null;
-
-  /**
    * The interest rate currently being earned on the account, as a string containing
    * a decimal number. For example, a 1% interest rate would be represented as
    * "0.01".
