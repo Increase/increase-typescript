@@ -240,7 +240,7 @@ export namespace Card {
     merchant_country: AuthorizationControls.MerchantCountry | null;
 
     /**
-     * Spending limits for this card. The most restrictive limit is applied if multiple
+     * Spending limits for this card. The most restrictive limit applies if multiple
      * limits match.
      */
     spending_limits: Array<AuthorizationControls.SpendingLimit> | null;
@@ -583,7 +583,7 @@ export namespace CardCreateParams {
     merchant_country?: AuthorizationControls.MerchantCountry;
 
     /**
-     * Spending limits for this card. The most restrictive limit is applied if multiple
+     * Spending limits for this card. The most restrictive limit applies if multiple
      * limits match.
      */
     spending_limits?: Array<AuthorizationControls.SpendingLimit>;
@@ -865,7 +865,7 @@ export namespace CardUpdateParams {
     merchant_country?: AuthorizationControls.MerchantCountry;
 
     /**
-     * Spending limits for this card. The most restrictive limit is applied if multiple
+     * Spending limits for this card. The most restrictive limit applies if multiple
      * limits match.
      */
     spending_limits?: Array<AuthorizationControls.SpendingLimit>;
