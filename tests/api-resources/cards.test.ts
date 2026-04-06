@@ -23,17 +23,22 @@ describe('resource cards', () => {
     const response = await client.cards.create({
       account_id: 'account_in71c4amph0vgo2qllky',
       authorization_controls: {
-        maximum_authorization_count: { all_time: 0 },
         merchant_acceptor_identifier: { allowed: [{ identifier: 'x' }], blocked: [{ identifier: 'x' }] },
         merchant_category_code: { allowed: [{ code: 'xxxx' }], blocked: [{ code: 'xxxx' }] },
         merchant_country: { allowed: [{ country: 'xx' }], blocked: [{ country: 'xx' }] },
-        spending_limits: [
-          {
-            interval: 'all_time',
-            settlement_amount: 0,
-            merchant_category_codes: [{ code: 'x' }],
+        usage: {
+          category: 'single_use',
+          multi_use: {
+            spending_limits: [
+              {
+                interval: 'all_time',
+                settlement_amount: 0,
+                merchant_category_codes: [{ code: 'x' }],
+              },
+            ],
           },
-        ],
+          single_use: { settlement_amount: { comparison: 'equals', value: 0 } },
+        },
       },
       billing_address: {
         city: 'x',
