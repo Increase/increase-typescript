@@ -217,11 +217,6 @@ export namespace Card {
    */
   export interface AuthorizationControls {
     /**
-     * Limits the number of authorizations that can be approved on this card.
-     */
-    maximum_authorization_count: AuthorizationControls.MaximumAuthorizationCount | null;
-
-    /**
      * Restricts which Merchant Acceptor IDs are allowed or blocked for authorizations
      * on this card.
      */
@@ -240,24 +235,12 @@ export namespace Card {
     merchant_country: AuthorizationControls.MerchantCountry | null;
 
     /**
-     * Spending limits for this card. The most restrictive limit applies if multiple
-     * limits match.
+     * Controls how many times this card can be used.
      */
-    spending_limits: Array<AuthorizationControls.SpendingLimit> | null;
+    usage: AuthorizationControls.Usage | null;
   }
 
   export namespace AuthorizationControls {
-    /**
-     * Limits the number of authorizations that can be approved on this card.
-     */
-    export interface MaximumAuthorizationCount {
-      /**
-       * The maximum number of authorizations that can be approved on this card over its
-       * lifetime.
-       */
-      all_time: number | null;
-    }
-
     /**
      * Restricts which Merchant Acceptor IDs are allowed or blocked for authorizations
      * on this card.
@@ -354,39 +337,110 @@ export namespace Card {
       }
     }
 
-    export interface SpendingLimit {
+    /**
+     * Controls how many times this card can be used.
+     */
+    export interface Usage {
       /**
-       * The interval at which the spending limit is enforced.
+       * Whether the card is for a single use or multiple uses.
        *
-       * - `all_time` - The spending limit applies over the lifetime of the card.
-       * - `per_transaction` - The spending limit applies per transaction.
-       * - `per_day` - The spending limit applies per day. Resets nightly at midnight
-       *   UTC.
-       * - `per_week` - The spending limit applies per week. Resets weekly on Mondays at
-       *   midnight UTC.
-       * - `per_month` - The spending limit applies per month. Resets on the first of the
-       *   month, midnight UTC.
+       * - `single_use` - The card can only be used for a single authorization.
+       * - `multi_use` - The card can be used for multiple authorizations.
        */
-      interval: 'all_time' | 'per_transaction' | 'per_day' | 'per_week' | 'per_month';
+      category: 'single_use' | 'multi_use';
 
       /**
-       * The Merchant Category Codes (MCCs) this spending limit applies to. If not set,
-       * the limit applies to all transactions.
+       * Controls for multi-use cards. Required if and only if `category` is `multi_use`.
        */
-      merchant_category_codes: Array<SpendingLimit.MerchantCategoryCode> | null;
+      multi_use: Usage.MultiUse | null;
 
       /**
-       * The maximum settlement amount permitted in the given interval.
+       * Controls for single-use cards. Required if and only if `category` is
+       * `single_use`.
        */
-      settlement_amount: number;
+      single_use: Usage.SingleUse | null;
     }
 
-    export namespace SpendingLimit {
-      export interface MerchantCategoryCode {
+    export namespace Usage {
+      /**
+       * Controls for multi-use cards. Required if and only if `category` is `multi_use`.
+       */
+      export interface MultiUse {
         /**
-         * The Merchant Category Code (MCC).
+         * Spending limits for this card. The most restrictive limit applies if multiple
+         * limits match.
          */
-        code: string;
+        spending_limits: Array<MultiUse.SpendingLimit> | null;
+      }
+
+      export namespace MultiUse {
+        export interface SpendingLimit {
+          /**
+           * The interval at which the spending limit is enforced.
+           *
+           * - `all_time` - The spending limit applies over the lifetime of the card.
+           * - `per_transaction` - The spending limit applies per transaction.
+           * - `per_day` - The spending limit applies per day. Resets nightly at midnight
+           *   UTC.
+           * - `per_week` - The spending limit applies per week. Resets weekly on Mondays at
+           *   midnight UTC.
+           * - `per_month` - The spending limit applies per month. Resets on the first of the
+           *   month, midnight UTC.
+           */
+          interval: 'all_time' | 'per_transaction' | 'per_day' | 'per_week' | 'per_month';
+
+          /**
+           * The Merchant Category Codes (MCCs) this spending limit applies to. If not set,
+           * the limit applies to all transactions.
+           */
+          merchant_category_codes: Array<SpendingLimit.MerchantCategoryCode> | null;
+
+          /**
+           * The maximum settlement amount permitted in the given interval.
+           */
+          settlement_amount: number;
+        }
+
+        export namespace SpendingLimit {
+          export interface MerchantCategoryCode {
+            /**
+             * The Merchant Category Code (MCC).
+             */
+            code: string;
+          }
+        }
+      }
+
+      /**
+       * Controls for single-use cards. Required if and only if `category` is
+       * `single_use`.
+       */
+      export interface SingleUse {
+        /**
+         * The settlement amount constraint for this single-use card.
+         */
+        settlement_amount: SingleUse.SettlementAmount;
+      }
+
+      export namespace SingleUse {
+        /**
+         * The settlement amount constraint for this single-use card.
+         */
+        export interface SettlementAmount {
+          /**
+           * The operator used to compare the settlement amount.
+           *
+           * - `equals` - The settlement amount must be exactly the specified value.
+           * - `less_than_or_equals` - The settlement amount must be less than or equal to
+           *   the specified value.
+           */
+          comparison: 'equals' | 'less_than_or_equals';
+
+          /**
+           * The settlement amount value.
+           */
+          value: number;
+        }
       }
     }
   }
@@ -560,11 +614,6 @@ export namespace CardCreateParams {
    */
   export interface AuthorizationControls {
     /**
-     * Limits the number of authorizations that can be approved on this card.
-     */
-    maximum_authorization_count?: AuthorizationControls.MaximumAuthorizationCount;
-
-    /**
      * Restricts which Merchant Acceptor IDs are allowed or blocked for authorizations
      * on this card.
      */
@@ -583,24 +632,12 @@ export namespace CardCreateParams {
     merchant_country?: AuthorizationControls.MerchantCountry;
 
     /**
-     * Spending limits for this card. The most restrictive limit applies if multiple
-     * limits match.
+     * Controls how many times this card can be used.
      */
-    spending_limits?: Array<AuthorizationControls.SpendingLimit>;
+    usage?: AuthorizationControls.Usage;
   }
 
   export namespace AuthorizationControls {
-    /**
-     * Limits the number of authorizations that can be approved on this card.
-     */
-    export interface MaximumAuthorizationCount {
-      /**
-       * The maximum number of authorizations that can be approved on this card over its
-       * lifetime.
-       */
-      all_time: number;
-    }
-
     /**
      * Restricts which Merchant Acceptor IDs are allowed or blocked for authorizations
      * on this card.
@@ -703,39 +740,110 @@ export namespace CardCreateParams {
       }
     }
 
-    export interface SpendingLimit {
+    /**
+     * Controls how many times this card can be used.
+     */
+    export interface Usage {
       /**
-       * The interval at which the spending limit is enforced.
+       * Whether the card is for a single use or multiple uses.
        *
-       * - `all_time` - The spending limit applies over the lifetime of the card.
-       * - `per_transaction` - The spending limit applies per transaction.
-       * - `per_day` - The spending limit applies per day. Resets nightly at midnight
-       *   UTC.
-       * - `per_week` - The spending limit applies per week. Resets weekly on Mondays at
-       *   midnight UTC.
-       * - `per_month` - The spending limit applies per month. Resets on the first of the
-       *   month, midnight UTC.
+       * - `single_use` - The card can only be used for a single authorization.
+       * - `multi_use` - The card can be used for multiple authorizations.
        */
-      interval: 'all_time' | 'per_transaction' | 'per_day' | 'per_week' | 'per_month';
+      category: 'single_use' | 'multi_use';
 
       /**
-       * The maximum settlement amount permitted in the given interval.
+       * Controls for multi-use cards. Required if and only if `category` is `multi_use`.
        */
-      settlement_amount: number;
+      multi_use?: Usage.MultiUse;
 
       /**
-       * The Merchant Category Codes this spending limit applies to. If not set, the
-       * limit applies to all transactions.
+       * Controls for single-use cards. Required if and only if `category` is
+       * `single_use`.
        */
-      merchant_category_codes?: Array<SpendingLimit.MerchantCategoryCode>;
+      single_use?: Usage.SingleUse;
     }
 
-    export namespace SpendingLimit {
-      export interface MerchantCategoryCode {
+    export namespace Usage {
+      /**
+       * Controls for multi-use cards. Required if and only if `category` is `multi_use`.
+       */
+      export interface MultiUse {
         /**
-         * The Merchant Category Code.
+         * Spending limits for this card. The most restrictive limit applies if multiple
+         * limits match.
          */
-        code: string;
+        spending_limits?: Array<MultiUse.SpendingLimit>;
+      }
+
+      export namespace MultiUse {
+        export interface SpendingLimit {
+          /**
+           * The interval at which the spending limit is enforced.
+           *
+           * - `all_time` - The spending limit applies over the lifetime of the card.
+           * - `per_transaction` - The spending limit applies per transaction.
+           * - `per_day` - The spending limit applies per day. Resets nightly at midnight
+           *   UTC.
+           * - `per_week` - The spending limit applies per week. Resets weekly on Mondays at
+           *   midnight UTC.
+           * - `per_month` - The spending limit applies per month. Resets on the first of the
+           *   month, midnight UTC.
+           */
+          interval: 'all_time' | 'per_transaction' | 'per_day' | 'per_week' | 'per_month';
+
+          /**
+           * The maximum settlement amount permitted in the given interval.
+           */
+          settlement_amount: number;
+
+          /**
+           * The Merchant Category Codes this spending limit applies to. If not set, the
+           * limit applies to all transactions.
+           */
+          merchant_category_codes?: Array<SpendingLimit.MerchantCategoryCode>;
+        }
+
+        export namespace SpendingLimit {
+          export interface MerchantCategoryCode {
+            /**
+             * The Merchant Category Code.
+             */
+            code: string;
+          }
+        }
+      }
+
+      /**
+       * Controls for single-use cards. Required if and only if `category` is
+       * `single_use`.
+       */
+      export interface SingleUse {
+        /**
+         * The settlement amount constraint for this single-use card.
+         */
+        settlement_amount: SingleUse.SettlementAmount;
+      }
+
+      export namespace SingleUse {
+        /**
+         * The settlement amount constraint for this single-use card.
+         */
+        export interface SettlementAmount {
+          /**
+           * The operator used to compare the settlement amount.
+           *
+           * - `equals` - The settlement amount must be exactly the specified value.
+           * - `less_than_or_equals` - The settlement amount must be less than or equal to
+           *   the specified value.
+           */
+          comparison: 'equals' | 'less_than_or_equals';
+
+          /**
+           * The settlement amount value.
+           */
+          value: number;
+        }
       }
     }
   }
@@ -842,11 +950,6 @@ export namespace CardUpdateParams {
    */
   export interface AuthorizationControls {
     /**
-     * Limits the number of authorizations that can be approved on this card.
-     */
-    maximum_authorization_count?: AuthorizationControls.MaximumAuthorizationCount;
-
-    /**
      * Restricts which Merchant Acceptor IDs are allowed or blocked for authorizations
      * on this card.
      */
@@ -865,24 +968,12 @@ export namespace CardUpdateParams {
     merchant_country?: AuthorizationControls.MerchantCountry;
 
     /**
-     * Spending limits for this card. The most restrictive limit applies if multiple
-     * limits match.
+     * Controls how many times this card can be used.
      */
-    spending_limits?: Array<AuthorizationControls.SpendingLimit>;
+    usage?: AuthorizationControls.Usage;
   }
 
   export namespace AuthorizationControls {
-    /**
-     * Limits the number of authorizations that can be approved on this card.
-     */
-    export interface MaximumAuthorizationCount {
-      /**
-       * The maximum number of authorizations that can be approved on this card over its
-       * lifetime.
-       */
-      all_time: number;
-    }
-
     /**
      * Restricts which Merchant Acceptor IDs are allowed or blocked for authorizations
      * on this card.
@@ -985,39 +1076,110 @@ export namespace CardUpdateParams {
       }
     }
 
-    export interface SpendingLimit {
+    /**
+     * Controls how many times this card can be used.
+     */
+    export interface Usage {
       /**
-       * The interval at which the spending limit is enforced.
+       * Whether the card is for a single use or multiple uses.
        *
-       * - `all_time` - The spending limit applies over the lifetime of the card.
-       * - `per_transaction` - The spending limit applies per transaction.
-       * - `per_day` - The spending limit applies per day. Resets nightly at midnight
-       *   UTC.
-       * - `per_week` - The spending limit applies per week. Resets weekly on Mondays at
-       *   midnight UTC.
-       * - `per_month` - The spending limit applies per month. Resets on the first of the
-       *   month, midnight UTC.
+       * - `single_use` - The card can only be used for a single authorization.
+       * - `multi_use` - The card can be used for multiple authorizations.
        */
-      interval: 'all_time' | 'per_transaction' | 'per_day' | 'per_week' | 'per_month';
+      category: 'single_use' | 'multi_use';
 
       /**
-       * The maximum settlement amount permitted in the given interval.
+       * Controls for multi-use cards. Required if and only if `category` is `multi_use`.
        */
-      settlement_amount: number;
+      multi_use?: Usage.MultiUse;
 
       /**
-       * The Merchant Category Codes this spending limit applies to. If not set, the
-       * limit applies to all transactions.
+       * Controls for single-use cards. Required if and only if `category` is
+       * `single_use`.
        */
-      merchant_category_codes?: Array<SpendingLimit.MerchantCategoryCode>;
+      single_use?: Usage.SingleUse;
     }
 
-    export namespace SpendingLimit {
-      export interface MerchantCategoryCode {
+    export namespace Usage {
+      /**
+       * Controls for multi-use cards. Required if and only if `category` is `multi_use`.
+       */
+      export interface MultiUse {
         /**
-         * The Merchant Category Code.
+         * Spending limits for this card. The most restrictive limit applies if multiple
+         * limits match.
          */
-        code: string;
+        spending_limits?: Array<MultiUse.SpendingLimit>;
+      }
+
+      export namespace MultiUse {
+        export interface SpendingLimit {
+          /**
+           * The interval at which the spending limit is enforced.
+           *
+           * - `all_time` - The spending limit applies over the lifetime of the card.
+           * - `per_transaction` - The spending limit applies per transaction.
+           * - `per_day` - The spending limit applies per day. Resets nightly at midnight
+           *   UTC.
+           * - `per_week` - The spending limit applies per week. Resets weekly on Mondays at
+           *   midnight UTC.
+           * - `per_month` - The spending limit applies per month. Resets on the first of the
+           *   month, midnight UTC.
+           */
+          interval: 'all_time' | 'per_transaction' | 'per_day' | 'per_week' | 'per_month';
+
+          /**
+           * The maximum settlement amount permitted in the given interval.
+           */
+          settlement_amount: number;
+
+          /**
+           * The Merchant Category Codes this spending limit applies to. If not set, the
+           * limit applies to all transactions.
+           */
+          merchant_category_codes?: Array<SpendingLimit.MerchantCategoryCode>;
+        }
+
+        export namespace SpendingLimit {
+          export interface MerchantCategoryCode {
+            /**
+             * The Merchant Category Code.
+             */
+            code: string;
+          }
+        }
+      }
+
+      /**
+       * Controls for single-use cards. Required if and only if `category` is
+       * `single_use`.
+       */
+      export interface SingleUse {
+        /**
+         * The settlement amount constraint for this single-use card.
+         */
+        settlement_amount: SingleUse.SettlementAmount;
+      }
+
+      export namespace SingleUse {
+        /**
+         * The settlement amount constraint for this single-use card.
+         */
+        export interface SettlementAmount {
+          /**
+           * The operator used to compare the settlement amount.
+           *
+           * - `equals` - The settlement amount must be exactly the specified value.
+           * - `less_than_or_equals` - The settlement amount must be less than or equal to
+           *   the specified value.
+           */
+          comparison: 'equals' | 'less_than_or_equals';
+
+          /**
+           * The settlement amount value.
+           */
+          value: number;
+        }
       }
     }
   }
