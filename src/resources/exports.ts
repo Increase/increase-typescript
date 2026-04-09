@@ -124,6 +124,8 @@ export interface Export {
    * - `fee_csv` - Export a CSV of fees. The time range must not include any fees
    *   that are part of an open fee statement.
    * - `voided_check` - A PDF of a voided check.
+   * - `daily_account_balance_csv` - Export a CSV of daily account balances with
+   *   starting and ending balances for a given date range.
    */
   category:
     | 'account_statement_ofx'
@@ -139,12 +141,19 @@ export interface Export {
     | 'form_1099_int'
     | 'form_1099_misc'
     | 'fee_csv'
-    | 'voided_check';
+    | 'voided_check'
+    | 'daily_account_balance_csv';
 
   /**
    * The time the Export was created.
    */
   created_at: string;
+
+  /**
+   * Details of the daily account balance CSV export. This field will be present when
+   * the `category` is equal to `daily_account_balance_csv`.
+   */
+  daily_account_balance_csv: Export.DailyAccountBalanceCsv | null;
 
   /**
    * Details of the dashboard table CSV export. This field will be present when the
@@ -370,6 +379,27 @@ export namespace Export {
   }
 
   /**
+   * Details of the daily account balance CSV export. This field will be present when
+   * the `category` is equal to `daily_account_balance_csv`.
+   */
+  export interface DailyAccountBalanceCsv {
+    /**
+     * Filter results by Account.
+     */
+    account_id: string | null;
+
+    /**
+     * Filter balances on or after this date.
+     */
+    on_or_after_date: string | null;
+
+    /**
+     * Filter balances on or before this date.
+     */
+    on_or_before_date: string | null;
+  }
+
+  /**
    * Details of the dashboard table CSV export. This field will be present when the
    * `category` is equal to `dashboard_table_csv`.
    */
@@ -564,6 +594,8 @@ export interface ExportCreateParams {
    * - `account_verification_letter` - A PDF of an account verification letter.
    * - `funding_instructions` - A PDF of funding instructions.
    * - `voided_check` - A PDF of a voided check.
+   * - `daily_account_balance_csv` - Export a CSV of daily account balances with
+   *   starting and ending balances for a given date range.
    */
   category:
     | 'account_statement_ofx'
@@ -575,7 +607,8 @@ export interface ExportCreateParams {
     | 'vendor_csv'
     | 'account_verification_letter'
     | 'funding_instructions'
-    | 'voided_check';
+    | 'voided_check'
+    | 'daily_account_balance_csv';
 
   /**
    * Options for the created export. Required if `category` is equal to
@@ -606,6 +639,12 @@ export interface ExportCreateParams {
    * `bookkeeping_account_balance_csv`.
    */
   bookkeeping_account_balance_csv?: ExportCreateParams.BookkeepingAccountBalanceCsv;
+
+  /**
+   * Options for the created export. Required if `category` is equal to
+   * `daily_account_balance_csv`.
+   */
+  daily_account_balance_csv?: ExportCreateParams.DailyAccountBalanceCsv;
 
   /**
    * Options for the created export. Required if `category` is equal to `entity_csv`.
@@ -824,6 +863,27 @@ export namespace ExportCreateParams {
   }
 
   /**
+   * Options for the created export. Required if `category` is equal to
+   * `daily_account_balance_csv`.
+   */
+  export interface DailyAccountBalanceCsv {
+    /**
+     * Filter exported Balances to the specified Account.
+     */
+    account_id?: string;
+
+    /**
+     * Filter exported Balances to those on or after this date.
+     */
+    on_or_after_date?: string;
+
+    /**
+     * Filter exported Balances to those on or before this date.
+     */
+    on_or_before_date?: string;
+  }
+
+  /**
    * Options for the created export. Required if `category` is equal to `entity_csv`.
    */
   export interface EntityCsv {}
@@ -942,6 +1002,8 @@ export interface ExportListParams extends PageParams {
    * - `fee_csv` - Export a CSV of fees. The time range must not include any fees
    *   that are part of an open fee statement.
    * - `voided_check` - A PDF of a voided check.
+   * - `daily_account_balance_csv` - Export a CSV of daily account balances with
+   *   starting and ending balances for a given date range.
    */
   category?:
     | 'account_statement_ofx'
@@ -957,7 +1019,8 @@ export interface ExportListParams extends PageParams {
     | 'form_1099_int'
     | 'form_1099_misc'
     | 'fee_csv'
-    | 'voided_check';
+    | 'voided_check'
+    | 'daily_account_balance_csv';
 
   created_at?: ExportListParams.CreatedAt;
 
