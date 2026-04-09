@@ -55,6 +55,11 @@ describe('resource exports', () => {
           on_or_before: '2019-12-27T18:11:19.117Z',
         },
       },
+      daily_account_balance_csv: {
+        account_id: 'account_id',
+        on_or_after_date: '2019-12-27',
+        on_or_before_date: '2019-12-27',
+      },
       entity_csv: {},
       funding_instructions: { account_number_id: 'account_number_id' },
       transaction_csv: {
