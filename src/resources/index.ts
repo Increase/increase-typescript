@@ -174,6 +174,13 @@ export {
   type EntitiesPage,
 } from './entities';
 export {
+  EntityOnboardingSessions,
+  type EntityOnboardingSession,
+  type EntityOnboardingSessionCreateParams,
+  type EntityOnboardingSessionListParams,
+  type EntityOnboardingSessionsPage,
+} from './entity-onboarding-sessions';
+export {
   EventSubscriptions,
   type EventSubscription,
   type EventSubscriptionCreateParams,

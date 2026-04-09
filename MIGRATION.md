@@ -103,6 +103,7 @@ client.example.list(undefined, { headers: { ... } });
 - `client.inboundMailItems.list()`
 - `client.externalAccounts.list()`
 - `client.entities.list()`
+- `client.entityOnboardingSessions.list()`
 - `client.programs.list()`
 - `client.accountStatements.list()`
 - `client.files.list()`

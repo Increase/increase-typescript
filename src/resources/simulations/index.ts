@@ -41,6 +41,7 @@ export {
   type DigitalWalletTokenRequestCreateResponse,
   type DigitalWalletTokenRequestCreateParams,
 } from './digital-wallet-token-requests';
+export { EntityOnboardingSessions } from './entity-onboarding-sessions';
 export { Exports, type ExportCreateParams } from './exports';
 export { InboundACHTransfers, type InboundACHTransferCreateParams } from './inbound-ach-transfers';
 export {

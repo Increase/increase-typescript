@@ -193,6 +193,13 @@ import {
   EntityUpdateParams,
 } from './resources/entities';
 import {
+  EntityOnboardingSession,
+  EntityOnboardingSessionCreateParams,
+  EntityOnboardingSessionListParams,
+  EntityOnboardingSessions,
+  EntityOnboardingSessionsPage,
+} from './resources/entity-onboarding-sessions';
+import {
   EventSubscription,
   EventSubscriptionCreateParams,
   EventSubscriptionListParams,
@@ -1185,6 +1192,7 @@ export class Increase {
   entities: API.Entities = new API.Entities(this);
   beneficialOwners: API.BeneficialOwners = new API.BeneficialOwners(this);
   supplementalDocuments: API.SupplementalDocuments = new API.SupplementalDocuments(this);
+  entityOnboardingSessions: API.EntityOnboardingSessions = new API.EntityOnboardingSessions(this);
   programs: API.Programs = new API.Programs(this);
   accountStatements: API.AccountStatements = new API.AccountStatements(this);
   files: API.Files = new API.Files(this);
@@ -1245,6 +1253,7 @@ Increase.ExternalAccounts = ExternalAccounts;
 Increase.Entities = Entities;
 Increase.BeneficialOwners = BeneficialOwners;
 Increase.SupplementalDocuments = SupplementalDocuments;
+Increase.EntityOnboardingSessions = EntityOnboardingSessions;
 Increase.Programs = Programs;
 Increase.AccountStatements = AccountStatements;
 Increase.Files = Files;
@@ -1572,6 +1581,14 @@ export declare namespace Increase {
     type EntitySupplementalDocumentsPage as EntitySupplementalDocumentsPage,
     type SupplementalDocumentCreateParams as SupplementalDocumentCreateParams,
     type SupplementalDocumentListParams as SupplementalDocumentListParams,
+  };
+
+  export {
+    EntityOnboardingSessions as EntityOnboardingSessions,
+    type EntityOnboardingSession as EntityOnboardingSession,
+    type EntityOnboardingSessionsPage as EntityOnboardingSessionsPage,
+    type EntityOnboardingSessionCreateParams as EntityOnboardingSessionCreateParams,
+    type EntityOnboardingSessionListParams as EntityOnboardingSessionListParams,
   };
 
   export {
