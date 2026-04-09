@@ -462,6 +462,19 @@ Methods:
 - <code title="post /entity_supplemental_documents">client.supplementalDocuments.<a href="./src/resources/supplemental-documents.ts">create</a>({ ...params }) -> EntitySupplementalDocument</code>
 - <code title="get /entity_supplemental_documents">client.supplementalDocuments.<a href="./src/resources/supplemental-documents.ts">list</a>({ ...params }) -> EntitySupplementalDocumentsPage</code>
 
+# EntityOnboardingSessions
+
+Types:
+
+- <code><a href="./src/resources/entity-onboarding-sessions.ts">EntityOnboardingSession</a></code>
+
+Methods:
+
+- <code title="post /entity_onboarding_sessions">client.entityOnboardingSessions.<a href="./src/resources/entity-onboarding-sessions.ts">create</a>({ ...params }) -> EntityOnboardingSession</code>
+- <code title="get /entity_onboarding_sessions/{entity_onboarding_session_id}">client.entityOnboardingSessions.<a href="./src/resources/entity-onboarding-sessions.ts">retrieve</a>(entityOnboardingSessionID) -> EntityOnboardingSession</code>
+- <code title="get /entity_onboarding_sessions">client.entityOnboardingSessions.<a href="./src/resources/entity-onboarding-sessions.ts">list</a>({ ...params }) -> EntityOnboardingSessionsPage</code>
+- <code title="post /entity_onboarding_sessions/{entity_onboarding_session_id}/expire">client.entityOnboardingSessions.<a href="./src/resources/entity-onboarding-sessions.ts">expire</a>(entityOnboardingSessionID) -> EntityOnboardingSession</code>
+
 # Programs
 
 Types:
@@ -899,6 +912,12 @@ Methods:
 Methods:
 
 - <code title="post /simulations/inbound_mail_items">client.simulations.inboundMailItems.<a href="./src/resources/simulations/inbound-mail-items.ts">create</a>({ ...params }) -> InboundMailItem</code>
+
+## EntityOnboardingSessions
+
+Methods:
+
+- <code title="post /simulations/entity_onboarding_sessions/{entity_onboarding_session_id}/submit">client.simulations.entityOnboardingSessions.<a href="./src/resources/simulations/entity-onboarding-sessions.ts">submit</a>(entityOnboardingSessionID) -> EntityOnboardingSession</code>
 
 ## Programs
 
