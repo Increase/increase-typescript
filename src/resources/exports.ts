@@ -285,14 +285,14 @@ export namespace Export {
      */
     export interface CreatedAt {
       /**
-       * Filter results to transactions created after this time.
-       */
-      after: string | null;
-
-      /**
        * Filter results to transactions created before this time.
        */
       before: string | null;
+
+      /**
+       * Filter results to transactions created on or after this time.
+       */
+      on_or_after: string | null;
     }
   }
 
@@ -715,39 +715,27 @@ export namespace ExportCreateParams {
     account_id: string;
 
     /**
-     * Filter results by time range on the `created_at` attribute.
+     * Filter transactions by their created date.
      */
     created_at?: AccountStatementOfx.CreatedAt;
   }
 
   export namespace AccountStatementOfx {
     /**
-     * Filter results by time range on the `created_at` attribute.
+     * Filter transactions by their created date.
      */
     export interface CreatedAt {
       /**
-       * Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-       * timestamp.
-       */
-      after?: string;
-
-      /**
-       * Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-       * timestamp.
+       * Filter results to transactions created before this time.
        */
       before?: string;
 
       /**
-       * Return results on or after this
-       * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+       * Filter results to transactions created on or after this time.
        */
       on_or_after?: string;
 
-      /**
-       * Return results on or before this
-       * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-       */
-      on_or_before?: string;
+      [k: string]: unknown;
     }
   }
 
