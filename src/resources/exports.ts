@@ -356,26 +356,14 @@ export namespace Export {
     bookkeeping_account_id: string | null;
 
     /**
-     * Filter balances by their created date.
+     * Filter balances to those on or after this date.
      */
-    created_at: BookkeepingAccountBalanceCsv.CreatedAt | null;
-  }
+    on_or_after_date: string | null;
 
-  export namespace BookkeepingAccountBalanceCsv {
     /**
-     * Filter balances by their created date.
+     * Filter balances to those on or before this date.
      */
-    export interface CreatedAt {
-      /**
-       * Filter balances created after this time.
-       */
-      after: string | null;
-
-      /**
-       * Filter balances created before this time.
-       */
-      before: string | null;
-    }
+    on_or_before_date: string | null;
   }
 
   /**
@@ -814,40 +802,14 @@ export namespace ExportCreateParams {
     bookkeeping_account_id?: string;
 
     /**
-     * Filter results by time range on the `created_at` attribute.
+     * Filter exported Balances to those on or after this date.
      */
-    created_at?: BookkeepingAccountBalanceCsv.CreatedAt;
-  }
+    on_or_after_date?: string;
 
-  export namespace BookkeepingAccountBalanceCsv {
     /**
-     * Filter results by time range on the `created_at` attribute.
+     * Filter exported Balances to those on or before this date.
      */
-    export interface CreatedAt {
-      /**
-       * Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-       * timestamp.
-       */
-      after?: string;
-
-      /**
-       * Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-       * timestamp.
-       */
-      before?: string;
-
-      /**
-       * Return results on or after this
-       * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-       */
-      on_or_after?: string;
-
-      /**
-       * Return results on or before this
-       * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-       */
-      on_or_before?: string;
-    }
+    on_or_before_date?: string;
   }
 
   /**

@@ -43,12 +43,8 @@ describe('resource exports', () => {
       },
       bookkeeping_account_balance_csv: {
         bookkeeping_account_id: 'bookkeeping_account_id',
-        created_at: {
-          after: '2019-12-27T18:11:19.117Z',
-          before: '2019-12-27T18:11:19.117Z',
-          on_or_after: '2019-12-27T18:11:19.117Z',
-          on_or_before: '2019-12-27T18:11:19.117Z',
-        },
+        on_or_after_date: '2019-12-27',
+        on_or_before_date: '2019-12-27',
       },
       daily_account_balance_csv: {
         account_id: 'account_id',
