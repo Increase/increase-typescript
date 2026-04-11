@@ -618,12 +618,6 @@ export interface ExportCreateParams {
 
   /**
    * Options for the created export. Required if `category` is equal to
-   * `balance_csv`.
-   */
-  balance_csv?: ExportCreateParams.BalanceCsv;
-
-  /**
-   * Options for the created export. Required if `category` is equal to
    * `bookkeeping_account_balance_csv`.
    */
   bookkeeping_account_balance_csv?: ExportCreateParams.BookkeepingAccountBalanceCsv;
@@ -741,53 +735,6 @@ export namespace ExportCreateParams {
      * The date of the balance to include in the letter. Defaults to the current date.
      */
     balance_date?: string;
-  }
-
-  /**
-   * Options for the created export. Required if `category` is equal to
-   * `balance_csv`.
-   */
-  export interface BalanceCsv {
-    /**
-     * Filter exported Balances to the specified Account.
-     */
-    account_id?: string;
-
-    /**
-     * Filter results by time range on the `created_at` attribute.
-     */
-    created_at?: BalanceCsv.CreatedAt;
-  }
-
-  export namespace BalanceCsv {
-    /**
-     * Filter results by time range on the `created_at` attribute.
-     */
-    export interface CreatedAt {
-      /**
-       * Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-       * timestamp.
-       */
-      after?: string;
-
-      /**
-       * Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-       * timestamp.
-       */
-      before?: string;
-
-      /**
-       * Return results on or after this
-       * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-       */
-      on_or_after?: string;
-
-      /**
-       * Return results on or before this
-       * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-       */
-      on_or_before?: string;
-    }
   }
 
   /**
