@@ -2942,6 +2942,19 @@ export namespace EntityUpdateParams {
     address?: NaturalPerson.Address;
 
     /**
+     * The identification method for an individual can only be a passport, driver's
+     * license, or other document if you've confirmed the individual does not have a US
+     * tax id (either a Social Security Number or Individual Taxpayer Identification
+     * Number).
+     */
+    confirmed_no_us_tax_id?: boolean;
+
+    /**
+     * A means of verifying the person's identity.
+     */
+    identification?: NaturalPerson.Identification;
+
+    /**
      * The legal name of the natural person.
      */
     name?: string;
@@ -2983,6 +2996,137 @@ export namespace EntityUpdateParams {
        * The ZIP or postal code of the address. Required in certain countries.
        */
       zip?: string;
+    }
+
+    /**
+     * A means of verifying the person's identity.
+     */
+    export interface Identification {
+      /**
+       * A method that can be used to verify the individual's identity.
+       *
+       * - `social_security_number` - A social security number.
+       * - `individual_taxpayer_identification_number` - An individual taxpayer
+       *   identification number (ITIN).
+       * - `passport` - A passport number.
+       * - `drivers_license` - A driver's license number.
+       * - `other` - Another identifying document.
+       */
+      method:
+        | 'social_security_number'
+        | 'individual_taxpayer_identification_number'
+        | 'passport'
+        | 'drivers_license'
+        | 'other';
+
+      /**
+       * An identification number that can be used to verify the individual's identity,
+       * such as a social security number.
+       */
+      number: string;
+
+      /**
+       * Information about the United States driver's license used for identification.
+       * Required if `method` is equal to `drivers_license`.
+       */
+      drivers_license?: Identification.DriversLicense;
+
+      /**
+       * Information about the identification document provided. Required if `method` is
+       * equal to `other`.
+       */
+      other?: Identification.Other;
+
+      /**
+       * Information about the passport used for identification. Required if `method` is
+       * equal to `passport`.
+       */
+      passport?: Identification.Passport;
+
+      [k: string]: unknown;
+    }
+
+    export namespace Identification {
+      /**
+       * Information about the United States driver's license used for identification.
+       * Required if `method` is equal to `drivers_license`.
+       */
+      export interface DriversLicense {
+        /**
+         * The driver's license's expiration date in YYYY-MM-DD format.
+         */
+        expiration_date: string;
+
+        /**
+         * The identifier of the File containing the front of the driver's license.
+         */
+        file_id: string;
+
+        /**
+         * The state that issued the provided driver's license.
+         */
+        state: string;
+
+        /**
+         * The identifier of the File containing the back of the driver's license.
+         */
+        back_file_id?: string;
+      }
+
+      /**
+       * Information about the identification document provided. Required if `method` is
+       * equal to `other`.
+       */
+      export interface Other {
+        /**
+         * The two-character ISO 3166-1 code representing the country that issued the
+         * document (e.g., `US`).
+         */
+        country: string;
+
+        /**
+         * A description of the document submitted.
+         */
+        description: string;
+
+        /**
+         * The identifier of the File containing the front of the document.
+         */
+        file_id: string;
+
+        /**
+         * The identifier of the File containing the back of the document. Not every
+         * document has a reverse side.
+         */
+        back_file_id?: string;
+
+        /**
+         * The document's expiration date in YYYY-MM-DD format.
+         */
+        expiration_date?: string;
+      }
+
+      /**
+       * Information about the passport used for identification. Required if `method` is
+       * equal to `passport`.
+       */
+      export interface Passport {
+        /**
+         * The two-character ISO 3166-1 code representing the country that issued the
+         * document (e.g., `US`).
+         */
+        country: string;
+
+        /**
+         * The passport's expiration date in YYYY-MM-DD format.
+         */
+        expiration_date: string;
+
+        /**
+         * The identifier of the File containing the passport.
+         */
+        file_id: string;
+      }
     }
   }
 
