@@ -185,7 +185,7 @@ export namespace EntityBeneficialOwner {
     /**
      * A means of verifying the person's identity.
      */
-    identification: Individual.Identification;
+    identification: Individual.Identification | null;
 
     /**
      * The person's legal name.
