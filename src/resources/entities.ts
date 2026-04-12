@@ -342,7 +342,7 @@ export namespace Entity {
         /**
          * A means of verifying the person's identity.
          */
-        identification: Individual.Identification;
+        identification: Individual.Identification | null;
 
         /**
          * The person's legal name.
@@ -561,7 +561,7 @@ export namespace Entity {
       /**
        * A means of verifying the person's identity.
        */
-      identification: Individual.Identification;
+      identification: Individual.Identification | null;
 
       /**
        * The person's legal name.
@@ -656,7 +656,7 @@ export namespace Entity {
     /**
      * A means of verifying the person's identity.
      */
-    identification: NaturalPerson.Identification;
+    identification: NaturalPerson.Identification | null;
 
     /**
      * The person's legal name.
@@ -896,7 +896,7 @@ export namespace Entity {
       /**
        * A means of verifying the person's identity.
        */
-      identification: Grantor.Identification;
+      identification: Grantor.Identification | null;
 
       /**
        * The person's legal name.
@@ -1006,7 +1006,7 @@ export namespace Entity {
         /**
          * A means of verifying the person's identity.
          */
-        identification: Individual.Identification;
+        identification: Individual.Identification | null;
 
         /**
          * The person's legal name.
