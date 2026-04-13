@@ -3,8 +3,6 @@
 import { APIResource } from '../../core/resource';
 import * as AccountStatementsAPI from './account-statements';
 import { AccountStatementCreateParams, AccountStatements } from './account-statements';
-import * as AccountTransfersAPI from './account-transfers';
-import { AccountTransfers } from './account-transfers';
 import * as ACHTransfersAPI from './ach-transfers';
 import {
   ACHTransferCreateNotificationOfChangeParams,
@@ -105,9 +103,6 @@ export class Simulations extends APIResource {
   interestPayments: InterestPaymentsAPI.InterestPayments = new InterestPaymentsAPI.InterestPayments(
     this._client,
   );
-  accountTransfers: AccountTransfersAPI.AccountTransfers = new AccountTransfersAPI.AccountTransfers(
-    this._client,
-  );
   cardAuthorizations: CardAuthorizationsAPI.CardAuthorizations = new CardAuthorizationsAPI.CardAuthorizations(
     this._client,
   );
@@ -163,7 +158,6 @@ export class Simulations extends APIResource {
 }
 
 Simulations.InterestPayments = InterestPayments;
-Simulations.AccountTransfers = AccountTransfers;
 Simulations.CardAuthorizations = CardAuthorizations;
 Simulations.CardBalanceInquiries = CardBalanceInquiries;
 Simulations.CardAuthorizationExpirations = CardAuthorizationExpirations;
@@ -201,8 +195,6 @@ export declare namespace Simulations {
     InterestPayments as InterestPayments,
     type InterestPaymentCreateParams as InterestPaymentCreateParams,
   };
-
-  export { AccountTransfers as AccountTransfers };
 
   export {
     CardAuthorizations as CardAuthorizations,
