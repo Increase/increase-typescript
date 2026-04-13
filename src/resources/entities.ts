@@ -109,6 +109,12 @@ export interface Entity {
   created_at: string;
 
   /**
+   * The identifier of the Entity Onboarding Session that was used to create this
+   * Entity, if any.
+   */
+  creating_entity_onboarding_session_id: string | null;
+
+  /**
    * The entity's description for display purposes.
    */
   description: string | null;
