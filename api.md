@@ -730,12 +730,6 @@ Methods:
 
 - <code title="post /simulations/interest_payments">client.simulations.interestPayments.<a href="./src/resources/simulations/interest-payments.ts">create</a>({ ...params }) -> Transaction</code>
 
-## AccountTransfers
-
-Methods:
-
-- <code title="post /simulations/account_transfers/{account_transfer_id}/complete">client.simulations.accountTransfers.<a href="./src/resources/simulations/account-transfers.ts">complete</a>(accountTransferID) -> AccountTransfer</code>
-
 ## CardAuthorizations
 
 Types:
