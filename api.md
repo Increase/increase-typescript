@@ -790,6 +790,12 @@ Methods:
 - <code title="post /simulations/card_authentications/{card_payment_id}/challenge_attempts">client.simulations.cardAuthentications.<a href="./src/resources/simulations/card-authentications.ts">challengeAttempts</a>(cardPaymentID, { ...params }) -> CardPayment</code>
 - <code title="post /simulations/card_authentications/{card_payment_id}/challenges">client.simulations.cardAuthentications.<a href="./src/resources/simulations/card-authentications.ts">challenges</a>(cardPaymentID) -> CardPayment</code>
 
+## CardPurchaseSupplements
+
+Methods:
+
+- <code title="post /simulations/card_purchase_supplements">client.simulations.cardPurchaseSupplements.<a href="./src/resources/simulations/card-purchase-supplements.ts">create</a>({ ...params }) -> CardPurchaseSupplement</code>
+
 ## CardDisputes
 
 Methods:

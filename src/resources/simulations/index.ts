@@ -25,6 +25,10 @@ export { CardBalanceInquiries, type CardBalanceInquiryCreateParams } from './car
 export { CardDisputes, type CardDisputeActionParams } from './card-disputes';
 export { CardFuelConfirmations, type CardFuelConfirmationCreateParams } from './card-fuel-confirmations';
 export { CardIncrements, type CardIncrementCreateParams } from './card-increments';
+export {
+  CardPurchaseSupplements,
+  type CardPurchaseSupplementCreateParams,
+} from './card-purchase-supplements';
 export { CardRefunds, type CardRefundCreateParams } from './card-refunds';
 export { CardReversals, type CardReversalCreateParams } from './card-reversals';
 export { CardSettlements, type CardSettlementCreateParams } from './card-settlements';

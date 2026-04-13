@@ -35,6 +35,8 @@ import * as CardFuelConfirmationsAPI from './card-fuel-confirmations';
 import { CardFuelConfirmationCreateParams, CardFuelConfirmations } from './card-fuel-confirmations';
 import * as CardIncrementsAPI from './card-increments';
 import { CardIncrementCreateParams, CardIncrements } from './card-increments';
+import * as CardPurchaseSupplementsAPI from './card-purchase-supplements';
+import { CardPurchaseSupplementCreateParams, CardPurchaseSupplements } from './card-purchase-supplements';
 import * as CardRefundsAPI from './card-refunds';
 import { CardRefundCreateParams, CardRefunds } from './card-refunds';
 import * as CardReversalsAPI from './card-reversals';
@@ -118,6 +120,8 @@ export class Simulations extends APIResource {
   cardRefunds: CardRefundsAPI.CardRefunds = new CardRefundsAPI.CardRefunds(this._client);
   cardAuthentications: CardAuthenticationsAPI.CardAuthentications =
     new CardAuthenticationsAPI.CardAuthentications(this._client);
+  cardPurchaseSupplements: CardPurchaseSupplementsAPI.CardPurchaseSupplements =
+    new CardPurchaseSupplementsAPI.CardPurchaseSupplements(this._client);
   cardDisputes: CardDisputesAPI.CardDisputes = new CardDisputesAPI.CardDisputes(this._client);
   physicalCards: PhysicalCardsAPI.PhysicalCards = new PhysicalCardsAPI.PhysicalCards(this._client);
   digitalWalletTokenRequests: DigitalWalletTokenRequestsAPI.DigitalWalletTokenRequests =
@@ -167,6 +171,7 @@ Simulations.CardIncrements = CardIncrements;
 Simulations.CardFuelConfirmations = CardFuelConfirmations;
 Simulations.CardRefunds = CardRefunds;
 Simulations.CardAuthentications = CardAuthentications;
+Simulations.CardPurchaseSupplements = CardPurchaseSupplements;
 Simulations.CardDisputes = CardDisputes;
 Simulations.PhysicalCards = PhysicalCards;
 Simulations.DigitalWalletTokenRequests = DigitalWalletTokenRequests;
@@ -232,6 +237,11 @@ export declare namespace Simulations {
     CardAuthentications as CardAuthentications,
     type CardAuthenticationCreateParams as CardAuthenticationCreateParams,
     type CardAuthenticationChallengeAttemptsParams as CardAuthenticationChallengeAttemptsParams,
+  };
+
+  export {
+    CardPurchaseSupplements as CardPurchaseSupplements,
+    type CardPurchaseSupplementCreateParams as CardPurchaseSupplementCreateParams,
   };
 
   export { CardDisputes as CardDisputes, type CardDisputeActionParams as CardDisputeActionParams };
