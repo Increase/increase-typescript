@@ -42,19 +42,19 @@ describe('resource wireTransfers', () => {
         category: 'unstructured',
         tax: {
           date: '2019-12-27',
-          identification_number: 'xxxxxxxxx',
-          type_code: 'xxxxx',
+          identification_number: '483310694',
+          type_code: '1I5r3',
         },
         unstructured: { message: 'New account transfer' },
       },
       account_number: '987654321',
       debtor: {
-        name: 'x',
+        name: 'name',
         address: {
           unstructured: {
-            line1: 'x',
-            line2: 'x',
-            line3: 'x',
+            line1: 'line1',
+            line2: 'line2',
+            line3: 'line3',
           },
         },
       },

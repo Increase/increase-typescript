@@ -15,7 +15,7 @@ export class RoutingNumbers extends APIResource {
    * ```ts
    * // Automatically fetches more pages as needed.
    * for await (const routingNumberListResponse of client.routingNumbers.list(
-   *   { routing_number: 'xxxxxxxxx' },
+   *   { routing_number: '483310694' },
    * )) {
    *   // ...
    * }

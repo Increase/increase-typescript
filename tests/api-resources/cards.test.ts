@@ -24,7 +24,7 @@ describe('resource cards', () => {
       account_id: 'account_in71c4amph0vgo2qllky',
       authorization_controls: {
         merchant_acceptor_identifier: { allowed: [{ identifier: 'x' }], blocked: [{ identifier: 'x' }] },
-        merchant_category_code: { allowed: [{ code: 'xxxx' }], blocked: [{ code: 'xxxx' }] },
+        merchant_category_code: { allowed: [{ code: '0253' }], blocked: [{ code: '0253' }] },
         merchant_country: { allowed: [{ country: 'xx' }], blocked: [{ country: 'xx' }] },
         usage: {
           category: 'single_use',

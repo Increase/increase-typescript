@@ -9,7 +9,7 @@ const client = new Increase({
 
 describe('resource routingNumbers', () => {
   test('list: only required params', async () => {
-    const responsePromise = client.routingNumbers.list({ routing_number: 'xxxxxxxxx' });
+    const responsePromise = client.routingNumbers.list({ routing_number: '483310694' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -21,7 +21,7 @@ describe('resource routingNumbers', () => {
 
   test('list: required and optional params', async () => {
     const response = await client.routingNumbers.list({
-      routing_number: 'xxxxxxxxx',
+      routing_number: '483310694',
       cursor: 'cursor',
       limit: 1,
     });

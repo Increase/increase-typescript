@@ -31,12 +31,12 @@ describe('resource realTimePaymentsTransfers', () => {
       source_account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
       unstructured_remittance_information: 'Invoice 29582',
       account_number: '987654321',
-      debtor_name: 'x',
+      debtor_name: 'debtor_name',
       external_account_id: 'external_account_id',
       require_approval: true,
       routing_number: '101050001',
-      ultimate_creditor_name: 'x',
-      ultimate_debtor_name: 'x',
+      ultimate_creditor_name: 'ultimate_creditor_name',
+      ultimate_debtor_name: 'ultimate_debtor_name',
     });
   });
 
