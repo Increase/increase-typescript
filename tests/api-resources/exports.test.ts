@@ -54,7 +54,7 @@ describe('resource exports', () => {
         },
       },
       vendor_csv: {},
-      voided_check: { account_number_id: 'account_number_id', payer: [{ line: 'x' }] },
+      voided_check: { account_number_id: 'account_number_id', payer: [{ line: 'line' }] },
     });
   });
 

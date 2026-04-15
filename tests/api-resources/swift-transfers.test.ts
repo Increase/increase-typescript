@@ -48,7 +48,7 @@ describe('resource swiftTransfers', () => {
         city: 'Frankfurt',
         country: 'DE',
         line1: 'Sonnemannstrasse 20',
-        line2: 'x',
+        line2: 'line2',
         postal_code: '60314',
         state: 'x',
       },
@@ -57,7 +57,7 @@ describe('resource swiftTransfers', () => {
         city: 'New York',
         country: 'US',
         line1: '33 Liberty Street',
-        line2: 'x',
+        line2: 'line2',
         postal_code: '10045',
         state: 'NY',
       },
@@ -67,7 +67,7 @@ describe('resource swiftTransfers', () => {
       source_account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
       unstructured_remittance_information: 'New Swift transfer',
       require_approval: true,
-      routing_number: 'x',
+      routing_number: 'sq',
     });
   });
 

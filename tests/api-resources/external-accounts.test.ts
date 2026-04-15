@@ -74,7 +74,7 @@ describe('resource externalAccounts', () => {
           cursor: 'cursor',
           idempotency_key: 'x',
           limit: 1,
-          routing_number: 'xxxxxxxxx',
+          routing_number: '483310694',
           status: { in: ['active'] },
         },
         { path: '/_stainless_unknown_path' },
