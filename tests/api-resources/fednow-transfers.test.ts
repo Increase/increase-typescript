@@ -41,7 +41,7 @@ describe('resource fednowTransfers', () => {
       },
       debtor_address: {
         city: 'x',
-        postal_code: 'x',
+        postal_code: '21029-9469',
         state: 'x',
         line1: 'x',
       },

@@ -54,12 +54,12 @@ describe('resource cardPushTransfers', () => {
       sender_address_state: 'NY',
       sender_name: 'Ian Crease',
       source_account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
-      merchant_legal_business_name: 'x',
-      merchant_street_address: 'x',
-      recipient_address_city: 'x',
-      recipient_address_line1: 'x',
-      recipient_address_postal_code: 'x',
-      recipient_address_state: 'x',
+      merchant_legal_business_name: 'x6',
+      merchant_street_address: 'merchant_street_address',
+      recipient_address_city: 'recipient_address_city',
+      recipient_address_line1: 'recipient_address_line1',
+      recipient_address_postal_code: 'x6',
+      recipient_address_state: 'x6',
       require_approval: true,
     });
   });
