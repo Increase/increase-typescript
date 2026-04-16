@@ -708,6 +708,8 @@ export interface EventListParams extends PageParams {
   category?: EventListParams.Category;
 
   created_at?: EventListParams.CreatedAt;
+
+  order_by?: EventListParams.OrderBy;
 }
 
 export namespace EventListParams {
@@ -855,6 +857,23 @@ export namespace EventListParams {
      * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
      */
     on_or_before?: string;
+  }
+
+  export interface OrderBy {
+    /**
+     * The direction to order in.
+     *
+     * - `ascending` - Ascending in value.
+     * - `descending` - Descending in value.
+     */
+    direction?: 'ascending' | 'descending';
+
+    /**
+     * The field to order by.
+     *
+     * - `created_at` - The time the Event was created.
+     */
+    field?: 'created_at';
   }
 }
 
