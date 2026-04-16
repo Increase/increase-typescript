@@ -47,6 +47,7 @@ describe('resource events', () => {
           },
           cursor: 'cursor',
           limit: 1,
+          order_by: { direction: 'ascending', field: 'created_at' },
         },
         { path: '/_stainless_unknown_path' },
       ),
