@@ -247,6 +247,13 @@ export interface WireTransfer {
    */
   type: 'wire_transfer';
 
+  /**
+   * The unique end-to-end transaction reference
+   * ([UETR](https://www.swift.com/payments/what-unique-end-end-transaction-reference-uetr))
+   * of the transfer.
+   */
+  unique_end_to_end_transaction_reference: string | null;
+
   [k: string]: unknown;
 }
 
