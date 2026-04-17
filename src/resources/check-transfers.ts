@@ -602,6 +602,11 @@ export namespace CheckTransfer {
         | 'returned_to_sender';
 
       /**
+       * The ISO 3166-1 alpha-2 country code for the country where the event took place.
+       */
+      country: string;
+
+      /**
        * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
        * the tracking event took place.
        */
