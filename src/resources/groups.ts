@@ -41,8 +41,6 @@ export interface Group {
    * `group`.
    */
   type: 'group';
-
-  [k: string]: unknown;
 }
 
 export declare namespace Groups {
