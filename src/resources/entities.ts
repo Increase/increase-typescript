@@ -2766,6 +2766,12 @@ export interface EntityUpdateParams {
   risk_rating?: EntityUpdateParams.RiskRating;
 
   /**
+   * New terms that the Entity agreed to. Not all programs are required to submit
+   * this data. This will not archive previously submitted terms.
+   */
+  terms_agreements?: Array<EntityUpdateParams.TermsAgreement>;
+
+  /**
    * If you are using a third-party service for identity verification, you can use
    * this field to associate this Entity with the identifier that represents them in
    * that service.
@@ -3155,6 +3161,23 @@ export namespace EntityUpdateParams {
      * - `high` - Elevated risk of involvement in financial crime.
      */
     rating: 'low' | 'medium' | 'high';
+  }
+
+  export interface TermsAgreement {
+    /**
+     * The timestamp of when the Entity agreed to the terms.
+     */
+    agreed_at: string;
+
+    /**
+     * The IP address the Entity accessed reviewed the terms from.
+     */
+    ip_address: string;
+
+    /**
+     * The URL of the terms agreement. This link will be provided by your bank partner.
+     */
+    terms_url: string;
   }
 
   /**
