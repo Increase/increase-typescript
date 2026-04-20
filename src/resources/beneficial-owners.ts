@@ -8,7 +8,7 @@ import { path } from '../internal/utils/path';
 
 export class BeneficialOwners extends APIResource {
   /**
-   * Create a beneficial owner
+   * Create a Beneficial Owner
    *
    * @example
    * ```ts
