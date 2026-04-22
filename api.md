@@ -568,43 +568,6 @@ Methods:
 - <code title="get /real_time_decisions/{real_time_decision_id}">client.realTimeDecisions.<a href="./src/resources/real-time-decisions.ts">retrieve</a>(realTimeDecisionID) -> RealTimeDecision</code>
 - <code title="post /real_time_decisions/{real_time_decision_id}/action">client.realTimeDecisions.<a href="./src/resources/real-time-decisions.ts">action</a>(realTimeDecisionID, { ...params }) -> RealTimeDecision</code>
 
-# BookkeepingAccounts
-
-Types:
-
-- <code><a href="./src/resources/bookkeeping-accounts.ts">BookkeepingAccount</a></code>
-- <code><a href="./src/resources/bookkeeping-accounts.ts">BookkeepingBalanceLookup</a></code>
-
-Methods:
-
-- <code title="post /bookkeeping_accounts">client.bookkeepingAccounts.<a href="./src/resources/bookkeeping-accounts.ts">create</a>({ ...params }) -> BookkeepingAccount</code>
-- <code title="patch /bookkeeping_accounts/{bookkeeping_account_id}">client.bookkeepingAccounts.<a href="./src/resources/bookkeeping-accounts.ts">update</a>(bookkeepingAccountID, { ...params }) -> BookkeepingAccount</code>
-- <code title="get /bookkeeping_accounts">client.bookkeepingAccounts.<a href="./src/resources/bookkeeping-accounts.ts">list</a>({ ...params }) -> BookkeepingAccountsPage</code>
-- <code title="get /bookkeeping_accounts/{bookkeeping_account_id}/balance">client.bookkeepingAccounts.<a href="./src/resources/bookkeeping-accounts.ts">balance</a>(bookkeepingAccountID, { ...params }) -> BookkeepingBalanceLookup</code>
-
-# BookkeepingEntrySets
-
-Types:
-
-- <code><a href="./src/resources/bookkeeping-entry-sets.ts">BookkeepingEntrySet</a></code>
-
-Methods:
-
-- <code title="post /bookkeeping_entry_sets">client.bookkeepingEntrySets.<a href="./src/resources/bookkeeping-entry-sets.ts">create</a>({ ...params }) -> BookkeepingEntrySet</code>
-- <code title="get /bookkeeping_entry_sets/{bookkeeping_entry_set_id}">client.bookkeepingEntrySets.<a href="./src/resources/bookkeeping-entry-sets.ts">retrieve</a>(bookkeepingEntrySetID) -> BookkeepingEntrySet</code>
-- <code title="get /bookkeeping_entry_sets">client.bookkeepingEntrySets.<a href="./src/resources/bookkeeping-entry-sets.ts">list</a>({ ...params }) -> BookkeepingEntrySetsPage</code>
-
-# BookkeepingEntries
-
-Types:
-
-- <code><a href="./src/resources/bookkeeping-entries.ts">BookkeepingEntry</a></code>
-
-Methods:
-
-- <code title="get /bookkeeping_entries/{bookkeeping_entry_id}">client.bookkeepingEntries.<a href="./src/resources/bookkeeping-entries.ts">retrieve</a>(bookkeepingEntryID) -> BookkeepingEntry</code>
-- <code title="get /bookkeeping_entries">client.bookkeepingEntries.<a href="./src/resources/bookkeeping-entries.ts">list</a>({ ...params }) -> BookkeepingEntriesPage</code>
-
 # Groups
 
 Types:

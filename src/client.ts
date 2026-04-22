@@ -73,29 +73,6 @@ import {
   EntityBeneficialOwnersPage,
 } from './resources/beneficial-owners';
 import {
-  BookkeepingAccount,
-  BookkeepingAccountBalanceParams,
-  BookkeepingAccountCreateParams,
-  BookkeepingAccountListParams,
-  BookkeepingAccountUpdateParams,
-  BookkeepingAccounts,
-  BookkeepingAccountsPage,
-  BookkeepingBalanceLookup,
-} from './resources/bookkeeping-accounts';
-import {
-  BookkeepingEntries,
-  BookkeepingEntriesPage,
-  BookkeepingEntry,
-  BookkeepingEntryListParams,
-} from './resources/bookkeeping-entries';
-import {
-  BookkeepingEntrySet,
-  BookkeepingEntrySetCreateParams,
-  BookkeepingEntrySetListParams,
-  BookkeepingEntrySets,
-  BookkeepingEntrySetsPage,
-} from './resources/bookkeeping-entry-sets';
-import {
   CardDispute,
   CardDisputeCreateParams,
   CardDisputeListParams,
@@ -1201,9 +1178,6 @@ export class Increase {
   events: API.Events = new API.Events(this);
   eventSubscriptions: API.EventSubscriptions = new API.EventSubscriptions(this);
   realTimeDecisions: API.RealTimeDecisions = new API.RealTimeDecisions(this);
-  bookkeepingAccounts: API.BookkeepingAccounts = new API.BookkeepingAccounts(this);
-  bookkeepingEntrySets: API.BookkeepingEntrySets = new API.BookkeepingEntrySets(this);
-  bookkeepingEntries: API.BookkeepingEntries = new API.BookkeepingEntries(this);
   groups: API.Groups = new API.Groups(this);
   oauthApplications: API.OAuthApplications = new API.OAuthApplications(this);
   oauthConnections: API.OAuthConnections = new API.OAuthConnections(this);
@@ -1262,9 +1236,6 @@ Increase.Exports = Exports;
 Increase.Events = Events;
 Increase.EventSubscriptions = EventSubscriptions;
 Increase.RealTimeDecisions = RealTimeDecisions;
-Increase.BookkeepingAccounts = BookkeepingAccounts;
-Increase.BookkeepingEntrySets = BookkeepingEntrySets;
-Increase.BookkeepingEntries = BookkeepingEntries;
 Increase.Groups = Groups;
 Increase.OAuthApplications = OAuthApplications;
 Increase.OAuthConnections = OAuthConnections;
@@ -1648,32 +1619,6 @@ export declare namespace Increase {
     RealTimeDecisions as RealTimeDecisions,
     type RealTimeDecision as RealTimeDecision,
     type RealTimeDecisionActionParams as RealTimeDecisionActionParams,
-  };
-
-  export {
-    BookkeepingAccounts as BookkeepingAccounts,
-    type BookkeepingAccount as BookkeepingAccount,
-    type BookkeepingBalanceLookup as BookkeepingBalanceLookup,
-    type BookkeepingAccountsPage as BookkeepingAccountsPage,
-    type BookkeepingAccountCreateParams as BookkeepingAccountCreateParams,
-    type BookkeepingAccountUpdateParams as BookkeepingAccountUpdateParams,
-    type BookkeepingAccountListParams as BookkeepingAccountListParams,
-    type BookkeepingAccountBalanceParams as BookkeepingAccountBalanceParams,
-  };
-
-  export {
-    BookkeepingEntrySets as BookkeepingEntrySets,
-    type BookkeepingEntrySet as BookkeepingEntrySet,
-    type BookkeepingEntrySetsPage as BookkeepingEntrySetsPage,
-    type BookkeepingEntrySetCreateParams as BookkeepingEntrySetCreateParams,
-    type BookkeepingEntrySetListParams as BookkeepingEntrySetListParams,
-  };
-
-  export {
-    BookkeepingEntries as BookkeepingEntries,
-    type BookkeepingEntry as BookkeepingEntry,
-    type BookkeepingEntriesPage as BookkeepingEntriesPage,
-    type BookkeepingEntryListParams as BookkeepingEntryListParams,
   };
 
   export { Groups as Groups, type Group as Group };

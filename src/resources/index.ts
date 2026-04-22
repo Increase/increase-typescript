@@ -54,29 +54,6 @@ export {
   type EntityBeneficialOwnersPage,
 } from './beneficial-owners';
 export {
-  BookkeepingAccounts,
-  type BookkeepingAccount,
-  type BookkeepingBalanceLookup,
-  type BookkeepingAccountCreateParams,
-  type BookkeepingAccountUpdateParams,
-  type BookkeepingAccountListParams,
-  type BookkeepingAccountBalanceParams,
-  type BookkeepingAccountsPage,
-} from './bookkeeping-accounts';
-export {
-  BookkeepingEntries,
-  type BookkeepingEntry,
-  type BookkeepingEntryListParams,
-  type BookkeepingEntriesPage,
-} from './bookkeeping-entries';
-export {
-  BookkeepingEntrySets,
-  type BookkeepingEntrySet,
-  type BookkeepingEntrySetCreateParams,
-  type BookkeepingEntrySetListParams,
-  type BookkeepingEntrySetsPage,
-} from './bookkeeping-entry-sets';
-export {
   CardDisputes,
   type CardDispute,
   type CardDisputeCreateParams,
