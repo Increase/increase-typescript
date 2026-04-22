@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.539.0 (2026-04-22)
+
+Full Changelog: [v0.538.0...v0.539.0](https://github.com/Increase/increase-typescript/compare/v0.538.0...v0.539.0)
+
+### Features
+
+* **api:** api update ([ff7b104](https://github.com/Increase/increase-typescript/commit/ff7b1048e3c3474ecbc5cf837c8fe68ab04203fb))
+
+
+### Chores
+
+* **internal:** more robust bootstrap script ([5a03046](https://github.com/Increase/increase-typescript/commit/5a0304632b24ef2bff384230bd94c092a9f167be))
+
 ## 0.538.0 (2026-04-20)
 
 Full Changelog: [v0.537.0...v0.538.0](https://github.com/Increase/increase-typescript/compare/v0.537.0...v0.538.0)
