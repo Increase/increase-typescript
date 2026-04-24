@@ -33,10 +33,7 @@ export class InboundMailItems extends APIResource {
    * }
    * ```
    */
-  list(
-    query: InboundMailItemListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): PagePromise<InboundMailItemsPage, InboundMailItem> {
+  list(query: InboundMailItemListParams | null | undefined = {}, options?: RequestOptions): PagePromise<InboundMailItemsPage, InboundMailItem> {
     return this._client.getAPIList('/inbound_mail_items', Page<InboundMailItem>, { query, ...options });
   }
 
@@ -54,16 +51,12 @@ export class InboundMailItems extends APIResource {
    *   );
    * ```
    */
-  action(
-    inboundMailItemID: string,
-    body: InboundMailItemActionParams,
-    options?: RequestOptions,
-  ): APIPromise<InboundMailItem> {
+  action(inboundMailItemID: string, body: InboundMailItemActionParams, options?: RequestOptions): APIPromise<InboundMailItem> {
     return this._client.post(path`/inbound_mail_items/${inboundMailItemID}/action`, { body, ...options });
   }
 }
 
-export type InboundMailItemsPage = Page<InboundMailItem>;
+export type InboundMailItemsPage = Page<InboundMailItem>
 
 /**
  * Inbound Mail Items represent pieces of physical mail delivered to a Lockbox.
@@ -125,7 +118,7 @@ export interface InboundMailItem {
    */
   type: 'inbound_mail_item';
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export namespace InboundMailItem {
@@ -230,6 +223,6 @@ export declare namespace InboundMailItems {
     type InboundMailItem as InboundMailItem,
     type InboundMailItemsPage as InboundMailItemsPage,
     type InboundMailItemListParams as InboundMailItemListParams,
-    type InboundMailItemActionParams as InboundMailItemActionParams,
+    type InboundMailItemActionParams as InboundMailItemActionParams
   };
 }

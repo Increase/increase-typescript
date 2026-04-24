@@ -52,10 +52,7 @@ export class FednowTransfers extends APIResource {
    * }
    * ```
    */
-  list(
-    query: FednowTransferListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): PagePromise<FednowTransfersPage, FednowTransfer> {
+  list(query: FednowTransferListParams | null | undefined = {}, options?: RequestOptions): PagePromise<FednowTransfersPage, FednowTransfer> {
     return this._client.getAPIList('/fednow_transfers', Page<FednowTransfer>, { query, ...options });
   }
 
@@ -88,7 +85,7 @@ export class FednowTransfers extends APIResource {
   }
 }
 
-export type FednowTransfersPage = Page<FednowTransfer>;
+export type FednowTransfersPage = Page<FednowTransfer>
 
 /**
  * FedNow transfers move funds, within seconds, between your Increase account and
@@ -206,16 +203,7 @@ export interface FednowTransfer {
    * - `complete` - The transfer has been sent successfully and is complete.
    * - `rejected` - The transfer was rejected by the network or the recipient's bank.
    */
-  status:
-    | 'pending_reviewing'
-    | 'canceled'
-    | 'reviewing_rejected'
-    | 'requires_attention'
-    | 'pending_approval'
-    | 'pending_submitting'
-    | 'pending_response'
-    | 'complete'
-    | 'rejected';
+  status: 'pending_reviewing' | 'canceled' | 'reviewing_rejected' | 'requires_attention' | 'pending_approval' | 'pending_submitting' | 'pending_response' | 'complete' | 'rejected';
 
   /**
    * After the transfer is submitted to FedNow, this will contain supplemental
@@ -391,22 +379,7 @@ export namespace FednowTransfer {
      *   issue. We have been notified.
      * - `other` - Some other error or issue has occurred.
      */
-    reject_reason_code:
-      | 'account_closed'
-      | 'account_blocked'
-      | 'invalid_creditor_account_type'
-      | 'invalid_creditor_account_number'
-      | 'invalid_creditor_financial_institution_identifier'
-      | 'end_customer_deceased'
-      | 'narrative'
-      | 'transaction_forbidden'
-      | 'transaction_type_not_supported'
-      | 'amount_exceeds_bank_limits'
-      | 'invalid_creditor_address'
-      | 'invalid_debtor_address'
-      | 'timeout'
-      | 'processing_error'
-      | 'other';
+    reject_reason_code: 'account_closed' | 'account_blocked' | 'invalid_creditor_account_type' | 'invalid_creditor_account_number' | 'invalid_creditor_financial_institution_identifier' | 'end_customer_deceased' | 'narrative' | 'transaction_forbidden' | 'transaction_type_not_supported' | 'amount_exceeds_bank_limits' | 'invalid_creditor_address' | 'invalid_debtor_address' | 'timeout' | 'processing_error' | 'other';
 
     /**
      * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -490,7 +463,7 @@ export interface FednowTransferCreateParams {
    */
   routing_number?: string;
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export namespace FednowTransferCreateParams {
@@ -601,17 +574,7 @@ export namespace FednowTransferListParams {
      * Return results whose value is in the provided list. For GET requests, this
      * should be encoded as a comma-delimited string, such as `?in=one,two,three`.
      */
-    in?: Array<
-      | 'pending_reviewing'
-      | 'canceled'
-      | 'reviewing_rejected'
-      | 'requires_attention'
-      | 'pending_approval'
-      | 'pending_submitting'
-      | 'pending_response'
-      | 'complete'
-      | 'rejected'
-    >;
+    in?: Array<'pending_reviewing' | 'canceled' | 'reviewing_rejected' | 'requires_attention' | 'pending_approval' | 'pending_submitting' | 'pending_response' | 'complete' | 'rejected'>;
   }
 }
 
@@ -620,6 +583,6 @@ export declare namespace FednowTransfers {
     type FednowTransfer as FednowTransfer,
     type FednowTransfersPage as FednowTransfersPage,
     type FednowTransferCreateParams as FednowTransferCreateParams,
-    type FednowTransferListParams as FednowTransferListParams,
+    type FednowTransferListParams as FednowTransferListParams
   };
 }

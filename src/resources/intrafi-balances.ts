@@ -61,7 +61,7 @@ export interface IntrafiBalance {
    */
   type: 'intrafi_balance';
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export namespace IntrafiBalance {
@@ -88,7 +88,7 @@ export namespace IntrafiBalance {
      */
     fdic_certificate_number: string;
 
-    [k: string]: unknown;
+  [k: string]: unknown
   }
 
   export namespace Balance {
@@ -110,5 +110,7 @@ export namespace IntrafiBalance {
 }
 
 export declare namespace IntrafiBalances {
-  export { type IntrafiBalance as IntrafiBalance };
+  export {
+    type IntrafiBalance as IntrafiBalance
+  };
 }

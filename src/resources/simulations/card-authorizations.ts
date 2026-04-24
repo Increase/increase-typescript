@@ -24,10 +24,7 @@ export class CardAuthorizations extends APIResource {
    *   });
    * ```
    */
-  create(
-    body: CardAuthorizationCreateParams,
-    options?: RequestOptions,
-  ): APIPromise<CardAuthorizationCreateResponse> {
+  create(body: CardAuthorizationCreateParams, options?: RequestOptions): APIPromise<CardAuthorizationCreateResponse> {
     return this._client.post('/simulations/card_authorizations', { body, ...options });
   }
 }
@@ -110,28 +107,7 @@ export interface CardAuthorizationCreateParams {
    * - `suspected_fraud` - The transaction was suspected to be fraudulent. Please
    *   reach out to support@increase.com for more information.
    */
-  decline_reason?:
-    | 'account_closed'
-    | 'card_not_active'
-    | 'card_canceled'
-    | 'physical_card_not_active'
-    | 'entity_not_active'
-    | 'group_locked'
-    | 'insufficient_funds'
-    | 'cvv2_mismatch'
-    | 'pin_mismatch'
-    | 'card_expiration_mismatch'
-    | 'transaction_not_allowed'
-    | 'breaches_limit'
-    | 'webhook_declined'
-    | 'webhook_timed_out'
-    | 'declined_by_stand_in_processing'
-    | 'invalid_physical_card'
-    | 'missing_original_authorization'
-    | 'invalid_cryptogram'
-    | 'failed_3ds_authentication'
-    | 'suspected_card_testing'
-    | 'suspected_fraud';
+  decline_reason?: 'account_closed' | 'card_not_active' | 'card_canceled' | 'physical_card_not_active' | 'entity_not_active' | 'group_locked' | 'insufficient_funds' | 'cvv2_mismatch' | 'pin_mismatch' | 'card_expiration_mismatch' | 'transaction_not_allowed' | 'breaches_limit' | 'webhook_declined' | 'webhook_timed_out' | 'declined_by_stand_in_processing' | 'invalid_physical_card' | 'missing_original_authorization' | 'invalid_cryptogram' | 'failed_3ds_authentication' | 'suspected_card_testing' | 'suspected_fraud';
 
   /**
    * The identifier of the Digital Wallet Token to be authorized.
@@ -246,15 +222,7 @@ export namespace CardAuthorizationCreateParams {
        *   such as card testing.
        * - `other` - An unspecific reason for stand-in processing.
        */
-      stand_in_processing_reason?:
-        | 'issuer_error'
-        | 'invalid_physical_card'
-        | 'invalid_cryptogram'
-        | 'invalid_cardholder_authentication_verification_value'
-        | 'internal_visa_error'
-        | 'merchant_transaction_advisory_service_authentication_required'
-        | 'payment_fraud_disruption_acquirer_block'
-        | 'other';
+      stand_in_processing_reason?: 'issuer_error' | 'invalid_physical_card' | 'invalid_cryptogram' | 'invalid_cardholder_authentication_verification_value' | 'internal_visa_error' | 'merchant_transaction_advisory_service_authentication_required' | 'payment_fraud_disruption_acquirer_block' | 'other';
     }
   }
 
@@ -286,16 +254,7 @@ export namespace CardAuthorizationCreateParams {
      * - `balance_inquiry` - A balance inquiry transaction is used to check the balance
      *   of an account associated with a card.
      */
-    category:
-      | 'account_funding'
-      | 'automatic_fuel_dispenser'
-      | 'bill_payment'
-      | 'original_credit'
-      | 'purchase'
-      | 'quasi_cash'
-      | 'refund'
-      | 'cash_disbursement'
-      | 'balance_inquiry';
+    category: 'account_funding' | 'automatic_fuel_dispenser' | 'bill_payment' | 'original_credit' | 'purchase' | 'quasi_cash' | 'refund' | 'cash_disbursement' | 'balance_inquiry';
 
     /**
      * Details related to refund authorizations.
@@ -319,6 +278,6 @@ export namespace CardAuthorizationCreateParams {
 export declare namespace CardAuthorizations {
   export {
     type CardAuthorizationCreateResponse as CardAuthorizationCreateResponse,
-    type CardAuthorizationCreateParams as CardAuthorizationCreateParams,
+    type CardAuthorizationCreateParams as CardAuthorizationCreateParams
   };
 }

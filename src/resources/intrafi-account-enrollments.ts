@@ -19,10 +19,7 @@ export class IntrafiAccountEnrollments extends APIResource {
    *   });
    * ```
    */
-  create(
-    body: IntrafiAccountEnrollmentCreateParams,
-    options?: RequestOptions,
-  ): APIPromise<IntrafiAccountEnrollment> {
+  create(body: IntrafiAccountEnrollmentCreateParams, options?: RequestOptions): APIPromise<IntrafiAccountEnrollment> {
     return this._client.post('/intrafi_account_enrollments', { body, ...options });
   }
 
@@ -37,10 +34,7 @@ export class IntrafiAccountEnrollments extends APIResource {
    *   );
    * ```
    */
-  retrieve(
-    intrafiAccountEnrollmentID: string,
-    options?: RequestOptions,
-  ): APIPromise<IntrafiAccountEnrollment> {
+  retrieve(intrafiAccountEnrollmentID: string, options?: RequestOptions): APIPromise<IntrafiAccountEnrollment> {
     return this._client.get(path`/intrafi_account_enrollments/${intrafiAccountEnrollmentID}`, options);
   }
 
@@ -55,14 +49,8 @@ export class IntrafiAccountEnrollments extends APIResource {
    * }
    * ```
    */
-  list(
-    query: IntrafiAccountEnrollmentListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): PagePromise<IntrafiAccountEnrollmentsPage, IntrafiAccountEnrollment> {
-    return this._client.getAPIList('/intrafi_account_enrollments', Page<IntrafiAccountEnrollment>, {
-      query,
-      ...options,
-    });
+  list(query: IntrafiAccountEnrollmentListParams | null | undefined = {}, options?: RequestOptions): PagePromise<IntrafiAccountEnrollmentsPage, IntrafiAccountEnrollment> {
+    return this._client.getAPIList('/intrafi_account_enrollments', Page<IntrafiAccountEnrollment>, { query, ...options });
   }
 
   /**
@@ -76,18 +64,12 @@ export class IntrafiAccountEnrollments extends APIResource {
    *   );
    * ```
    */
-  unenroll(
-    intrafiAccountEnrollmentID: string,
-    options?: RequestOptions,
-  ): APIPromise<IntrafiAccountEnrollment> {
-    return this._client.post(
-      path`/intrafi_account_enrollments/${intrafiAccountEnrollmentID}/unenroll`,
-      options,
-    );
+  unenroll(intrafiAccountEnrollmentID: string, options?: RequestOptions): APIPromise<IntrafiAccountEnrollment> {
+    return this._client.post(path`/intrafi_account_enrollments/${intrafiAccountEnrollmentID}/unenroll`, options);
   }
 }
 
-export type IntrafiAccountEnrollmentsPage = Page<IntrafiAccountEnrollment>;
+export type IntrafiAccountEnrollmentsPage = Page<IntrafiAccountEnrollment>
 
 /**
  * IntraFi is a
@@ -166,7 +148,7 @@ export interface IntrafiAccountEnrollmentCreateParams {
    */
   email_address: string;
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export interface IntrafiAccountEnrollmentListParams extends PageParams {
@@ -193,9 +175,7 @@ export namespace IntrafiAccountEnrollmentListParams {
      * statuses. For GET requests, this should be encoded as a comma-delimited string,
      * such as `?in=one,two,three`.
      */
-    in?: Array<
-      'pending_enrolling' | 'enrolled' | 'pending_unenrolling' | 'unenrolled' | 'requires_attention'
-    >;
+    in?: Array<'pending_enrolling' | 'enrolled' | 'pending_unenrolling' | 'unenrolled' | 'requires_attention'>;
   }
 }
 
@@ -204,6 +184,6 @@ export declare namespace IntrafiAccountEnrollments {
     type IntrafiAccountEnrollment as IntrafiAccountEnrollment,
     type IntrafiAccountEnrollmentsPage as IntrafiAccountEnrollmentsPage,
     type IntrafiAccountEnrollmentCreateParams as IntrafiAccountEnrollmentCreateParams,
-    type IntrafiAccountEnrollmentListParams as IntrafiAccountEnrollmentListParams,
+    type IntrafiAccountEnrollmentListParams as IntrafiAccountEnrollmentListParams
   };
 }

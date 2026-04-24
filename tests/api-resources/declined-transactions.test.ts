@@ -2,10 +2,7 @@
 
 import Increase from 'increase';
 
-const client = new Increase({
-  apiKey: 'My API Key',
-  baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
-});
+const client = new Increase({ apiKey: 'My API Key', baseURL: process.env["TEST_API_BASE_URL"] ?? 'http://127.0.0.1:4010' });
 
 describe('resource declinedTransactions', () => {
   test('retrieve', async () => {
@@ -32,23 +29,20 @@ describe('resource declinedTransactions', () => {
 
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.declinedTransactions.list(
-        {
-          account_id: 'account_id',
-          category: { in: ['ach_decline'] },
-          created_at: {
-            after: '2019-12-27T18:11:19.117Z',
-            before: '2019-12-27T18:11:19.117Z',
-            on_or_after: '2019-12-27T18:11:19.117Z',
-            on_or_before: '2019-12-27T18:11:19.117Z',
-          },
-          cursor: 'cursor',
-          limit: 1,
-          route_id: 'route_id',
-        },
-        { path: '/_stainless_unknown_path' },
-      ),
-    ).rejects.toThrow(Increase.NotFoundError);
+    await expect(client.declinedTransactions.list({
+    account_id: 'account_id',
+    category: { in: ['ach_decline'] },
+    created_at: {
+    after: '2019-12-27T18:11:19.117Z',
+    before: '2019-12-27T18:11:19.117Z',
+    on_or_after: '2019-12-27T18:11:19.117Z',
+    on_or_before: '2019-12-27T18:11:19.117Z',
+  },
+    cursor: 'cursor',
+    limit: 1,
+    route_id: 'route_id',
+  }, { path: '/_stainless_unknown_path' }))
+      .rejects
+      .toThrow(Increase.NotFoundError);
   });
 });

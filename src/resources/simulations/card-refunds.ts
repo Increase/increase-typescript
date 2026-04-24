@@ -43,5 +43,7 @@ export interface CardRefundCreateParams {
 }
 
 export declare namespace CardRefunds {
-  export { type CardRefundCreateParams as CardRefundCreateParams };
+  export {
+    type CardRefundCreateParams as CardRefundCreateParams
+  };
 }

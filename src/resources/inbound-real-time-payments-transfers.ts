@@ -18,14 +18,8 @@ export class InboundRealTimePaymentsTransfers extends APIResource {
    *   );
    * ```
    */
-  retrieve(
-    inboundRealTimePaymentsTransferID: string,
-    options?: RequestOptions,
-  ): APIPromise<InboundRealTimePaymentsTransfer> {
-    return this._client.get(
-      path`/inbound_real_time_payments_transfers/${inboundRealTimePaymentsTransferID}`,
-      options,
-    );
+  retrieve(inboundRealTimePaymentsTransferID: string, options?: RequestOptions): APIPromise<InboundRealTimePaymentsTransfer> {
+    return this._client.get(path`/inbound_real_time_payments_transfers/${inboundRealTimePaymentsTransferID}`, options);
   }
 
   /**
@@ -39,19 +33,12 @@ export class InboundRealTimePaymentsTransfers extends APIResource {
    * }
    * ```
    */
-  list(
-    query: InboundRealTimePaymentsTransferListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): PagePromise<InboundRealTimePaymentsTransfersPage, InboundRealTimePaymentsTransfer> {
-    return this._client.getAPIList(
-      '/inbound_real_time_payments_transfers',
-      Page<InboundRealTimePaymentsTransfer>,
-      { query, ...options },
-    );
+  list(query: InboundRealTimePaymentsTransferListParams | null | undefined = {}, options?: RequestOptions): PagePromise<InboundRealTimePaymentsTransfersPage, InboundRealTimePaymentsTransfer> {
+    return this._client.getAPIList('/inbound_real_time_payments_transfers', Page<InboundRealTimePaymentsTransfer>, { query, ...options });
   }
 }
 
-export type InboundRealTimePaymentsTransfersPage = Page<InboundRealTimePaymentsTransfer>;
+export type InboundRealTimePaymentsTransfersPage = Page<InboundRealTimePaymentsTransfer>
 
 /**
  * An Inbound Real-Time Payments Transfer is a Real-Time Payments transfer
@@ -148,7 +135,7 @@ export interface InboundRealTimePaymentsTransfer {
    */
   unstructured_remittance_information: string | null;
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export namespace InboundRealTimePaymentsTransfer {
@@ -192,13 +179,7 @@ export namespace InboundRealTimePaymentsTransfer {
      * - `real_time_payments_not_enabled` - Your account is not enabled to receive
      *   Real-Time Payments transfers.
      */
-    reason:
-      | 'account_number_canceled'
-      | 'account_number_disabled'
-      | 'account_restricted'
-      | 'group_locked'
-      | 'entity_not_active'
-      | 'real_time_payments_not_enabled';
+    reason: 'account_number_canceled' | 'account_number_disabled' | 'account_restricted' | 'group_locked' | 'entity_not_active' | 'real_time_payments_not_enabled';
   }
 }
 
@@ -250,6 +231,6 @@ export declare namespace InboundRealTimePaymentsTransfers {
   export {
     type InboundRealTimePaymentsTransfer as InboundRealTimePaymentsTransfer,
     type InboundRealTimePaymentsTransfersPage as InboundRealTimePaymentsTransfersPage,
-    type InboundRealTimePaymentsTransferListParams as InboundRealTimePaymentsTransferListParams,
+    type InboundRealTimePaymentsTransferListParams as InboundRealTimePaymentsTransferListParams
   };
 }

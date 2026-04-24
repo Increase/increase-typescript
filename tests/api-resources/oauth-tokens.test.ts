@@ -2,10 +2,7 @@
 
 import Increase from 'increase';
 
-const client = new Increase({
-  apiKey: 'My API Key',
-  baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
-});
+const client = new Increase({ apiKey: 'My API Key', baseURL: process.env["TEST_API_BASE_URL"] ?? 'http://127.0.0.1:4010' });
 
 describe('resource oauthTokens', () => {
   test('create: only required params', async () => {
@@ -21,11 +18,11 @@ describe('resource oauthTokens', () => {
 
   test('create: required and optional params', async () => {
     const response = await client.oauthTokens.create({
-      grant_type: 'authorization_code',
-      client_id: '12345',
-      client_secret: 'supersecret',
-      code: '123',
-      production_token: 'x',
-    });
+    grant_type: 'authorization_code',
+    client_id: '12345',
+    client_secret: 'supersecret',
+    code: '123',
+    production_token: 'x',
+  });
   });
 });

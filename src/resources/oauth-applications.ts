@@ -33,15 +33,12 @@ export class OAuthApplications extends APIResource {
    * }
    * ```
    */
-  list(
-    query: OAuthApplicationListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): PagePromise<OAuthApplicationsPage, OAuthApplication> {
+  list(query: OAuthApplicationListParams | null | undefined = {}, options?: RequestOptions): PagePromise<OAuthApplicationsPage, OAuthApplication> {
     return this._client.getAPIList('/oauth_applications', Page<OAuthApplication>, { query, ...options });
   }
 }
 
-export type OAuthApplicationsPage = Page<OAuthApplication>;
+export type OAuthApplicationsPage = Page<OAuthApplication>
 
 /**
  * An OAuth Application lets you build an application for others to use with their
@@ -139,6 +136,6 @@ export declare namespace OAuthApplications {
   export {
     type OAuthApplication as OAuthApplication,
     type OAuthApplicationsPage as OAuthApplicationsPage,
-    type OAuthApplicationListParams as OAuthApplicationListParams,
+    type OAuthApplicationListParams as OAuthApplicationListParams
   };
 }
