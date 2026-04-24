@@ -87,8 +87,7 @@ export class PagePromise<
     super(
       client,
       request,
-      async (client, props) =>
-        new Page(client, props.response, await defaultParseResponse(client, props), props.options),
+      async (client, props) => new Page(client, props.response, await defaultParseResponse(client, props), props.options)
     );
   }
 
@@ -149,7 +148,7 @@ export class Page<Item> extends AbstractPage<Item> implements PageResponse<Item>
   }
 
   nextPageRequestOptions(): PageRequestOptions | null {
-    const cursor = this.next_cursor;
+    const cursor = this.next_cursor
     if (!cursor) {
       return null;
     }

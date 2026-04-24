@@ -23,10 +23,7 @@ export class CardSettlements extends APIResource {
    *   });
    * ```
    */
-  create(
-    body: CardSettlementCreateParams,
-    options?: RequestOptions,
-  ): APIPromise<TransactionsAPI.Transaction> {
+  create(body: CardSettlementCreateParams, options?: RequestOptions): APIPromise<TransactionsAPI.Transaction> {
     return this._client.post('/simulations/card_settlements', { body, ...options });
   }
 }
@@ -51,5 +48,7 @@ export interface CardSettlementCreateParams {
 }
 
 export declare namespace CardSettlements {
-  export { type CardSettlementCreateParams as CardSettlementCreateParams };
+  export {
+    type CardSettlementCreateParams as CardSettlementCreateParams
+  };
 }

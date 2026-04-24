@@ -52,5 +52,7 @@ export interface ProgramCreateParams {
 }
 
 export declare namespace Programs {
-  export { type ProgramCreateParams as ProgramCreateParams };
+  export {
+    type ProgramCreateParams as ProgramCreateParams
+  };
 }

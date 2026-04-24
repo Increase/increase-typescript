@@ -44,5 +44,7 @@ export interface Group {
 }
 
 export declare namespace Groups {
-  export { type Group as Group };
+  export {
+    type Group as Group
+  };
 }

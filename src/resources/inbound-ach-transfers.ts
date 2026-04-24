@@ -33,10 +33,7 @@ export class InboundACHTransfers extends APIResource {
    * }
    * ```
    */
-  list(
-    query: InboundACHTransferListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): PagePromise<InboundACHTransfersPage, InboundACHTransfer> {
+  list(query: InboundACHTransferListParams | null | undefined = {}, options?: RequestOptions): PagePromise<InboundACHTransfersPage, InboundACHTransfer> {
     return this._client.getAPIList('/inbound_ach_transfers', Page<InboundACHTransfer>, { query, ...options });
   }
 
@@ -51,15 +48,8 @@ export class InboundACHTransfers extends APIResource {
    *   );
    * ```
    */
-  createNotificationOfChange(
-    inboundACHTransferID: string,
-    body: InboundACHTransferCreateNotificationOfChangeParams,
-    options?: RequestOptions,
-  ): APIPromise<InboundACHTransfer> {
-    return this._client.post(
-      path`/inbound_ach_transfers/${inboundACHTransferID}/create_notification_of_change`,
-      { body, ...options },
-    );
+  createNotificationOfChange(inboundACHTransferID: string, body: InboundACHTransferCreateNotificationOfChangeParams, options?: RequestOptions): APIPromise<InboundACHTransfer> {
+    return this._client.post(path`/inbound_ach_transfers/${inboundACHTransferID}/create_notification_of_change`, { body, ...options });
   }
 
   /**
@@ -73,15 +63,8 @@ export class InboundACHTransfers extends APIResource {
    *   );
    * ```
    */
-  decline(
-    inboundACHTransferID: string,
-    body: InboundACHTransferDeclineParams,
-    options?: RequestOptions,
-  ): APIPromise<InboundACHTransfer> {
-    return this._client.post(path`/inbound_ach_transfers/${inboundACHTransferID}/decline`, {
-      body,
-      ...options,
-    });
+  decline(inboundACHTransferID: string, body: InboundACHTransferDeclineParams, options?: RequestOptions): APIPromise<InboundACHTransfer> {
+    return this._client.post(path`/inbound_ach_transfers/${inboundACHTransferID}/decline`, { body, ...options });
   }
 
   /**
@@ -96,19 +79,12 @@ export class InboundACHTransfers extends APIResource {
    *   );
    * ```
    */
-  transferReturn(
-    inboundACHTransferID: string,
-    body: InboundACHTransferTransferReturnParams,
-    options?: RequestOptions,
-  ): APIPromise<InboundACHTransfer> {
-    return this._client.post(path`/inbound_ach_transfers/${inboundACHTransferID}/transfer_return`, {
-      body,
-      ...options,
-    });
+  transferReturn(inboundACHTransferID: string, body: InboundACHTransferTransferReturnParams, options?: RequestOptions): APIPromise<InboundACHTransfer> {
+    return this._client.post(path`/inbound_ach_transfers/${inboundACHTransferID}/transfer_return`, { body, ...options });
   }
 }
 
-export type InboundACHTransfersPage = Page<InboundACHTransfer>;
+export type InboundACHTransfersPage = Page<InboundACHTransfer>
 
 /**
  * An Inbound ACH Transfer is an ACH transfer initiated outside of Increase to your
@@ -254,23 +230,7 @@ export interface InboundACHTransfer {
    * - `destroyed_check` - Destroyed Check (XCK).
    * - `international_ach_transaction` - International ACH Transaction (IAT).
    */
-  standard_entry_class_code:
-    | 'corporate_credit_or_debit'
-    | 'corporate_trade_exchange'
-    | 'prearranged_payments_and_deposit'
-    | 'internet_initiated'
-    | 'point_of_sale'
-    | 'telephone_initiated'
-    | 'customer_initiated'
-    | 'accounts_receivable'
-    | 'machine_transfer'
-    | 'shared_network_transaction'
-    | 'represented_check'
-    | 'back_office_conversion'
-    | 'point_of_purchase'
-    | 'check_truncation'
-    | 'destroyed_check'
-    | 'international_ach_transaction';
+  standard_entry_class_code: 'corporate_credit_or_debit' | 'corporate_trade_exchange' | 'prearranged_payments_and_deposit' | 'internet_initiated' | 'point_of_sale' | 'telephone_initiated' | 'customer_initiated' | 'accounts_receivable' | 'machine_transfer' | 'shared_network_transaction' | 'represented_check' | 'back_office_conversion' | 'point_of_purchase' | 'check_truncation' | 'destroyed_check' | 'international_ach_transaction';
 
   /**
    * The status of the transfer.
@@ -302,7 +262,7 @@ export interface InboundACHTransfer {
    */
   type: 'inbound_ach_transfer';
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export namespace InboundACHTransfer {
@@ -403,24 +363,7 @@ export namespace InboundACHTransfer {
      * - `corporate_customer_advised_not_authorized` - The corporate customer no longer
      *   authorizes this transaction.
      */
-    reason:
-      | 'ach_route_canceled'
-      | 'ach_route_disabled'
-      | 'breaches_limit'
-      | 'entity_not_active'
-      | 'group_locked'
-      | 'transaction_not_allowed'
-      | 'returned_per_odfi_request'
-      | 'user_initiated'
-      | 'insufficient_funds'
-      | 'authorization_revoked_by_customer'
-      | 'payment_stopped'
-      | 'customer_advised_unauthorized_improper_ineligible_or_incomplete'
-      | 'representative_payee_deceased_or_unable_to_continue_in_that_capacity'
-      | 'beneficiary_or_account_holder_deceased'
-      | 'credit_entry_refused_by_receiver'
-      | 'duplicate_entry'
-      | 'corporate_customer_advised_not_authorized';
+    reason: 'ach_route_canceled' | 'ach_route_disabled' | 'breaches_limit' | 'entity_not_active' | 'group_locked' | 'transaction_not_allowed' | 'returned_per_odfi_request' | 'user_initiated' | 'insufficient_funds' | 'authorization_revoked_by_customer' | 'payment_stopped' | 'customer_advised_unauthorized_improper_ineligible_or_incomplete' | 'representative_payee_deceased_or_unable_to_continue_in_that_capacity' | 'beneficiary_or_account_holder_deceased' | 'credit_entry_refused_by_receiver' | 'duplicate_entry' | 'corporate_customer_advised_not_authorized';
   }
 
   /**
@@ -469,10 +412,7 @@ export namespace InboundACHTransfer {
      * - `blank` - There is no foreign exchange for this transfer, so the
      *   `foreign_exchange_reference` field is blank.
      */
-    foreign_exchange_reference_indicator:
-      | 'foreign_exchange_rate'
-      | 'foreign_exchange_reference_number'
-      | 'blank';
+    foreign_exchange_reference_indicator: 'foreign_exchange_rate' | 'foreign_exchange_reference_number' | 'blank';
 
     /**
      * The amount in the minor unit of the foreign payment currency. For dollars, for
@@ -509,27 +449,7 @@ export namespace InboundACHTransfer {
      * - `telphone_initiated` - Sent as `TEL` in the Nacha file.
      * - `internet_initiated` - Sent as `WEB` in the Nacha file.
      */
-    international_transaction_type_code:
-      | 'annuity'
-      | 'business_or_commercial'
-      | 'deposit'
-      | 'loan'
-      | 'miscellaneous'
-      | 'mortgage'
-      | 'pension'
-      | 'remittance'
-      | 'rent_or_lease'
-      | 'salary_or_payroll'
-      | 'tax'
-      | 'accounts_receivable'
-      | 'back_office_conversion'
-      | 'machine_transfer'
-      | 'point_of_purchase'
-      | 'point_of_sale'
-      | 'represented_check'
-      | 'shared_network_transaction'
-      | 'telphone_initiated'
-      | 'internet_initiated';
+    international_transaction_type_code: 'annuity' | 'business_or_commercial' | 'deposit' | 'loan' | 'miscellaneous' | 'mortgage' | 'pension' | 'remittance' | 'rent_or_lease' | 'salary_or_payroll' | 'tax' | 'accounts_receivable' | 'back_office_conversion' | 'machine_transfer' | 'point_of_purchase' | 'point_of_sale' | 'represented_check' | 'shared_network_transaction' | 'telphone_initiated' | 'internet_initiated';
 
     /**
      * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code for the
@@ -560,10 +480,7 @@ export namespace InboundACHTransfer {
      * - `bic_code` - The SWIFT Bank Identifier Code (BIC) of the bank.
      * - `iban` - An International Bank Account Number.
      */
-    originating_depository_financial_institution_id_qualifier:
-      | 'national_clearing_system_number'
-      | 'bic_code'
-      | 'iban';
+    originating_depository_financial_institution_id_qualifier: 'national_clearing_system_number' | 'bic_code' | 'iban';
 
     /**
      * The name of the originating bank. Sometimes this will refer to an American bank
@@ -679,10 +596,7 @@ export namespace InboundACHTransfer {
      * - `bic_code` - The SWIFT Bank Identifier Code (BIC) of the bank.
      * - `iban` - An International Bank Account Number.
      */
-    receiving_depository_financial_institution_id_qualifier:
-      | 'national_clearing_system_number'
-      | 'bic_code'
-      | 'iban';
+    receiving_depository_financial_institution_id_qualifier: 'national_clearing_system_number' | 'bic_code' | 'iban';
 
     /**
      * The name of the receiving bank, as set by the sending financial institution.
@@ -756,17 +670,7 @@ export namespace InboundACHTransfer {
      * - `corporate_customer_advised_not_authorized` - The corporate customer no longer
      *   authorizes this transaction. The Nacha return code is R29.
      */
-    reason:
-      | 'insufficient_funds'
-      | 'returned_per_odfi_request'
-      | 'authorization_revoked_by_customer'
-      | 'payment_stopped'
-      | 'customer_advised_unauthorized_improper_ineligible_or_incomplete'
-      | 'representative_payee_deceased_or_unable_to_continue_in_that_capacity'
-      | 'beneficiary_or_account_holder_deceased'
-      | 'credit_entry_refused_by_receiver'
-      | 'duplicate_entry'
-      | 'corporate_customer_advised_not_authorized';
+    reason: 'insufficient_funds' | 'returned_per_odfi_request' | 'authorization_revoked_by_customer' | 'payment_stopped' | 'customer_advised_unauthorized_improper_ineligible_or_incomplete' | 'representative_payee_deceased_or_unable_to_continue_in_that_capacity' | 'beneficiary_or_account_holder_deceased' | 'credit_entry_refused_by_receiver' | 'duplicate_entry' | 'corporate_customer_advised_not_authorized';
 
     /**
      * The time at which the transfer was returned.
@@ -871,16 +775,7 @@ export interface InboundACHTransferDeclineParams {
    * - `corporate_customer_advised_not_authorized` - The corporate customer no longer
    *   authorizes this transaction. The Nacha return code is R29.
    */
-  reason?:
-    | 'insufficient_funds'
-    | 'authorization_revoked_by_customer'
-    | 'payment_stopped'
-    | 'customer_advised_unauthorized_improper_ineligible_or_incomplete'
-    | 'representative_payee_deceased_or_unable_to_continue_in_that_capacity'
-    | 'beneficiary_or_account_holder_deceased'
-    | 'credit_entry_refused_by_receiver'
-    | 'duplicate_entry'
-    | 'corporate_customer_advised_not_authorized';
+  reason?: 'insufficient_funds' | 'authorization_revoked_by_customer' | 'payment_stopped' | 'customer_advised_unauthorized_improper_ineligible_or_incomplete' | 'representative_payee_deceased_or_unable_to_continue_in_that_capacity' | 'beneficiary_or_account_holder_deceased' | 'credit_entry_refused_by_receiver' | 'duplicate_entry' | 'corporate_customer_advised_not_authorized';
 }
 
 export interface InboundACHTransferTransferReturnParams {
@@ -908,16 +803,7 @@ export interface InboundACHTransferTransferReturnParams {
    * - `corporate_customer_advised_not_authorized` - The corporate customer no longer
    *   authorizes this transaction. The Nacha return code is R29.
    */
-  reason:
-    | 'insufficient_funds'
-    | 'authorization_revoked_by_customer'
-    | 'payment_stopped'
-    | 'customer_advised_unauthorized_improper_ineligible_or_incomplete'
-    | 'representative_payee_deceased_or_unable_to_continue_in_that_capacity'
-    | 'beneficiary_or_account_holder_deceased'
-    | 'credit_entry_refused_by_receiver'
-    | 'duplicate_entry'
-    | 'corporate_customer_advised_not_authorized';
+  reason: 'insufficient_funds' | 'authorization_revoked_by_customer' | 'payment_stopped' | 'customer_advised_unauthorized_improper_ineligible_or_incomplete' | 'representative_payee_deceased_or_unable_to_continue_in_that_capacity' | 'beneficiary_or_account_holder_deceased' | 'credit_entry_refused_by_receiver' | 'duplicate_entry' | 'corporate_customer_advised_not_authorized';
 }
 
 export declare namespace InboundACHTransfers {
@@ -927,6 +813,6 @@ export declare namespace InboundACHTransfers {
     type InboundACHTransferListParams as InboundACHTransferListParams,
     type InboundACHTransferCreateNotificationOfChangeParams as InboundACHTransferCreateNotificationOfChangeParams,
     type InboundACHTransferDeclineParams as InboundACHTransferDeclineParams,
-    type InboundACHTransferTransferReturnParams as InboundACHTransferTransferReturnParams,
+    type InboundACHTransferTransferReturnParams as InboundACHTransferTransferReturnParams
   };
 }

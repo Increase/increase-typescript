@@ -50,10 +50,7 @@ export class CheckTransfers extends APIResource {
    * }
    * ```
    */
-  list(
-    query: CheckTransferListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): PagePromise<CheckTransfersPage, CheckTransfer> {
+  list(query: CheckTransferListParams | null | undefined = {}, options?: RequestOptions): PagePromise<CheckTransfersPage, CheckTransfer> {
     return this._client.getAPIList('/check_transfers', Page<CheckTransfer>, { query, ...options });
   }
 
@@ -97,16 +94,12 @@ export class CheckTransfers extends APIResource {
    *   );
    * ```
    */
-  stopPayment(
-    checkTransferID: string,
-    body: CheckTransferStopPaymentParams,
-    options?: RequestOptions,
-  ): APIPromise<CheckTransfer> {
+  stopPayment(checkTransferID: string, body: CheckTransferStopPaymentParams, options?: RequestOptions): APIPromise<CheckTransfer> {
     return this._client.post(path`/check_transfers/${checkTransferID}/stop_payment`, { body, ...options });
   }
 }
 
-export type CheckTransfersPage = Page<CheckTransfer>;
+export type CheckTransfersPage = Page<CheckTransfer>
 
 /**
  * Check Transfers move funds from your Increase account by mailing a physical
@@ -250,17 +243,7 @@ export interface CheckTransfer {
    * - `stopped` - A stop-payment was requested for this check.
    * - `returned` - The transfer has been returned.
    */
-  status:
-    | 'pending_approval'
-    | 'canceled'
-    | 'pending_submission'
-    | 'requires_attention'
-    | 'rejected'
-    | 'pending_mailing'
-    | 'mailed'
-    | 'deposited'
-    | 'stopped'
-    | 'returned';
+  status: 'pending_approval' | 'canceled' | 'pending_submission' | 'requires_attention' | 'rejected' | 'pending_mailing' | 'mailed' | 'deposited' | 'stopped' | 'returned';
 
   /**
    * After a stop-payment is requested on the check, this will contain supplemental
@@ -293,7 +276,7 @@ export interface CheckTransfer {
    */
   valid_until_date: string | null;
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export namespace CheckTransfer {
@@ -407,7 +390,7 @@ export namespace CheckTransfer {
      */
     mailed_at: string;
 
-    [k: string]: unknown;
+  [k: string]: unknown
   }
 
   /**
@@ -474,7 +457,7 @@ export namespace CheckTransfer {
      */
     tracking_updates: Array<PhysicalCheck.TrackingUpdate>;
 
-    [k: string]: unknown;
+  [k: string]: unknown
   }
 
   export namespace PhysicalCheck {
@@ -594,12 +577,7 @@ export namespace CheckTransfer {
        *   be returned to sender.
        * - `returned_to_sender` - Delivery failed and the check was returned to sender.
        */
-      category:
-        | 'in_transit'
-        | 'processed_for_delivery'
-        | 'delivered'
-        | 'delivery_issue'
-        | 'returned_to_sender';
+      category: 'in_transit' | 'processed_for_delivery' | 'delivered' | 'delivery_issue' | 'returned_to_sender';
 
       /**
        * The ISO 3166-1 alpha-2 country code for the country where the event took place.
@@ -635,12 +613,7 @@ export namespace CheckTransfer {
      *   in the past.
      * - `unknown` - The check was stopped for another reason.
      */
-    reason:
-      | 'mail_delivery_failed'
-      | 'rejected_by_increase'
-      | 'not_authorized'
-      | 'valid_until_date_passed'
-      | 'unknown';
+    reason: 'mail_delivery_failed' | 'rejected_by_increase' | 'not_authorized' | 'valid_until_date_passed' | 'unknown';
 
     /**
      * The time the stop-payment was requested.
@@ -658,7 +631,7 @@ export namespace CheckTransfer {
      */
     type: 'check_transfer_stop_payment_request';
 
-    [k: string]: unknown;
+  [k: string]: unknown
   }
 
   /**
@@ -687,7 +660,7 @@ export namespace CheckTransfer {
      */
     tracking_number: string | null;
 
-    [k: string]: unknown;
+  [k: string]: unknown
   }
 
   export namespace Submission {
@@ -738,7 +711,7 @@ export namespace CheckTransfer {
      */
     recipient_name: string | null;
 
-    [k: string]: unknown;
+  [k: string]: unknown
   }
 }
 
@@ -816,7 +789,7 @@ export interface CheckTransferCreateParams {
    */
   valid_until_date?: string;
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export namespace CheckTransferCreateParams {
@@ -890,7 +863,7 @@ export namespace CheckTransferCreateParams {
      */
     signature?: PhysicalCheck.Signature;
 
-    [k: string]: unknown;
+  [k: string]: unknown
   }
 
   export namespace PhysicalCheck {
@@ -1020,7 +993,7 @@ export namespace CheckTransferCreateParams {
      */
     recipient_name?: string;
 
-    [k: string]: unknown;
+  [k: string]: unknown
   }
 }
 
@@ -1076,18 +1049,7 @@ export namespace CheckTransferListParams {
      * requests, this should be encoded as a comma-delimited string, such as
      * `?in=one,two,three`.
      */
-    in?: Array<
-      | 'pending_approval'
-      | 'canceled'
-      | 'pending_submission'
-      | 'requires_attention'
-      | 'rejected'
-      | 'pending_mailing'
-      | 'mailed'
-      | 'deposited'
-      | 'stopped'
-      | 'returned'
-    >;
+    in?: Array<'pending_approval' | 'canceled' | 'pending_submission' | 'requires_attention' | 'rejected' | 'pending_mailing' | 'mailed' | 'deposited' | 'stopped' | 'returned'>;
   }
 }
 
@@ -1110,6 +1072,6 @@ export declare namespace CheckTransfers {
     type CheckTransfersPage as CheckTransfersPage,
     type CheckTransferCreateParams as CheckTransferCreateParams,
     type CheckTransferListParams as CheckTransferListParams,
-    type CheckTransferStopPaymentParams as CheckTransferStopPaymentParams,
+    type CheckTransferStopPaymentParams as CheckTransferStopPaymentParams
   };
 }

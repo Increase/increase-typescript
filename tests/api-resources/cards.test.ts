@@ -2,10 +2,7 @@
 
 import Increase from 'increase';
 
-const client = new Increase({
-  apiKey: 'My API Key',
-  baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
-});
+const client = new Increase({ apiKey: 'My API Key', baseURL: process.env["TEST_API_BASE_URL"] ?? 'http://127.0.0.1:4010' });
 
 describe('resource cards', () => {
   test('create: only required params', async () => {
@@ -21,40 +18,36 @@ describe('resource cards', () => {
 
   test('create: required and optional params', async () => {
     const response = await client.cards.create({
-      account_id: 'account_in71c4amph0vgo2qllky',
-      authorization_controls: {
-        merchant_acceptor_identifier: { allowed: [{ identifier: 'x' }], blocked: [{ identifier: 'x' }] },
-        merchant_category_code: { allowed: [{ code: '0253' }], blocked: [{ code: '0253' }] },
-        merchant_country: { allowed: [{ country: 'xx' }], blocked: [{ country: 'xx' }] },
-        usage: {
-          category: 'single_use',
-          multi_use: {
-            spending_limits: [
-              {
-                interval: 'all_time',
-                settlement_amount: 0,
-                merchant_category_codes: [{ code: 'x' }],
-              },
-            ],
-          },
-          single_use: { settlement_amount: { comparison: 'equals', value: 0 } },
-        },
-      },
-      billing_address: {
-        city: 'x',
-        line1: 'x',
-        postal_code: 'x',
-        state: 'x',
-        line2: 'x',
-      },
-      description: 'Card for Ian Crease',
-      digital_wallet: {
-        digital_card_profile_id: 'digital_card_profile_id',
-        email: 'dev@stainless.com',
-        phone: 'x',
-      },
-      entity_id: 'entity_id',
-    });
+    account_id: 'account_in71c4amph0vgo2qllky',
+    authorization_controls: {
+    merchant_acceptor_identifier: { allowed: [{ identifier: 'x' }], blocked: [{ identifier: 'x' }] },
+    merchant_category_code: { allowed: [{ code: '0253' }], blocked: [{ code: '0253' }] },
+    merchant_country: { allowed: [{ country: 'xx' }], blocked: [{ country: 'xx' }] },
+    usage: {
+    category: 'single_use',
+    multi_use: { spending_limits: [{
+    interval: 'all_time',
+    settlement_amount: 0,
+    merchant_category_codes: [{ code: 'x' }],
+  }] },
+    single_use: { settlement_amount: { comparison: 'equals', value: 0 } },
+  },
+  },
+    billing_address: {
+    city: 'x',
+    line1: 'x',
+    postal_code: 'x',
+    state: 'x',
+    line2: 'x',
+  },
+    description: 'Card for Ian Crease',
+    digital_wallet: {
+    digital_card_profile_id: 'digital_card_profile_id',
+    email: 'dev@stainless.com',
+    phone: 'x',
+  },
+    entity_id: 'entity_id',
+  });
   });
 
   test('retrieve', async () => {
@@ -92,24 +85,21 @@ describe('resource cards', () => {
 
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.cards.list(
-        {
-          account_id: 'account_id',
-          created_at: {
-            after: '2019-12-27T18:11:19.117Z',
-            before: '2019-12-27T18:11:19.117Z',
-            on_or_after: '2019-12-27T18:11:19.117Z',
-            on_or_before: '2019-12-27T18:11:19.117Z',
-          },
-          cursor: 'cursor',
-          idempotency_key: 'x',
-          limit: 1,
-          status: { in: ['active'] },
-        },
-        { path: '/_stainless_unknown_path' },
-      ),
-    ).rejects.toThrow(Increase.NotFoundError);
+    await expect(client.cards.list({
+    account_id: 'account_id',
+    created_at: {
+    after: '2019-12-27T18:11:19.117Z',
+    before: '2019-12-27T18:11:19.117Z',
+    on_or_after: '2019-12-27T18:11:19.117Z',
+    on_or_before: '2019-12-27T18:11:19.117Z',
+  },
+    cursor: 'cursor',
+    idempotency_key: 'x',
+    limit: 1,
+    status: { in: ['active'] },
+  }, { path: '/_stainless_unknown_path' }))
+      .rejects
+      .toThrow(Increase.NotFoundError);
   });
 
   test('createDetailsIframe', async () => {

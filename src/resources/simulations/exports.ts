@@ -53,5 +53,7 @@ export namespace ExportCreateParams {
 }
 
 export declare namespace Exports {
-  export { type ExportCreateParams as ExportCreateParams };
+  export {
+    type ExportCreateParams as ExportCreateParams
+  };
 }

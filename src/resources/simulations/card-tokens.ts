@@ -215,73 +215,13 @@ export namespace CardTokenCreateParams {
        *   category code was used incorrectly; correct it and reattempt the transaction.
        * - `card_authentication_failed` - The card authentication process has failed.
        */
-      reason?:
-        | 'do_not_honor'
-        | 'activity_count_limit_exceeded'
-        | 'refer_to_card_issuer'
-        | 'refer_to_card_issuer_special_condition'
-        | 'invalid_merchant'
-        | 'pick_up_card'
-        | 'error'
-        | 'pick_up_card_special'
-        | 'invalid_transaction'
-        | 'invalid_amount'
-        | 'invalid_account_number'
-        | 'no_such_issuer'
-        | 're_enter_transaction'
-        | 'no_credit_account'
-        | 'pick_up_card_lost'
-        | 'pick_up_card_stolen'
-        | 'closed_account'
-        | 'insufficient_funds'
-        | 'no_checking_account'
-        | 'no_savings_account'
-        | 'expired_card'
-        | 'transaction_not_permitted_to_cardholder'
-        | 'transaction_not_allowed_at_terminal'
-        | 'transaction_not_supported_or_blocked_by_issuer'
-        | 'suspected_fraud'
-        | 'activity_amount_limit_exceeded'
-        | 'restricted_card'
-        | 'security_violation'
-        | 'transaction_does_not_fulfill_anti_money_laundering_requirement'
-        | 'blocked_by_cardholder'
-        | 'blocked_first_use'
-        | 'credit_issuer_unavailable'
-        | 'negative_card_verification_value_results'
-        | 'issuer_unavailable'
-        | 'financial_institution_cannot_be_found'
-        | 'transaction_cannot_be_completed'
-        | 'duplicate_transaction'
-        | 'system_malfunction'
-        | 'additional_customer_authentication_required'
-        | 'surcharge_amount_not_permitted'
-        | 'decline_for_cvv2_failure'
-        | 'stop_payment_order'
-        | 'revocation_of_authorization_order'
-        | 'revocation_of_all_authorizations_order'
-        | 'unable_to_locate_record'
-        | 'file_is_temporarily_unavailable'
-        | 'incorrect_pin'
-        | 'allowable_number_of_pin_entry_tries_exceeded'
-        | 'unable_to_locate_previous_message'
-        | 'pin_error_found'
-        | 'cannot_verify_pin'
-        | 'verification_data_failed'
-        | 'surcharge_amount_not_supported_by_debit_network_issuer'
-        | 'cash_service_not_available'
-        | 'cashback_request_exceeds_issuer_limit'
-        | 'transaction_amount_exceeds_pre_authorized_approval_amount'
-        | 'transaction_does_not_qualify_for_visa_pin'
-        | 'offline_declined'
-        | 'unable_to_go_online'
-        | 'valid_account_but_amount_not_supported'
-        | 'invalid_use_of_merchant_category_code_correct_and_reattempt'
-        | 'card_authentication_failed';
+      reason?: 'do_not_honor' | 'activity_count_limit_exceeded' | 'refer_to_card_issuer' | 'refer_to_card_issuer_special_condition' | 'invalid_merchant' | 'pick_up_card' | 'error' | 'pick_up_card_special' | 'invalid_transaction' | 'invalid_amount' | 'invalid_account_number' | 'no_such_issuer' | 're_enter_transaction' | 'no_credit_account' | 'pick_up_card_lost' | 'pick_up_card_stolen' | 'closed_account' | 'insufficient_funds' | 'no_checking_account' | 'no_savings_account' | 'expired_card' | 'transaction_not_permitted_to_cardholder' | 'transaction_not_allowed_at_terminal' | 'transaction_not_supported_or_blocked_by_issuer' | 'suspected_fraud' | 'activity_amount_limit_exceeded' | 'restricted_card' | 'security_violation' | 'transaction_does_not_fulfill_anti_money_laundering_requirement' | 'blocked_by_cardholder' | 'blocked_first_use' | 'credit_issuer_unavailable' | 'negative_card_verification_value_results' | 'issuer_unavailable' | 'financial_institution_cannot_be_found' | 'transaction_cannot_be_completed' | 'duplicate_transaction' | 'system_malfunction' | 'additional_customer_authentication_required' | 'surcharge_amount_not_permitted' | 'decline_for_cvv2_failure' | 'stop_payment_order' | 'revocation_of_authorization_order' | 'revocation_of_all_authorizations_order' | 'unable_to_locate_record' | 'file_is_temporarily_unavailable' | 'incorrect_pin' | 'allowable_number_of_pin_entry_tries_exceeded' | 'unable_to_locate_previous_message' | 'pin_error_found' | 'cannot_verify_pin' | 'verification_data_failed' | 'surcharge_amount_not_supported_by_debit_network_issuer' | 'cash_service_not_available' | 'cashback_request_exceeds_issuer_limit' | 'transaction_amount_exceeds_pre_authorized_approval_amount' | 'transaction_does_not_qualify_for_visa_pin' | 'offline_declined' | 'unable_to_go_online' | 'valid_account_but_amount_not_supported' | 'invalid_use_of_merchant_category_code_correct_and_reattempt' | 'card_authentication_failed';
     }
   }
 }
 
 export declare namespace CardTokens {
-  export { type CardTokenCreateParams as CardTokenCreateParams };
+  export {
+    type CardTokenCreateParams as CardTokenCreateParams
+  };
 }
