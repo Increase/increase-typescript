@@ -20,10 +20,7 @@ export class InboundFednowTransfers extends APIResource {
    *   });
    * ```
    */
-  create(
-    body: InboundFednowTransferCreateParams,
-    options?: RequestOptions,
-  ): APIPromise<InboundFednowTransfersAPI.InboundFednowTransfer> {
+  create(body: InboundFednowTransferCreateParams, options?: RequestOptions): APIPromise<InboundFednowTransfersAPI.InboundFednowTransfer> {
     return this._client.post('/simulations/inbound_fednow_transfers', { body, ...options });
   }
 }
@@ -61,5 +58,7 @@ export interface InboundFednowTransferCreateParams {
 }
 
 export declare namespace InboundFednowTransfers {
-  export { type InboundFednowTransferCreateParams as InboundFednowTransferCreateParams };
+  export {
+    type InboundFednowTransferCreateParams as InboundFednowTransferCreateParams
+  };
 }

@@ -46,15 +46,12 @@ export class Exports extends APIResource {
    * }
    * ```
    */
-  list(
-    query: ExportListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): PagePromise<ExportsPage, Export> {
+  list(query: ExportListParams | null | undefined = {}, options?: RequestOptions): PagePromise<ExportsPage, Export> {
     return this._client.getAPIList('/exports', Page<Export>, { query, ...options });
   }
 }
 
-export type ExportsPage = Page<Export>;
+export type ExportsPage = Page<Export>
 
 /**
  * Exports are generated files. Some exports can contain a lot of data, like a CSV
@@ -127,22 +124,7 @@ export interface Export {
    * - `daily_account_balance_csv` - Export a CSV of daily account balances with
    *   starting and ending balances for a given date range.
    */
-  category:
-    | 'account_statement_ofx'
-    | 'account_statement_bai2'
-    | 'transaction_csv'
-    | 'balance_csv'
-    | 'bookkeeping_account_balance_csv'
-    | 'entity_csv'
-    | 'vendor_csv'
-    | 'dashboard_table_csv'
-    | 'account_verification_letter'
-    | 'funding_instructions'
-    | 'form_1099_int'
-    | 'form_1099_misc'
-    | 'fee_csv'
-    | 'voided_check'
-    | 'daily_account_balance_csv';
+  category: 'account_statement_ofx' | 'account_statement_bai2' | 'transaction_csv' | 'balance_csv' | 'bookkeeping_account_balance_csv' | 'entity_csv' | 'vendor_csv' | 'dashboard_table_csv' | 'account_verification_letter' | 'funding_instructions' | 'form_1099_int' | 'form_1099_misc' | 'fee_csv' | 'voided_check' | 'daily_account_balance_csv';
 
   /**
    * The time the Export was created.
@@ -238,7 +220,7 @@ export interface Export {
    */
   voided_check: Export.VoidedCheck | null;
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export namespace Export {
@@ -391,13 +373,15 @@ export namespace Export {
    * Details of the dashboard table CSV export. This field will be present when the
    * `category` is equal to `dashboard_table_csv`.
    */
-  export interface DashboardTableCsv {}
+  export interface DashboardTableCsv {
+  }
 
   /**
    * Details of the entity CSV export. This field will be present when the `category`
    * is equal to `entity_csv`.
    */
-  export interface EntityCsv {}
+  export interface EntityCsv {
+  }
 
   /**
    * Details of the fee CSV export. This field will be present when the `category` is
@@ -535,7 +519,8 @@ export namespace Export {
    * Details of the vendor CSV export. This field will be present when the `category`
    * is equal to `vendor_csv`.
    */
-  export interface VendorCsv {}
+  export interface VendorCsv {
+  }
 
   /**
    * Details of the voided check export. This field will be present when the
@@ -585,18 +570,7 @@ export interface ExportCreateParams {
    * - `daily_account_balance_csv` - Export a CSV of daily account balances with
    *   starting and ending balances for a given date range.
    */
-  category:
-    | 'account_statement_ofx'
-    | 'account_statement_bai2'
-    | 'transaction_csv'
-    | 'balance_csv'
-    | 'bookkeeping_account_balance_csv'
-    | 'entity_csv'
-    | 'vendor_csv'
-    | 'account_verification_letter'
-    | 'funding_instructions'
-    | 'voided_check'
-    | 'daily_account_balance_csv';
+  category: 'account_statement_ofx' | 'account_statement_bai2' | 'transaction_csv' | 'balance_csv' | 'bookkeeping_account_balance_csv' | 'entity_csv' | 'vendor_csv' | 'account_verification_letter' | 'funding_instructions' | 'voided_check' | 'daily_account_balance_csv';
 
   /**
    * Options for the created export. Required if `category` is equal to
@@ -656,7 +630,7 @@ export interface ExportCreateParams {
    */
   voided_check?: ExportCreateParams.VoidedCheck;
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export namespace ExportCreateParams {
@@ -717,7 +691,7 @@ export namespace ExportCreateParams {
        */
       on_or_after?: string;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
   }
 
@@ -783,7 +757,8 @@ export namespace ExportCreateParams {
   /**
    * Options for the created export. Required if `category` is equal to `entity_csv`.
    */
-  export interface EntityCsv {}
+  export interface EntityCsv {
+  }
 
   /**
    * Options for the created export. Required if `category` is equal to
@@ -846,7 +821,8 @@ export namespace ExportCreateParams {
   /**
    * Options for the created export. Required if `category` is equal to `vendor_csv`.
    */
-  export interface VendorCsv {}
+  export interface VendorCsv {
+  }
 
   /**
    * Options for the created export. Required if `category` is equal to
@@ -902,22 +878,7 @@ export interface ExportListParams extends PageParams {
    * - `daily_account_balance_csv` - Export a CSV of daily account balances with
    *   starting and ending balances for a given date range.
    */
-  category?:
-    | 'account_statement_ofx'
-    | 'account_statement_bai2'
-    | 'transaction_csv'
-    | 'balance_csv'
-    | 'bookkeeping_account_balance_csv'
-    | 'entity_csv'
-    | 'vendor_csv'
-    | 'dashboard_table_csv'
-    | 'account_verification_letter'
-    | 'funding_instructions'
-    | 'form_1099_int'
-    | 'form_1099_misc'
-    | 'fee_csv'
-    | 'voided_check'
-    | 'daily_account_balance_csv';
+  category?: 'account_statement_ofx' | 'account_statement_bai2' | 'transaction_csv' | 'balance_csv' | 'bookkeeping_account_balance_csv' | 'entity_csv' | 'vendor_csv' | 'dashboard_table_csv' | 'account_verification_letter' | 'funding_instructions' | 'form_1099_int' | 'form_1099_misc' | 'fee_csv' | 'voided_check' | 'daily_account_balance_csv';
 
   created_at?: ExportListParams.CreatedAt;
 
@@ -992,6 +953,6 @@ export declare namespace Exports {
     type Export as Export,
     type ExportsPage as ExportsPage,
     type ExportCreateParams as ExportCreateParams,
-    type ExportListParams as ExportListParams,
+    type ExportListParams as ExportListParams
   };
 }

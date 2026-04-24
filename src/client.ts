@@ -19,358 +19,67 @@ import { AbstractPage, type PageParams, PageResponse } from './core/pagination';
 import * as Uploads from './core/uploads';
 import * as API from './resources/index';
 import { APIPromise } from './core/api-promise';
-import {
-  AccountNumber,
-  AccountNumberCreateParams,
-  AccountNumberListParams,
-  AccountNumberUpdateParams,
-  AccountNumbers,
-  AccountNumbersPage,
-} from './resources/account-numbers';
-import {
-  AccountStatement,
-  AccountStatementListParams,
-  AccountStatements,
-  AccountStatementsPage,
-} from './resources/account-statements';
-import {
-  AccountTransfer,
-  AccountTransferCreateParams,
-  AccountTransferListParams,
-  AccountTransfers,
-  AccountTransfersPage,
-} from './resources/account-transfers';
-import {
-  Account,
-  AccountBalanceParams,
-  AccountCreateParams,
-  AccountListParams,
-  AccountUpdateParams,
-  Accounts,
-  AccountsPage,
-  BalanceLookup,
-} from './resources/accounts';
-import {
-  ACHPrenotification,
-  ACHPrenotificationCreateParams,
-  ACHPrenotificationListParams,
-  ACHPrenotifications,
-  ACHPrenotificationsPage,
-} from './resources/ach-prenotifications';
-import {
-  ACHTransfer,
-  ACHTransferCreateParams,
-  ACHTransferListParams,
-  ACHTransfers,
-  ACHTransfersPage,
-} from './resources/ach-transfers';
-import {
-  BeneficialOwnerCreateParams,
-  BeneficialOwnerListParams,
-  BeneficialOwnerUpdateParams,
-  BeneficialOwners,
-  EntityBeneficialOwner,
-  EntityBeneficialOwnersPage,
-} from './resources/beneficial-owners';
-import {
-  CardDispute,
-  CardDisputeCreateParams,
-  CardDisputeListParams,
-  CardDisputeSubmitUserSubmissionParams,
-  CardDisputeWithdrawParams,
-  CardDisputes,
-  CardDisputesPage,
-} from './resources/card-disputes';
-import {
-  CardPayment,
-  CardPaymentListParams,
-  CardPayments,
-  CardPaymentsPage,
-} from './resources/card-payments';
-import {
-  CardPurchaseSupplement,
-  CardPurchaseSupplementListParams,
-  CardPurchaseSupplements,
-  CardPurchaseSupplementsPage,
-} from './resources/card-purchase-supplements';
-import {
-  CardPushTransfer,
-  CardPushTransferCreateParams,
-  CardPushTransferListParams,
-  CardPushTransfers,
-  CardPushTransfersPage,
-} from './resources/card-push-transfers';
-import {
-  CardToken,
-  CardTokenCapabilities,
-  CardTokenListParams,
-  CardTokens,
-  CardTokensPage,
-} from './resources/card-tokens';
-import {
-  CardValidation,
-  CardValidationCreateParams,
-  CardValidationListParams,
-  CardValidations,
-  CardValidationsPage,
-} from './resources/card-validations';
-import {
-  Card,
-  CardCreateDetailsIframeParams,
-  CardCreateParams,
-  CardDetails,
-  CardIframeURL,
-  CardListParams,
-  CardUpdateParams,
-  CardUpdatePinParams,
-  Cards,
-  CardsPage,
-} from './resources/cards';
-import {
-  CheckDeposit,
-  CheckDepositCreateParams,
-  CheckDepositListParams,
-  CheckDeposits,
-  CheckDepositsPage,
-} from './resources/check-deposits';
-import {
-  CheckTransfer,
-  CheckTransferCreateParams,
-  CheckTransferListParams,
-  CheckTransferStopPaymentParams,
-  CheckTransfers,
-  CheckTransfersPage,
-} from './resources/check-transfers';
-import {
-  DeclinedTransaction,
-  DeclinedTransactionListParams,
-  DeclinedTransactions,
-  DeclinedTransactionsPage,
-} from './resources/declined-transactions';
-import {
-  DigitalCardProfile,
-  DigitalCardProfileCloneParams,
-  DigitalCardProfileCreateParams,
-  DigitalCardProfileListParams,
-  DigitalCardProfiles,
-  DigitalCardProfilesPage,
-} from './resources/digital-card-profiles';
-import {
-  DigitalWalletToken,
-  DigitalWalletTokenListParams,
-  DigitalWalletTokens,
-  DigitalWalletTokensPage,
-} from './resources/digital-wallet-tokens';
-import {
-  Entities,
-  EntitiesPage,
-  Entity,
-  EntityCreateParams,
-  EntityListParams,
-  EntityUpdateParams,
-} from './resources/entities';
-import {
-  EntityOnboardingSession,
-  EntityOnboardingSessionCreateParams,
-  EntityOnboardingSessionListParams,
-  EntityOnboardingSessions,
-  EntityOnboardingSessionsPage,
-} from './resources/entity-onboarding-sessions';
-import {
-  EventSubscription,
-  EventSubscriptionCreateParams,
-  EventSubscriptionListParams,
-  EventSubscriptionUpdateParams,
-  EventSubscriptions,
-  EventSubscriptionsPage,
-} from './resources/event-subscriptions';
+import { AccountNumber, AccountNumberCreateParams, AccountNumberListParams, AccountNumberUpdateParams, AccountNumbers, AccountNumbersPage } from './resources/account-numbers';
+import { AccountStatement, AccountStatementListParams, AccountStatements, AccountStatementsPage } from './resources/account-statements';
+import { AccountTransfer, AccountTransferCreateParams, AccountTransferListParams, AccountTransfers, AccountTransfersPage } from './resources/account-transfers';
+import { Account, AccountBalanceParams, AccountCreateParams, AccountListParams, AccountUpdateParams, Accounts, AccountsPage, BalanceLookup } from './resources/accounts';
+import { ACHPrenotification, ACHPrenotificationCreateParams, ACHPrenotificationListParams, ACHPrenotifications, ACHPrenotificationsPage } from './resources/ach-prenotifications';
+import { ACHTransfer, ACHTransferCreateParams, ACHTransferListParams, ACHTransfers, ACHTransfersPage } from './resources/ach-transfers';
+import { BeneficialOwnerCreateParams, BeneficialOwnerListParams, BeneficialOwnerUpdateParams, BeneficialOwners, EntityBeneficialOwner, EntityBeneficialOwnersPage } from './resources/beneficial-owners';
+import { CardDispute, CardDisputeCreateParams, CardDisputeListParams, CardDisputeSubmitUserSubmissionParams, CardDisputeWithdrawParams, CardDisputes, CardDisputesPage } from './resources/card-disputes';
+import { CardPayment, CardPaymentListParams, CardPayments, CardPaymentsPage } from './resources/card-payments';
+import { CardPurchaseSupplement, CardPurchaseSupplementListParams, CardPurchaseSupplements, CardPurchaseSupplementsPage } from './resources/card-purchase-supplements';
+import { CardPushTransfer, CardPushTransferCreateParams, CardPushTransferListParams, CardPushTransfers, CardPushTransfersPage } from './resources/card-push-transfers';
+import { CardToken, CardTokenCapabilities, CardTokenListParams, CardTokens, CardTokensPage } from './resources/card-tokens';
+import { CardValidation, CardValidationCreateParams, CardValidationListParams, CardValidations, CardValidationsPage } from './resources/card-validations';
+import { Card, CardCreateDetailsIframeParams, CardCreateParams, CardDetails, CardIframeURL, CardListParams, CardUpdateParams, CardUpdatePinParams, Cards, CardsPage } from './resources/cards';
+import { CheckDeposit, CheckDepositCreateParams, CheckDepositListParams, CheckDeposits, CheckDepositsPage } from './resources/check-deposits';
+import { CheckTransfer, CheckTransferCreateParams, CheckTransferListParams, CheckTransferStopPaymentParams, CheckTransfers, CheckTransfersPage } from './resources/check-transfers';
+import { DeclinedTransaction, DeclinedTransactionListParams, DeclinedTransactions, DeclinedTransactionsPage } from './resources/declined-transactions';
+import { DigitalCardProfile, DigitalCardProfileCloneParams, DigitalCardProfileCreateParams, DigitalCardProfileListParams, DigitalCardProfiles, DigitalCardProfilesPage } from './resources/digital-card-profiles';
+import { DigitalWalletToken, DigitalWalletTokenListParams, DigitalWalletTokens, DigitalWalletTokensPage } from './resources/digital-wallet-tokens';
+import { Entities, EntitiesPage, Entity, EntityCreateParams, EntityListParams, EntityUpdateParams } from './resources/entities';
+import { EntityOnboardingSession, EntityOnboardingSessionCreateParams, EntityOnboardingSessionListParams, EntityOnboardingSessions, EntityOnboardingSessionsPage } from './resources/entity-onboarding-sessions';
+import { EventSubscription, EventSubscriptionCreateParams, EventSubscriptionListParams, EventSubscriptionUpdateParams, EventSubscriptions, EventSubscriptionsPage } from './resources/event-subscriptions';
 import { Event, EventListParams, Events, EventsPage, UnwrapWebhookEvent } from './resources/events';
 import { Export, ExportCreateParams, ExportListParams, Exports, ExportsPage } from './resources/exports';
-import {
-  ExternalAccount,
-  ExternalAccountCreateParams,
-  ExternalAccountListParams,
-  ExternalAccountUpdateParams,
-  ExternalAccounts,
-  ExternalAccountsPage,
-} from './resources/external-accounts';
-import {
-  FednowTransfer,
-  FednowTransferCreateParams,
-  FednowTransferListParams,
-  FednowTransfers,
-  FednowTransfersPage,
-} from './resources/fednow-transfers';
+import { ExternalAccount, ExternalAccountCreateParams, ExternalAccountListParams, ExternalAccountUpdateParams, ExternalAccounts, ExternalAccountsPage } from './resources/external-accounts';
+import { FednowTransfer, FednowTransferCreateParams, FednowTransferListParams, FednowTransfers, FednowTransfersPage } from './resources/fednow-transfers';
 import { FileLink, FileLinkCreateParams, FileLinks } from './resources/file-links';
 import { File, FileCreateParams, FileListParams, Files, FilesPage } from './resources/files';
 import { Group, Groups } from './resources/groups';
-import {
-  InboundACHTransfer,
-  InboundACHTransferCreateNotificationOfChangeParams,
-  InboundACHTransferDeclineParams,
-  InboundACHTransferListParams,
-  InboundACHTransferTransferReturnParams,
-  InboundACHTransfers,
-  InboundACHTransfersPage,
-} from './resources/inbound-ach-transfers';
-import {
-  InboundCheckDeposit,
-  InboundCheckDepositListParams,
-  InboundCheckDepositReturnParams,
-  InboundCheckDeposits,
-  InboundCheckDepositsPage,
-} from './resources/inbound-check-deposits';
-import {
-  InboundFednowTransfer,
-  InboundFednowTransferListParams,
-  InboundFednowTransfers,
-  InboundFednowTransfersPage,
-} from './resources/inbound-fednow-transfers';
-import {
-  InboundMailItem,
-  InboundMailItemActionParams,
-  InboundMailItemListParams,
-  InboundMailItems,
-  InboundMailItemsPage,
-} from './resources/inbound-mail-items';
-import {
-  InboundRealTimePaymentsTransfer,
-  InboundRealTimePaymentsTransferListParams,
-  InboundRealTimePaymentsTransfers,
-  InboundRealTimePaymentsTransfersPage,
-} from './resources/inbound-real-time-payments-transfers';
-import {
-  InboundWireDrawdownRequest,
-  InboundWireDrawdownRequestListParams,
-  InboundWireDrawdownRequests,
-  InboundWireDrawdownRequestsPage,
-} from './resources/inbound-wire-drawdown-requests';
-import {
-  InboundWireTransfer,
-  InboundWireTransferListParams,
-  InboundWireTransferReverseParams,
-  InboundWireTransfers,
-  InboundWireTransfersPage,
-} from './resources/inbound-wire-transfers';
-import {
-  IntrafiAccountEnrollment,
-  IntrafiAccountEnrollmentCreateParams,
-  IntrafiAccountEnrollmentListParams,
-  IntrafiAccountEnrollments,
-  IntrafiAccountEnrollmentsPage,
-} from './resources/intrafi-account-enrollments';
+import { InboundACHTransfer, InboundACHTransferCreateNotificationOfChangeParams, InboundACHTransferDeclineParams, InboundACHTransferListParams, InboundACHTransferTransferReturnParams, InboundACHTransfers, InboundACHTransfersPage } from './resources/inbound-ach-transfers';
+import { InboundCheckDeposit, InboundCheckDepositListParams, InboundCheckDepositReturnParams, InboundCheckDeposits, InboundCheckDepositsPage } from './resources/inbound-check-deposits';
+import { InboundFednowTransfer, InboundFednowTransferListParams, InboundFednowTransfers, InboundFednowTransfersPage } from './resources/inbound-fednow-transfers';
+import { InboundMailItem, InboundMailItemActionParams, InboundMailItemListParams, InboundMailItems, InboundMailItemsPage } from './resources/inbound-mail-items';
+import { InboundRealTimePaymentsTransfer, InboundRealTimePaymentsTransferListParams, InboundRealTimePaymentsTransfers, InboundRealTimePaymentsTransfersPage } from './resources/inbound-real-time-payments-transfers';
+import { InboundWireDrawdownRequest, InboundWireDrawdownRequestListParams, InboundWireDrawdownRequests, InboundWireDrawdownRequestsPage } from './resources/inbound-wire-drawdown-requests';
+import { InboundWireTransfer, InboundWireTransferListParams, InboundWireTransferReverseParams, InboundWireTransfers, InboundWireTransfersPage } from './resources/inbound-wire-transfers';
+import { IntrafiAccountEnrollment, IntrafiAccountEnrollmentCreateParams, IntrafiAccountEnrollmentListParams, IntrafiAccountEnrollments, IntrafiAccountEnrollmentsPage } from './resources/intrafi-account-enrollments';
 import { IntrafiBalance, IntrafiBalances } from './resources/intrafi-balances';
-import {
-  IntrafiExclusion,
-  IntrafiExclusionCreateParams,
-  IntrafiExclusionListParams,
-  IntrafiExclusions,
-  IntrafiExclusionsPage,
-} from './resources/intrafi-exclusions';
-import {
-  Lockbox,
-  LockboxCreateParams,
-  LockboxListParams,
-  LockboxUpdateParams,
-  Lockboxes,
-  LockboxesPage,
-} from './resources/lockboxes';
-import {
-  OAuthApplication,
-  OAuthApplicationListParams,
-  OAuthApplications,
-  OAuthApplicationsPage,
-} from './resources/oauth-applications';
-import {
-  OAuthConnection,
-  OAuthConnectionListParams,
-  OAuthConnections,
-  OAuthConnectionsPage,
-} from './resources/oauth-connections';
+import { IntrafiExclusion, IntrafiExclusionCreateParams, IntrafiExclusionListParams, IntrafiExclusions, IntrafiExclusionsPage } from './resources/intrafi-exclusions';
+import { Lockbox, LockboxCreateParams, LockboxListParams, LockboxUpdateParams, Lockboxes, LockboxesPage } from './resources/lockboxes';
+import { OAuthApplication, OAuthApplicationListParams, OAuthApplications, OAuthApplicationsPage } from './resources/oauth-applications';
+import { OAuthConnection, OAuthConnectionListParams, OAuthConnections, OAuthConnectionsPage } from './resources/oauth-connections';
 import { OAuthToken, OAuthTokenCreateParams, OAuthTokens } from './resources/oauth-tokens';
-import {
-  PendingTransaction,
-  PendingTransactionCreateParams,
-  PendingTransactionListParams,
-  PendingTransactions,
-  PendingTransactionsPage,
-} from './resources/pending-transactions';
-import {
-  PhysicalCardProfile,
-  PhysicalCardProfileCloneParams,
-  PhysicalCardProfileCreateParams,
-  PhysicalCardProfileListParams,
-  PhysicalCardProfiles,
-  PhysicalCardProfilesPage,
-} from './resources/physical-card-profiles';
-import {
-  PhysicalCard,
-  PhysicalCardCreateParams,
-  PhysicalCardListParams,
-  PhysicalCardUpdateParams,
-  PhysicalCards,
-  PhysicalCardsPage,
-} from './resources/physical-cards';
+import { PendingTransaction, PendingTransactionCreateParams, PendingTransactionListParams, PendingTransactions, PendingTransactionsPage } from './resources/pending-transactions';
+import { PhysicalCardProfile, PhysicalCardProfileCloneParams, PhysicalCardProfileCreateParams, PhysicalCardProfileListParams, PhysicalCardProfiles, PhysicalCardProfilesPage } from './resources/physical-card-profiles';
+import { PhysicalCard, PhysicalCardCreateParams, PhysicalCardListParams, PhysicalCardUpdateParams, PhysicalCards, PhysicalCardsPage } from './resources/physical-cards';
 import { Program, ProgramListParams, Programs, ProgramsPage } from './resources/programs';
-import {
-  RealTimeDecision,
-  RealTimeDecisionActionParams,
-  RealTimeDecisions,
-} from './resources/real-time-decisions';
-import {
-  RealTimePaymentsTransfer,
-  RealTimePaymentsTransferCreateParams,
-  RealTimePaymentsTransferListParams,
-  RealTimePaymentsTransfers,
-  RealTimePaymentsTransfersPage,
-} from './resources/real-time-payments-transfers';
-import {
-  RoutingNumberListParams,
-  RoutingNumberListResponse,
-  RoutingNumberListResponsesPage,
-  RoutingNumbers,
-} from './resources/routing-numbers';
-import {
-  EntitySupplementalDocument,
-  EntitySupplementalDocumentsPage,
-  SupplementalDocumentCreateParams,
-  SupplementalDocumentListParams,
-  SupplementalDocuments,
-} from './resources/supplemental-documents';
-import {
-  SwiftTransfer,
-  SwiftTransferCreateParams,
-  SwiftTransferListParams,
-  SwiftTransfers,
-  SwiftTransfersPage,
-} from './resources/swift-transfers';
+import { RealTimeDecision, RealTimeDecisionActionParams, RealTimeDecisions } from './resources/real-time-decisions';
+import { RealTimePaymentsTransfer, RealTimePaymentsTransferCreateParams, RealTimePaymentsTransferListParams, RealTimePaymentsTransfers, RealTimePaymentsTransfersPage } from './resources/real-time-payments-transfers';
+import { RoutingNumberListParams, RoutingNumberListResponse, RoutingNumberListResponsesPage, RoutingNumbers } from './resources/routing-numbers';
+import { EntitySupplementalDocument, EntitySupplementalDocumentsPage, SupplementalDocumentCreateParams, SupplementalDocumentListParams, SupplementalDocuments } from './resources/supplemental-documents';
+import { SwiftTransfer, SwiftTransferCreateParams, SwiftTransferListParams, SwiftTransfers, SwiftTransfersPage } from './resources/swift-transfers';
 import { Transaction, TransactionListParams, Transactions, TransactionsPage } from './resources/transactions';
-import {
-  WireDrawdownRequest,
-  WireDrawdownRequestCreateParams,
-  WireDrawdownRequestListParams,
-  WireDrawdownRequests,
-  WireDrawdownRequestsPage,
-} from './resources/wire-drawdown-requests';
-import {
-  WireTransfer,
-  WireTransferCreateParams,
-  WireTransferListParams,
-  WireTransfers,
-  WireTransfersPage,
-} from './resources/wire-transfers';
+import { WireDrawdownRequest, WireDrawdownRequestCreateParams, WireDrawdownRequestListParams, WireDrawdownRequests, WireDrawdownRequestsPage } from './resources/wire-drawdown-requests';
+import { WireTransfer, WireTransferCreateParams, WireTransferListParams, WireTransfers, WireTransfersPage } from './resources/wire-transfers';
 import { Simulations } from './resources/simulations/simulations';
 import { type Fetch } from './internal/builtin-types';
 import { HeadersLike, NullableHeaders, buildHeaders } from './internal/headers';
 import { FinalRequestOptions, RequestOptions } from './internal/request-options';
 import { readEnv } from './internal/utils/env';
-import {
-  type LogLevel,
-  type Logger,
-  formatRequestDetails,
-  loggerFor,
-  parseLogLevel,
-} from './internal/utils/log';
+import { type LogLevel, type Logger, formatRequestDetails, loggerFor, parseLogLevel } from './internal/utils/log';
 import { isEmptyObj } from './internal/utils/values';
 
 const environments = {
@@ -469,7 +178,7 @@ export interface ClientOptions {
 }
 
 /**
- * API Client for interfacing with the Increase API.
+ * API Client for interfacing with the Increase API. 
  */
 export class Increase {
   apiKey: string;
@@ -509,7 +218,7 @@ export class Increase {
   }: ClientOptions = {}) {
     if (apiKey === undefined) {
       throw new Errors.IncreaseError(
-        "The INCREASE_API_KEY environment variable is missing or empty; either provide it, or instantiate the Increase client with an apiKey option, like new Increase({ apiKey: 'My API Key' }).",
+        'The INCREASE_API_KEY environment variable is missing or empty; either provide it, or instantiate the Increase client with an apiKey option, like new Increase({ apiKey: \'My API Key\' }).'
       );
     }
 
@@ -523,8 +232,8 @@ export class Increase {
 
     if (baseURL && opts.environment) {
       throw new Errors.IncreaseError(
-        'Ambiguous URL; The `baseURL` option (or INCREASE_BASE_URL env var) and the `environment` option are given. If you want to use the environment you must pass baseURL: null',
-      );
+        'Ambiguous URL; The `baseURL` option (or INCREASE_BASE_URL env var) and the `environment` option are given. If you want to use the environment you must pass baseURL: null'
+      )
     }
 
     this.baseURL = options.baseURL || environments[options.environment || 'production'];
@@ -533,17 +242,14 @@ export class Increase {
     const defaultLogLevel = 'warn';
     // Set default logLevel early so that we can log a warning in parseLogLevel.
     this.logLevel = defaultLogLevel;
-    this.logLevel =
-      parseLogLevel(options.logLevel, 'ClientOptions.logLevel', this) ??
-      parseLogLevel(readEnv('INCREASE_LOG'), "process.env['INCREASE_LOG']", this) ??
-      defaultLogLevel;
+    this.logLevel = parseLogLevel(options.logLevel, 'ClientOptions.logLevel', this) ?? parseLogLevel(readEnv('INCREASE_LOG'), 'process.env[\'INCREASE_LOG\']', this) ?? defaultLogLevel;
     this.fetchOptions = options.fetchOptions;
     this.maxRetries = options.maxRetries ?? 2;
     this.fetch = options.fetch ?? Shims.getDefaultFetch();
     this.#encoder = Opts.FallbackEncoder;
 
     this._options = options;
-    this.idempotencyHeader = 'Idempotency-Key';
+    this.idempotencyHeader = 'Idempotency-Key'
 
     this.apiKey = apiKey;
     this.webhookSecret = webhookSecret;
@@ -565,7 +271,7 @@ export class Increase {
       fetchOptions: this.fetchOptions,
       apiKey: this.apiKey,
       webhookSecret: this.webhookSecret,
-      ...options,
+      ...options
     });
     return client;
   }
@@ -578,7 +284,7 @@ export class Increase {
   }
 
   protected defaultQuery(): Record<string, string | undefined> | undefined {
-    return this._options.defaultQuery;
+    return this._options.defaultQuery
   }
 
   protected validateHeaders({ values, nulls }: NullableHeaders) {
@@ -610,11 +316,7 @@ export class Increase {
     return Errors.APIError.generate(status, error, message, headers);
   }
 
-  buildURL(
-    path: string,
-    query: Record<string, unknown> | null | undefined,
-    defaultBaseURL?: string | undefined,
-  ): string {
+  buildURL(path: string, query: Record<string, unknown> | null | undefined, defaultBaseURL?: string | undefined): string {
     const baseURL = (!this.#baseURLOverridden() && defaultBaseURL) || this.baseURL;
     const url =
       isAbsoluteURL(path) ?
@@ -702,9 +404,7 @@ export class Increase {
 
     await this.prepareOptions(options);
 
-    const { req, url, timeout } = await this.buildRequest(options, {
-      retryCount: maxRetries - retriesRemaining,
-    });
+    const { req, url, timeout } = await this.buildRequest(options, { retryCount: maxRetries - retriesRemaining });
 
     await this.prepareRequest(req, { url, options });
 
@@ -713,16 +413,7 @@ export class Increase {
     const retryLogStr = retryOfRequestLogID === undefined ? '' : `, retryOf: ${retryOfRequestLogID}`;
     const startTime = Date.now();
 
-    loggerFor(this).debug(
-      `[${requestLogID}] sending request`,
-      formatRequestDetails({
-        retryOfRequestLogID,
-        method: options.method,
-        url,
-        options,
-        headers: req.headers,
-      }),
-    );
+    loggerFor(this).debug(`[${requestLogID}] sending request`, formatRequestDetails({ retryOfRequestLogID, method: options.method, url, options, headers: req.headers }));
 
     if (options.signal?.aborted) {
       throw new Errors.APIUserAbortError();
@@ -741,49 +432,22 @@ export class Increase {
       // deno throws "TypeError: error sending request for url (https://example/): client error (Connect): tcp connect error: Operation timed out (os error 60): Operation timed out (os error 60)"
       // undici throws "TypeError: fetch failed" with cause "ConnectTimeoutError: Connect Timeout Error (attempted address: example:443, timeout: 1ms)"
       // others do not provide enough information to distinguish timeouts from other connection errors
-      const isTimeout =
-        isAbortError(response) ||
-        /timed? ?out/i.test(String(response) + ('cause' in response ? String(response.cause) : ''));
+      const isTimeout = isAbortError(response) || /timed? ?out/i.test(String(response) + ('cause' in response ? String(response.cause) : ''))
       if (retriesRemaining) {
-        loggerFor(this).info(
-          `[${requestLogID}] connection ${isTimeout ? 'timed out' : 'failed'} - ${retryMessage}`,
-        );
-        loggerFor(this).debug(
-          `[${requestLogID}] connection ${isTimeout ? 'timed out' : 'failed'} (${retryMessage})`,
-          formatRequestDetails({
-            retryOfRequestLogID,
-            url,
-            durationMs: headersTime - startTime,
-            message: response.message,
-          }),
-        );
+        loggerFor(this).info(`[${requestLogID}] connection ${isTimeout ? 'timed out' : 'failed'} - ${retryMessage}`)
+        loggerFor(this).debug(`[${requestLogID}] connection ${isTimeout ? 'timed out' : 'failed'} (${retryMessage})`, formatRequestDetails({ retryOfRequestLogID, url, durationMs: headersTime - startTime, message: response.message }));
         return this.retryRequest(options, retriesRemaining, retryOfRequestLogID ?? requestLogID);
       }
-      loggerFor(this).info(
-        `[${requestLogID}] connection ${isTimeout ? 'timed out' : 'failed'} - error; no more retries left`,
-      );
-      loggerFor(this).debug(
-        `[${requestLogID}] connection ${isTimeout ? 'timed out' : 'failed'} (error; no more retries left)`,
-        formatRequestDetails({
-          retryOfRequestLogID,
-          url,
-          durationMs: headersTime - startTime,
-          message: response.message,
-        }),
-      );
+      loggerFor(this).info(`[${requestLogID}] connection ${isTimeout ? 'timed out' : 'failed'} - error; no more retries left`)
+      loggerFor(this).debug(`[${requestLogID}] connection ${isTimeout ? 'timed out' : 'failed'} (error; no more retries left)`, formatRequestDetails({ retryOfRequestLogID, url, durationMs: headersTime - startTime, message: response.message }));
       if (isTimeout) {
         throw new Errors.APIConnectionTimeoutError();
       }
       throw new Errors.APIConnectionError({ cause: response });
     }
 
-    const specialHeaders = [...response.headers.entries()]
-      .filter(([name]) => name === 'Idempotent-Replayed')
-      .map(([name, value]) => ', ' + name + ': ' + JSON.stringify(value))
-      .join('');
-    const responseInfo = `[${requestLogID}${retryLogStr}${specialHeaders}] ${req.method} ${url} ${
-      response.ok ? 'succeeded' : 'failed'
-    } with status ${response.status} in ${headersTime - startTime}ms`;
+    const specialHeaders = [...response.headers.entries()].filter(([name]) => name === 'Idempotent-Replayed').map(([name, value]) => ', ' + name + ': ' + JSON.stringify(value)).join("");
+    const responseInfo = `[${requestLogID}${retryLogStr}${specialHeaders}] ${req.method} ${url} ${response.ok ? 'succeeded' : 'failed'} with status ${response.status} in ${headersTime - startTime}ms`;
 
     if (!response.ok) {
       const shouldRetry = await this.shouldRetry(response);
@@ -792,60 +456,27 @@ export class Increase {
 
         // We don't need the body of this response.
         await Shims.CancelReadableStream(response.body);
-        loggerFor(this).info(`${responseInfo} - ${retryMessage}`);
-        loggerFor(this).debug(
-          `[${requestLogID}] response error (${retryMessage})`,
-          formatRequestDetails({
-            retryOfRequestLogID,
-            url: response.url,
-            status: response.status,
-            headers: response.headers,
-            durationMs: headersTime - startTime,
-          }),
-        );
-        return this.retryRequest(
-          options,
-          retriesRemaining,
-          retryOfRequestLogID ?? requestLogID,
-          response.headers,
-        );
+        loggerFor(this).info(`${responseInfo} - ${retryMessage}`)
+        loggerFor(this).debug(`[${requestLogID}] response error (${retryMessage})`, formatRequestDetails({ retryOfRequestLogID, url: response.url, status: response.status, headers: response.headers, durationMs: headersTime - startTime }));
+        return this.retryRequest(options, retriesRemaining, retryOfRequestLogID ?? requestLogID, response.headers);
       }
 
       const retryMessage = shouldRetry ? `error; no more retries left` : `error; not retryable`;
 
-      loggerFor(this).info(`${responseInfo} - ${retryMessage}`);
+      loggerFor(this).info(`${responseInfo} - ${retryMessage}`)
 
       const errText = await response.text().catch((err: any) => castToError(err).message);
       const errJSON = safeJSON(errText) as any;
       const errMessage = errJSON ? undefined : errText;
 
-      loggerFor(this).debug(
-        `[${requestLogID}] response error (${retryMessage})`,
-        formatRequestDetails({
-          retryOfRequestLogID,
-          url: response.url,
-          status: response.status,
-          headers: response.headers,
-          message: errMessage,
-          durationMs: Date.now() - startTime,
-        }),
-      );
+      loggerFor(this).debug(`[${requestLogID}] response error (${retryMessage})`, formatRequestDetails({ retryOfRequestLogID, url: response.url, status: response.status, headers: response.headers, message: errMessage, durationMs: Date.now() - startTime }));
 
       const err = this.makeStatusError(response.status, errJSON, errMessage, response.headers);
       throw err;
     }
 
-    loggerFor(this).info(responseInfo);
-    loggerFor(this).debug(
-      `[${requestLogID}] response start`,
-      formatRequestDetails({
-        retryOfRequestLogID,
-        url: response.url,
-        status: response.status,
-        headers: response.headers,
-        durationMs: headersTime - startTime,
-      }),
-    );
+    loggerFor(this).info(responseInfo)
+    loggerFor(this).debug(`[${requestLogID}] response start`, formatRequestDetails({ retryOfRequestLogID, url: response.url, status: response.status, headers: response.headers, durationMs: headersTime - startTime }));
 
     return { response, options, controller, requestLogID, retryOfRequestLogID, startTime };
   }
@@ -863,10 +494,7 @@ export class Increase {
     );
   }
 
-  requestAPIList<
-    Item = unknown,
-    PageClass extends Pagination.AbstractPage<Item> = Pagination.AbstractPage<Item>,
-  >(
+  requestAPIList<Item = unknown, PageClass extends Pagination.AbstractPage<Item> = Pagination.AbstractPage<Item>>(
     Page: new (...args: ConstructorParameters<typeof Pagination.AbstractPage>) => PageClass,
     options: PromiseOrValue<FinalRequestOptions>,
   ): Pagination.PagePromise<PageClass, Item> {
@@ -886,9 +514,7 @@ export class Increase {
 
     const timeout = setTimeout(abort, ms);
 
-    const isReadableBody =
-      ((globalThis as any).ReadableStream && options.body instanceof (globalThis as any).ReadableStream) ||
-      (typeof options.body === 'object' && options.body !== null && Symbol.asyncIterator in options.body);
+    const isReadableBody = ((globalThis as any).ReadableStream && options.body instanceof (globalThis as any).ReadableStream) || (typeof options.body === "object" && options.body !== null && Symbol.asyncIterator in options.body);
 
     const fetchOptions: RequestInit = {
       signal: controller.signal as any,
@@ -903,6 +529,7 @@ export class Increase {
     }
 
     try {
+
       // use undefined this binding; fetch errors if bound to something else in browser/cloudflare
       return await this.fetch.call(undefined, url, fetchOptions);
     } finally {
@@ -1003,12 +630,11 @@ export class Increase {
     const req: FinalizedRequestInit = {
       method,
       headers: reqHeaders,
-      ...(options.signal && { signal: options.signal }),
-      ...((globalThis as any).ReadableStream &&
-        body instanceof (globalThis as any).ReadableStream && { duplex: 'half' }),
+      ...(options.signal && { signal: options.signal}),
+      ...((globalThis as any).ReadableStream && body instanceof (globalThis as any).ReadableStream && { duplex: "half" }),
       ...(body && { body }),
-      ...((this.fetchOptions as any) ?? {}),
-      ...((options.fetchOptions as any) ?? {}),
+      ...(this.fetchOptions as any ?? {}),
+      ...(options.fetchOptions as any ?? {}),
     };
 
     return { req, url, timeout: options.timeout };
@@ -1033,17 +659,15 @@ export class Increase {
 
     const headers = buildHeaders([
       idempotencyHeaders,
-      {
-        Accept: 'application/json',
-        'User-Agent': this.getUserAgent(),
-        'X-Stainless-Retry-Count': String(retryCount),
-        ...(options.timeout ? { 'X-Stainless-Timeout': String(Math.trunc(options.timeout / 1000)) } : {}),
-        ...getPlatformHeaders(),
-      },
+      {Accept: 'application/json',
+      'User-Agent': this.getUserAgent(),
+      'X-Stainless-Retry-Count': String(retryCount),
+      ...(options.timeout ? { 'X-Stainless-Timeout': String(Math.trunc(options.timeout / 1000)) } : {}),
+      ...getPlatformHeaders()},
       await this.authHeaders(options),
       this._options.defaultHeaders,
       bodyHeaders,
-      options.headers,
+      options.headers
     ]);
 
     this.validateHeaders(headers);
@@ -1070,9 +694,11 @@ export class Increase {
       ArrayBuffer.isView(body) ||
       body instanceof ArrayBuffer ||
       body instanceof DataView ||
-      (typeof body === 'string' &&
+      (
+        typeof body === 'string' &&
         // Preserve legacy string encoding behavior for now
-        headers.values.has('content-type')) ||
+        headers.values.has('content-type')
+      ) ||
       // `Blob` is superset of `File`
       ((globalThis as any).Blob && body instanceof (globalThis as any).Blob) ||
       // `FormData` -> `multipart/form-data`
@@ -1103,7 +729,7 @@ export class Increase {
   }
 
   static Increase = this;
-  static DEFAULT_TIMEOUT = 60000; // 1 minute
+  static DEFAULT_TIMEOUT = 60000 // 1 minute
 
   static IncreaseError = Errors.IncreaseError;
   static APIError = Errors.APIError;
@@ -1156,8 +782,7 @@ export class Increase {
   checkTransfers: API.CheckTransfers = new API.CheckTransfers(this);
   inboundCheckDeposits: API.InboundCheckDeposits = new API.InboundCheckDeposits(this);
   realTimePaymentsTransfers: API.RealTimePaymentsTransfers = new API.RealTimePaymentsTransfers(this);
-  inboundRealTimePaymentsTransfers: API.InboundRealTimePaymentsTransfers =
-    new API.InboundRealTimePaymentsTransfers(this);
+  inboundRealTimePaymentsTransfers: API.InboundRealTimePaymentsTransfers = new API.InboundRealTimePaymentsTransfers(this);
   fednowTransfers: API.FednowTransfers = new API.FednowTransfers(this);
   inboundFednowTransfers: API.InboundFednowTransfers = new API.InboundFednowTransfers(this);
   swiftTransfers: API.SwiftTransfers = new API.SwiftTransfers(this);
@@ -1249,441 +874,452 @@ Increase.CardValidations = CardValidations;
 Increase.Simulations = Simulations;
 
 export declare namespace Increase {
-  export type RequestOptions = Opts.RequestOptions;
+      export type RequestOptions = Opts.RequestOptions;
 
-  export import Page = Pagination.Page;
-  export { type PageParams as PageParams, type PageResponse as PageResponse };
+      export import Page = Pagination.Page;
+export {
+  type PageParams as PageParams,
+  type PageResponse as PageResponse
+};
 
-  export {
-    Accounts as Accounts,
-    type Account as Account,
-    type BalanceLookup as BalanceLookup,
-    type AccountsPage as AccountsPage,
-    type AccountCreateParams as AccountCreateParams,
-    type AccountUpdateParams as AccountUpdateParams,
-    type AccountListParams as AccountListParams,
-    type AccountBalanceParams as AccountBalanceParams,
-  };
+export {
+  Accounts as Accounts,
+  type Account as Account,
+  type BalanceLookup as BalanceLookup,
+  type AccountsPage as AccountsPage,
+  type AccountCreateParams as AccountCreateParams,
+  type AccountUpdateParams as AccountUpdateParams,
+  type AccountListParams as AccountListParams,
+  type AccountBalanceParams as AccountBalanceParams
+};
 
-  export {
-    AccountNumbers as AccountNumbers,
-    type AccountNumber as AccountNumber,
-    type AccountNumbersPage as AccountNumbersPage,
-    type AccountNumberCreateParams as AccountNumberCreateParams,
-    type AccountNumberUpdateParams as AccountNumberUpdateParams,
-    type AccountNumberListParams as AccountNumberListParams,
-  };
+export {
+  AccountNumbers as AccountNumbers,
+  type AccountNumber as AccountNumber,
+  type AccountNumbersPage as AccountNumbersPage,
+  type AccountNumberCreateParams as AccountNumberCreateParams,
+  type AccountNumberUpdateParams as AccountNumberUpdateParams,
+  type AccountNumberListParams as AccountNumberListParams
+};
 
-  export {
-    AccountTransfers as AccountTransfers,
-    type AccountTransfer as AccountTransfer,
-    type AccountTransfersPage as AccountTransfersPage,
-    type AccountTransferCreateParams as AccountTransferCreateParams,
-    type AccountTransferListParams as AccountTransferListParams,
-  };
+export {
+  AccountTransfers as AccountTransfers,
+  type AccountTransfer as AccountTransfer,
+  type AccountTransfersPage as AccountTransfersPage,
+  type AccountTransferCreateParams as AccountTransferCreateParams,
+  type AccountTransferListParams as AccountTransferListParams
+};
 
-  export {
-    Cards as Cards,
-    type Card as Card,
-    type CardDetails as CardDetails,
-    type CardIframeURL as CardIframeURL,
-    type CardsPage as CardsPage,
-    type CardCreateParams as CardCreateParams,
-    type CardUpdateParams as CardUpdateParams,
-    type CardListParams as CardListParams,
-    type CardCreateDetailsIframeParams as CardCreateDetailsIframeParams,
-    type CardUpdatePinParams as CardUpdatePinParams,
-  };
+export {
+  Cards as Cards,
+  type Card as Card,
+  type CardDetails as CardDetails,
+  type CardIframeURL as CardIframeURL,
+  type CardsPage as CardsPage,
+  type CardCreateParams as CardCreateParams,
+  type CardUpdateParams as CardUpdateParams,
+  type CardListParams as CardListParams,
+  type CardCreateDetailsIframeParams as CardCreateDetailsIframeParams,
+  type CardUpdatePinParams as CardUpdatePinParams
+};
 
-  export {
-    CardPayments as CardPayments,
-    type CardPayment as CardPayment,
-    type CardPaymentsPage as CardPaymentsPage,
-    type CardPaymentListParams as CardPaymentListParams,
-  };
+export {
+  CardPayments as CardPayments,
+  type CardPayment as CardPayment,
+  type CardPaymentsPage as CardPaymentsPage,
+  type CardPaymentListParams as CardPaymentListParams
+};
 
-  export {
-    CardPurchaseSupplements as CardPurchaseSupplements,
-    type CardPurchaseSupplement as CardPurchaseSupplement,
-    type CardPurchaseSupplementsPage as CardPurchaseSupplementsPage,
-    type CardPurchaseSupplementListParams as CardPurchaseSupplementListParams,
-  };
+export {
+  CardPurchaseSupplements as CardPurchaseSupplements,
+  type CardPurchaseSupplement as CardPurchaseSupplement,
+  type CardPurchaseSupplementsPage as CardPurchaseSupplementsPage,
+  type CardPurchaseSupplementListParams as CardPurchaseSupplementListParams
+};
 
-  export {
-    CardDisputes as CardDisputes,
-    type CardDispute as CardDispute,
-    type CardDisputesPage as CardDisputesPage,
-    type CardDisputeCreateParams as CardDisputeCreateParams,
-    type CardDisputeListParams as CardDisputeListParams,
-    type CardDisputeSubmitUserSubmissionParams as CardDisputeSubmitUserSubmissionParams,
-    type CardDisputeWithdrawParams as CardDisputeWithdrawParams,
-  };
+export {
+  CardDisputes as CardDisputes,
+  type CardDispute as CardDispute,
+  type CardDisputesPage as CardDisputesPage,
+  type CardDisputeCreateParams as CardDisputeCreateParams,
+  type CardDisputeListParams as CardDisputeListParams,
+  type CardDisputeSubmitUserSubmissionParams as CardDisputeSubmitUserSubmissionParams,
+  type CardDisputeWithdrawParams as CardDisputeWithdrawParams
+};
 
-  export {
-    PhysicalCards as PhysicalCards,
-    type PhysicalCard as PhysicalCard,
-    type PhysicalCardsPage as PhysicalCardsPage,
-    type PhysicalCardCreateParams as PhysicalCardCreateParams,
-    type PhysicalCardUpdateParams as PhysicalCardUpdateParams,
-    type PhysicalCardListParams as PhysicalCardListParams,
-  };
+export {
+  PhysicalCards as PhysicalCards,
+  type PhysicalCard as PhysicalCard,
+  type PhysicalCardsPage as PhysicalCardsPage,
+  type PhysicalCardCreateParams as PhysicalCardCreateParams,
+  type PhysicalCardUpdateParams as PhysicalCardUpdateParams,
+  type PhysicalCardListParams as PhysicalCardListParams
+};
 
-  export {
-    DigitalCardProfiles as DigitalCardProfiles,
-    type DigitalCardProfile as DigitalCardProfile,
-    type DigitalCardProfilesPage as DigitalCardProfilesPage,
-    type DigitalCardProfileCreateParams as DigitalCardProfileCreateParams,
-    type DigitalCardProfileListParams as DigitalCardProfileListParams,
-    type DigitalCardProfileCloneParams as DigitalCardProfileCloneParams,
-  };
+export {
+  DigitalCardProfiles as DigitalCardProfiles,
+  type DigitalCardProfile as DigitalCardProfile,
+  type DigitalCardProfilesPage as DigitalCardProfilesPage,
+  type DigitalCardProfileCreateParams as DigitalCardProfileCreateParams,
+  type DigitalCardProfileListParams as DigitalCardProfileListParams,
+  type DigitalCardProfileCloneParams as DigitalCardProfileCloneParams
+};
 
-  export {
-    PhysicalCardProfiles as PhysicalCardProfiles,
-    type PhysicalCardProfile as PhysicalCardProfile,
-    type PhysicalCardProfilesPage as PhysicalCardProfilesPage,
-    type PhysicalCardProfileCreateParams as PhysicalCardProfileCreateParams,
-    type PhysicalCardProfileListParams as PhysicalCardProfileListParams,
-    type PhysicalCardProfileCloneParams as PhysicalCardProfileCloneParams,
-  };
+export {
+  PhysicalCardProfiles as PhysicalCardProfiles,
+  type PhysicalCardProfile as PhysicalCardProfile,
+  type PhysicalCardProfilesPage as PhysicalCardProfilesPage,
+  type PhysicalCardProfileCreateParams as PhysicalCardProfileCreateParams,
+  type PhysicalCardProfileListParams as PhysicalCardProfileListParams,
+  type PhysicalCardProfileCloneParams as PhysicalCardProfileCloneParams
+};
 
-  export {
-    DigitalWalletTokens as DigitalWalletTokens,
-    type DigitalWalletToken as DigitalWalletToken,
-    type DigitalWalletTokensPage as DigitalWalletTokensPage,
-    type DigitalWalletTokenListParams as DigitalWalletTokenListParams,
-  };
+export {
+  DigitalWalletTokens as DigitalWalletTokens,
+  type DigitalWalletToken as DigitalWalletToken,
+  type DigitalWalletTokensPage as DigitalWalletTokensPage,
+  type DigitalWalletTokenListParams as DigitalWalletTokenListParams
+};
 
-  export {
-    Transactions as Transactions,
-    type Transaction as Transaction,
-    type TransactionsPage as TransactionsPage,
-    type TransactionListParams as TransactionListParams,
-  };
+export {
+  Transactions as Transactions,
+  type Transaction as Transaction,
+  type TransactionsPage as TransactionsPage,
+  type TransactionListParams as TransactionListParams
+};
 
-  export {
-    PendingTransactions as PendingTransactions,
-    type PendingTransaction as PendingTransaction,
-    type PendingTransactionsPage as PendingTransactionsPage,
-    type PendingTransactionCreateParams as PendingTransactionCreateParams,
-    type PendingTransactionListParams as PendingTransactionListParams,
-  };
+export {
+  PendingTransactions as PendingTransactions,
+  type PendingTransaction as PendingTransaction,
+  type PendingTransactionsPage as PendingTransactionsPage,
+  type PendingTransactionCreateParams as PendingTransactionCreateParams,
+  type PendingTransactionListParams as PendingTransactionListParams
+};
 
-  export {
-    DeclinedTransactions as DeclinedTransactions,
-    type DeclinedTransaction as DeclinedTransaction,
-    type DeclinedTransactionsPage as DeclinedTransactionsPage,
-    type DeclinedTransactionListParams as DeclinedTransactionListParams,
-  };
+export {
+  DeclinedTransactions as DeclinedTransactions,
+  type DeclinedTransaction as DeclinedTransaction,
+  type DeclinedTransactionsPage as DeclinedTransactionsPage,
+  type DeclinedTransactionListParams as DeclinedTransactionListParams
+};
 
-  export {
-    ACHTransfers as ACHTransfers,
-    type ACHTransfer as ACHTransfer,
-    type ACHTransfersPage as ACHTransfersPage,
-    type ACHTransferCreateParams as ACHTransferCreateParams,
-    type ACHTransferListParams as ACHTransferListParams,
-  };
+export {
+  ACHTransfers as ACHTransfers,
+  type ACHTransfer as ACHTransfer,
+  type ACHTransfersPage as ACHTransfersPage,
+  type ACHTransferCreateParams as ACHTransferCreateParams,
+  type ACHTransferListParams as ACHTransferListParams
+};
 
-  export {
-    ACHPrenotifications as ACHPrenotifications,
-    type ACHPrenotification as ACHPrenotification,
-    type ACHPrenotificationsPage as ACHPrenotificationsPage,
-    type ACHPrenotificationCreateParams as ACHPrenotificationCreateParams,
-    type ACHPrenotificationListParams as ACHPrenotificationListParams,
-  };
+export {
+  ACHPrenotifications as ACHPrenotifications,
+  type ACHPrenotification as ACHPrenotification,
+  type ACHPrenotificationsPage as ACHPrenotificationsPage,
+  type ACHPrenotificationCreateParams as ACHPrenotificationCreateParams,
+  type ACHPrenotificationListParams as ACHPrenotificationListParams
+};
 
-  export {
-    InboundACHTransfers as InboundACHTransfers,
-    type InboundACHTransfer as InboundACHTransfer,
-    type InboundACHTransfersPage as InboundACHTransfersPage,
-    type InboundACHTransferListParams as InboundACHTransferListParams,
-    type InboundACHTransferCreateNotificationOfChangeParams as InboundACHTransferCreateNotificationOfChangeParams,
-    type InboundACHTransferDeclineParams as InboundACHTransferDeclineParams,
-    type InboundACHTransferTransferReturnParams as InboundACHTransferTransferReturnParams,
-  };
+export {
+  InboundACHTransfers as InboundACHTransfers,
+  type InboundACHTransfer as InboundACHTransfer,
+  type InboundACHTransfersPage as InboundACHTransfersPage,
+  type InboundACHTransferListParams as InboundACHTransferListParams,
+  type InboundACHTransferCreateNotificationOfChangeParams as InboundACHTransferCreateNotificationOfChangeParams,
+  type InboundACHTransferDeclineParams as InboundACHTransferDeclineParams,
+  type InboundACHTransferTransferReturnParams as InboundACHTransferTransferReturnParams
+};
 
-  export {
-    WireTransfers as WireTransfers,
-    type WireTransfer as WireTransfer,
-    type WireTransfersPage as WireTransfersPage,
-    type WireTransferCreateParams as WireTransferCreateParams,
-    type WireTransferListParams as WireTransferListParams,
-  };
+export {
+  WireTransfers as WireTransfers,
+  type WireTransfer as WireTransfer,
+  type WireTransfersPage as WireTransfersPage,
+  type WireTransferCreateParams as WireTransferCreateParams,
+  type WireTransferListParams as WireTransferListParams
+};
 
-  export {
-    InboundWireTransfers as InboundWireTransfers,
-    type InboundWireTransfer as InboundWireTransfer,
-    type InboundWireTransfersPage as InboundWireTransfersPage,
-    type InboundWireTransferListParams as InboundWireTransferListParams,
-    type InboundWireTransferReverseParams as InboundWireTransferReverseParams,
-  };
+export {
+  InboundWireTransfers as InboundWireTransfers,
+  type InboundWireTransfer as InboundWireTransfer,
+  type InboundWireTransfersPage as InboundWireTransfersPage,
+  type InboundWireTransferListParams as InboundWireTransferListParams,
+  type InboundWireTransferReverseParams as InboundWireTransferReverseParams
+};
 
-  export {
-    WireDrawdownRequests as WireDrawdownRequests,
-    type WireDrawdownRequest as WireDrawdownRequest,
-    type WireDrawdownRequestsPage as WireDrawdownRequestsPage,
-    type WireDrawdownRequestCreateParams as WireDrawdownRequestCreateParams,
-    type WireDrawdownRequestListParams as WireDrawdownRequestListParams,
-  };
+export {
+  WireDrawdownRequests as WireDrawdownRequests,
+  type WireDrawdownRequest as WireDrawdownRequest,
+  type WireDrawdownRequestsPage as WireDrawdownRequestsPage,
+  type WireDrawdownRequestCreateParams as WireDrawdownRequestCreateParams,
+  type WireDrawdownRequestListParams as WireDrawdownRequestListParams
+};
 
-  export {
-    InboundWireDrawdownRequests as InboundWireDrawdownRequests,
-    type InboundWireDrawdownRequest as InboundWireDrawdownRequest,
-    type InboundWireDrawdownRequestsPage as InboundWireDrawdownRequestsPage,
-    type InboundWireDrawdownRequestListParams as InboundWireDrawdownRequestListParams,
-  };
+export {
+  InboundWireDrawdownRequests as InboundWireDrawdownRequests,
+  type InboundWireDrawdownRequest as InboundWireDrawdownRequest,
+  type InboundWireDrawdownRequestsPage as InboundWireDrawdownRequestsPage,
+  type InboundWireDrawdownRequestListParams as InboundWireDrawdownRequestListParams
+};
 
-  export {
-    CheckTransfers as CheckTransfers,
-    type CheckTransfer as CheckTransfer,
-    type CheckTransfersPage as CheckTransfersPage,
-    type CheckTransferCreateParams as CheckTransferCreateParams,
-    type CheckTransferListParams as CheckTransferListParams,
-    type CheckTransferStopPaymentParams as CheckTransferStopPaymentParams,
-  };
+export {
+  CheckTransfers as CheckTransfers,
+  type CheckTransfer as CheckTransfer,
+  type CheckTransfersPage as CheckTransfersPage,
+  type CheckTransferCreateParams as CheckTransferCreateParams,
+  type CheckTransferListParams as CheckTransferListParams,
+  type CheckTransferStopPaymentParams as CheckTransferStopPaymentParams
+};
 
-  export {
-    InboundCheckDeposits as InboundCheckDeposits,
-    type InboundCheckDeposit as InboundCheckDeposit,
-    type InboundCheckDepositsPage as InboundCheckDepositsPage,
-    type InboundCheckDepositListParams as InboundCheckDepositListParams,
-    type InboundCheckDepositReturnParams as InboundCheckDepositReturnParams,
-  };
+export {
+  InboundCheckDeposits as InboundCheckDeposits,
+  type InboundCheckDeposit as InboundCheckDeposit,
+  type InboundCheckDepositsPage as InboundCheckDepositsPage,
+  type InboundCheckDepositListParams as InboundCheckDepositListParams,
+  type InboundCheckDepositReturnParams as InboundCheckDepositReturnParams
+};
 
-  export {
-    RealTimePaymentsTransfers as RealTimePaymentsTransfers,
-    type RealTimePaymentsTransfer as RealTimePaymentsTransfer,
-    type RealTimePaymentsTransfersPage as RealTimePaymentsTransfersPage,
-    type RealTimePaymentsTransferCreateParams as RealTimePaymentsTransferCreateParams,
-    type RealTimePaymentsTransferListParams as RealTimePaymentsTransferListParams,
-  };
+export {
+  RealTimePaymentsTransfers as RealTimePaymentsTransfers,
+  type RealTimePaymentsTransfer as RealTimePaymentsTransfer,
+  type RealTimePaymentsTransfersPage as RealTimePaymentsTransfersPage,
+  type RealTimePaymentsTransferCreateParams as RealTimePaymentsTransferCreateParams,
+  type RealTimePaymentsTransferListParams as RealTimePaymentsTransferListParams
+};
 
-  export {
-    InboundRealTimePaymentsTransfers as InboundRealTimePaymentsTransfers,
-    type InboundRealTimePaymentsTransfer as InboundRealTimePaymentsTransfer,
-    type InboundRealTimePaymentsTransfersPage as InboundRealTimePaymentsTransfersPage,
-    type InboundRealTimePaymentsTransferListParams as InboundRealTimePaymentsTransferListParams,
-  };
+export {
+  InboundRealTimePaymentsTransfers as InboundRealTimePaymentsTransfers,
+  type InboundRealTimePaymentsTransfer as InboundRealTimePaymentsTransfer,
+  type InboundRealTimePaymentsTransfersPage as InboundRealTimePaymentsTransfersPage,
+  type InboundRealTimePaymentsTransferListParams as InboundRealTimePaymentsTransferListParams
+};
 
-  export {
-    FednowTransfers as FednowTransfers,
-    type FednowTransfer as FednowTransfer,
-    type FednowTransfersPage as FednowTransfersPage,
-    type FednowTransferCreateParams as FednowTransferCreateParams,
-    type FednowTransferListParams as FednowTransferListParams,
-  };
+export {
+  FednowTransfers as FednowTransfers,
+  type FednowTransfer as FednowTransfer,
+  type FednowTransfersPage as FednowTransfersPage,
+  type FednowTransferCreateParams as FednowTransferCreateParams,
+  type FednowTransferListParams as FednowTransferListParams
+};
 
-  export {
-    InboundFednowTransfers as InboundFednowTransfers,
-    type InboundFednowTransfer as InboundFednowTransfer,
-    type InboundFednowTransfersPage as InboundFednowTransfersPage,
-    type InboundFednowTransferListParams as InboundFednowTransferListParams,
-  };
+export {
+  InboundFednowTransfers as InboundFednowTransfers,
+  type InboundFednowTransfer as InboundFednowTransfer,
+  type InboundFednowTransfersPage as InboundFednowTransfersPage,
+  type InboundFednowTransferListParams as InboundFednowTransferListParams
+};
 
-  export {
-    SwiftTransfers as SwiftTransfers,
-    type SwiftTransfer as SwiftTransfer,
-    type SwiftTransfersPage as SwiftTransfersPage,
-    type SwiftTransferCreateParams as SwiftTransferCreateParams,
-    type SwiftTransferListParams as SwiftTransferListParams,
-  };
+export {
+  SwiftTransfers as SwiftTransfers,
+  type SwiftTransfer as SwiftTransfer,
+  type SwiftTransfersPage as SwiftTransfersPage,
+  type SwiftTransferCreateParams as SwiftTransferCreateParams,
+  type SwiftTransferListParams as SwiftTransferListParams
+};
 
-  export {
-    CheckDeposits as CheckDeposits,
-    type CheckDeposit as CheckDeposit,
-    type CheckDepositsPage as CheckDepositsPage,
-    type CheckDepositCreateParams as CheckDepositCreateParams,
-    type CheckDepositListParams as CheckDepositListParams,
-  };
+export {
+  CheckDeposits as CheckDeposits,
+  type CheckDeposit as CheckDeposit,
+  type CheckDepositsPage as CheckDepositsPage,
+  type CheckDepositCreateParams as CheckDepositCreateParams,
+  type CheckDepositListParams as CheckDepositListParams
+};
 
-  export {
-    Lockboxes as Lockboxes,
-    type Lockbox as Lockbox,
-    type LockboxesPage as LockboxesPage,
-    type LockboxCreateParams as LockboxCreateParams,
-    type LockboxUpdateParams as LockboxUpdateParams,
-    type LockboxListParams as LockboxListParams,
-  };
+export {
+  Lockboxes as Lockboxes,
+  type Lockbox as Lockbox,
+  type LockboxesPage as LockboxesPage,
+  type LockboxCreateParams as LockboxCreateParams,
+  type LockboxUpdateParams as LockboxUpdateParams,
+  type LockboxListParams as LockboxListParams
+};
 
-  export {
-    InboundMailItems as InboundMailItems,
-    type InboundMailItem as InboundMailItem,
-    type InboundMailItemsPage as InboundMailItemsPage,
-    type InboundMailItemListParams as InboundMailItemListParams,
-    type InboundMailItemActionParams as InboundMailItemActionParams,
-  };
+export {
+  InboundMailItems as InboundMailItems,
+  type InboundMailItem as InboundMailItem,
+  type InboundMailItemsPage as InboundMailItemsPage,
+  type InboundMailItemListParams as InboundMailItemListParams,
+  type InboundMailItemActionParams as InboundMailItemActionParams
+};
 
-  export {
-    RoutingNumbers as RoutingNumbers,
-    type RoutingNumberListResponse as RoutingNumberListResponse,
-    type RoutingNumberListResponsesPage as RoutingNumberListResponsesPage,
-    type RoutingNumberListParams as RoutingNumberListParams,
-  };
+export {
+  RoutingNumbers as RoutingNumbers,
+  type RoutingNumberListResponse as RoutingNumberListResponse,
+  type RoutingNumberListResponsesPage as RoutingNumberListResponsesPage,
+  type RoutingNumberListParams as RoutingNumberListParams
+};
 
-  export {
-    ExternalAccounts as ExternalAccounts,
-    type ExternalAccount as ExternalAccount,
-    type ExternalAccountsPage as ExternalAccountsPage,
-    type ExternalAccountCreateParams as ExternalAccountCreateParams,
-    type ExternalAccountUpdateParams as ExternalAccountUpdateParams,
-    type ExternalAccountListParams as ExternalAccountListParams,
-  };
+export {
+  ExternalAccounts as ExternalAccounts,
+  type ExternalAccount as ExternalAccount,
+  type ExternalAccountsPage as ExternalAccountsPage,
+  type ExternalAccountCreateParams as ExternalAccountCreateParams,
+  type ExternalAccountUpdateParams as ExternalAccountUpdateParams,
+  type ExternalAccountListParams as ExternalAccountListParams
+};
 
-  export {
-    Entities as Entities,
-    type Entity as Entity,
-    type EntitiesPage as EntitiesPage,
-    type EntityCreateParams as EntityCreateParams,
-    type EntityUpdateParams as EntityUpdateParams,
-    type EntityListParams as EntityListParams,
-  };
+export {
+  Entities as Entities,
+  type Entity as Entity,
+  type EntitiesPage as EntitiesPage,
+  type EntityCreateParams as EntityCreateParams,
+  type EntityUpdateParams as EntityUpdateParams,
+  type EntityListParams as EntityListParams
+};
 
-  export {
-    BeneficialOwners as BeneficialOwners,
-    type EntityBeneficialOwner as EntityBeneficialOwner,
-    type EntityBeneficialOwnersPage as EntityBeneficialOwnersPage,
-    type BeneficialOwnerCreateParams as BeneficialOwnerCreateParams,
-    type BeneficialOwnerUpdateParams as BeneficialOwnerUpdateParams,
-    type BeneficialOwnerListParams as BeneficialOwnerListParams,
-  };
+export {
+  BeneficialOwners as BeneficialOwners,
+  type EntityBeneficialOwner as EntityBeneficialOwner,
+  type EntityBeneficialOwnersPage as EntityBeneficialOwnersPage,
+  type BeneficialOwnerCreateParams as BeneficialOwnerCreateParams,
+  type BeneficialOwnerUpdateParams as BeneficialOwnerUpdateParams,
+  type BeneficialOwnerListParams as BeneficialOwnerListParams
+};
 
-  export {
-    SupplementalDocuments as SupplementalDocuments,
-    type EntitySupplementalDocument as EntitySupplementalDocument,
-    type EntitySupplementalDocumentsPage as EntitySupplementalDocumentsPage,
-    type SupplementalDocumentCreateParams as SupplementalDocumentCreateParams,
-    type SupplementalDocumentListParams as SupplementalDocumentListParams,
-  };
+export {
+  SupplementalDocuments as SupplementalDocuments,
+  type EntitySupplementalDocument as EntitySupplementalDocument,
+  type EntitySupplementalDocumentsPage as EntitySupplementalDocumentsPage,
+  type SupplementalDocumentCreateParams as SupplementalDocumentCreateParams,
+  type SupplementalDocumentListParams as SupplementalDocumentListParams
+};
 
-  export {
-    EntityOnboardingSessions as EntityOnboardingSessions,
-    type EntityOnboardingSession as EntityOnboardingSession,
-    type EntityOnboardingSessionsPage as EntityOnboardingSessionsPage,
-    type EntityOnboardingSessionCreateParams as EntityOnboardingSessionCreateParams,
-    type EntityOnboardingSessionListParams as EntityOnboardingSessionListParams,
-  };
+export {
+  EntityOnboardingSessions as EntityOnboardingSessions,
+  type EntityOnboardingSession as EntityOnboardingSession,
+  type EntityOnboardingSessionsPage as EntityOnboardingSessionsPage,
+  type EntityOnboardingSessionCreateParams as EntityOnboardingSessionCreateParams,
+  type EntityOnboardingSessionListParams as EntityOnboardingSessionListParams
+};
 
-  export {
-    Programs as Programs,
-    type Program as Program,
-    type ProgramsPage as ProgramsPage,
-    type ProgramListParams as ProgramListParams,
-  };
+export {
+  Programs as Programs,
+  type Program as Program,
+  type ProgramsPage as ProgramsPage,
+  type ProgramListParams as ProgramListParams
+};
 
-  export {
-    AccountStatements as AccountStatements,
-    type AccountStatement as AccountStatement,
-    type AccountStatementsPage as AccountStatementsPage,
-    type AccountStatementListParams as AccountStatementListParams,
-  };
+export {
+  AccountStatements as AccountStatements,
+  type AccountStatement as AccountStatement,
+  type AccountStatementsPage as AccountStatementsPage,
+  type AccountStatementListParams as AccountStatementListParams
+};
 
-  export {
-    Files as Files,
-    type File as File,
-    type FilesPage as FilesPage,
-    type FileCreateParams as FileCreateParams,
-    type FileListParams as FileListParams,
-  };
+export {
+  Files as Files,
+  type File as File,
+  type FilesPage as FilesPage,
+  type FileCreateParams as FileCreateParams,
+  type FileListParams as FileListParams
+};
 
-  export {
-    FileLinks as FileLinks,
-    type FileLink as FileLink,
-    type FileLinkCreateParams as FileLinkCreateParams,
-  };
+export {
+  FileLinks as FileLinks,
+  type FileLink as FileLink,
+  type FileLinkCreateParams as FileLinkCreateParams
+};
 
-  export {
-    Exports as Exports,
-    type Export as Export,
-    type ExportsPage as ExportsPage,
-    type ExportCreateParams as ExportCreateParams,
-    type ExportListParams as ExportListParams,
-  };
+export {
+  Exports as Exports,
+  type Export as Export,
+  type ExportsPage as ExportsPage,
+  type ExportCreateParams as ExportCreateParams,
+  type ExportListParams as ExportListParams
+};
 
-  export {
-    Events as Events,
-    type Event as Event,
-    type UnwrapWebhookEvent as UnwrapWebhookEvent,
-    type EventsPage as EventsPage,
-    type EventListParams as EventListParams,
-  };
+export {
+  Events as Events,
+  type Event as Event,
+  type UnwrapWebhookEvent as UnwrapWebhookEvent,
+  type EventsPage as EventsPage,
+  type EventListParams as EventListParams
+};
 
-  export {
-    EventSubscriptions as EventSubscriptions,
-    type EventSubscription as EventSubscription,
-    type EventSubscriptionsPage as EventSubscriptionsPage,
-    type EventSubscriptionCreateParams as EventSubscriptionCreateParams,
-    type EventSubscriptionUpdateParams as EventSubscriptionUpdateParams,
-    type EventSubscriptionListParams as EventSubscriptionListParams,
-  };
+export {
+  EventSubscriptions as EventSubscriptions,
+  type EventSubscription as EventSubscription,
+  type EventSubscriptionsPage as EventSubscriptionsPage,
+  type EventSubscriptionCreateParams as EventSubscriptionCreateParams,
+  type EventSubscriptionUpdateParams as EventSubscriptionUpdateParams,
+  type EventSubscriptionListParams as EventSubscriptionListParams
+};
 
-  export {
-    RealTimeDecisions as RealTimeDecisions,
-    type RealTimeDecision as RealTimeDecision,
-    type RealTimeDecisionActionParams as RealTimeDecisionActionParams,
-  };
+export {
+  RealTimeDecisions as RealTimeDecisions,
+  type RealTimeDecision as RealTimeDecision,
+  type RealTimeDecisionActionParams as RealTimeDecisionActionParams
+};
 
-  export { Groups as Groups, type Group as Group };
+export {
+  Groups as Groups,
+  type Group as Group
+};
 
-  export {
-    OAuthApplications as OAuthApplications,
-    type OAuthApplication as OAuthApplication,
-    type OAuthApplicationsPage as OAuthApplicationsPage,
-    type OAuthApplicationListParams as OAuthApplicationListParams,
-  };
+export {
+  OAuthApplications as OAuthApplications,
+  type OAuthApplication as OAuthApplication,
+  type OAuthApplicationsPage as OAuthApplicationsPage,
+  type OAuthApplicationListParams as OAuthApplicationListParams
+};
 
-  export {
-    OAuthConnections as OAuthConnections,
-    type OAuthConnection as OAuthConnection,
-    type OAuthConnectionsPage as OAuthConnectionsPage,
-    type OAuthConnectionListParams as OAuthConnectionListParams,
-  };
+export {
+  OAuthConnections as OAuthConnections,
+  type OAuthConnection as OAuthConnection,
+  type OAuthConnectionsPage as OAuthConnectionsPage,
+  type OAuthConnectionListParams as OAuthConnectionListParams
+};
 
-  export {
-    OAuthTokens as OAuthTokens,
-    type OAuthToken as OAuthToken,
-    type OAuthTokenCreateParams as OAuthTokenCreateParams,
-  };
+export {
+  OAuthTokens as OAuthTokens,
+  type OAuthToken as OAuthToken,
+  type OAuthTokenCreateParams as OAuthTokenCreateParams
+};
 
-  export {
-    IntrafiAccountEnrollments as IntrafiAccountEnrollments,
-    type IntrafiAccountEnrollment as IntrafiAccountEnrollment,
-    type IntrafiAccountEnrollmentsPage as IntrafiAccountEnrollmentsPage,
-    type IntrafiAccountEnrollmentCreateParams as IntrafiAccountEnrollmentCreateParams,
-    type IntrafiAccountEnrollmentListParams as IntrafiAccountEnrollmentListParams,
-  };
+export {
+  IntrafiAccountEnrollments as IntrafiAccountEnrollments,
+  type IntrafiAccountEnrollment as IntrafiAccountEnrollment,
+  type IntrafiAccountEnrollmentsPage as IntrafiAccountEnrollmentsPage,
+  type IntrafiAccountEnrollmentCreateParams as IntrafiAccountEnrollmentCreateParams,
+  type IntrafiAccountEnrollmentListParams as IntrafiAccountEnrollmentListParams
+};
 
-  export { IntrafiBalances as IntrafiBalances, type IntrafiBalance as IntrafiBalance };
+export {
+  IntrafiBalances as IntrafiBalances,
+  type IntrafiBalance as IntrafiBalance
+};
 
-  export {
-    IntrafiExclusions as IntrafiExclusions,
-    type IntrafiExclusion as IntrafiExclusion,
-    type IntrafiExclusionsPage as IntrafiExclusionsPage,
-    type IntrafiExclusionCreateParams as IntrafiExclusionCreateParams,
-    type IntrafiExclusionListParams as IntrafiExclusionListParams,
-  };
+export {
+  IntrafiExclusions as IntrafiExclusions,
+  type IntrafiExclusion as IntrafiExclusion,
+  type IntrafiExclusionsPage as IntrafiExclusionsPage,
+  type IntrafiExclusionCreateParams as IntrafiExclusionCreateParams,
+  type IntrafiExclusionListParams as IntrafiExclusionListParams
+};
 
-  export {
-    CardTokens as CardTokens,
-    type CardToken as CardToken,
-    type CardTokenCapabilities as CardTokenCapabilities,
-    type CardTokensPage as CardTokensPage,
-    type CardTokenListParams as CardTokenListParams,
-  };
+export {
+  CardTokens as CardTokens,
+  type CardToken as CardToken,
+  type CardTokenCapabilities as CardTokenCapabilities,
+  type CardTokensPage as CardTokensPage,
+  type CardTokenListParams as CardTokenListParams
+};
 
-  export {
-    CardPushTransfers as CardPushTransfers,
-    type CardPushTransfer as CardPushTransfer,
-    type CardPushTransfersPage as CardPushTransfersPage,
-    type CardPushTransferCreateParams as CardPushTransferCreateParams,
-    type CardPushTransferListParams as CardPushTransferListParams,
-  };
+export {
+  CardPushTransfers as CardPushTransfers,
+  type CardPushTransfer as CardPushTransfer,
+  type CardPushTransfersPage as CardPushTransfersPage,
+  type CardPushTransferCreateParams as CardPushTransferCreateParams,
+  type CardPushTransferListParams as CardPushTransferListParams
+};
 
-  export {
-    CardValidations as CardValidations,
-    type CardValidation as CardValidation,
-    type CardValidationsPage as CardValidationsPage,
-    type CardValidationCreateParams as CardValidationCreateParams,
-    type CardValidationListParams as CardValidationListParams,
-  };
+export {
+  CardValidations as CardValidations,
+  type CardValidation as CardValidation,
+  type CardValidationsPage as CardValidationsPage,
+  type CardValidationCreateParams as CardValidationCreateParams,
+  type CardValidationListParams as CardValidationListParams
+};
 
-  export { Simulations as Simulations };
-}
+export {
+  Simulations as Simulations
+};
+    }

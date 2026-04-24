@@ -57,11 +57,7 @@ export class PhysicalCards extends APIResource {
    * );
    * ```
    */
-  update(
-    physicalCardID: string,
-    body: PhysicalCardUpdateParams,
-    options?: RequestOptions,
-  ): APIPromise<PhysicalCard> {
+  update(physicalCardID: string, body: PhysicalCardUpdateParams, options?: RequestOptions): APIPromise<PhysicalCard> {
     return this._client.patch(path`/physical_cards/${physicalCardID}`, { body, ...options });
   }
 
@@ -76,15 +72,12 @@ export class PhysicalCards extends APIResource {
    * }
    * ```
    */
-  list(
-    query: PhysicalCardListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): PagePromise<PhysicalCardsPage, PhysicalCard> {
+  list(query: PhysicalCardListParams | null | undefined = {}, options?: RequestOptions): PagePromise<PhysicalCardsPage, PhysicalCard> {
     return this._client.getAPIList('/physical_cards', Page<PhysicalCard>, { query, ...options });
   }
 }
 
-export type PhysicalCardsPage = Page<PhysicalCard>;
+export type PhysicalCardsPage = Page<PhysicalCard>
 
 /**
  * Custom physical Visa cards that are shipped to your customers. The artwork is
@@ -216,15 +209,7 @@ export namespace PhysicalCard {
      * - `requires_attention` - The physical card shipment requires attention from
      *   Increase before progressing.
      */
-    status:
-      | 'pending'
-      | 'canceled'
-      | 'submitted'
-      | 'acknowledged'
-      | 'rejected'
-      | 'shipped'
-      | 'returned'
-      | 'requires_attention';
+    status: 'pending' | 'canceled' | 'submitted' | 'acknowledged' | 'rejected' | 'shipped' | 'returned' | 'requires_attention';
 
     /**
      * Tracking details for the shipment.
@@ -330,12 +315,7 @@ export namespace PhysicalCard {
          * - `returned_to_sender` - Delivery failed and the physical card was returned to
          *   sender.
          */
-        category:
-          | 'in_transit'
-          | 'processed_for_delivery'
-          | 'delivered'
-          | 'delivery_issue'
-          | 'returned_to_sender';
+        category: 'in_transit' | 'processed_for_delivery' | 'delivered' | 'delivery_issue' | 'returned_to_sender';
 
         /**
          * The city where the event took place.
@@ -384,7 +364,7 @@ export interface PhysicalCardCreateParams {
    */
   physical_card_profile_id?: string;
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export namespace PhysicalCardCreateParams {
@@ -557,6 +537,6 @@ export declare namespace PhysicalCards {
     type PhysicalCardsPage as PhysicalCardsPage,
     type PhysicalCardCreateParams as PhysicalCardCreateParams,
     type PhysicalCardUpdateParams as PhysicalCardUpdateParams,
-    type PhysicalCardListParams as PhysicalCardListParams,
+    type PhysicalCardListParams as PhysicalCardListParams
   };
 }

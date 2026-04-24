@@ -2,20 +2,17 @@
 
 import Increase from 'increase';
 
-const client = new Increase({
-  apiKey: 'My API Key',
-  baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
-});
+const client = new Increase({ apiKey: 'My API Key', baseURL: process.env["TEST_API_BASE_URL"] ?? 'http://127.0.0.1:4010' });
 
 describe('resource digitalCardProfiles', () => {
   test('create: only required params', async () => {
     const responsePromise = client.digitalCardProfiles.create({
-      app_icon_file_id: 'file_8zxqkwlh43wo144u8yec',
-      background_image_file_id: 'file_1ai913suu1zfn1pdetru',
-      card_description: 'MyBank Signature Card',
-      description: 'My Card Profile',
-      issuer_name: 'MyBank',
-    });
+    app_icon_file_id: 'file_8zxqkwlh43wo144u8yec',
+    background_image_file_id: 'file_1ai913suu1zfn1pdetru',
+    card_description: 'MyBank Signature Card',
+    description: 'My Card Profile',
+    issuer_name: 'MyBank',
+  });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -27,20 +24,20 @@ describe('resource digitalCardProfiles', () => {
 
   test('create: required and optional params', async () => {
     const response = await client.digitalCardProfiles.create({
-      app_icon_file_id: 'file_8zxqkwlh43wo144u8yec',
-      background_image_file_id: 'file_1ai913suu1zfn1pdetru',
-      card_description: 'MyBank Signature Card',
-      description: 'My Card Profile',
-      issuer_name: 'MyBank',
-      contact_email: 'user@example.com',
-      contact_phone: '+18885551212',
-      contact_website: 'https://example.com',
-      text_color: {
-        blue: 59,
-        green: 43,
-        red: 26,
-      },
-    });
+    app_icon_file_id: 'file_8zxqkwlh43wo144u8yec',
+    background_image_file_id: 'file_1ai913suu1zfn1pdetru',
+    card_description: 'MyBank Signature Card',
+    description: 'My Card Profile',
+    issuer_name: 'MyBank',
+    contact_email: 'user@example.com',
+    contact_phone: '+18885551212',
+    contact_website: 'https://example.com',
+    text_color: {
+    blue: 59,
+    green: 43,
+    red: 26,
+  },
+  });
   });
 
   test('retrieve', async () => {
@@ -67,17 +64,14 @@ describe('resource digitalCardProfiles', () => {
 
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.digitalCardProfiles.list(
-        {
-          cursor: 'cursor',
-          idempotency_key: 'x',
-          limit: 1,
-          status: { in: ['pending'] },
-        },
-        { path: '/_stainless_unknown_path' },
-      ),
-    ).rejects.toThrow(Increase.NotFoundError);
+    await expect(client.digitalCardProfiles.list({
+    cursor: 'cursor',
+    idempotency_key: 'x',
+    limit: 1,
+    status: { in: ['pending'] },
+  }, { path: '/_stainless_unknown_path' }))
+      .rejects
+      .toThrow(Increase.NotFoundError);
   });
 
   test('archive', async () => {

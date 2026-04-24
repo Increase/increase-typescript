@@ -60,15 +60,12 @@ export class Lockboxes extends APIResource {
    * }
    * ```
    */
-  list(
-    query: LockboxListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): PagePromise<LockboxesPage, Lockbox> {
+  list(query: LockboxListParams | null | undefined = {}, options?: RequestOptions): PagePromise<LockboxesPage, Lockbox> {
     return this._client.getAPIList('/lockboxes', Page<Lockbox>, { query, ...options });
   }
 }
 
-export type LockboxesPage = Page<Lockbox>;
+export type LockboxesPage = Page<Lockbox>
 
 /**
  * Lockboxes are physical locations that can receive mail containing paper checks.
@@ -130,7 +127,7 @@ export interface Lockbox {
    */
   type: 'lockbox';
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export namespace Lockbox {
@@ -190,7 +187,7 @@ export interface LockboxCreateParams {
    */
   recipient_name?: string;
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export interface LockboxUpdateParams {
@@ -214,7 +211,7 @@ export interface LockboxUpdateParams {
    */
   recipient_name?: string;
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export interface LockboxListParams extends PageParams {
@@ -268,6 +265,6 @@ export declare namespace Lockboxes {
     type LockboxesPage as LockboxesPage,
     type LockboxCreateParams as LockboxCreateParams,
     type LockboxUpdateParams as LockboxUpdateParams,
-    type LockboxListParams as LockboxListParams,
+    type LockboxListParams as LockboxListParams
   };
 }

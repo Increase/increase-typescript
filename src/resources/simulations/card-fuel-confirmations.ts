@@ -20,10 +20,7 @@ export class CardFuelConfirmations extends APIResource {
    *   });
    * ```
    */
-  create(
-    body: CardFuelConfirmationCreateParams,
-    options?: RequestOptions,
-  ): APIPromise<CardPaymentsAPI.CardPayment> {
+  create(body: CardFuelConfirmationCreateParams, options?: RequestOptions): APIPromise<CardPaymentsAPI.CardPayment> {
     return this._client.post('/simulations/card_fuel_confirmations', { body, ...options });
   }
 }
@@ -42,5 +39,7 @@ export interface CardFuelConfirmationCreateParams {
 }
 
 export declare namespace CardFuelConfirmations {
-  export { type CardFuelConfirmationCreateParams as CardFuelConfirmationCreateParams };
+  export {
+    type CardFuelConfirmationCreateParams as CardFuelConfirmationCreateParams
+  };
 }

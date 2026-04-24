@@ -50,11 +50,7 @@ export class ExternalAccounts extends APIResource {
    *   );
    * ```
    */
-  update(
-    externalAccountID: string,
-    body: ExternalAccountUpdateParams,
-    options?: RequestOptions,
-  ): APIPromise<ExternalAccount> {
+  update(externalAccountID: string, body: ExternalAccountUpdateParams, options?: RequestOptions): APIPromise<ExternalAccount> {
     return this._client.patch(path`/external_accounts/${externalAccountID}`, { body, ...options });
   }
 
@@ -69,15 +65,12 @@ export class ExternalAccounts extends APIResource {
    * }
    * ```
    */
-  list(
-    query: ExternalAccountListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): PagePromise<ExternalAccountsPage, ExternalAccount> {
+  list(query: ExternalAccountListParams | null | undefined = {}, options?: RequestOptions): PagePromise<ExternalAccountsPage, ExternalAccount> {
     return this._client.getAPIList('/external_accounts', Page<ExternalAccount>, { query, ...options });
   }
 }
 
-export type ExternalAccountsPage = Page<ExternalAccount>;
+export type ExternalAccountsPage = Page<ExternalAccount>
 
 /**
  * External Accounts represent accounts at financial institutions other than
@@ -151,7 +144,7 @@ export interface ExternalAccount {
    */
   type: 'external_account';
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export interface ExternalAccountCreateParams {
@@ -190,7 +183,7 @@ export interface ExternalAccountCreateParams {
    */
   funding?: 'checking' | 'savings' | 'general_ledger' | 'other';
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export interface ExternalAccountUpdateParams {
@@ -261,6 +254,6 @@ export declare namespace ExternalAccounts {
     type ExternalAccountsPage as ExternalAccountsPage,
     type ExternalAccountCreateParams as ExternalAccountCreateParams,
     type ExternalAccountUpdateParams as ExternalAccountUpdateParams,
-    type ExternalAccountListParams as ExternalAccountListParams,
+    type ExternalAccountListParams as ExternalAccountListParams
   };
 }

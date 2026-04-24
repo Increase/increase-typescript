@@ -2,10 +2,7 @@
 
 import Increase from 'increase';
 
-const client = new Increase({
-  apiKey: 'My API Key',
-  baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
-});
+const client = new Increase({ apiKey: 'My API Key', baseURL: process.env["TEST_API_BASE_URL"] ?? 'http://127.0.0.1:4010' });
 
 describe('resource entities', () => {
   test('create: only required params', async () => {
@@ -21,254 +18,244 @@ describe('resource entities', () => {
 
   test('create: required and optional params', async () => {
     const response = await client.entities.create({
-      structure: 'corporation',
-      corporation: {
-        address: {
-          city: 'New York',
-          country: 'x',
-          line1: '33 Liberty Street',
-          line2: 'x',
-          state: 'NY',
-          zip: '10045',
-        },
-        beneficial_owners: [
-          {
-            individual: {
-              address: {
-                city: 'New York',
-                country: 'x',
-                line1: '33 Liberty Street',
-                line2: 'x',
-                state: 'NY',
-                zip: '10045',
-              },
-              date_of_birth: '1970-01-31',
-              identification: {
-                method: 'social_security_number',
-                number: '078051120',
-                drivers_license: {
-                  expiration_date: '2019-12-27',
-                  file_id: 'file_id',
-                  state: 'x',
-                  back_file_id: 'back_file_id',
-                },
-                other: {
-                  country: 'x',
-                  description: 'x',
-                  file_id: 'file_id',
-                  back_file_id: 'back_file_id',
-                  expiration_date: '2019-12-27',
-                },
-                passport: {
-                  country: 'x',
-                  expiration_date: '2019-12-27',
-                  file_id: 'file_id',
-                },
-              },
-              name: 'Ian Crease',
-              confirmed_no_us_tax_id: true,
-            },
-            prongs: ['control'],
-            company_title: 'CEO',
-          },
-        ],
-        legal_identifier: { value: '602214076', category: 'us_employer_identification_number' },
-        name: 'National Phonograph Company',
-        beneficial_ownership_exemption_reason: 'regulated_financial_institution',
-        email: 'dev@stainless.com',
-        incorporation_state: 'NY',
-        industry_code: 'x',
-        website: 'https://example.com',
-      },
-      description: 'x',
-      government_authority: {
-        address: {
-          city: 'x',
-          line1: 'x',
-          state: 'x',
-          zip: 'x',
-          line2: 'x',
-        },
-        authorized_persons: [{ name: 'x' }],
-        category: 'municipality',
-        name: 'x',
-        tax_identifier: 'x',
-        website: 'website',
-      },
-      joint: {
-        individuals: [
-          {
-            address: {
-              city: 'x',
-              country: 'x',
-              line1: 'x',
-              line2: 'x',
-              state: 'x',
-              zip: 'x',
-            },
-            date_of_birth: '2019-12-27',
-            identification: {
-              method: 'social_security_number',
-              number: 'xxxx',
-              drivers_license: {
-                expiration_date: '2019-12-27',
-                file_id: 'file_id',
-                state: 'x',
-                back_file_id: 'back_file_id',
-              },
-              other: {
-                country: 'x',
-                description: 'x',
-                file_id: 'file_id',
-                back_file_id: 'back_file_id',
-                expiration_date: '2019-12-27',
-              },
-              passport: {
-                country: 'x',
-                expiration_date: '2019-12-27',
-                file_id: 'file_id',
-              },
-            },
-            name: 'x',
-            confirmed_no_us_tax_id: true,
-          },
-        ],
-      },
-      natural_person: {
-        address: {
-          city: 'x',
-          country: 'x',
-          line1: 'x',
-          line2: 'x',
-          state: 'x',
-          zip: 'x',
-        },
-        date_of_birth: '2019-12-27',
-        identification: {
-          method: 'social_security_number',
-          number: 'xxxx',
-          drivers_license: {
-            expiration_date: '2019-12-27',
-            file_id: 'file_id',
-            state: 'x',
-            back_file_id: 'back_file_id',
-          },
-          other: {
-            country: 'x',
-            description: 'x',
-            file_id: 'file_id',
-            back_file_id: 'back_file_id',
-            expiration_date: '2019-12-27',
-          },
-          passport: {
-            country: 'x',
-            expiration_date: '2019-12-27',
-            file_id: 'file_id',
-          },
-        },
-        name: 'x',
-        confirmed_no_us_tax_id: true,
-      },
-      risk_rating: { rated_at: '2019-12-27T18:11:19.117Z', rating: 'low' },
-      supplemental_documents: [{ file_id: 'file_makxrc67oh9l6sg7w9yc' }],
-      terms_agreements: [
-        {
-          agreed_at: '2019-12-27T18:11:19.117Z',
-          ip_address: 'x',
-          terms_url: 'x',
-        },
-      ],
-      third_party_verification: { reference: 'x', vendor: 'alloy' },
-      trust: {
-        address: {
-          city: 'x',
-          line1: 'x',
-          state: 'x',
-          zip: 'x',
-          line2: 'x',
-        },
-        category: 'revocable',
-        name: 'x',
-        trustees: [
-          {
-            structure: 'individual',
-            individual: {
-              address: {
-                city: 'x',
-                country: 'x',
-                line1: 'x',
-                line2: 'x',
-                state: 'x',
-                zip: 'x',
-              },
-              date_of_birth: '2019-12-27',
-              identification: {
-                method: 'social_security_number',
-                number: 'xxxx',
-                drivers_license: {
-                  expiration_date: '2019-12-27',
-                  file_id: 'file_id',
-                  state: 'x',
-                  back_file_id: 'back_file_id',
-                },
-                other: {
-                  country: 'x',
-                  description: 'x',
-                  file_id: 'file_id',
-                  back_file_id: 'back_file_id',
-                  expiration_date: '2019-12-27',
-                },
-                passport: {
-                  country: 'x',
-                  expiration_date: '2019-12-27',
-                  file_id: 'file_id',
-                },
-              },
-              name: 'x',
-              confirmed_no_us_tax_id: true,
-            },
-          },
-        ],
-        formation_document_file_id: 'formation_document_file_id',
-        formation_state: 'x',
-        grantor: {
-          address: {
-            city: 'x',
-            country: 'x',
-            line1: 'x',
-            line2: 'x',
-            state: 'x',
-            zip: 'x',
-          },
-          date_of_birth: '2019-12-27',
-          identification: {
-            method: 'social_security_number',
-            number: 'xxxx',
-            drivers_license: {
-              expiration_date: '2019-12-27',
-              file_id: 'file_id',
-              state: 'x',
-              back_file_id: 'back_file_id',
-            },
-            other: {
-              country: 'x',
-              description: 'x',
-              file_id: 'file_id',
-              back_file_id: 'back_file_id',
-              expiration_date: '2019-12-27',
-            },
-            passport: {
-              country: 'x',
-              expiration_date: '2019-12-27',
-              file_id: 'file_id',
-            },
-          },
-          name: 'x',
-          confirmed_no_us_tax_id: true,
-        },
-        tax_identifier: 'x',
-      },
-    });
+    structure: 'corporation',
+    corporation: {
+    address: {
+    city: 'New York',
+    country: 'x',
+    line1: '33 Liberty Street',
+    line2: 'x',
+    state: 'NY',
+    zip: '10045',
+  },
+    beneficial_owners: [{
+    individual: {
+    address: {
+    city: 'New York',
+    country: 'x',
+    line1: '33 Liberty Street',
+    line2: 'x',
+    state: 'NY',
+    zip: '10045',
+  },
+    date_of_birth: '1970-01-31',
+    identification: {
+    method: 'social_security_number',
+    number: '078051120',
+    drivers_license: {
+    expiration_date: '2019-12-27',
+    file_id: 'file_id',
+    state: 'x',
+    back_file_id: 'back_file_id',
+  },
+    other: {
+    country: 'x',
+    description: 'x',
+    file_id: 'file_id',
+    back_file_id: 'back_file_id',
+    expiration_date: '2019-12-27',
+  },
+    passport: {
+    country: 'x',
+    expiration_date: '2019-12-27',
+    file_id: 'file_id',
+  },
+  },
+    name: 'Ian Crease',
+    confirmed_no_us_tax_id: true,
+  },
+    prongs: ['control'],
+    company_title: 'CEO',
+  }],
+    legal_identifier: { value: '602214076', category: 'us_employer_identification_number' },
+    name: 'National Phonograph Company',
+    beneficial_ownership_exemption_reason: 'regulated_financial_institution',
+    email: 'dev@stainless.com',
+    incorporation_state: 'NY',
+    industry_code: 'x',
+    website: 'https://example.com',
+  },
+    description: 'x',
+    government_authority: {
+    address: {
+    city: 'x',
+    line1: 'x',
+    state: 'x',
+    zip: 'x',
+    line2: 'x',
+  },
+    authorized_persons: [{ name: 'x' }],
+    category: 'municipality',
+    name: 'x',
+    tax_identifier: 'x',
+    website: 'website',
+  },
+    joint: { individuals: [{
+    address: {
+    city: 'x',
+    country: 'x',
+    line1: 'x',
+    line2: 'x',
+    state: 'x',
+    zip: 'x',
+  },
+    date_of_birth: '2019-12-27',
+    identification: {
+    method: 'social_security_number',
+    number: 'xxxx',
+    drivers_license: {
+    expiration_date: '2019-12-27',
+    file_id: 'file_id',
+    state: 'x',
+    back_file_id: 'back_file_id',
+  },
+    other: {
+    country: 'x',
+    description: 'x',
+    file_id: 'file_id',
+    back_file_id: 'back_file_id',
+    expiration_date: '2019-12-27',
+  },
+    passport: {
+    country: 'x',
+    expiration_date: '2019-12-27',
+    file_id: 'file_id',
+  },
+  },
+    name: 'x',
+    confirmed_no_us_tax_id: true,
+  }] },
+    natural_person: {
+    address: {
+    city: 'x',
+    country: 'x',
+    line1: 'x',
+    line2: 'x',
+    state: 'x',
+    zip: 'x',
+  },
+    date_of_birth: '2019-12-27',
+    identification: {
+    method: 'social_security_number',
+    number: 'xxxx',
+    drivers_license: {
+    expiration_date: '2019-12-27',
+    file_id: 'file_id',
+    state: 'x',
+    back_file_id: 'back_file_id',
+  },
+    other: {
+    country: 'x',
+    description: 'x',
+    file_id: 'file_id',
+    back_file_id: 'back_file_id',
+    expiration_date: '2019-12-27',
+  },
+    passport: {
+    country: 'x',
+    expiration_date: '2019-12-27',
+    file_id: 'file_id',
+  },
+  },
+    name: 'x',
+    confirmed_no_us_tax_id: true,
+  },
+    risk_rating: { rated_at: '2019-12-27T18:11:19.117Z', rating: 'low' },
+    supplemental_documents: [{ file_id: 'file_makxrc67oh9l6sg7w9yc' }],
+    terms_agreements: [{
+    agreed_at: '2019-12-27T18:11:19.117Z',
+    ip_address: 'x',
+    terms_url: 'x',
+  }],
+    third_party_verification: { reference: 'x', vendor: 'alloy' },
+    trust: {
+    address: {
+    city: 'x',
+    line1: 'x',
+    state: 'x',
+    zip: 'x',
+    line2: 'x',
+  },
+    category: 'revocable',
+    name: 'x',
+    trustees: [{
+    structure: 'individual',
+    individual: {
+    address: {
+    city: 'x',
+    country: 'x',
+    line1: 'x',
+    line2: 'x',
+    state: 'x',
+    zip: 'x',
+  },
+    date_of_birth: '2019-12-27',
+    identification: {
+    method: 'social_security_number',
+    number: 'xxxx',
+    drivers_license: {
+    expiration_date: '2019-12-27',
+    file_id: 'file_id',
+    state: 'x',
+    back_file_id: 'back_file_id',
+  },
+    other: {
+    country: 'x',
+    description: 'x',
+    file_id: 'file_id',
+    back_file_id: 'back_file_id',
+    expiration_date: '2019-12-27',
+  },
+    passport: {
+    country: 'x',
+    expiration_date: '2019-12-27',
+    file_id: 'file_id',
+  },
+  },
+    name: 'x',
+    confirmed_no_us_tax_id: true,
+  },
+  }],
+    formation_document_file_id: 'formation_document_file_id',
+    formation_state: 'x',
+    grantor: {
+    address: {
+    city: 'x',
+    country: 'x',
+    line1: 'x',
+    line2: 'x',
+    state: 'x',
+    zip: 'x',
+  },
+    date_of_birth: '2019-12-27',
+    identification: {
+    method: 'social_security_number',
+    number: 'xxxx',
+    drivers_license: {
+    expiration_date: '2019-12-27',
+    file_id: 'file_id',
+    state: 'x',
+    back_file_id: 'back_file_id',
+  },
+    other: {
+    country: 'x',
+    description: 'x',
+    file_id: 'file_id',
+    back_file_id: 'back_file_id',
+    expiration_date: '2019-12-27',
+  },
+    passport: {
+    country: 'x',
+    expiration_date: '2019-12-27',
+    file_id: 'file_id',
+  },
+  },
+    name: 'x',
+    confirmed_no_us_tax_id: true,
+  },
+    tax_identifier: 'x',
+  },
+  });
   });
 
   test('retrieve', async () => {
@@ -306,23 +293,20 @@ describe('resource entities', () => {
 
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.entities.list(
-        {
-          created_at: {
-            after: '2019-12-27T18:11:19.117Z',
-            before: '2019-12-27T18:11:19.117Z',
-            on_or_after: '2019-12-27T18:11:19.117Z',
-            on_or_before: '2019-12-27T18:11:19.117Z',
-          },
-          cursor: 'cursor',
-          idempotency_key: 'x',
-          limit: 1,
-          status: { in: ['active'] },
-        },
-        { path: '/_stainless_unknown_path' },
-      ),
-    ).rejects.toThrow(Increase.NotFoundError);
+    await expect(client.entities.list({
+    created_at: {
+    after: '2019-12-27T18:11:19.117Z',
+    before: '2019-12-27T18:11:19.117Z',
+    on_or_after: '2019-12-27T18:11:19.117Z',
+    on_or_before: '2019-12-27T18:11:19.117Z',
+  },
+    cursor: 'cursor',
+    idempotency_key: 'x',
+    limit: 1,
+    status: { in: ['active'] },
+  }, { path: '/_stainless_unknown_path' }))
+      .rejects
+      .toThrow(Increase.NotFoundError);
   });
 
   test('archive', async () => {

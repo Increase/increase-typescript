@@ -46,11 +46,7 @@ export class AccountNumbers extends APIResource {
    * );
    * ```
    */
-  update(
-    accountNumberID: string,
-    body: AccountNumberUpdateParams,
-    options?: RequestOptions,
-  ): APIPromise<AccountNumber> {
+  update(accountNumberID: string, body: AccountNumberUpdateParams, options?: RequestOptions): APIPromise<AccountNumber> {
     return this._client.patch(path`/account_numbers/${accountNumberID}`, { body, ...options });
   }
 
@@ -65,15 +61,12 @@ export class AccountNumbers extends APIResource {
    * }
    * ```
    */
-  list(
-    query: AccountNumberListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): PagePromise<AccountNumbersPage, AccountNumber> {
+  list(query: AccountNumberListParams | null | undefined = {}, options?: RequestOptions): PagePromise<AccountNumbersPage, AccountNumber> {
     return this._client.getAPIList('/account_numbers', Page<AccountNumber>, { query, ...options });
   }
 }
 
-export type AccountNumbersPage = Page<AccountNumber>;
+export type AccountNumbersPage = Page<AccountNumber>
 
 /**
  * Each account can have multiple account and routing numbers. We recommend that
@@ -147,7 +140,7 @@ export interface AccountNumber {
    */
   type: 'account_number';
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export namespace AccountNumber {
@@ -204,7 +197,7 @@ export interface AccountNumberCreateParams {
    */
   inbound_checks?: AccountNumberCreateParams.InboundChecks;
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export namespace AccountNumberCreateParams {
@@ -371,6 +364,6 @@ export declare namespace AccountNumbers {
     type AccountNumbersPage as AccountNumbersPage,
     type AccountNumberCreateParams as AccountNumberCreateParams,
     type AccountNumberUpdateParams as AccountNumberUpdateParams,
-    type AccountNumberListParams as AccountNumberListParams,
+    type AccountNumberListParams as AccountNumberListParams
   };
 }
