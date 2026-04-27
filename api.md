@@ -375,18 +375,31 @@ Methods:
 - <code title="get /check_deposits/{check_deposit_id}">client.checkDeposits.<a href="./src/resources/check-deposits.ts">retrieve</a>(checkDepositID) -> CheckDeposit</code>
 - <code title="get /check_deposits">client.checkDeposits.<a href="./src/resources/check-deposits.ts">list</a>({ ...params }) -> CheckDepositsPage</code>
 
-# Lockboxes
+# LockboxAddresses
 
 Types:
 
-- <code><a href="./src/resources/lockboxes.ts">Lockbox</a></code>
+- <code><a href="./src/resources/lockbox-addresses.ts">LockboxAddress</a></code>
 
 Methods:
 
-- <code title="post /lockboxes">client.lockboxes.<a href="./src/resources/lockboxes.ts">create</a>({ ...params }) -> Lockbox</code>
-- <code title="get /lockboxes/{lockbox_id}">client.lockboxes.<a href="./src/resources/lockboxes.ts">retrieve</a>(lockboxID) -> Lockbox</code>
-- <code title="patch /lockboxes/{lockbox_id}">client.lockboxes.<a href="./src/resources/lockboxes.ts">update</a>(lockboxID, { ...params }) -> Lockbox</code>
-- <code title="get /lockboxes">client.lockboxes.<a href="./src/resources/lockboxes.ts">list</a>({ ...params }) -> LockboxesPage</code>
+- <code title="post /lockbox_addresses">client.lockboxAddresses.<a href="./src/resources/lockbox-addresses.ts">create</a>({ ...params }) -> LockboxAddress</code>
+- <code title="get /lockbox_addresses/{lockbox_address_id}">client.lockboxAddresses.<a href="./src/resources/lockbox-addresses.ts">retrieve</a>(lockboxAddressID) -> LockboxAddress</code>
+- <code title="patch /lockbox_addresses/{lockbox_address_id}">client.lockboxAddresses.<a href="./src/resources/lockbox-addresses.ts">update</a>(lockboxAddressID, { ...params }) -> LockboxAddress</code>
+- <code title="get /lockbox_addresses">client.lockboxAddresses.<a href="./src/resources/lockbox-addresses.ts">list</a>({ ...params }) -> LockboxAddressesPage</code>
+
+# LockboxRecipients
+
+Types:
+
+- <code><a href="./src/resources/lockbox-recipients.ts">LockboxRecipient</a></code>
+
+Methods:
+
+- <code title="post /lockbox_recipients">client.lockboxRecipients.<a href="./src/resources/lockbox-recipients.ts">create</a>({ ...params }) -> LockboxRecipient</code>
+- <code title="get /lockbox_recipients/{lockbox_recipient_id}">client.lockboxRecipients.<a href="./src/resources/lockbox-recipients.ts">retrieve</a>(lockboxRecipientID) -> LockboxRecipient</code>
+- <code title="patch /lockbox_recipients/{lockbox_recipient_id}">client.lockboxRecipients.<a href="./src/resources/lockbox-recipients.ts">update</a>(lockboxRecipientID, { ...params }) -> LockboxRecipient</code>
+- <code title="get /lockbox_recipients">client.lockboxRecipients.<a href="./src/resources/lockbox-recipients.ts">list</a>({ ...params }) -> LockboxRecipientsPage</code>
 
 # InboundMailItems
 

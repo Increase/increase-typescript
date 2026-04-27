@@ -15,7 +15,6 @@ export class InboundMailItems extends APIResource {
    * const inboundMailItem =
    *   await client.simulations.inboundMailItems.create({
    *     amount: 1000,
-   *     lockbox_id: 'lockbox_3xt21ok13q19advds4t5',
    *   });
    * ```
    */
@@ -31,15 +30,22 @@ export interface InboundMailItemCreateParams {
   amount: number;
 
   /**
-   * The identifier of the Lockbox to simulate inbound mail to.
-   */
-  lockbox_id: string;
-
-  /**
    * The file containing the PDF contents. If not present, a default check image file
    * will be used.
    */
   contents_file_id?: string;
+
+  /**
+   * The identifier of the Lockbox Address to simulate inbound mail to.
+   */
+  lockbox_address_id?: string;
+
+  /**
+   * The identifier of the Lockbox Recipient to simulate inbound mail to.
+   */
+  lockbox_recipient_id?: string;
+
+[k: string]: unknown
 }
 
 export declare namespace InboundMailItems {
