@@ -2,17 +2,19 @@
 
 import { castToError } from '../internal/errors';
 
-export class IncreaseError extends Error {
-}
+export class IncreaseError extends Error {}
 
-export class APIError<TStatus extends number | undefined = number | undefined, THeaders extends Headers | undefined = Headers | undefined, TError extends Object | undefined = Object | undefined> extends IncreaseError {
+export class APIError<
+  TStatus extends number | undefined = number | undefined,
+  THeaders extends Headers | undefined = Headers | undefined,
+  TError extends Object | undefined = Object | undefined,
+> extends IncreaseError {
   /** HTTP status for the response that caused the error */
   readonly status: TStatus;
   /** HTTP headers for the response that caused the error */
   readonly headers: THeaders;
   /** JSON body of the response that caused the error */
   readonly error: TError;
-
 
   readonly idempotentReplayed: string | null | undefined;
 
@@ -27,7 +29,8 @@ export class APIError<TStatus extends number | undefined = number | undefined, T
   private static makeMessage(status: number | undefined, error: any, message: string | undefined) {
     const msg =
       error?.message ?
-        typeof error.message === 'string' ? error.message
+        typeof error.message === 'string' ?
+          error.message
         : JSON.stringify(error.message)
       : error ? JSON.stringify(error)
       : message;
@@ -44,14 +47,19 @@ export class APIError<TStatus extends number | undefined = number | undefined, T
     return '(no status code or body)';
   }
 
-  static generate(status: number | undefined, errorResponse: Object | undefined, message: string | undefined, headers: Headers | undefined): APIError {
+  static generate(
+    status: number | undefined,
+    errorResponse: Object | undefined,
+    message: string | undefined,
+    headers: Headers | undefined,
+  ): APIError {
     if (!status || !headers) {
       return new APIConnectionError({ message, cause: castToError(errorResponse) });
     }
 
     const error = errorResponse as Record<string, any>;
 
-    const type = error?.['type']
+    const type = error?.['type'];
 
     if (type === 'invalid_parameters_error' && status === 400) {
       return new InvalidParametersError(status, error, message, headers);
@@ -154,26 +162,19 @@ export class APIConnectionTimeoutError extends APIConnectionError {
   }
 }
 
-export class BadRequestError extends APIError<400, Headers> {
-}
+export class BadRequestError extends APIError<400, Headers> {}
 
-export class AuthenticationError extends APIError<401, Headers> {
-}
+export class AuthenticationError extends APIError<401, Headers> {}
 
-export class PermissionDeniedError extends APIError<403, Headers> {
-}
+export class PermissionDeniedError extends APIError<403, Headers> {}
 
-export class NotFoundError extends APIError<404, Headers> {
-}
+export class NotFoundError extends APIError<404, Headers> {}
 
-export class ConflictError extends APIError<409, Headers> {
-}
+export class ConflictError extends APIError<409, Headers> {}
 
-export class UnprocessableEntityError extends APIError<422, Headers> {
-}
+export class UnprocessableEntityError extends APIError<422, Headers> {}
 
-export class RateLimitError extends APIError<429, Headers> {
-}
+export class RateLimitError extends APIError<429, Headers> {}
 
 export class InvalidParametersError extends BadRequestError {
   detail: string | null;
@@ -190,14 +191,14 @@ export class InvalidParametersError extends BadRequestError {
   type: 'invalid_parameters_error';
 
   constructor(status: 400, error: Object, message: string | undefined, headers: Headers) {
-    const data = error as Record<string, any>
-    super(status, error, data?.['title'] || message, headers)
+    const data = error as Record<string, any>;
+    super(status, error, data?.['title'] || message, headers);
 
-    this.detail = data?.['detail']
-    this.errors = data?.['errors'] ?? []
-    this.status = data?.['status']
-    this.title = data?.['title']
-    this.type = data?.['type']
+    this.detail = data?.['detail'];
+    this.errors = data?.['errors'] ?? [];
+    this.status = data?.['status'];
+    this.title = data?.['title'];
+    this.type = data?.['type'];
   }
 }
 
@@ -211,13 +212,13 @@ export class MalformedRequestError extends BadRequestError {
   type: 'malformed_request_error';
 
   constructor(status: 400, error: Object, message: string | undefined, headers: Headers) {
-    const data = error as Record<string, any>
-    super(status, error, data?.['title'] || message, headers)
+    const data = error as Record<string, any>;
+    super(status, error, data?.['title'] || message, headers);
 
-    this.detail = data?.['detail']
-    this.status = data?.['status']
-    this.title = data?.['title']
-    this.type = data?.['type']
+    this.detail = data?.['detail'];
+    this.status = data?.['status'];
+    this.title = data?.['title'];
+    this.type = data?.['type'];
   }
 }
 
@@ -233,7 +234,14 @@ export class InvalidAPIKeyError extends AuthenticationError {
    * - `no_api_access` - no_api_access
    * - `wrong_environment` - wrong_environment
    */
-  reason: 'deleted_credential' | 'expired_credential' | 'ip_not_allowed' | 'no_credential' | 'no_header' | 'no_api_access' | 'wrong_environment';
+  reason:
+    | 'deleted_credential'
+    | 'expired_credential'
+    | 'ip_not_allowed'
+    | 'no_credential'
+    | 'no_header'
+    | 'no_api_access'
+    | 'wrong_environment';
 
   override status: 401;
 
@@ -242,14 +250,14 @@ export class InvalidAPIKeyError extends AuthenticationError {
   type: 'invalid_api_key_error';
 
   constructor(status: 401, error: Object, message: string | undefined, headers: Headers) {
-    const data = error as Record<string, any>
-    super(status, error, data?.['title'] || message, headers)
+    const data = error as Record<string, any>;
+    super(status, error, data?.['title'] || message, headers);
 
-    this.detail = data?.['detail']
-    this.reason = data?.['reason']
-    this.status = data?.['status']
-    this.title = data?.['title']
-    this.type = data?.['type']
+    this.detail = data?.['detail'];
+    this.reason = data?.['reason'];
+    this.status = data?.['status'];
+    this.title = data?.['title'];
+    this.type = data?.['type'];
   }
 }
 
@@ -263,13 +271,13 @@ export class EnvironmentMismatchError extends PermissionDeniedError {
   type: 'environment_mismatch_error';
 
   constructor(status: 403, error: Object, message: string | undefined, headers: Headers) {
-    const data = error as Record<string, any>
-    super(status, error, data?.['title'] || message, headers)
+    const data = error as Record<string, any>;
+    super(status, error, data?.['title'] || message, headers);
 
-    this.detail = data?.['detail']
-    this.status = data?.['status']
-    this.title = data?.['title']
-    this.type = data?.['type']
+    this.detail = data?.['detail'];
+    this.status = data?.['status'];
+    this.title = data?.['title'];
+    this.type = data?.['type'];
   }
 }
 
@@ -283,13 +291,13 @@ export class InsufficientPermissionsError extends PermissionDeniedError {
   type: 'insufficient_permissions_error';
 
   constructor(status: 403, error: Object, message: string | undefined, headers: Headers) {
-    const data = error as Record<string, any>
-    super(status, error, data?.['title'] || message, headers)
+    const data = error as Record<string, any>;
+    super(status, error, data?.['title'] || message, headers);
 
-    this.detail = data?.['detail']
-    this.status = data?.['status']
-    this.title = data?.['title']
-    this.type = data?.['type']
+    this.detail = data?.['detail'];
+    this.status = data?.['status'];
+    this.title = data?.['title'];
+    this.type = data?.['type'];
   }
 }
 
@@ -303,13 +311,13 @@ export class PrivateFeatureError extends PermissionDeniedError {
   type: 'private_feature_error';
 
   constructor(status: 403, error: Object, message: string | undefined, headers: Headers) {
-    const data = error as Record<string, any>
-    super(status, error, data?.['title'] || message, headers)
+    const data = error as Record<string, any>;
+    super(status, error, data?.['title'] || message, headers);
 
-    this.detail = data?.['detail']
-    this.status = data?.['status']
-    this.title = data?.['title']
-    this.type = data?.['type']
+    this.detail = data?.['detail'];
+    this.status = data?.['status'];
+    this.title = data?.['title'];
+    this.type = data?.['type'];
   }
 }
 
@@ -323,13 +331,13 @@ export class APIMethodNotFoundError extends NotFoundError {
   type: 'api_method_not_found_error';
 
   constructor(status: 404, error: Object, message: string | undefined, headers: Headers) {
-    const data = error as Record<string, any>
-    super(status, error, data?.['title'] || message, headers)
+    const data = error as Record<string, any>;
+    super(status, error, data?.['title'] || message, headers);
 
-    this.detail = data?.['detail']
-    this.status = data?.['status']
-    this.title = data?.['title']
-    this.type = data?.['type']
+    this.detail = data?.['detail'];
+    this.status = data?.['status'];
+    this.title = data?.['title'];
+    this.type = data?.['type'];
   }
 }
 
@@ -343,13 +351,13 @@ export class ObjectNotFoundError extends NotFoundError {
   type: 'object_not_found_error';
 
   constructor(status: 404, error: Object, message: string | undefined, headers: Headers) {
-    const data = error as Record<string, any>
-    super(status, error, data?.['title'] || message, headers)
+    const data = error as Record<string, any>;
+    super(status, error, data?.['title'] || message, headers);
 
-    this.detail = data?.['detail']
-    this.status = data?.['status']
-    this.title = data?.['title']
-    this.type = data?.['type']
+    this.detail = data?.['detail'];
+    this.status = data?.['status'];
+    this.title = data?.['title'];
+    this.type = data?.['type'];
   }
 }
 
@@ -365,14 +373,14 @@ export class IdempotencyKeyAlreadyUsedError extends ConflictError {
   type: 'idempotency_key_already_used_error';
 
   constructor(status: 409, error: Object, message: string | undefined, headers: Headers) {
-    const data = error as Record<string, any>
-    super(status, error, data?.['title'] || message, headers)
+    const data = error as Record<string, any>;
+    super(status, error, data?.['title'] || message, headers);
 
-    this.detail = data?.['detail']
-    this.resource_id = data?.['resource_id']
-    this.status = data?.['status']
-    this.title = data?.['title']
-    this.type = data?.['type']
+    this.detail = data?.['detail'];
+    this.resource_id = data?.['resource_id'];
+    this.status = data?.['status'];
+    this.title = data?.['title'];
+    this.type = data?.['type'];
   }
 }
 
@@ -386,13 +394,13 @@ export class InvalidOperationError extends ConflictError {
   type: 'invalid_operation_error';
 
   constructor(status: 409, error: Object, message: string | undefined, headers: Headers) {
-    const data = error as Record<string, any>
-    super(status, error, data?.['title'] || message, headers)
+    const data = error as Record<string, any>;
+    super(status, error, data?.['title'] || message, headers);
 
-    this.detail = data?.['detail']
-    this.status = data?.['status']
-    this.title = data?.['title']
-    this.type = data?.['type']
+    this.detail = data?.['detail'];
+    this.status = data?.['status'];
+    this.title = data?.['title'];
+    this.type = data?.['type'];
   }
 }
 
@@ -408,14 +416,14 @@ export class RateLimitedError extends RateLimitError {
   retry_after?: number | null;
 
   constructor(status: 429, error: Object, message: string | undefined, headers: Headers) {
-    const data = error as Record<string, any>
-    super(status, error, data?.['title'] || message, headers)
+    const data = error as Record<string, any>;
+    super(status, error, data?.['title'] || message, headers);
 
-    this.detail = data?.['detail']
-    this.status = data?.['status']
-    this.title = data?.['title']
-    this.type = data?.['type']
-    this.retry_after = data?.['retry_after']
+    this.detail = data?.['detail'];
+    this.status = data?.['status'];
+    this.title = data?.['title'];
+    this.type = data?.['type'];
+    this.retry_after = data?.['retry_after'];
   }
 }
 
@@ -429,12 +437,12 @@ export class InternalServerError extends APIError<number, Headers> {
   type: 'internal_server_error';
 
   constructor(status: 500, error: Object, message: string | undefined, headers: Headers) {
-    const data = error as Record<string, any>
-    super(status, error, data?.['title'] || message, headers)
+    const data = error as Record<string, any>;
+    super(status, error, data?.['title'] || message, headers);
 
-    this.detail = data?.['detail']
-    this.status = data?.['status']
-    this.title = data?.['title']
-    this.type = data?.['type']
+    this.detail = data?.['detail'];
+    this.status = data?.['status'];
+    this.title = data?.['title'];
+    this.type = data?.['type'];
   }
 }

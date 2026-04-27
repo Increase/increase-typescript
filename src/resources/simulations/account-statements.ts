@@ -18,7 +18,10 @@ export class AccountStatements extends APIResource {
    *   });
    * ```
    */
-  create(body: AccountStatementCreateParams, options?: RequestOptions): APIPromise<AccountStatementsAPI.AccountStatement> {
+  create(
+    body: AccountStatementCreateParams,
+    options?: RequestOptions,
+  ): APIPromise<AccountStatementsAPI.AccountStatement> {
     return this._client.post('/simulations/account_statements', { body, ...options });
   }
 }
@@ -31,7 +34,5 @@ export interface AccountStatementCreateParams {
 }
 
 export declare namespace AccountStatements {
-  export {
-    type AccountStatementCreateParams as AccountStatementCreateParams
-  };
+  export { type AccountStatementCreateParams as AccountStatementCreateParams };
 }

@@ -32,12 +32,15 @@ export class Programs extends APIResource {
    * }
    * ```
    */
-  list(query: ProgramListParams | null | undefined = {}, options?: RequestOptions): PagePromise<ProgramsPage, Program> {
+  list(
+    query: ProgramListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<ProgramsPage, Program> {
     return this._client.getAPIList('/programs', Page<Program>, { query, ...options });
   }
 }
 
-export type ProgramsPage = Page<Program>
+export type ProgramsPage = Page<Program>;
 
 /**
  * Programs determine the compliance and commercial terms of Accounts. By default,
@@ -118,13 +121,12 @@ export namespace Program {
   }
 }
 
-export interface ProgramListParams extends PageParams {
-}
+export interface ProgramListParams extends PageParams {}
 
 export declare namespace Programs {
   export {
     type Program as Program,
     type ProgramsPage as ProgramsPage,
-    type ProgramListParams as ProgramListParams
+    type ProgramListParams as ProgramListParams,
   };
 }

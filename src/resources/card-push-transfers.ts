@@ -68,7 +68,10 @@ export class CardPushTransfers extends APIResource {
    * }
    * ```
    */
-  list(query: CardPushTransferListParams | null | undefined = {}, options?: RequestOptions): PagePromise<CardPushTransfersPage, CardPushTransfer> {
+  list(
+    query: CardPushTransferListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<CardPushTransfersPage, CardPushTransfer> {
     return this._client.getAPIList('/card_push_transfers', Page<CardPushTransfer>, { query, ...options });
   }
 
@@ -103,7 +106,7 @@ export class CardPushTransfers extends APIResource {
   }
 }
 
-export type CardPushTransfersPage = Page<CardPushTransfer>
+export type CardPushTransfersPage = Page<CardPushTransfer>;
 
 /**
  * Card Push Transfers send funds to a recipient's payment card in real-time.
@@ -151,7 +154,21 @@ export interface CardPushTransfer {
    * - `top_up` - Top Up
    * - `wallet_transfer` - Wallet Transfer
    */
-  business_application_identifier: 'account_to_account' | 'business_to_business' | 'money_transfer_bank_initiated' | 'non_card_bill_payment' | 'consumer_bill_payment' | 'card_bill_payment' | 'funds_disbursement' | 'funds_transfer' | 'loyalty_and_offers' | 'merchant_disbursement' | 'merchant_payment' | 'person_to_person' | 'top_up' | 'wallet_transfer';
+  business_application_identifier:
+    | 'account_to_account'
+    | 'business_to_business'
+    | 'money_transfer_bank_initiated'
+    | 'non_card_bill_payment'
+    | 'consumer_bill_payment'
+    | 'card_bill_payment'
+    | 'funds_disbursement'
+    | 'funds_transfer'
+    | 'loyalty_and_offers'
+    | 'merchant_disbursement'
+    | 'merchant_payment'
+    | 'person_to_person'
+    | 'top_up'
+    | 'wallet_transfer';
 
   /**
    * If your account requires approvals for transfers and the transfer was not
@@ -289,7 +306,15 @@ export interface CardPushTransfer {
    * - `complete` - The transfer has been sent successfully and is complete.
    * - `declined` - The transfer was declined by the network or the recipient's bank.
    */
-  status: 'pending_approval' | 'canceled' | 'pending_reviewing' | 'requires_attention' | 'pending_submission' | 'submitted' | 'complete' | 'declined';
+  status:
+    | 'pending_approval'
+    | 'canceled'
+    | 'pending_reviewing'
+    | 'requires_attention'
+    | 'pending_submission'
+    | 'submitted'
+    | 'complete'
+    | 'declined';
 
   /**
    * After the transfer is submitted to the card network, this will contain
@@ -303,7 +328,7 @@ export interface CardPushTransfer {
    */
   type: 'card_push_transfer';
 
-[k: string]: unknown
+  [k: string]: unknown;
 }
 
 export namespace CardPushTransfer {
@@ -571,7 +596,69 @@ export namespace CardPushTransfer {
      *   category code was used incorrectly; correct it and reattempt the transaction.
      * - `card_authentication_failed` - The card authentication process has failed.
      */
-    reason: 'do_not_honor' | 'activity_count_limit_exceeded' | 'refer_to_card_issuer' | 'refer_to_card_issuer_special_condition' | 'invalid_merchant' | 'pick_up_card' | 'error' | 'pick_up_card_special' | 'invalid_transaction' | 'invalid_amount' | 'invalid_account_number' | 'no_such_issuer' | 're_enter_transaction' | 'no_credit_account' | 'pick_up_card_lost' | 'pick_up_card_stolen' | 'closed_account' | 'insufficient_funds' | 'no_checking_account' | 'no_savings_account' | 'expired_card' | 'transaction_not_permitted_to_cardholder' | 'transaction_not_allowed_at_terminal' | 'transaction_not_supported_or_blocked_by_issuer' | 'suspected_fraud' | 'activity_amount_limit_exceeded' | 'restricted_card' | 'security_violation' | 'transaction_does_not_fulfill_anti_money_laundering_requirement' | 'blocked_by_cardholder' | 'blocked_first_use' | 'credit_issuer_unavailable' | 'negative_card_verification_value_results' | 'issuer_unavailable' | 'financial_institution_cannot_be_found' | 'transaction_cannot_be_completed' | 'duplicate_transaction' | 'system_malfunction' | 'additional_customer_authentication_required' | 'surcharge_amount_not_permitted' | 'decline_for_cvv2_failure' | 'stop_payment_order' | 'revocation_of_authorization_order' | 'revocation_of_all_authorizations_order' | 'unable_to_locate_record' | 'file_is_temporarily_unavailable' | 'incorrect_pin' | 'allowable_number_of_pin_entry_tries_exceeded' | 'unable_to_locate_previous_message' | 'pin_error_found' | 'cannot_verify_pin' | 'verification_data_failed' | 'surcharge_amount_not_supported_by_debit_network_issuer' | 'cash_service_not_available' | 'cashback_request_exceeds_issuer_limit' | 'transaction_amount_exceeds_pre_authorized_approval_amount' | 'transaction_does_not_qualify_for_visa_pin' | 'offline_declined' | 'unable_to_go_online' | 'valid_account_but_amount_not_supported' | 'invalid_use_of_merchant_category_code_correct_and_reattempt' | 'card_authentication_failed';
+    reason:
+      | 'do_not_honor'
+      | 'activity_count_limit_exceeded'
+      | 'refer_to_card_issuer'
+      | 'refer_to_card_issuer_special_condition'
+      | 'invalid_merchant'
+      | 'pick_up_card'
+      | 'error'
+      | 'pick_up_card_special'
+      | 'invalid_transaction'
+      | 'invalid_amount'
+      | 'invalid_account_number'
+      | 'no_such_issuer'
+      | 're_enter_transaction'
+      | 'no_credit_account'
+      | 'pick_up_card_lost'
+      | 'pick_up_card_stolen'
+      | 'closed_account'
+      | 'insufficient_funds'
+      | 'no_checking_account'
+      | 'no_savings_account'
+      | 'expired_card'
+      | 'transaction_not_permitted_to_cardholder'
+      | 'transaction_not_allowed_at_terminal'
+      | 'transaction_not_supported_or_blocked_by_issuer'
+      | 'suspected_fraud'
+      | 'activity_amount_limit_exceeded'
+      | 'restricted_card'
+      | 'security_violation'
+      | 'transaction_does_not_fulfill_anti_money_laundering_requirement'
+      | 'blocked_by_cardholder'
+      | 'blocked_first_use'
+      | 'credit_issuer_unavailable'
+      | 'negative_card_verification_value_results'
+      | 'issuer_unavailable'
+      | 'financial_institution_cannot_be_found'
+      | 'transaction_cannot_be_completed'
+      | 'duplicate_transaction'
+      | 'system_malfunction'
+      | 'additional_customer_authentication_required'
+      | 'surcharge_amount_not_permitted'
+      | 'decline_for_cvv2_failure'
+      | 'stop_payment_order'
+      | 'revocation_of_authorization_order'
+      | 'revocation_of_all_authorizations_order'
+      | 'unable_to_locate_record'
+      | 'file_is_temporarily_unavailable'
+      | 'incorrect_pin'
+      | 'allowable_number_of_pin_entry_tries_exceeded'
+      | 'unable_to_locate_previous_message'
+      | 'pin_error_found'
+      | 'cannot_verify_pin'
+      | 'verification_data_failed'
+      | 'surcharge_amount_not_supported_by_debit_network_issuer'
+      | 'cash_service_not_available'
+      | 'cashback_request_exceeds_issuer_limit'
+      | 'transaction_amount_exceeds_pre_authorized_approval_amount'
+      | 'transaction_does_not_qualify_for_visa_pin'
+      | 'offline_declined'
+      | 'unable_to_go_online'
+      | 'valid_account_but_amount_not_supported'
+      | 'invalid_use_of_merchant_category_code_correct_and_reattempt'
+      | 'card_authentication_failed';
   }
 
   /**
@@ -744,7 +831,167 @@ export namespace CardPushTransfer {
      * - `ZMW` - ZMW
      * - `ZWG` - ZWG
      */
-    currency: 'AFN' | 'EUR' | 'ALL' | 'DZD' | 'USD' | 'AOA' | 'ARS' | 'AMD' | 'AWG' | 'AUD' | 'AZN' | 'BSD' | 'BHD' | 'BDT' | 'BBD' | 'BYN' | 'BZD' | 'BMD' | 'INR' | 'BTN' | 'BOB' | 'BOV' | 'BAM' | 'BWP' | 'NOK' | 'BRL' | 'BND' | 'BGN' | 'BIF' | 'CVE' | 'KHR' | 'CAD' | 'KYD' | 'CLP' | 'CLF' | 'CNY' | 'COP' | 'COU' | 'KMF' | 'CDF' | 'NZD' | 'CRC' | 'CUP' | 'CZK' | 'DKK' | 'DJF' | 'DOP' | 'EGP' | 'SVC' | 'ERN' | 'SZL' | 'ETB' | 'FKP' | 'FJD' | 'GMD' | 'GEL' | 'GHS' | 'GIP' | 'GTQ' | 'GBP' | 'GNF' | 'GYD' | 'HTG' | 'HNL' | 'HKD' | 'HUF' | 'ISK' | 'IDR' | 'IRR' | 'IQD' | 'ILS' | 'JMD' | 'JPY' | 'JOD' | 'KZT' | 'KES' | 'KPW' | 'KRW' | 'KWD' | 'KGS' | 'LAK' | 'LBP' | 'LSL' | 'ZAR' | 'LRD' | 'LYD' | 'CHF' | 'MOP' | 'MKD' | 'MGA' | 'MWK' | 'MYR' | 'MVR' | 'MRU' | 'MUR' | 'MXN' | 'MXV' | 'MDL' | 'MNT' | 'MAD' | 'MZN' | 'MMK' | 'NAD' | 'NPR' | 'NIO' | 'NGN' | 'OMR' | 'PKR' | 'PAB' | 'PGK' | 'PYG' | 'PEN' | 'PHP' | 'PLN' | 'QAR' | 'RON' | 'RUB' | 'RWF' | 'SHP' | 'WST' | 'STN' | 'SAR' | 'RSD' | 'SCR' | 'SLE' | 'SGD' | 'SBD' | 'SOS' | 'SSP' | 'LKR' | 'SDG' | 'SRD' | 'SEK' | 'CHE' | 'CHW' | 'SYP' | 'TWD' | 'TJS' | 'TZS' | 'THB' | 'TOP' | 'TTD' | 'TND' | 'TRY' | 'TMT' | 'UGX' | 'UAH' | 'AED' | 'USN' | 'UYU' | 'UYI' | 'UYW' | 'UZS' | 'VUV' | 'VES' | 'VED' | 'VND' | 'YER' | 'ZMW' | 'ZWG';
+    currency:
+      | 'AFN'
+      | 'EUR'
+      | 'ALL'
+      | 'DZD'
+      | 'USD'
+      | 'AOA'
+      | 'ARS'
+      | 'AMD'
+      | 'AWG'
+      | 'AUD'
+      | 'AZN'
+      | 'BSD'
+      | 'BHD'
+      | 'BDT'
+      | 'BBD'
+      | 'BYN'
+      | 'BZD'
+      | 'BMD'
+      | 'INR'
+      | 'BTN'
+      | 'BOB'
+      | 'BOV'
+      | 'BAM'
+      | 'BWP'
+      | 'NOK'
+      | 'BRL'
+      | 'BND'
+      | 'BGN'
+      | 'BIF'
+      | 'CVE'
+      | 'KHR'
+      | 'CAD'
+      | 'KYD'
+      | 'CLP'
+      | 'CLF'
+      | 'CNY'
+      | 'COP'
+      | 'COU'
+      | 'KMF'
+      | 'CDF'
+      | 'NZD'
+      | 'CRC'
+      | 'CUP'
+      | 'CZK'
+      | 'DKK'
+      | 'DJF'
+      | 'DOP'
+      | 'EGP'
+      | 'SVC'
+      | 'ERN'
+      | 'SZL'
+      | 'ETB'
+      | 'FKP'
+      | 'FJD'
+      | 'GMD'
+      | 'GEL'
+      | 'GHS'
+      | 'GIP'
+      | 'GTQ'
+      | 'GBP'
+      | 'GNF'
+      | 'GYD'
+      | 'HTG'
+      | 'HNL'
+      | 'HKD'
+      | 'HUF'
+      | 'ISK'
+      | 'IDR'
+      | 'IRR'
+      | 'IQD'
+      | 'ILS'
+      | 'JMD'
+      | 'JPY'
+      | 'JOD'
+      | 'KZT'
+      | 'KES'
+      | 'KPW'
+      | 'KRW'
+      | 'KWD'
+      | 'KGS'
+      | 'LAK'
+      | 'LBP'
+      | 'LSL'
+      | 'ZAR'
+      | 'LRD'
+      | 'LYD'
+      | 'CHF'
+      | 'MOP'
+      | 'MKD'
+      | 'MGA'
+      | 'MWK'
+      | 'MYR'
+      | 'MVR'
+      | 'MRU'
+      | 'MUR'
+      | 'MXN'
+      | 'MXV'
+      | 'MDL'
+      | 'MNT'
+      | 'MAD'
+      | 'MZN'
+      | 'MMK'
+      | 'NAD'
+      | 'NPR'
+      | 'NIO'
+      | 'NGN'
+      | 'OMR'
+      | 'PKR'
+      | 'PAB'
+      | 'PGK'
+      | 'PYG'
+      | 'PEN'
+      | 'PHP'
+      | 'PLN'
+      | 'QAR'
+      | 'RON'
+      | 'RUB'
+      | 'RWF'
+      | 'SHP'
+      | 'WST'
+      | 'STN'
+      | 'SAR'
+      | 'RSD'
+      | 'SCR'
+      | 'SLE'
+      | 'SGD'
+      | 'SBD'
+      | 'SOS'
+      | 'SSP'
+      | 'LKR'
+      | 'SDG'
+      | 'SRD'
+      | 'SEK'
+      | 'CHE'
+      | 'CHW'
+      | 'SYP'
+      | 'TWD'
+      | 'TJS'
+      | 'TZS'
+      | 'THB'
+      | 'TOP'
+      | 'TTD'
+      | 'TND'
+      | 'TRY'
+      | 'TMT'
+      | 'UGX'
+      | 'UAH'
+      | 'AED'
+      | 'USN'
+      | 'UYU'
+      | 'UYI'
+      | 'UYW'
+      | 'UZS'
+      | 'VUV'
+      | 'VES'
+      | 'VED'
+      | 'VND'
+      | 'YER'
+      | 'ZMW'
+      | 'ZWG';
 
     /**
      * The amount value represented as a string containing a decimal number in major
@@ -804,7 +1051,21 @@ export interface CardPushTransferCreateParams {
    * - `top_up` - Top Up
    * - `wallet_transfer` - Wallet Transfer
    */
-  business_application_identifier: 'account_to_account' | 'business_to_business' | 'money_transfer_bank_initiated' | 'non_card_bill_payment' | 'consumer_bill_payment' | 'card_bill_payment' | 'funds_disbursement' | 'funds_transfer' | 'loyalty_and_offers' | 'merchant_disbursement' | 'merchant_payment' | 'person_to_person' | 'top_up' | 'wallet_transfer';
+  business_application_identifier:
+    | 'account_to_account'
+    | 'business_to_business'
+    | 'money_transfer_bank_initiated'
+    | 'non_card_bill_payment'
+    | 'consumer_bill_payment'
+    | 'card_bill_payment'
+    | 'funds_disbursement'
+    | 'funds_transfer'
+    | 'loyalty_and_offers'
+    | 'merchant_disbursement'
+    | 'merchant_payment'
+    | 'person_to_person'
+    | 'top_up'
+    | 'wallet_transfer';
 
   /**
    * The Increase identifier for the Card Token that represents the card number
@@ -929,7 +1190,7 @@ export interface CardPushTransferCreateParams {
    */
   require_approval?: boolean;
 
-[k: string]: unknown
+  [k: string]: unknown;
 }
 
 export namespace CardPushTransferCreateParams {
@@ -1103,7 +1364,167 @@ export namespace CardPushTransferCreateParams {
      * - `ZMW` - ZMW
      * - `ZWG` - ZWG
      */
-    currency: 'AFN' | 'EUR' | 'ALL' | 'DZD' | 'USD' | 'AOA' | 'ARS' | 'AMD' | 'AWG' | 'AUD' | 'AZN' | 'BSD' | 'BHD' | 'BDT' | 'BBD' | 'BYN' | 'BZD' | 'BMD' | 'INR' | 'BTN' | 'BOB' | 'BOV' | 'BAM' | 'BWP' | 'NOK' | 'BRL' | 'BND' | 'BGN' | 'BIF' | 'CVE' | 'KHR' | 'CAD' | 'KYD' | 'CLP' | 'CLF' | 'CNY' | 'COP' | 'COU' | 'KMF' | 'CDF' | 'NZD' | 'CRC' | 'CUP' | 'CZK' | 'DKK' | 'DJF' | 'DOP' | 'EGP' | 'SVC' | 'ERN' | 'SZL' | 'ETB' | 'FKP' | 'FJD' | 'GMD' | 'GEL' | 'GHS' | 'GIP' | 'GTQ' | 'GBP' | 'GNF' | 'GYD' | 'HTG' | 'HNL' | 'HKD' | 'HUF' | 'ISK' | 'IDR' | 'IRR' | 'IQD' | 'ILS' | 'JMD' | 'JPY' | 'JOD' | 'KZT' | 'KES' | 'KPW' | 'KRW' | 'KWD' | 'KGS' | 'LAK' | 'LBP' | 'LSL' | 'ZAR' | 'LRD' | 'LYD' | 'CHF' | 'MOP' | 'MKD' | 'MGA' | 'MWK' | 'MYR' | 'MVR' | 'MRU' | 'MUR' | 'MXN' | 'MXV' | 'MDL' | 'MNT' | 'MAD' | 'MZN' | 'MMK' | 'NAD' | 'NPR' | 'NIO' | 'NGN' | 'OMR' | 'PKR' | 'PAB' | 'PGK' | 'PYG' | 'PEN' | 'PHP' | 'PLN' | 'QAR' | 'RON' | 'RUB' | 'RWF' | 'SHP' | 'WST' | 'STN' | 'SAR' | 'RSD' | 'SCR' | 'SLE' | 'SGD' | 'SBD' | 'SOS' | 'SSP' | 'LKR' | 'SDG' | 'SRD' | 'SEK' | 'CHE' | 'CHW' | 'SYP' | 'TWD' | 'TJS' | 'TZS' | 'THB' | 'TOP' | 'TTD' | 'TND' | 'TRY' | 'TMT' | 'UGX' | 'UAH' | 'AED' | 'USN' | 'UYU' | 'UYI' | 'UYW' | 'UZS' | 'VUV' | 'VES' | 'VED' | 'VND' | 'YER' | 'ZMW' | 'ZWG';
+    currency:
+      | 'AFN'
+      | 'EUR'
+      | 'ALL'
+      | 'DZD'
+      | 'USD'
+      | 'AOA'
+      | 'ARS'
+      | 'AMD'
+      | 'AWG'
+      | 'AUD'
+      | 'AZN'
+      | 'BSD'
+      | 'BHD'
+      | 'BDT'
+      | 'BBD'
+      | 'BYN'
+      | 'BZD'
+      | 'BMD'
+      | 'INR'
+      | 'BTN'
+      | 'BOB'
+      | 'BOV'
+      | 'BAM'
+      | 'BWP'
+      | 'NOK'
+      | 'BRL'
+      | 'BND'
+      | 'BGN'
+      | 'BIF'
+      | 'CVE'
+      | 'KHR'
+      | 'CAD'
+      | 'KYD'
+      | 'CLP'
+      | 'CLF'
+      | 'CNY'
+      | 'COP'
+      | 'COU'
+      | 'KMF'
+      | 'CDF'
+      | 'NZD'
+      | 'CRC'
+      | 'CUP'
+      | 'CZK'
+      | 'DKK'
+      | 'DJF'
+      | 'DOP'
+      | 'EGP'
+      | 'SVC'
+      | 'ERN'
+      | 'SZL'
+      | 'ETB'
+      | 'FKP'
+      | 'FJD'
+      | 'GMD'
+      | 'GEL'
+      | 'GHS'
+      | 'GIP'
+      | 'GTQ'
+      | 'GBP'
+      | 'GNF'
+      | 'GYD'
+      | 'HTG'
+      | 'HNL'
+      | 'HKD'
+      | 'HUF'
+      | 'ISK'
+      | 'IDR'
+      | 'IRR'
+      | 'IQD'
+      | 'ILS'
+      | 'JMD'
+      | 'JPY'
+      | 'JOD'
+      | 'KZT'
+      | 'KES'
+      | 'KPW'
+      | 'KRW'
+      | 'KWD'
+      | 'KGS'
+      | 'LAK'
+      | 'LBP'
+      | 'LSL'
+      | 'ZAR'
+      | 'LRD'
+      | 'LYD'
+      | 'CHF'
+      | 'MOP'
+      | 'MKD'
+      | 'MGA'
+      | 'MWK'
+      | 'MYR'
+      | 'MVR'
+      | 'MRU'
+      | 'MUR'
+      | 'MXN'
+      | 'MXV'
+      | 'MDL'
+      | 'MNT'
+      | 'MAD'
+      | 'MZN'
+      | 'MMK'
+      | 'NAD'
+      | 'NPR'
+      | 'NIO'
+      | 'NGN'
+      | 'OMR'
+      | 'PKR'
+      | 'PAB'
+      | 'PGK'
+      | 'PYG'
+      | 'PEN'
+      | 'PHP'
+      | 'PLN'
+      | 'QAR'
+      | 'RON'
+      | 'RUB'
+      | 'RWF'
+      | 'SHP'
+      | 'WST'
+      | 'STN'
+      | 'SAR'
+      | 'RSD'
+      | 'SCR'
+      | 'SLE'
+      | 'SGD'
+      | 'SBD'
+      | 'SOS'
+      | 'SSP'
+      | 'LKR'
+      | 'SDG'
+      | 'SRD'
+      | 'SEK'
+      | 'CHE'
+      | 'CHW'
+      | 'SYP'
+      | 'TWD'
+      | 'TJS'
+      | 'TZS'
+      | 'THB'
+      | 'TOP'
+      | 'TTD'
+      | 'TND'
+      | 'TRY'
+      | 'TMT'
+      | 'UGX'
+      | 'UAH'
+      | 'AED'
+      | 'USN'
+      | 'UYU'
+      | 'UYI'
+      | 'UYW'
+      | 'UZS'
+      | 'VUV'
+      | 'VES'
+      | 'VED'
+      | 'VND'
+      | 'YER'
+      | 'ZMW'
+      | 'ZWG';
 
     /**
      * The amount value as a decimal string in the currency's major unit. For example,
@@ -1167,7 +1588,16 @@ export namespace CardPushTransferListParams {
      * Filter Card Push Transfers by status. For GET requests, this should be encoded
      * as a comma-delimited string, such as `?in=one,two,three`.
      */
-    in?: Array<'pending_approval' | 'canceled' | 'pending_reviewing' | 'requires_attention' | 'pending_submission' | 'submitted' | 'complete' | 'declined'>;
+    in?: Array<
+      | 'pending_approval'
+      | 'canceled'
+      | 'pending_reviewing'
+      | 'requires_attention'
+      | 'pending_submission'
+      | 'submitted'
+      | 'complete'
+      | 'declined'
+    >;
   }
 }
 
@@ -1176,6 +1606,6 @@ export declare namespace CardPushTransfers {
     type CardPushTransfer as CardPushTransfer,
     type CardPushTransfersPage as CardPushTransfersPage,
     type CardPushTransferCreateParams as CardPushTransferCreateParams,
-    type CardPushTransferListParams as CardPushTransferListParams
+    type CardPushTransferListParams as CardPushTransferListParams,
   };
 }

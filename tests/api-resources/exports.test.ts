@@ -2,7 +2,10 @@
 
 import Increase from 'increase';
 
-const client = new Increase({ apiKey: 'My API Key', baseURL: process.env["TEST_API_BASE_URL"] ?? 'http://127.0.0.1:4010' });
+const client = new Increase({
+  apiKey: 'My API Key',
+  baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
+});
 
 describe('resource exports', () => {
   test('create: only required params', async () => {
@@ -18,41 +21,41 @@ describe('resource exports', () => {
 
   test('create: required and optional params', async () => {
     const response = await client.exports.create({
-    category: 'transaction_csv',
-    account_statement_bai2: {
-    account_id: 'account_id',
-    effective_date: '2019-12-27',
-    program_id: 'program_id',
-  },
-    account_statement_ofx: {
-    account_id: 'account_id',
-    created_at: { before: '2019-12-27T18:11:19.117Z', on_or_after: '2019-12-27T18:11:19.117Z' },
-  },
-    account_verification_letter: { account_number_id: 'account_number_id', balance_date: '2019-12-27' },
-    bookkeeping_account_balance_csv: {
-    bookkeeping_account_id: 'bookkeeping_account_id',
-    on_or_after_date: '2019-12-27',
-    on_or_before_date: '2019-12-27',
-  },
-    daily_account_balance_csv: {
-    account_id: 'account_id',
-    on_or_after_date: '2019-12-27',
-    on_or_before_date: '2019-12-27',
-  },
-    entity_csv: {},
-    funding_instructions: { account_number_id: 'account_number_id' },
-    transaction_csv: {
-    account_id: 'account_in71c4amph0vgo2qllky',
-    created_at: {
-    after: '2019-12-27T18:11:19.117Z',
-    before: '2019-12-27T18:11:19.117Z',
-    on_or_after: '2019-12-27T18:11:19.117Z',
-    on_or_before: '2019-12-27T18:11:19.117Z',
-  },
-  },
-    vendor_csv: {},
-    voided_check: { account_number_id: 'account_number_id', payer: [{ line: 'line' }] },
-  });
+      category: 'transaction_csv',
+      account_statement_bai2: {
+        account_id: 'account_id',
+        effective_date: '2019-12-27',
+        program_id: 'program_id',
+      },
+      account_statement_ofx: {
+        account_id: 'account_id',
+        created_at: { before: '2019-12-27T18:11:19.117Z', on_or_after: '2019-12-27T18:11:19.117Z' },
+      },
+      account_verification_letter: { account_number_id: 'account_number_id', balance_date: '2019-12-27' },
+      bookkeeping_account_balance_csv: {
+        bookkeeping_account_id: 'bookkeeping_account_id',
+        on_or_after_date: '2019-12-27',
+        on_or_before_date: '2019-12-27',
+      },
+      daily_account_balance_csv: {
+        account_id: 'account_id',
+        on_or_after_date: '2019-12-27',
+        on_or_before_date: '2019-12-27',
+      },
+      entity_csv: {},
+      funding_instructions: { account_number_id: 'account_number_id' },
+      transaction_csv: {
+        account_id: 'account_in71c4amph0vgo2qllky',
+        created_at: {
+          after: '2019-12-27T18:11:19.117Z',
+          before: '2019-12-27T18:11:19.117Z',
+          on_or_after: '2019-12-27T18:11:19.117Z',
+          on_or_before: '2019-12-27T18:11:19.117Z',
+        },
+      },
+      vendor_csv: {},
+      voided_check: { account_number_id: 'account_number_id', payer: [{ line: 'line' }] },
+    });
   });
 
   test('retrieve', async () => {
@@ -79,22 +82,25 @@ describe('resource exports', () => {
 
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.exports.list({
-    category: 'account_statement_ofx',
-    created_at: {
-    after: '2019-12-27T18:11:19.117Z',
-    before: '2019-12-27T18:11:19.117Z',
-    on_or_after: '2019-12-27T18:11:19.117Z',
-    on_or_before: '2019-12-27T18:11:19.117Z',
-  },
-    cursor: 'cursor',
-    form_1099_int: { account_id: 'account_id' },
-    form_1099_misc: { account_id: 'account_id' },
-    idempotency_key: 'x',
-    limit: 1,
-    status: { in: ['pending'] },
-  }, { path: '/_stainless_unknown_path' }))
-      .rejects
-      .toThrow(Increase.NotFoundError);
+    await expect(
+      client.exports.list(
+        {
+          category: 'account_statement_ofx',
+          created_at: {
+            after: '2019-12-27T18:11:19.117Z',
+            before: '2019-12-27T18:11:19.117Z',
+            on_or_after: '2019-12-27T18:11:19.117Z',
+            on_or_before: '2019-12-27T18:11:19.117Z',
+          },
+          cursor: 'cursor',
+          form_1099_int: { account_id: 'account_id' },
+          form_1099_misc: { account_id: 'account_id' },
+          idempotency_key: 'x',
+          limit: 1,
+          status: { in: ['pending'] },
+        },
+        { path: '/_stainless_unknown_path' },
+      ),
+    ).rejects.toThrow(Increase.NotFoundError);
   });
 });

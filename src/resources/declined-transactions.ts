@@ -33,12 +33,18 @@ export class DeclinedTransactions extends APIResource {
    * }
    * ```
    */
-  list(query: DeclinedTransactionListParams | null | undefined = {}, options?: RequestOptions): PagePromise<DeclinedTransactionsPage, DeclinedTransaction> {
-    return this._client.getAPIList('/declined_transactions', Page<DeclinedTransaction>, { query, ...options });
+  list(
+    query: DeclinedTransactionListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<DeclinedTransactionsPage, DeclinedTransaction> {
+    return this._client.getAPIList('/declined_transactions', Page<DeclinedTransaction>, {
+      query,
+      ...options,
+    });
   }
 }
 
-export type DeclinedTransactionsPage = Page<DeclinedTransaction>
+export type DeclinedTransactionsPage = Page<DeclinedTransaction>;
 
 /**
  * Declined Transactions are refused additions and removals of money from your bank
@@ -112,7 +118,7 @@ export interface DeclinedTransaction {
    */
   type: 'declined_transaction';
 
-[k: string]: unknown
+  [k: string]: unknown;
 }
 
 export namespace DeclinedTransaction {
@@ -145,7 +151,15 @@ export namespace DeclinedTransaction {
      * - `other` - The Declined Transaction was made for an undocumented or deprecated
      *   reason.
      */
-    category: 'ach_decline' | 'card_decline' | 'check_decline' | 'inbound_real_time_payments_transfer_decline' | 'inbound_fednow_transfer_decline' | 'wire_decline' | 'check_deposit_rejection' | 'other';
+    category:
+      | 'ach_decline'
+      | 'card_decline'
+      | 'check_decline'
+      | 'inbound_real_time_payments_transfer_decline'
+      | 'inbound_fednow_transfer_decline'
+      | 'wire_decline'
+      | 'check_deposit_rejection'
+      | 'other';
 
     /**
      * An ACH Decline object. This field will be present in the JSON response if and
@@ -197,7 +211,7 @@ export namespace DeclinedTransaction {
      */
     wire_decline?: Source.WireDecline | null;
 
-  [k: string]: unknown
+    [k: string]: unknown;
   }
 
   export namespace Source {
@@ -271,7 +285,24 @@ export namespace DeclinedTransaction {
        * - `corporate_customer_advised_not_authorized` - The corporate customer no longer
        *   authorizes this transaction.
        */
-      reason: 'ach_route_canceled' | 'ach_route_disabled' | 'breaches_limit' | 'entity_not_active' | 'group_locked' | 'transaction_not_allowed' | 'returned_per_odfi_request' | 'user_initiated' | 'insufficient_funds' | 'authorization_revoked_by_customer' | 'payment_stopped' | 'customer_advised_unauthorized_improper_ineligible_or_incomplete' | 'representative_payee_deceased_or_unable_to_continue_in_that_capacity' | 'beneficiary_or_account_holder_deceased' | 'credit_entry_refused_by_receiver' | 'duplicate_entry' | 'corporate_customer_advised_not_authorized';
+      reason:
+        | 'ach_route_canceled'
+        | 'ach_route_disabled'
+        | 'breaches_limit'
+        | 'entity_not_active'
+        | 'group_locked'
+        | 'transaction_not_allowed'
+        | 'returned_per_odfi_request'
+        | 'user_initiated'
+        | 'insufficient_funds'
+        | 'authorization_revoked_by_customer'
+        | 'payment_stopped'
+        | 'customer_advised_unauthorized_improper_ineligible_or_incomplete'
+        | 'representative_payee_deceased_or_unable_to_continue_in_that_capacity'
+        | 'beneficiary_or_account_holder_deceased'
+        | 'credit_entry_refused_by_receiver'
+        | 'duplicate_entry'
+        | 'corporate_customer_advised_not_authorized';
 
       /**
        * The id of the receiver of the transfer.
@@ -294,7 +325,7 @@ export namespace DeclinedTransaction {
        */
       type: 'ach_decline';
 
-    [k: string]: unknown
+      [k: string]: unknown;
     }
 
     /**
@@ -468,7 +499,17 @@ export namespace DeclinedTransaction {
        *   of an account associated with a card.
        * - `unknown` - The processing category is unknown.
        */
-      processing_category: 'account_funding' | 'automatic_fuel_dispenser' | 'bill_payment' | 'original_credit' | 'purchase' | 'quasi_cash' | 'refund' | 'cash_disbursement' | 'balance_inquiry' | 'unknown';
+      processing_category:
+        | 'account_funding'
+        | 'automatic_fuel_dispenser'
+        | 'bill_payment'
+        | 'original_credit'
+        | 'purchase'
+        | 'quasi_cash'
+        | 'refund'
+        | 'cash_disbursement'
+        | 'balance_inquiry'
+        | 'unknown';
 
       /**
        * The identifier of the Real-Time Decision sent to approve or decline this
@@ -493,7 +534,14 @@ export namespace DeclinedTransaction {
        * - `other` - The transaction was declined for another reason. The merchant may
        *   attempt to process the transaction again. This should be used sparingly.
        */
-      real_time_decision_reason: 'insufficient_funds' | 'transaction_never_allowed' | 'exceeds_approval_limit' | 'card_temporarily_disabled' | 'suspected_fraud' | 'other' | null;
+      real_time_decision_reason:
+        | 'insufficient_funds'
+        | 'transaction_never_allowed'
+        | 'exceeds_approval_limit'
+        | 'card_temporarily_disabled'
+        | 'suspected_fraud'
+        | 'other'
+        | null;
 
       /**
        * Why the transaction was declined.
@@ -530,7 +578,28 @@ export namespace DeclinedTransaction {
        * - `suspected_fraud` - The transaction was suspected to be fraudulent. Please
        *   reach out to support@increase.com for more information.
        */
-      reason: 'account_closed' | 'card_not_active' | 'card_canceled' | 'physical_card_not_active' | 'entity_not_active' | 'group_locked' | 'insufficient_funds' | 'cvv2_mismatch' | 'pin_mismatch' | 'card_expiration_mismatch' | 'transaction_not_allowed' | 'breaches_limit' | 'webhook_declined' | 'webhook_timed_out' | 'declined_by_stand_in_processing' | 'invalid_physical_card' | 'missing_original_authorization' | 'invalid_cryptogram' | 'failed_3ds_authentication' | 'suspected_card_testing' | 'suspected_fraud';
+      reason:
+        | 'account_closed'
+        | 'card_not_active'
+        | 'card_canceled'
+        | 'physical_card_not_active'
+        | 'entity_not_active'
+        | 'group_locked'
+        | 'insufficient_funds'
+        | 'cvv2_mismatch'
+        | 'pin_mismatch'
+        | 'card_expiration_mismatch'
+        | 'transaction_not_allowed'
+        | 'breaches_limit'
+        | 'webhook_declined'
+        | 'webhook_timed_out'
+        | 'declined_by_stand_in_processing'
+        | 'invalid_physical_card'
+        | 'missing_original_authorization'
+        | 'invalid_cryptogram'
+        | 'failed_3ds_authentication'
+        | 'suspected_card_testing'
+        | 'suspected_fraud';
 
       /**
        * The scheme fees associated with this card decline.
@@ -548,7 +617,7 @@ export namespace DeclinedTransaction {
        */
       verification: CardDecline.Verification;
 
-    [k: string]: unknown
+      [k: string]: unknown;
     }
 
     export namespace CardDecline {
@@ -818,8 +887,7 @@ export namespace DeclinedTransaction {
         /**
          * Fields specific to the `pulse` network.
          */
-        export interface Pulse {
-        }
+        export interface Pulse {}
 
         /**
          * Fields specific to the `visa` network.
@@ -860,7 +928,16 @@ export namespace DeclinedTransaction {
            * - `non_secure_transaction` - Non-secure transaction: Use to identify an
            *   electronic commerce transaction that has no data protection.
            */
-          electronic_commerce_indicator: 'mail_phone_order' | 'recurring' | 'installment' | 'unknown_mail_phone_order' | 'secure_electronic_commerce' | 'non_authenticated_security_transaction_at_3ds_capable_merchant' | 'non_authenticated_security_transaction' | 'non_secure_transaction' | null;
+          electronic_commerce_indicator:
+            | 'mail_phone_order'
+            | 'recurring'
+            | 'installment'
+            | 'unknown_mail_phone_order'
+            | 'secure_electronic_commerce'
+            | 'non_authenticated_security_transaction_at_3ds_capable_merchant'
+            | 'non_authenticated_security_transaction'
+            | 'non_secure_transaction'
+            | null;
 
           /**
            * The method used to enter the cardholder's primary account number and card
@@ -880,7 +957,18 @@ export namespace DeclinedTransaction {
            * - `integrated_circuit_card_no_cvv` - Contact chip card, without card
            *   verification value
            */
-          point_of_service_entry_mode: 'unknown' | 'manual' | 'magnetic_stripe_no_cvv' | 'optical_code' | 'integrated_circuit_card' | 'contactless' | 'credential_on_file' | 'magnetic_stripe' | 'contactless_magnetic_stripe' | 'integrated_circuit_card_no_cvv' | null;
+          point_of_service_entry_mode:
+            | 'unknown'
+            | 'manual'
+            | 'magnetic_stripe_no_cvv'
+            | 'optical_code'
+            | 'integrated_circuit_card'
+            | 'contactless'
+            | 'credential_on_file'
+            | 'magnetic_stripe'
+            | 'contactless_magnetic_stripe'
+            | 'integrated_circuit_card_no_cvv'
+            | null;
 
           /**
            * Only present when `actioner: network`. Describes why a card authorization was
@@ -906,7 +994,16 @@ export namespace DeclinedTransaction {
            *   such as card testing.
            * - `other` - An unspecific reason for stand-in processing.
            */
-          stand_in_processing_reason: 'issuer_error' | 'invalid_physical_card' | 'invalid_cryptogram' | 'invalid_cardholder_authentication_verification_value' | 'internal_visa_error' | 'merchant_transaction_advisory_service_authentication_required' | 'payment_fraud_disruption_acquirer_block' | 'other' | null;
+          stand_in_processing_reason:
+            | 'issuer_error'
+            | 'invalid_physical_card'
+            | 'invalid_cryptogram'
+            | 'invalid_cardholder_authentication_verification_value'
+            | 'internal_visa_error'
+            | 'merchant_transaction_advisory_service_authentication_required'
+            | 'payment_fraud_disruption_acquirer_block'
+            | 'other'
+            | null;
 
           /**
            * The capability of the terminal being used to read the card. Shows whether a
@@ -930,7 +1027,16 @@ export namespace DeclinedTransaction {
            *   capability.
            * - `no_capability` - The terminal has no card reading capability.
            */
-          terminal_entry_capability: 'unknown' | 'terminal_not_used' | 'magnetic_stripe' | 'barcode' | 'optical_character_recognition' | 'chip_or_contactless' | 'contactless_only' | 'no_capability' | null;
+          terminal_entry_capability:
+            | 'unknown'
+            | 'terminal_not_used'
+            | 'magnetic_stripe'
+            | 'barcode'
+            | 'optical_character_recognition'
+            | 'chip_or_contactless'
+            | 'contactless_only'
+            | 'no_capability'
+            | null;
         }
       }
 
@@ -1074,7 +1180,36 @@ export namespace DeclinedTransaction {
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
          */
-        fee_type: 'visa_international_service_assessment_single_currency' | 'visa_international_service_assessment_cross_currency' | 'visa_authorization_domestic_point_of_sale' | 'visa_authorization_international_point_of_sale' | 'visa_authorization_canada_point_of_sale' | 'visa_authorization_reversal_point_of_sale' | 'visa_authorization_reversal_international_point_of_sale' | 'visa_authorization_address_verification_service' | 'visa_advanced_authorization' | 'visa_message_transmission' | 'visa_account_verification_domestic' | 'visa_account_verification_international' | 'visa_account_verification_canada' | 'visa_corporate_acceptance_fee' | 'visa_consumer_debit_acceptance_fee' | 'visa_business_debit_acceptance_fee' | 'visa_purchasing_acceptance_fee' | 'visa_purchase_domestic' | 'visa_purchase_international' | 'visa_credit_purchase_token' | 'visa_debit_purchase_token' | 'visa_clearing_transmission' | 'visa_direct_authorization' | 'visa_direct_transaction_domestic' | 'visa_service_commercial_credit' | 'visa_advertising_service_commercial_credit' | 'visa_community_growth_acceleration_program' | 'visa_processing_guarantee_commercial_credit' | 'pulse_switch_fee';
+        fee_type:
+          | 'visa_international_service_assessment_single_currency'
+          | 'visa_international_service_assessment_cross_currency'
+          | 'visa_authorization_domestic_point_of_sale'
+          | 'visa_authorization_international_point_of_sale'
+          | 'visa_authorization_canada_point_of_sale'
+          | 'visa_authorization_reversal_point_of_sale'
+          | 'visa_authorization_reversal_international_point_of_sale'
+          | 'visa_authorization_address_verification_service'
+          | 'visa_advanced_authorization'
+          | 'visa_message_transmission'
+          | 'visa_account_verification_domestic'
+          | 'visa_account_verification_international'
+          | 'visa_account_verification_canada'
+          | 'visa_corporate_acceptance_fee'
+          | 'visa_consumer_debit_acceptance_fee'
+          | 'visa_business_debit_acceptance_fee'
+          | 'visa_purchasing_acceptance_fee'
+          | 'visa_purchase_domestic'
+          | 'visa_purchase_international'
+          | 'visa_credit_purchase_token'
+          | 'visa_debit_purchase_token'
+          | 'visa_clearing_transmission'
+          | 'visa_direct_authorization'
+          | 'visa_direct_transaction_domestic'
+          | 'visa_service_commercial_credit'
+          | 'visa_advertising_service_commercial_credit'
+          | 'visa_community_growth_acceleration_program'
+          | 'visa_processing_guarantee_commercial_credit'
+          | 'pulse_switch_fee';
 
         /**
          * The fixed component of the fee, if applicable, given in major units of the fee
@@ -1168,7 +1303,13 @@ export namespace DeclinedTransaction {
            * - `postal_code_match_address_not_checked` - Postal code matches, but the street
            *   address was not verified. (deprecated)
            */
-          result: 'not_checked' | 'postal_code_match_address_no_match' | 'postal_code_no_match_address_match' | 'match' | 'no_match' | 'postal_code_match_address_not_checked';
+          result:
+            | 'not_checked'
+            | 'postal_code_match_address_no_match'
+            | 'postal_code_no_match_address_match'
+            | 'match'
+            | 'no_match'
+            | 'postal_code_match_address_not_checked';
         }
 
         /**
@@ -1258,9 +1399,27 @@ export namespace DeclinedTransaction {
        * - `unusable_image` - The check image is unusable.
        * - `user_initiated` - Your integration declined this check via the API.
        */
-      reason: 'ach_route_disabled' | 'ach_route_canceled' | 'altered_or_fictitious' | 'breaches_limit' | 'endorsement_irregular' | 'entity_not_active' | 'group_locked' | 'insufficient_funds' | 'stop_payment_requested' | 'duplicate_presentment' | 'not_authorized' | 'amount_mismatch' | 'not_our_item' | 'no_account_number_found' | 'refer_to_image' | 'unable_to_process' | 'unusable_image' | 'user_initiated';
+      reason:
+        | 'ach_route_disabled'
+        | 'ach_route_canceled'
+        | 'altered_or_fictitious'
+        | 'breaches_limit'
+        | 'endorsement_irregular'
+        | 'entity_not_active'
+        | 'group_locked'
+        | 'insufficient_funds'
+        | 'stop_payment_requested'
+        | 'duplicate_presentment'
+        | 'not_authorized'
+        | 'amount_mismatch'
+        | 'not_our_item'
+        | 'no_account_number_found'
+        | 'refer_to_image'
+        | 'unable_to_process'
+        | 'unusable_image'
+        | 'user_initiated';
 
-    [k: string]: unknown
+      [k: string]: unknown;
     }
 
     /**
@@ -1312,7 +1471,19 @@ export namespace DeclinedTransaction {
        *   processed.
        * - `unknown` - The check was rejected for an unknown reason.
        */
-      reason: 'incomplete_image' | 'duplicate' | 'poor_image_quality' | 'incorrect_amount' | 'incorrect_recipient' | 'not_eligible_for_mobile_deposit' | 'missing_required_data_elements' | 'suspected_fraud' | 'deposit_window_expired' | 'requested_by_user' | 'international' | 'unknown';
+      reason:
+        | 'incomplete_image'
+        | 'duplicate'
+        | 'poor_image_quality'
+        | 'incorrect_amount'
+        | 'incorrect_recipient'
+        | 'not_eligible_for_mobile_deposit'
+        | 'missing_required_data_elements'
+        | 'suspected_fraud'
+        | 'deposit_window_expired'
+        | 'requested_by_user'
+        | 'international'
+        | 'unknown';
 
       /**
        * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -1320,7 +1491,7 @@ export namespace DeclinedTransaction {
        */
       rejected_at: string;
 
-    [k: string]: unknown
+      [k: string]: unknown;
     }
 
     /**
@@ -1340,14 +1511,20 @@ export namespace DeclinedTransaction {
        * - `fednow_not_enabled` - Your account is not enabled to receive FedNow
        *   transfers.
        */
-      reason: 'account_number_canceled' | 'account_number_disabled' | 'account_restricted' | 'group_locked' | 'entity_not_active' | 'fednow_not_enabled';
+      reason:
+        | 'account_number_canceled'
+        | 'account_number_disabled'
+        | 'account_restricted'
+        | 'group_locked'
+        | 'entity_not_active'
+        | 'fednow_not_enabled';
 
       /**
        * The identifier of the FedNow Transfer that led to this declined transaction.
        */
       transfer_id: string;
 
-    [k: string]: unknown
+      [k: string]: unknown;
     }
 
     /**
@@ -1402,7 +1579,13 @@ export namespace DeclinedTransaction {
        * - `real_time_payments_not_enabled` - Your account is not enabled to receive
        *   Real-Time Payments transfers.
        */
-      reason: 'account_number_canceled' | 'account_number_disabled' | 'account_restricted' | 'group_locked' | 'entity_not_active' | 'real_time_payments_not_enabled';
+      reason:
+        | 'account_number_canceled'
+        | 'account_number_disabled'
+        | 'account_restricted'
+        | 'group_locked'
+        | 'entity_not_active'
+        | 'real_time_payments_not_enabled';
 
       /**
        * The Real-Time Payments network identification of the declined transfer.
@@ -1419,15 +1602,14 @@ export namespace DeclinedTransaction {
        */
       unstructured_remittance_information: string | null;
 
-    [k: string]: unknown
+      [k: string]: unknown;
     }
 
     /**
      * If the category of this Transaction source is equal to `other`, this field will
      * contain an empty object, otherwise it will contain null.
      */
-    export interface Other {
-    }
+    export interface Other {}
 
     /**
      * A Wire Decline object. This field will be present in the JSON response if and
@@ -1450,9 +1632,15 @@ export namespace DeclinedTransaction {
        * - `transaction_not_allowed` - The transaction is not allowed per Increase's
        *   terms.
        */
-      reason: 'account_number_canceled' | 'account_number_disabled' | 'entity_not_active' | 'group_locked' | 'no_account_number' | 'transaction_not_allowed';
+      reason:
+        | 'account_number_canceled'
+        | 'account_number_disabled'
+        | 'entity_not_active'
+        | 'group_locked'
+        | 'no_account_number'
+        | 'transaction_not_allowed';
 
-    [k: string]: unknown
+      [k: string]: unknown;
     }
   }
 }
@@ -1479,7 +1667,16 @@ export namespace DeclinedTransactionListParams {
      * Return results whose value is in the provided list. For GET requests, this
      * should be encoded as a comma-delimited string, such as `?in=one,two,three`.
      */
-    in?: Array<'ach_decline' | 'card_decline' | 'check_decline' | 'inbound_real_time_payments_transfer_decline' | 'inbound_fednow_transfer_decline' | 'wire_decline' | 'check_deposit_rejection' | 'other'>;
+    in?: Array<
+      | 'ach_decline'
+      | 'card_decline'
+      | 'check_decline'
+      | 'inbound_real_time_payments_transfer_decline'
+      | 'inbound_fednow_transfer_decline'
+      | 'wire_decline'
+      | 'check_deposit_rejection'
+      | 'other'
+    >;
   }
 
   export interface CreatedAt {
@@ -1513,6 +1710,6 @@ export declare namespace DeclinedTransactions {
   export {
     type DeclinedTransaction as DeclinedTransaction,
     type DeclinedTransactionsPage as DeclinedTransactionsPage,
-    type DeclinedTransactionListParams as DeclinedTransactionListParams
+    type DeclinedTransactionListParams as DeclinedTransactionListParams,
   };
 }

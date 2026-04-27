@@ -2,11 +2,17 @@
 
 import Increase from 'increase';
 
-const client = new Increase({ apiKey: 'My API Key', baseURL: process.env["TEST_API_BASE_URL"] ?? 'http://127.0.0.1:4010' });
+const client = new Increase({
+  apiKey: 'My API Key',
+  baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
+});
 
 describe('resource checkDeposits', () => {
   test('adjustment', async () => {
-    const responsePromise = client.simulations.checkDeposits.adjustment('check_deposit_f06n9gpg7sxn8t19lfc1', {});
+    const responsePromise = client.simulations.checkDeposits.adjustment(
+      'check_deposit_f06n9gpg7sxn8t19lfc1',
+      {},
+    );
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;

@@ -17,7 +17,10 @@ export class DigitalWalletTokenRequests extends APIResource {
    *   );
    * ```
    */
-  create(body: DigitalWalletTokenRequestCreateParams, options?: RequestOptions): APIPromise<DigitalWalletTokenRequestCreateResponse> {
+  create(
+    body: DigitalWalletTokenRequestCreateParams,
+    options?: RequestOptions,
+  ): APIPromise<DigitalWalletTokenRequestCreateResponse> {
     return this._client.post('/simulations/digital_wallet_token_requests', { body, ...options });
   }
 }
@@ -37,7 +40,12 @@ export interface DigitalWalletTokenRequestCreateResponse {
    *   provisioning attempt.
    * - `webhook_declined` - Your webhook declined the token provisioning attempt.
    */
-  decline_reason: 'card_not_active' | 'no_verification_method' | 'webhook_timed_out' | 'webhook_declined' | null;
+  decline_reason:
+    | 'card_not_active'
+    | 'no_verification_method'
+    | 'webhook_timed_out'
+    | 'webhook_declined'
+    | null;
 
   /**
    * If the simulated tokenization attempt was accepted, this field contains the id
@@ -62,6 +70,6 @@ export interface DigitalWalletTokenRequestCreateParams {
 export declare namespace DigitalWalletTokenRequests {
   export {
     type DigitalWalletTokenRequestCreateResponse as DigitalWalletTokenRequestCreateResponse,
-    type DigitalWalletTokenRequestCreateParams as DigitalWalletTokenRequestCreateParams
+    type DigitalWalletTokenRequestCreateParams as DigitalWalletTokenRequestCreateParams,
   };
 }
