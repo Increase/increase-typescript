@@ -170,8 +170,9 @@ export interface CardValidation {
    *
    * - `visa` - Visa and Interlink
    * - `mastercard` - Mastercard and Maestro
+   * - `pulse` - Pulse
    */
-  route: 'visa' | 'mastercard';
+  route: 'visa' | 'mastercard' | 'pulse';
 
   /**
    * The lifecycle status of the validation.
