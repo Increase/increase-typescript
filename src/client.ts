@@ -58,7 +58,8 @@ import { InboundWireTransfer, InboundWireTransferListParams, InboundWireTransfer
 import { IntrafiAccountEnrollment, IntrafiAccountEnrollmentCreateParams, IntrafiAccountEnrollmentListParams, IntrafiAccountEnrollments, IntrafiAccountEnrollmentsPage } from './resources/intrafi-account-enrollments';
 import { IntrafiBalance, IntrafiBalances } from './resources/intrafi-balances';
 import { IntrafiExclusion, IntrafiExclusionCreateParams, IntrafiExclusionListParams, IntrafiExclusions, IntrafiExclusionsPage } from './resources/intrafi-exclusions';
-import { Lockbox, LockboxCreateParams, LockboxListParams, LockboxUpdateParams, Lockboxes, LockboxesPage } from './resources/lockboxes';
+import { LockboxAddress, LockboxAddressCreateParams, LockboxAddressListParams, LockboxAddressUpdateParams, LockboxAddresses, LockboxAddressesPage } from './resources/lockbox-addresses';
+import { LockboxRecipient, LockboxRecipientCreateParams, LockboxRecipientListParams, LockboxRecipientUpdateParams, LockboxRecipients, LockboxRecipientsPage } from './resources/lockbox-recipients';
 import { OAuthApplication, OAuthApplicationListParams, OAuthApplications, OAuthApplicationsPage } from './resources/oauth-applications';
 import { OAuthConnection, OAuthConnectionListParams, OAuthConnections, OAuthConnectionsPage } from './resources/oauth-connections';
 import { OAuthToken, OAuthTokenCreateParams, OAuthTokens } from './resources/oauth-tokens';
@@ -787,7 +788,8 @@ export class Increase {
   inboundFednowTransfers: API.InboundFednowTransfers = new API.InboundFednowTransfers(this);
   swiftTransfers: API.SwiftTransfers = new API.SwiftTransfers(this);
   checkDeposits: API.CheckDeposits = new API.CheckDeposits(this);
-  lockboxes: API.Lockboxes = new API.Lockboxes(this);
+  lockboxAddresses: API.LockboxAddresses = new API.LockboxAddresses(this);
+  lockboxRecipients: API.LockboxRecipients = new API.LockboxRecipients(this);
   inboundMailItems: API.InboundMailItems = new API.InboundMailItems(this);
   routingNumbers: API.RoutingNumbers = new API.RoutingNumbers(this);
   externalAccounts: API.ExternalAccounts = new API.ExternalAccounts(this);
@@ -845,7 +847,8 @@ Increase.FednowTransfers = FednowTransfers;
 Increase.InboundFednowTransfers = InboundFednowTransfers;
 Increase.SwiftTransfers = SwiftTransfers;
 Increase.CheckDeposits = CheckDeposits;
-Increase.Lockboxes = Lockboxes;
+Increase.LockboxAddresses = LockboxAddresses;
+Increase.LockboxRecipients = LockboxRecipients;
 Increase.InboundMailItems = InboundMailItems;
 Increase.RoutingNumbers = RoutingNumbers;
 Increase.ExternalAccounts = ExternalAccounts;
@@ -1124,12 +1127,21 @@ export {
 };
 
 export {
-  Lockboxes as Lockboxes,
-  type Lockbox as Lockbox,
-  type LockboxesPage as LockboxesPage,
-  type LockboxCreateParams as LockboxCreateParams,
-  type LockboxUpdateParams as LockboxUpdateParams,
-  type LockboxListParams as LockboxListParams
+  LockboxAddresses as LockboxAddresses,
+  type LockboxAddress as LockboxAddress,
+  type LockboxAddressesPage as LockboxAddressesPage,
+  type LockboxAddressCreateParams as LockboxAddressCreateParams,
+  type LockboxAddressUpdateParams as LockboxAddressUpdateParams,
+  type LockboxAddressListParams as LockboxAddressListParams
+};
+
+export {
+  LockboxRecipients as LockboxRecipients,
+  type LockboxRecipient as LockboxRecipient,
+  type LockboxRecipientsPage as LockboxRecipientsPage,
+  type LockboxRecipientCreateParams as LockboxRecipientCreateParams,
+  type LockboxRecipientUpdateParams as LockboxRecipientUpdateParams,
+  type LockboxRecipientListParams as LockboxRecipientListParams
 };
 
 export {

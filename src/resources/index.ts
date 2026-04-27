@@ -39,7 +39,8 @@ export { InboundWireTransfers, type InboundWireTransfer, type InboundWireTransfe
 export { IntrafiAccountEnrollments, type IntrafiAccountEnrollment, type IntrafiAccountEnrollmentCreateParams, type IntrafiAccountEnrollmentListParams, type IntrafiAccountEnrollmentsPage } from './intrafi-account-enrollments';;
 export { IntrafiBalances, type IntrafiBalance } from './intrafi-balances';;
 export { IntrafiExclusions, type IntrafiExclusion, type IntrafiExclusionCreateParams, type IntrafiExclusionListParams, type IntrafiExclusionsPage } from './intrafi-exclusions';;
-export { Lockboxes, type Lockbox, type LockboxCreateParams, type LockboxUpdateParams, type LockboxListParams, type LockboxesPage } from './lockboxes';;
+export { LockboxAddresses, type LockboxAddress, type LockboxAddressCreateParams, type LockboxAddressUpdateParams, type LockboxAddressListParams, type LockboxAddressesPage } from './lockbox-addresses';;
+export { LockboxRecipients, type LockboxRecipient, type LockboxRecipientCreateParams, type LockboxRecipientUpdateParams, type LockboxRecipientListParams, type LockboxRecipientsPage } from './lockbox-recipients';;
 export { OAuthApplications, type OAuthApplication, type OAuthApplicationListParams, type OAuthApplicationsPage } from './oauth-applications';;
 export { OAuthConnections, type OAuthConnection, type OAuthConnectionListParams, type OAuthConnectionsPage } from './oauth-connections';;
 export { OAuthTokens, type OAuthToken, type OAuthTokenCreateParams } from './oauth-tokens';;

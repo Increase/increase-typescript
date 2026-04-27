@@ -59,7 +59,8 @@ export class InboundMailItems extends APIResource {
 export type InboundMailItemsPage = Page<InboundMailItem>
 
 /**
- * Inbound Mail Items represent pieces of physical mail delivered to a Lockbox.
+ * Inbound Mail Items represent pieces of physical mail delivered to a Lockbox
+ * Address.
  */
 export interface InboundMailItem {
   /**
@@ -84,10 +85,15 @@ export interface InboundMailItem {
   file_id: string;
 
   /**
-   * The identifier for the Lockbox that received this mail item. For mail items that
-   * could not be processed due to an invalid address, this will be null.
+   * The identifier for the Lockbox Address that received this mail item.
    */
-  lockbox_id: string | null;
+  lockbox_address_id: string | null;
+
+  /**
+   * The identifier for the Lockbox Recipient that received this mail item. For mail
+   * items that could not be routed to a Lockbox Recipient, this will be null.
+   */
+  lockbox_recipient_id: string | null;
 
   /**
    * The recipient name as written on the mail item.
@@ -100,8 +106,11 @@ export interface InboundMailItem {
    * - `no_matching_lockbox` - The mail item does not match any lockbox.
    * - `no_check` - The mail item does not contain a check.
    * - `lockbox_not_active` - The Lockbox or its associated Account is not active.
+   * - `lockbox_address_not_active` - The Lockbox Address is not active.
+   * - `lockbox_recipient_not_active` - The Lockbox Recipient or its associated
+   *   Account is not active.
    */
-  rejection_reason: 'no_matching_lockbox' | 'no_check' | 'lockbox_not_active' | null;
+  rejection_reason: 'no_matching_lockbox' | 'no_check' | 'lockbox_not_active' | 'lockbox_address_not_active' | 'lockbox_recipient_not_active' | null;
 
   /**
    * If the mail item has been processed.
@@ -161,9 +170,14 @@ export interface InboundMailItemListParams extends PageParams {
   created_at?: InboundMailItemListParams.CreatedAt;
 
   /**
-   * Filter Inbound Mail Items to ones sent to the provided Lockbox.
+   * Filter Inbound Mail Items to ones sent to the provided Lockbox Address.
    */
-  lockbox_id?: string;
+  lockbox_address_id?: string;
+
+  /**
+   * Filter Inbound Mail Items to ones sent to the provided Lockbox Recipient.
+   */
+  lockbox_recipient_id?: string;
 }
 
 export namespace InboundMailItemListParams {
