@@ -258,8 +258,9 @@ export interface CardPushTransfer {
    *
    * - `visa` - Visa and Interlink
    * - `mastercard` - Mastercard and Maestro
+   * - `pulse` - Pulse
    */
-  route: 'visa' | 'mastercard';
+  route: 'visa' | 'mastercard' | 'pulse';
 
   /**
    * The city of the sender.
