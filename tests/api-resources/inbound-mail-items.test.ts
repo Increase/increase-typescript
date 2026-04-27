@@ -38,7 +38,8 @@ describe('resource inboundMailItems', () => {
   },
     cursor: 'cursor',
     limit: 1,
-    lockbox_id: 'lockbox_id',
+    lockbox_address_id: 'lockbox_address_id',
+    lockbox_recipient_id: 'lockbox_recipient_id',
   }, { path: '/_stainless_unknown_path' }))
       .rejects
       .toThrow(Increase.NotFoundError);

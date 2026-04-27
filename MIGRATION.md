@@ -99,7 +99,8 @@ client.example.list(undefined, { headers: { ... } });
 - `client.inboundFednowTransfers.list()`
 - `client.swiftTransfers.list()`
 - `client.checkDeposits.list()`
-- `client.lockboxes.list()`
+- `client.lockboxAddresses.list()`
+- `client.lockboxRecipients.list()`
 - `client.inboundMailItems.list()`
 - `client.externalAccounts.list()`
 - `client.entities.list()`

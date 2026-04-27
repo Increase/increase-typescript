@@ -6,7 +6,7 @@ const client = new Increase({ apiKey: 'My API Key', baseURL: process.env["TEST_A
 
 describe('resource inboundMailItems', () => {
   test('create: only required params', async () => {
-    const responsePromise = client.simulations.inboundMailItems.create({ amount: 1000, lockbox_id: 'lockbox_3xt21ok13q19advds4t5' });
+    const responsePromise = client.simulations.inboundMailItems.create({ amount: 1000 });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -19,8 +19,9 @@ describe('resource inboundMailItems', () => {
   test('create: required and optional params', async () => {
     const response = await client.simulations.inboundMailItems.create({
     amount: 1000,
-    lockbox_id: 'lockbox_3xt21ok13q19advds4t5',
     contents_file_id: 'contents_file_id',
+    lockbox_address_id: 'lockbox_address_id',
+    lockbox_recipient_id: 'lockbox_3xt21ok13q19advds4t5',
   });
   });
 });
