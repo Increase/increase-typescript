@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.542.0 (2026-04-27)
+
+Full Changelog: [v0.541.0...v0.542.0](https://github.com/Increase/increase-typescript/compare/v0.541.0...v0.542.0)
+
+### Features
+
+* support setting headers via env ([8bab5b7](https://github.com/Increase/increase-typescript/commit/8bab5b7f3be339f98c1830ecce9048f143f0320b))
+
 ## 0.541.0 (2026-04-27)
 
 Full Changelog: [v0.540.0...v0.541.0](https://github.com/Increase/increase-typescript/compare/v0.540.0...v0.541.0)
