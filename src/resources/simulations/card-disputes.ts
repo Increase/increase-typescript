@@ -22,7 +22,11 @@ export class CardDisputes extends APIResource {
    *   );
    * ```
    */
-  action(cardDisputeID: string, body: CardDisputeActionParams, options?: RequestOptions): APIPromise<CardDisputesAPI.CardDispute> {
+  action(
+    cardDisputeID: string,
+    body: CardDisputeActionParams,
+    options?: RequestOptions,
+  ): APIPromise<CardDisputesAPI.CardDispute> {
     return this._client.post(path`/simulations/card_disputes/${cardDisputeID}/action`, { body, ...options });
   }
 }
@@ -76,7 +80,17 @@ export namespace CardDisputeActionParams {
      * - `time_out_user_prearbitration` - Simulate the merchant timing out responding
      *   to a user pre-arbitration. This will move the dispute to a `win` state.
      */
-    action: 'accept_chargeback' | 'accept_user_submission' | 'decline_user_prearbitration' | 'receive_merchant_prearbitration' | 'represent' | 'request_further_information' | 'time_out_chargeback' | 'time_out_merchant_prearbitration' | 'time_out_representment' | 'time_out_user_prearbitration';
+    action:
+      | 'accept_chargeback'
+      | 'accept_user_submission'
+      | 'decline_user_prearbitration'
+      | 'receive_merchant_prearbitration'
+      | 'represent'
+      | 'request_further_information'
+      | 'time_out_chargeback'
+      | 'time_out_merchant_prearbitration'
+      | 'time_out_representment'
+      | 'time_out_user_prearbitration';
 
     /**
      * The parameters for accepting the chargeback. Required if and only if `action` is
@@ -144,36 +158,31 @@ export namespace CardDisputeActionParams {
      * The parameters for accepting the chargeback. Required if and only if `action` is
      * `accept_chargeback`.
      */
-    export interface AcceptChargeback {
-    }
+    export interface AcceptChargeback {}
 
     /**
      * The parameters for accepting the user submission. Required if and only if
      * `action` is `accept_user_submission`.
      */
-    export interface AcceptUserSubmission {
-    }
+    export interface AcceptUserSubmission {}
 
     /**
      * The parameters for declining the prearbitration. Required if and only if
      * `action` is `decline_user_prearbitration`.
      */
-    export interface DeclineUserPrearbitration {
-    }
+    export interface DeclineUserPrearbitration {}
 
     /**
      * The parameters for receiving the prearbitration. Required if and only if
      * `action` is `receive_merchant_prearbitration`.
      */
-    export interface ReceiveMerchantPrearbitration {
-    }
+    export interface ReceiveMerchantPrearbitration {}
 
     /**
      * The parameters for re-presenting the dispute. Required if and only if `action`
      * is `represent`.
      */
-    export interface Represent {
-    }
+    export interface Represent {}
 
     /**
      * The parameters for requesting further information from the user. Required if and
@@ -190,34 +199,28 @@ export namespace CardDisputeActionParams {
      * The parameters for timing out the chargeback. Required if and only if `action`
      * is `time_out_chargeback`.
      */
-    export interface TimeOutChargeback {
-    }
+    export interface TimeOutChargeback {}
 
     /**
      * The parameters for timing out the merchant prearbitration. Required if and only
      * if `action` is `time_out_merchant_prearbitration`.
      */
-    export interface TimeOutMerchantPrearbitration {
-    }
+    export interface TimeOutMerchantPrearbitration {}
 
     /**
      * The parameters for timing out the re-presentment. Required if and only if
      * `action` is `time_out_representment`.
      */
-    export interface TimeOutRepresentment {
-    }
+    export interface TimeOutRepresentment {}
 
     /**
      * The parameters for timing out the user prearbitration. Required if and only if
      * `action` is `time_out_user_prearbitration`.
      */
-    export interface TimeOutUserPrearbitration {
-    }
+    export interface TimeOutUserPrearbitration {}
   }
 }
 
 export declare namespace CardDisputes {
-  export {
-    type CardDisputeActionParams as CardDisputeActionParams
-  };
+  export { type CardDisputeActionParams as CardDisputeActionParams };
 }

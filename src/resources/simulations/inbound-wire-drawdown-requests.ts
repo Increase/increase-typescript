@@ -25,7 +25,10 @@ export class InboundWireDrawdownRequests extends APIResource {
    *   );
    * ```
    */
-  create(body: InboundWireDrawdownRequestCreateParams, options?: RequestOptions): APIPromise<InboundWireDrawdownRequestsAPI.InboundWireDrawdownRequest> {
+  create(
+    body: InboundWireDrawdownRequestCreateParams,
+    options?: RequestOptions,
+  ): APIPromise<InboundWireDrawdownRequestsAPI.InboundWireDrawdownRequest> {
     return this._client.post('/simulations/inbound_wire_drawdown_requests', { body, ...options });
   }
 }
@@ -137,7 +140,5 @@ export interface InboundWireDrawdownRequestCreateParams {
 }
 
 export declare namespace InboundWireDrawdownRequests {
-  export {
-    type InboundWireDrawdownRequestCreateParams as InboundWireDrawdownRequestCreateParams
-  };
+  export { type InboundWireDrawdownRequestCreateParams as InboundWireDrawdownRequestCreateParams };
 }

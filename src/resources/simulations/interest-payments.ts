@@ -19,7 +19,10 @@ export class InterestPayments extends APIResource {
    *   });
    * ```
    */
-  create(body: InterestPaymentCreateParams, options?: RequestOptions): APIPromise<TransactionsAPI.Transaction> {
+  create(
+    body: InterestPaymentCreateParams,
+    options?: RequestOptions,
+  ): APIPromise<TransactionsAPI.Transaction> {
     return this._client.post('/simulations/interest_payments', { body, ...options });
   }
 }
@@ -52,7 +55,5 @@ export interface InterestPaymentCreateParams {
 }
 
 export declare namespace InterestPayments {
-  export {
-    type InterestPaymentCreateParams as InterestPaymentCreateParams
-  };
+  export { type InterestPaymentCreateParams as InterestPaymentCreateParams };
 }

@@ -39,7 +39,5 @@ export interface CardReversalCreateParams {
 }
 
 export declare namespace CardReversals {
-  export {
-    type CardReversalCreateParams as CardReversalCreateParams
-  };
+  export { type CardReversalCreateParams as CardReversalCreateParams };
 }

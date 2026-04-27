@@ -65,7 +65,10 @@ export class SwiftTransfers extends APIResource {
    * }
    * ```
    */
-  list(query: SwiftTransferListParams | null | undefined = {}, options?: RequestOptions): PagePromise<SwiftTransfersPage, SwiftTransfer> {
+  list(
+    query: SwiftTransferListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<SwiftTransfersPage, SwiftTransfer> {
     return this._client.getAPIList('/swift_transfers', Page<SwiftTransfer>, { query, ...options });
   }
 
@@ -98,7 +101,7 @@ export class SwiftTransfers extends APIResource {
   }
 }
 
-export type SwiftTransfersPage = Page<SwiftTransfer>
+export type SwiftTransfersPage = Page<SwiftTransfer>;
 
 /**
  * Swift Transfers send funds internationally.
@@ -210,7 +213,15 @@ export interface SwiftTransfer {
    * - `rejected` - The transfer has been rejected by Increase.
    * - `returned` - The transfer has been returned.
    */
-  status: 'pending_approval' | 'canceled' | 'pending_reviewing' | 'requires_attention' | 'pending_initiating' | 'initiated' | 'rejected' | 'returned';
+  status:
+    | 'pending_approval'
+    | 'canceled'
+    | 'pending_reviewing'
+    | 'requires_attention'
+    | 'pending_initiating'
+    | 'initiated'
+    | 'rejected'
+    | 'returned';
 
   /**
    * The ID for the transaction funding the transfer. This will be populated after
@@ -448,7 +459,7 @@ export interface SwiftTransferCreateParams {
    */
   routing_number?: string;
 
-[k: string]: unknown
+  [k: string]: unknown;
 }
 
 export namespace SwiftTransferCreateParams {
@@ -578,7 +589,16 @@ export namespace SwiftTransferListParams {
      * Return results whose value is in the provided list. For GET requests, this
      * should be encoded as a comma-delimited string, such as `?in=one,two,three`.
      */
-    in?: Array<'pending_approval' | 'canceled' | 'pending_reviewing' | 'requires_attention' | 'pending_initiating' | 'initiated' | 'rejected' | 'returned'>;
+    in?: Array<
+      | 'pending_approval'
+      | 'canceled'
+      | 'pending_reviewing'
+      | 'requires_attention'
+      | 'pending_initiating'
+      | 'initiated'
+      | 'rejected'
+      | 'returned'
+    >;
   }
 }
 
@@ -587,6 +607,6 @@ export declare namespace SwiftTransfers {
     type SwiftTransfer as SwiftTransfer,
     type SwiftTransfersPage as SwiftTransfersPage,
     type SwiftTransferCreateParams as SwiftTransferCreateParams,
-    type SwiftTransferListParams as SwiftTransferListParams
+    type SwiftTransferListParams as SwiftTransferListParams,
   };
 }

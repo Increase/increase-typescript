@@ -33,12 +33,15 @@ export class DigitalWalletTokens extends APIResource {
    * }
    * ```
    */
-  list(query: DigitalWalletTokenListParams | null | undefined = {}, options?: RequestOptions): PagePromise<DigitalWalletTokensPage, DigitalWalletToken> {
+  list(
+    query: DigitalWalletTokenListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<DigitalWalletTokensPage, DigitalWalletToken> {
     return this._client.getAPIList('/digital_wallet_tokens', Page<DigitalWalletToken>, { query, ...options });
   }
 }
 
-export type DigitalWalletTokensPage = Page<DigitalWalletToken>
+export type DigitalWalletTokensPage = Page<DigitalWalletToken>;
 
 /**
  * A Digital Wallet Token is created when a user adds a Card to their Apple Pay or
@@ -138,7 +141,17 @@ export namespace DigitalWalletToken {
      * - `wearable_device` - Wearable Device
      * - `automobile_device` - Automobile Device
      */
-    device_type: 'unknown' | 'mobile_phone' | 'tablet' | 'watch' | 'mobilephone_or_tablet' | 'pc' | 'household_device' | 'wearable_device' | 'automobile_device' | null;
+    device_type:
+      | 'unknown'
+      | 'mobile_phone'
+      | 'tablet'
+      | 'watch'
+      | 'mobilephone_or_tablet'
+      | 'pc'
+      | 'household_device'
+      | 'wearable_device'
+      | 'automobile_device'
+      | null;
 
     /**
      * ID assigned to the device by the digital wallet provider.
@@ -232,6 +245,6 @@ export declare namespace DigitalWalletTokens {
   export {
     type DigitalWalletToken as DigitalWalletToken,
     type DigitalWalletTokensPage as DigitalWalletTokensPage,
-    type DigitalWalletTokenListParams as DigitalWalletTokenListParams
+    type DigitalWalletTokenListParams as DigitalWalletTokenListParams,
   };
 }

@@ -49,7 +49,10 @@ export class IntrafiExclusions extends APIResource {
    * }
    * ```
    */
-  list(query: IntrafiExclusionListParams | null | undefined = {}, options?: RequestOptions): PagePromise<IntrafiExclusionsPage, IntrafiExclusion> {
+  list(
+    query: IntrafiExclusionListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<IntrafiExclusionsPage, IntrafiExclusion> {
     return this._client.getAPIList('/intrafi_exclusions', Page<IntrafiExclusion>, { query, ...options });
   }
 
@@ -69,7 +72,7 @@ export class IntrafiExclusions extends APIResource {
   }
 }
 
-export type IntrafiExclusionsPage = Page<IntrafiExclusion>
+export type IntrafiExclusionsPage = Page<IntrafiExclusion>;
 
 /**
  * Certain institutions may be excluded per Entity when sweeping funds into the
@@ -154,7 +157,7 @@ export interface IntrafiExclusionCreateParams {
    */
   fdic_certificate_number: string;
 
-[k: string]: unknown
+  [k: string]: unknown;
 }
 
 export interface IntrafiExclusionListParams extends PageParams {
@@ -177,6 +180,6 @@ export declare namespace IntrafiExclusions {
     type IntrafiExclusion as IntrafiExclusion,
     type IntrafiExclusionsPage as IntrafiExclusionsPage,
     type IntrafiExclusionCreateParams as IntrafiExclusionCreateParams,
-    type IntrafiExclusionListParams as IntrafiExclusionListParams
+    type IntrafiExclusionListParams as IntrafiExclusionListParams,
   };
 }

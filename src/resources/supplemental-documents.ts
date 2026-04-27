@@ -18,7 +18,10 @@ export class SupplementalDocuments extends APIResource {
    *   });
    * ```
    */
-  create(body: SupplementalDocumentCreateParams, options?: RequestOptions): APIPromise<EntitySupplementalDocument> {
+  create(
+    body: SupplementalDocumentCreateParams,
+    options?: RequestOptions,
+  ): APIPromise<EntitySupplementalDocument> {
     return this._client.post('/entity_supplemental_documents', { body, ...options });
   }
 
@@ -35,12 +38,18 @@ export class SupplementalDocuments extends APIResource {
    * }
    * ```
    */
-  list(query: SupplementalDocumentListParams, options?: RequestOptions): PagePromise<EntitySupplementalDocumentsPage, EntitySupplementalDocument> {
-    return this._client.getAPIList('/entity_supplemental_documents', Page<EntitySupplementalDocument>, { query, ...options });
+  list(
+    query: SupplementalDocumentListParams,
+    options?: RequestOptions,
+  ): PagePromise<EntitySupplementalDocumentsPage, EntitySupplementalDocument> {
+    return this._client.getAPIList('/entity_supplemental_documents', Page<EntitySupplementalDocument>, {
+      query,
+      ...options,
+    });
   }
 }
 
-export type EntitySupplementalDocumentsPage = Page<EntitySupplementalDocument>
+export type EntitySupplementalDocumentsPage = Page<EntitySupplementalDocument>;
 
 /**
  * Supplemental Documents are uploaded files connected to an Entity during
@@ -88,7 +97,7 @@ export interface SupplementalDocumentCreateParams {
    */
   file_id: string;
 
-[k: string]: unknown
+  [k: string]: unknown;
 }
 
 export interface SupplementalDocumentListParams extends PageParams {
@@ -111,6 +120,6 @@ export declare namespace SupplementalDocuments {
     type EntitySupplementalDocument as EntitySupplementalDocument,
     type EntitySupplementalDocumentsPage as EntitySupplementalDocumentsPage,
     type SupplementalDocumentCreateParams as SupplementalDocumentCreateParams,
-    type SupplementalDocumentListParams as SupplementalDocumentListParams
+    type SupplementalDocumentListParams as SupplementalDocumentListParams,
   };
 }

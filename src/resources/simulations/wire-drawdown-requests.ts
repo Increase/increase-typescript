@@ -18,8 +18,14 @@ export class WireDrawdownRequests extends APIResource {
    *   );
    * ```
    */
-  refuse(wireDrawdownRequestID: string, options?: RequestOptions): APIPromise<WireDrawdownRequestsAPI.WireDrawdownRequest> {
-    return this._client.post(path`/simulations/wire_drawdown_requests/${wireDrawdownRequestID}/refuse`, options);
+  refuse(
+    wireDrawdownRequestID: string,
+    options?: RequestOptions,
+  ): APIPromise<WireDrawdownRequestsAPI.WireDrawdownRequest> {
+    return this._client.post(
+      path`/simulations/wire_drawdown_requests/${wireDrawdownRequestID}/refuse`,
+      options,
+    );
   }
 
   /**
@@ -33,7 +39,13 @@ export class WireDrawdownRequests extends APIResource {
    *   );
    * ```
    */
-  submit(wireDrawdownRequestID: string, options?: RequestOptions): APIPromise<WireDrawdownRequestsAPI.WireDrawdownRequest> {
-    return this._client.post(path`/simulations/wire_drawdown_requests/${wireDrawdownRequestID}/submit`, options);
+  submit(
+    wireDrawdownRequestID: string,
+    options?: RequestOptions,
+  ): APIPromise<WireDrawdownRequestsAPI.WireDrawdownRequest> {
+    return this._client.post(
+      path`/simulations/wire_drawdown_requests/${wireDrawdownRequestID}/submit`,
+      options,
+    );
   }
 }
