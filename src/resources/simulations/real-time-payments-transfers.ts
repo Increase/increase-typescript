@@ -21,8 +21,15 @@ export class RealTimePaymentsTransfers extends APIResource {
    *   );
    * ```
    */
-  complete(realTimePaymentsTransferID: string, body: RealTimePaymentsTransferCompleteParams, options?: RequestOptions): APIPromise<RealTimePaymentsTransfersAPI.RealTimePaymentsTransfer> {
-    return this._client.post(path`/simulations/real_time_payments_transfers/${realTimePaymentsTransferID}/complete`, { body, ...options });
+  complete(
+    realTimePaymentsTransferID: string,
+    body: RealTimePaymentsTransferCompleteParams,
+    options?: RequestOptions,
+  ): APIPromise<RealTimePaymentsTransfersAPI.RealTimePaymentsTransfer> {
+    return this._client.post(
+      path`/simulations/real_time_payments_transfers/${realTimePaymentsTransferID}/complete`,
+      { body, ...options },
+    );
   }
 }
 
@@ -90,12 +97,31 @@ export namespace RealTimePaymentsTransferCompleteParams {
      *   issue. We have been notified.
      * - `other` - Some other error or issue has occurred.
      */
-    reject_reason_code: 'account_closed' | 'account_blocked' | 'invalid_creditor_account_type' | 'invalid_creditor_account_number' | 'invalid_creditor_financial_institution_identifier' | 'end_customer_deceased' | 'narrative' | 'transaction_forbidden' | 'transaction_type_not_supported' | 'unexpected_amount' | 'amount_exceeds_bank_limits' | 'invalid_creditor_address' | 'unknown_end_customer' | 'invalid_debtor_address' | 'timeout' | 'unsupported_message_for_recipient' | 'recipient_connection_not_available' | 'real_time_payments_suspended' | 'instructed_agent_signed_off' | 'processing_error' | 'other';
+    reject_reason_code:
+      | 'account_closed'
+      | 'account_blocked'
+      | 'invalid_creditor_account_type'
+      | 'invalid_creditor_account_number'
+      | 'invalid_creditor_financial_institution_identifier'
+      | 'end_customer_deceased'
+      | 'narrative'
+      | 'transaction_forbidden'
+      | 'transaction_type_not_supported'
+      | 'unexpected_amount'
+      | 'amount_exceeds_bank_limits'
+      | 'invalid_creditor_address'
+      | 'unknown_end_customer'
+      | 'invalid_debtor_address'
+      | 'timeout'
+      | 'unsupported_message_for_recipient'
+      | 'recipient_connection_not_available'
+      | 'real_time_payments_suspended'
+      | 'instructed_agent_signed_off'
+      | 'processing_error'
+      | 'other';
   }
 }
 
 export declare namespace RealTimePaymentsTransfers {
-  export {
-    type RealTimePaymentsTransferCompleteParams as RealTimePaymentsTransferCompleteParams
-  };
+  export { type RealTimePaymentsTransferCompleteParams as RealTimePaymentsTransferCompleteParams };
 }

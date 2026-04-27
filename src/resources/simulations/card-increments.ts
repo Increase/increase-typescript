@@ -45,7 +45,5 @@ export interface CardIncrementCreateParams {
 }
 
 export declare namespace CardIncrements {
-  export {
-    type CardIncrementCreateParams as CardIncrementCreateParams
-  };
+  export { type CardIncrementCreateParams as CardIncrementCreateParams };
 }

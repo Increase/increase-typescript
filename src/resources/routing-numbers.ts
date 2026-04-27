@@ -21,12 +21,18 @@ export class RoutingNumbers extends APIResource {
    * }
    * ```
    */
-  list(query: RoutingNumberListParams, options?: RequestOptions): PagePromise<RoutingNumberListResponsesPage, RoutingNumberListResponse> {
-    return this._client.getAPIList('/routing_numbers', Page<RoutingNumberListResponse>, { query, ...options });
+  list(
+    query: RoutingNumberListParams,
+    options?: RequestOptions,
+  ): PagePromise<RoutingNumberListResponsesPage, RoutingNumberListResponse> {
+    return this._client.getAPIList('/routing_numbers', Page<RoutingNumberListResponse>, {
+      query,
+      ...options,
+    });
   }
 }
 
-export type RoutingNumberListResponsesPage = Page<RoutingNumberListResponse>
+export type RoutingNumberListResponsesPage = Page<RoutingNumberListResponse>;
 
 /**
  * Routing numbers are used to identify your bank in a financial transaction.
@@ -92,6 +98,6 @@ export declare namespace RoutingNumbers {
   export {
     type RoutingNumberListResponse as RoutingNumberListResponse,
     type RoutingNumberListResponsesPage as RoutingNumberListResponsesPage,
-    type RoutingNumberListParams as RoutingNumberListParams
+    type RoutingNumberListParams as RoutingNumberListParams,
   };
 }

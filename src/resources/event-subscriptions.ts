@@ -48,7 +48,11 @@ export class EventSubscriptions extends APIResource {
    *   );
    * ```
    */
-  update(eventSubscriptionID: string, body: EventSubscriptionUpdateParams, options?: RequestOptions): APIPromise<EventSubscription> {
+  update(
+    eventSubscriptionID: string,
+    body: EventSubscriptionUpdateParams,
+    options?: RequestOptions,
+  ): APIPromise<EventSubscription> {
     return this._client.patch(path`/event_subscriptions/${eventSubscriptionID}`, { body, ...options });
   }
 
@@ -63,12 +67,15 @@ export class EventSubscriptions extends APIResource {
    * }
    * ```
    */
-  list(query: EventSubscriptionListParams | null | undefined = {}, options?: RequestOptions): PagePromise<EventSubscriptionsPage, EventSubscription> {
+  list(
+    query: EventSubscriptionListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<EventSubscriptionsPage, EventSubscription> {
     return this._client.getAPIList('/event_subscriptions', Page<EventSubscription>, { query, ...options });
   }
 }
 
-export type EventSubscriptionsPage = Page<EventSubscription>
+export type EventSubscriptionsPage = Page<EventSubscription>;
 
 /**
  * Webhooks are event notifications we send to you by HTTPS POST requests. Event
@@ -132,7 +139,7 @@ export interface EventSubscription {
    */
   url: string;
 
-[k: string]: unknown
+  [k: string]: unknown;
 }
 
 export namespace EventSubscription {
@@ -311,7 +318,118 @@ export namespace EventSubscription {
      * - `wire_transfer.created` - Occurs whenever a Wire Transfer is created.
      * - `wire_transfer.updated` - Occurs whenever a Wire Transfer is updated.
      */
-    event_category: 'account.created' | 'account.updated' | 'account_number.created' | 'account_number.updated' | 'account_statement.created' | 'account_transfer.created' | 'account_transfer.updated' | 'ach_prenotification.created' | 'ach_prenotification.updated' | 'ach_transfer.created' | 'ach_transfer.updated' | 'blockchain_address.created' | 'blockchain_address.updated' | 'blockchain_offramp_transfer.created' | 'blockchain_offramp_transfer.updated' | 'blockchain_onramp_transfer.created' | 'blockchain_onramp_transfer.updated' | 'bookkeeping_account.created' | 'bookkeeping_account.updated' | 'bookkeeping_entry_set.updated' | 'card.created' | 'card.updated' | 'card_payment.created' | 'card_payment.updated' | 'card_purchase_supplement.created' | 'card_profile.created' | 'card_profile.updated' | 'card_dispute.created' | 'card_dispute.updated' | 'check_deposit.created' | 'check_deposit.updated' | 'check_transfer.created' | 'check_transfer.updated' | 'declined_transaction.created' | 'digital_card_profile.created' | 'digital_card_profile.updated' | 'digital_wallet_token.created' | 'digital_wallet_token.updated' | 'document.created' | 'entity.created' | 'entity.updated' | 'event_subscription.created' | 'event_subscription.updated' | 'export.created' | 'export.updated' | 'external_account.created' | 'external_account.updated' | 'fednow_transfer.created' | 'fednow_transfer.updated' | 'file.created' | 'group.updated' | 'group.heartbeat' | 'inbound_ach_transfer.created' | 'inbound_ach_transfer.updated' | 'inbound_ach_transfer_return.created' | 'inbound_ach_transfer_return.updated' | 'inbound_check_deposit.created' | 'inbound_check_deposit.updated' | 'inbound_fednow_transfer.created' | 'inbound_fednow_transfer.updated' | 'inbound_mail_item.created' | 'inbound_mail_item.updated' | 'inbound_real_time_payments_transfer.created' | 'inbound_real_time_payments_transfer.updated' | 'inbound_wire_drawdown_request.created' | 'inbound_wire_transfer.created' | 'inbound_wire_transfer.updated' | 'intrafi_account_enrollment.created' | 'intrafi_account_enrollment.updated' | 'intrafi_exclusion.created' | 'intrafi_exclusion.updated' | 'legacy_card_dispute.created' | 'legacy_card_dispute.updated' | 'lockbox.created' | 'lockbox.updated' | 'oauth_connection.created' | 'oauth_connection.deactivated' | 'card_push_transfer.created' | 'card_push_transfer.updated' | 'card_validation.created' | 'card_validation.updated' | 'pending_transaction.created' | 'pending_transaction.updated' | 'physical_card.created' | 'physical_card.updated' | 'physical_card_profile.created' | 'physical_card_profile.updated' | 'physical_check.created' | 'physical_check.updated' | 'program.created' | 'program.updated' | 'proof_of_authorization_request.created' | 'proof_of_authorization_request.updated' | 'real_time_decision.card_authorization_requested' | 'real_time_decision.card_balance_inquiry_requested' | 'real_time_decision.digital_wallet_token_requested' | 'real_time_decision.digital_wallet_authentication_requested' | 'real_time_decision.card_authentication_requested' | 'real_time_decision.card_authentication_challenge_requested' | 'real_time_payments_transfer.created' | 'real_time_payments_transfer.updated' | 'real_time_payments_request_for_payment.created' | 'real_time_payments_request_for_payment.updated' | 'swift_transfer.created' | 'swift_transfer.updated' | 'transaction.created' | 'wire_drawdown_request.created' | 'wire_drawdown_request.updated' | 'wire_transfer.created' | 'wire_transfer.updated' | null;
+    event_category:
+      | 'account.created'
+      | 'account.updated'
+      | 'account_number.created'
+      | 'account_number.updated'
+      | 'account_statement.created'
+      | 'account_transfer.created'
+      | 'account_transfer.updated'
+      | 'ach_prenotification.created'
+      | 'ach_prenotification.updated'
+      | 'ach_transfer.created'
+      | 'ach_transfer.updated'
+      | 'blockchain_address.created'
+      | 'blockchain_address.updated'
+      | 'blockchain_offramp_transfer.created'
+      | 'blockchain_offramp_transfer.updated'
+      | 'blockchain_onramp_transfer.created'
+      | 'blockchain_onramp_transfer.updated'
+      | 'bookkeeping_account.created'
+      | 'bookkeeping_account.updated'
+      | 'bookkeeping_entry_set.updated'
+      | 'card.created'
+      | 'card.updated'
+      | 'card_payment.created'
+      | 'card_payment.updated'
+      | 'card_purchase_supplement.created'
+      | 'card_profile.created'
+      | 'card_profile.updated'
+      | 'card_dispute.created'
+      | 'card_dispute.updated'
+      | 'check_deposit.created'
+      | 'check_deposit.updated'
+      | 'check_transfer.created'
+      | 'check_transfer.updated'
+      | 'declined_transaction.created'
+      | 'digital_card_profile.created'
+      | 'digital_card_profile.updated'
+      | 'digital_wallet_token.created'
+      | 'digital_wallet_token.updated'
+      | 'document.created'
+      | 'entity.created'
+      | 'entity.updated'
+      | 'event_subscription.created'
+      | 'event_subscription.updated'
+      | 'export.created'
+      | 'export.updated'
+      | 'external_account.created'
+      | 'external_account.updated'
+      | 'fednow_transfer.created'
+      | 'fednow_transfer.updated'
+      | 'file.created'
+      | 'group.updated'
+      | 'group.heartbeat'
+      | 'inbound_ach_transfer.created'
+      | 'inbound_ach_transfer.updated'
+      | 'inbound_ach_transfer_return.created'
+      | 'inbound_ach_transfer_return.updated'
+      | 'inbound_check_deposit.created'
+      | 'inbound_check_deposit.updated'
+      | 'inbound_fednow_transfer.created'
+      | 'inbound_fednow_transfer.updated'
+      | 'inbound_mail_item.created'
+      | 'inbound_mail_item.updated'
+      | 'inbound_real_time_payments_transfer.created'
+      | 'inbound_real_time_payments_transfer.updated'
+      | 'inbound_wire_drawdown_request.created'
+      | 'inbound_wire_transfer.created'
+      | 'inbound_wire_transfer.updated'
+      | 'intrafi_account_enrollment.created'
+      | 'intrafi_account_enrollment.updated'
+      | 'intrafi_exclusion.created'
+      | 'intrafi_exclusion.updated'
+      | 'legacy_card_dispute.created'
+      | 'legacy_card_dispute.updated'
+      | 'lockbox.created'
+      | 'lockbox.updated'
+      | 'oauth_connection.created'
+      | 'oauth_connection.deactivated'
+      | 'card_push_transfer.created'
+      | 'card_push_transfer.updated'
+      | 'card_validation.created'
+      | 'card_validation.updated'
+      | 'pending_transaction.created'
+      | 'pending_transaction.updated'
+      | 'physical_card.created'
+      | 'physical_card.updated'
+      | 'physical_card_profile.created'
+      | 'physical_card_profile.updated'
+      | 'physical_check.created'
+      | 'physical_check.updated'
+      | 'program.created'
+      | 'program.updated'
+      | 'proof_of_authorization_request.created'
+      | 'proof_of_authorization_request.updated'
+      | 'real_time_decision.card_authorization_requested'
+      | 'real_time_decision.card_balance_inquiry_requested'
+      | 'real_time_decision.digital_wallet_token_requested'
+      | 'real_time_decision.digital_wallet_authentication_requested'
+      | 'real_time_decision.card_authentication_requested'
+      | 'real_time_decision.card_authentication_challenge_requested'
+      | 'real_time_payments_transfer.created'
+      | 'real_time_payments_transfer.updated'
+      | 'real_time_payments_request_for_payment.created'
+      | 'real_time_payments_request_for_payment.updated'
+      | 'swift_transfer.created'
+      | 'swift_transfer.updated'
+      | 'transaction.created'
+      | 'wire_drawdown_request.created'
+      | 'wire_drawdown_request.updated'
+      | 'wire_transfer.created'
+      | 'wire_transfer.updated'
+      | null;
   }
 }
 
@@ -349,7 +467,7 @@ export interface EventSubscriptionCreateParams {
    */
   status?: 'active' | 'disabled';
 
-[k: string]: unknown
+  [k: string]: unknown;
 }
 
 export namespace EventSubscriptionCreateParams {
@@ -528,7 +646,117 @@ export namespace EventSubscriptionCreateParams {
      * - `wire_transfer.created` - Occurs whenever a Wire Transfer is created.
      * - `wire_transfer.updated` - Occurs whenever a Wire Transfer is updated.
      */
-    event_category: 'account.created' | 'account.updated' | 'account_number.created' | 'account_number.updated' | 'account_statement.created' | 'account_transfer.created' | 'account_transfer.updated' | 'ach_prenotification.created' | 'ach_prenotification.updated' | 'ach_transfer.created' | 'ach_transfer.updated' | 'blockchain_address.created' | 'blockchain_address.updated' | 'blockchain_offramp_transfer.created' | 'blockchain_offramp_transfer.updated' | 'blockchain_onramp_transfer.created' | 'blockchain_onramp_transfer.updated' | 'bookkeeping_account.created' | 'bookkeeping_account.updated' | 'bookkeeping_entry_set.updated' | 'card.created' | 'card.updated' | 'card_payment.created' | 'card_payment.updated' | 'card_purchase_supplement.created' | 'card_profile.created' | 'card_profile.updated' | 'card_dispute.created' | 'card_dispute.updated' | 'check_deposit.created' | 'check_deposit.updated' | 'check_transfer.created' | 'check_transfer.updated' | 'declined_transaction.created' | 'digital_card_profile.created' | 'digital_card_profile.updated' | 'digital_wallet_token.created' | 'digital_wallet_token.updated' | 'document.created' | 'entity.created' | 'entity.updated' | 'event_subscription.created' | 'event_subscription.updated' | 'export.created' | 'export.updated' | 'external_account.created' | 'external_account.updated' | 'fednow_transfer.created' | 'fednow_transfer.updated' | 'file.created' | 'group.updated' | 'group.heartbeat' | 'inbound_ach_transfer.created' | 'inbound_ach_transfer.updated' | 'inbound_ach_transfer_return.created' | 'inbound_ach_transfer_return.updated' | 'inbound_check_deposit.created' | 'inbound_check_deposit.updated' | 'inbound_fednow_transfer.created' | 'inbound_fednow_transfer.updated' | 'inbound_mail_item.created' | 'inbound_mail_item.updated' | 'inbound_real_time_payments_transfer.created' | 'inbound_real_time_payments_transfer.updated' | 'inbound_wire_drawdown_request.created' | 'inbound_wire_transfer.created' | 'inbound_wire_transfer.updated' | 'intrafi_account_enrollment.created' | 'intrafi_account_enrollment.updated' | 'intrafi_exclusion.created' | 'intrafi_exclusion.updated' | 'legacy_card_dispute.created' | 'legacy_card_dispute.updated' | 'lockbox.created' | 'lockbox.updated' | 'oauth_connection.created' | 'oauth_connection.deactivated' | 'card_push_transfer.created' | 'card_push_transfer.updated' | 'card_validation.created' | 'card_validation.updated' | 'pending_transaction.created' | 'pending_transaction.updated' | 'physical_card.created' | 'physical_card.updated' | 'physical_card_profile.created' | 'physical_card_profile.updated' | 'physical_check.created' | 'physical_check.updated' | 'program.created' | 'program.updated' | 'proof_of_authorization_request.created' | 'proof_of_authorization_request.updated' | 'real_time_decision.card_authorization_requested' | 'real_time_decision.card_balance_inquiry_requested' | 'real_time_decision.digital_wallet_token_requested' | 'real_time_decision.digital_wallet_authentication_requested' | 'real_time_decision.card_authentication_requested' | 'real_time_decision.card_authentication_challenge_requested' | 'real_time_payments_transfer.created' | 'real_time_payments_transfer.updated' | 'real_time_payments_request_for_payment.created' | 'real_time_payments_request_for_payment.updated' | 'swift_transfer.created' | 'swift_transfer.updated' | 'transaction.created' | 'wire_drawdown_request.created' | 'wire_drawdown_request.updated' | 'wire_transfer.created' | 'wire_transfer.updated';
+    event_category:
+      | 'account.created'
+      | 'account.updated'
+      | 'account_number.created'
+      | 'account_number.updated'
+      | 'account_statement.created'
+      | 'account_transfer.created'
+      | 'account_transfer.updated'
+      | 'ach_prenotification.created'
+      | 'ach_prenotification.updated'
+      | 'ach_transfer.created'
+      | 'ach_transfer.updated'
+      | 'blockchain_address.created'
+      | 'blockchain_address.updated'
+      | 'blockchain_offramp_transfer.created'
+      | 'blockchain_offramp_transfer.updated'
+      | 'blockchain_onramp_transfer.created'
+      | 'blockchain_onramp_transfer.updated'
+      | 'bookkeeping_account.created'
+      | 'bookkeeping_account.updated'
+      | 'bookkeeping_entry_set.updated'
+      | 'card.created'
+      | 'card.updated'
+      | 'card_payment.created'
+      | 'card_payment.updated'
+      | 'card_purchase_supplement.created'
+      | 'card_profile.created'
+      | 'card_profile.updated'
+      | 'card_dispute.created'
+      | 'card_dispute.updated'
+      | 'check_deposit.created'
+      | 'check_deposit.updated'
+      | 'check_transfer.created'
+      | 'check_transfer.updated'
+      | 'declined_transaction.created'
+      | 'digital_card_profile.created'
+      | 'digital_card_profile.updated'
+      | 'digital_wallet_token.created'
+      | 'digital_wallet_token.updated'
+      | 'document.created'
+      | 'entity.created'
+      | 'entity.updated'
+      | 'event_subscription.created'
+      | 'event_subscription.updated'
+      | 'export.created'
+      | 'export.updated'
+      | 'external_account.created'
+      | 'external_account.updated'
+      | 'fednow_transfer.created'
+      | 'fednow_transfer.updated'
+      | 'file.created'
+      | 'group.updated'
+      | 'group.heartbeat'
+      | 'inbound_ach_transfer.created'
+      | 'inbound_ach_transfer.updated'
+      | 'inbound_ach_transfer_return.created'
+      | 'inbound_ach_transfer_return.updated'
+      | 'inbound_check_deposit.created'
+      | 'inbound_check_deposit.updated'
+      | 'inbound_fednow_transfer.created'
+      | 'inbound_fednow_transfer.updated'
+      | 'inbound_mail_item.created'
+      | 'inbound_mail_item.updated'
+      | 'inbound_real_time_payments_transfer.created'
+      | 'inbound_real_time_payments_transfer.updated'
+      | 'inbound_wire_drawdown_request.created'
+      | 'inbound_wire_transfer.created'
+      | 'inbound_wire_transfer.updated'
+      | 'intrafi_account_enrollment.created'
+      | 'intrafi_account_enrollment.updated'
+      | 'intrafi_exclusion.created'
+      | 'intrafi_exclusion.updated'
+      | 'legacy_card_dispute.created'
+      | 'legacy_card_dispute.updated'
+      | 'lockbox.created'
+      | 'lockbox.updated'
+      | 'oauth_connection.created'
+      | 'oauth_connection.deactivated'
+      | 'card_push_transfer.created'
+      | 'card_push_transfer.updated'
+      | 'card_validation.created'
+      | 'card_validation.updated'
+      | 'pending_transaction.created'
+      | 'pending_transaction.updated'
+      | 'physical_card.created'
+      | 'physical_card.updated'
+      | 'physical_card_profile.created'
+      | 'physical_card_profile.updated'
+      | 'physical_check.created'
+      | 'physical_check.updated'
+      | 'program.created'
+      | 'program.updated'
+      | 'proof_of_authorization_request.created'
+      | 'proof_of_authorization_request.updated'
+      | 'real_time_decision.card_authorization_requested'
+      | 'real_time_decision.card_balance_inquiry_requested'
+      | 'real_time_decision.digital_wallet_token_requested'
+      | 'real_time_decision.digital_wallet_authentication_requested'
+      | 'real_time_decision.card_authentication_requested'
+      | 'real_time_decision.card_authentication_challenge_requested'
+      | 'real_time_payments_transfer.created'
+      | 'real_time_payments_transfer.updated'
+      | 'real_time_payments_request_for_payment.created'
+      | 'real_time_payments_request_for_payment.updated'
+      | 'swift_transfer.created'
+      | 'swift_transfer.updated'
+      | 'transaction.created'
+      | 'wire_drawdown_request.created'
+      | 'wire_drawdown_request.updated'
+      | 'wire_transfer.created'
+      | 'wire_transfer.updated';
   }
 }
 
@@ -561,6 +789,6 @@ export declare namespace EventSubscriptions {
     type EventSubscriptionsPage as EventSubscriptionsPage,
     type EventSubscriptionCreateParams as EventSubscriptionCreateParams,
     type EventSubscriptionUpdateParams as EventSubscriptionUpdateParams,
-    type EventSubscriptionListParams as EventSubscriptionListParams
+    type EventSubscriptionListParams as EventSubscriptionListParams,
   };
 }

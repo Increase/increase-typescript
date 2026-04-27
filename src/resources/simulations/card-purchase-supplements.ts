@@ -19,7 +19,10 @@ export class CardPurchaseSupplements extends APIResource {
    *   });
    * ```
    */
-  create(body: CardPurchaseSupplementCreateParams, options?: RequestOptions): APIPromise<CardPurchaseSupplementsAPI.CardPurchaseSupplement> {
+  create(
+    body: CardPurchaseSupplementCreateParams,
+    options?: RequestOptions,
+  ): APIPromise<CardPurchaseSupplementsAPI.CardPurchaseSupplement> {
     return this._client.post('/simulations/card_purchase_supplements', { body, ...options });
   }
 }
@@ -152,7 +155,5 @@ export namespace CardPurchaseSupplementCreateParams {
 }
 
 export declare namespace CardPurchaseSupplements {
-  export {
-    type CardPurchaseSupplementCreateParams as CardPurchaseSupplementCreateParams
-  };
+  export { type CardPurchaseSupplementCreateParams as CardPurchaseSupplementCreateParams };
 }

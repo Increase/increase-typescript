@@ -19,7 +19,10 @@ export class InboundWireTransfers extends APIResource {
    *   });
    * ```
    */
-  create(body: InboundWireTransferCreateParams, options?: RequestOptions): APIPromise<InboundWireTransfersAPI.InboundWireTransfer> {
+  create(
+    body: InboundWireTransferCreateParams,
+    options?: RequestOptions,
+  ): APIPromise<InboundWireTransfersAPI.InboundWireTransfer> {
     return this._client.post('/simulations/inbound_wire_transfers', { body, ...options });
   }
 }
@@ -121,7 +124,5 @@ export interface InboundWireTransferCreateParams {
 }
 
 export declare namespace InboundWireTransfers {
-  export {
-    type InboundWireTransferCreateParams as InboundWireTransferCreateParams
-  };
+  export { type InboundWireTransferCreateParams as InboundWireTransferCreateParams };
 }

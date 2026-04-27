@@ -19,7 +19,10 @@ export class EntityOnboardingSessions extends APIResource {
    *   });
    * ```
    */
-  create(body: EntityOnboardingSessionCreateParams, options?: RequestOptions): APIPromise<EntityOnboardingSession> {
+  create(
+    body: EntityOnboardingSessionCreateParams,
+    options?: RequestOptions,
+  ): APIPromise<EntityOnboardingSession> {
     return this._client.post('/entity_onboarding_sessions', { body, ...options });
   }
 
@@ -49,8 +52,14 @@ export class EntityOnboardingSessions extends APIResource {
    * }
    * ```
    */
-  list(query: EntityOnboardingSessionListParams | null | undefined = {}, options?: RequestOptions): PagePromise<EntityOnboardingSessionsPage, EntityOnboardingSession> {
-    return this._client.getAPIList('/entity_onboarding_sessions', Page<EntityOnboardingSession>, { query, ...options });
+  list(
+    query: EntityOnboardingSessionListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<EntityOnboardingSessionsPage, EntityOnboardingSession> {
+    return this._client.getAPIList('/entity_onboarding_sessions', Page<EntityOnboardingSession>, {
+      query,
+      ...options,
+    });
   }
 
   /**
@@ -69,7 +78,7 @@ export class EntityOnboardingSessions extends APIResource {
   }
 }
 
-export type EntityOnboardingSessionsPage = Page<EntityOnboardingSession>
+export type EntityOnboardingSessionsPage = Page<EntityOnboardingSession>;
 
 /**
  * Entity Onboarding Sessions let your customers onboard themselves by completing
@@ -161,7 +170,7 @@ export interface EntityOnboardingSessionCreateParams {
    */
   entity_id?: string;
 
-[k: string]: unknown
+  [k: string]: unknown;
 }
 
 export interface EntityOnboardingSessionListParams extends PageParams {
@@ -192,6 +201,6 @@ export declare namespace EntityOnboardingSessions {
     type EntityOnboardingSession as EntityOnboardingSession,
     type EntityOnboardingSessionsPage as EntityOnboardingSessionsPage,
     type EntityOnboardingSessionCreateParams as EntityOnboardingSessionCreateParams,
-    type EntityOnboardingSessionListParams as EntityOnboardingSessionListParams
+    type EntityOnboardingSessionListParams as EntityOnboardingSessionListParams,
   };
 }

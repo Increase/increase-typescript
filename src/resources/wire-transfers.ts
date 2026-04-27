@@ -49,7 +49,10 @@ export class WireTransfers extends APIResource {
    * }
    * ```
    */
-  list(query: WireTransferListParams | null | undefined = {}, options?: RequestOptions): PagePromise<WireTransfersPage, WireTransfer> {
+  list(
+    query: WireTransferListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<WireTransfersPage, WireTransfer> {
     return this._client.getAPIList('/wire_transfers', Page<WireTransfer>, { query, ...options });
   }
 
@@ -82,7 +85,7 @@ export class WireTransfers extends APIResource {
   }
 }
 
-export type WireTransfersPage = Page<WireTransfer>
+export type WireTransfersPage = Page<WireTransfer>;
 
 /**
  * Wire transfers move funds between your Increase account and any other account
@@ -216,7 +219,16 @@ export interface WireTransfer {
    * - `complete` - The transfer has been acknowledged by Fedwire and can be
    *   considered complete.
    */
-  status: 'pending_approval' | 'canceled' | 'pending_reviewing' | 'rejected' | 'requires_attention' | 'pending_creating' | 'reversed' | 'submitted' | 'complete';
+  status:
+    | 'pending_approval'
+    | 'canceled'
+    | 'pending_reviewing'
+    | 'rejected'
+    | 'requires_attention'
+    | 'pending_creating'
+    | 'reversed'
+    | 'submitted'
+    | 'complete';
 
   /**
    * After the transfer is submitted to Fedwire, this will contain supplemental
@@ -242,7 +254,7 @@ export interface WireTransfer {
    */
   unique_end_to_end_transaction_reference: string | null;
 
-[k: string]: unknown
+  [k: string]: unknown;
 }
 
 export namespace WireTransfer {
@@ -584,7 +596,7 @@ export namespace WireTransfer {
      */
     wire_transfer_id: string;
 
-  [k: string]: unknown
+    [k: string]: unknown;
   }
 
   /**
@@ -665,7 +677,7 @@ export interface WireTransferCreateParams {
    */
   source_account_number_id?: string;
 
-[k: string]: unknown
+  [k: string]: unknown;
 }
 
 export namespace WireTransferCreateParams {
@@ -889,7 +901,17 @@ export namespace WireTransferListParams {
      * Return results whose value is in the provided list. For GET requests, this
      * should be encoded as a comma-delimited string, such as `?in=one,two,three`.
      */
-    in?: Array<'pending_approval' | 'canceled' | 'pending_reviewing' | 'rejected' | 'requires_attention' | 'pending_creating' | 'reversed' | 'submitted' | 'complete'>;
+    in?: Array<
+      | 'pending_approval'
+      | 'canceled'
+      | 'pending_reviewing'
+      | 'rejected'
+      | 'requires_attention'
+      | 'pending_creating'
+      | 'reversed'
+      | 'submitted'
+      | 'complete'
+    >;
   }
 }
 
@@ -898,6 +920,6 @@ export declare namespace WireTransfers {
     type WireTransfer as WireTransfer,
     type WireTransfersPage as WireTransfersPage,
     type WireTransferCreateParams as WireTransferCreateParams,
-    type WireTransferListParams as WireTransferListParams
+    type WireTransferListParams as WireTransferListParams,
   };
 }

@@ -2,7 +2,10 @@
 
 import Increase from 'increase';
 
-const client = new Increase({ apiKey: 'My API Key', baseURL: process.env["TEST_API_BASE_URL"] ?? 'http://127.0.0.1:4010' });
+const client = new Increase({
+  apiKey: 'My API Key',
+  baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
+});
 
 describe('resource digitalWalletTokens', () => {
   test('retrieve', async () => {
@@ -29,18 +32,21 @@ describe('resource digitalWalletTokens', () => {
 
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.digitalWalletTokens.list({
-    card_id: 'card_id',
-    created_at: {
-    after: '2019-12-27T18:11:19.117Z',
-    before: '2019-12-27T18:11:19.117Z',
-    on_or_after: '2019-12-27T18:11:19.117Z',
-    on_or_before: '2019-12-27T18:11:19.117Z',
-  },
-    cursor: 'cursor',
-    limit: 1,
-  }, { path: '/_stainless_unknown_path' }))
-      .rejects
-      .toThrow(Increase.NotFoundError);
+    await expect(
+      client.digitalWalletTokens.list(
+        {
+          card_id: 'card_id',
+          created_at: {
+            after: '2019-12-27T18:11:19.117Z',
+            before: '2019-12-27T18:11:19.117Z',
+            on_or_after: '2019-12-27T18:11:19.117Z',
+            on_or_before: '2019-12-27T18:11:19.117Z',
+          },
+          cursor: 'cursor',
+          limit: 1,
+        },
+        { path: '/_stainless_unknown_path' },
+      ),
+    ).rejects.toThrow(Increase.NotFoundError);
   });
 });

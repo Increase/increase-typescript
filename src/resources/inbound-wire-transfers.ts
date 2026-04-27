@@ -33,8 +33,14 @@ export class InboundWireTransfers extends APIResource {
    * }
    * ```
    */
-  list(query: InboundWireTransferListParams | null | undefined = {}, options?: RequestOptions): PagePromise<InboundWireTransfersPage, InboundWireTransfer> {
-    return this._client.getAPIList('/inbound_wire_transfers', Page<InboundWireTransfer>, { query, ...options });
+  list(
+    query: InboundWireTransferListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<InboundWireTransfersPage, InboundWireTransfer> {
+    return this._client.getAPIList('/inbound_wire_transfers', Page<InboundWireTransfer>, {
+      query,
+      ...options,
+    });
   }
 
   /**
@@ -49,12 +55,19 @@ export class InboundWireTransfers extends APIResource {
    *   );
    * ```
    */
-  reverse(inboundWireTransferID: string, body: InboundWireTransferReverseParams, options?: RequestOptions): APIPromise<InboundWireTransfer> {
-    return this._client.post(path`/inbound_wire_transfers/${inboundWireTransferID}/reverse`, { body, ...options });
+  reverse(
+    inboundWireTransferID: string,
+    body: InboundWireTransferReverseParams,
+    options?: RequestOptions,
+  ): APIPromise<InboundWireTransfer> {
+    return this._client.post(path`/inbound_wire_transfers/${inboundWireTransferID}/reverse`, {
+      body,
+      ...options,
+    });
   }
 }
 
-export type InboundWireTransfersPage = Page<InboundWireTransfer>
+export type InboundWireTransfersPage = Page<InboundWireTransfer>;
 
 /**
  * An Inbound Wire Transfer is a wire transfer initiated outside of Increase to
@@ -199,7 +212,7 @@ export interface InboundWireTransfer {
    */
   wire_drawdown_request_id: string | null;
 
-[k: string]: unknown
+  [k: string]: unknown;
 }
 
 export namespace InboundWireTransfer {
@@ -317,6 +330,6 @@ export declare namespace InboundWireTransfers {
     type InboundWireTransfer as InboundWireTransfer,
     type InboundWireTransfersPage as InboundWireTransfersPage,
     type InboundWireTransferListParams as InboundWireTransferListParams,
-    type InboundWireTransferReverseParams as InboundWireTransferReverseParams
+    type InboundWireTransferReverseParams as InboundWireTransferReverseParams,
   };
 }

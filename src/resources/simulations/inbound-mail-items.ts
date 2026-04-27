@@ -18,7 +18,10 @@ export class InboundMailItems extends APIResource {
    *   });
    * ```
    */
-  create(body: InboundMailItemCreateParams, options?: RequestOptions): APIPromise<InboundMailItemsAPI.InboundMailItem> {
+  create(
+    body: InboundMailItemCreateParams,
+    options?: RequestOptions,
+  ): APIPromise<InboundMailItemsAPI.InboundMailItem> {
     return this._client.post('/simulations/inbound_mail_items', { body, ...options });
   }
 }
@@ -45,11 +48,9 @@ export interface InboundMailItemCreateParams {
    */
   lockbox_recipient_id?: string;
 
-[k: string]: unknown
+  [k: string]: unknown;
 }
 
 export declare namespace InboundMailItems {
-  export {
-    type InboundMailItemCreateParams as InboundMailItemCreateParams
-  };
+  export { type InboundMailItemCreateParams as InboundMailItemCreateParams };
 }

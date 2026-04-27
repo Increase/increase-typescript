@@ -50,7 +50,11 @@ export class LockboxRecipients extends APIResource {
    *   );
    * ```
    */
-  update(lockboxRecipientID: string, body: LockboxRecipientUpdateParams, options?: RequestOptions): APIPromise<LockboxRecipient> {
+  update(
+    lockboxRecipientID: string,
+    body: LockboxRecipientUpdateParams,
+    options?: RequestOptions,
+  ): APIPromise<LockboxRecipient> {
     return this._client.patch(path`/lockbox_recipients/${lockboxRecipientID}`, { body, ...options });
   }
 
@@ -65,12 +69,15 @@ export class LockboxRecipients extends APIResource {
    * }
    * ```
    */
-  list(query: LockboxRecipientListParams | null | undefined = {}, options?: RequestOptions): PagePromise<LockboxRecipientsPage, LockboxRecipient> {
+  list(
+    query: LockboxRecipientListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<LockboxRecipientsPage, LockboxRecipient> {
     return this._client.getAPIList('/lockbox_recipients', Page<LockboxRecipient>, { query, ...options });
   }
 }
 
-export type LockboxRecipientsPage = Page<LockboxRecipient>
+export type LockboxRecipientsPage = Page<LockboxRecipient>;
 
 /**
  * Lockbox Recipients represent an inbox at a Lockbox Address. Checks received for
@@ -163,7 +170,7 @@ export interface LockboxRecipientCreateParams {
    */
   recipient_name?: string;
 
-[k: string]: unknown
+  [k: string]: unknown;
 }
 
 export interface LockboxRecipientUpdateParams {
@@ -245,6 +252,6 @@ export declare namespace LockboxRecipients {
     type LockboxRecipientsPage as LockboxRecipientsPage,
     type LockboxRecipientCreateParams as LockboxRecipientCreateParams,
     type LockboxRecipientUpdateParams as LockboxRecipientUpdateParams,
-    type LockboxRecipientListParams as LockboxRecipientListParams
+    type LockboxRecipientListParams as LockboxRecipientListParams,
   };
 }

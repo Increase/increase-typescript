@@ -28,7 +28,10 @@ export class InboundACHTransfers extends APIResource {
    *   });
    * ```
    */
-  create(body: InboundACHTransferCreateParams, options?: RequestOptions): APIPromise<InboundACHTransfersAPI.InboundACHTransfer> {
+  create(
+    body: InboundACHTransferCreateParams,
+    options?: RequestOptions,
+  ): APIPromise<InboundACHTransfersAPI.InboundACHTransfer> {
     return this._client.post('/simulations/inbound_ach_transfers', { body, ...options });
   }
 }
@@ -112,7 +115,23 @@ export interface InboundACHTransferCreateParams {
    * - `destroyed_check` - Destroyed Check (XCK).
    * - `international_ach_transaction` - International ACH Transaction (IAT).
    */
-  standard_entry_class_code?: 'corporate_credit_or_debit' | 'corporate_trade_exchange' | 'prearranged_payments_and_deposit' | 'internet_initiated' | 'point_of_sale' | 'telephone_initiated' | 'customer_initiated' | 'accounts_receivable' | 'machine_transfer' | 'shared_network_transaction' | 'represented_check' | 'back_office_conversion' | 'point_of_purchase' | 'check_truncation' | 'destroyed_check' | 'international_ach_transaction';
+  standard_entry_class_code?:
+    | 'corporate_credit_or_debit'
+    | 'corporate_trade_exchange'
+    | 'prearranged_payments_and_deposit'
+    | 'internet_initiated'
+    | 'point_of_sale'
+    | 'telephone_initiated'
+    | 'customer_initiated'
+    | 'accounts_receivable'
+    | 'machine_transfer'
+    | 'shared_network_transaction'
+    | 'represented_check'
+    | 'back_office_conversion'
+    | 'point_of_purchase'
+    | 'check_truncation'
+    | 'destroyed_check'
+    | 'international_ach_transaction';
 }
 
 export namespace InboundACHTransferCreateParams {
@@ -157,7 +176,5 @@ export namespace InboundACHTransferCreateParams {
 }
 
 export declare namespace InboundACHTransfers {
-  export {
-    type InboundACHTransferCreateParams as InboundACHTransferCreateParams
-  };
+  export { type InboundACHTransferCreateParams as InboundACHTransferCreateParams };
 }

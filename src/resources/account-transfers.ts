@@ -51,7 +51,10 @@ export class AccountTransfers extends APIResource {
    * }
    * ```
    */
-  list(query: AccountTransferListParams | null | undefined = {}, options?: RequestOptions): PagePromise<AccountTransfersPage, AccountTransfer> {
+  list(
+    query: AccountTransferListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<AccountTransfersPage, AccountTransfer> {
     return this._client.getAPIList('/account_transfers', Page<AccountTransfer>, { query, ...options });
   }
 
@@ -86,7 +89,7 @@ export class AccountTransfers extends APIResource {
   }
 }
 
-export type AccountTransfersPage = Page<AccountTransfer>
+export type AccountTransfersPage = Page<AccountTransfer>;
 
 /**
  * Account transfers move funds between your own accounts at Increase (accounting
@@ -198,7 +201,7 @@ export interface AccountTransfer {
    */
   type: 'account_transfer';
 
-[k: string]: unknown
+  [k: string]: unknown;
 }
 
 export namespace AccountTransfer {
@@ -332,7 +335,7 @@ export interface AccountTransferCreateParams {
    */
   require_approval?: boolean;
 
-[k: string]: unknown
+  [k: string]: unknown;
 }
 
 export interface AccountTransferListParams extends PageParams {
@@ -385,6 +388,6 @@ export declare namespace AccountTransfers {
     type AccountTransfer as AccountTransfer,
     type AccountTransfersPage as AccountTransfersPage,
     type AccountTransferCreateParams as AccountTransferCreateParams,
-    type AccountTransferListParams as AccountTransferListParams
+    type AccountTransferListParams as AccountTransferListParams,
   };
 }

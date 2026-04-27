@@ -32,7 +32,11 @@ export class RealTimeDecisions extends APIResource {
    *   );
    * ```
    */
-  action(realTimeDecisionID: string, body: RealTimeDecisionActionParams, options?: RequestOptions): APIPromise<RealTimeDecision> {
+  action(
+    realTimeDecisionID: string,
+    body: RealTimeDecisionActionParams,
+    options?: RequestOptions,
+  ): APIPromise<RealTimeDecision> {
     return this._client.post(path`/real_time_decisions/${realTimeDecisionID}/action`, { body, ...options });
   }
 }
@@ -82,7 +86,13 @@ export interface RealTimeDecision {
    * - `digital_wallet_authentication_requested` - A card is being loaded into a
    *   digital wallet and requires cardholder authentication.
    */
-  category: 'card_authorization_requested' | 'card_balance_inquiry_requested' | 'card_authentication_requested' | 'card_authentication_challenge_requested' | 'digital_wallet_token_requested' | 'digital_wallet_authentication_requested';
+  category:
+    | 'card_authorization_requested'
+    | 'card_balance_inquiry_requested'
+    | 'card_authentication_requested'
+    | 'card_authentication_challenge_requested'
+    | 'digital_wallet_token_requested'
+    | 'digital_wallet_authentication_requested';
 
   /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -263,7 +273,15 @@ export namespace RealTimeDecision {
      *   cardholder verification.
      * - `billing_agreement` - The authentication is for a billing agreement.
      */
-    requestor_authentication_indicator: 'payment_transaction' | 'recurring_transaction' | 'installment_transaction' | 'add_card' | 'maintain_card' | 'emv_token_cardholder_verification' | 'billing_agreement' | null;
+    requestor_authentication_indicator:
+      | 'payment_transaction'
+      | 'recurring_transaction'
+      | 'installment_transaction'
+      | 'add_card'
+      | 'maintain_card'
+      | 'emv_token_cardholder_verification'
+      | 'billing_agreement'
+      | null;
 
     /**
      * Indicates whether a challenge is requested for this transaction.
@@ -284,7 +302,17 @@ export namespace RealTimeDecision {
      * - `challenge_requested_whitelist_prompt_requested_if_challenge_required` -
      *   Challenge requested, whitelist prompt requested if challenge required.
      */
-    requestor_challenge_indicator: 'no_preference' | 'no_challenge_requested' | 'challenge_requested_3ds_requestor_preference' | 'challenge_requested_mandate' | 'no_challenge_requested_transactional_risk_analysis_already_performed' | 'no_challenge_requested_data_share_only' | 'no_challenge_requested_strong_consumer_authentication_already_performed' | 'no_challenge_requested_utilize_whitelist_exemption_if_no_challenge_required' | 'challenge_requested_whitelist_prompt_requested_if_challenge_required' | null;
+    requestor_challenge_indicator:
+      | 'no_preference'
+      | 'no_challenge_requested'
+      | 'challenge_requested_3ds_requestor_preference'
+      | 'challenge_requested_mandate'
+      | 'no_challenge_requested_transactional_risk_analysis_already_performed'
+      | 'no_challenge_requested_data_share_only'
+      | 'no_challenge_requested_strong_consumer_authentication_already_performed'
+      | 'no_challenge_requested_utilize_whitelist_exemption_if_no_challenge_required'
+      | 'challenge_requested_whitelist_prompt_requested_if_challenge_required'
+      | null;
 
     /**
      * The name of the 3DS requestor.
@@ -431,7 +459,26 @@ export namespace RealTimeDecision {
          * - `fido_credential_registration` - FIDO credential registration.
          * - `decoupled_authentication_fallback` - Decoupled authentication fallback.
          */
-        indicator: 'recurring_transaction' | 'installment_transaction' | 'add_card' | 'maintain_card_information' | 'account_verification' | 'split_delayed_shipment' | 'top_up' | 'mail_order' | 'telephone_order' | 'whitelist_status_check' | 'other_payment' | 'billing_agreement' | 'device_binding_status_check' | 'card_security_code_status_check' | 'delayed_shipment' | 'split_payment' | 'fido_credential_deletion' | 'fido_credential_registration' | 'decoupled_authentication_fallback';
+        indicator:
+          | 'recurring_transaction'
+          | 'installment_transaction'
+          | 'add_card'
+          | 'maintain_card_information'
+          | 'account_verification'
+          | 'split_delayed_shipment'
+          | 'top_up'
+          | 'mail_order'
+          | 'telephone_order'
+          | 'whitelist_status_check'
+          | 'other_payment'
+          | 'billing_agreement'
+          | 'device_binding_status_check'
+          | 'card_security_code_status_check'
+          | 'delayed_shipment'
+          | 'split_payment'
+          | 'fido_credential_deletion'
+          | 'fido_credential_registration'
+          | 'decoupled_authentication_fallback';
       }
     }
 
@@ -463,8 +510,7 @@ export namespace RealTimeDecision {
       /**
        * Fields specific to non-payment authentication attempts.
        */
-      export interface NonPayment {
-      }
+      export interface NonPayment {}
 
       /**
        * Fields specific to payment authentication attempts.
@@ -496,7 +542,13 @@ export namespace RealTimeDecision {
          * - `quasi_cash_transaction` - Quasi-cash transaction.
          * - `prepaid_activation_and_load` - Prepaid activation and load.
          */
-        transaction_type: 'goods_service_purchase' | 'check_acceptance' | 'account_funding' | 'quasi_cash_transaction' | 'prepaid_activation_and_load' | null;
+        transaction_type:
+          | 'goods_service_purchase'
+          | 'check_acceptance'
+          | 'account_funding'
+          | 'quasi_cash_transaction'
+          | 'prepaid_activation_and_load'
+          | null;
       }
     }
   }
@@ -701,7 +753,17 @@ export namespace RealTimeDecision {
      *   of an account associated with a card.
      * - `unknown` - The processing category is unknown.
      */
-    processing_category: 'account_funding' | 'automatic_fuel_dispenser' | 'bill_payment' | 'original_credit' | 'purchase' | 'quasi_cash' | 'refund' | 'cash_disbursement' | 'balance_inquiry' | 'unknown';
+    processing_category:
+      | 'account_funding'
+      | 'automatic_fuel_dispenser'
+      | 'bill_payment'
+      | 'original_credit'
+      | 'purchase'
+      | 'quasi_cash'
+      | 'refund'
+      | 'cash_disbursement'
+      | 'balance_inquiry'
+      | 'unknown';
 
     /**
      * Fields specific to the type of request, such as an incremental authorization.
@@ -737,7 +799,7 @@ export namespace RealTimeDecision {
      */
     verification: CardAuthorization.Verification;
 
-  [k: string]: unknown
+    [k: string]: unknown;
   }
 
   export namespace CardAuthorization {
@@ -1013,7 +1075,13 @@ export namespace RealTimeDecision {
        * - `other` - The transaction was declined for another reason. The merchant may
        *   attempt to process the transaction again. This should be used sparingly.
        */
-      reason: 'insufficient_funds' | 'transaction_never_allowed' | 'exceeds_approval_limit' | 'card_temporarily_disabled' | 'suspected_fraud' | 'other';
+      reason:
+        | 'insufficient_funds'
+        | 'transaction_never_allowed'
+        | 'exceeds_approval_limit'
+        | 'card_temporarily_disabled'
+        | 'suspected_fraud'
+        | 'other';
     }
 
     /**
@@ -1043,8 +1111,7 @@ export namespace RealTimeDecision {
       /**
        * Fields specific to the `pulse` network.
        */
-      export interface Pulse {
-      }
+      export interface Pulse {}
 
       /**
        * Fields specific to the `visa` network.
@@ -1085,7 +1152,16 @@ export namespace RealTimeDecision {
          * - `non_secure_transaction` - Non-secure transaction: Use to identify an
          *   electronic commerce transaction that has no data protection.
          */
-        electronic_commerce_indicator: 'mail_phone_order' | 'recurring' | 'installment' | 'unknown_mail_phone_order' | 'secure_electronic_commerce' | 'non_authenticated_security_transaction_at_3ds_capable_merchant' | 'non_authenticated_security_transaction' | 'non_secure_transaction' | null;
+        electronic_commerce_indicator:
+          | 'mail_phone_order'
+          | 'recurring'
+          | 'installment'
+          | 'unknown_mail_phone_order'
+          | 'secure_electronic_commerce'
+          | 'non_authenticated_security_transaction_at_3ds_capable_merchant'
+          | 'non_authenticated_security_transaction'
+          | 'non_secure_transaction'
+          | null;
 
         /**
          * The method used to enter the cardholder's primary account number and card
@@ -1105,7 +1181,18 @@ export namespace RealTimeDecision {
          * - `integrated_circuit_card_no_cvv` - Contact chip card, without card
          *   verification value
          */
-        point_of_service_entry_mode: 'unknown' | 'manual' | 'magnetic_stripe_no_cvv' | 'optical_code' | 'integrated_circuit_card' | 'contactless' | 'credential_on_file' | 'magnetic_stripe' | 'contactless_magnetic_stripe' | 'integrated_circuit_card_no_cvv' | null;
+        point_of_service_entry_mode:
+          | 'unknown'
+          | 'manual'
+          | 'magnetic_stripe_no_cvv'
+          | 'optical_code'
+          | 'integrated_circuit_card'
+          | 'contactless'
+          | 'credential_on_file'
+          | 'magnetic_stripe'
+          | 'contactless_magnetic_stripe'
+          | 'integrated_circuit_card_no_cvv'
+          | null;
 
         /**
          * Only present when `actioner: network`. Describes why a card authorization was
@@ -1131,7 +1218,16 @@ export namespace RealTimeDecision {
          *   such as card testing.
          * - `other` - An unspecific reason for stand-in processing.
          */
-        stand_in_processing_reason: 'issuer_error' | 'invalid_physical_card' | 'invalid_cryptogram' | 'invalid_cardholder_authentication_verification_value' | 'internal_visa_error' | 'merchant_transaction_advisory_service_authentication_required' | 'payment_fraud_disruption_acquirer_block' | 'other' | null;
+        stand_in_processing_reason:
+          | 'issuer_error'
+          | 'invalid_physical_card'
+          | 'invalid_cryptogram'
+          | 'invalid_cardholder_authentication_verification_value'
+          | 'internal_visa_error'
+          | 'merchant_transaction_advisory_service_authentication_required'
+          | 'payment_fraud_disruption_acquirer_block'
+          | 'other'
+          | null;
 
         /**
          * The capability of the terminal being used to read the card. Shows whether a
@@ -1155,7 +1251,16 @@ export namespace RealTimeDecision {
          *   capability.
          * - `no_capability` - The terminal has no card reading capability.
          */
-        terminal_entry_capability: 'unknown' | 'terminal_not_used' | 'magnetic_stripe' | 'barcode' | 'optical_character_recognition' | 'chip_or_contactless' | 'contactless_only' | 'no_capability' | null;
+        terminal_entry_capability:
+          | 'unknown'
+          | 'terminal_not_used'
+          | 'magnetic_stripe'
+          | 'barcode'
+          | 'optical_character_recognition'
+          | 'chip_or_contactless'
+          | 'contactless_only'
+          | 'no_capability'
+          | null;
       }
     }
 
@@ -1234,8 +1339,7 @@ export namespace RealTimeDecision {
       /**
        * Fields specific to the category `initial_authorization`.
        */
-      export interface InitialAuthorization {
-      }
+      export interface InitialAuthorization {}
     }
 
     /**
@@ -1317,7 +1421,13 @@ export namespace RealTimeDecision {
          * - `postal_code_match_address_not_checked` - Postal code matches, but the street
          *   address was not verified. (deprecated)
          */
-        result: 'not_checked' | 'postal_code_match_address_no_match' | 'postal_code_no_match_address_match' | 'match' | 'no_match' | 'postal_code_match_address_not_checked';
+        result:
+          | 'not_checked'
+          | 'postal_code_match_address_no_match'
+          | 'postal_code_no_match_address_match'
+          | 'match'
+          | 'no_match'
+          | 'postal_code_match_address_not_checked';
       }
 
       /**
@@ -1461,7 +1571,7 @@ export namespace RealTimeDecision {
      */
     verification: CardBalanceInquiry.Verification;
 
-  [k: string]: unknown
+    [k: string]: unknown;
   }
 
   export namespace CardBalanceInquiry {
@@ -1743,8 +1853,7 @@ export namespace RealTimeDecision {
       /**
        * Fields specific to the `pulse` network.
        */
-      export interface Pulse {
-      }
+      export interface Pulse {}
 
       /**
        * Fields specific to the `visa` network.
@@ -1785,7 +1894,16 @@ export namespace RealTimeDecision {
          * - `non_secure_transaction` - Non-secure transaction: Use to identify an
          *   electronic commerce transaction that has no data protection.
          */
-        electronic_commerce_indicator: 'mail_phone_order' | 'recurring' | 'installment' | 'unknown_mail_phone_order' | 'secure_electronic_commerce' | 'non_authenticated_security_transaction_at_3ds_capable_merchant' | 'non_authenticated_security_transaction' | 'non_secure_transaction' | null;
+        electronic_commerce_indicator:
+          | 'mail_phone_order'
+          | 'recurring'
+          | 'installment'
+          | 'unknown_mail_phone_order'
+          | 'secure_electronic_commerce'
+          | 'non_authenticated_security_transaction_at_3ds_capable_merchant'
+          | 'non_authenticated_security_transaction'
+          | 'non_secure_transaction'
+          | null;
 
         /**
          * The method used to enter the cardholder's primary account number and card
@@ -1805,7 +1923,18 @@ export namespace RealTimeDecision {
          * - `integrated_circuit_card_no_cvv` - Contact chip card, without card
          *   verification value
          */
-        point_of_service_entry_mode: 'unknown' | 'manual' | 'magnetic_stripe_no_cvv' | 'optical_code' | 'integrated_circuit_card' | 'contactless' | 'credential_on_file' | 'magnetic_stripe' | 'contactless_magnetic_stripe' | 'integrated_circuit_card_no_cvv' | null;
+        point_of_service_entry_mode:
+          | 'unknown'
+          | 'manual'
+          | 'magnetic_stripe_no_cvv'
+          | 'optical_code'
+          | 'integrated_circuit_card'
+          | 'contactless'
+          | 'credential_on_file'
+          | 'magnetic_stripe'
+          | 'contactless_magnetic_stripe'
+          | 'integrated_circuit_card_no_cvv'
+          | null;
 
         /**
          * Only present when `actioner: network`. Describes why a card authorization was
@@ -1831,7 +1960,16 @@ export namespace RealTimeDecision {
          *   such as card testing.
          * - `other` - An unspecific reason for stand-in processing.
          */
-        stand_in_processing_reason: 'issuer_error' | 'invalid_physical_card' | 'invalid_cryptogram' | 'invalid_cardholder_authentication_verification_value' | 'internal_visa_error' | 'merchant_transaction_advisory_service_authentication_required' | 'payment_fraud_disruption_acquirer_block' | 'other' | null;
+        stand_in_processing_reason:
+          | 'issuer_error'
+          | 'invalid_physical_card'
+          | 'invalid_cryptogram'
+          | 'invalid_cardholder_authentication_verification_value'
+          | 'internal_visa_error'
+          | 'merchant_transaction_advisory_service_authentication_required'
+          | 'payment_fraud_disruption_acquirer_block'
+          | 'other'
+          | null;
 
         /**
          * The capability of the terminal being used to read the card. Shows whether a
@@ -1855,7 +1993,16 @@ export namespace RealTimeDecision {
          *   capability.
          * - `no_capability` - The terminal has no card reading capability.
          */
-        terminal_entry_capability: 'unknown' | 'terminal_not_used' | 'magnetic_stripe' | 'barcode' | 'optical_character_recognition' | 'chip_or_contactless' | 'contactless_only' | 'no_capability' | null;
+        terminal_entry_capability:
+          | 'unknown'
+          | 'terminal_not_used'
+          | 'magnetic_stripe'
+          | 'barcode'
+          | 'optical_character_recognition'
+          | 'chip_or_contactless'
+          | 'contactless_only'
+          | 'no_capability'
+          | null;
       }
     }
 
@@ -1968,7 +2115,13 @@ export namespace RealTimeDecision {
          * - `postal_code_match_address_not_checked` - Postal code matches, but the street
          *   address was not verified. (deprecated)
          */
-        result: 'not_checked' | 'postal_code_match_address_no_match' | 'postal_code_no_match_address_match' | 'match' | 'no_match' | 'postal_code_match_address_not_checked';
+        result:
+          | 'not_checked'
+          | 'postal_code_match_address_no_match'
+          | 'postal_code_no_match_address_match'
+          | 'match'
+          | 'no_match'
+          | 'postal_code_match_address_not_checked';
       }
 
       /**
@@ -2218,7 +2371,7 @@ export namespace RealTimeDecisionActionParams {
      */
     decline?: CardAuthorization.Decline;
 
-  [k: string]: unknown
+    [k: string]: unknown;
   }
 
   export namespace CardAuthorization {
@@ -2302,7 +2455,13 @@ export namespace RealTimeDecisionActionParams {
        * - `other` - The transaction was declined for another reason. The merchant may
        *   attempt to process the transaction again. This should be used sparingly.
        */
-      reason: 'insufficient_funds' | 'transaction_never_allowed' | 'exceeds_approval_limit' | 'card_temporarily_disabled' | 'suspected_fraud' | 'other';
+      reason:
+        | 'insufficient_funds'
+        | 'transaction_never_allowed'
+        | 'exceeds_approval_limit'
+        | 'card_temporarily_disabled'
+        | 'suspected_fraud'
+        | 'other';
     }
   }
 
@@ -2434,6 +2593,6 @@ export namespace RealTimeDecisionActionParams {
 export declare namespace RealTimeDecisions {
   export {
     type RealTimeDecision as RealTimeDecision,
-    type RealTimeDecisionActionParams as RealTimeDecisionActionParams
+    type RealTimeDecisionActionParams as RealTimeDecisionActionParams,
   };
 }
