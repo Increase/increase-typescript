@@ -1,6 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../core/resource';
+import * as AccountRevenuePaymentsAPI from './account-revenue-payments';
+import { AccountRevenuePaymentCreateParams, AccountRevenuePayments } from './account-revenue-payments';
 import * as AccountStatementsAPI from './account-statements';
 import { AccountStatementCreateParams, AccountStatements } from './account-statements';
 import * as ACHTransfersAPI from './ach-transfers';
@@ -105,6 +107,8 @@ export class Simulations extends APIResource {
   interestPayments: InterestPaymentsAPI.InterestPayments = new InterestPaymentsAPI.InterestPayments(
     this._client,
   );
+  accountRevenuePayments: AccountRevenuePaymentsAPI.AccountRevenuePayments =
+    new AccountRevenuePaymentsAPI.AccountRevenuePayments(this._client);
   cardAuthorizations: CardAuthorizationsAPI.CardAuthorizations = new CardAuthorizationsAPI.CardAuthorizations(
     this._client,
   );
@@ -162,6 +166,7 @@ export class Simulations extends APIResource {
 }
 
 Simulations.InterestPayments = InterestPayments;
+Simulations.AccountRevenuePayments = AccountRevenuePayments;
 Simulations.CardAuthorizations = CardAuthorizations;
 Simulations.CardBalanceInquiries = CardBalanceInquiries;
 Simulations.CardAuthorizationExpirations = CardAuthorizationExpirations;
@@ -199,6 +204,11 @@ export declare namespace Simulations {
   export {
     InterestPayments as InterestPayments,
     type InterestPaymentCreateParams as InterestPaymentCreateParams,
+  };
+
+  export {
+    AccountRevenuePayments as AccountRevenuePayments,
+    type AccountRevenuePaymentCreateParams as AccountRevenuePaymentCreateParams,
   };
 
   export {
