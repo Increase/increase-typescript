@@ -6,6 +6,7 @@ export {
   type ACHTransferReturnParams,
   type ACHTransferSettleParams,
 } from './ach-transfers';
+export { AccountRevenuePayments, type AccountRevenuePaymentCreateParams } from './account-revenue-payments';
 export { AccountStatements, type AccountStatementCreateParams } from './account-statements';
 export {
   CardAuthentications,
