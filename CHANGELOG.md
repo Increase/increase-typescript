@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.545.0 (2026-04-28)
+
+Full Changelog: [v0.544.0...v0.545.0](https://github.com/Increase/increase-typescript/compare/v0.544.0...v0.545.0)
+
+### Features
+
+* **api:** api update ([077b4ae](https://github.com/Increase/increase-typescript/commit/077b4ae7e6d85b6e60e17984ddf3882b8424ac4e))
+
+
+### Chores
+
+* **format:** run eslint and prettier separately ([848205a](https://github.com/Increase/increase-typescript/commit/848205ab4471f0ee12893e7e530d8aaff7a15a3c))
+
 ## 0.544.0 (2026-04-28)
 
 Full Changelog: [v0.543.0...v0.544.0](https://github.com/Increase/increase-typescript/compare/v0.543.0...v0.544.0)
