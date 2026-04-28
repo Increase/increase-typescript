@@ -94,7 +94,7 @@ export interface InboundMailItem {
   /**
    * The identifier for the Lockbox Address that received this mail item.
    */
-  lockbox_address_id: string | null;
+  lockbox_address_id: string;
 
   /**
    * The identifier for the Lockbox Recipient that received this mail item. For mail
