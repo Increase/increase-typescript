@@ -433,7 +433,8 @@ export namespace Entity {
        * The category of the legal identifier.
        *
        * - `us_employer_identification_number` - The Employer Identification Number (EIN)
-       *   for the company. The EIN is a 9-digit number assigned by the IRS.
+       *   for the company. The EIN is a 9-digit number assigned by the IRS; submit it as
+       *   nine digits with no dashes or other separators.
        * - `other` - A legal identifier issued by a foreign government, like a tax
        *   identification number or registration number.
        */
@@ -1513,7 +1514,9 @@ export namespace EntityCreateParams {
 
           /**
            * An identification number that can be used to verify the individual's identity,
-           * such as a social security number.
+           * such as a social security number. For Social Security Numbers and Individual
+           * Taxpayer Identification Numbers, submit nine digits with no dashes or other
+           * separators.
            */
           number: string;
 
@@ -1629,7 +1632,8 @@ export namespace EntityCreateParams {
      */
     export interface LegalIdentifier {
       /**
-       * The legal identifier.
+       * The legal identifier. For US Employer Identification Numbers, submit nine digits
+       * with no dashes or other separators.
        */
       value: string;
 
@@ -1638,7 +1642,8 @@ export namespace EntityCreateParams {
        * `us_employer_identification_number`.
        *
        * - `us_employer_identification_number` - The Employer Identification Number (EIN)
-       *   for the company. The EIN is a 9-digit number assigned by the IRS.
+       *   for the company. The EIN is a 9-digit number assigned by the IRS; submit it as
+       *   nine digits with no dashes or other separators.
        * - `other` - A legal identifier issued by a foreign government, like a tax
        *   identification number or registration number.
        */
@@ -1678,7 +1683,8 @@ export namespace EntityCreateParams {
     name: string;
 
     /**
-     * The Employer Identification Number (EIN) for the government authority.
+     * The Employer Identification Number (EIN) for the government authority. Submit
+     * nine digits with no dashes or other separators.
      */
     tax_identifier: string;
 
@@ -1833,7 +1839,9 @@ export namespace EntityCreateParams {
 
         /**
          * An identification number that can be used to verify the individual's identity,
-         * such as a social security number.
+         * such as a social security number. For Social Security Numbers and Individual
+         * Taxpayer Identification Numbers, submit nine digits with no dashes or other
+         * separators.
          */
         number: string;
 
@@ -2041,7 +2049,9 @@ export namespace EntityCreateParams {
 
       /**
        * An identification number that can be used to verify the individual's identity,
-       * such as a social security number.
+       * such as a social security number. For Social Security Numbers and Individual
+       * Taxpayer Identification Numbers, submit nine digits with no dashes or other
+       * separators.
        */
       number: string;
 
@@ -2266,8 +2276,8 @@ export namespace EntityCreateParams {
     grantor?: Trust.Grantor;
 
     /**
-     * The Employer Identification Number (EIN) for the trust. Required if `category`
-     * is equal to `irrevocable`.
+     * The Employer Identification Number (EIN) for the trust. Submit nine digits with
+     * no dashes or other separators. Required if `category` is equal to `irrevocable`.
      */
     tax_identifier?: string;
   }
@@ -2417,7 +2427,9 @@ export namespace EntityCreateParams {
 
           /**
            * An identification number that can be used to verify the individual's identity,
-           * such as a social security number.
+           * such as a social security number. For Social Security Numbers and Individual
+           * Taxpayer Identification Numbers, submit nine digits with no dashes or other
+           * separators.
            */
           number: string;
 
@@ -2622,7 +2634,9 @@ export namespace EntityCreateParams {
 
         /**
          * An identification number that can be used to verify the individual's identity,
-         * such as a social security number.
+         * such as a social security number. For Social Security Numbers and Individual
+         * Taxpayer Identification Numbers, submit nine digits with no dashes or other
+         * separators.
          */
         number: string;
 
@@ -2875,7 +2889,8 @@ export namespace EntityUpdateParams {
      */
     export interface LegalIdentifier {
       /**
-       * The identifier of the legal identifier.
+       * The identifier of the legal identifier. For US Employer Identification Numbers,
+       * submit nine digits with no dashes or other separators.
        */
       value: string;
 
@@ -2883,7 +2898,8 @@ export namespace EntityUpdateParams {
        * The category of the legal identifier.
        *
        * - `us_employer_identification_number` - The Employer Identification Number (EIN)
-       *   for the company. The EIN is a 9-digit number assigned by the IRS.
+       *   for the company. The EIN is a 9-digit number assigned by the IRS; submit it as
+       *   nine digits with no dashes or other separators.
        * - `other` - A legal identifier issued by a foreign government, like a tax
        *   identification number or registration number.
        */
@@ -3033,7 +3049,9 @@ export namespace EntityUpdateParams {
 
       /**
        * An identification number that can be used to verify the individual's identity,
-       * such as a social security number.
+       * such as a social security number. For Social Security Numbers and Individual
+       * Taxpayer Identification Numbers, submit nine digits with no dashes or other
+       * separators.
        */
       number: string;
 
