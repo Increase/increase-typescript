@@ -384,7 +384,9 @@ export namespace BeneficialOwnerCreateParams {
 
       /**
        * An identification number that can be used to verify the individual's identity,
-       * such as a social security number.
+       * such as a social security number. For Social Security Numbers and Individual
+       * Taxpayer Identification Numbers, submit nine digits with no dashes or other
+       * separators.
        */
       number: string;
 
@@ -581,7 +583,9 @@ export namespace BeneficialOwnerUpdateParams {
 
     /**
      * An identification number that can be used to verify the individual's identity,
-     * such as a social security number.
+     * such as a social security number. For Social Security Numbers and Individual
+     * Taxpayer Identification Numbers, submit nine digits with no dashes or other
+     * separators.
      */
     number: string;
 
