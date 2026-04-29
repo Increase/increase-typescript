@@ -202,7 +202,6 @@ export namespace EventSubscription {
      *   created.
      * - `digital_wallet_token.updated` - Occurs whenever a Digital Wallet Token is
      *   updated.
-     * - `document.created` - Occurs whenever a Document is created.
      * - `entity.created` - Occurs whenever an Entity is created.
      * - `entity.updated` - Occurs whenever an Entity is updated.
      * - `event_subscription.created` - Occurs whenever an Event Subscription is
@@ -353,7 +352,6 @@ export namespace EventSubscription {
       | 'digital_card_profile.updated'
       | 'digital_wallet_token.created'
       | 'digital_wallet_token.updated'
-      | 'document.created'
       | 'entity.created'
       | 'entity.updated'
       | 'event_subscription.created'
@@ -524,7 +522,6 @@ export namespace EventSubscriptionCreateParams {
      *   created.
      * - `digital_wallet_token.updated` - Occurs whenever a Digital Wallet Token is
      *   updated.
-     * - `document.created` - Occurs whenever a Document is created.
      * - `entity.created` - Occurs whenever an Entity is created.
      * - `entity.updated` - Occurs whenever an Entity is updated.
      * - `event_subscription.created` - Occurs whenever an Event Subscription is
@@ -675,7 +672,6 @@ export namespace EventSubscriptionCreateParams {
       | 'digital_card_profile.updated'
       | 'digital_wallet_token.created'
       | 'digital_wallet_token.updated'
-      | 'document.created'
       | 'entity.created'
       | 'entity.updated'
       | 'event_subscription.created'

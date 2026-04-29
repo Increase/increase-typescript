@@ -138,7 +138,6 @@ export interface Event {
    *   created.
    * - `digital_wallet_token.updated` - Occurs whenever a Digital Wallet Token is
    *   updated.
-   * - `document.created` - Occurs whenever a Document is created.
    * - `entity.created` - Occurs whenever an Entity is created.
    * - `entity.updated` - Occurs whenever an Entity is updated.
    * - `event_subscription.created` - Occurs whenever an Event Subscription is
@@ -289,7 +288,6 @@ export interface Event {
     | 'digital_card_profile.updated'
     | 'digital_wallet_token.created'
     | 'digital_wallet_token.updated'
-    | 'document.created'
     | 'entity.created'
     | 'entity.updated'
     | 'event_subscription.created'
@@ -453,7 +451,6 @@ export interface UnwrapWebhookEvent {
    *   created.
    * - `digital_wallet_token.updated` - Occurs whenever a Digital Wallet Token is
    *   updated.
-   * - `document.created` - Occurs whenever a Document is created.
    * - `entity.created` - Occurs whenever an Entity is created.
    * - `entity.updated` - Occurs whenever an Entity is updated.
    * - `event_subscription.created` - Occurs whenever an Event Subscription is
@@ -604,7 +601,6 @@ export interface UnwrapWebhookEvent {
     | 'digital_card_profile.updated'
     | 'digital_wallet_token.created'
     | 'digital_wallet_token.updated'
-    | 'document.created'
     | 'entity.created'
     | 'entity.updated'
     | 'event_subscription.created'
@@ -746,7 +742,6 @@ export namespace EventListParams {
       | 'digital_card_profile.updated'
       | 'digital_wallet_token.created'
       | 'digital_wallet_token.updated'
-      | 'document.created'
       | 'entity.created'
       | 'entity.updated'
       | 'event_subscription.created'
