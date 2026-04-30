@@ -1167,8 +1167,8 @@ export class Increase {
   pendingTransactions: API.PendingTransactions = new API.PendingTransactions(this);
   declinedTransactions: API.DeclinedTransactions = new API.DeclinedTransactions(this);
   achTransfers: API.ACHTransfers = new API.ACHTransfers(this);
-  achPrenotifications: API.ACHPrenotifications = new API.ACHPrenotifications(this);
   inboundACHTransfers: API.InboundACHTransfers = new API.InboundACHTransfers(this);
+  achPrenotifications: API.ACHPrenotifications = new API.ACHPrenotifications(this);
   wireTransfers: API.WireTransfers = new API.WireTransfers(this);
   inboundWireTransfers: API.InboundWireTransfers = new API.InboundWireTransfers(this);
   wireDrawdownRequests: API.WireDrawdownRequests = new API.WireDrawdownRequests(this);
@@ -1227,8 +1227,8 @@ Increase.Transactions = Transactions;
 Increase.PendingTransactions = PendingTransactions;
 Increase.DeclinedTransactions = DeclinedTransactions;
 Increase.ACHTransfers = ACHTransfers;
-Increase.ACHPrenotifications = ACHPrenotifications;
 Increase.InboundACHTransfers = InboundACHTransfers;
+Increase.ACHPrenotifications = ACHPrenotifications;
 Increase.WireTransfers = WireTransfers;
 Increase.InboundWireTransfers = InboundWireTransfers;
 Increase.WireDrawdownRequests = WireDrawdownRequests;
@@ -1406,14 +1406,6 @@ export declare namespace Increase {
   };
 
   export {
-    ACHPrenotifications as ACHPrenotifications,
-    type ACHPrenotification as ACHPrenotification,
-    type ACHPrenotificationsPage as ACHPrenotificationsPage,
-    type ACHPrenotificationCreateParams as ACHPrenotificationCreateParams,
-    type ACHPrenotificationListParams as ACHPrenotificationListParams,
-  };
-
-  export {
     InboundACHTransfers as InboundACHTransfers,
     type InboundACHTransfer as InboundACHTransfer,
     type InboundACHTransfersPage as InboundACHTransfersPage,
@@ -1421,6 +1413,14 @@ export declare namespace Increase {
     type InboundACHTransferCreateNotificationOfChangeParams as InboundACHTransferCreateNotificationOfChangeParams,
     type InboundACHTransferDeclineParams as InboundACHTransferDeclineParams,
     type InboundACHTransferTransferReturnParams as InboundACHTransferTransferReturnParams,
+  };
+
+  export {
+    ACHPrenotifications as ACHPrenotifications,
+    type ACHPrenotification as ACHPrenotification,
+    type ACHPrenotificationsPage as ACHPrenotificationsPage,
+    type ACHPrenotificationCreateParams as ACHPrenotificationCreateParams,
+    type ACHPrenotificationListParams as ACHPrenotificationListParams,
   };
 
   export {

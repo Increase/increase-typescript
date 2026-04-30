@@ -85,8 +85,8 @@ client.example.list(undefined, { headers: { ... } });
 - `client.pendingTransactions.list()`
 - `client.declinedTransactions.list()`
 - `client.achTransfers.list()`
-- `client.achPrenotifications.list()`
 - `client.inboundACHTransfers.list()`
+- `client.achPrenotifications.list()`
 - `client.wireTransfers.list()`
 - `client.inboundWireTransfers.list()`
 - `client.wireDrawdownRequests.list()`
