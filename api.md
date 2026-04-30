@@ -196,18 +196,6 @@ Methods:
 - <code title="post /ach_transfers/{ach_transfer_id}/approve">client.achTransfers.<a href="./src/resources/ach-transfers.ts">approve</a>(achTransferID) -> ACHTransfer</code>
 - <code title="post /ach_transfers/{ach_transfer_id}/cancel">client.achTransfers.<a href="./src/resources/ach-transfers.ts">cancel</a>(achTransferID) -> ACHTransfer</code>
 
-# ACHPrenotifications
-
-Types:
-
-- <code><a href="./src/resources/ach-prenotifications.ts">ACHPrenotification</a></code>
-
-Methods:
-
-- <code title="post /ach_prenotifications">client.achPrenotifications.<a href="./src/resources/ach-prenotifications.ts">create</a>({ ...params }) -> ACHPrenotification</code>
-- <code title="get /ach_prenotifications/{ach_prenotification_id}">client.achPrenotifications.<a href="./src/resources/ach-prenotifications.ts">retrieve</a>(achPrenotificationID) -> ACHPrenotification</code>
-- <code title="get /ach_prenotifications">client.achPrenotifications.<a href="./src/resources/ach-prenotifications.ts">list</a>({ ...params }) -> ACHPrenotificationsPage</code>
-
 # InboundACHTransfers
 
 Types:
@@ -221,6 +209,18 @@ Methods:
 - <code title="post /inbound_ach_transfers/{inbound_ach_transfer_id}/create_notification_of_change">client.inboundACHTransfers.<a href="./src/resources/inbound-ach-transfers.ts">createNotificationOfChange</a>(inboundACHTransferID, { ...params }) -> InboundACHTransfer</code>
 - <code title="post /inbound_ach_transfers/{inbound_ach_transfer_id}/decline">client.inboundACHTransfers.<a href="./src/resources/inbound-ach-transfers.ts">decline</a>(inboundACHTransferID, { ...params }) -> InboundACHTransfer</code>
 - <code title="post /inbound_ach_transfers/{inbound_ach_transfer_id}/transfer_return">client.inboundACHTransfers.<a href="./src/resources/inbound-ach-transfers.ts">transferReturn</a>(inboundACHTransferID, { ...params }) -> InboundACHTransfer</code>
+
+# ACHPrenotifications
+
+Types:
+
+- <code><a href="./src/resources/ach-prenotifications.ts">ACHPrenotification</a></code>
+
+Methods:
+
+- <code title="post /ach_prenotifications">client.achPrenotifications.<a href="./src/resources/ach-prenotifications.ts">create</a>({ ...params }) -> ACHPrenotification</code>
+- <code title="get /ach_prenotifications/{ach_prenotification_id}">client.achPrenotifications.<a href="./src/resources/ach-prenotifications.ts">retrieve</a>(achPrenotificationID) -> ACHPrenotification</code>
+- <code title="get /ach_prenotifications">client.achPrenotifications.<a href="./src/resources/ach-prenotifications.ts">list</a>({ ...params }) -> ACHPrenotificationsPage</code>
 
 # WireTransfers
 
