@@ -895,6 +895,12 @@ Methods:
 
 - <code title="post /simulations/inbound_mail_items">client.simulations.inboundMailItems.<a href="./src/resources/simulations/inbound-mail-items.ts">create</a>({ ...params }) -> InboundMailItem</code>
 
+## Entities
+
+Methods:
+
+- <code title="post /simulations/entities/{entity_id}/validation">client.simulations.entities.<a href="./src/resources/simulations/entities.ts">validation</a>(entityID, { ...params }) -> Entity</code>
+
 ## EntityOnboardingSessions
 
 Methods:

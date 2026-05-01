@@ -57,6 +57,8 @@ import {
   DigitalWalletTokenRequestCreateResponse,
   DigitalWalletTokenRequests,
 } from './digital-wallet-token-requests';
+import * as EntitiesAPI from './entities';
+import { Entities, EntityValidationParams } from './entities';
 import * as EntityOnboardingSessionsAPI from './entity-onboarding-sessions';
 import { EntityOnboardingSessions } from './entity-onboarding-sessions';
 import * as ExportsAPI from './exports';
@@ -155,6 +157,7 @@ export class Simulations extends APIResource {
   inboundMailItems: InboundMailItemsAPI.InboundMailItems = new InboundMailItemsAPI.InboundMailItems(
     this._client,
   );
+  entities: EntitiesAPI.Entities = new EntitiesAPI.Entities(this._client);
   entityOnboardingSessions: EntityOnboardingSessionsAPI.EntityOnboardingSessions =
     new EntityOnboardingSessionsAPI.EntityOnboardingSessions(this._client);
   programs: ProgramsAPI.Programs = new ProgramsAPI.Programs(this._client);
@@ -194,6 +197,7 @@ Simulations.InboundRealTimePaymentsTransfers = InboundRealTimePaymentsTransfers;
 Simulations.InboundFednowTransfers = InboundFednowTransfers;
 Simulations.CheckDeposits = CheckDeposits;
 Simulations.InboundMailItems = InboundMailItems;
+Simulations.Entities = Entities;
 Simulations.EntityOnboardingSessions = EntityOnboardingSessions;
 Simulations.Programs = Programs;
 Simulations.AccountStatements = AccountStatements;
@@ -329,6 +333,8 @@ export declare namespace Simulations {
     InboundMailItems as InboundMailItems,
     type InboundMailItemCreateParams as InboundMailItemCreateParams,
   };
+
+  export { Entities as Entities, type EntityValidationParams as EntityValidationParams };
 
   export { EntityOnboardingSessions as EntityOnboardingSessions };
 
