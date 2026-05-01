@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.551.0 (2026-05-01)
+
+Full Changelog: [v0.550.0...v0.551.0](https://github.com/Increase/increase-typescript/compare/v0.550.0...v0.551.0)
+
+### Features
+
+* **api:** api update ([161017e](https://github.com/Increase/increase-typescript/commit/161017ef9a5084c3afefba690f89fad7fd9ebeac))
+
 ## 0.550.0 (2026-05-01)
 
 Full Changelog: [v0.549.0...v0.550.0](https://github.com/Increase/increase-typescript/compare/v0.549.0...v0.550.0)
