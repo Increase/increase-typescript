@@ -58,7 +58,7 @@ import {
   DigitalWalletTokenRequests,
 } from './digital-wallet-token-requests';
 import * as EntitiesAPI from './entities';
-import { Entities, EntityValidationParams } from './entities';
+import { Entities, EntityUpdateValidationParams } from './entities';
 import * as EntityOnboardingSessionsAPI from './entity-onboarding-sessions';
 import { EntityOnboardingSessions } from './entity-onboarding-sessions';
 import * as ExportsAPI from './exports';
@@ -334,7 +334,7 @@ export declare namespace Simulations {
     type InboundMailItemCreateParams as InboundMailItemCreateParams,
   };
 
-  export { Entities as Entities, type EntityValidationParams as EntityValidationParams };
+  export { Entities as Entities, type EntityUpdateValidationParams as EntityUpdateValidationParams };
 
   export { EntityOnboardingSessions as EntityOnboardingSessions };
 

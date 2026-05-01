@@ -899,7 +899,7 @@ Methods:
 
 Methods:
 
-- <code title="post /simulations/entities/{entity_id}/validation">client.simulations.entities.<a href="./src/resources/simulations/entities.ts">validation</a>(entityID, { ...params }) -> Entity</code>
+- <code title="post /simulations/entities/{entity_id}/update_validation">client.simulations.entities.<a href="./src/resources/simulations/entities.ts">updateValidation</a>(entityID, { ...params }) -> Entity</code>
 
 ## EntityOnboardingSessions
 
