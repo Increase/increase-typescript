@@ -8,10 +8,9 @@ const client = new Increase({
 });
 
 describe('resource entities', () => {
-  test('validation: only required params', async () => {
-    const responsePromise = client.simulations.entities.validation('entity_n8y8tnk2p9339ti393yi', {
+  test('updateValidation: only required params', async () => {
+    const responsePromise = client.simulations.entities.updateValidation('entity_n8y8tnk2p9339ti393yi', {
       issues: [{ category: 'entity_tax_identifier' }],
-      status: 'invalid',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -22,10 +21,9 @@ describe('resource entities', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('validation: required and optional params', async () => {
-    const response = await client.simulations.entities.validation('entity_n8y8tnk2p9339ti393yi', {
+  test('updateValidation: required and optional params', async () => {
+    const response = await client.simulations.entities.updateValidation('entity_n8y8tnk2p9339ti393yi', {
       issues: [{ category: 'entity_tax_identifier' }],
-      status: 'invalid',
     });
   });
 });
