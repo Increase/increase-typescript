@@ -8,49 +8,40 @@ import { path } from '../../internal/utils/path';
 
 export class Entities extends APIResource {
   /**
-   * Set the status for an
+   * Simulate updates to an
    * [Entity's validation](/documentation/api/entities#entity-object.validation). In
    * production, Know Your Customer validations
-   * [run automatically](/documentation/entity-validation#entity-validation). While
-   * developing, it can be helpful to override the behavior in Sandbox.
+   * [run automatically](/documentation/entity-validation#entity-validation) for
+   * eligible programs. While developing, use this API to simulate issues with
+   * information submissions.
    *
    * @example
    * ```ts
-   * const entity = await client.simulations.entities.validation(
-   *   'entity_n8y8tnk2p9339ti393yi',
-   *   {
-   *     issues: [{ category: 'entity_tax_identifier' }],
-   *     status: 'invalid',
-   *   },
-   * );
+   * const entity =
+   *   await client.simulations.entities.updateValidation(
+   *     'entity_n8y8tnk2p9339ti393yi',
+   *     { issues: [{ category: 'entity_tax_identifier' }] },
+   *   );
    * ```
    */
-  validation(
+  updateValidation(
     entityID: string,
-    body: EntityValidationParams,
+    body: EntityUpdateValidationParams,
     options?: RequestOptions,
   ): APIPromise<EntitiesAPI.Entity> {
-    return this._client.post(path`/simulations/entities/${entityID}/validation`, { body, ...options });
+    return this._client.post(path`/simulations/entities/${entityID}/update_validation`, { body, ...options });
   }
 }
 
-export interface EntityValidationParams {
+export interface EntityUpdateValidationParams {
   /**
-   * The validation issues to attach. Only allowed when `status` is `invalid`.
+   * The validation issues to attach. If no issues are provided, the validation
+   * status will be set to `valid`.
    */
-  issues: Array<EntityValidationParams.Issue>;
-
-  /**
-   * The validation status to set on the Entity.
-   *
-   * - `valid` - The submitted data is valid.
-   * - `invalid` - Additional information is required to validate the data.
-   * - `pending` - The submitted data is being validated.
-   */
-  status: 'valid' | 'invalid' | 'pending';
+  issues: Array<EntityUpdateValidationParams.Issue>;
 }
 
-export namespace EntityValidationParams {
+export namespace EntityUpdateValidationParams {
   export interface Issue {
     /**
      * The type of issue.
@@ -77,5 +68,5 @@ export namespace EntityValidationParams {
 }
 
 export declare namespace Entities {
-  export { type EntityValidationParams as EntityValidationParams };
+  export { type EntityUpdateValidationParams as EntityUpdateValidationParams };
 }
