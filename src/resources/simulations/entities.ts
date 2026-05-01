@@ -36,12 +36,12 @@ export class Entities extends APIResource {
 
 export interface EntityValidationParams {
   /**
-   * The issues to attach to the new managed compliance validation.
+   * The validation issues to attach. Only allowed when `status` is `invalid`.
    */
   issues: Array<EntityValidationParams.Issue>;
 
   /**
-   * The status to set on the new managed compliance validation.
+   * The validation status to set on the Entity.
    *
    * - `valid` - The submitted data is valid.
    * - `invalid` - Additional information is required to validate the data.
@@ -53,7 +53,7 @@ export interface EntityValidationParams {
 export namespace EntityValidationParams {
   export interface Issue {
     /**
-     * The category of the issue.
+     * The type of issue.
      *
      * - `entity_tax_identifier` - The entity's tax identifier could not be validated.
      *   Update the tax ID with the
