@@ -1352,7 +1352,8 @@ export namespace EntityCreateParams {
     industry_code?: string;
 
     /**
-     * The website of the corporation.
+     * A website for the business. Not every program requires a website for submitted
+     * Entities.
      */
     website?: string;
 
@@ -1689,7 +1690,8 @@ export namespace EntityCreateParams {
     tax_identifier: string;
 
     /**
-     * The website of the government authority.
+     * A website for the government authority. Not every program requires a website for
+     * submitted Entities.
      */
     website?: string;
   }
@@ -2841,6 +2843,12 @@ export namespace EntityUpdateParams {
      * The legal name of the corporation.
      */
     name?: string;
+
+    /**
+     * A website for the business. Not every program requires a website for submitted
+     * Entities.
+     */
+    website?: string;
 
     [k: string]: unknown;
   }
