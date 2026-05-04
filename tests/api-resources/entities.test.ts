@@ -49,7 +49,7 @@ describe('resource entities', () => {
                 drivers_license: {
                   expiration_date: '2019-12-27',
                   file_id: 'file_id',
-                  state: 'x',
+                  state: 'xx',
                   back_file_id: 'back_file_id',
                 },
                 other: {
@@ -85,7 +85,7 @@ describe('resource entities', () => {
         address: {
           city: 'x',
           line1: 'x',
-          state: 'x',
+          state: 'xx',
           zip: 'x',
           line2: 'x',
         },
@@ -113,7 +113,7 @@ describe('resource entities', () => {
               drivers_license: {
                 expiration_date: '2019-12-27',
                 file_id: 'file_id',
-                state: 'x',
+                state: 'xx',
                 back_file_id: 'back_file_id',
               },
               other: {
@@ -150,7 +150,7 @@ describe('resource entities', () => {
           drivers_license: {
             expiration_date: '2019-12-27',
             file_id: 'file_id',
-            state: 'x',
+            state: 'xx',
             back_file_id: 'back_file_id',
           },
           other: {
@@ -183,7 +183,7 @@ describe('resource entities', () => {
         address: {
           city: 'x',
           line1: 'x',
-          state: 'x',
+          state: 'xx',
           zip: 'x',
           line2: 'x',
         },
@@ -208,7 +208,7 @@ describe('resource entities', () => {
                 drivers_license: {
                   expiration_date: '2019-12-27',
                   file_id: 'file_id',
-                  state: 'x',
+                  state: 'xx',
                   back_file_id: 'back_file_id',
                 },
                 other: {
@@ -247,7 +247,7 @@ describe('resource entities', () => {
             drivers_license: {
               expiration_date: '2019-12-27',
               file_id: 'file_id',
-              state: 'x',
+              state: 'xx',
               back_file_id: 'back_file_id',
             },
             other: {
