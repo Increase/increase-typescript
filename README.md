@@ -109,7 +109,7 @@ a subclass of `APIError` will be thrown:
 
 <!-- prettier-ignore -->
 ```ts
-const account = await client.accounts.create({ name: 'New Account!' }).catch(async (err) => {
+const account = await client.accounts.create({ name: 'Oops' }).catch(async (err) => {
   if (err instanceof Increase.APIError) {
     console.log(err.status); // 400
     console.log(err.name); // BadRequestError
