@@ -17,7 +17,7 @@ export class CardPushTransfers extends APIResource {
    *     business_application_identifier: 'funds_disbursement',
    *     card_token_id:
    *       'outbound_card_token_zlt0ml6youq3q7vcdlg0',
-   *     merchant_category_code: '1234',
+   *     merchant_category_code: '5734',
    *     merchant_city_name: 'New York',
    *     merchant_name: 'Acme Corp',
    *     merchant_name_prefix: 'Acme',
