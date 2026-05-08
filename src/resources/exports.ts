@@ -109,7 +109,7 @@ export interface Export {
    *   a given date and optional Account.
    * - `transaction_csv` - Export a CSV of all transactions for a given time range.
    * - `balance_csv` - Export a CSV of account balances for the dates in a given
-   *   range.
+   *   range. (deprecated, use `daily_account_balance_csv` instead)
    * - `bookkeeping_account_balance_csv` - Export a CSV of bookkeeping account
    *   balances for the dates in a given range.
    * - `entity_csv` - Export a CSV of entities with a given status.
@@ -573,7 +573,7 @@ export interface ExportCreateParams {
    *   a given date and optional Account.
    * - `transaction_csv` - Export a CSV of all transactions for a given time range.
    * - `balance_csv` - Export a CSV of account balances for the dates in a given
-   *   range.
+   *   range. (deprecated, use `daily_account_balance_csv` instead)
    * - `bookkeeping_account_balance_csv` - Export a CSV of bookkeeping account
    *   balances for the dates in a given range.
    * - `entity_csv` - Export a CSV of entities with a given status.
@@ -884,7 +884,7 @@ export interface ExportListParams extends PageParams {
    *   a given date and optional Account.
    * - `transaction_csv` - Export a CSV of all transactions for a given time range.
    * - `balance_csv` - Export a CSV of account balances for the dates in a given
-   *   range.
+   *   range. (deprecated, use `daily_account_balance_csv` instead)
    * - `bookkeeping_account_balance_csv` - Export a CSV of bookkeeping account
    *   balances for the dates in a given range.
    * - `entity_csv` - Export a CSV of entities with a given status.
