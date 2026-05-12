@@ -222,9 +222,8 @@ export namespace PendingTransaction {
      * - `blockchain_onramp_transfer_instruction` - Blockchain On-Ramp Transfer
      *   Instruction: details will be under the
      *   `blockchain_onramp_transfer_instruction` object.
-     * - `blockchain_offramp_transfer_instruction` - Blockchain Off-Ramp Transfer
-     *   Instruction: details will be under the
-     *   `blockchain_offramp_transfer_instruction` object.
+     * - `blockchain_offramp_transfer` - Blockchain Off-Ramp Transfer: details will be
+     *   under the `blockchain_offramp_transfer` object.
      * - `other` - The Pending Transaction was made for an undocumented or deprecated
      *   reason.
      */
@@ -243,7 +242,7 @@ export namespace PendingTransaction {
       | 'swift_transfer_instruction'
       | 'card_push_transfer_instruction'
       | 'blockchain_onramp_transfer_instruction'
-      | 'blockchain_offramp_transfer_instruction'
+      | 'blockchain_offramp_transfer'
       | 'other';
 
     /**
@@ -259,11 +258,12 @@ export namespace PendingTransaction {
     ach_transfer_instruction?: Source.ACHTransferInstruction | null;
 
     /**
-     * A Blockchain Off-Ramp Transfer Instruction object. This field will be present in
-     * the JSON response if and only if `category` is equal to
-     * `blockchain_offramp_transfer_instruction`.
+     * A Blockchain Off-Ramp Transfer object. This field will be present in the JSON
+     * response if and only if `category` is equal to `blockchain_offramp_transfer`.
+     * Blockchain Off-Ramp Transfers move funds from a Blockchain Address to an
+     * Account. They're automatically created when funds land in a Blockchain Address.
      */
-    blockchain_offramp_transfer_instruction?: Source.BlockchainOfframpTransferInstruction | null;
+    blockchain_offramp_transfer?: Source.BlockchainOfframpTransfer | null;
 
     /**
      * A Blockchain On-Ramp Transfer Instruction object. This field will be present in
@@ -402,22 +402,68 @@ export namespace PendingTransaction {
     }
 
     /**
-     * A Blockchain Off-Ramp Transfer Instruction object. This field will be present in
-     * the JSON response if and only if `category` is equal to
-     * `blockchain_offramp_transfer_instruction`.
+     * A Blockchain Off-Ramp Transfer object. This field will be present in the JSON
+     * response if and only if `category` is equal to `blockchain_offramp_transfer`.
+     * Blockchain Off-Ramp Transfers move funds from a Blockchain Address to an
+     * Account. They're automatically created when funds land in a Blockchain Address.
      */
-    export interface BlockchainOfframpTransferInstruction {
+    export interface BlockchainOfframpTransfer {
       /**
-       * The identifier of the Blockchain Address the funds were received at.
+       * The Blockchain Off-Ramp Transfer's identifier.
+       */
+      id: string;
+
+      /**
+       * The token that was received.
+       *
+       * - `usdc` - A USD stablecoin issued by Circle.
+       */
+      token: 'usdc';
+
+      /**
+       * The transfer amount in USD cents.
+       */
+      amount: number;
+
+      /**
+       * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+       * the transfer was created.
+       */
+      created_at: string;
+
+      /**
+       * The Account the funds were transferred into.
+       */
+      destination_account_id: string;
+
+      /**
+       * The transaction hash of the blockchain transaction that initiated this transfer.
+       */
+      initiating_transaction_hash: string;
+
+      /**
+       * The Blockchain Address from which the transfer originated.
        */
       source_blockchain_address_id: string;
 
       /**
-       * The identifier of the Blockchain Off-Ramp Transfer that led to this Transaction.
+       * The lifecycle status of the transfer.
+       *
+       * - `pending_settlement` - The transfer is pending settlement at Increase.
+       * - `settled` - The transfer has been settled and funds have been credited.
        */
-      transfer_id: string;
+      status: 'pending_settlement' | 'settled';
 
-      [k: string]: unknown;
+      /**
+       * The Transaction crediting the Account once the transfer is settled.
+       */
+      transaction_id: string | null;
+
+      /**
+       * A constant representing the object's type. For this resource it will always be
+       * `blockchain_offramp_transfer`.
+       */
+      type: 'blockchain_offramp_transfer';
     }
 
     /**
@@ -1679,7 +1725,7 @@ export namespace PendingTransactionListParams {
       | 'swift_transfer_instruction'
       | 'card_push_transfer_instruction'
       | 'blockchain_onramp_transfer_instruction'
-      | 'blockchain_offramp_transfer_instruction'
+      | 'blockchain_offramp_transfer'
       | 'other'
     >;
   }
