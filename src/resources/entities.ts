@@ -235,6 +235,25 @@ export namespace Entity {
     beneficial_owners: Array<Corporation.BeneficialOwner>;
 
     /**
+     * If the entity is exempt from the requirement to submit beneficial owners, the
+     * justification for the exemption.
+     *
+     * - `regulated_financial_institution` - A regulated financial institution.
+     * - `publicly_traded_company` - A publicly traded company.
+     * - `public_entity` - A public entity acting on behalf of the federal or a state
+     *   government.
+     * - `other` - Any other reason why this entity is exempt from the requirement to
+     *   submit beneficial owners. You can only use this exemption after approval from
+     *   your bank partner.
+     */
+    beneficial_ownership_exemption_reason:
+      | 'regulated_financial_institution'
+      | 'publicly_traded_company'
+      | 'public_entity'
+      | 'other'
+      | null;
+
+    /**
      * An email address for the business.
      */
     email: string | null;
