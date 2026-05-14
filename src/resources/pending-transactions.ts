@@ -449,10 +449,11 @@ export namespace PendingTransaction {
       /**
        * The lifecycle status of the transfer.
        *
+       * - `canceled` - The transfer has been canceled.
        * - `pending_settlement` - The transfer is pending settlement at Increase.
        * - `settled` - The transfer has been settled and funds have been credited.
        */
-      status: 'pending_settlement' | 'settled';
+      status: 'canceled' | 'pending_settlement' | 'settled';
 
       /**
        * The Transaction crediting the Account once the transfer is settled.
