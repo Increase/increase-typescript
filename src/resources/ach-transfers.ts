@@ -664,19 +664,37 @@ export namespace ACHTransfer {
       | 'incorrect_transaction_code_by_originating_depository_financial_institution';
 
     /**
-     * The corrected data that should be used in future ACHs to this account. This may
-     * contain the suggested new account number or routing number. When the
-     * `change_code` is `incorrect_transaction_code`, this field contains an integer.
-     * Numbers starting with a 2 encourage changing the `funding` parameter to
-     * checking; numbers starting with a 3 encourage changing to savings.
+     * The corrected account funding type that should be used in future ACHs to this
+     * account. This is derived from the corrected transaction code.
+     *
+     * - `checking` - A checking account.
+     * - `savings` - A savings account.
+     * - `general_ledger` - A bank's general ledger. Uncommon.
      */
-    corrected_data: string;
+    corrected_account_funding: 'checking' | 'savings' | 'general_ledger' | null;
+
+    /**
+     * The corrected account number that should be used in future ACHs to this account.
+     */
+    corrected_account_number: string | null;
+
+    /**
+     * The corrected individual identifier that should be used in future ACHs.
+     */
+    corrected_individual_id: string | null;
+
+    /**
+     * The corrected routing number that should be used in future ACHs to this account.
+     */
+    corrected_routing_number: string | null;
 
     /**
      * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
      * the notification occurred.
      */
     created_at: string;
+
+    [k: string]: unknown;
   }
 
   /**
