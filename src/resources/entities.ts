@@ -1314,9 +1314,12 @@ export namespace EntityCreateParams {
     address: Corporation.Address;
 
     /**
-     * The identifying details of each person who owns 25% or more of the business and
-     * one control person, like the CEO, CFO, or other executive. You can submit
-     * between 1 and 5 people to this list.
+     * The identifying details of one control person (`control`), like the CEO, CFO, or
+     * other executive, plus each person who owns 25% or more of the business
+     * (`ownership`). At least one control person is required, and frequently, the
+     * `control` person is also `ownership`. In some cases, there are no individuals
+     * who own 25% or more of the business. In that case, you should submit a single
+     * `control` person.
      */
     beneficial_owners: Array<Corporation.BeneficialOwner>;
 
