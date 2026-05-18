@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.566.1 (2026-05-18)
+
+Full Changelog: [v0.566.0...v0.566.1](https://github.com/Increase/increase-typescript/compare/v0.566.0...v0.566.1)
+
+### Bug Fixes
+
+* **typescript:** upgrade tsc-multi so that it works with Node 26 ([93d1689](https://github.com/Increase/increase-typescript/commit/93d16892bcc61700f227da4c59a0549eadde33a3))
+
+
+### Chores
+
+* **tests:** remove redundant File import ([8b90079](https://github.com/Increase/increase-typescript/commit/8b90079f79a528b0154ac06d350cc95c4acfd0bb))
+
 ## 0.566.0 (2026-05-18)
 
 Full Changelog: [v0.565.0...v0.566.0](https://github.com/Increase/increase-typescript/compare/v0.565.0...v0.566.0)
