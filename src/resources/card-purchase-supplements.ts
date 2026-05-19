@@ -72,6 +72,11 @@ export interface CardPurchaseSupplement {
   line_items: Array<CardPurchaseSupplement.LineItem> | null;
 
   /**
+   * Shipping information for the purchase.
+   */
+  shipping: CardPurchaseSupplement.Shipping | null;
+
+  /**
    * The ID of the transaction.
    */
   transaction_id: string;
@@ -296,6 +301,111 @@ export namespace CardPurchaseSupplement {
      * Code indicating unit of measure (gallons, etc.).
      */
     unit_of_measure_code: string | null;
+  }
+
+  /**
+   * Shipping information for the purchase.
+   */
+  export interface Shipping {
+    /**
+     * The customer reference number.
+     */
+    customer_reference_number: string | null;
+
+    /**
+     * Address of the destination.
+     */
+    destination_address: string | null;
+
+    /**
+     * Country code of the destination.
+     */
+    destination_country_code: string | null;
+
+    /**
+     * Postal code of the destination.
+     */
+    destination_postal_code: string | null;
+
+    /**
+     * Name of the receiver at the destination.
+     */
+    destination_receiver_name: string | null;
+
+    /**
+     * Discount amount for the shipment.
+     */
+    discount_amount: number | null;
+
+    /**
+     * Net shipping amount.
+     */
+    net_amount: number | null;
+
+    /**
+     * Number of packages shipped.
+     */
+    number_of_packages: number | null;
+
+    /**
+     * Address of the origin.
+     */
+    origin_address: string | null;
+
+    /**
+     * Country code of the origin.
+     */
+    origin_country_code: string | null;
+
+    /**
+     * Postal code of the origin.
+     */
+    origin_postal_code: string | null;
+
+    /**
+     * Name of the sender at the origin.
+     */
+    origin_sender_name: string | null;
+
+    /**
+     * Date the shipment should be picked up.
+     */
+    pick_up_date: string | null;
+
+    /**
+     * Description of the shipping service.
+     */
+    service_description: string | null;
+
+    /**
+     * Service level code for the shipment.
+     */
+    service_level_code: string | null;
+
+    /**
+     * Name of the shipping courier.
+     */
+    shipping_courier_name: string | null;
+
+    /**
+     * Tax amount for the shipment.
+     */
+    tax_amount: number | null;
+
+    /**
+     * Tracking number for the shipment.
+     */
+    tracking_number: string | null;
+
+    /**
+     * Unit of measure for the shipment weight.
+     */
+    unit_of_measure: string | null;
+
+    /**
+     * Weight of the shipment.
+     */
+    weight: string | null;
   }
 }
 
