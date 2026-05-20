@@ -1,0 +1,23 @@
+name: release
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/create-github-app-token@v3
+        id: app-token
+        with:
+          client-id: ${{ vars.INCREASE_RELEASES_CLIENT_ID }}
+          private-key: ${{ secrets.INCREASE_RELEASES_PRIVATE_KEY }}
+      - uses: actions/checkout@v6
+      - uses: Increase/release-please@v1
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+          changes-branch: next
