@@ -20,4 +20,3 @@ jobs:
       - uses: Increase/release-please@v1
         with:
           token: ${{ steps.app-token.outputs.token }}
-          changes-branch: next
