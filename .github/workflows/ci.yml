@@ -5,56 +5,25 @@ on:
   pull_request:
 
 jobs:
-  lint:
+  ci:
     timeout-minutes: 10
-    name: lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@v6
 
-      - name: Set up Node
-        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+      - uses: actions/setup-node@v5
         with:
           node-version: '20'
+          cache: 'yarn'
 
       - name: Bootstrap
         run: ./scripts/bootstrap
 
-      - name: Check types
+      - name: Lint
         run: ./scripts/lint
 
-  build:
-    timeout-minutes: 5
-    name: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-
-      - name: Set up Node
-        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
-        with:
-          node-version: '20'
-
-      - name: Bootstrap
-        run: ./scripts/bootstrap
-
-      - name: Check build
+      - name: Build
         run: ./scripts/build
 
-  test:
-    timeout-minutes: 10
-    name: test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-
-      - name: Set up Node
-        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
-        with:
-          node-version: '20'
-
-      - name: Bootstrap
-        run: ./scripts/bootstrap
-
-      - name: Run tests
+      - name: Test
         run: ./scripts/test
