@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.568.1](https://github.com/Increase/increase-typescript/compare/v0.568.0...v0.568.1) (2026-05-20)
+
+
+### Chores
+
+* add release workflow and migrate config to Increase/release-please fork ([#1361](https://github.com/Increase/increase-typescript/issues/1361)) ([95ae20b](https://github.com/Increase/increase-typescript/commit/95ae20b29ccf3b03225f7088dfaae75aad3a02f0))
+* drop changes-branch:next from release workflow ([#1362](https://github.com/Increase/increase-typescript/issues/1362)) ([4786c2e](https://github.com/Increase/increase-typescript/commit/4786c2e44b83b1d502f63ec84bb71ee2398814e4))
+* prune Stainless-era CI cruft and vestigial release-doctor ([#1364](https://github.com/Increase/increase-typescript/issues/1364)) ([0ca0374](https://github.com/Increase/increase-typescript/commit/0ca0374362fa849202f42f98a9f0c655ac17206c))
+
 ## 0.568.0 (2026-05-20)
 
 Full Changelog: [v0.567.0...v0.568.0](https://github.com/Increase/increase-typescript/compare/v0.567.0...v0.568.0)
