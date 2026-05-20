@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.568.2](https://github.com/Increase/increase-typescript/compare/v0.568.1...v0.568.2) (2026-05-20)
+
+
+### Chores
+
+* collapse CI into a single job ([#1365](https://github.com/Increase/increase-typescript/issues/1365)) ([3e86347](https://github.com/Increase/increase-typescript/commit/3e86347d051b4e7d82d65e8261432ebdf2da7111))
+
 ## [0.568.1](https://github.com/Increase/increase-typescript/compare/v0.568.0...v0.568.1) (2026-05-20)
 
 
