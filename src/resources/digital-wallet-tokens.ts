@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../core/resource';
+import * as DigitalWalletTokensAPI from './digital-wallet-tokens';
 import { APIPromise } from '../core/api-promise';
 import { Page, type PageParams, PagePromise } from '../core/pagination';
 import { RequestOptions } from '../internal/request-options';
@@ -33,15 +34,12 @@ export class DigitalWalletTokens extends APIResource {
    * }
    * ```
    */
-  list(
-    query: DigitalWalletTokenListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): PagePromise<DigitalWalletTokensPage, DigitalWalletToken> {
+  list(query: DigitalWalletTokenListParams | null | undefined = {}, options?: RequestOptions): PagePromise<DigitalWalletTokensPage, DigitalWalletToken> {
     return this._client.getAPIList('/digital_wallet_tokens', Page<DigitalWalletToken>, { query, ...options });
   }
 }
 
-export type DigitalWalletTokensPage = Page<DigitalWalletToken>;
+export type DigitalWalletTokensPage = Page<DigitalWalletToken>
 
 /**
  * A Digital Wallet Token is created when a user adds a Card to their Apple Pay or
@@ -71,6 +69,12 @@ export interface DigitalWalletToken {
   created_at: string;
 
   /**
+   * If the Digital Wallet Token was declined during provisioning, details about the
+   * decline.
+   */
+  decline: DigitalWalletToken.Decline | null;
+
+  /**
    * The device that was used to create the Digital Wallet Token.
    */
   device: DigitalWalletToken.Device;
@@ -88,8 +92,9 @@ export interface DigitalWalletToken {
    *   activated via two-factor authentication yet.
    * - `suspended` - The digital wallet token has been temporarily paused.
    * - `deactivated` - The digital wallet token has been permanently canceled.
+   * - `declined` - The digital wallet token was declined during provisioning.
    */
-  status: 'active' | 'inactive' | 'suspended' | 'deactivated';
+  status: 'active' | 'inactive' | 'suspended' | 'deactivated' | 'declined';
 
   /**
    * The digital wallet app being used.
@@ -125,6 +130,28 @@ export namespace DigitalWalletToken {
   }
 
   /**
+   * If the Digital Wallet Token was declined during provisioning, details about the
+   * decline.
+   */
+  export interface Decline {
+    /**
+     * The reason the token provisioning was declined.
+     *
+     * - `card_not_active` - The card is not active.
+     * - `no_verification_method` - The card does not have a two-factor authentication
+     *   method.
+     * - `webhook_timed_out` - Your webhook timed out when evaluating the token
+     *   provisioning attempt.
+     * - `webhook_declined` - Your webhook declined the token provisioning attempt.
+     * - `incorrect_card_verification_code` - The tokenization attempt failed because
+     *   the Card Verification Code (CVC) was incorrect.
+     * - `declined_by_token_requestor` - The tokenization attempt was declined by the
+     *   token requestor.
+     */
+    reason: 'card_not_active' | 'no_verification_method' | 'webhook_timed_out' | 'webhook_declined' | 'incorrect_card_verification_code' | 'declined_by_token_requestor';
+  }
+
+  /**
    * The device that was used to create the Digital Wallet Token.
    */
   export interface Device {
@@ -141,17 +168,7 @@ export namespace DigitalWalletToken {
      * - `wearable_device` - Wearable Device
      * - `automobile_device` - Automobile Device
      */
-    device_type:
-      | 'unknown'
-      | 'mobile_phone'
-      | 'tablet'
-      | 'watch'
-      | 'mobilephone_or_tablet'
-      | 'pc'
-      | 'household_device'
-      | 'wearable_device'
-      | 'automobile_device'
-      | null;
+    device_type: 'unknown' | 'mobile_phone' | 'tablet' | 'watch' | 'mobilephone_or_tablet' | 'pc' | 'household_device' | 'wearable_device' | 'automobile_device' | null;
 
     /**
      * ID assigned to the device by the digital wallet provider.
@@ -193,8 +210,9 @@ export namespace DigitalWalletToken {
      *   activated via two-factor authentication yet.
      * - `suspended` - The digital wallet token has been temporarily paused.
      * - `deactivated` - The digital wallet token has been permanently canceled.
+     * - `declined` - The digital wallet token was declined during provisioning.
      */
-    status: 'active' | 'inactive' | 'suspended' | 'deactivated';
+    status: 'active' | 'inactive' | 'suspended' | 'deactivated' | 'declined';
 
     /**
      * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -245,6 +263,6 @@ export declare namespace DigitalWalletTokens {
   export {
     type DigitalWalletToken as DigitalWalletToken,
     type DigitalWalletTokensPage as DigitalWalletTokensPage,
-    type DigitalWalletTokenListParams as DigitalWalletTokenListParams,
+    type DigitalWalletTokenListParams as DigitalWalletTokenListParams
   };
 }

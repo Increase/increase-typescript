@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../core/resource';
+import * as SimulationsEntitiesAPI from './entities';
 import * as EntitiesAPI from '../entities';
 import { APIPromise } from '../../core/api-promise';
 import { RequestOptions } from '../../internal/request-options';
@@ -24,11 +25,7 @@ export class Entities extends APIResource {
    *   );
    * ```
    */
-  updateValidation(
-    entityID: string,
-    body: EntityUpdateValidationParams,
-    options?: RequestOptions,
-  ): APIPromise<EntitiesAPI.Entity> {
+  updateValidation(entityID: string, body: EntityUpdateValidationParams, options?: RequestOptions): APIPromise<EntitiesAPI.Entity> {
     return this._client.post(path`/simulations/entities/${entityID}/update_validation`, { body, ...options });
   }
 }
@@ -46,7 +43,7 @@ export namespace EntityUpdateValidationParams {
     /**
      * The type of issue.
      *
-     * - `entity_tax_identifier` - The entity's tax identifier could not be validated.
+     * - `entity_tax_identifier` - The entity's tax identifier could not be verified.
      *   Update the tax ID with the
      *   [update an entity API](/documentation/api/entities#update-an-entity.corporation.legal_identifier).
      * - `entity_address` - The entity's address could not be validated. Update the
@@ -59,14 +56,12 @@ export namespace EntityUpdateValidationParams {
      *   validated. Update the address with the
      *   [update a beneficial owner API](/documentation/api/beneficial-owners#update-a-beneficial-owner).
      */
-    category:
-      | 'entity_tax_identifier'
-      | 'entity_address'
-      | 'beneficial_owner_identity'
-      | 'beneficial_owner_address';
+    category: 'entity_tax_identifier' | 'entity_address' | 'beneficial_owner_identity' | 'beneficial_owner_address';
   }
 }
 
 export declare namespace Entities {
-  export { type EntityUpdateValidationParams as EntityUpdateValidationParams };
+  export {
+    type EntityUpdateValidationParams as EntityUpdateValidationParams
+  };
 }

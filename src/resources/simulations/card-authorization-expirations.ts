@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../core/resource';
+import * as CardAuthorizationExpirationsAPI from './card-authorization-expirations';
 import * as CardPaymentsAPI from '../card-payments';
 import { APIPromise } from '../../core/api-promise';
 import { RequestOptions } from '../../internal/request-options';
@@ -19,10 +20,7 @@ export class CardAuthorizationExpirations extends APIResource {
    *   );
    * ```
    */
-  create(
-    body: CardAuthorizationExpirationCreateParams,
-    options?: RequestOptions,
-  ): APIPromise<CardPaymentsAPI.CardPayment> {
+  create(body: CardAuthorizationExpirationCreateParams, options?: RequestOptions): APIPromise<CardPaymentsAPI.CardPayment> {
     return this._client.post('/simulations/card_authorization_expirations', { body, ...options });
   }
 }
@@ -35,5 +33,7 @@ export interface CardAuthorizationExpirationCreateParams {
 }
 
 export declare namespace CardAuthorizationExpirations {
-  export { type CardAuthorizationExpirationCreateParams as CardAuthorizationExpirationCreateParams };
+  export {
+    type CardAuthorizationExpirationCreateParams as CardAuthorizationExpirationCreateParams
+  };
 }

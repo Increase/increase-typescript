@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../core/resource';
+import * as SimulationsPhysicalCardsAPI from './physical-cards';
 import * as PhysicalCardsAPI from '../physical-cards';
 import { APIPromise } from '../../core/api-promise';
 import { RequestOptions } from '../../internal/request-options';
@@ -20,15 +21,8 @@ export class PhysicalCards extends APIResource {
    *   );
    * ```
    */
-  create(
-    physicalCardID: string,
-    body: PhysicalCardCreateParams,
-    options?: RequestOptions,
-  ): APIPromise<PhysicalCardsAPI.PhysicalCard> {
-    return this._client.post(path`/simulations/physical_cards/${physicalCardID}/tracking_updates`, {
-      body,
-      ...options,
-    });
+  create(physicalCardID: string, body: PhysicalCardCreateParams, options?: RequestOptions): APIPromise<PhysicalCardsAPI.PhysicalCard> {
+    return this._client.post(path`/simulations/physical_cards/${physicalCardID}/tracking_updates`, { body, ...options });
   }
 
   /**
@@ -45,15 +39,8 @@ export class PhysicalCards extends APIResource {
    *   );
    * ```
    */
-  advanceShipment(
-    physicalCardID: string,
-    body: PhysicalCardAdvanceShipmentParams,
-    options?: RequestOptions,
-  ): APIPromise<PhysicalCardsAPI.PhysicalCard> {
-    return this._client.post(path`/simulations/physical_cards/${physicalCardID}/advance_shipment`, {
-      body,
-      ...options,
-    });
+  advanceShipment(physicalCardID: string, body: PhysicalCardAdvanceShipmentParams, options?: RequestOptions): APIPromise<PhysicalCardsAPI.PhysicalCard> {
+    return this._client.post(path`/simulations/physical_cards/${physicalCardID}/advance_shipment`, { body, ...options });
   }
 }
 
@@ -63,7 +50,10 @@ export interface PhysicalCardCreateParams {
    *
    * - `in_transit` - The physical card is in transit.
    * - `processed_for_delivery` - The physical card has been processed for delivery.
-   * - `delivered` - The physical card has been delivered.
+   * - `delivered` - The physical card has been delivered. Note that some couriers
+   *   track delivery status based on driver location data rather than an explicit
+   *   scan. While uncommon, a single physical card may have more than one delivered
+   *   event.
    * - `delivery_issue` - There is an issue preventing delivery. The delivery will be
    *   attempted again if possible. If the issue cannot be resolved, the physical
    *   card will be returned to sender.
@@ -112,20 +102,12 @@ export interface PhysicalCardAdvanceShipmentParams {
    * - `requires_attention` - The physical card shipment requires attention from
    *   Increase before progressing.
    */
-  shipment_status:
-    | 'pending'
-    | 'canceled'
-    | 'submitted'
-    | 'acknowledged'
-    | 'rejected'
-    | 'shipped'
-    | 'returned'
-    | 'requires_attention';
+  shipment_status: 'pending' | 'canceled' | 'submitted' | 'acknowledged' | 'rejected' | 'shipped' | 'returned' | 'requires_attention';
 }
 
 export declare namespace PhysicalCards {
   export {
     type PhysicalCardCreateParams as PhysicalCardCreateParams,
-    type PhysicalCardAdvanceShipmentParams as PhysicalCardAdvanceShipmentParams,
+    type PhysicalCardAdvanceShipmentParams as PhysicalCardAdvanceShipmentParams
   };
 }

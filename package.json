@@ -1,6 +1,6 @@
 {
   "name": "increase",
-  "version": "0.568.2",
+  "version": "0.0.1",
   "description": "The official TypeScript library for the Increase API",
   "author": "Increase <dev-feedback@increase.com>",
   "types": "dist/index.d.ts",
@@ -51,9 +51,7 @@
     "typescript": "5.8.3",
     "typescript-eslint": "8.31.1"
   },
-  "bin": {
-    "increase": "bin/cli"
-  },
+"bin": { "increase": "bin/cli" },
   "overrides": {
     "minimatch": "^9.0.5"
   },

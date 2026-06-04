@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../core/resource';
+import * as RealTimePaymentsTransfersAPI from './real-time-payments-transfers';
 import { APIPromise } from '../core/api-promise';
 import { Page, type PageParams, PagePromise } from '../core/pagination';
 import { RequestOptions } from '../internal/request-options';
@@ -22,10 +23,7 @@ export class RealTimePaymentsTransfers extends APIResource {
    *   });
    * ```
    */
-  create(
-    body: RealTimePaymentsTransferCreateParams,
-    options?: RequestOptions,
-  ): APIPromise<RealTimePaymentsTransfer> {
+  create(body: RealTimePaymentsTransferCreateParams, options?: RequestOptions): APIPromise<RealTimePaymentsTransfer> {
     return this._client.post('/real_time_payments_transfers', { body, ...options });
   }
 
@@ -40,10 +38,7 @@ export class RealTimePaymentsTransfers extends APIResource {
    *   );
    * ```
    */
-  retrieve(
-    realTimePaymentsTransferID: string,
-    options?: RequestOptions,
-  ): APIPromise<RealTimePaymentsTransfer> {
+  retrieve(realTimePaymentsTransferID: string, options?: RequestOptions): APIPromise<RealTimePaymentsTransfer> {
     return this._client.get(path`/real_time_payments_transfers/${realTimePaymentsTransferID}`, options);
   }
 
@@ -58,14 +53,8 @@ export class RealTimePaymentsTransfers extends APIResource {
    * }
    * ```
    */
-  list(
-    query: RealTimePaymentsTransferListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): PagePromise<RealTimePaymentsTransfersPage, RealTimePaymentsTransfer> {
-    return this._client.getAPIList('/real_time_payments_transfers', Page<RealTimePaymentsTransfer>, {
-      query,
-      ...options,
-    });
+  list(query: RealTimePaymentsTransferListParams | null | undefined = {}, options?: RequestOptions): PagePromise<RealTimePaymentsTransfersPage, RealTimePaymentsTransfer> {
+    return this._client.getAPIList('/real_time_payments_transfers', Page<RealTimePaymentsTransfer>, { query, ...options });
   }
 
   /**
@@ -79,14 +68,8 @@ export class RealTimePaymentsTransfers extends APIResource {
    *   );
    * ```
    */
-  approve(
-    realTimePaymentsTransferID: string,
-    options?: RequestOptions,
-  ): APIPromise<RealTimePaymentsTransfer> {
-    return this._client.post(
-      path`/real_time_payments_transfers/${realTimePaymentsTransferID}/approve`,
-      options,
-    );
+  approve(realTimePaymentsTransferID: string, options?: RequestOptions): APIPromise<RealTimePaymentsTransfer> {
+    return this._client.post(path`/real_time_payments_transfers/${realTimePaymentsTransferID}/approve`, options);
   }
 
   /**
@@ -101,14 +84,11 @@ export class RealTimePaymentsTransfers extends APIResource {
    * ```
    */
   cancel(realTimePaymentsTransferID: string, options?: RequestOptions): APIPromise<RealTimePaymentsTransfer> {
-    return this._client.post(
-      path`/real_time_payments_transfers/${realTimePaymentsTransferID}/cancel`,
-      options,
-    );
+    return this._client.post(path`/real_time_payments_transfers/${realTimePaymentsTransferID}/cancel`, options);
   }
 }
 
-export type RealTimePaymentsTransfersPage = Page<RealTimePaymentsTransfer>;
+export type RealTimePaymentsTransfersPage = Page<RealTimePaymentsTransfer>
 
 /**
  * Real-Time Payments transfers move funds, within seconds, between your Increase
@@ -236,15 +216,7 @@ export interface RealTimePaymentsTransfer {
    *   Real-Time Payments.
    * - `complete` - The transfer has been sent successfully and is complete.
    */
-  status:
-    | 'pending_approval'
-    | 'canceled'
-    | 'pending_reviewing'
-    | 'requires_attention'
-    | 'rejected'
-    | 'pending_submission'
-    | 'submitted'
-    | 'complete';
+  status: 'pending_approval' | 'canceled' | 'pending_reviewing' | 'requires_attention' | 'rejected' | 'pending_submission' | 'submitted' | 'complete';
 
   /**
    * After the transfer is submitted to Real-Time Payments, this will contain
@@ -280,7 +252,7 @@ export interface RealTimePaymentsTransfer {
    */
   unstructured_remittance_information: string;
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export namespace RealTimePaymentsTransfer {
@@ -458,28 +430,7 @@ export namespace RealTimePaymentsTransfer {
      *   issue. We have been notified.
      * - `other` - Some other error or issue has occurred.
      */
-    reject_reason_code:
-      | 'account_closed'
-      | 'account_blocked'
-      | 'invalid_creditor_account_type'
-      | 'invalid_creditor_account_number'
-      | 'invalid_creditor_financial_institution_identifier'
-      | 'end_customer_deceased'
-      | 'narrative'
-      | 'transaction_forbidden'
-      | 'transaction_type_not_supported'
-      | 'unexpected_amount'
-      | 'amount_exceeds_bank_limits'
-      | 'invalid_creditor_address'
-      | 'unknown_end_customer'
-      | 'invalid_debtor_address'
-      | 'timeout'
-      | 'unsupported_message_for_recipient'
-      | 'recipient_connection_not_available'
-      | 'real_time_payments_suspended'
-      | 'instructed_agent_signed_off'
-      | 'processing_error'
-      | 'other';
+    reject_reason_code: 'account_closed' | 'account_blocked' | 'invalid_creditor_account_type' | 'invalid_creditor_account_number' | 'invalid_creditor_financial_institution_identifier' | 'end_customer_deceased' | 'narrative' | 'transaction_forbidden' | 'transaction_type_not_supported' | 'unexpected_amount' | 'amount_exceeds_bank_limits' | 'invalid_creditor_address' | 'unknown_end_customer' | 'invalid_debtor_address' | 'timeout' | 'unsupported_message_for_recipient' | 'recipient_connection_not_available' | 'real_time_payments_suspended' | 'instructed_agent_signed_off' | 'processing_error' | 'other';
 
     /**
      * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -568,7 +519,7 @@ export interface RealTimePaymentsTransferCreateParams {
    */
   ultimate_debtor_name?: string;
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export interface RealTimePaymentsTransferListParams extends PageParams {
@@ -628,16 +579,7 @@ export namespace RealTimePaymentsTransferListParams {
      * Return results whose value is in the provided list. For GET requests, this
      * should be encoded as a comma-delimited string, such as `?in=one,two,three`.
      */
-    in?: Array<
-      | 'pending_approval'
-      | 'canceled'
-      | 'pending_reviewing'
-      | 'requires_attention'
-      | 'rejected'
-      | 'pending_submission'
-      | 'submitted'
-      | 'complete'
-    >;
+    in?: Array<'pending_approval' | 'canceled' | 'pending_reviewing' | 'requires_attention' | 'rejected' | 'pending_submission' | 'submitted' | 'complete'>;
   }
 }
 
@@ -646,6 +588,6 @@ export declare namespace RealTimePaymentsTransfers {
     type RealTimePaymentsTransfer as RealTimePaymentsTransfer,
     type RealTimePaymentsTransfersPage as RealTimePaymentsTransfersPage,
     type RealTimePaymentsTransferCreateParams as RealTimePaymentsTransferCreateParams,
-    type RealTimePaymentsTransferListParams as RealTimePaymentsTransferListParams,
+    type RealTimePaymentsTransferListParams as RealTimePaymentsTransferListParams
   };
 }
