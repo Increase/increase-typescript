@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../core/resource';
+import * as DigitalWalletTokenRequestsAPI from './digital-wallet-token-requests';
 import { APIPromise } from '../../core/api-promise';
 import { RequestOptions } from '../../internal/request-options';
 
@@ -17,10 +18,7 @@ export class DigitalWalletTokenRequests extends APIResource {
    *   );
    * ```
    */
-  create(
-    body: DigitalWalletTokenRequestCreateParams,
-    options?: RequestOptions,
-  ): APIPromise<DigitalWalletTokenRequestCreateResponse> {
+  create(body: DigitalWalletTokenRequestCreateParams, options?: RequestOptions): APIPromise<DigitalWalletTokenRequestCreateResponse> {
     return this._client.post('/simulations/digital_wallet_token_requests', { body, ...options });
   }
 }
@@ -39,13 +37,12 @@ export interface DigitalWalletTokenRequestCreateResponse {
    * - `webhook_timed_out` - Your webhook timed out when evaluating the token
    *   provisioning attempt.
    * - `webhook_declined` - Your webhook declined the token provisioning attempt.
+   * - `incorrect_card_verification_code` - The tokenization attempt failed because
+   *   the Card Verification Code (CVC) was incorrect.
+   * - `declined_by_token_requestor` - The tokenization attempt was declined by the
+   *   token requestor.
    */
-  decline_reason:
-    | 'card_not_active'
-    | 'no_verification_method'
-    | 'webhook_timed_out'
-    | 'webhook_declined'
-    | null;
+  decline_reason: 'card_not_active' | 'no_verification_method' | 'webhook_timed_out' | 'webhook_declined' | 'incorrect_card_verification_code' | 'declined_by_token_requestor' | null;
 
   /**
    * If the simulated tokenization attempt was accepted, this field contains the id
@@ -70,6 +67,6 @@ export interface DigitalWalletTokenRequestCreateParams {
 export declare namespace DigitalWalletTokenRequests {
   export {
     type DigitalWalletTokenRequestCreateResponse as DigitalWalletTokenRequestCreateResponse,
-    type DigitalWalletTokenRequestCreateParams as DigitalWalletTokenRequestCreateParams,
+    type DigitalWalletTokenRequestCreateParams as DigitalWalletTokenRequestCreateParams
   };
 }

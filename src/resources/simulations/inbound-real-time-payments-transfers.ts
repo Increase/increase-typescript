@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../core/resource';
+import * as SimulationsInboundRealTimePaymentsTransfersAPI from './inbound-real-time-payments-transfers';
 import * as InboundRealTimePaymentsTransfersAPI from '../inbound-real-time-payments-transfers';
 import { APIPromise } from '../../core/api-promise';
 import { RequestOptions } from '../../internal/request-options';
@@ -23,10 +24,7 @@ export class InboundRealTimePaymentsTransfers extends APIResource {
    *   );
    * ```
    */
-  create(
-    body: InboundRealTimePaymentsTransferCreateParams,
-    options?: RequestOptions,
-  ): APIPromise<InboundRealTimePaymentsTransfersAPI.InboundRealTimePaymentsTransfer> {
+  create(body: InboundRealTimePaymentsTransferCreateParams, options?: RequestOptions): APIPromise<InboundRealTimePaymentsTransfersAPI.InboundRealTimePaymentsTransfer> {
     return this._client.post('/simulations/inbound_real_time_payments_transfers', { body, ...options });
   }
 }
@@ -68,9 +66,11 @@ export interface InboundRealTimePaymentsTransferCreateParams {
    */
   unstructured_remittance_information?: string;
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export declare namespace InboundRealTimePaymentsTransfers {
-  export { type InboundRealTimePaymentsTransferCreateParams as InboundRealTimePaymentsTransferCreateParams };
+  export {
+    type InboundRealTimePaymentsTransferCreateParams as InboundRealTimePaymentsTransferCreateParams
+  };
 }

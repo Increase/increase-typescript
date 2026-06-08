@@ -51,9 +51,7 @@
     "typescript": "5.8.3",
     "typescript-eslint": "8.31.1"
   },
-  "bin": {
-    "increase": "bin/cli"
-  },
+"bin": { "increase": "bin/cli" },
   "overrides": {
     "minimatch": "^9.0.5"
   },

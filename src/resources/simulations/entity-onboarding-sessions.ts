@@ -21,13 +21,7 @@ export class EntityOnboardingSessions extends APIResource {
    *   );
    * ```
    */
-  submit(
-    entityOnboardingSessionID: string,
-    options?: RequestOptions,
-  ): APIPromise<EntityOnboardingSessionsAPI.EntityOnboardingSession> {
-    return this._client.post(
-      path`/simulations/entity_onboarding_sessions/${entityOnboardingSessionID}/submit`,
-      options,
-    );
+  submit(entityOnboardingSessionID: string, options?: RequestOptions): APIPromise<EntityOnboardingSessionsAPI.EntityOnboardingSession> {
+    return this._client.post(path`/simulations/entity_onboarding_sessions/${entityOnboardingSessionID}/submit`, options);
   }
 }
