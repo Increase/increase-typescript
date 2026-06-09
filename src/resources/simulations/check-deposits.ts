@@ -119,6 +119,7 @@ export interface CheckDepositAdjustmentParams {
 export interface CheckDepositSubmitParams {
   /**
    * If set, the simulation will use these values for the check's scanned MICR data.
+   * If not set, the simulation will use random values.
    */
   scan?: CheckDepositSubmitParams.Scan;
 }
@@ -126,6 +127,7 @@ export interface CheckDepositSubmitParams {
 export namespace CheckDepositSubmitParams {
   /**
    * If set, the simulation will use these values for the check's scanned MICR data.
+   * If not set, the simulation will use random values.
    */
   export interface Scan {
     /**
@@ -140,8 +142,15 @@ export namespace CheckDepositSubmitParams {
 
     /**
      * The auxiliary on-us data to be returned in the check deposit's scan data.
+     * Auxiliary on-us is typically the check number for business checks.
      */
     auxiliary_on_us?: string;
+
+    /**
+     * The serial number to be returned in the check deposit's scan data. Serial number
+     * is typically the check number for consumer checks.
+     */
+    serial_number?: string;
   }
 }
 

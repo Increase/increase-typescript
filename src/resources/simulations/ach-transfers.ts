@@ -125,9 +125,10 @@ export interface ACHTransferCreateNotificationOfChangeParams {
    *
    * - `checking` - A checking account.
    * - `savings` - A savings account.
+   * - `loan` - A loan account used in a lender-borrower relationship. Uncommon.
    * - `general_ledger` - A bank's general ledger. Uncommon.
    */
-  corrected_account_funding?: 'checking' | 'savings' | 'general_ledger';
+  corrected_account_funding?: 'checking' | 'savings' | 'loan' | 'general_ledger';
 
   /**
    * The corrected account number.

@@ -149,6 +149,12 @@ export interface WireDrawdownRequest {
   debtor_routing_number: string;
 
   /**
+   * A free-form reference string set by the sender, to be mirrored back in the
+   * subsequent wire transfer.
+   */
+  end_to_end_identification: string | null;
+
+  /**
    * If the recipient fulfills the drawdown request by sending funds, then this will
    * be the identifier of the corresponding Transaction.
    */
@@ -184,6 +190,13 @@ export interface WireDrawdownRequest {
    * `wire_drawdown_request`.
    */
   type: 'wire_drawdown_request';
+
+  /**
+   * The unique end-to-end transaction reference
+   * ([UETR](https://www.swift.com/payments/what-unique-end-end-transaction-reference-uetr))
+   * of the drawdown request.
+   */
+  unique_end_to_end_transaction_reference: string | null;
 
   /**
    * Remittance information the debtor will see as part of the drawdown request.

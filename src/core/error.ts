@@ -350,6 +350,12 @@ export class ObjectNotFoundError extends NotFoundError {
 
   type: 'object_not_found_error';
 
+  /**
+   * - `production` - production
+   * - `sandbox` - sandbox
+   */
+  likely_environment?: 'production' | 'sandbox' | null;
+
   constructor(status: 404, error: Object, message: string | undefined, headers: Headers) {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
@@ -358,6 +364,7 @@ export class ObjectNotFoundError extends NotFoundError {
     this.status = data?.['status'];
     this.title = data?.['title'];
     this.type = data?.['type'];
+    this.likely_environment = data?.['likely_environment'];
   }
 }
 

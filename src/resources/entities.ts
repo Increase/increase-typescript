@@ -1147,7 +1147,7 @@ export namespace Entity {
        * The type of issue. We may add additional possible values for this enum over
        * time; your application should be able to handle such additions gracefully.
        *
-       * - `entity_tax_identifier` - The entity's tax identifier could not be validated.
+       * - `entity_tax_identifier` - The entity's tax identifier could not be verified.
        *   Update the tax ID with the
        *   [update an entity API](/documentation/api/entities#update-an-entity.corporation.legal_identifier).
        * - `entity_address` - The entity's address could not be validated. Update the

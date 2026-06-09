@@ -329,8 +329,10 @@ export namespace Transaction {
 
     /**
      * A Card Financial object. This field will be present in the JSON response if and
-     * only if `category` is equal to `card_financial`. Card Financials are temporary
-     * holds placed on a customer's funds with the intent to later clear a transaction.
+     * only if `category` is equal to `card_financial`. Card Financials are card
+     * transactions that have cleared and settled. Unlike a Card Settlement, which
+     * clears a previous authorization, a Card Financial is authorized and cleared in a
+     * single message.
      */
     card_financial?: Source.CardFinancial | null;
 
@@ -1100,8 +1102,10 @@ export namespace Transaction {
 
     /**
      * A Card Financial object. This field will be present in the JSON response if and
-     * only if `category` is equal to `card_financial`. Card Financials are temporary
-     * holds placed on a customer's funds with the intent to later clear a transaction.
+     * only if `category` is equal to `card_financial`. Card Financials are card
+     * transactions that have cleared and settled. Unlike a Card Settlement, which
+     * clears a previous authorization, a Card Financial is authorized and cleared in a
+     * single message.
      */
     export interface CardFinancial {
       /**
@@ -4614,6 +4618,11 @@ export namespace Transaction {
        * The sending bank's identifier for the wire transfer.
        */
       instruction_identification: string | null;
+
+      /**
+       * The reason for the wire transfer, as set by the sender.
+       */
+      purpose: string | null;
 
       /**
        * The ID of the Inbound Wire Transfer object that resulted in this Transaction.

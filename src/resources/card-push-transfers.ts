@@ -219,6 +219,12 @@ export interface CardPushTransfer {
   merchant_city_name: string;
 
   /**
+   * The legal business name of the merchant (generally your business) sending the
+   * transfer.
+   */
+  merchant_legal_business_name: string | null;
+
+  /**
    * The merchant name shows up as the statement descriptor for the transfer. This is
    * typically the name of your business or organization.
    */
@@ -242,11 +248,39 @@ export interface CardPushTransfer {
   merchant_state: string;
 
   /**
+   * The street address of the merchant (generally your business) sending the
+   * transfer.
+   */
+  merchant_street_address: string | null;
+
+  /**
    * The amount that was transferred. The receiving bank will have converted this to
    * the cardholder's currency. The amount that is applied to your Increase account
    * matches the currency of your account.
    */
   presentment_amount: CardPushTransfer.PresentmentAmount;
+
+  /**
+   * The city of the recipient. Required if the card is issued in Canada.
+   */
+  recipient_address_city: string | null;
+
+  /**
+   * The first line of the recipient's address. Required if the card is issued in
+   * Canada.
+   */
+  recipient_address_line1: string | null;
+
+  /**
+   * The postal code of the recipient. Required if the card is issued in Canada.
+   */
+  recipient_address_postal_code: string | null;
+
+  /**
+   * The state or province of the recipient. Required if the card is issued in
+   * Canada.
+   */
+  recipient_address_state: string | null;
 
   /**
    * The name of the funds recipient.

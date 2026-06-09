@@ -464,7 +464,7 @@ export namespace CheckTransfer {
      * - `usps_first_class` - USPS First Class
      * - `fedex_overnight` - FedEx Overnight
      */
-    shipping_method: 'usps_first_class' | 'fedex_overnight' | null;
+    shipping_method: 'usps_first_class' | 'fedex_overnight';
 
     /**
      * The signature that will appear on the check.
@@ -590,7 +590,9 @@ export namespace CheckTransfer {
        *
        * - `in_transit` - The check is in transit.
        * - `processed_for_delivery` - The check has been processed for delivery.
-       * - `delivered` - The check has been delivered.
+       * - `delivered` - The check has been delivered. Note that some couriers track
+       *   delivery status based on driver location data rather than an explicit scan.
+       *   While uncommon, a single check may have more than one delivered event.
        * - `delivery_issue` - There is an issue preventing delivery. The delivery will be
        *   attempted again if possible. If the issue cannot be resolved, the check will
        *   be returned to sender.

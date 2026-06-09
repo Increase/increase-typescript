@@ -156,6 +156,12 @@ export interface PhysicalCardProfile {
   front_image_file_id: string | null;
 
   /**
+   * Text printed on the front of the card. Reach out to
+   * [support@increase.com](mailto:support@increase.com) for more information.
+   */
+  front_text: PhysicalCardProfile.FrontText | null;
+
+  /**
    * The idempotency key you chose for this object. This value is unique across
    * Increase and is used to ensure that a request is only processed once. Learn more
    * about [idempotency](https://increase.com/documentation/idempotency-keys).
@@ -199,8 +205,26 @@ export interface PhysicalCardProfile {
    * `physical_card_profile`.
    */
   type: 'physical_card_profile';
+}
 
-  [k: string]: unknown;
+export namespace PhysicalCardProfile {
+  /**
+   * Text printed on the front of the card. Reach out to
+   * [support@increase.com](mailto:support@increase.com) for more information.
+   */
+  export interface FrontText {
+    /**
+     * The first line of text on the front of the card.
+     */
+    line1: string;
+
+    /**
+     * The second line of text on the front of the card. Providing a second line moves
+     * the first line slightly higher and prints the second line in the spot where the
+     * first line would have otherwise been printed.
+     */
+    line2: string | null;
+  }
 }
 
 export interface PhysicalCardProfileCreateParams {

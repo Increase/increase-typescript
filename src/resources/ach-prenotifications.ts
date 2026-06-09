@@ -114,8 +114,8 @@ export interface ACHPrenotification {
   /**
    * If the notification is for a future credit or debit.
    *
-   * - `credit` - The Prenotification is for an anticipated credit.
-   * - `debit` - The Prenotification is for an anticipated debit.
+   * - `credit` - Credit
+   * - `debit` - Debit
    */
   credit_debit_indicator: 'credit' | 'debit' | null;
 
@@ -267,9 +267,10 @@ export namespace ACHPrenotification {
      *
      * - `checking` - A checking account.
      * - `savings` - A savings account.
+     * - `loan` - A loan account used in a lender-borrower relationship. Uncommon.
      * - `general_ledger` - A bank's general ledger. Uncommon.
      */
-    corrected_account_funding: 'checking' | 'savings' | 'general_ledger' | null;
+    corrected_account_funding: 'checking' | 'savings' | 'loan' | 'general_ledger' | null;
 
     /**
      * The corrected account number that should be used in future ACHs to this account.
@@ -578,8 +579,8 @@ export interface ACHPrenotificationCreateParams {
   /**
    * Whether the Prenotification is for a future debit or credit.
    *
-   * - `credit` - The Prenotification is for an anticipated credit.
-   * - `debit` - The Prenotification is for an anticipated debit.
+   * - `credit` - Credit
+   * - `debit` - Debit
    */
   credit_debit_indicator?: 'credit' | 'debit';
 

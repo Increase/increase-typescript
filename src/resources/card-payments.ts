@@ -187,8 +187,10 @@ export namespace CardPayment {
 
     /**
      * A Card Financial object. This field will be present in the JSON response if and
-     * only if `category` is equal to `card_financial`. Card Financials are temporary
-     * holds placed on a customer's funds with the intent to later clear a transaction.
+     * only if `category` is equal to `card_financial`. Card Financials are card
+     * transactions that have cleared and settled. Unlike a Card Settlement, which
+     * clears a previous authorization, a Card Financial is authorized and cleared in a
+     * single message.
      */
     card_financial?: Element.CardFinancial | null;
 
@@ -863,6 +865,12 @@ export namespace CardPayment {
       expires_at: string;
 
       /**
+       * The healthcare-related fields for this authorization. Only present for specific
+       * programs.
+       */
+      healthcare: CardAuthorization.Healthcare | null;
+
+      /**
        * The merchant identifier (commonly abbreviated as MID) of the merchant the card
        * is transacting with.
        */
@@ -1244,6 +1252,24 @@ export namespace CardPayment {
            */
           currency: string;
         }
+      }
+
+      /**
+       * The healthcare-related fields for this authorization. Only present for specific
+       * programs.
+       */
+      export interface Healthcare {
+        /**
+         * The merchant's eligibility under the Internal Revenue Service's 90% Rule for
+         * Flexible Spending Account (FSA) and Health Savings Account (HSA) eligible
+         * products. The eligibility is determined based on the list of merchants
+         * maintained by the Special Interest Group for IIAS Standards (SIGIS).
+         *
+         * - `eligible` - The merchant is eligible for treatment under the 90% rule.
+         * - `not_eligible` - The merchant is not eligible for treatment under the 90%
+         *   rule.
+         */
+        merchant_ninety_percent_eligibility: 'eligible' | 'not_eligible';
       }
 
       /**
@@ -2851,7 +2877,8 @@ export namespace CardPayment {
        *   card's value. Only applies when a CVV2 is present.
        * - `transaction_not_allowed` - The attempted card transaction is not allowed per
        *   Increase's terms.
-       * - `breaches_limit` - The transaction was blocked by a Limit.
+       * - `breaches_limit` - The transaction was blocked by a limit or an authorization
+       *   control.
        * - `webhook_declined` - Your application declined the transaction via webhook.
        * - `webhook_timed_out` - Your application webhook did not respond without the
        *   required timeout.
@@ -3627,8 +3654,10 @@ export namespace CardPayment {
 
     /**
      * A Card Financial object. This field will be present in the JSON response if and
-     * only if `category` is equal to `card_financial`. Card Financials are temporary
-     * holds placed on a customer's funds with the intent to later clear a transaction.
+     * only if `category` is equal to `card_financial`. Card Financials are card
+     * transactions that have cleared and settled. Unlike a Card Settlement, which
+     * clears a previous authorization, a Card Financial is authorized and cleared in a
+     * single message.
      */
     export interface CardFinancial {
       /**

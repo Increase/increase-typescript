@@ -43,6 +43,15 @@ describe('resource exports', () => {
         on_or_before_date: '2019-12-27',
       },
       entity_csv: {},
+      fee_csv: {
+        created_at: {
+          after: '2019-12-27T18:11:19.117Z',
+          before: '2019-12-27T18:11:19.117Z',
+          on_or_after: '2019-12-27T18:11:19.117Z',
+          on_or_before: '2019-12-27T18:11:19.117Z',
+        },
+        program_id: 'program_id',
+      },
       funding_instructions: { account_number_id: 'account_number_id' },
       transaction_csv: {
         account_id: 'account_in71c4amph0vgo2qllky',
