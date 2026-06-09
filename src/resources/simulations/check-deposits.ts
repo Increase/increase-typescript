@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../core/resource';
+import * as SimulationsCheckDepositsAPI from './check-deposits';
 import * as CheckDepositsAPI from '../check-deposits';
 import { APIPromise } from '../../core/api-promise';
 import { RequestOptions } from '../../internal/request-options';
@@ -21,15 +22,8 @@ export class CheckDeposits extends APIResource {
    *   );
    * ```
    */
-  adjustment(
-    checkDepositID: string,
-    body: CheckDepositAdjustmentParams,
-    options?: RequestOptions,
-  ): APIPromise<CheckDepositsAPI.CheckDeposit> {
-    return this._client.post(path`/simulations/check_deposits/${checkDepositID}/adjustment`, {
-      body,
-      ...options,
-    });
+  adjustment(checkDepositID: string, body: CheckDepositAdjustmentParams, options?: RequestOptions): APIPromise<CheckDepositsAPI.CheckDeposit> {
+    return this._client.post(path`/simulations/check_deposits/${checkDepositID}/adjustment`, { body, ...options });
   }
 
   /**
@@ -77,15 +71,8 @@ export class CheckDeposits extends APIResource {
    *   );
    * ```
    */
-  submit(
-    checkDepositID: string,
-    body: CheckDepositSubmitParams,
-    options?: RequestOptions,
-  ): APIPromise<CheckDepositsAPI.CheckDeposit> {
-    return this._client.post(path`/simulations/check_deposits/${checkDepositID}/submit`, {
-      body,
-      ...options,
-    });
+  submit(checkDepositID: string, body: CheckDepositSubmitParams, options?: RequestOptions): APIPromise<CheckDepositsAPI.CheckDeposit> {
+    return this._client.post(path`/simulations/check_deposits/${checkDepositID}/submit`, { body, ...options });
   }
 }
 
@@ -119,6 +106,7 @@ export interface CheckDepositAdjustmentParams {
 export interface CheckDepositSubmitParams {
   /**
    * If set, the simulation will use these values for the check's scanned MICR data.
+   * If not set, the simulation will use random values.
    */
   scan?: CheckDepositSubmitParams.Scan;
 }
@@ -126,6 +114,7 @@ export interface CheckDepositSubmitParams {
 export namespace CheckDepositSubmitParams {
   /**
    * If set, the simulation will use these values for the check's scanned MICR data.
+   * If not set, the simulation will use random values.
    */
   export interface Scan {
     /**
@@ -140,14 +129,21 @@ export namespace CheckDepositSubmitParams {
 
     /**
      * The auxiliary on-us data to be returned in the check deposit's scan data.
+     * Auxiliary on-us is typically the check number for business checks.
      */
     auxiliary_on_us?: string;
+
+    /**
+     * The serial number to be returned in the check deposit's scan data. Serial number
+     * is typically the check number for consumer checks.
+     */
+    serial_number?: string;
   }
 }
 
 export declare namespace CheckDeposits {
   export {
     type CheckDepositAdjustmentParams as CheckDepositAdjustmentParams,
-    type CheckDepositSubmitParams as CheckDepositSubmitParams,
+    type CheckDepositSubmitParams as CheckDepositSubmitParams
   };
 }

@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../core/resource';
+import * as WireDrawdownRequestsAPI from './wire-drawdown-requests';
 import { APIPromise } from '../core/api-promise';
 import { Page, type PageParams, PagePromise } from '../core/pagination';
 import { RequestOptions } from '../internal/request-options';
@@ -63,18 +64,12 @@ export class WireDrawdownRequests extends APIResource {
    * }
    * ```
    */
-  list(
-    query: WireDrawdownRequestListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): PagePromise<WireDrawdownRequestsPage, WireDrawdownRequest> {
-    return this._client.getAPIList('/wire_drawdown_requests', Page<WireDrawdownRequest>, {
-      query,
-      ...options,
-    });
+  list(query: WireDrawdownRequestListParams | null | undefined = {}, options?: RequestOptions): PagePromise<WireDrawdownRequestsPage, WireDrawdownRequest> {
+    return this._client.getAPIList('/wire_drawdown_requests', Page<WireDrawdownRequest>, { query, ...options });
   }
 }
 
-export type WireDrawdownRequestsPage = Page<WireDrawdownRequest>;
+export type WireDrawdownRequestsPage = Page<WireDrawdownRequest>
 
 /**
  * Wire drawdown requests enable you to request that someone else send you a wire.
@@ -149,6 +144,12 @@ export interface WireDrawdownRequest {
   debtor_routing_number: string;
 
   /**
+   * A free-form reference string set by the sender, to be mirrored back in the
+   * subsequent wire transfer.
+   */
+  end_to_end_identification: string | null;
+
+  /**
    * If the recipient fulfills the drawdown request by sending funds, then this will
    * be the identifier of the corresponding Transaction.
    */
@@ -186,11 +187,18 @@ export interface WireDrawdownRequest {
   type: 'wire_drawdown_request';
 
   /**
+   * The unique end-to-end transaction reference
+   * ([UETR](https://www.swift.com/payments/what-unique-end-end-transaction-reference-uetr))
+   * of the drawdown request.
+   */
+  unique_end_to_end_transaction_reference: string | null;
+
+  /**
    * Remittance information the debtor will see as part of the drawdown request.
    */
   unstructured_remittance_information: string;
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export namespace WireDrawdownRequest {
@@ -350,7 +358,7 @@ export interface WireDrawdownRequestCreateParams {
    */
   end_to_end_identification?: string;
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export namespace WireDrawdownRequestCreateParams {
@@ -457,6 +465,6 @@ export declare namespace WireDrawdownRequests {
     type WireDrawdownRequest as WireDrawdownRequest,
     type WireDrawdownRequestsPage as WireDrawdownRequestsPage,
     type WireDrawdownRequestCreateParams as WireDrawdownRequestCreateParams,
-    type WireDrawdownRequestListParams as WireDrawdownRequestListParams,
+    type WireDrawdownRequestListParams as WireDrawdownRequestListParams
   };
 }

@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../core/resource';
+import * as LockboxAddressesAPI from './lockbox-addresses';
 import { APIPromise } from '../core/api-promise';
 import { Page, type PageParams, PagePromise } from '../core/pagination';
 import { RequestOptions } from '../internal/request-options';
@@ -45,11 +46,7 @@ export class LockboxAddresses extends APIResource {
    * );
    * ```
    */
-  update(
-    lockboxAddressID: string,
-    body: LockboxAddressUpdateParams,
-    options?: RequestOptions,
-  ): APIPromise<LockboxAddress> {
+  update(lockboxAddressID: string, body: LockboxAddressUpdateParams, options?: RequestOptions): APIPromise<LockboxAddress> {
     return this._client.patch(path`/lockbox_addresses/${lockboxAddressID}`, { body, ...options });
   }
 
@@ -64,15 +61,12 @@ export class LockboxAddresses extends APIResource {
    * }
    * ```
    */
-  list(
-    query: LockboxAddressListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): PagePromise<LockboxAddressesPage, LockboxAddress> {
+  list(query: LockboxAddressListParams | null | undefined = {}, options?: RequestOptions): PagePromise<LockboxAddressesPage, LockboxAddress> {
     return this._client.getAPIList('/lockbox_addresses', Page<LockboxAddress>, { query, ...options });
   }
 }
 
-export type LockboxAddressesPage = Page<LockboxAddress>;
+export type LockboxAddressesPage = Page<LockboxAddress>
 
 /**
  * Lockbox Addresses are physical locations that can receive mail containing paper
@@ -165,7 +159,7 @@ export interface LockboxAddressCreateParams {
    */
   description?: string;
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export interface LockboxAddressUpdateParams {
@@ -230,6 +224,6 @@ export declare namespace LockboxAddresses {
     type LockboxAddressesPage as LockboxAddressesPage,
     type LockboxAddressCreateParams as LockboxAddressCreateParams,
     type LockboxAddressUpdateParams as LockboxAddressUpdateParams,
-    type LockboxAddressListParams as LockboxAddressListParams,
+    type LockboxAddressListParams as LockboxAddressListParams
   };
 }
