@@ -170,7 +170,7 @@ describe('resource entities', () => {
         confirmed_no_us_tax_id: true,
       },
       risk_rating: { rated_at: '2019-12-27T18:11:19.117Z', rating: 'low' },
-      supplemental_documents: [{ file_id: 'file_makxrc67oh9l6sg7w9yc' }],
+      supplemental_documents: [{ file_id: 'file_id' }],
       terms_agreements: [
         {
           agreed_at: '2019-12-27T18:11:19.117Z',

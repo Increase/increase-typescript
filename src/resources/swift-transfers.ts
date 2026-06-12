@@ -15,7 +15,7 @@ export class SwiftTransfers extends APIResource {
    * const swiftTransfer = await client.swiftTransfers.create({
    *   account_id: 'account_in71c4amph0vgo2qllky',
    *   account_number: '987654321',
-   *   bank_identification_code: 'ECBFDEFFTPP',
+   *   bank_identification_code: 'FRNYUS33XXX',
    *   creditor_address: {
    *     city: 'Frankfurt',
    *     country: 'DE',

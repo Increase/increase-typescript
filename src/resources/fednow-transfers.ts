@@ -152,6 +152,11 @@ export interface FednowTransfer {
   currency: 'USD';
 
   /**
+   * The debtor's address.
+   */
+  debtor_address: FednowTransfer.DebtorAddress | null;
+
+  /**
    * The name of the transfer's sender. If not provided, defaults to the name of the
    * account's entity.
    */
@@ -326,6 +331,31 @@ export namespace FednowTransfer {
    * The creditor's address.
    */
   export interface CreditorAddress {
+    /**
+     * The city, district, town, or village of the address.
+     */
+    city: string | null;
+
+    /**
+     * The first line of the address.
+     */
+    line1: string | null;
+
+    /**
+     * The ZIP code of the address.
+     */
+    postal_code: string | null;
+
+    /**
+     * The address state.
+     */
+    state: string | null;
+  }
+
+  /**
+   * The debtor's address.
+   */
+  export interface DebtorAddress {
     /**
      * The city, district, town, or village of the address.
      */

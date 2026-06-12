@@ -105,6 +105,12 @@ export interface InboundWireTransferCreateParams {
   instruction_identification?: string;
 
   /**
+   * The sending bank will set purpose in production. You can simulate any value
+   * here.
+   */
+  purpose?: string;
+
+  /**
    * The sending bank will set unique_end_to_end_transaction_reference in production.
    * You can simulate any value here.
    */

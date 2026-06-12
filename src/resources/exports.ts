@@ -426,6 +426,16 @@ export namespace Export {
        * Filter fees created before this time.
        */
       before: string | null;
+
+      /**
+       * Filter fees created on or after this time.
+       */
+      on_or_after: string | null;
+
+      /**
+       * Filter fees created on or before this time.
+       */
+      on_or_before: string | null;
     }
   }
 
@@ -581,6 +591,8 @@ export interface ExportCreateParams {
    *   management dashboard.
    * - `account_verification_letter` - A PDF of an account verification letter.
    * - `funding_instructions` - A PDF of funding instructions.
+   * - `fee_csv` - Export a CSV of fees. The time range must not include any fees
+   *   that are part of an open fee statement.
    * - `voided_check` - A PDF of a voided check.
    * - `daily_account_balance_csv` - Export a CSV of daily account balances with
    *   starting and ending balances for a given date range.
@@ -595,6 +607,7 @@ export interface ExportCreateParams {
     | 'vendor_csv'
     | 'account_verification_letter'
     | 'funding_instructions'
+    | 'fee_csv'
     | 'voided_check'
     | 'daily_account_balance_csv';
 
@@ -632,6 +645,11 @@ export interface ExportCreateParams {
    * Options for the created export. Required if `category` is equal to `entity_csv`.
    */
   entity_csv?: ExportCreateParams.EntityCsv;
+
+  /**
+   * Options for the created export. Required if `category` is equal to `fee_csv`.
+   */
+  fee_csv?: ExportCreateParams.FeeCsv;
 
   /**
    * Options for the created export. Required if `category` is equal to
@@ -784,6 +802,52 @@ export namespace ExportCreateParams {
    * Options for the created export. Required if `category` is equal to `entity_csv`.
    */
   export interface EntityCsv {}
+
+  /**
+   * Options for the created export. Required if `category` is equal to `fee_csv`.
+   */
+  export interface FeeCsv {
+    /**
+     * Filter results by time range on the `created_at` attribute.
+     */
+    created_at?: FeeCsv.CreatedAt;
+
+    /**
+     * Filter exported Fees to the specified Program.
+     */
+    program_id?: string;
+  }
+
+  export namespace FeeCsv {
+    /**
+     * Filter results by time range on the `created_at` attribute.
+     */
+    export interface CreatedAt {
+      /**
+       * Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+       * timestamp.
+       */
+      after?: string;
+
+      /**
+       * Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+       * timestamp.
+       */
+      before?: string;
+
+      /**
+       * Return results on or after this
+       * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+       */
+      on_or_after?: string;
+
+      /**
+       * Return results on or before this
+       * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+       */
+      on_or_before?: string;
+    }
+  }
 
   /**
    * Options for the created export. Required if `category` is equal to
