@@ -150,6 +150,11 @@ export interface Card {
   billing_address: Card.BillingAddress;
 
   /**
+   * The Bank Identification Number (BIN) of the Card.
+   */
+  bin: string;
+
+  /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
    * the Card was created.
    */

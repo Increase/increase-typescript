@@ -174,6 +174,11 @@ export interface InboundWireTransfer {
   instruction_identification: string | null;
 
   /**
+   * The reason for the wire transfer, as set by the sender.
+   */
+  purpose: string | null;
+
+  /**
    * If the transfer is reversed, this will contain details of the reversal.
    */
   reversal: InboundWireTransfer.Reversal | null;

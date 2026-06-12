@@ -37,6 +37,7 @@ describe('resource inboundWireTransfers', () => {
       end_to_end_identification: 'x',
       instructing_agent_routing_number: 'x',
       instruction_identification: 'x',
+      purpose: 'x',
       unique_end_to_end_transaction_reference: 'x',
       unstructured_remittance_information: 'x',
       wire_drawdown_request_id: 'wire_drawdown_request_id',

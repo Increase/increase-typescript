@@ -71,6 +71,12 @@ export interface DigitalWalletToken {
   created_at: string;
 
   /**
+   * If the Digital Wallet Token was declined during provisioning, details about the
+   * decline.
+   */
+  decline: DigitalWalletToken.Decline | null;
+
+  /**
    * The device that was used to create the Digital Wallet Token.
    */
   device: DigitalWalletToken.Device;
@@ -88,8 +94,9 @@ export interface DigitalWalletToken {
    *   activated via two-factor authentication yet.
    * - `suspended` - The digital wallet token has been temporarily paused.
    * - `deactivated` - The digital wallet token has been permanently canceled.
+   * - `declined` - The digital wallet token was declined during provisioning.
    */
-  status: 'active' | 'inactive' | 'suspended' | 'deactivated';
+  status: 'active' | 'inactive' | 'suspended' | 'deactivated' | 'declined';
 
   /**
    * The digital wallet app being used.
@@ -122,6 +129,34 @@ export namespace DigitalWalletToken {
      * Name of the cardholder, for example "John Smith".
      */
     name: string | null;
+  }
+
+  /**
+   * If the Digital Wallet Token was declined during provisioning, details about the
+   * decline.
+   */
+  export interface Decline {
+    /**
+     * The reason the token provisioning was declined.
+     *
+     * - `card_not_active` - The card is not active.
+     * - `no_verification_method` - The card does not have a two-factor authentication
+     *   method.
+     * - `webhook_timed_out` - Your webhook timed out when evaluating the token
+     *   provisioning attempt.
+     * - `webhook_declined` - Your webhook declined the token provisioning attempt.
+     * - `incorrect_card_verification_code` - The tokenization attempt failed because
+     *   the Card Verification Code (CVC) was incorrect.
+     * - `declined_by_token_requestor` - The tokenization attempt was declined by the
+     *   token requestor.
+     */
+    reason:
+      | 'card_not_active'
+      | 'no_verification_method'
+      | 'webhook_timed_out'
+      | 'webhook_declined'
+      | 'incorrect_card_verification_code'
+      | 'declined_by_token_requestor';
   }
 
   /**
@@ -193,8 +228,9 @@ export namespace DigitalWalletToken {
      *   activated via two-factor authentication yet.
      * - `suspended` - The digital wallet token has been temporarily paused.
      * - `deactivated` - The digital wallet token has been permanently canceled.
+     * - `declined` - The digital wallet token was declined during provisioning.
      */
-    status: 'active' | 'inactive' | 'suspended' | 'deactivated';
+    status: 'active' | 'inactive' | 'suspended' | 'deactivated' | 'declined';
 
     /**
      * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which

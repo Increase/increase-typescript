@@ -152,6 +152,12 @@ export interface CardDispute {
   network: 'visa' | 'pulse';
 
   /**
+   * If the Card Dispute has been rejected, this will contain details of the
+   * rejection.
+   */
+  rejection: CardDispute.Rejection | null;
+
+  /**
    * The status of the Card Dispute.
    *
    * - `user_submission_required` - A User Submission is required to continue with
@@ -166,6 +172,8 @@ export interface CardDispute {
    * - `lost` - The Card Dispute has been lost and funds previously credited from the
    *   acceptance have been debited.
    * - `won` - The Card Dispute has been won and no further action can be taken.
+   * - `rejected` - The Card Dispute has been reviewed and rejected, please review
+   *   the explanation for more details.
    */
   status:
     | 'user_submission_required'
@@ -174,7 +182,8 @@ export interface CardDispute {
     | 'pending_user_withdrawal_submitting'
     | 'pending_response'
     | 'lost'
-    | 'won';
+    | 'won'
+    | 'rejected';
 
   /**
    * A constant representing the object's type. For this resource it will always be
@@ -229,6 +238,23 @@ export namespace CardDispute {
      * - `loss` - The Card Dispute was lost according to network rules.
      */
     reason: 'user_withdrawn' | 'loss';
+  }
+
+  /**
+   * If the Card Dispute has been rejected, this will contain details of the
+   * rejection.
+   */
+  export interface Rejection {
+    /**
+     * Why the Card Dispute was rejected.
+     */
+    explanation: string;
+
+    /**
+     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+     * the Card Dispute was rejected.
+     */
+    rejected_at: string;
   }
 
   /**
@@ -4917,6 +4943,7 @@ export namespace CardDisputeListParams {
       | 'pending_response'
       | 'lost'
       | 'won'
+      | 'rejected'
     >;
   }
 }

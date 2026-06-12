@@ -118,6 +118,8 @@ export namespace Program {
      * The maximum extendable credit of the program.
      */
     maximum_extendable_credit: number;
+
+    [k: string]: unknown;
   }
 }
 

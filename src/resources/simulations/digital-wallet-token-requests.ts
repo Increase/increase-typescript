@@ -39,12 +39,18 @@ export interface DigitalWalletTokenRequestCreateResponse {
    * - `webhook_timed_out` - Your webhook timed out when evaluating the token
    *   provisioning attempt.
    * - `webhook_declined` - Your webhook declined the token provisioning attempt.
+   * - `incorrect_card_verification_code` - The tokenization attempt failed because
+   *   the Card Verification Code (CVC) was incorrect.
+   * - `declined_by_token_requestor` - The tokenization attempt was declined by the
+   *   token requestor.
    */
   decline_reason:
     | 'card_not_active'
     | 'no_verification_method'
     | 'webhook_timed_out'
     | 'webhook_declined'
+    | 'incorrect_card_verification_code'
+    | 'declined_by_token_requestor'
     | null;
 
   /**

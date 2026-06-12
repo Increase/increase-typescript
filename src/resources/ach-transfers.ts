@@ -235,8 +235,8 @@ export interface ACHTransfer {
   network: 'ach';
 
   /**
-   * If the receiving bank accepts the transfer but notifies that future transfers
-   * should use different details, this will contain those details.
+   * If the receiving bank notifies that future transfers should use different
+   * details, this will contain those details.
    */
   notifications_of_change: Array<ACHTransfer.NotificationsOfChange>;
 
@@ -669,9 +669,10 @@ export namespace ACHTransfer {
      *
      * - `checking` - A checking account.
      * - `savings` - A savings account.
+     * - `loan` - A loan account used in a lender-borrower relationship. Uncommon.
      * - `general_ledger` - A bank's general ledger. Uncommon.
      */
-    corrected_account_funding: 'checking' | 'savings' | 'general_ledger' | null;
+    corrected_account_funding: 'checking' | 'savings' | 'loan' | 'general_ledger' | null;
 
     /**
      * The corrected account number that should be used in future ACHs to this account.

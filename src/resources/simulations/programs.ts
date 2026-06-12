@@ -49,6 +49,8 @@ export interface ProgramCreateParams {
    * The identifier of the Account the Program should be added to is for.
    */
   reserve_account_id?: string;
+
+  [k: string]: unknown;
 }
 
 export declare namespace Programs {

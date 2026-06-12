@@ -562,6 +562,12 @@ export namespace PendingTransaction {
       expires_at: string;
 
       /**
+       * The healthcare-related fields for this authorization. Only present for specific
+       * programs.
+       */
+      healthcare: CardAuthorization.Healthcare | null;
+
+      /**
        * The merchant identifier (commonly abbreviated as MID) of the merchant the card
        * is transacting with.
        */
@@ -943,6 +949,24 @@ export namespace PendingTransaction {
            */
           currency: string;
         }
+      }
+
+      /**
+       * The healthcare-related fields for this authorization. Only present for specific
+       * programs.
+       */
+      export interface Healthcare {
+        /**
+         * The merchant's eligibility under the Internal Revenue Service's 90% Rule for
+         * Flexible Spending Account (FSA) and Health Savings Account (HSA) eligible
+         * products. The eligibility is determined based on the list of merchants
+         * maintained by the Special Interest Group for IIAS Standards (SIGIS).
+         *
+         * - `eligible` - The merchant is eligible for treatment under the 90% rule.
+         * - `not_eligible` - The merchant is not eligible for treatment under the 90%
+         *   rule.
+         */
+        merchant_ninety_percent_eligibility: 'eligible' | 'not_eligible';
       }
 
       /**
