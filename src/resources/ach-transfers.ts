@@ -201,9 +201,10 @@ export interface ACHTransfer {
    *
    * - `checking` - A checking account.
    * - `savings` - A savings account.
+   * - `loan` - A loan account used in a lender-borrower relationship. Uncommon.
    * - `general_ledger` - A bank's general ledger. Uncommon.
    */
-  funding: 'checking' | 'savings' | 'general_ledger';
+  funding: 'checking' | 'savings' | 'loan' | 'general_ledger';
 
   /**
    * The idempotency key you chose for this object. This value is unique across
@@ -1140,9 +1141,10 @@ export interface ACHTransferCreateParams {
    *
    * - `checking` - A checking account.
    * - `savings` - A savings account.
+   * - `loan` - A loan account used in a lender-borrower relationship. Uncommon.
    * - `general_ledger` - A bank's general ledger. Uncommon.
    */
-  funding?: 'checking' | 'savings' | 'general_ledger';
+  funding?: 'checking' | 'savings' | 'loan' | 'general_ledger';
 
   /**
    * Your identifier for the transfer recipient.
