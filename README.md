@@ -101,6 +101,23 @@ await client.files.create({
 });
 ```
 
+## Webhook verification
+
+The SDK includes a helper for verifying webhook signatures. Construct the client with your `webhookSecret` (read from the `INCREASE_WEBHOOK_SECRET` environment variable by default), then pass the raw request body string and headers to `client.events.unwrap()`, which verifies the signature and parses the payload:
+
+```ts
+import Increase from 'increase';
+
+const client = new Increase({
+  webhookSecret: process.env['INCREASE_WEBHOOK_SECRET'], // This is the default and can be omitted
+});
+
+// In your webhook handler, with the raw (unparsed) request body and headers:
+const event = client.events.unwrap(body, { headers });
+```
+
+An error is thrown if the signature is invalid, so a webhook that unwraps without throwing is guaranteed authentic.
+
 ## Handling errors
 
 When the library is unable to connect to the API,
