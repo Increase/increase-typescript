@@ -186,11 +186,11 @@ export interface ACHPrenotification {
    * The lifecycle status of the ACH Prenotification.
    *
    * - `pending_submitting` - The Prenotification is pending submission.
-   * - `requires_attention` - The Prenotification requires attention.
    * - `returned` - The Prenotification has been returned.
    * - `submitted` - The Prenotification is complete.
+   * - `requires_attention` - The Prenotification requires attention.
    */
-  status: 'pending_submitting' | 'requires_attention' | 'returned' | 'submitted';
+  status: 'pending_submitting' | 'returned' | 'submitted' | 'requires_attention';
 
   /**
    * A constant representing the object's type. For this resource it will always be
