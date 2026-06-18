@@ -309,6 +309,28 @@ export namespace BalanceLookup {
      * The amount past due on the loan.
      */
     past_due_balance: number;
+
+    /**
+     * The receivables balances for the loan.
+     */
+    receivables: Loan.Receivables | null;
+  }
+
+  export namespace Loan {
+    /**
+     * The receivables balances for the loan.
+     */
+    export interface Receivables {
+      /**
+       * The balance of seasoned receivables available to be purchased.
+       */
+      purchasable_balance: number;
+
+      /**
+       * The balance of receivables that have been purchased.
+       */
+      purchased_balance: number;
+    }
   }
 }
 
