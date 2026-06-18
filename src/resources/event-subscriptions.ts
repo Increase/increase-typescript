@@ -123,10 +123,8 @@ export interface EventSubscription {
    *   delivered.
    * - `deleted` - The subscription is permanently disabled and Events will not be
    *   delivered.
-   * - `requires_attention` - The subscription is temporarily disabled due to
-   *   delivery errors and Events will not be delivered.
    */
-  status: 'active' | 'disabled' | 'deleted' | 'requires_attention';
+  status: 'active' | 'disabled' | 'deleted';
 
   /**
    * A constant representing the object's type. For this resource it will always be
