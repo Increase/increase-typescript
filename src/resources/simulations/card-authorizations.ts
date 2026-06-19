@@ -225,6 +225,81 @@ export namespace CardAuthorizationCreateParams {
      */
     export interface Visa {
       /**
+       * For electronic commerce transactions, this identifies the level of security used
+       * in obtaining the customer's payment credential. For mail or telephone order
+       * transactions, identifies the type of mail or telephone order.
+       *
+       * - `mail_phone_order` - Single transaction of a mail/phone order: Use to indicate
+       *   that the transaction is a mail/phone order purchase, not a recurring
+       *   transaction or installment payment. For domestic transactions in the US
+       *   region, this value may also indicate one bill payment transaction in the
+       *   card-present or card-absent environments.
+       * - `recurring` - Recurring transaction: Payment indicator used to indicate a
+       *   recurring transaction that originates from an acquirer in the US region.
+       * - `installment` - Installment payment: Payment indicator used to indicate one
+       *   purchase of goods or services that is billed to the account in multiple
+       *   charges over a period of time agreed upon by the cardholder and merchant from
+       *   transactions that originate from an acquirer in the US region.
+       * - `unknown_mail_phone_order` - Unknown classification: other mail order: Use to
+       *   indicate that the type of mail/telephone order is unknown.
+       * - `secure_electronic_commerce` - Secure electronic commerce transaction: Use to
+       *   indicate that the electronic commerce transaction has been authenticated using
+       *   e.g., 3-D Secure
+       * - `non_authenticated_security_transaction_at_3ds_capable_merchant` -
+       *   Non-authenticated security transaction at a 3-D Secure-capable merchant, and
+       *   merchant attempted to authenticate the cardholder using 3-D Secure: Use to
+       *   identify an electronic commerce transaction where the merchant attempted to
+       *   authenticate the cardholder using 3-D Secure, but was unable to complete the
+       *   authentication because the issuer or cardholder does not participate in the
+       *   3-D Secure program.
+       * - `non_authenticated_security_transaction` - Non-authenticated security
+       *   transaction: Use to identify an electronic commerce transaction that uses data
+       *   encryption for security however, cardholder authentication is not performed
+       *   using 3-D Secure.
+       * - `non_secure_transaction` - Non-secure transaction: Use to identify an
+       *   electronic commerce transaction that has no data protection.
+       */
+      electronic_commerce_indicator?:
+        | 'mail_phone_order'
+        | 'recurring'
+        | 'installment'
+        | 'unknown_mail_phone_order'
+        | 'secure_electronic_commerce'
+        | 'non_authenticated_security_transaction_at_3ds_capable_merchant'
+        | 'non_authenticated_security_transaction'
+        | 'non_secure_transaction';
+
+      /**
+       * The method used to enter the cardholder's primary account number and card
+       * expiration date.
+       *
+       * - `unknown` - Unknown
+       * - `manual` - Manual key entry
+       * - `magnetic_stripe_no_cvv` - Magnetic stripe read, without card verification
+       *   value
+       * - `optical_code` - Optical code
+       * - `integrated_circuit_card` - Contact chip card
+       * - `contactless` - Contactless read of chip card
+       * - `credential_on_file` - Transaction initiated using a credential that has
+       *   previously been stored on file
+       * - `magnetic_stripe` - Magnetic stripe read
+       * - `contactless_magnetic_stripe` - Contactless read of magnetic stripe data
+       * - `integrated_circuit_card_no_cvv` - Contact chip card, without card
+       *   verification value
+       */
+      point_of_service_entry_mode?:
+        | 'unknown'
+        | 'manual'
+        | 'magnetic_stripe_no_cvv'
+        | 'optical_code'
+        | 'integrated_circuit_card'
+        | 'contactless'
+        | 'credential_on_file'
+        | 'magnetic_stripe'
+        | 'contactless_magnetic_stripe'
+        | 'integrated_circuit_card_no_cvv';
+
+      /**
        * The reason code for the stand-in processing.
        *
        * - `issuer_error` - Increase failed to process the authorization in a timely
@@ -256,6 +331,38 @@ export namespace CardAuthorizationCreateParams {
         | 'merchant_transaction_advisory_service_authentication_required'
         | 'payment_fraud_disruption_acquirer_block'
         | 'other';
+
+      /**
+       * The capability of the terminal being used to read the card. Shows whether a
+       * terminal can e.g., accept chip cards or if it only supports magnetic stripe
+       * reads. This reflects the highest capability of the terminal — for example, a
+       * terminal that supports both chip and magnetic stripe will be identified as
+       * chip-capable.
+       *
+       * - `unknown` - Unknown
+       * - `terminal_not_used` - No terminal was used for this transaction.
+       * - `magnetic_stripe` - The terminal can only read magnetic stripes and does not
+       *   have chip or contactless reading capability.
+       * - `barcode` - The terminal can only read barcodes.
+       * - `optical_character_recognition` - The terminal can only read cards via Optical
+       *   Character Recognition.
+       * - `chip_or_contactless` - The terminal supports contact chip cards and can also
+       *   read the magnetic stripe. If contact chip is supported, this value is used
+       *   regardless of whether contactless is also supported.
+       * - `contactless_only` - The terminal supports contactless reads but does not
+       *   support contact chip. Only used when the terminal lacks contact chip
+       *   capability.
+       * - `no_capability` - The terminal has no card reading capability.
+       */
+      terminal_entry_capability?:
+        | 'unknown'
+        | 'terminal_not_used'
+        | 'magnetic_stripe'
+        | 'barcode'
+        | 'optical_character_recognition'
+        | 'chip_or_contactless'
+        | 'contactless_only'
+        | 'no_capability';
     }
   }
 
