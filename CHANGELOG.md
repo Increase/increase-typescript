@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.572.0](https://github.com/Increase/increase-typescript/compare/v0.571.0...v0.572.0) (2026-06-22)
+
+
+### Features
+
+* **api:** add Visa network fields to card authorization simulations ([4884e0e](https://github.com/Increase/increase-typescript/commit/4884e0e0168565ad9097f335cad5f9ecb0d98963))
+
 ## [0.571.0](https://github.com/Increase/increase-typescript/compare/v0.570.0...v0.571.0) (2026-06-18)
 
 
