@@ -460,6 +460,13 @@ export namespace FednowTransfer {
      * the transfer was submitted to FedNow.
      */
     submitted_at: string | null;
+
+    /**
+     * The Unique End-to-end Transaction Reference
+     * ([UETR](https://www.swift.com/payments/what-unique-end-end-transaction-reference-uetr))
+     * of the transfer.
+     */
+    unique_end_to_end_transaction_reference: string;
   }
 }
 
