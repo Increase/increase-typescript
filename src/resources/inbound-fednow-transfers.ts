@@ -140,6 +140,13 @@ export interface InboundFednowTransfer {
   type: 'inbound_fednow_transfer';
 
   /**
+   * The Unique End-to-end Transaction Reference
+   * ([UETR](https://www.swift.com/payments/what-unique-end-end-transaction-reference-uetr))
+   * of the transfer.
+   */
+  unique_end_to_end_transaction_reference: string | null;
+
+  /**
    * Additional information included with the transfer.
    */
   unstructured_remittance_information: string | null;
