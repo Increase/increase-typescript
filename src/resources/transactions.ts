@@ -288,7 +288,8 @@ export namespace Transaction {
      * Return is created when an ACH Transfer is returned by the receiving bank. It
      * offsets the ACH Transfer Intention. ACH Transfer Returns usually occur within
      * the first two business days after the transfer is initiated, but can occur much
-     * later.
+     * later. The return appears as a new posted Transaction; no Pending Transaction is
+     * created.
      */
     ach_transfer_return?: Source.ACHTransferReturn | null;
 
@@ -686,7 +687,8 @@ export namespace Transaction {
      * Return is created when an ACH Transfer is returned by the receiving bank. It
      * offsets the ACH Transfer Intention. ACH Transfer Returns usually occur within
      * the first two business days after the transfer is initiated, but can occur much
-     * later.
+     * later. The return appears as a new posted Transaction; no Pending Transaction is
+     * created.
      */
     export interface ACHTransferReturn {
       /**
@@ -941,7 +943,8 @@ export namespace Transaction {
       transaction_id: string;
 
       /**
-       * The identifier of the ACH Transfer associated with this return.
+       * The identifier of the ACH Transfer associated with this return. This matches the
+       * original Transaction's `source.ach_transfer_intention.transfer_id`.
        */
       transfer_id: string;
 

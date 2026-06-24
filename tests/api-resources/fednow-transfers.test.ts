@@ -89,7 +89,7 @@ describe('resource fednowTransfers', () => {
           external_account_id: 'external_account_id',
           idempotency_key: 'x',
           limit: 1,
-          status: { in: ['pending_reviewing'] },
+          status: { in: ['pending_submitting'] },
         },
         { path: '/_stainless_unknown_path' },
       ),
