@@ -314,7 +314,9 @@ export interface ACHTransfer {
    * - `requires_attention` - The transfer requires attention from an Increase
    *   operator.
    * - `rejected` - The transfer has been rejected.
-   * - `submitted` - The transfer is complete.
+   * - `submitted` - The transfer has been submitted to the Federal Reserve. When the
+   *   transfer settles, the status remains `submitted` and the `settlement`
+   *   sub-object is populated.
    * - `returned` - The transfer has been returned.
    */
   status:
@@ -982,7 +984,8 @@ export namespace ACHTransfer {
     transaction_id: string;
 
     /**
-     * The identifier of the ACH Transfer associated with this return.
+     * The identifier of the ACH Transfer associated with this return. This matches the
+     * original Transaction's `source.ach_transfer_intention.transfer_id`.
      */
     transfer_id: string;
 
@@ -1179,7 +1182,8 @@ export interface ACHTransferCreateParams {
   /**
    * The
    * [Standard Entry Class (SEC) code](/documentation/ach-standard-entry-class-codes)
-   * to use for the transfer.
+   * to use for the transfer. If not provided, the default is
+   * `corporate_credit_or_debit`.
    *
    * - `corporate_credit_or_debit` - Corporate Credit and Debit (CCD) is used for
    *   business-to-business payments.
