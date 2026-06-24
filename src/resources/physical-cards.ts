@@ -329,15 +329,18 @@ export namespace PhysicalCard {
          *   event.
          * - `delivery_issue` - There is an issue preventing delivery. The delivery will be
          *   attempted again if possible. If the issue cannot be resolved, the physical
-         *   card will be returned to sender.
-         * - `returned_to_sender` - Delivery failed and the physical card was returned to
-         *   sender.
+         *   card will be rerouted to the return address.
+         * - `returning_to_sender` - The physical card has been rerouted to the return
+         *   address.
+         * - `returned_to_sender` - The physical card has been delivered to the return
+         *   address.
          */
         category:
           | 'in_transit'
           | 'processed_for_delivery'
           | 'delivered'
           | 'delivery_issue'
+          | 'returning_to_sender'
           | 'returned_to_sender';
 
         /**

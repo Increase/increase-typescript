@@ -41,7 +41,9 @@ export class InboundMailItems extends APIResource {
   }
 
   /**
-   * Action an Inbound Mail Item
+   * Deposits or ignores each check contained in a pending Inbound Mail Item.
+   * Depositing a check creates a [Check Deposit](#check-deposits) into the Account
+   * you specify.
    *
    * @example
    * ```ts
@@ -67,7 +69,9 @@ export type InboundMailItemsPage = Page<InboundMailItem>;
 
 /**
  * Inbound Mail Items represent pieces of physical mail delivered to a Lockbox
- * Address.
+ * Address. Increase automatically deposits checks mailed to a Lockbox Recipient
+ * into the recipient's Account. Checks that are not matched to a Lockbox Recipient
+ * must be deposited or ignored using the Action an Inbound Mail Item endpoint.
  */
 export interface InboundMailItem {
   /**

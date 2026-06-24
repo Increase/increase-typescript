@@ -156,7 +156,8 @@ export interface LockboxRecipientCreateParams {
   account_id: string;
 
   /**
-   * The Lockbox Address where this Lockbox Recipient may receive mail.
+   * The Lockbox Address where this Lockbox Recipient may receive mail. The Lockbox
+   * Address must have a `status` of `active`.
    */
   lockbox_address_id: string;
 
