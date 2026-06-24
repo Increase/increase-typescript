@@ -209,11 +209,11 @@ export interface WireTransfer {
    *
    * - `pending_approval` - The transfer is pending approval.
    * - `canceled` - The transfer has been canceled.
+   * - `pending_creating` - The transfer is pending creation.
    * - `pending_reviewing` - The transfer is pending review by Increase.
    * - `rejected` - The transfer has been rejected by Increase.
    * - `requires_attention` - The transfer requires attention from an Increase
    *   operator.
-   * - `pending_creating` - The transfer is pending creation.
    * - `reversed` - The transfer has been reversed.
    * - `submitted` - The transfer has been submitted to Fedwire.
    * - `complete` - The transfer has been acknowledged by Fedwire and can be
@@ -222,10 +222,10 @@ export interface WireTransfer {
   status:
     | 'pending_approval'
     | 'canceled'
+    | 'pending_creating'
     | 'pending_reviewing'
     | 'rejected'
     | 'requires_attention'
-    | 'pending_creating'
     | 'reversed'
     | 'submitted'
     | 'complete';
@@ -904,10 +904,10 @@ export namespace WireTransferListParams {
     in?: Array<
       | 'pending_approval'
       | 'canceled'
+      | 'pending_creating'
       | 'pending_reviewing'
       | 'rejected'
       | 'requires_attention'
-      | 'pending_creating'
       | 'reversed'
       | 'submitted'
       | 'complete'

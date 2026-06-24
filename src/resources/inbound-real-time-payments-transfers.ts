@@ -126,7 +126,8 @@ export interface InboundRealTimePaymentsTransfer {
    * The lifecycle status of the transfer.
    *
    * - `pending_confirming` - The transfer is pending confirmation.
-   * - `timed_out` - The transfer was not responded to in time.
+   * - `timed_out` - The transfer was not responded to in time. This is rare and
+   *   represents an error at Increase.
    * - `confirmed` - The transfer has been received successfully and is confirmed.
    * - `declined` - The transfer has been declined.
    */
