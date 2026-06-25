@@ -75,7 +75,8 @@ export interface InboundACHTransferCreateParams {
   company_id?: string;
 
   /**
-   * The name of the sender.
+   * The name of the sender. This corresponds to the `originator_company_name` field
+   * on the resulting Inbound ACH Transfer.
    */
   company_name?: string;
 

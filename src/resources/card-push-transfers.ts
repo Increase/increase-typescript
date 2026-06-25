@@ -331,11 +331,11 @@ export interface CardPushTransfer {
    *
    * - `pending_approval` - The transfer is pending approval.
    * - `canceled` - The transfer has been canceled.
+   * - `pending_submission` - The transfer is queued to be submitted to the card
+   *   network.
    * - `pending_reviewing` - The transfer is pending review by Increase.
    * - `requires_attention` - The transfer requires attention from an Increase
    *   operator.
-   * - `pending_submission` - The transfer is queued to be submitted to the card
-   *   network.
    * - `submitted` - The transfer has been submitted and is pending a response from
    *   the card network.
    * - `complete` - The transfer has been sent successfully and is complete.
@@ -344,9 +344,9 @@ export interface CardPushTransfer {
   status:
     | 'pending_approval'
     | 'canceled'
+    | 'pending_submission'
     | 'pending_reviewing'
     | 'requires_attention'
-    | 'pending_submission'
     | 'submitted'
     | 'complete'
     | 'declined';
@@ -1626,9 +1626,9 @@ export namespace CardPushTransferListParams {
     in?: Array<
       | 'pending_approval'
       | 'canceled'
+      | 'pending_submission'
       | 'pending_reviewing'
       | 'requires_attention'
-      | 'pending_submission'
       | 'submitted'
       | 'complete'
       | 'declined'

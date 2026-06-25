@@ -8,7 +8,10 @@ import { path } from '../internal/utils/path';
 
 export class LockboxAddresses extends APIResource {
   /**
-   * Create a Lockbox Address
+   * The Lockbox Address starts with a `pending` status and a null `address`. Shortly
+   * after creation, Increase generates the mailing address and the status becomes
+   * `active`. You can only create Lockbox Recipients for an `active` Lockbox
+   * Address.
    *
    * @example
    * ```ts
@@ -76,7 +79,11 @@ export type LockboxAddressesPage = Page<LockboxAddress>;
 
 /**
  * Lockbox Addresses are physical locations that can receive mail containing paper
- * checks.
+ * checks. A Lockbox Address is not itself linked to an Account; Lockbox Recipients
+ * determine where checks received at the address are deposited. Lockbox Addresses
+ * are created with a `pending` status and a null `address`. Increase generates the
+ * mailing address shortly after creation, at which point the status becomes
+ * `active`.
  */
 export interface LockboxAddress {
   /**

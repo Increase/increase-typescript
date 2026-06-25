@@ -102,7 +102,7 @@ export interface ACHTransfer {
   account_id: string;
 
   /**
-   * The destination account number.
+   * The receiver's account number.
    */
   account_number: string;
 
@@ -182,8 +182,7 @@ export interface ACHTransfer {
   currency: 'USD';
 
   /**
-   * The type of entity that owns the account to which the ACH Transfer is being
-   * sent.
+   * The type of entity that owns the receiver's account.
    *
    * - `business` - The External Account is owned by a business.
    * - `individual` - The External Account is owned by an individual.
@@ -197,7 +196,7 @@ export interface ACHTransfer {
   external_account_id: string | null;
 
   /**
-   * The type of the account to which the transfer will be sent.
+   * The type of the receiver's bank account.
    *
    * - `checking` - A checking account.
    * - `savings` - A savings account.
@@ -220,7 +219,8 @@ export interface ACHTransfer {
   inbound_funds_hold: ACHTransfer.InboundFundsHold | null;
 
   /**
-   * Your identifier for the transfer recipient.
+   * Your internal identifier for the transfer recipient. This value is informational
+   * and not verified by the recipient's bank.
    */
   individual_id: string | null;
 
@@ -263,7 +263,8 @@ export interface ACHTransfer {
   return: ACHTransfer.Return | null;
 
   /**
-   * The American Bankers' Association (ABA) Routing Transit Number (RTN).
+   * The American Bankers' Association (ABA) Routing Transit Number (RTN) of the
+   * receiver's bank.
    */
   routing_number: string;
 
@@ -314,7 +315,9 @@ export interface ACHTransfer {
    * - `requires_attention` - The transfer requires attention from an Increase
    *   operator.
    * - `rejected` - The transfer has been rejected.
-   * - `submitted` - The transfer is complete.
+   * - `submitted` - The transfer has been submitted to the Federal Reserve. When the
+   *   transfer settles, the status remains `submitted` and the `settlement`
+   *   sub-object is populated.
    * - `returned` - The transfer has been returned.
    */
   status:
@@ -718,7 +721,7 @@ export namespace ACHTransfer {
      * - `same_day` - The chosen effective date will be the same as the ACH processing
      *   date on which the transfer is submitted. This is necessary, but not sufficient
      *   for the transfer to be settled same-day: it must also be submitted before the
-     *   last same-day cutoff and be less than or equal to $1,000.000.00.
+     *   last same-day cutoff and be less than or equal to $1,000,000.00.
      * - `future_dated` - The chosen effective date will be the business day following
      *   the ACH processing date on which the transfer is submitted. The transfer will
      *   be settled on that future day.
@@ -982,7 +985,8 @@ export namespace ACHTransfer {
     transaction_id: string;
 
     /**
-     * The identifier of the ACH Transfer associated with this return.
+     * The identifier of the ACH Transfer associated with this return. This matches the
+     * original Transaction's `source.ach_transfer_intention.transfer_id`.
      */
     transfer_id: string;
 
@@ -1085,44 +1089,52 @@ export interface ACHTransferCreateParams {
   statement_descriptor: string;
 
   /**
-   * The account number for the destination account.
+   * The receiver's account number. For credit transfers (positive `amount`) this is
+   * the account that funds will be sent to. For debit transfers (negative `amount`)
+   * this is the account that funds will be pulled from.
    */
   account_number?: string;
 
   /**
-   * Additional information that will be sent to the recipient. This is included in
-   * the transfer data sent to the receiving bank.
+   * Additional information passed through to the receiving bank with the transfer.
+   * Most ACH transfers do not need this. Only set this if your recipient has asked
+   * for addendum data, typically unstructured remittance information. Corporate
+   * Trade Exchange (CTX) flows can carry structured X12 remittance advice instead.
    */
   addenda?: ACHTransferCreateParams.Addenda;
 
   /**
-   * The description of the date of the transfer, usually in the format `YYMMDD`.
-   * This is included in the transfer data sent to the receiving bank.
+   * A description of the transfer date (typically `YYMMDD`), sent in the company
+   * batch header. This value is informational and does not affect funds movement,
+   * settlement timing, or returns. Only set this if your recipient has asked for it.
    */
   company_descriptive_date?: string;
 
   /**
-   * The data you choose to associate with the transfer. This is included in the
-   * transfer data sent to the receiving bank.
+   * Custom data sent in the company batch header. This value is informational and
+   * does not affect funds movement, settlement timing, or returns. Most ACH
+   * transfers do not need this. Only set this if your recipient has asked for it.
    */
   company_discretionary_data?: string;
 
   /**
-   * A description of the transfer, included in the transfer data sent to the
-   * receiving bank. Standardized formatting may be required, for example `PAYROLL`
-   * for payroll-related Prearranged Payments and Deposits (PPD) credit transfers.
+   * A short description sent in the company batch header. Most receivers do not
+   * surface this. Only set this if your recipient has asked for a specific value or
+   * if Nacha mandates one for your Standard Entry Class (SEC) code and use case. For
+   * example, Prearranged Payment and Deposit (PPD) payroll credits must use
+   * `PAYROLL`, and reversals must use `REVERSAL`.
    */
   company_entry_description?: string;
 
   /**
-   * The name by which the recipient knows you. This is included in the transfer data
-   * sent to the receiving bank.
+   * The name by which the recipient knows you, sent in the company batch header. We
+   * recommend setting this on every transfer; if you do not, we fall back to the ACH
+   * company name configured on your account.
    */
   company_name?: string;
 
   /**
-   * The type of entity that owns the account to which the ACH Transfer is being
-   * sent.
+   * The type of entity that owns the receiver's account.
    *
    * - `business` - The External Account is owned by a business.
    * - `individual` - The External Account is owned by an individual.
@@ -1137,7 +1149,7 @@ export interface ACHTransferCreateParams {
   external_account_id?: string;
 
   /**
-   * The type of the account to which the transfer will be sent.
+   * The type of the receiver's bank account.
    *
    * - `checking` - A checking account.
    * - `savings` - A savings account.
@@ -1147,7 +1159,8 @@ export interface ACHTransferCreateParams {
   funding?: 'checking' | 'savings' | 'loan' | 'general_ledger';
 
   /**
-   * Your identifier for the transfer recipient.
+   * Your internal identifier for the transfer recipient. This value is informational
+   * and not verified by the recipient's bank. Most callers can leave this unset.
    */
   individual_id?: string;
 
@@ -1171,15 +1184,16 @@ export interface ACHTransferCreateParams {
   require_approval?: boolean;
 
   /**
-   * The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-   * destination account.
+   * The American Bankers' Association (ABA) Routing Transit Number (RTN) of the
+   * receiver's bank.
    */
   routing_number?: string;
 
   /**
    * The
    * [Standard Entry Class (SEC) code](/documentation/ach-standard-entry-class-codes)
-   * to use for the transfer.
+   * to use for the transfer. If not provided, the default is
+   * `corporate_credit_or_debit`.
    *
    * - `corporate_credit_or_debit` - Corporate Credit and Debit (CCD) is used for
    *   business-to-business payments.
@@ -1213,8 +1227,10 @@ export interface ACHTransferCreateParams {
 
 export namespace ACHTransferCreateParams {
   /**
-   * Additional information that will be sent to the recipient. This is included in
-   * the transfer data sent to the receiving bank.
+   * Additional information passed through to the receiving bank with the transfer.
+   * Most ACH transfers do not need this. Only set this if your recipient has asked
+   * for addendum data, typically unstructured remittance information. Corporate
+   * Trade Exchange (CTX) flows can carry structured X12 remittance advice instead.
    */
   export interface Addenda {
     /**
@@ -1312,7 +1328,7 @@ export namespace ACHTransferCreateParams {
      * - `same_day` - The chosen effective date will be the same as the ACH processing
      *   date on which the transfer is submitted. This is necessary, but not sufficient
      *   for the transfer to be settled same-day: it must also be submitted before the
-     *   last same-day cutoff and be less than or equal to $1,000.000.00.
+     *   last same-day cutoff and be less than or equal to $1,000,000.00.
      * - `future_dated` - The chosen effective date will be the business day following
      *   the ACH processing date on which the transfer is submitted. The transfer will
      *   be settled on that future day.
