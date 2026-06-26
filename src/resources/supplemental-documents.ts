@@ -53,7 +53,7 @@ export type EntitySupplementalDocumentsPage = Page<EntitySupplementalDocument>;
 
 /**
  * Supplemental Documents are uploaded files connected to an Entity during
- * onboarding.
+ * onboarding. Not all programs require supplemental documents.
  */
 export interface EntitySupplementalDocument {
   /**
