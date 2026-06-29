@@ -243,6 +243,7 @@ export interface CheckTransfer {
    * - `pending_approval` - The transfer is awaiting approval.
    * - `canceled` - The transfer has been canceled.
    * - `pending_submission` - The transfer is pending submission.
+   * - `pending_reviewing` - The transfer is pending review by Increase.
    * - `requires_attention` - The transfer requires attention from an Increase
    *   operator.
    * - `rejected` - The transfer has been rejected.
@@ -256,6 +257,7 @@ export interface CheckTransfer {
     | 'pending_approval'
     | 'canceled'
     | 'pending_submission'
+    | 'pending_reviewing'
     | 'requires_attention'
     | 'rejected'
     | 'pending_mailing'
@@ -1086,6 +1088,7 @@ export namespace CheckTransferListParams {
       | 'pending_approval'
       | 'canceled'
       | 'pending_submission'
+      | 'pending_reviewing'
       | 'requires_attention'
       | 'rejected'
       | 'pending_mailing'

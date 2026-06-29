@@ -87,7 +87,7 @@ export type EntitiesPage = Page<Entity>;
 
 /**
  * Entities are the legal entities that own accounts. They can be people,
- * corporations, partnerships, government authorities, or trusts. To learn more,
+ * corporations, joint accounts, trusts, or government authorities. To learn more,
  * see [Entities](/documentation/entities).
  */
 export interface Entity {
@@ -271,7 +271,8 @@ export namespace Entity {
     industry_code: string | null;
 
     /**
-     * The legal identifier of the corporation.
+     * The legal identifier of the corporation, like an Employer Identification Number
+     * (EIN).
      */
     legal_identifier: Corporation.LegalIdentifier | null;
 
@@ -445,7 +446,8 @@ export namespace Entity {
     }
 
     /**
-     * The legal identifier of the corporation.
+     * The legal identifier of the corporation, like an Employer Identification Number
+     * (EIN).
      */
     export interface LegalIdentifier {
       /**
@@ -460,7 +462,7 @@ export namespace Entity {
       category: 'us_employer_identification_number' | 'other';
 
       /**
-       * The identifier of the legal identifier.
+       * The legal identifier itself.
        */
       value: string;
     }
@@ -1658,8 +1660,9 @@ export namespace EntityCreateParams {
      */
     export interface LegalIdentifier {
       /**
-       * The legal identifier. For US Employer Identification Numbers, submit nine digits
-       * with no dashes or other separators. When testing in sandbox, use one of our
+       * The legal identifier itself. For US Employer Identification Numbers, submit nine
+       * digits with no dashes or other separators. When testing in sandbox, use one of
+       * our
        * [sandbox test values](https://increase.com/documentation/sandbox-test-values).
        */
       value: string;
@@ -2927,8 +2930,8 @@ export namespace EntityUpdateParams {
      */
     export interface LegalIdentifier {
       /**
-       * The identifier of the legal identifier. For US Employer Identification Numbers,
-       * submit nine digits with no dashes or other separators.
+       * The legal identifier itself. For US Employer Identification Numbers, submit nine
+       * digits with no dashes or other separators.
        */
       value: string;
 

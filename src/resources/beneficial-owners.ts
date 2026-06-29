@@ -264,7 +264,8 @@ export namespace EntityBeneficialOwner {
 
 export interface BeneficialOwnerCreateParams {
   /**
-   * The identifier of the Entity to associate with the new Beneficial Owner.
+   * The identifier of the Entity to associate with the new Beneficial Owner. Only
+   * `corporation` entities have beneficial owners.
    */
   entity_id: string;
 
