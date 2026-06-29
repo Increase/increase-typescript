@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.575.0](https://github.com/Increase/increase-typescript/compare/v0.574.0...v0.575.0) (2026-06-29)
+
+
+### Features
+
+* **api:** add pending_reviewing check transfer status ([77b9281](https://github.com/Increase/increase-typescript/commit/77b92810dc64693effd377426f03a5889f1c4342))
+
 ## [0.574.0](https://github.com/Increase/increase-typescript/compare/v0.573.0...v0.574.0) (2026-06-25)
 
 
