@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../core/resource';
+import * as GroupsAPI from './groups';
 import { APIPromise } from '../core/api-promise';
 import { RequestOptions } from '../internal/request-options';
 
@@ -44,5 +45,7 @@ export interface Group {
 }
 
 export declare namespace Groups {
-  export { type Group as Group };
+  export {
+    type Group as Group
+  };
 }

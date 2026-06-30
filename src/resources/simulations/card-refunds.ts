@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../core/resource';
+import * as CardRefundsAPI from './card-refunds';
 import * as TransactionsAPI from '../transactions';
 import { APIPromise } from '../../core/api-promise';
 import { RequestOptions } from '../../internal/request-options';
@@ -43,5 +44,7 @@ export interface CardRefundCreateParams {
 }
 
 export declare namespace CardRefunds {
-  export { type CardRefundCreateParams as CardRefundCreateParams };
+  export {
+    type CardRefundCreateParams as CardRefundCreateParams
+  };
 }
