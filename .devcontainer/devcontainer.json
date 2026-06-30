@@ -9,7 +9,9 @@
   "postCreateCommand": "pnpm install",
   "customizations": {
     "vscode": {
-      "extensions": ["esbenp.prettier-vscode"]
+      "extensions": [
+        "oxc.oxc-vscode"
+      ]
     }
   }
 }
