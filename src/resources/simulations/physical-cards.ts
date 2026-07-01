@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../core/resource';
+import * as SimulationsPhysicalCardsAPI from './physical-cards';
 import * as PhysicalCardsAPI from '../physical-cards';
 import { APIPromise } from '../../core/api-promise';
 import { RequestOptions } from '../../internal/request-options';
@@ -20,15 +21,8 @@ export class PhysicalCards extends APIResource {
    *   );
    * ```
    */
-  create(
-    physicalCardID: string,
-    body: PhysicalCardCreateParams,
-    options?: RequestOptions,
-  ): APIPromise<PhysicalCardsAPI.PhysicalCard> {
-    return this._client.post(path`/simulations/physical_cards/${physicalCardID}/tracking_updates`, {
-      body,
-      ...options,
-    });
+  create(physicalCardID: string, body: PhysicalCardCreateParams, options?: RequestOptions): APIPromise<PhysicalCardsAPI.PhysicalCard> {
+    return this._client.post(path`/simulations/physical_cards/${physicalCardID}/tracking_updates`, { body, ...options });
   }
 
   /**
@@ -45,15 +39,8 @@ export class PhysicalCards extends APIResource {
    *   );
    * ```
    */
-  advanceShipment(
-    physicalCardID: string,
-    body: PhysicalCardAdvanceShipmentParams,
-    options?: RequestOptions,
-  ): APIPromise<PhysicalCardsAPI.PhysicalCard> {
-    return this._client.post(path`/simulations/physical_cards/${physicalCardID}/advance_shipment`, {
-      body,
-      ...options,
-    });
+  advanceShipment(physicalCardID: string, body: PhysicalCardAdvanceShipmentParams, options?: RequestOptions): APIPromise<PhysicalCardsAPI.PhysicalCard> {
+    return this._client.post(path`/simulations/physical_cards/${physicalCardID}/advance_shipment`, { body, ...options });
   }
 }
 
@@ -75,13 +62,7 @@ export interface PhysicalCardCreateParams {
    * - `returned_to_sender` - The physical card has been delivered to the return
    *   address.
    */
-  category:
-    | 'in_transit'
-    | 'processed_for_delivery'
-    | 'delivered'
-    | 'delivery_issue'
-    | 'returning_to_sender'
-    | 'returned_to_sender';
+  category: 'in_transit' | 'processed_for_delivery' | 'delivered' | 'delivery_issue' | 'returning_to_sender' | 'returned_to_sender';
 
   /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time when the
@@ -123,20 +104,12 @@ export interface PhysicalCardAdvanceShipmentParams {
    * - `requires_attention` - The physical card shipment requires attention from
    *   Increase before progressing.
    */
-  shipment_status:
-    | 'pending'
-    | 'canceled'
-    | 'submitted'
-    | 'acknowledged'
-    | 'rejected'
-    | 'shipped'
-    | 'returned'
-    | 'requires_attention';
+  shipment_status: 'pending' | 'canceled' | 'submitted' | 'acknowledged' | 'rejected' | 'shipped' | 'returned' | 'requires_attention';
 }
 
 export declare namespace PhysicalCards {
   export {
     type PhysicalCardCreateParams as PhysicalCardCreateParams,
-    type PhysicalCardAdvanceShipmentParams as PhysicalCardAdvanceShipmentParams,
+    type PhysicalCardAdvanceShipmentParams as PhysicalCardAdvanceShipmentParams
   };
 }

@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../core/resource';
+import * as PhysicalCardProfilesAPI from './physical-card-profiles';
 import { APIPromise } from '../core/api-promise';
 import { Page, type PageParams, PagePromise } from '../core/pagination';
 import { RequestOptions } from '../internal/request-options';
@@ -52,14 +53,8 @@ export class PhysicalCardProfiles extends APIResource {
    * }
    * ```
    */
-  list(
-    query: PhysicalCardProfileListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): PagePromise<PhysicalCardProfilesPage, PhysicalCardProfile> {
-    return this._client.getAPIList('/physical_card_profiles', Page<PhysicalCardProfile>, {
-      query,
-      ...options,
-    });
+  list(query: PhysicalCardProfileListParams | null | undefined = {}, options?: RequestOptions): PagePromise<PhysicalCardProfilesPage, PhysicalCardProfile> {
+    return this._client.getAPIList('/physical_card_profiles', Page<PhysicalCardProfile>, { query, ...options });
   }
 
   /**
@@ -88,19 +83,12 @@ export class PhysicalCardProfiles extends APIResource {
    *   );
    * ```
    */
-  clone(
-    physicalCardProfileID: string,
-    body: PhysicalCardProfileCloneParams,
-    options?: RequestOptions,
-  ): APIPromise<PhysicalCardProfile> {
-    return this._client.post(path`/physical_card_profiles/${physicalCardProfileID}/clone`, {
-      body,
-      ...options,
-    });
+  clone(physicalCardProfileID: string, body: PhysicalCardProfileCloneParams, options?: RequestOptions): APIPromise<PhysicalCardProfile> {
+    return this._client.post(path`/physical_card_profiles/${physicalCardProfileID}/clone`, { body, ...options });
   }
 }
 
-export type PhysicalCardProfilesPage = Page<PhysicalCardProfile>;
+export type PhysicalCardProfilesPage = Page<PhysicalCardProfile>
 
 /**
  * This contains artwork and metadata relating to a Physical Card's appearance. For
@@ -192,13 +180,7 @@ export interface PhysicalCardProfile {
    *   provider and is ready to use.
    * - `archived` - The Physical Card Profile has been archived.
    */
-  status:
-    | 'pending_creating'
-    | 'pending_reviewing'
-    | 'rejected'
-    | 'pending_submitting'
-    | 'active'
-    | 'archived';
+  status: 'pending_creating' | 'pending_reviewing' | 'rejected' | 'pending_submitting' | 'active' | 'archived';
 
   /**
    * A constant representing the object's type. For this resource it will always be
@@ -259,7 +241,7 @@ export interface PhysicalCardProfileCreateParams {
    */
   front_text?: PhysicalCardProfileCreateParams.FrontText;
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export namespace PhysicalCardProfileCreateParams {
@@ -301,9 +283,7 @@ export namespace PhysicalCardProfileListParams {
      * requests, this should be encoded as a comma-delimited string, such as
      * `?in=one,two,three`.
      */
-    in?: Array<
-      'pending_creating' | 'pending_reviewing' | 'rejected' | 'pending_submitting' | 'active' | 'archived'
-    >;
+    in?: Array<'pending_creating' | 'pending_reviewing' | 'rejected' | 'pending_submitting' | 'active' | 'archived'>;
   }
 }
 
@@ -339,7 +319,7 @@ export interface PhysicalCardProfileCloneParams {
    */
   program_id?: string;
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export namespace PhysicalCardProfileCloneParams {
@@ -368,6 +348,6 @@ export declare namespace PhysicalCardProfiles {
     type PhysicalCardProfilesPage as PhysicalCardProfilesPage,
     type PhysicalCardProfileCreateParams as PhysicalCardProfileCreateParams,
     type PhysicalCardProfileListParams as PhysicalCardProfileListParams,
-    type PhysicalCardProfileCloneParams as PhysicalCardProfileCloneParams,
+    type PhysicalCardProfileCloneParams as PhysicalCardProfileCloneParams
   };
 }

@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../core/resource';
+import * as InboundWireDrawdownRequestsAPI from './inbound-wire-drawdown-requests';
 import { APIPromise } from '../core/api-promise';
 import { Page, type PageParams, PagePromise } from '../core/pagination';
 import { RequestOptions } from '../internal/request-options';
@@ -18,10 +19,7 @@ export class InboundWireDrawdownRequests extends APIResource {
    *   );
    * ```
    */
-  retrieve(
-    inboundWireDrawdownRequestID: string,
-    options?: RequestOptions,
-  ): APIPromise<InboundWireDrawdownRequest> {
+  retrieve(inboundWireDrawdownRequestID: string, options?: RequestOptions): APIPromise<InboundWireDrawdownRequest> {
     return this._client.get(path`/inbound_wire_drawdown_requests/${inboundWireDrawdownRequestID}`, options);
   }
 
@@ -36,18 +34,12 @@ export class InboundWireDrawdownRequests extends APIResource {
    * }
    * ```
    */
-  list(
-    query: InboundWireDrawdownRequestListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): PagePromise<InboundWireDrawdownRequestsPage, InboundWireDrawdownRequest> {
-    return this._client.getAPIList('/inbound_wire_drawdown_requests', Page<InboundWireDrawdownRequest>, {
-      query,
-      ...options,
-    });
+  list(query: InboundWireDrawdownRequestListParams | null | undefined = {}, options?: RequestOptions): PagePromise<InboundWireDrawdownRequestsPage, InboundWireDrawdownRequest> {
+    return this._client.getAPIList('/inbound_wire_drawdown_requests', Page<InboundWireDrawdownRequest>, { query, ...options });
   }
 }
 
-export type InboundWireDrawdownRequestsPage = Page<InboundWireDrawdownRequest>;
+export type InboundWireDrawdownRequestsPage = Page<InboundWireDrawdownRequest>
 
 /**
  * Inbound wire drawdown requests are requests from someone else to send them a
@@ -169,15 +161,16 @@ export interface InboundWireDrawdownRequest {
    */
   unstructured_remittance_information: string | null;
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
-export interface InboundWireDrawdownRequestListParams extends PageParams {}
+export interface InboundWireDrawdownRequestListParams extends PageParams {
+}
 
 export declare namespace InboundWireDrawdownRequests {
   export {
     type InboundWireDrawdownRequest as InboundWireDrawdownRequest,
     type InboundWireDrawdownRequestsPage as InboundWireDrawdownRequestsPage,
-    type InboundWireDrawdownRequestListParams as InboundWireDrawdownRequestListParams,
+    type InboundWireDrawdownRequestListParams as InboundWireDrawdownRequestListParams
   };
 }

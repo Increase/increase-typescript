@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../core/resource';
+import * as CardIncrementsAPI from './card-increments';
 import * as CardPaymentsAPI from '../card-payments';
 import { APIPromise } from '../../core/api-promise';
 import { RequestOptions } from '../../internal/request-options';
@@ -45,5 +46,7 @@ export interface CardIncrementCreateParams {
 }
 
 export declare namespace CardIncrements {
-  export { type CardIncrementCreateParams as CardIncrementCreateParams };
+  export {
+    type CardIncrementCreateParams as CardIncrementCreateParams
+  };
 }
