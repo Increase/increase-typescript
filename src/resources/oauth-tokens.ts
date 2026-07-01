@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../core/resource';
+import * as OAuthTokensAPI from './oauth-tokens';
 import { APIPromise } from '../core/api-promise';
 import { RequestOptions } from '../internal/request-options';
 
@@ -84,9 +85,12 @@ export interface OAuthTokenCreateParams {
    */
   production_token?: string;
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export declare namespace OAuthTokens {
-  export { type OAuthToken as OAuthToken, type OAuthTokenCreateParams as OAuthTokenCreateParams };
+  export {
+    type OAuthToken as OAuthToken,
+    type OAuthTokenCreateParams as OAuthTokenCreateParams
+  };
 }
