@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../core/resource';
-import * as DigitalWalletTokensAPI from './digital-wallet-tokens';
 import { APIPromise } from '../core/api-promise';
 import { Page, type PageParams, PagePromise } from '../core/pagination';
 import { RequestOptions } from '../internal/request-options';
@@ -34,12 +33,15 @@ export class DigitalWalletTokens extends APIResource {
    * }
    * ```
    */
-  list(query: DigitalWalletTokenListParams | null | undefined = {}, options?: RequestOptions): PagePromise<DigitalWalletTokensPage, DigitalWalletToken> {
+  list(
+    query: DigitalWalletTokenListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<DigitalWalletTokensPage, DigitalWalletToken> {
     return this._client.getAPIList('/digital_wallet_tokens', Page<DigitalWalletToken>, { query, ...options });
   }
 }
 
-export type DigitalWalletTokensPage = Page<DigitalWalletToken>
+export type DigitalWalletTokensPage = Page<DigitalWalletToken>;
 
 /**
  * A Digital Wallet Token is created when a user adds a Card to their Apple Pay or
@@ -148,7 +150,13 @@ export namespace DigitalWalletToken {
      * - `declined_by_token_requestor` - The tokenization attempt was declined by the
      *   token requestor.
      */
-    reason: 'card_not_active' | 'no_verification_method' | 'webhook_timed_out' | 'webhook_declined' | 'incorrect_card_verification_code' | 'declined_by_token_requestor';
+    reason:
+      | 'card_not_active'
+      | 'no_verification_method'
+      | 'webhook_timed_out'
+      | 'webhook_declined'
+      | 'incorrect_card_verification_code'
+      | 'declined_by_token_requestor';
   }
 
   /**
@@ -168,7 +176,17 @@ export namespace DigitalWalletToken {
      * - `wearable_device` - Wearable Device
      * - `automobile_device` - Automobile Device
      */
-    device_type: 'unknown' | 'mobile_phone' | 'tablet' | 'watch' | 'mobilephone_or_tablet' | 'pc' | 'household_device' | 'wearable_device' | 'automobile_device' | null;
+    device_type:
+      | 'unknown'
+      | 'mobile_phone'
+      | 'tablet'
+      | 'watch'
+      | 'mobilephone_or_tablet'
+      | 'pc'
+      | 'household_device'
+      | 'wearable_device'
+      | 'automobile_device'
+      | null;
 
     /**
      * ID assigned to the device by the digital wallet provider.
@@ -263,6 +281,6 @@ export declare namespace DigitalWalletTokens {
   export {
     type DigitalWalletToken as DigitalWalletToken,
     type DigitalWalletTokensPage as DigitalWalletTokensPage,
-    type DigitalWalletTokenListParams as DigitalWalletTokenListParams
+    type DigitalWalletTokenListParams as DigitalWalletTokenListParams,
   };
 }

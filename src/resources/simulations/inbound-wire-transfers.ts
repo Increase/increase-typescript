@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../core/resource';
-import * as SimulationsInboundWireTransfersAPI from './inbound-wire-transfers';
 import * as InboundWireTransfersAPI from '../inbound-wire-transfers';
 import { APIPromise } from '../../core/api-promise';
 import { RequestOptions } from '../../internal/request-options';
@@ -20,7 +19,10 @@ export class InboundWireTransfers extends APIResource {
    *   });
    * ```
    */
-  create(body: InboundWireTransferCreateParams, options?: RequestOptions): APIPromise<InboundWireTransfersAPI.InboundWireTransfer> {
+  create(
+    body: InboundWireTransferCreateParams,
+    options?: RequestOptions,
+  ): APIPromise<InboundWireTransfersAPI.InboundWireTransfer> {
     return this._client.post('/simulations/inbound_wire_transfers', { body, ...options });
   }
 }
@@ -128,7 +130,5 @@ export interface InboundWireTransferCreateParams {
 }
 
 export declare namespace InboundWireTransfers {
-  export {
-    type InboundWireTransferCreateParams as InboundWireTransferCreateParams
-  };
+  export { type InboundWireTransferCreateParams as InboundWireTransferCreateParams };
 }

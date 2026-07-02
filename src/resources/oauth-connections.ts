@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../core/resource';
-import * as OAuthConnectionsAPI from './oauth-connections';
 import { APIPromise } from '../core/api-promise';
 import { Page, type PageParams, PagePromise } from '../core/pagination';
 import { RequestOptions } from '../internal/request-options';
@@ -34,12 +33,15 @@ export class OAuthConnections extends APIResource {
    * }
    * ```
    */
-  list(query: OAuthConnectionListParams | null | undefined = {}, options?: RequestOptions): PagePromise<OAuthConnectionsPage, OAuthConnection> {
+  list(
+    query: OAuthConnectionListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<OAuthConnectionsPage, OAuthConnection> {
     return this._client.getAPIList('/oauth_connections', Page<OAuthConnection>, { query, ...options });
   }
 }
 
-export type OAuthConnectionsPage = Page<OAuthConnection>
+export type OAuthConnectionsPage = Page<OAuthConnection>;
 
 /**
  * When a user authorizes your OAuth application, an OAuth Connection object is
@@ -114,6 +116,6 @@ export declare namespace OAuthConnections {
   export {
     type OAuthConnection as OAuthConnection,
     type OAuthConnectionsPage as OAuthConnectionsPage,
-    type OAuthConnectionListParams as OAuthConnectionListParams
+    type OAuthConnectionListParams as OAuthConnectionListParams,
   };
 }

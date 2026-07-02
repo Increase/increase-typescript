@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../core/resource';
-import * as AccountsAPI from './accounts';
 import { APIPromise } from '../core/api-promise';
 import { Page, type PageParams, PagePromise } from '../core/pagination';
 import { RequestOptions } from '../internal/request-options';
@@ -61,7 +60,10 @@ export class Accounts extends APIResource {
    * }
    * ```
    */
-  list(query: AccountListParams | null | undefined = {}, options?: RequestOptions): PagePromise<AccountsPage, Account> {
+  list(
+    query: AccountListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<AccountsPage, Account> {
     return this._client.getAPIList('/accounts', Page<Account>, { query, ...options });
   }
 
@@ -76,7 +78,11 @@ export class Accounts extends APIResource {
    * );
    * ```
    */
-  balance(accountID: string, query: AccountBalanceParams | null | undefined = {}, options?: RequestOptions): APIPromise<BalanceLookup> {
+  balance(
+    accountID: string,
+    query: AccountBalanceParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<BalanceLookup> {
     return this._client.get(path`/accounts/${accountID}/balance`, { query, ...options });
   }
 
@@ -95,7 +101,7 @@ export class Accounts extends APIResource {
   }
 }
 
-export type AccountsPage = Page<Account>
+export type AccountsPage = Page<Account>;
 
 /**
  * Accounts are your bank accounts with Increase. They store money, receive
@@ -208,7 +214,7 @@ export interface Account {
    */
   type: 'account';
 
-[k: string]: unknown
+  [k: string]: unknown;
 }
 
 export namespace Account {
@@ -366,7 +372,7 @@ export interface AccountCreateParams {
    */
   program_id?: string;
 
-[k: string]: unknown
+  [k: string]: unknown;
 }
 
 export namespace AccountCreateParams {
@@ -405,7 +411,7 @@ export namespace AccountCreateParams {
      */
     maturity_date?: string;
 
-  [k: string]: unknown
+    [k: string]: unknown;
   }
 }
 
@@ -420,7 +426,7 @@ export interface AccountUpdateParams {
    */
   name?: string;
 
-[k: string]: unknown
+  [k: string]: unknown;
 }
 
 export namespace AccountUpdateParams {
@@ -515,6 +521,6 @@ export declare namespace Accounts {
     type AccountCreateParams as AccountCreateParams,
     type AccountUpdateParams as AccountUpdateParams,
     type AccountListParams as AccountListParams,
-    type AccountBalanceParams as AccountBalanceParams
+    type AccountBalanceParams as AccountBalanceParams,
   };
 }

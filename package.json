@@ -1,18 +1,36 @@
 {
   "name": "increase",
   "version": "0.575.0",
+  "private": false,
   "description": "The official TypeScript library for the Increase API",
-  "author": "Increase <dev-feedback@increase.com>",
-  "types": "dist/index.d.ts",
-  "main": "dist/index.js",
-  "type": "commonjs",
-  "repository": "github:Increase/increase-typescript",
   "license": "Apache-2.0",
-  "packageManager": "pnpm@10.30.1",
+  "author": "Increase <dev-feedback@increase.com>",
+  "repository": "github:Increase/increase-typescript",
+  "bin": {
+    "increase": "bin/cli"
+  },
   "files": [
     "**/*"
   ],
-  "private": false,
+  "type": "commonjs",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./*.mjs": {
+      "default": "./dist/*.mjs"
+    },
+    "./*.js": {
+      "default": "./dist/*.js"
+    },
+    "./*": {
+      "import": "./dist/*.mjs",
+      "require": "./dist/*.js"
+    }
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -48,32 +66,16 @@
     "tslib": "^2.8.1",
     "typescript": "5.8.3"
   },
-"bin": { "increase": "bin/cli" },
-  "overrides": {
-    "minimatch": "^9.0.5"
-  },
-  "pnpm": {
-    "overrides": {
-      "minimatch": "^9.0.5"
-    }
-  },
   "resolutions": {
     "minimatch": "^9.0.5"
   },
-  "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
-    },
-    "./*.mjs": {
-      "default": "./dist/*.mjs"
-    },
-    "./*.js": {
-      "default": "./dist/*.js"
-    },
-    "./*": {
-      "import": "./dist/*.mjs",
-      "require": "./dist/*.js"
+  "overrides": {
+    "minimatch": "^9.0.5"
+  },
+  "packageManager": "pnpm@10.30.1",
+  "pnpm": {
+    "overrides": {
+      "minimatch": "^9.0.5"
     }
   }
 }

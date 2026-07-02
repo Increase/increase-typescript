@@ -32,7 +32,7 @@
   },
   "overrides": [
     {
-      "files": ["tests/**","examples/**"],
+      "files": ["tests/**", "examples/**"],
       "rules": {
         "no-restricted-imports": "off"
       }

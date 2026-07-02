@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../core/resource';
-import * as SimulationsInboundCheckDepositsAPI from './inbound-check-deposits';
 import * as InboundCheckDepositsAPI from '../inbound-check-deposits';
 import { APIPromise } from '../../core/api-promise';
 import { RequestOptions } from '../../internal/request-options';
@@ -27,7 +26,10 @@ export class InboundCheckDeposits extends APIResource {
    *   });
    * ```
    */
-  create(body: InboundCheckDepositCreateParams, options?: RequestOptions): APIPromise<InboundCheckDepositsAPI.InboundCheckDeposit> {
+  create(
+    body: InboundCheckDepositCreateParams,
+    options?: RequestOptions,
+  ): APIPromise<InboundCheckDepositsAPI.InboundCheckDeposit> {
     return this._client.post('/simulations/inbound_check_deposits', { body, ...options });
   }
 
@@ -43,8 +45,15 @@ export class InboundCheckDeposits extends APIResource {
    *   );
    * ```
    */
-  adjustment(inboundCheckDepositID: string, body: InboundCheckDepositAdjustmentParams, options?: RequestOptions): APIPromise<InboundCheckDepositsAPI.InboundCheckDeposit> {
-    return this._client.post(path`/simulations/inbound_check_deposits/${inboundCheckDepositID}/adjustment`, { body, ...options });
+  adjustment(
+    inboundCheckDepositID: string,
+    body: InboundCheckDepositAdjustmentParams,
+    options?: RequestOptions,
+  ): APIPromise<InboundCheckDepositsAPI.InboundCheckDeposit> {
+    return this._client.post(path`/simulations/inbound_check_deposits/${inboundCheckDepositID}/adjustment`, {
+      body,
+      ...options,
+    });
   }
 }
 
@@ -105,6 +114,6 @@ export interface InboundCheckDepositAdjustmentParams {
 export declare namespace InboundCheckDeposits {
   export {
     type InboundCheckDepositCreateParams as InboundCheckDepositCreateParams,
-    type InboundCheckDepositAdjustmentParams as InboundCheckDepositAdjustmentParams
+    type InboundCheckDepositAdjustmentParams as InboundCheckDepositAdjustmentParams,
   };
 }
