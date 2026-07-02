@@ -80,9 +80,7 @@ describe('resource physicalCards', () => {
   });
 
   test('update: required and optional params', async () => {
-    await client.physicalCards.update('physical_card_ode8duyq5v2ynhjoharl', {
-      status: 'disabled',
-    });
+    await client.physicalCards.update('physical_card_ode8duyq5v2ynhjoharl', { status: 'disabled' });
   });
 
   test('list', async () => {

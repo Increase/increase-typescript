@@ -22,8 +22,6 @@ describe('resource digitalWalletTokenRequests', () => {
   });
 
   test('create: required and optional params', async () => {
-    await client.simulations.digitalWalletTokenRequests.create({
-      card_id: 'card_oubs0hwk5rn6knuecxg2',
-    });
+    await client.simulations.digitalWalletTokenRequests.create({ card_id: 'card_oubs0hwk5rn6knuecxg2' });
   });
 });

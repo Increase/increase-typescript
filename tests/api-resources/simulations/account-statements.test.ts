@@ -22,8 +22,6 @@ describe('resource accountStatements', () => {
   });
 
   test('create: required and optional params', async () => {
-    await client.simulations.accountStatements.create({
-      account_id: 'account_in71c4amph0vgo2qllky',
-    });
+    await client.simulations.accountStatements.create({ account_id: 'account_in71c4amph0vgo2qllky' });
   });
 });
