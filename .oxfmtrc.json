@@ -1,0 +1,14 @@
+{
+  "printWidth": 110,
+  "singleQuote": true,
+  "trailingComma": "all",
+  "arrowParens": "always",
+  "ignorePatterns": [
+    "CHANGELOG.md",
+    "ecosystem-tests/**",
+    "deno/**",
+    "**/dist/**",
+    "packages/mcp-server/manifest.json",
+    "packages/mcp-server/cloudflare-worker/worker-configuration.d.ts"
+  ]
+}

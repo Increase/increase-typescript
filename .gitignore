@@ -8,5 +8,4 @@ dist
 dist-deno
 /*.tgz
 .idea/
-.eslintcache
 oidc

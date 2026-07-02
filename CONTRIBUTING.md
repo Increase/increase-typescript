@@ -77,8 +77,8 @@ $ pnpm run test
 
 ## Linting and formatting
 
-This repository uses [prettier](https://www.npmjs.com/package/prettier) and
-[eslint](https://www.npmjs.com/package/eslint) to format the code in the repository.
+This repository uses [oxlint](https://oxc.rs/docs/guide/usage/linter) to lint and
+[oxfmt](https://oxc.rs/docs/guide/usage/formatter) to format the code in the repository.
 
 To lint:
 

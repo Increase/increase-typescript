@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../core/resource';
+import * as PendingTransactionsAPI from './pending-transactions';
 import { APIPromise } from '../core/api-promise';
 import { Page, type PageParams, PagePromise } from '../core/pagination';
 import { RequestOptions } from '../internal/request-options';
@@ -53,10 +54,7 @@ export class PendingTransactions extends APIResource {
    * }
    * ```
    */
-  list(
-    query: PendingTransactionListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): PagePromise<PendingTransactionsPage, PendingTransaction> {
+  list(query: PendingTransactionListParams | null | undefined = {}, options?: RequestOptions): PagePromise<PendingTransactionsPage, PendingTransaction> {
     return this._client.getAPIList('/pending_transactions', Page<PendingTransaction>, { query, ...options });
   }
 
@@ -79,7 +77,7 @@ export class PendingTransactions extends APIResource {
   }
 }
 
-export type PendingTransactionsPage = Page<PendingTransaction>;
+export type PendingTransactionsPage = Page<PendingTransaction>
 
 /**
  * Pending Transactions are potential future additions and removals of money from
@@ -183,7 +181,7 @@ export interface PendingTransaction {
    */
   type: 'pending_transaction';
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export namespace PendingTransaction {
@@ -232,23 +230,7 @@ export namespace PendingTransaction {
      * - `other` - The Pending Transaction was made for an undocumented or deprecated
      *   reason.
      */
-    category:
-      | 'account_transfer_instruction'
-      | 'ach_transfer_instruction'
-      | 'card_authorization'
-      | 'check_deposit_instruction'
-      | 'check_transfer_instruction'
-      | 'fednow_transfer_instruction'
-      | 'inbound_funds_hold'
-      | 'user_initiated_hold'
-      | 'real_time_payments_transfer_instruction'
-      | 'wire_transfer_instruction'
-      | 'inbound_wire_transfer_reversal'
-      | 'swift_transfer_instruction'
-      | 'card_push_transfer_instruction'
-      | 'blockchain_onramp_transfer_instruction'
-      | 'blockchain_offramp_transfer'
-      | 'other';
+    category: 'account_transfer_instruction' | 'ach_transfer_instruction' | 'card_authorization' | 'check_deposit_instruction' | 'check_transfer_instruction' | 'fednow_transfer_instruction' | 'inbound_funds_hold' | 'user_initiated_hold' | 'real_time_payments_transfer_instruction' | 'wire_transfer_instruction' | 'inbound_wire_transfer_reversal' | 'swift_transfer_instruction' | 'card_push_transfer_instruction' | 'blockchain_onramp_transfer_instruction' | 'blockchain_offramp_transfer' | 'other';
 
     /**
      * An Account Transfer Instruction object. This field will be present in the JSON
@@ -357,7 +339,7 @@ export namespace PendingTransaction {
      */
     wire_transfer_instruction?: Source.WireTransferInstruction | null;
 
-    [k: string]: unknown;
+  [k: string]: unknown
   }
 
   export namespace Source {
@@ -385,7 +367,7 @@ export namespace PendingTransaction {
        */
       transfer_id: string;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -403,7 +385,7 @@ export namespace PendingTransaction {
        */
       transfer_id: string;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -675,18 +657,7 @@ export namespace PendingTransaction {
        *   of an account associated with a card.
        * - `unknown` - The processing category is unknown.
        */
-      processing_category:
-        | 'account_funding'
-        | 'automatic_fuel_dispenser'
-        | 'bill_payment'
-        | 'original_credit'
-        | 'purchase'
-        | 'quasi_cash'
-        | 'refund'
-        | 'cash_disbursement'
-        | 'cash_deposit'
-        | 'balance_inquiry'
-        | 'unknown';
+      processing_category: 'account_funding' | 'automatic_fuel_dispenser' | 'bill_payment' | 'original_credit' | 'purchase' | 'quasi_cash' | 'refund' | 'cash_disbursement' | 'cash_deposit' | 'balance_inquiry' | 'unknown';
 
       /**
        * The identifier of the Real-Time Decision sent to approve or decline this
@@ -716,7 +687,7 @@ export namespace PendingTransaction {
        */
       verification: CardAuthorization.Verification;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     export namespace CardAuthorization {
@@ -1004,7 +975,8 @@ export namespace PendingTransaction {
         /**
          * Fields specific to the `pulse` network.
          */
-        export interface Pulse {}
+        export interface Pulse {
+        }
 
         /**
          * Fields specific to the `visa` network.
@@ -1045,16 +1017,7 @@ export namespace PendingTransaction {
            * - `non_secure_transaction` - Non-secure transaction: Use to identify an
            *   electronic commerce transaction that has no data protection.
            */
-          electronic_commerce_indicator:
-            | 'mail_phone_order'
-            | 'recurring'
-            | 'installment'
-            | 'unknown_mail_phone_order'
-            | 'secure_electronic_commerce'
-            | 'non_authenticated_security_transaction_at_3ds_capable_merchant'
-            | 'non_authenticated_security_transaction'
-            | 'non_secure_transaction'
-            | null;
+          electronic_commerce_indicator: 'mail_phone_order' | 'recurring' | 'installment' | 'unknown_mail_phone_order' | 'secure_electronic_commerce' | 'non_authenticated_security_transaction_at_3ds_capable_merchant' | 'non_authenticated_security_transaction' | 'non_secure_transaction' | null;
 
           /**
            * The method used to enter the cardholder's primary account number and card
@@ -1074,18 +1037,7 @@ export namespace PendingTransaction {
            * - `integrated_circuit_card_no_cvv` - Contact chip card, without card
            *   verification value
            */
-          point_of_service_entry_mode:
-            | 'unknown'
-            | 'manual'
-            | 'magnetic_stripe_no_cvv'
-            | 'optical_code'
-            | 'integrated_circuit_card'
-            | 'contactless'
-            | 'credential_on_file'
-            | 'magnetic_stripe'
-            | 'contactless_magnetic_stripe'
-            | 'integrated_circuit_card_no_cvv'
-            | null;
+          point_of_service_entry_mode: 'unknown' | 'manual' | 'magnetic_stripe_no_cvv' | 'optical_code' | 'integrated_circuit_card' | 'contactless' | 'credential_on_file' | 'magnetic_stripe' | 'contactless_magnetic_stripe' | 'integrated_circuit_card_no_cvv' | null;
 
           /**
            * Only present when `actioner: network`. Describes why a card authorization was
@@ -1111,16 +1063,7 @@ export namespace PendingTransaction {
            *   such as card testing.
            * - `other` - An unspecific reason for stand-in processing.
            */
-          stand_in_processing_reason:
-            | 'issuer_error'
-            | 'invalid_physical_card'
-            | 'invalid_cryptogram'
-            | 'invalid_cardholder_authentication_verification_value'
-            | 'internal_visa_error'
-            | 'merchant_transaction_advisory_service_authentication_required'
-            | 'payment_fraud_disruption_acquirer_block'
-            | 'other'
-            | null;
+          stand_in_processing_reason: 'issuer_error' | 'invalid_physical_card' | 'invalid_cryptogram' | 'invalid_cardholder_authentication_verification_value' | 'internal_visa_error' | 'merchant_transaction_advisory_service_authentication_required' | 'payment_fraud_disruption_acquirer_block' | 'other' | null;
 
           /**
            * The capability of the terminal being used to read the card. Shows whether a
@@ -1144,16 +1087,7 @@ export namespace PendingTransaction {
            *   capability.
            * - `no_capability` - The terminal has no card reading capability.
            */
-          terminal_entry_capability:
-            | 'unknown'
-            | 'terminal_not_used'
-            | 'magnetic_stripe'
-            | 'barcode'
-            | 'optical_character_recognition'
-            | 'chip_or_contactless'
-            | 'contactless_only'
-            | 'no_capability'
-            | null;
+          terminal_entry_capability: 'unknown' | 'terminal_not_used' | 'magnetic_stripe' | 'barcode' | 'optical_character_recognition' | 'chip_or_contactless' | 'contactless_only' | 'no_capability' | null;
         }
       }
 
@@ -1297,36 +1231,7 @@ export namespace PendingTransaction {
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
          */
-        fee_type:
-          | 'visa_international_service_assessment_single_currency'
-          | 'visa_international_service_assessment_cross_currency'
-          | 'visa_authorization_domestic_point_of_sale'
-          | 'visa_authorization_international_point_of_sale'
-          | 'visa_authorization_canada_point_of_sale'
-          | 'visa_authorization_reversal_point_of_sale'
-          | 'visa_authorization_reversal_international_point_of_sale'
-          | 'visa_authorization_address_verification_service'
-          | 'visa_advanced_authorization'
-          | 'visa_message_transmission'
-          | 'visa_account_verification_domestic'
-          | 'visa_account_verification_international'
-          | 'visa_account_verification_canada'
-          | 'visa_corporate_acceptance_fee'
-          | 'visa_consumer_debit_acceptance_fee'
-          | 'visa_business_debit_acceptance_fee'
-          | 'visa_purchasing_acceptance_fee'
-          | 'visa_purchase_domestic'
-          | 'visa_purchase_international'
-          | 'visa_credit_purchase_token'
-          | 'visa_debit_purchase_token'
-          | 'visa_clearing_transmission'
-          | 'visa_direct_authorization'
-          | 'visa_direct_transaction_domestic'
-          | 'visa_service_commercial_credit'
-          | 'visa_advertising_service_commercial_credit'
-          | 'visa_community_growth_acceleration_program'
-          | 'visa_processing_guarantee_commercial_credit'
-          | 'pulse_switch_fee';
+        fee_type: 'visa_international_service_assessment_single_currency' | 'visa_international_service_assessment_cross_currency' | 'visa_authorization_domestic_point_of_sale' | 'visa_authorization_international_point_of_sale' | 'visa_authorization_canada_point_of_sale' | 'visa_authorization_reversal_point_of_sale' | 'visa_authorization_reversal_international_point_of_sale' | 'visa_authorization_address_verification_service' | 'visa_advanced_authorization' | 'visa_message_transmission' | 'visa_account_verification_domestic' | 'visa_account_verification_international' | 'visa_account_verification_canada' | 'visa_corporate_acceptance_fee' | 'visa_consumer_debit_acceptance_fee' | 'visa_business_debit_acceptance_fee' | 'visa_purchasing_acceptance_fee' | 'visa_purchase_domestic' | 'visa_purchase_international' | 'visa_credit_purchase_token' | 'visa_debit_purchase_token' | 'visa_clearing_transmission' | 'visa_direct_authorization' | 'visa_direct_transaction_domestic' | 'visa_service_commercial_credit' | 'visa_advertising_service_commercial_credit' | 'visa_community_growth_acceleration_program' | 'visa_processing_guarantee_commercial_credit' | 'pulse_switch_fee';
 
         /**
          * The fixed component of the fee, if applicable, given in major units of the fee
@@ -1420,13 +1325,7 @@ export namespace PendingTransaction {
            * - `postal_code_match_address_not_checked` - Postal code matches, but the street
            *   address was not verified. (deprecated)
            */
-          result:
-            | 'not_checked'
-            | 'postal_code_match_address_no_match'
-            | 'postal_code_no_match_address_match'
-            | 'match'
-            | 'no_match'
-            | 'postal_code_match_address_not_checked';
+          result: 'not_checked' | 'postal_code_match_address_no_match' | 'postal_code_no_match_address_match' | 'match' | 'no_match' | 'postal_code_match_address_not_checked';
         }
 
         /**
@@ -1502,7 +1401,7 @@ export namespace PendingTransaction {
        */
       front_image_file_id: string;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -1528,7 +1427,7 @@ export namespace PendingTransaction {
        */
       transfer_id: string;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -1541,7 +1440,7 @@ export namespace PendingTransaction {
        */
       transfer_id: string;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -1606,7 +1505,7 @@ export namespace PendingTransaction {
        */
       type: 'inbound_funds_hold';
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -1621,14 +1520,15 @@ export namespace PendingTransaction {
        */
       inbound_wire_transfer_id: string;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
      * If the category of this Transaction source is equal to `other`, this field will
      * contain an empty object, otherwise it will contain null.
      */
-    export interface Other {}
+    export interface Other {
+    }
 
     /**
      * A Real-Time Payments Transfer Instruction object. This field will be present in
@@ -1658,7 +1558,7 @@ export namespace PendingTransaction {
        */
       transfer_id: string;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -1692,7 +1592,7 @@ export namespace PendingTransaction {
        */
       transfer_id: string;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
   }
 }
@@ -1705,8 +1605,8 @@ export interface PendingTransactionCreateParams {
 
   /**
    * The amount to hold in the minor unit of the account's currency. For dollars, for
-   * example, this is cents. This should be a negative amount - to hold $1.00 from
-   * the account, you would pass -100.
+   * example, this is cents. This should be a negative amount: To hold $1.00 from the
+   * account, pass -100 as `amount`.
    */
   amount: number;
 
@@ -1715,7 +1615,7 @@ export interface PendingTransactionCreateParams {
    */
   description?: string;
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export interface PendingTransactionListParams extends PageParams {
@@ -1742,24 +1642,7 @@ export namespace PendingTransactionListParams {
      * Return results whose value is in the provided list. For GET requests, this
      * should be encoded as a comma-delimited string, such as `?in=one,two,three`.
      */
-    in?: Array<
-      | 'account_transfer_instruction'
-      | 'ach_transfer_instruction'
-      | 'card_authorization'
-      | 'check_deposit_instruction'
-      | 'check_transfer_instruction'
-      | 'fednow_transfer_instruction'
-      | 'inbound_funds_hold'
-      | 'user_initiated_hold'
-      | 'real_time_payments_transfer_instruction'
-      | 'wire_transfer_instruction'
-      | 'inbound_wire_transfer_reversal'
-      | 'swift_transfer_instruction'
-      | 'card_push_transfer_instruction'
-      | 'blockchain_onramp_transfer_instruction'
-      | 'blockchain_offramp_transfer'
-      | 'other'
-    >;
+    in?: Array<'account_transfer_instruction' | 'ach_transfer_instruction' | 'card_authorization' | 'check_deposit_instruction' | 'check_transfer_instruction' | 'fednow_transfer_instruction' | 'inbound_funds_hold' | 'user_initiated_hold' | 'real_time_payments_transfer_instruction' | 'wire_transfer_instruction' | 'inbound_wire_transfer_reversal' | 'swift_transfer_instruction' | 'card_push_transfer_instruction' | 'blockchain_onramp_transfer_instruction' | 'blockchain_offramp_transfer' | 'other'>;
   }
 
   export interface CreatedAt {
@@ -1804,6 +1687,6 @@ export declare namespace PendingTransactions {
     type PendingTransaction as PendingTransaction,
     type PendingTransactionsPage as PendingTransactionsPage,
     type PendingTransactionCreateParams as PendingTransactionCreateParams,
-    type PendingTransactionListParams as PendingTransactionListParams,
+    type PendingTransactionListParams as PendingTransactionListParams
   };
 }
