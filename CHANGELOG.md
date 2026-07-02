@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.576.0](https://github.com/Increase/increase-typescript/compare/v0.575.0...v0.576.0) (2026-07-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* **api:** require check transfer payer, add return address name ([#1407](https://github.com/Increase/increase-typescript/issues/1407))
+* **api:** require payer on physical checks; add entity validation filter ([#1406](https://github.com/Increase/increase-typescript/issues/1406))
+
+### Features
+
+* **api:** require check transfer payer, add return address name ([#1407](https://github.com/Increase/increase-typescript/issues/1407)) ([7a0a15e](https://github.com/Increase/increase-typescript/commit/7a0a15e1970724f3bda87b91880156105de38793))
+* **api:** require payer on physical checks; add entity validation filter ([#1406](https://github.com/Increase/increase-typescript/issues/1406)) ([6fc5c9b](https://github.com/Increase/increase-typescript/commit/6fc5c9bb49e8e66145596983078f6e78f7ede95f))
+
 ## [0.575.0](https://github.com/Increase/increase-typescript/compare/v0.574.0...v0.575.0) (2026-06-29)
 
 
