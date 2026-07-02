@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../core/resource';
+import * as CardSettlementsAPI from './card-settlements';
 import * as TransactionsAPI from '../transactions';
 import { APIPromise } from '../../core/api-promise';
 import { RequestOptions } from '../../internal/request-options';
@@ -23,10 +24,7 @@ export class CardSettlements extends APIResource {
    *   });
    * ```
    */
-  create(
-    body: CardSettlementCreateParams,
-    options?: RequestOptions,
-  ): APIPromise<TransactionsAPI.Transaction> {
+  create(body: CardSettlementCreateParams, options?: RequestOptions): APIPromise<TransactionsAPI.Transaction> {
     return this._client.post('/simulations/card_settlements', { body, ...options });
   }
 }
@@ -51,5 +49,7 @@ export interface CardSettlementCreateParams {
 }
 
 export declare namespace CardSettlements {
-  export { type CardSettlementCreateParams as CardSettlementCreateParams };
+  export {
+    type CardSettlementCreateParams as CardSettlementCreateParams
+  };
 }
