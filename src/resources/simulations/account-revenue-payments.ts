@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../core/resource';
+import * as AccountRevenuePaymentsAPI from './account-revenue-payments';
 import * as TransactionsAPI from '../transactions';
 import { APIPromise } from '../../core/api-promise';
 import { RequestOptions } from '../../internal/request-options';
@@ -19,10 +20,7 @@ export class AccountRevenuePayments extends APIResource {
    *   });
    * ```
    */
-  create(
-    body: AccountRevenuePaymentCreateParams,
-    options?: RequestOptions,
-  ): APIPromise<TransactionsAPI.Transaction> {
+  create(body: AccountRevenuePaymentCreateParams, options?: RequestOptions): APIPromise<TransactionsAPI.Transaction> {
     return this._client.post('/simulations/account_revenue_payments', { body, ...options });
   }
 }
@@ -58,5 +56,7 @@ export interface AccountRevenuePaymentCreateParams {
 }
 
 export declare namespace AccountRevenuePayments {
-  export { type AccountRevenuePaymentCreateParams as AccountRevenuePaymentCreateParams };
+  export {
+    type AccountRevenuePaymentCreateParams as AccountRevenuePaymentCreateParams
+  };
 }

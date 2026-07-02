@@ -6,7 +6,7 @@
     "rootDir": "./dist/src",
     "paths": {
       "increase/*": ["./dist/src/*"],
-      "increase": ["./dist/src/index.ts"]
+      "increase": ["./dist/src/index.ts"],
     },
     "noEmit": false,
     "declaration": true,

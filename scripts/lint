@@ -4,11 +4,11 @@ set -e
 
 cd "$(dirname "$0")/.."
 
-echo "==> Running prettier --check"
-./node_modules/.bin/prettier --check .
+echo "==> Running oxlint"
+./node_modules/.bin/oxlint
 
-echo "==> Running eslint"
-./node_modules/.bin/eslint .
+echo "==> Running oxfmt --check"
+./node_modules/.bin/oxfmt --check
 
 echo "==> Building"
 ./scripts/build

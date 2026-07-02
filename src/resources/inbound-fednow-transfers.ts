@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../core/resource';
+import * as InboundFednowTransfersAPI from './inbound-fednow-transfers';
 import { APIPromise } from '../core/api-promise';
 import { Page, type PageParams, PagePromise } from '../core/pagination';
 import { RequestOptions } from '../internal/request-options';
@@ -33,18 +34,12 @@ export class InboundFednowTransfers extends APIResource {
    * }
    * ```
    */
-  list(
-    query: InboundFednowTransferListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): PagePromise<InboundFednowTransfersPage, InboundFednowTransfer> {
-    return this._client.getAPIList('/inbound_fednow_transfers', Page<InboundFednowTransfer>, {
-      query,
-      ...options,
-    });
+  list(query: InboundFednowTransferListParams | null | undefined = {}, options?: RequestOptions): PagePromise<InboundFednowTransfersPage, InboundFednowTransfer> {
+    return this._client.getAPIList('/inbound_fednow_transfers', Page<InboundFednowTransfer>, { query, ...options });
   }
 }
 
-export type InboundFednowTransfersPage = Page<InboundFednowTransfer>;
+export type InboundFednowTransfersPage = Page<InboundFednowTransfer>
 
 /**
  * An Inbound FedNow Transfer is a FedNow transfer initiated outside of Increase to
@@ -162,7 +157,7 @@ export namespace InboundFednowTransfer {
      */
     transfer_id: string;
 
-    [k: string]: unknown;
+  [k: string]: unknown
   }
 
   /**
@@ -180,20 +175,14 @@ export namespace InboundFednowTransfer {
      * - `fednow_not_enabled` - Your account is not enabled to receive FedNow
      *   transfers.
      */
-    reason:
-      | 'account_number_canceled'
-      | 'account_number_disabled'
-      | 'account_restricted'
-      | 'group_locked'
-      | 'entity_not_active'
-      | 'fednow_not_enabled';
+    reason: 'account_number_canceled' | 'account_number_disabled' | 'account_restricted' | 'group_locked' | 'entity_not_active' | 'fednow_not_enabled';
 
     /**
      * The identifier of the FedNow Transfer that led to this declined transaction.
      */
     transfer_id: string;
 
-    [k: string]: unknown;
+  [k: string]: unknown
   }
 }
 
@@ -244,6 +233,6 @@ export declare namespace InboundFednowTransfers {
   export {
     type InboundFednowTransfer as InboundFednowTransfer,
     type InboundFednowTransfersPage as InboundFednowTransfersPage,
-    type InboundFednowTransferListParams as InboundFednowTransferListParams,
+    type InboundFednowTransferListParams as InboundFednowTransferListParams
   };
 }
