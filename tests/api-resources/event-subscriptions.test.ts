@@ -20,7 +20,7 @@ describe('resource eventSubscriptions', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.eventSubscriptions.create({
+    await client.eventSubscriptions.create({
       url: 'https://website.com/webhooks',
       oauth_connection_id: 'x',
       selected_event_categories: [{ event_category: 'account.created' }],

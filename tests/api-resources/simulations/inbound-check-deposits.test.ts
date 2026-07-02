@@ -24,7 +24,7 @@ describe('resource inboundCheckDeposits', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.simulations.inboundCheckDeposits.create({
+    await client.simulations.inboundCheckDeposits.create({
       account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
       amount: 1000,
       check_number: '1234567890',

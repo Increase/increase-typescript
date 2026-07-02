@@ -25,7 +25,7 @@ describe('resource wireTransfers', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.wireTransfers.create({
+    await client.wireTransfers.create({
       account_id: 'account_in71c4amph0vgo2qllky',
       amount: 100,
       creditor: {

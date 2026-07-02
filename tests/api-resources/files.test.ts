@@ -23,7 +23,7 @@ describe('resource files', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.files.create({
+    await client.files.create({
       file: await toFile(Buffer.from('Example data'), 'README.md'),
       purpose: 'check_image_front',
       description: 'x',

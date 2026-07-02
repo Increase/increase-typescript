@@ -23,7 +23,7 @@ describe('resource inboundACHTransfers', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.simulations.inboundACHTransfers.create({
+    await client.simulations.inboundACHTransfers.create({
       account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
       amount: 1000,
       addenda: {

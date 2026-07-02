@@ -22,7 +22,7 @@ describe('resource cardAuthorizationExpirations', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.simulations.cardAuthorizationExpirations.create({
+    await client.simulations.cardAuthorizationExpirations.create({
       card_payment_id: 'card_payment_nd3k2kacrqjli8482ave',
     });
   });

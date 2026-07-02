@@ -26,7 +26,7 @@ describe('resource inboundWireDrawdownRequests', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.simulations.inboundWireDrawdownRequests.create({
+    await client.simulations.inboundWireDrawdownRequests.create({
       amount: 10000,
       creditor_account_number: '987654321',
       creditor_routing_number: '101050001',

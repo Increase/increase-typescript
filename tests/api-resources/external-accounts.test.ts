@@ -24,7 +24,7 @@ describe('resource externalAccounts', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.externalAccounts.create({
+    await client.externalAccounts.create({
       account_number: '987654321',
       description: 'Landlord',
       routing_number: '101050001',

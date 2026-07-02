@@ -22,7 +22,7 @@ describe('resource physicalCards', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.simulations.physicalCards.create('physical_card_ode8duyq5v2ynhjoharl', {
+    await client.simulations.physicalCards.create('physical_card_ode8duyq5v2ynhjoharl', {
       category: 'delivered',
       carrier_estimated_delivery_at: '2019-12-27T18:11:19.117Z',
       city: 'New York',
@@ -46,9 +46,8 @@ describe('resource physicalCards', () => {
   });
 
   test('advanceShipment: required and optional params', async () => {
-    const response = await client.simulations.physicalCards.advanceShipment(
-      'physical_card_ode8duyq5v2ynhjoharl',
-      { shipment_status: 'shipped' },
-    );
+    await client.simulations.physicalCards.advanceShipment('physical_card_ode8duyq5v2ynhjoharl', {
+      shipment_status: 'shipped',
+    });
   });
 });

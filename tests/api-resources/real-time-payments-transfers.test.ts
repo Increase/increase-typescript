@@ -25,7 +25,7 @@ describe('resource realTimePaymentsTransfers', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.realTimePaymentsTransfers.create({
+    await client.realTimePaymentsTransfers.create({
       amount: 100,
       creditor_name: 'Ian Crease',
       source_account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',

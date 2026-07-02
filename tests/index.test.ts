@@ -243,7 +243,7 @@ describe('instantiate client', () => {
 
   test('explicit global fetch', async () => {
     // make sure the global fetch type is assignable to our Fetch type
-    const client = new Increase({
+    new Increase({
       baseURL: 'http://localhost:5000/',
       apiKey: 'My API Key',
       fetch: defaultFetch,
@@ -579,8 +579,8 @@ describe('retries', () => {
       { signal }: RequestInit = {},
     ): Promise<Response> => {
       if (count++ === 0) {
-        return new Promise(
-          (resolve, reject) => signal?.addEventListener('abort', () => reject(new Error('timed out'))),
+        return new Promise((resolve, reject) =>
+          signal?.addEventListener('abort', () => reject(new Error('timed out'))),
         );
       }
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });

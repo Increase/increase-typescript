@@ -22,7 +22,7 @@ describe('resource cardReversals', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.simulations.cardReversals.create({
+    await client.simulations.cardReversals.create({
       card_payment_id: 'card_payment_nd3k2kacrqjli8482ave',
       amount: 1,
     });

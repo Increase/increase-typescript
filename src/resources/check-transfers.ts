@@ -461,6 +461,11 @@ export namespace CheckTransfer {
     return_address: PhysicalCheck.ReturnAddress | null;
 
     /**
+     * A custom name printed above the Increase-managed return address.
+     */
+    return_address_name: string | null;
+
+    /**
      * The shipping method for the check.
      *
      * - `usps_first_class` - USPS First Class
@@ -845,6 +850,13 @@ export namespace CheckTransferCreateParams {
     memo: string;
 
     /**
+     * The payer of the check. This will be printed on the top-left portion of the
+     * check. This should be an array of up to 4 elements, each of which represents a
+     * line of the payer.
+     */
+    payer: Array<PhysicalCheck.Payer>;
+
+    /**
      * The name that will be printed on the check in the 'To:' field.
      */
     recipient_name: string;
@@ -869,18 +881,17 @@ export namespace CheckTransferCreateParams {
     note?: string;
 
     /**
-     * The payer of the check. This will be printed on the top-left portion of the
-     * check and defaults to the return address if unspecified. This should be an array
-     * of up to 4 elements, each of which represents a line of the payer.
-     */
-    payer?: Array<PhysicalCheck.Payer>;
-
-    /**
      * The return address to be printed on the check. If omitted this will default to
      * an Increase-owned address that will mark checks as delivery failed and shred
      * them.
      */
     return_address?: PhysicalCheck.ReturnAddress;
+
+    /**
+     * A custom name to print above the default return address. Cannot be provided
+     * together with `return_address`.
+     */
+    return_address_name?: string;
 
     /**
      * How to ship the check. For details on pricing, timing, and restrictions, see

@@ -23,7 +23,7 @@ describe('resource inboundRealTimePaymentsTransfers', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.simulations.inboundRealTimePaymentsTransfers.create({
+    await client.simulations.inboundRealTimePaymentsTransfers.create({
       account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
       amount: 1000,
       debtor_account_number: 'x',

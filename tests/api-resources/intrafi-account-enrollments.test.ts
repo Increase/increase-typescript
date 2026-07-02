@@ -23,7 +23,7 @@ describe('resource intrafiAccountEnrollments', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.intrafiAccountEnrollments.create({
+    await client.intrafiAccountEnrollments.create({
       account_id: 'account_in71c4amph0vgo2qllky',
       email_address: 'user@example.com',
     });

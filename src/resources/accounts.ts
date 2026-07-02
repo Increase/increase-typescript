@@ -410,6 +410,8 @@ export namespace AccountCreateParams {
      * The date on which the loan matures.
      */
     maturity_date?: string;
+
+    [k: string]: unknown;
   }
 }
 

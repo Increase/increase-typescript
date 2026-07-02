@@ -23,7 +23,7 @@ describe('resource entityOnboardingSessions', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.entityOnboardingSessions.create({
+    await client.entityOnboardingSessions.create({
       program_id: 'program_i2v2os4mwza1oetokh9i',
       redirect_url: 'https://example.com/onboarding/session',
       entity_id: 'entity_id',

@@ -23,7 +23,7 @@ describe('resource lockboxRecipients', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.lockboxRecipients.create({
+    await client.lockboxRecipients.create({
       account_id: 'account_in71c4amph0vgo2qllky',
       lockbox_address_id: 'lockbox_address_lw6sbzl9ol5dfd8hdml6',
       description: 'x',

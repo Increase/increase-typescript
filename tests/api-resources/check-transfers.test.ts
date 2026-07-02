@@ -25,7 +25,7 @@ describe('resource checkTransfers', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.checkTransfers.create({
+    await client.checkTransfers.create({
       account_id: 'account_in71c4amph0vgo2qllky',
       amount: 1000,
       fulfillment_method: 'physical_check',
@@ -43,11 +43,15 @@ describe('resource checkTransfers', () => {
           phone: '+16505046304',
         },
         memo: 'Check payment',
+        payer: [
+          { contents: 'National Phonograph Company' },
+          { contents: '33 Liberty Street' },
+          { contents: 'New York, NY 10045' },
+        ],
         recipient_name: 'Ian Crease',
         attachment_file_id: 'attachment_file_id',
         check_voucher_image_file_id: 'check_voucher_image_file_id',
         note: 'note',
-        payer: [{ contents: 'contents' }],
         return_address: {
           city: 'city',
           line1: 'line1',
@@ -57,6 +61,7 @@ describe('resource checkTransfers', () => {
           line2: 'line2',
           phone: 'x',
         },
+        return_address_name: 'return_address_name',
         shipping_method: 'usps_first_class',
         signature: { image_file_id: 'image_file_id', text: 'Ian Crease' },
       },

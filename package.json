@@ -1,18 +1,36 @@
 {
   "name": "increase",
   "version": "0.575.0",
+  "private": false,
   "description": "The official TypeScript library for the Increase API",
-  "author": "Increase <dev-feedback@increase.com>",
-  "types": "dist/index.d.ts",
-  "main": "dist/index.js",
-  "type": "commonjs",
-  "repository": "github:Increase/increase-typescript",
   "license": "Apache-2.0",
-  "packageManager": "pnpm@10.30.1",
+  "author": "Increase <dev-feedback@increase.com>",
+  "repository": "github:Increase/increase-typescript",
+  "bin": {
+    "increase": "bin/cli"
+  },
   "files": [
     "**/*"
   ],
-  "private": false,
+  "type": "commonjs",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./*.mjs": {
+      "default": "./dist/*.mjs"
+    },
+    "./*.js": {
+      "default": "./dist/*.js"
+    },
+    "./*": {
+      "import": "./dist/*.mjs",
+      "require": "./dist/*.js"
+    }
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -35,50 +53,29 @@
     "@swc/jest": "^0.2.29",
     "@types/jest": "^29.4.0",
     "@types/node": "^20.17.6",
-    "@typescript-eslint/eslint-plugin": "8.31.1",
     "@typescript-eslint/parser": "8.31.1",
-    "eslint": "^9.39.1",
-    "eslint-plugin-unused-imports": "^4.1.4",
     "iconv-lite": "^0.6.3",
     "jest": "^29.4.0",
-    "prettier": "^3.0.0",
+    "oxfmt": "^0.54.0",
+    "oxlint": "^1.69.0",
     "publint": "^0.2.12",
     "ts-jest": "^29.1.0",
     "ts-node": "^10.5.0",
     "tsc-multi": "https://github.com/stainless-api/tsc-multi/releases/download/v1.1.11/tsc-multi.tgz",
     "tsconfig-paths": "^4.0.0",
     "tslib": "^2.8.1",
-    "typescript": "5.8.3",
-    "typescript-eslint": "8.31.1"
-  },
-  "bin": {
-    "increase": "bin/cli"
-  },
-  "overrides": {
-    "minimatch": "^9.0.5"
-  },
-  "pnpm": {
-    "overrides": {
-      "minimatch": "^9.0.5"
-    }
+    "typescript": "5.8.3"
   },
   "resolutions": {
     "minimatch": "^9.0.5"
   },
-  "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
-    },
-    "./*.mjs": {
-      "default": "./dist/*.mjs"
-    },
-    "./*.js": {
-      "default": "./dist/*.js"
-    },
-    "./*": {
-      "import": "./dist/*.mjs",
-      "require": "./dist/*.js"
+  "overrides": {
+    "minimatch": "^9.0.5"
+  },
+  "packageManager": "pnpm@10.30.1",
+  "pnpm": {
+    "overrides": {
+      "minimatch": "^9.0.5"
     }
   }
 }

@@ -20,7 +20,7 @@ describe('resource cardAuthorizations', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.simulations.cardAuthorizations.create({
+    await client.simulations.cardAuthorizations.create({
       amount: 1000,
       authenticated_card_payment_id: 'authenticated_card_payment_id',
       card_id: 'card_oubs0hwk5rn6knuecxg2',

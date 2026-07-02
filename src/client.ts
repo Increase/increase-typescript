@@ -15,7 +15,7 @@ import { stringifyQuery } from './internal/utils/query';
 import { VERSION } from './version';
 import * as Errors from './core/error';
 import * as Pagination from './core/pagination';
-import { AbstractPage, type PageParams, PageResponse } from './core/pagination';
+import { type PageParams, PageResponse } from './core/pagination';
 import * as Uploads from './core/uploads';
 import * as API from './resources/index';
 import { APIPromise } from './core/api-promise';
@@ -636,9 +636,8 @@ export class Increase {
     defaultBaseURL?: string | undefined,
   ): string {
     const baseURL = (!this.#baseURLOverridden() && defaultBaseURL) || this.baseURL;
-    const url =
-      isAbsoluteURL(path) ?
-        new URL(path)
+    const url = isAbsoluteURL(path)
+      ? new URL(path)
       : new URL(baseURL + (baseURL.endsWith('/') && path.startsWith('/') ? path.slice(1) : path));
 
     const defaultQuery = this.defaultQuery();
@@ -801,9 +800,7 @@ export class Increase {
       .filter(([name]) => name === 'Idempotent-Replayed')
       .map(([name, value]) => ', ' + name + ': ' + JSON.stringify(value))
       .join('');
-    const responseInfo = `[${requestLogID}${retryLogStr}${specialHeaders}] ${req.method} ${url} ${
-      response.ok ? 'succeeded' : 'failed'
-    } with status ${response.status} in ${headersTime - startTime}ms`;
+    const responseInfo = `[${requestLogID}${retryLogStr}${specialHeaders}] ${req.method} ${url} ${response.ok ? 'succeeded' : 'failed'} with status ${response.status} in ${headersTime - startTime}ms`;
 
     if (!response.ok) {
       const shouldRetry = await this.shouldRetry(response);
@@ -877,9 +874,9 @@ export class Increase {
   ): Pagination.PagePromise<PageClass, Item> {
     return this.requestAPIList(
       Page,
-      opts && 'then' in opts ?
-        opts.then((opts) => ({ method: 'get', path, ...opts }))
-      : { method: 'get', path, ...opts },
+      opts && 'then' in opts
+        ? opts.then((opts) => ({ method: 'get', path, ...opts }))
+        : { method: 'get', path, ...opts },
     );
   }
 

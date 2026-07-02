@@ -20,7 +20,7 @@ describe('resource routingNumbers', () => {
   });
 
   test('list: required and optional params', async () => {
-    const response = await client.routingNumbers.list({
+    await client.routingNumbers.list({
       routing_number: '483310694',
       cursor: 'cursor',
       limit: 1,

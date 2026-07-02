@@ -23,7 +23,7 @@ describe('resource cardIncrements', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.simulations.cardIncrements.create({
+    await client.simulations.cardIncrements.create({
       amount: 500,
       card_payment_id: 'card_payment_nd3k2kacrqjli8482ave',
       event_subscription_id: 'event_subscription_id',

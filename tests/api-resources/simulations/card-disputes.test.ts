@@ -22,7 +22,7 @@ describe('resource cardDisputes', () => {
   });
 
   test('action: required and optional params', async () => {
-    const response = await client.simulations.cardDisputes.action('card_dispute_h9sc95nbl1cgltpp7men', {
+    await client.simulations.cardDisputes.action('card_dispute_h9sc95nbl1cgltpp7men', {
       network: 'visa',
       visa: {
         action: 'accept_user_submission',

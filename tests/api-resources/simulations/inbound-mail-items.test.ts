@@ -20,7 +20,7 @@ describe('resource inboundMailItems', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.simulations.inboundMailItems.create({
+    await client.simulations.inboundMailItems.create({
       amount: 1000,
       contents_file_id: 'contents_file_id',
       lockbox_address_id: 'lockbox_address_id',

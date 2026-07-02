@@ -23,7 +23,7 @@ describe('resource accountRevenuePayments', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.simulations.accountRevenuePayments.create({
+    await client.simulations.accountRevenuePayments.create({
       account_id: 'account_in71c4amph0vgo2qllky',
       amount: 1000,
       accrued_on_account_id: 'accrued_on_account_id',

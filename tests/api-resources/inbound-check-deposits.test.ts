@@ -76,7 +76,7 @@ describe('resource inboundCheckDeposits', () => {
   });
 
   test('return: required and optional params', async () => {
-    const response = await client.inboundCheckDeposits.return('inbound_check_deposit_zoshvqybq0cjjm31mra', {
+    await client.inboundCheckDeposits.return('inbound_check_deposit_zoshvqybq0cjjm31mra', {
       reason: 'altered_or_fictitious',
     });
   });

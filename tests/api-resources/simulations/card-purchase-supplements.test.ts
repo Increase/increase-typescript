@@ -22,7 +22,7 @@ describe('resource cardPurchaseSupplements', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.simulations.cardPurchaseSupplements.create({
+    await client.simulations.cardPurchaseSupplements.create({
       transaction_id: 'transaction_uyrp7fld2ium70oa7oi',
       invoice: {
         discount_amount: 100,

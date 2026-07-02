@@ -26,7 +26,7 @@ describe('resource fednowTransfers', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.fednowTransfers.create({
+    await client.fednowTransfers.create({
       amount: 100,
       creditor_name: 'Ian Crease',
       debtor_name: 'National Phonograph Company',

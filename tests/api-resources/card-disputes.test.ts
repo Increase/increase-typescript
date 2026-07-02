@@ -23,7 +23,7 @@ describe('resource cardDisputes', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.cardDisputes.create({
+    await client.cardDisputes.create({
       disputed_transaction_id: 'transaction_uyrp7fld2ium70oa7oi',
       network: 'visa',
       amount: 100,
@@ -322,7 +322,7 @@ describe('resource cardDisputes', () => {
   });
 
   test('submitUserSubmission: required and optional params', async () => {
-    const response = await client.cardDisputes.submitUserSubmission('card_dispute_h9sc95nbl1cgltpp7men', {
+    await client.cardDisputes.submitUserSubmission('card_dispute_h9sc95nbl1cgltpp7men', {
       network: 'visa',
       amount: 1,
       attachment_files: [{ file_id: 'file_id' }],

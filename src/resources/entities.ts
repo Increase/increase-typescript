@@ -3327,6 +3327,8 @@ export interface EntityListParams extends PageParams {
   idempotency_key?: string;
 
   status?: EntityListParams.Status;
+
+  validation_status?: EntityListParams.ValidationStatus;
 }
 
 export namespace EntityListParams {
@@ -3363,6 +3365,15 @@ export namespace EntityListParams {
      * `?in=one,two,three`.
      */
     in?: Array<'active' | 'archived' | 'disabled'>;
+  }
+
+  export interface ValidationStatus {
+    /**
+     * Filter Entities for those with the specified validation status. For GET
+     * requests, this should be encoded as a comma-delimited string, such as
+     * `?in=one,two,three`.
+     */
+    in?: Array<'pending' | 'valid' | 'invalid'>;
   }
 }
 

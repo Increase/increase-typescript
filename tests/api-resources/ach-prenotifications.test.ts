@@ -24,7 +24,7 @@ describe('resource achPrenotifications', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.achPrenotifications.create({
+    await client.achPrenotifications.create({
       account_id: 'account_in71c4amph0vgo2qllky',
       account_number: '987654321',
       routing_number: '101050001',

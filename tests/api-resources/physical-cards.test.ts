@@ -33,7 +33,7 @@ describe('resource physicalCards', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.physicalCards.create({
+    await client.physicalCards.create({
       card_id: 'card_oubs0hwk5rn6knuecxg2',
       cardholder: { first_name: 'Ian', last_name: 'Crease' },
       shipment: {
@@ -80,7 +80,7 @@ describe('resource physicalCards', () => {
   });
 
   test('update: required and optional params', async () => {
-    const response = await client.physicalCards.update('physical_card_ode8duyq5v2ynhjoharl', {
+    await client.physicalCards.update('physical_card_ode8duyq5v2ynhjoharl', {
       status: 'disabled',
     });
   });

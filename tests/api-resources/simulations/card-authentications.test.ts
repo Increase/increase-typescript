@@ -22,7 +22,7 @@ describe('resource cardAuthentications', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.simulations.cardAuthentications.create({
+    await client.simulations.cardAuthentications.create({
       card_id: 'card_oubs0hwk5rn6knuecxg2',
       category: 'payment_authentication',
       device_channel: 'app',
@@ -49,10 +49,9 @@ describe('resource cardAuthentications', () => {
   });
 
   test('challengeAttempts: required and optional params', async () => {
-    const response = await client.simulations.cardAuthentications.challengeAttempts(
-      'card_payment_nd3k2kacrqjli8482ave',
-      { one_time_code: '123456' },
-    );
+    await client.simulations.cardAuthentications.challengeAttempts('card_payment_nd3k2kacrqjli8482ave', {
+      one_time_code: '123456',
+    });
   });
 
   test('challenges', async () => {

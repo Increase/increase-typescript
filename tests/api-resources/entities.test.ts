@@ -20,7 +20,7 @@ describe('resource entities', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.entities.create({
+    await client.entities.create({
       structure: 'corporation',
       corporation: {
         address: {
@@ -319,6 +319,7 @@ describe('resource entities', () => {
           idempotency_key: 'x',
           limit: 1,
           status: { in: ['active'] },
+          validation_status: { in: ['pending'] },
         },
         { path: '/_stainless_unknown_path' },
       ),

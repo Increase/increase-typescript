@@ -20,7 +20,7 @@ describe('resource oauthTokens', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.oauthTokens.create({
+    await client.oauthTokens.create({
       grant_type: 'authorization_code',
       client_id: '12345',
       client_secret: 'supersecret',

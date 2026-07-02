@@ -36,7 +36,7 @@ describe('resource wireDrawdownRequests', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.wireDrawdownRequests.create({
+    await client.wireDrawdownRequests.create({
       account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
       amount: 10000,
       creditor_address: {

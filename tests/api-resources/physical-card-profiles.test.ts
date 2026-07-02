@@ -26,7 +26,7 @@ describe('resource physicalCardProfiles', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.physicalCardProfiles.create({
+    await client.physicalCardProfiles.create({
       carrier_image_file_id: 'file_h6v7mtipe119os47ehlu',
       contact_phone: '+16505046304',
       description: 'My Card Profile',

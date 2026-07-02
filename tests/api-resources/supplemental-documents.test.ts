@@ -23,7 +23,7 @@ describe('resource supplementalDocuments', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.supplementalDocuments.create({
+    await client.supplementalDocuments.create({
       entity_id: 'entity_n8y8tnk2p9339ti393yi',
       file_id: 'file_makxrc67oh9l6sg7w9yc',
     });
@@ -41,7 +41,7 @@ describe('resource supplementalDocuments', () => {
   });
 
   test('list: required and optional params', async () => {
-    const response = await client.supplementalDocuments.list({
+    await client.supplementalDocuments.list({
       entity_id: 'entity_id',
       cursor: 'cursor',
       idempotency_key: 'x',

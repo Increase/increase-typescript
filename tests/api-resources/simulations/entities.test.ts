@@ -22,7 +22,7 @@ describe('resource entities', () => {
   });
 
   test('updateValidation: required and optional params', async () => {
-    const response = await client.simulations.entities.updateValidation('entity_n8y8tnk2p9339ti393yi', {
+    await client.simulations.entities.updateValidation('entity_n8y8tnk2p9339ti393yi', {
       issues: [{ category: 'entity_tax_identifier' }],
     });
   });

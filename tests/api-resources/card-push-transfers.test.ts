@@ -37,7 +37,7 @@ describe('resource cardPushTransfers', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.cardPushTransfers.create({
+    await client.cardPushTransfers.create({
       business_application_identifier: 'funds_disbursement',
       card_token_id: 'outbound_card_token_zlt0ml6youq3q7vcdlg0',
       merchant_category_code: '5734',

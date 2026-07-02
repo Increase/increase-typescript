@@ -26,7 +26,7 @@ describe('resource digitalCardProfiles', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.digitalCardProfiles.create({
+    await client.digitalCardProfiles.create({
       app_icon_file_id: 'file_8zxqkwlh43wo144u8yec',
       background_image_file_id: 'file_1ai913suu1zfn1pdetru',
       card_description: 'MyBank Signature Card',
