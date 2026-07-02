@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../core/resource';
-import * as DigitalCardProfilesAPI from './digital-card-profiles';
 import { APIPromise } from '../core/api-promise';
 import { Page, type PageParams, PagePromise } from '../core/pagination';
 import { RequestOptions } from '../internal/request-options';
@@ -53,7 +52,10 @@ export class DigitalCardProfiles extends APIResource {
    * }
    * ```
    */
-  list(query: DigitalCardProfileListParams | null | undefined = {}, options?: RequestOptions): PagePromise<DigitalCardProfilesPage, DigitalCardProfile> {
+  list(
+    query: DigitalCardProfileListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<DigitalCardProfilesPage, DigitalCardProfile> {
     return this._client.getAPIList('/digital_card_profiles', Page<DigitalCardProfile>, { query, ...options });
   }
 
@@ -83,12 +85,19 @@ export class DigitalCardProfiles extends APIResource {
    *   );
    * ```
    */
-  clone(digitalCardProfileID: string, body: DigitalCardProfileCloneParams, options?: RequestOptions): APIPromise<DigitalCardProfile> {
-    return this._client.post(path`/digital_card_profiles/${digitalCardProfileID}/clone`, { body, ...options });
+  clone(
+    digitalCardProfileID: string,
+    body: DigitalCardProfileCloneParams,
+    options?: RequestOptions,
+  ): APIPromise<DigitalCardProfile> {
+    return this._client.post(path`/digital_card_profiles/${digitalCardProfileID}/clone`, {
+      body,
+      ...options,
+    });
   }
 }
 
-export type DigitalCardProfilesPage = Page<DigitalCardProfile>
+export type DigitalCardProfilesPage = Page<DigitalCardProfile>;
 
 /**
  * This contains artwork and metadata relating to a Card's appearance in digital
@@ -176,7 +185,7 @@ export interface DigitalCardProfile {
    */
   type: 'digital_card_profile';
 
-[k: string]: unknown
+  [k: string]: unknown;
 }
 
 export namespace DigitalCardProfile {
@@ -247,7 +256,7 @@ export interface DigitalCardProfileCreateParams {
    */
   text_color?: DigitalCardProfileCreateParams.TextColor;
 
-[k: string]: unknown
+  [k: string]: unknown;
 }
 
 export namespace DigitalCardProfileCreateParams {
@@ -341,7 +350,7 @@ export interface DigitalCardProfileCloneParams {
    */
   text_color?: DigitalCardProfileCloneParams.TextColor;
 
-[k: string]: unknown
+  [k: string]: unknown;
 }
 
 export namespace DigitalCardProfileCloneParams {
@@ -372,6 +381,6 @@ export declare namespace DigitalCardProfiles {
     type DigitalCardProfilesPage as DigitalCardProfilesPage,
     type DigitalCardProfileCreateParams as DigitalCardProfileCreateParams,
     type DigitalCardProfileListParams as DigitalCardProfileListParams,
-    type DigitalCardProfileCloneParams as DigitalCardProfileCloneParams
+    type DigitalCardProfileCloneParams as DigitalCardProfileCloneParams,
   };
 }

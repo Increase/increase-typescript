@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../core/resource';
-import * as SimulationsCardPurchaseSupplementsAPI from './card-purchase-supplements';
 import * as CardPurchaseSupplementsAPI from '../card-purchase-supplements';
 import { APIPromise } from '../../core/api-promise';
 import { RequestOptions } from '../../internal/request-options';
@@ -20,7 +19,10 @@ export class CardPurchaseSupplements extends APIResource {
    *   });
    * ```
    */
-  create(body: CardPurchaseSupplementCreateParams, options?: RequestOptions): APIPromise<CardPurchaseSupplementsAPI.CardPurchaseSupplement> {
+  create(
+    body: CardPurchaseSupplementCreateParams,
+    options?: RequestOptions,
+  ): APIPromise<CardPurchaseSupplementsAPI.CardPurchaseSupplement> {
     return this._client.post('/simulations/card_purchase_supplements', { body, ...options });
   }
 }
@@ -153,7 +155,5 @@ export namespace CardPurchaseSupplementCreateParams {
 }
 
 export declare namespace CardPurchaseSupplements {
-  export {
-    type CardPurchaseSupplementCreateParams as CardPurchaseSupplementCreateParams
-  };
+  export { type CardPurchaseSupplementCreateParams as CardPurchaseSupplementCreateParams };
 }

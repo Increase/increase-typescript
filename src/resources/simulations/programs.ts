@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../core/resource';
-import * as SimulationsProgramsAPI from './programs';
 import * as ProgramsAPI from '../programs';
 import { APIPromise } from '../../core/api-promise';
 import { RequestOptions } from '../../internal/request-options';
@@ -51,11 +50,9 @@ export interface ProgramCreateParams {
    */
   reserve_account_id?: string;
 
-[k: string]: unknown
+  [k: string]: unknown;
 }
 
 export declare namespace Programs {
-  export {
-    type ProgramCreateParams as ProgramCreateParams
-  };
+  export { type ProgramCreateParams as ProgramCreateParams };
 }

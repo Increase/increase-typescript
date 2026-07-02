@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../core/resource';
-import * as WireDrawdownRequestsAPI from './wire-drawdown-requests';
 import { APIPromise } from '../core/api-promise';
 import { Page, type PageParams, PagePromise } from '../core/pagination';
 import { RequestOptions } from '../internal/request-options';
@@ -64,12 +63,18 @@ export class WireDrawdownRequests extends APIResource {
    * }
    * ```
    */
-  list(query: WireDrawdownRequestListParams | null | undefined = {}, options?: RequestOptions): PagePromise<WireDrawdownRequestsPage, WireDrawdownRequest> {
-    return this._client.getAPIList('/wire_drawdown_requests', Page<WireDrawdownRequest>, { query, ...options });
+  list(
+    query: WireDrawdownRequestListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<WireDrawdownRequestsPage, WireDrawdownRequest> {
+    return this._client.getAPIList('/wire_drawdown_requests', Page<WireDrawdownRequest>, {
+      query,
+      ...options,
+    });
   }
 }
 
-export type WireDrawdownRequestsPage = Page<WireDrawdownRequest>
+export type WireDrawdownRequestsPage = Page<WireDrawdownRequest>;
 
 /**
  * Wire drawdown requests enable you to request that someone else send you a wire.
@@ -198,7 +203,7 @@ export interface WireDrawdownRequest {
    */
   unstructured_remittance_information: string;
 
-[k: string]: unknown
+  [k: string]: unknown;
 }
 
 export namespace WireDrawdownRequest {
@@ -358,7 +363,7 @@ export interface WireDrawdownRequestCreateParams {
    */
   end_to_end_identification?: string;
 
-[k: string]: unknown
+  [k: string]: unknown;
 }
 
 export namespace WireDrawdownRequestCreateParams {
@@ -465,6 +470,6 @@ export declare namespace WireDrawdownRequests {
     type WireDrawdownRequest as WireDrawdownRequest,
     type WireDrawdownRequestsPage as WireDrawdownRequestsPage,
     type WireDrawdownRequestCreateParams as WireDrawdownRequestCreateParams,
-    type WireDrawdownRequestListParams as WireDrawdownRequestListParams
+    type WireDrawdownRequestListParams as WireDrawdownRequestListParams,
   };
 }

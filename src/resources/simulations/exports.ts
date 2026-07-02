@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../core/resource';
-import * as SimulationsExportsAPI from './exports';
 import * as ExportsAPI from '../exports';
 import { APIPromise } from '../../core/api-promise';
 import { RequestOptions } from '../../internal/request-options';
@@ -54,7 +53,5 @@ export namespace ExportCreateParams {
 }
 
 export declare namespace Exports {
-  export {
-    type ExportCreateParams as ExportCreateParams
-  };
+  export { type ExportCreateParams as ExportCreateParams };
 }

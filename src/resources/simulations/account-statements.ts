@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../core/resource';
-import * as SimulationsAccountStatementsAPI from './account-statements';
 import * as AccountStatementsAPI from '../account-statements';
 import { APIPromise } from '../../core/api-promise';
 import { RequestOptions } from '../../internal/request-options';
@@ -19,7 +18,10 @@ export class AccountStatements extends APIResource {
    *   });
    * ```
    */
-  create(body: AccountStatementCreateParams, options?: RequestOptions): APIPromise<AccountStatementsAPI.AccountStatement> {
+  create(
+    body: AccountStatementCreateParams,
+    options?: RequestOptions,
+  ): APIPromise<AccountStatementsAPI.AccountStatement> {
     return this._client.post('/simulations/account_statements', { body, ...options });
   }
 }
@@ -32,7 +34,5 @@ export interface AccountStatementCreateParams {
 }
 
 export declare namespace AccountStatements {
-  export {
-    type AccountStatementCreateParams as AccountStatementCreateParams
-  };
+  export { type AccountStatementCreateParams as AccountStatementCreateParams };
 }
