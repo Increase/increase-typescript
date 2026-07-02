@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../core/resource';
-import * as CardsAPI from './cards';
 import { APIPromise } from '../core/api-promise';
 import { Page, type PageParams, PagePromise } from '../core/pagination';
 import { RequestOptions } from '../internal/request-options';
@@ -61,7 +60,10 @@ export class Cards extends APIResource {
    * }
    * ```
    */
-  list(query: CardListParams | null | undefined = {}, options?: RequestOptions): PagePromise<CardsPage, Card> {
+  list(
+    query: CardListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<CardsPage, Card> {
     return this._client.getAPIList('/cards', Page<Card>, { query, ...options });
   }
 
@@ -78,7 +80,11 @@ export class Cards extends APIResource {
    *   );
    * ```
    */
-  createDetailsIframe(cardID: string, body: CardCreateDetailsIframeParams, options?: RequestOptions): APIPromise<CardIframeURL> {
+  createDetailsIframe(
+    cardID: string,
+    body: CardCreateDetailsIframeParams,
+    options?: RequestOptions,
+  ): APIPromise<CardIframeURL> {
     return this._client.post(path`/cards/${cardID}/create_details_iframe`, { body, ...options });
   }
 
@@ -113,7 +119,7 @@ export class Cards extends APIResource {
   }
 }
 
-export type CardsPage = Page<Card>
+export type CardsPage = Page<Card>;
 
 /**
  * Cards may operate on credit, debit, or prepaid BINs. They’ll immediately work
@@ -208,7 +214,7 @@ export interface Card {
    */
   type: 'card';
 
-[k: string]: unknown
+  [k: string]: unknown;
 }
 
 export namespace Card {
@@ -605,7 +611,7 @@ export interface CardCreateParams {
    */
   entity_id?: string;
 
-[k: string]: unknown
+  [k: string]: unknown;
 }
 
 export namespace CardCreateParams {
@@ -1319,6 +1325,6 @@ export declare namespace Cards {
     type CardUpdateParams as CardUpdateParams,
     type CardListParams as CardListParams,
     type CardCreateDetailsIframeParams as CardCreateDetailsIframeParams,
-    type CardUpdatePinParams as CardUpdatePinParams
+    type CardUpdatePinParams as CardUpdatePinParams,
   };
 }

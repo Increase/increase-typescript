@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../core/resource';
-import * as BeneficialOwnersAPI from './beneficial-owners';
 import { APIPromise } from '../core/api-promise';
 import { Page, type PageParams, PagePromise } from '../core/pagination';
 import { RequestOptions } from '../internal/request-options';
@@ -63,8 +62,15 @@ export class BeneficialOwners extends APIResource {
    *   );
    * ```
    */
-  update(entityBeneficialOwnerID: string, body: BeneficialOwnerUpdateParams, options?: RequestOptions): APIPromise<EntityBeneficialOwner> {
-    return this._client.patch(path`/entity_beneficial_owners/${entityBeneficialOwnerID}`, { body, ...options });
+  update(
+    entityBeneficialOwnerID: string,
+    body: BeneficialOwnerUpdateParams,
+    options?: RequestOptions,
+  ): APIPromise<EntityBeneficialOwner> {
+    return this._client.patch(path`/entity_beneficial_owners/${entityBeneficialOwnerID}`, {
+      body,
+      ...options,
+    });
   }
 
   /**
@@ -80,8 +86,14 @@ export class BeneficialOwners extends APIResource {
    * }
    * ```
    */
-  list(query: BeneficialOwnerListParams, options?: RequestOptions): PagePromise<EntityBeneficialOwnersPage, EntityBeneficialOwner> {
-    return this._client.getAPIList('/entity_beneficial_owners', Page<EntityBeneficialOwner>, { query, ...options });
+  list(
+    query: BeneficialOwnerListParams,
+    options?: RequestOptions,
+  ): PagePromise<EntityBeneficialOwnersPage, EntityBeneficialOwner> {
+    return this._client.getAPIList('/entity_beneficial_owners', Page<EntityBeneficialOwner>, {
+      query,
+      ...options,
+    });
   }
 
   /**
@@ -100,7 +112,7 @@ export class BeneficialOwners extends APIResource {
   }
 }
 
-export type EntityBeneficialOwnersPage = Page<EntityBeneficialOwner>
+export type EntityBeneficialOwnersPage = Page<EntityBeneficialOwner>;
 
 /**
  * Beneficial owners are the individuals who control or own 25% or more of a
@@ -232,7 +244,12 @@ export namespace EntityBeneficialOwner {
        * - `drivers_license` - A driver's license number.
        * - `other` - Another identifying document.
        */
-      method: 'social_security_number' | 'individual_taxpayer_identification_number' | 'passport' | 'drivers_license' | 'other';
+      method:
+        | 'social_security_number'
+        | 'individual_taxpayer_identification_number'
+        | 'passport'
+        | 'drivers_license'
+        | 'other';
 
       /**
        * The last 4 digits of the identification number that can be used to verify the
@@ -240,7 +257,7 @@ export namespace EntityBeneficialOwner {
        */
       number_last4: string;
 
-    [k: string]: unknown
+      [k: string]: unknown;
     }
   }
 }
@@ -269,7 +286,7 @@ export interface BeneficialOwnerCreateParams {
    */
   company_title?: string;
 
-[k: string]: unknown
+  [k: string]: unknown;
 }
 
 export namespace BeneficialOwnerCreateParams {
@@ -359,7 +376,12 @@ export namespace BeneficialOwnerCreateParams {
        * - `drivers_license` - A driver's license number.
        * - `other` - Another identifying document.
        */
-      method: 'social_security_number' | 'individual_taxpayer_identification_number' | 'passport' | 'drivers_license' | 'other';
+      method:
+        | 'social_security_number'
+        | 'individual_taxpayer_identification_number'
+        | 'passport'
+        | 'drivers_license'
+        | 'other';
 
       /**
        * An identification number that can be used to verify the individual's identity,
@@ -388,7 +410,7 @@ export namespace BeneficialOwnerCreateParams {
        */
       passport?: Identification.Passport;
 
-    [k: string]: unknown
+      [k: string]: unknown;
     }
 
     export namespace Identification {
@@ -562,7 +584,12 @@ export namespace BeneficialOwnerUpdateParams {
      * - `drivers_license` - A driver's license number.
      * - `other` - Another identifying document.
      */
-    method: 'social_security_number' | 'individual_taxpayer_identification_number' | 'passport' | 'drivers_license' | 'other';
+    method:
+      | 'social_security_number'
+      | 'individual_taxpayer_identification_number'
+      | 'passport'
+      | 'drivers_license'
+      | 'other';
 
     /**
      * An identification number that can be used to verify the individual's identity,
@@ -591,7 +618,7 @@ export namespace BeneficialOwnerUpdateParams {
      */
     passport?: Identification.Passport;
 
-  [k: string]: unknown
+    [k: string]: unknown;
   }
 
   export namespace Identification {
@@ -700,6 +727,6 @@ export declare namespace BeneficialOwners {
     type EntityBeneficialOwnersPage as EntityBeneficialOwnersPage,
     type BeneficialOwnerCreateParams as BeneficialOwnerCreateParams,
     type BeneficialOwnerUpdateParams as BeneficialOwnerUpdateParams,
-    type BeneficialOwnerListParams as BeneficialOwnerListParams
+    type BeneficialOwnerListParams as BeneficialOwnerListParams,
   };
 }

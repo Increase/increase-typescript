@@ -1,8 +1,11 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import Increase, { toFile } from 'increase';
+import Increase from 'increase';
 
-const client = new Increase({ apiKey: 'My API Key', baseURL: process.env["TEST_API_BASE_URL"] ?? 'http://127.0.0.1:4010' });
+const client = new Increase({
+  apiKey: 'My API Key',
+  baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
+});
 
 describe('resource inboundMailItems', () => {
   test('create: only required params', async () => {
@@ -17,11 +20,11 @@ describe('resource inboundMailItems', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.simulations.inboundMailItems.create({
-    amount: 1000,
-    contents_file_id: 'contents_file_id',
-    lockbox_address_id: 'lockbox_address_id',
-    lockbox_recipient_id: 'lockbox_3xt21ok13q19advds4t5',
-  });
+    await client.simulations.inboundMailItems.create({
+      amount: 1000,
+      contents_file_id: 'contents_file_id',
+      lockbox_address_id: 'lockbox_address_id',
+      lockbox_recipient_id: 'lockbox_3xt21ok13q19advds4t5',
+    });
   });
 });

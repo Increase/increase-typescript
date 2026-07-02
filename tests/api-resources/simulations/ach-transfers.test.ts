@@ -1,8 +1,11 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import Increase, { toFile } from 'increase';
+import Increase from 'increase';
 
-const client = new Increase({ apiKey: 'My API Key', baseURL: process.env["TEST_API_BASE_URL"] ?? 'http://127.0.0.1:4010' });
+const client = new Increase({
+  apiKey: 'My API Key',
+  baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
+});
 
 describe('resource achTransfers', () => {
   test('acknowledge', async () => {
@@ -17,7 +20,10 @@ describe('resource achTransfers', () => {
   });
 
   test('createNotificationOfChange', async () => {
-    const responsePromise = client.simulations.achTransfers.createNotificationOfChange('ach_transfer_uoxatyh3lt5evrsdvo7q', {});
+    const responsePromise = client.simulations.achTransfers.createNotificationOfChange(
+      'ach_transfer_uoxatyh3lt5evrsdvo7q',
+      {},
+    );
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;

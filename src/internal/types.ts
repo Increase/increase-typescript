@@ -7,7 +7,7 @@ export type KeysEnum<T> = { [P in keyof Required<T>]: true };
 
 export type FinalizedRequestInit = RequestInit & { headers: Headers };
 
-type NotAny<T> = [0] extends [(1 & T)] ? never : T;
+type NotAny<T> = [0] extends [1 & T] ? never : T;
 
 /**
  * Some environments overload the global fetch function, and Parameters<T> only gets the last signature.
@@ -20,19 +20,19 @@ type OverloadedParameters<T> = T extends {
 }
   ? A | B | C | D
   : T extends {
-      (...args: infer A): unknown;
-      (...args: infer B): unknown;
-      (...args: infer C): unknown;
-    }
-  ? A | B | C
-  : T extends {
-      (...args: infer A): unknown;
-      (...args: infer B): unknown;
-    }
-  ? A | B
-  : T extends (...args: infer A) => unknown
-  ? A
-  : never;
+        (...args: infer A): unknown;
+        (...args: infer B): unknown;
+        (...args: infer C): unknown;
+      }
+    ? A | B | C
+    : T extends {
+          (...args: infer A): unknown;
+          (...args: infer B): unknown;
+        }
+      ? A | B
+      : T extends (...args: infer A) => unknown
+        ? A
+        : never;
 
 /* eslint-disable */
 /**

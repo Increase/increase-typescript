@@ -19,7 +19,13 @@ export class PendingTransactions extends APIResource {
    *   );
    * ```
    */
-  releaseInboundFundsHold(pendingTransactionID: string, options?: RequestOptions): APIPromise<PendingTransactionsAPI.PendingTransaction> {
-    return this._client.post(path`/simulations/pending_transactions/${pendingTransactionID}/release_inbound_funds_hold`, options);
+  releaseInboundFundsHold(
+    pendingTransactionID: string,
+    options?: RequestOptions,
+  ): APIPromise<PendingTransactionsAPI.PendingTransaction> {
+    return this._client.post(
+      path`/simulations/pending_transactions/${pendingTransactionID}/release_inbound_funds_hold`,
+      options,
+    );
   }
 }

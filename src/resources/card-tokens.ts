@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../core/resource';
-import * as CardTokensAPI from './card-tokens';
 import { APIPromise } from '../core/api-promise';
 import { Page, type PageParams, PagePromise } from '../core/pagination';
 import { RequestOptions } from '../internal/request-options';
@@ -33,7 +32,10 @@ export class CardTokens extends APIResource {
    * }
    * ```
    */
-  list(query: CardTokenListParams | null | undefined = {}, options?: RequestOptions): PagePromise<CardTokensPage, CardToken> {
+  list(
+    query: CardTokenListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<CardTokensPage, CardToken> {
     return this._client.getAPIList('/card_tokens', Page<CardToken>, { query, ...options });
   }
 
@@ -55,7 +57,7 @@ export class CardTokens extends APIResource {
   }
 }
 
-export type CardTokensPage = Page<CardToken>
+export type CardTokensPage = Page<CardToken>;
 
 /**
  * Card Tokens represent a tokenized card number that can be used for Card Push
@@ -190,6 +192,6 @@ export declare namespace CardTokens {
     type CardToken as CardToken,
     type CardTokenCapabilities as CardTokenCapabilities,
     type CardTokensPage as CardTokensPage,
-    type CardTokenListParams as CardTokenListParams
+    type CardTokenListParams as CardTokenListParams,
   };
 }
