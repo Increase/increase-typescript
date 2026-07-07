@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../core/resource';
+import * as CheckDepositsAPI from './check-deposits';
 import { APIPromise } from '../core/api-promise';
 import { Page, type PageParams, PagePromise } from '../core/pagination';
 import { RequestOptions } from '../internal/request-options';
@@ -49,15 +50,12 @@ export class CheckDeposits extends APIResource {
    * }
    * ```
    */
-  list(
-    query: CheckDepositListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): PagePromise<CheckDepositsPage, CheckDeposit> {
+  list(query: CheckDepositListParams | null | undefined = {}, options?: RequestOptions): PagePromise<CheckDepositsPage, CheckDeposit> {
     return this._client.getAPIList('/check_deposits', Page<CheckDeposit>, { query, ...options });
   }
 }
 
-export type CheckDepositsPage = Page<CheckDeposit>;
+export type CheckDepositsPage = Page<CheckDeposit>
 
 /**
  * Check Deposits allow you to deposit images of paper checks into your account.
@@ -176,7 +174,7 @@ export interface CheckDeposit {
    */
   type: 'check_deposit';
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export namespace CheckDeposit {
@@ -228,7 +226,7 @@ export namespace CheckDeposit {
      */
     serial_number: string | null;
 
-    [k: string]: unknown;
+  [k: string]: unknown
   }
 
   export interface DepositAdjustment {
@@ -309,19 +307,7 @@ export namespace CheckDeposit {
      *   processed.
      * - `unknown` - The check was rejected for an unknown reason.
      */
-    reason:
-      | 'incomplete_image'
-      | 'duplicate'
-      | 'poor_image_quality'
-      | 'incorrect_amount'
-      | 'incorrect_recipient'
-      | 'not_eligible_for_mobile_deposit'
-      | 'missing_required_data_elements'
-      | 'suspected_fraud'
-      | 'deposit_window_expired'
-      | 'requested_by_user'
-      | 'international'
-      | 'unknown';
+    reason: 'incomplete_image' | 'duplicate' | 'poor_image_quality' | 'incorrect_amount' | 'incorrect_recipient' | 'not_eligible_for_mobile_deposit' | 'missing_required_data_elements' | 'suspected_fraud' | 'deposit_window_expired' | 'requested_by_user' | 'international' | 'unknown';
 
     /**
      * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -329,7 +315,7 @@ export namespace CheckDeposit {
      */
     rejected_at: string;
 
-    [k: string]: unknown;
+  [k: string]: unknown
   }
 
   /**
@@ -401,33 +387,7 @@ export namespace CheckDeposit {
      * - `branch_or_account_sold` - The bank sold this account and no longer services
      *   this customer. (Check21 return code `R`)
      */
-    return_reason:
-      | 'ach_conversion_not_supported'
-      | 'closed_account'
-      | 'duplicate_submission'
-      | 'insufficient_funds'
-      | 'no_account'
-      | 'not_authorized'
-      | 'stale_dated'
-      | 'stop_payment'
-      | 'unknown_reason'
-      | 'unmatched_details'
-      | 'unreadable_image'
-      | 'endorsement_irregular'
-      | 'altered_or_fictitious_item'
-      | 'frozen_or_blocked_account'
-      | 'post_dated'
-      | 'endorsement_missing'
-      | 'signature_missing'
-      | 'stop_payment_suspect'
-      | 'unusable_image'
-      | 'image_fails_security_check'
-      | 'cannot_determine_amount'
-      | 'signature_irregular'
-      | 'non_cash_item'
-      | 'unable_to_process'
-      | 'item_exceeds_dollar_limit'
-      | 'branch_or_account_sold';
+    return_reason: 'ach_conversion_not_supported' | 'closed_account' | 'duplicate_submission' | 'insufficient_funds' | 'no_account' | 'not_authorized' | 'stale_dated' | 'stop_payment' | 'unknown_reason' | 'unmatched_details' | 'unreadable_image' | 'endorsement_irregular' | 'altered_or_fictitious_item' | 'frozen_or_blocked_account' | 'post_dated' | 'endorsement_missing' | 'signature_missing' | 'stop_payment_suspect' | 'unusable_image' | 'image_fails_security_check' | 'cannot_determine_amount' | 'signature_irregular' | 'non_cash_item' | 'unable_to_process' | 'item_exceeds_dollar_limit' | 'branch_or_account_sold';
 
     /**
      * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -441,7 +401,7 @@ export namespace CheckDeposit {
      */
     transaction_id: string;
 
-    [k: string]: unknown;
+  [k: string]: unknown
   }
 
   /**
@@ -529,7 +489,7 @@ export namespace CheckDeposit {
      */
     type: 'inbound_funds_hold';
 
-    [k: string]: unknown;
+  [k: string]: unknown
   }
 }
 
@@ -559,7 +519,7 @@ export interface CheckDepositCreateParams {
    */
   description?: string;
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export interface CheckDepositListParams extends PageParams {
@@ -612,6 +572,6 @@ export declare namespace CheckDeposits {
     type CheckDeposit as CheckDeposit,
     type CheckDepositsPage as CheckDepositsPage,
     type CheckDepositCreateParams as CheckDepositCreateParams,
-    type CheckDepositListParams as CheckDepositListParams,
+    type CheckDepositListParams as CheckDepositListParams
   };
 }

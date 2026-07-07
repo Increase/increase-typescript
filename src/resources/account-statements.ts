@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../core/resource';
+import * as AccountStatementsAPI from './account-statements';
 import { APIPromise } from '../core/api-promise';
 import { Page, type PageParams, PagePromise } from '../core/pagination';
 import { RequestOptions } from '../internal/request-options';
@@ -33,15 +34,12 @@ export class AccountStatements extends APIResource {
    * }
    * ```
    */
-  list(
-    query: AccountStatementListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): PagePromise<AccountStatementsPage, AccountStatement> {
+  list(query: AccountStatementListParams | null | undefined = {}, options?: RequestOptions): PagePromise<AccountStatementsPage, AccountStatement> {
     return this._client.getAPIList('/account_statements', Page<AccountStatement>, { query, ...options });
   }
 }
 
-export type AccountStatementsPage = Page<AccountStatement>;
+export type AccountStatementsPage = Page<AccountStatement>
 
 /**
  * Account Statements are generated monthly for every active Account. You can
@@ -168,6 +166,6 @@ export declare namespace AccountStatements {
   export {
     type AccountStatement as AccountStatement,
     type AccountStatementsPage as AccountStatementsPage,
-    type AccountStatementListParams as AccountStatementListParams,
+    type AccountStatementListParams as AccountStatementListParams
   };
 }

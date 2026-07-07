@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../core/resource';
+import * as InboundCheckDepositsAPI from './inbound-check-deposits';
 import { APIPromise } from '../core/api-promise';
 import { Page, type PageParams, PagePromise } from '../core/pagination';
 import { RequestOptions } from '../internal/request-options';
@@ -33,14 +34,8 @@ export class InboundCheckDeposits extends APIResource {
    * }
    * ```
    */
-  list(
-    query: InboundCheckDepositListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): PagePromise<InboundCheckDepositsPage, InboundCheckDeposit> {
-    return this._client.getAPIList('/inbound_check_deposits', Page<InboundCheckDeposit>, {
-      query,
-      ...options,
-    });
+  list(query: InboundCheckDepositListParams | null | undefined = {}, options?: RequestOptions): PagePromise<InboundCheckDepositsPage, InboundCheckDeposit> {
+    return this._client.getAPIList('/inbound_check_deposits', Page<InboundCheckDeposit>, { query, ...options });
   }
 
   /**
@@ -70,19 +65,12 @@ export class InboundCheckDeposits extends APIResource {
    *   );
    * ```
    */
-  return(
-    inboundCheckDepositID: string,
-    body: InboundCheckDepositReturnParams,
-    options?: RequestOptions,
-  ): APIPromise<InboundCheckDeposit> {
-    return this._client.post(path`/inbound_check_deposits/${inboundCheckDepositID}/return`, {
-      body,
-      ...options,
-    });
+  return(inboundCheckDepositID: string, body: InboundCheckDepositReturnParams, options?: RequestOptions): APIPromise<InboundCheckDeposit> {
+    return this._client.post(path`/inbound_check_deposits/${inboundCheckDepositID}/return`, { body, ...options });
   }
 }
 
-export type InboundCheckDepositsPage = Page<InboundCheckDeposit>;
+export type InboundCheckDepositsPage = Page<InboundCheckDeposit>
 
 /**
  * Inbound Check Deposits are records of third-parties attempting to deposit checks
@@ -262,13 +250,7 @@ export namespace InboundCheckDeposit {
      * - `endorsement_irregular` - The check was not endorsed by the payee.
      * - `refer_to_maker` - The maker of the check requested its return.
      */
-    reason:
-      | 'altered_or_fictitious'
-      | 'not_authorized'
-      | 'duplicate_presentment'
-      | 'endorsement_missing'
-      | 'endorsement_irregular'
-      | 'refer_to_maker';
+    reason: 'altered_or_fictitious' | 'not_authorized' | 'duplicate_presentment' | 'endorsement_missing' | 'endorsement_irregular' | 'refer_to_maker';
 
     /**
      * The time at which the deposit was returned.
@@ -336,13 +318,7 @@ export interface InboundCheckDepositReturnParams {
    * - `endorsement_irregular` - The check was not endorsed by the payee.
    * - `refer_to_maker` - The maker of the check requested its return.
    */
-  reason:
-    | 'altered_or_fictitious'
-    | 'not_authorized'
-    | 'duplicate_presentment'
-    | 'endorsement_missing'
-    | 'endorsement_irregular'
-    | 'refer_to_maker';
+  reason: 'altered_or_fictitious' | 'not_authorized' | 'duplicate_presentment' | 'endorsement_missing' | 'endorsement_irregular' | 'refer_to_maker';
 }
 
 export declare namespace InboundCheckDeposits {
@@ -350,6 +326,6 @@ export declare namespace InboundCheckDeposits {
     type InboundCheckDeposit as InboundCheckDeposit,
     type InboundCheckDepositsPage as InboundCheckDepositsPage,
     type InboundCheckDepositListParams as InboundCheckDepositListParams,
-    type InboundCheckDepositReturnParams as InboundCheckDepositReturnParams,
+    type InboundCheckDepositReturnParams as InboundCheckDepositReturnParams
   };
 }

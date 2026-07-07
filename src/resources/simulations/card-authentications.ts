@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../core/resource';
+import * as CardAuthenticationsAPI from './card-authentications';
 import * as CardPaymentsAPI from '../card-payments';
 import { APIPromise } from '../../core/api-promise';
 import { RequestOptions } from '../../internal/request-options';
@@ -20,10 +21,7 @@ export class CardAuthentications extends APIResource {
    *   });
    * ```
    */
-  create(
-    body: CardAuthenticationCreateParams,
-    options?: RequestOptions,
-  ): APIPromise<CardPaymentsAPI.CardPayment> {
+  create(body: CardAuthenticationCreateParams, options?: RequestOptions): APIPromise<CardPaymentsAPI.CardPayment> {
     return this._client.post('/simulations/card_authentications', { body, ...options });
   }
 
@@ -42,15 +40,8 @@ export class CardAuthentications extends APIResource {
    *   );
    * ```
    */
-  challengeAttempts(
-    cardPaymentID: string,
-    body: CardAuthenticationChallengeAttemptsParams,
-    options?: RequestOptions,
-  ): APIPromise<CardPaymentsAPI.CardPayment> {
-    return this._client.post(path`/simulations/card_authentications/${cardPaymentID}/challenge_attempts`, {
-      body,
-      ...options,
-    });
+  challengeAttempts(cardPaymentID: string, body: CardAuthenticationChallengeAttemptsParams, options?: RequestOptions): APIPromise<CardPaymentsAPI.CardPayment> {
+    return this._client.post(path`/simulations/card_authentications/${cardPaymentID}/challenge_attempts`, { body, ...options });
   }
 
   /**
@@ -137,6 +128,6 @@ export interface CardAuthenticationChallengeAttemptsParams {
 export declare namespace CardAuthentications {
   export {
     type CardAuthenticationCreateParams as CardAuthenticationCreateParams,
-    type CardAuthenticationChallengeAttemptsParams as CardAuthenticationChallengeAttemptsParams,
+    type CardAuthenticationChallengeAttemptsParams as CardAuthenticationChallengeAttemptsParams
   };
 }
