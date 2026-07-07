@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../core/resource';
+import * as SimulationsProgramsAPI from './programs';
 import * as ProgramsAPI from '../programs';
 import { APIPromise } from '../../core/api-promise';
 import { RequestOptions } from '../../internal/request-options';
@@ -36,9 +37,9 @@ export interface ProgramCreateParams {
    * - `core_bank` - Core Bank
    * - `first_internet_bank` - First Internet Bank of Indiana
    * - `grasshopper_bank` - Grasshopper Bank
-   * - `twin_city_bank` - Twin City Bank
+   * - `increase_bank` - Twin City Bank
    */
-  bank?: 'core_bank' | 'first_internet_bank' | 'grasshopper_bank' | 'twin_city_bank';
+  bank?: 'core_bank' | 'first_internet_bank' | 'grasshopper_bank' | 'increase_bank';
 
   /**
    * The maximum extendable credit of the program being added.
@@ -50,9 +51,11 @@ export interface ProgramCreateParams {
    */
   reserve_account_id?: string;
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export declare namespace Programs {
-  export { type ProgramCreateParams as ProgramCreateParams };
+  export {
+    type ProgramCreateParams as ProgramCreateParams
+  };
 }
