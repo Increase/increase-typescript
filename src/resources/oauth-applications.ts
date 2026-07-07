@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../core/resource';
+import * as OAuthApplicationsAPI from './oauth-applications';
 import { APIPromise } from '../core/api-promise';
 import { Page, type PageParams, PagePromise } from '../core/pagination';
 import { RequestOptions } from '../internal/request-options';
@@ -33,15 +34,12 @@ export class OAuthApplications extends APIResource {
    * }
    * ```
    */
-  list(
-    query: OAuthApplicationListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): PagePromise<OAuthApplicationsPage, OAuthApplication> {
+  list(query: OAuthApplicationListParams | null | undefined = {}, options?: RequestOptions): PagePromise<OAuthApplicationsPage, OAuthApplication> {
     return this._client.getAPIList('/oauth_applications', Page<OAuthApplication>, { query, ...options });
   }
 }
 
-export type OAuthApplicationsPage = Page<OAuthApplication>;
+export type OAuthApplicationsPage = Page<OAuthApplication>
 
 /**
  * An OAuth Application lets you build an application for others to use with their
@@ -139,6 +137,6 @@ export declare namespace OAuthApplications {
   export {
     type OAuthApplication as OAuthApplication,
     type OAuthApplicationsPage as OAuthApplicationsPage,
-    type OAuthApplicationListParams as OAuthApplicationListParams,
+    type OAuthApplicationListParams as OAuthApplicationListParams
   };
 }
