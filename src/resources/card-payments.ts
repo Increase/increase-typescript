@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../core/resource';
+import * as CardPaymentsAPI from './card-payments';
 import { APIPromise } from '../core/api-promise';
 import { Page, type PageParams, PagePromise } from '../core/pagination';
 import { RequestOptions } from '../internal/request-options';
@@ -32,15 +33,12 @@ export class CardPayments extends APIResource {
    * }
    * ```
    */
-  list(
-    query: CardPaymentListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): PagePromise<CardPaymentsPage, CardPayment> {
+  list(query: CardPaymentListParams | null | undefined = {}, options?: RequestOptions): PagePromise<CardPaymentsPage, CardPayment> {
     return this._client.getAPIList('/card_payments', Page<CardPayment>, { query, ...options });
   }
 }
 
-export type CardPaymentsPage = Page<CardPayment>;
+export type CardPaymentsPage = Page<CardPayment>
 
 /**
  * Card Payments group together interactions related to a single card payment, such
@@ -126,20 +124,7 @@ export namespace CardPayment {
      *   object.
      * - `other` - Unknown card payment element.
      */
-    category:
-      | 'card_authorization'
-      | 'card_authentication'
-      | 'card_balance_inquiry'
-      | 'card_validation'
-      | 'card_decline'
-      | 'card_reversal'
-      | 'card_authorization_expiration'
-      | 'card_increment'
-      | 'card_settlement'
-      | 'card_refund'
-      | 'card_fuel_confirmation'
-      | 'card_financial'
-      | 'other';
+    category: 'card_authorization' | 'card_authentication' | 'card_balance_inquiry' | 'card_validation' | 'card_decline' | 'card_reversal' | 'card_authorization_expiration' | 'card_increment' | 'card_settlement' | 'card_refund' | 'card_fuel_confirmation' | 'card_financial' | 'other';
 
     /**
      * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -350,14 +335,7 @@ export namespace CardPayment {
        * - `webhook_denied` - The webhook was denied.
        * - `webhook_timed_out` - The webhook timed out.
        */
-      deny_reason:
-        | 'group_locked'
-        | 'card_not_active'
-        | 'entity_not_active'
-        | 'transaction_not_allowed'
-        | 'webhook_denied'
-        | 'webhook_timed_out'
-        | null;
+      deny_reason: 'group_locked' | 'card_not_active' | 'entity_not_active' | 'transaction_not_allowed' | 'webhook_denied' | 'webhook_timed_out' | null;
 
       /**
        * The device channel of the card authentication attempt.
@@ -423,15 +401,7 @@ export namespace CardPayment {
        *   cardholder verification.
        * - `billing_agreement` - The authentication is for a billing agreement.
        */
-      requestor_authentication_indicator:
-        | 'payment_transaction'
-        | 'recurring_transaction'
-        | 'installment_transaction'
-        | 'add_card'
-        | 'maintain_card'
-        | 'emv_token_cardholder_verification'
-        | 'billing_agreement'
-        | null;
+      requestor_authentication_indicator: 'payment_transaction' | 'recurring_transaction' | 'installment_transaction' | 'add_card' | 'maintain_card' | 'emv_token_cardholder_verification' | 'billing_agreement' | null;
 
       /**
        * Indicates whether a challenge is requested for this transaction.
@@ -452,17 +422,7 @@ export namespace CardPayment {
        * - `challenge_requested_whitelist_prompt_requested_if_challenge_required` -
        *   Challenge requested, whitelist prompt requested if challenge required.
        */
-      requestor_challenge_indicator:
-        | 'no_preference'
-        | 'no_challenge_requested'
-        | 'challenge_requested_3ds_requestor_preference'
-        | 'challenge_requested_mandate'
-        | 'no_challenge_requested_transactional_risk_analysis_already_performed'
-        | 'no_challenge_requested_data_share_only'
-        | 'no_challenge_requested_strong_consumer_authentication_already_performed'
-        | 'no_challenge_requested_utilize_whitelist_exemption_if_no_challenge_required'
-        | 'challenge_requested_whitelist_prompt_requested_if_challenge_required'
-        | null;
+      requestor_challenge_indicator: 'no_preference' | 'no_challenge_requested' | 'challenge_requested_3ds_requestor_preference' | 'challenge_requested_mandate' | 'no_challenge_requested_transactional_risk_analysis_already_performed' | 'no_challenge_requested_data_share_only' | 'no_challenge_requested_strong_consumer_authentication_already_performed' | 'no_challenge_requested_utilize_whitelist_exemption_if_no_challenge_required' | 'challenge_requested_whitelist_prompt_requested_if_challenge_required' | null;
 
       /**
        * The name of the 3DS requestor.
@@ -526,16 +486,7 @@ export namespace CardPayment {
        * - `exceeded_attempt_threshold` - The authentication attempt exceeded the attempt
        *   threshold.
        */
-      status:
-        | 'denied'
-        | 'authenticated_with_challenge'
-        | 'authenticated_without_challenge'
-        | 'awaiting_challenge'
-        | 'validating_challenge'
-        | 'canceled'
-        | 'timed_out_awaiting_challenge'
-        | 'errored'
-        | 'exceeded_attempt_threshold';
+      status: 'denied' | 'authenticated_with_challenge' | 'authenticated_without_challenge' | 'awaiting_challenge' | 'validating_challenge' | 'canceled' | 'timed_out_awaiting_challenge' | 'errored' | 'exceeded_attempt_threshold';
 
       /**
        * A unique identifier assigned by the 3DS Server initiating the authentication
@@ -549,7 +500,7 @@ export namespace CardPayment {
        */
       type: 'card_authentication';
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     export namespace CardAuthentication {
@@ -698,26 +649,7 @@ export namespace CardPayment {
            * - `fido_credential_registration` - FIDO credential registration.
            * - `decoupled_authentication_fallback` - Decoupled authentication fallback.
            */
-          indicator:
-            | 'recurring_transaction'
-            | 'installment_transaction'
-            | 'add_card'
-            | 'maintain_card_information'
-            | 'account_verification'
-            | 'split_delayed_shipment'
-            | 'top_up'
-            | 'mail_order'
-            | 'telephone_order'
-            | 'whitelist_status_check'
-            | 'other_payment'
-            | 'billing_agreement'
-            | 'device_binding_status_check'
-            | 'card_security_code_status_check'
-            | 'delayed_shipment'
-            | 'split_payment'
-            | 'fido_credential_deletion'
-            | 'fido_credential_registration'
-            | 'decoupled_authentication_fallback';
+          indicator: 'recurring_transaction' | 'installment_transaction' | 'add_card' | 'maintain_card_information' | 'account_verification' | 'split_delayed_shipment' | 'top_up' | 'mail_order' | 'telephone_order' | 'whitelist_status_check' | 'other_payment' | 'billing_agreement' | 'device_binding_status_check' | 'card_security_code_status_check' | 'delayed_shipment' | 'split_payment' | 'fido_credential_deletion' | 'fido_credential_registration' | 'decoupled_authentication_fallback';
         }
       }
 
@@ -749,7 +681,8 @@ export namespace CardPayment {
         /**
          * Fields specific to non-payment authentication attempts.
          */
-        export interface NonPayment {}
+        export interface NonPayment {
+        }
 
         /**
          * Fields specific to payment authentication attempts.
@@ -781,13 +714,7 @@ export namespace CardPayment {
            * - `quasi_cash_transaction` - Quasi-cash transaction.
            * - `prepaid_activation_and_load` - Prepaid activation and load.
            */
-          transaction_type:
-            | 'goods_service_purchase'
-            | 'check_acceptance'
-            | 'account_funding'
-            | 'quasi_cash_transaction'
-            | 'prepaid_activation_and_load'
-            | null;
+          transaction_type: 'goods_service_purchase' | 'check_acceptance' | 'account_funding' | 'quasi_cash_transaction' | 'prepaid_activation_and_load' | null;
         }
       }
     }
@@ -973,18 +900,7 @@ export namespace CardPayment {
        *   of an account associated with a card.
        * - `unknown` - The processing category is unknown.
        */
-      processing_category:
-        | 'account_funding'
-        | 'automatic_fuel_dispenser'
-        | 'bill_payment'
-        | 'original_credit'
-        | 'purchase'
-        | 'quasi_cash'
-        | 'refund'
-        | 'cash_disbursement'
-        | 'cash_deposit'
-        | 'balance_inquiry'
-        | 'unknown';
+      processing_category: 'account_funding' | 'automatic_fuel_dispenser' | 'bill_payment' | 'original_credit' | 'purchase' | 'quasi_cash' | 'refund' | 'cash_disbursement' | 'cash_deposit' | 'balance_inquiry' | 'unknown';
 
       /**
        * The identifier of the Real-Time Decision sent to approve or decline this
@@ -1014,7 +930,7 @@ export namespace CardPayment {
        */
       verification: CardAuthorization.Verification;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     export namespace CardAuthorization {
@@ -1302,7 +1218,8 @@ export namespace CardPayment {
         /**
          * Fields specific to the `pulse` network.
          */
-        export interface Pulse {}
+        export interface Pulse {
+        }
 
         /**
          * Fields specific to the `visa` network.
@@ -1343,16 +1260,7 @@ export namespace CardPayment {
            * - `non_secure_transaction` - Non-secure transaction: Use to identify an
            *   electronic commerce transaction that has no data protection.
            */
-          electronic_commerce_indicator:
-            | 'mail_phone_order'
-            | 'recurring'
-            | 'installment'
-            | 'unknown_mail_phone_order'
-            | 'secure_electronic_commerce'
-            | 'non_authenticated_security_transaction_at_3ds_capable_merchant'
-            | 'non_authenticated_security_transaction'
-            | 'non_secure_transaction'
-            | null;
+          electronic_commerce_indicator: 'mail_phone_order' | 'recurring' | 'installment' | 'unknown_mail_phone_order' | 'secure_electronic_commerce' | 'non_authenticated_security_transaction_at_3ds_capable_merchant' | 'non_authenticated_security_transaction' | 'non_secure_transaction' | null;
 
           /**
            * The method used to enter the cardholder's primary account number and card
@@ -1372,18 +1280,7 @@ export namespace CardPayment {
            * - `integrated_circuit_card_no_cvv` - Contact chip card, without card
            *   verification value
            */
-          point_of_service_entry_mode:
-            | 'unknown'
-            | 'manual'
-            | 'magnetic_stripe_no_cvv'
-            | 'optical_code'
-            | 'integrated_circuit_card'
-            | 'contactless'
-            | 'credential_on_file'
-            | 'magnetic_stripe'
-            | 'contactless_magnetic_stripe'
-            | 'integrated_circuit_card_no_cvv'
-            | null;
+          point_of_service_entry_mode: 'unknown' | 'manual' | 'magnetic_stripe_no_cvv' | 'optical_code' | 'integrated_circuit_card' | 'contactless' | 'credential_on_file' | 'magnetic_stripe' | 'contactless_magnetic_stripe' | 'integrated_circuit_card_no_cvv' | null;
 
           /**
            * Only present when `actioner: network`. Describes why a card authorization was
@@ -1409,16 +1306,7 @@ export namespace CardPayment {
            *   such as card testing.
            * - `other` - An unspecific reason for stand-in processing.
            */
-          stand_in_processing_reason:
-            | 'issuer_error'
-            | 'invalid_physical_card'
-            | 'invalid_cryptogram'
-            | 'invalid_cardholder_authentication_verification_value'
-            | 'internal_visa_error'
-            | 'merchant_transaction_advisory_service_authentication_required'
-            | 'payment_fraud_disruption_acquirer_block'
-            | 'other'
-            | null;
+          stand_in_processing_reason: 'issuer_error' | 'invalid_physical_card' | 'invalid_cryptogram' | 'invalid_cardholder_authentication_verification_value' | 'internal_visa_error' | 'merchant_transaction_advisory_service_authentication_required' | 'payment_fraud_disruption_acquirer_block' | 'other' | null;
 
           /**
            * The capability of the terminal being used to read the card. Shows whether a
@@ -1442,16 +1330,7 @@ export namespace CardPayment {
            *   capability.
            * - `no_capability` - The terminal has no card reading capability.
            */
-          terminal_entry_capability:
-            | 'unknown'
-            | 'terminal_not_used'
-            | 'magnetic_stripe'
-            | 'barcode'
-            | 'optical_character_recognition'
-            | 'chip_or_contactless'
-            | 'contactless_only'
-            | 'no_capability'
-            | null;
+          terminal_entry_capability: 'unknown' | 'terminal_not_used' | 'magnetic_stripe' | 'barcode' | 'optical_character_recognition' | 'chip_or_contactless' | 'contactless_only' | 'no_capability' | null;
         }
       }
 
@@ -1595,36 +1474,7 @@ export namespace CardPayment {
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
          */
-        fee_type:
-          | 'visa_international_service_assessment_single_currency'
-          | 'visa_international_service_assessment_cross_currency'
-          | 'visa_authorization_domestic_point_of_sale'
-          | 'visa_authorization_international_point_of_sale'
-          | 'visa_authorization_canada_point_of_sale'
-          | 'visa_authorization_reversal_point_of_sale'
-          | 'visa_authorization_reversal_international_point_of_sale'
-          | 'visa_authorization_address_verification_service'
-          | 'visa_advanced_authorization'
-          | 'visa_message_transmission'
-          | 'visa_account_verification_domestic'
-          | 'visa_account_verification_international'
-          | 'visa_account_verification_canada'
-          | 'visa_corporate_acceptance_fee'
-          | 'visa_consumer_debit_acceptance_fee'
-          | 'visa_business_debit_acceptance_fee'
-          | 'visa_purchasing_acceptance_fee'
-          | 'visa_purchase_domestic'
-          | 'visa_purchase_international'
-          | 'visa_credit_purchase_token'
-          | 'visa_debit_purchase_token'
-          | 'visa_clearing_transmission'
-          | 'visa_direct_authorization'
-          | 'visa_direct_transaction_domestic'
-          | 'visa_service_commercial_credit'
-          | 'visa_advertising_service_commercial_credit'
-          | 'visa_community_growth_acceleration_program'
-          | 'visa_processing_guarantee_commercial_credit'
-          | 'pulse_switch_fee';
+        fee_type: 'visa_international_service_assessment_single_currency' | 'visa_international_service_assessment_cross_currency' | 'visa_authorization_domestic_point_of_sale' | 'visa_authorization_international_point_of_sale' | 'visa_authorization_canada_point_of_sale' | 'visa_authorization_reversal_point_of_sale' | 'visa_authorization_reversal_international_point_of_sale' | 'visa_authorization_address_verification_service' | 'visa_advanced_authorization' | 'visa_message_transmission' | 'visa_account_verification_domestic' | 'visa_account_verification_international' | 'visa_account_verification_canada' | 'visa_corporate_acceptance_fee' | 'visa_consumer_debit_acceptance_fee' | 'visa_business_debit_acceptance_fee' | 'visa_purchasing_acceptance_fee' | 'visa_purchase_domestic' | 'visa_purchase_international' | 'visa_credit_purchase_token' | 'visa_debit_purchase_token' | 'visa_clearing_transmission' | 'visa_direct_authorization' | 'visa_direct_transaction_domestic' | 'visa_service_commercial_credit' | 'visa_advertising_service_commercial_credit' | 'visa_community_growth_acceleration_program' | 'visa_processing_guarantee_commercial_credit' | 'pulse_switch_fee';
 
         /**
          * The fixed component of the fee, if applicable, given in major units of the fee
@@ -1718,13 +1568,7 @@ export namespace CardPayment {
            * - `postal_code_match_address_not_checked` - Postal code matches, but the street
            *   address was not verified. (deprecated)
            */
-          result:
-            | 'not_checked'
-            | 'postal_code_match_address_no_match'
-            | 'postal_code_no_match_address_match'
-            | 'match'
-            | 'no_match'
-            | 'postal_code_match_address_not_checked';
+          result: 'not_checked' | 'postal_code_match_address_no_match' | 'postal_code_no_match_address_match' | 'match' | 'no_match' | 'postal_code_match_address_not_checked';
         }
 
         /**
@@ -1794,7 +1638,7 @@ export namespace CardPayment {
        */
       type: 'card_authorization_expiration';
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -1931,7 +1775,7 @@ export namespace CardPayment {
        */
       verification: CardBalanceInquiry.Verification;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     export namespace CardBalanceInquiry {
@@ -2201,7 +2045,8 @@ export namespace CardPayment {
         /**
          * Fields specific to the `pulse` network.
          */
-        export interface Pulse {}
+        export interface Pulse {
+        }
 
         /**
          * Fields specific to the `visa` network.
@@ -2242,16 +2087,7 @@ export namespace CardPayment {
            * - `non_secure_transaction` - Non-secure transaction: Use to identify an
            *   electronic commerce transaction that has no data protection.
            */
-          electronic_commerce_indicator:
-            | 'mail_phone_order'
-            | 'recurring'
-            | 'installment'
-            | 'unknown_mail_phone_order'
-            | 'secure_electronic_commerce'
-            | 'non_authenticated_security_transaction_at_3ds_capable_merchant'
-            | 'non_authenticated_security_transaction'
-            | 'non_secure_transaction'
-            | null;
+          electronic_commerce_indicator: 'mail_phone_order' | 'recurring' | 'installment' | 'unknown_mail_phone_order' | 'secure_electronic_commerce' | 'non_authenticated_security_transaction_at_3ds_capable_merchant' | 'non_authenticated_security_transaction' | 'non_secure_transaction' | null;
 
           /**
            * The method used to enter the cardholder's primary account number and card
@@ -2271,18 +2107,7 @@ export namespace CardPayment {
            * - `integrated_circuit_card_no_cvv` - Contact chip card, without card
            *   verification value
            */
-          point_of_service_entry_mode:
-            | 'unknown'
-            | 'manual'
-            | 'magnetic_stripe_no_cvv'
-            | 'optical_code'
-            | 'integrated_circuit_card'
-            | 'contactless'
-            | 'credential_on_file'
-            | 'magnetic_stripe'
-            | 'contactless_magnetic_stripe'
-            | 'integrated_circuit_card_no_cvv'
-            | null;
+          point_of_service_entry_mode: 'unknown' | 'manual' | 'magnetic_stripe_no_cvv' | 'optical_code' | 'integrated_circuit_card' | 'contactless' | 'credential_on_file' | 'magnetic_stripe' | 'contactless_magnetic_stripe' | 'integrated_circuit_card_no_cvv' | null;
 
           /**
            * Only present when `actioner: network`. Describes why a card authorization was
@@ -2308,16 +2133,7 @@ export namespace CardPayment {
            *   such as card testing.
            * - `other` - An unspecific reason for stand-in processing.
            */
-          stand_in_processing_reason:
-            | 'issuer_error'
-            | 'invalid_physical_card'
-            | 'invalid_cryptogram'
-            | 'invalid_cardholder_authentication_verification_value'
-            | 'internal_visa_error'
-            | 'merchant_transaction_advisory_service_authentication_required'
-            | 'payment_fraud_disruption_acquirer_block'
-            | 'other'
-            | null;
+          stand_in_processing_reason: 'issuer_error' | 'invalid_physical_card' | 'invalid_cryptogram' | 'invalid_cardholder_authentication_verification_value' | 'internal_visa_error' | 'merchant_transaction_advisory_service_authentication_required' | 'payment_fraud_disruption_acquirer_block' | 'other' | null;
 
           /**
            * The capability of the terminal being used to read the card. Shows whether a
@@ -2341,16 +2157,7 @@ export namespace CardPayment {
            *   capability.
            * - `no_capability` - The terminal has no card reading capability.
            */
-          terminal_entry_capability:
-            | 'unknown'
-            | 'terminal_not_used'
-            | 'magnetic_stripe'
-            | 'barcode'
-            | 'optical_character_recognition'
-            | 'chip_or_contactless'
-            | 'contactless_only'
-            | 'no_capability'
-            | null;
+          terminal_entry_capability: 'unknown' | 'terminal_not_used' | 'magnetic_stripe' | 'barcode' | 'optical_character_recognition' | 'chip_or_contactless' | 'contactless_only' | 'no_capability' | null;
         }
       }
 
@@ -2494,36 +2301,7 @@ export namespace CardPayment {
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
          */
-        fee_type:
-          | 'visa_international_service_assessment_single_currency'
-          | 'visa_international_service_assessment_cross_currency'
-          | 'visa_authorization_domestic_point_of_sale'
-          | 'visa_authorization_international_point_of_sale'
-          | 'visa_authorization_canada_point_of_sale'
-          | 'visa_authorization_reversal_point_of_sale'
-          | 'visa_authorization_reversal_international_point_of_sale'
-          | 'visa_authorization_address_verification_service'
-          | 'visa_advanced_authorization'
-          | 'visa_message_transmission'
-          | 'visa_account_verification_domestic'
-          | 'visa_account_verification_international'
-          | 'visa_account_verification_canada'
-          | 'visa_corporate_acceptance_fee'
-          | 'visa_consumer_debit_acceptance_fee'
-          | 'visa_business_debit_acceptance_fee'
-          | 'visa_purchasing_acceptance_fee'
-          | 'visa_purchase_domestic'
-          | 'visa_purchase_international'
-          | 'visa_credit_purchase_token'
-          | 'visa_debit_purchase_token'
-          | 'visa_clearing_transmission'
-          | 'visa_direct_authorization'
-          | 'visa_direct_transaction_domestic'
-          | 'visa_service_commercial_credit'
-          | 'visa_advertising_service_commercial_credit'
-          | 'visa_community_growth_acceleration_program'
-          | 'visa_processing_guarantee_commercial_credit'
-          | 'pulse_switch_fee';
+        fee_type: 'visa_international_service_assessment_single_currency' | 'visa_international_service_assessment_cross_currency' | 'visa_authorization_domestic_point_of_sale' | 'visa_authorization_international_point_of_sale' | 'visa_authorization_canada_point_of_sale' | 'visa_authorization_reversal_point_of_sale' | 'visa_authorization_reversal_international_point_of_sale' | 'visa_authorization_address_verification_service' | 'visa_advanced_authorization' | 'visa_message_transmission' | 'visa_account_verification_domestic' | 'visa_account_verification_international' | 'visa_account_verification_canada' | 'visa_corporate_acceptance_fee' | 'visa_consumer_debit_acceptance_fee' | 'visa_business_debit_acceptance_fee' | 'visa_purchasing_acceptance_fee' | 'visa_purchase_domestic' | 'visa_purchase_international' | 'visa_credit_purchase_token' | 'visa_debit_purchase_token' | 'visa_clearing_transmission' | 'visa_direct_authorization' | 'visa_direct_transaction_domestic' | 'visa_service_commercial_credit' | 'visa_advertising_service_commercial_credit' | 'visa_community_growth_acceleration_program' | 'visa_processing_guarantee_commercial_credit' | 'pulse_switch_fee';
 
         /**
          * The fixed component of the fee, if applicable, given in major units of the fee
@@ -2617,13 +2395,7 @@ export namespace CardPayment {
            * - `postal_code_match_address_not_checked` - Postal code matches, but the street
            *   address was not verified. (deprecated)
            */
-          result:
-            | 'not_checked'
-            | 'postal_code_match_address_no_match'
-            | 'postal_code_no_match_address_match'
-            | 'match'
-            | 'no_match'
-            | 'postal_code_match_address_not_checked';
+          result: 'not_checked' | 'postal_code_match_address_no_match' | 'postal_code_no_match_address_match' | 'match' | 'no_match' | 'postal_code_match_address_not_checked';
         }
 
         /**
@@ -2821,18 +2593,7 @@ export namespace CardPayment {
        *   of an account associated with a card.
        * - `unknown` - The processing category is unknown.
        */
-      processing_category:
-        | 'account_funding'
-        | 'automatic_fuel_dispenser'
-        | 'bill_payment'
-        | 'original_credit'
-        | 'purchase'
-        | 'quasi_cash'
-        | 'refund'
-        | 'cash_disbursement'
-        | 'cash_deposit'
-        | 'balance_inquiry'
-        | 'unknown';
+      processing_category: 'account_funding' | 'automatic_fuel_dispenser' | 'bill_payment' | 'original_credit' | 'purchase' | 'quasi_cash' | 'refund' | 'cash_disbursement' | 'cash_deposit' | 'balance_inquiry' | 'unknown';
 
       /**
        * The identifier of the Real-Time Decision sent to approve or decline this
@@ -2857,14 +2618,7 @@ export namespace CardPayment {
        * - `other` - The transaction was declined for another reason. The merchant may
        *   attempt to process the transaction again. This should be used sparingly.
        */
-      real_time_decision_reason:
-        | 'insufficient_funds'
-        | 'transaction_never_allowed'
-        | 'exceeds_approval_limit'
-        | 'card_temporarily_disabled'
-        | 'suspected_fraud'
-        | 'other'
-        | null;
+      real_time_decision_reason: 'insufficient_funds' | 'transaction_never_allowed' | 'exceeds_approval_limit' | 'card_temporarily_disabled' | 'suspected_fraud' | 'other' | null;
 
       /**
        * Why the transaction was declined.
@@ -2902,28 +2656,7 @@ export namespace CardPayment {
        * - `suspected_fraud` - The transaction was suspected to be fraudulent. Please
        *   reach out to support@increase.com for more information.
        */
-      reason:
-        | 'account_closed'
-        | 'card_not_active'
-        | 'card_canceled'
-        | 'physical_card_not_active'
-        | 'entity_not_active'
-        | 'group_locked'
-        | 'insufficient_funds'
-        | 'cvv2_mismatch'
-        | 'pin_mismatch'
-        | 'card_expiration_mismatch'
-        | 'transaction_not_allowed'
-        | 'breaches_limit'
-        | 'webhook_declined'
-        | 'webhook_timed_out'
-        | 'declined_by_stand_in_processing'
-        | 'invalid_physical_card'
-        | 'missing_original_authorization'
-        | 'invalid_cryptogram'
-        | 'failed_3ds_authentication'
-        | 'suspected_card_testing'
-        | 'suspected_fraud';
+      reason: 'account_closed' | 'card_not_active' | 'card_canceled' | 'physical_card_not_active' | 'entity_not_active' | 'group_locked' | 'insufficient_funds' | 'cvv2_mismatch' | 'pin_mismatch' | 'card_expiration_mismatch' | 'transaction_not_allowed' | 'breaches_limit' | 'webhook_declined' | 'webhook_timed_out' | 'declined_by_stand_in_processing' | 'invalid_physical_card' | 'missing_original_authorization' | 'invalid_cryptogram' | 'failed_3ds_authentication' | 'suspected_card_testing' | 'suspected_fraud';
 
       /**
        * The scheme fees associated with this card decline.
@@ -2941,7 +2674,7 @@ export namespace CardPayment {
        */
       verification: CardDecline.Verification;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     export namespace CardDecline {
@@ -3211,7 +2944,8 @@ export namespace CardPayment {
         /**
          * Fields specific to the `pulse` network.
          */
-        export interface Pulse {}
+        export interface Pulse {
+        }
 
         /**
          * Fields specific to the `visa` network.
@@ -3252,16 +2986,7 @@ export namespace CardPayment {
            * - `non_secure_transaction` - Non-secure transaction: Use to identify an
            *   electronic commerce transaction that has no data protection.
            */
-          electronic_commerce_indicator:
-            | 'mail_phone_order'
-            | 'recurring'
-            | 'installment'
-            | 'unknown_mail_phone_order'
-            | 'secure_electronic_commerce'
-            | 'non_authenticated_security_transaction_at_3ds_capable_merchant'
-            | 'non_authenticated_security_transaction'
-            | 'non_secure_transaction'
-            | null;
+          electronic_commerce_indicator: 'mail_phone_order' | 'recurring' | 'installment' | 'unknown_mail_phone_order' | 'secure_electronic_commerce' | 'non_authenticated_security_transaction_at_3ds_capable_merchant' | 'non_authenticated_security_transaction' | 'non_secure_transaction' | null;
 
           /**
            * The method used to enter the cardholder's primary account number and card
@@ -3281,18 +3006,7 @@ export namespace CardPayment {
            * - `integrated_circuit_card_no_cvv` - Contact chip card, without card
            *   verification value
            */
-          point_of_service_entry_mode:
-            | 'unknown'
-            | 'manual'
-            | 'magnetic_stripe_no_cvv'
-            | 'optical_code'
-            | 'integrated_circuit_card'
-            | 'contactless'
-            | 'credential_on_file'
-            | 'magnetic_stripe'
-            | 'contactless_magnetic_stripe'
-            | 'integrated_circuit_card_no_cvv'
-            | null;
+          point_of_service_entry_mode: 'unknown' | 'manual' | 'magnetic_stripe_no_cvv' | 'optical_code' | 'integrated_circuit_card' | 'contactless' | 'credential_on_file' | 'magnetic_stripe' | 'contactless_magnetic_stripe' | 'integrated_circuit_card_no_cvv' | null;
 
           /**
            * Only present when `actioner: network`. Describes why a card authorization was
@@ -3318,16 +3032,7 @@ export namespace CardPayment {
            *   such as card testing.
            * - `other` - An unspecific reason for stand-in processing.
            */
-          stand_in_processing_reason:
-            | 'issuer_error'
-            | 'invalid_physical_card'
-            | 'invalid_cryptogram'
-            | 'invalid_cardholder_authentication_verification_value'
-            | 'internal_visa_error'
-            | 'merchant_transaction_advisory_service_authentication_required'
-            | 'payment_fraud_disruption_acquirer_block'
-            | 'other'
-            | null;
+          stand_in_processing_reason: 'issuer_error' | 'invalid_physical_card' | 'invalid_cryptogram' | 'invalid_cardholder_authentication_verification_value' | 'internal_visa_error' | 'merchant_transaction_advisory_service_authentication_required' | 'payment_fraud_disruption_acquirer_block' | 'other' | null;
 
           /**
            * The capability of the terminal being used to read the card. Shows whether a
@@ -3351,16 +3056,7 @@ export namespace CardPayment {
            *   capability.
            * - `no_capability` - The terminal has no card reading capability.
            */
-          terminal_entry_capability:
-            | 'unknown'
-            | 'terminal_not_used'
-            | 'magnetic_stripe'
-            | 'barcode'
-            | 'optical_character_recognition'
-            | 'chip_or_contactless'
-            | 'contactless_only'
-            | 'no_capability'
-            | null;
+          terminal_entry_capability: 'unknown' | 'terminal_not_used' | 'magnetic_stripe' | 'barcode' | 'optical_character_recognition' | 'chip_or_contactless' | 'contactless_only' | 'no_capability' | null;
         }
       }
 
@@ -3504,36 +3200,7 @@ export namespace CardPayment {
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
          */
-        fee_type:
-          | 'visa_international_service_assessment_single_currency'
-          | 'visa_international_service_assessment_cross_currency'
-          | 'visa_authorization_domestic_point_of_sale'
-          | 'visa_authorization_international_point_of_sale'
-          | 'visa_authorization_canada_point_of_sale'
-          | 'visa_authorization_reversal_point_of_sale'
-          | 'visa_authorization_reversal_international_point_of_sale'
-          | 'visa_authorization_address_verification_service'
-          | 'visa_advanced_authorization'
-          | 'visa_message_transmission'
-          | 'visa_account_verification_domestic'
-          | 'visa_account_verification_international'
-          | 'visa_account_verification_canada'
-          | 'visa_corporate_acceptance_fee'
-          | 'visa_consumer_debit_acceptance_fee'
-          | 'visa_business_debit_acceptance_fee'
-          | 'visa_purchasing_acceptance_fee'
-          | 'visa_purchase_domestic'
-          | 'visa_purchase_international'
-          | 'visa_credit_purchase_token'
-          | 'visa_debit_purchase_token'
-          | 'visa_clearing_transmission'
-          | 'visa_direct_authorization'
-          | 'visa_direct_transaction_domestic'
-          | 'visa_service_commercial_credit'
-          | 'visa_advertising_service_commercial_credit'
-          | 'visa_community_growth_acceleration_program'
-          | 'visa_processing_guarantee_commercial_credit'
-          | 'pulse_switch_fee';
+        fee_type: 'visa_international_service_assessment_single_currency' | 'visa_international_service_assessment_cross_currency' | 'visa_authorization_domestic_point_of_sale' | 'visa_authorization_international_point_of_sale' | 'visa_authorization_canada_point_of_sale' | 'visa_authorization_reversal_point_of_sale' | 'visa_authorization_reversal_international_point_of_sale' | 'visa_authorization_address_verification_service' | 'visa_advanced_authorization' | 'visa_message_transmission' | 'visa_account_verification_domestic' | 'visa_account_verification_international' | 'visa_account_verification_canada' | 'visa_corporate_acceptance_fee' | 'visa_consumer_debit_acceptance_fee' | 'visa_business_debit_acceptance_fee' | 'visa_purchasing_acceptance_fee' | 'visa_purchase_domestic' | 'visa_purchase_international' | 'visa_credit_purchase_token' | 'visa_debit_purchase_token' | 'visa_clearing_transmission' | 'visa_direct_authorization' | 'visa_direct_transaction_domestic' | 'visa_service_commercial_credit' | 'visa_advertising_service_commercial_credit' | 'visa_community_growth_acceleration_program' | 'visa_processing_guarantee_commercial_credit' | 'pulse_switch_fee';
 
         /**
          * The fixed component of the fee, if applicable, given in major units of the fee
@@ -3627,13 +3294,7 @@ export namespace CardPayment {
            * - `postal_code_match_address_not_checked` - Postal code matches, but the street
            *   address was not verified. (deprecated)
            */
-          result:
-            | 'not_checked'
-            | 'postal_code_match_address_no_match'
-            | 'postal_code_no_match_address_match'
-            | 'match'
-            | 'no_match'
-            | 'postal_code_match_address_not_checked';
+          result: 'not_checked' | 'postal_code_match_address_no_match' | 'postal_code_no_match_address_match' | 'match' | 'no_match' | 'postal_code_match_address_not_checked';
         }
 
         /**
@@ -3823,18 +3484,7 @@ export namespace CardPayment {
        *   of an account associated with a card.
        * - `unknown` - The processing category is unknown.
        */
-      processing_category:
-        | 'account_funding'
-        | 'automatic_fuel_dispenser'
-        | 'bill_payment'
-        | 'original_credit'
-        | 'purchase'
-        | 'quasi_cash'
-        | 'refund'
-        | 'cash_disbursement'
-        | 'cash_deposit'
-        | 'balance_inquiry'
-        | 'unknown';
+      processing_category: 'account_funding' | 'automatic_fuel_dispenser' | 'bill_payment' | 'original_credit' | 'purchase' | 'quasi_cash' | 'refund' | 'cash_disbursement' | 'cash_deposit' | 'balance_inquiry' | 'unknown';
 
       /**
        * The identifier of the Real-Time Decision sent to approve or decline this
@@ -3869,7 +3519,7 @@ export namespace CardPayment {
        */
       verification: CardFinancial.Verification;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     export namespace CardFinancial {
@@ -4139,7 +3789,8 @@ export namespace CardPayment {
         /**
          * Fields specific to the `pulse` network.
          */
-        export interface Pulse {}
+        export interface Pulse {
+        }
 
         /**
          * Fields specific to the `visa` network.
@@ -4180,16 +3831,7 @@ export namespace CardPayment {
            * - `non_secure_transaction` - Non-secure transaction: Use to identify an
            *   electronic commerce transaction that has no data protection.
            */
-          electronic_commerce_indicator:
-            | 'mail_phone_order'
-            | 'recurring'
-            | 'installment'
-            | 'unknown_mail_phone_order'
-            | 'secure_electronic_commerce'
-            | 'non_authenticated_security_transaction_at_3ds_capable_merchant'
-            | 'non_authenticated_security_transaction'
-            | 'non_secure_transaction'
-            | null;
+          electronic_commerce_indicator: 'mail_phone_order' | 'recurring' | 'installment' | 'unknown_mail_phone_order' | 'secure_electronic_commerce' | 'non_authenticated_security_transaction_at_3ds_capable_merchant' | 'non_authenticated_security_transaction' | 'non_secure_transaction' | null;
 
           /**
            * The method used to enter the cardholder's primary account number and card
@@ -4209,18 +3851,7 @@ export namespace CardPayment {
            * - `integrated_circuit_card_no_cvv` - Contact chip card, without card
            *   verification value
            */
-          point_of_service_entry_mode:
-            | 'unknown'
-            | 'manual'
-            | 'magnetic_stripe_no_cvv'
-            | 'optical_code'
-            | 'integrated_circuit_card'
-            | 'contactless'
-            | 'credential_on_file'
-            | 'magnetic_stripe'
-            | 'contactless_magnetic_stripe'
-            | 'integrated_circuit_card_no_cvv'
-            | null;
+          point_of_service_entry_mode: 'unknown' | 'manual' | 'magnetic_stripe_no_cvv' | 'optical_code' | 'integrated_circuit_card' | 'contactless' | 'credential_on_file' | 'magnetic_stripe' | 'contactless_magnetic_stripe' | 'integrated_circuit_card_no_cvv' | null;
 
           /**
            * Only present when `actioner: network`. Describes why a card authorization was
@@ -4246,16 +3877,7 @@ export namespace CardPayment {
            *   such as card testing.
            * - `other` - An unspecific reason for stand-in processing.
            */
-          stand_in_processing_reason:
-            | 'issuer_error'
-            | 'invalid_physical_card'
-            | 'invalid_cryptogram'
-            | 'invalid_cardholder_authentication_verification_value'
-            | 'internal_visa_error'
-            | 'merchant_transaction_advisory_service_authentication_required'
-            | 'payment_fraud_disruption_acquirer_block'
-            | 'other'
-            | null;
+          stand_in_processing_reason: 'issuer_error' | 'invalid_physical_card' | 'invalid_cryptogram' | 'invalid_cardholder_authentication_verification_value' | 'internal_visa_error' | 'merchant_transaction_advisory_service_authentication_required' | 'payment_fraud_disruption_acquirer_block' | 'other' | null;
 
           /**
            * The capability of the terminal being used to read the card. Shows whether a
@@ -4279,16 +3901,7 @@ export namespace CardPayment {
            *   capability.
            * - `no_capability` - The terminal has no card reading capability.
            */
-          terminal_entry_capability:
-            | 'unknown'
-            | 'terminal_not_used'
-            | 'magnetic_stripe'
-            | 'barcode'
-            | 'optical_character_recognition'
-            | 'chip_or_contactless'
-            | 'contactless_only'
-            | 'no_capability'
-            | null;
+          terminal_entry_capability: 'unknown' | 'terminal_not_used' | 'magnetic_stripe' | 'barcode' | 'optical_character_recognition' | 'chip_or_contactless' | 'contactless_only' | 'no_capability' | null;
         }
       }
 
@@ -4432,36 +4045,7 @@ export namespace CardPayment {
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
          */
-        fee_type:
-          | 'visa_international_service_assessment_single_currency'
-          | 'visa_international_service_assessment_cross_currency'
-          | 'visa_authorization_domestic_point_of_sale'
-          | 'visa_authorization_international_point_of_sale'
-          | 'visa_authorization_canada_point_of_sale'
-          | 'visa_authorization_reversal_point_of_sale'
-          | 'visa_authorization_reversal_international_point_of_sale'
-          | 'visa_authorization_address_verification_service'
-          | 'visa_advanced_authorization'
-          | 'visa_message_transmission'
-          | 'visa_account_verification_domestic'
-          | 'visa_account_verification_international'
-          | 'visa_account_verification_canada'
-          | 'visa_corporate_acceptance_fee'
-          | 'visa_consumer_debit_acceptance_fee'
-          | 'visa_business_debit_acceptance_fee'
-          | 'visa_purchasing_acceptance_fee'
-          | 'visa_purchase_domestic'
-          | 'visa_purchase_international'
-          | 'visa_credit_purchase_token'
-          | 'visa_debit_purchase_token'
-          | 'visa_clearing_transmission'
-          | 'visa_direct_authorization'
-          | 'visa_direct_transaction_domestic'
-          | 'visa_service_commercial_credit'
-          | 'visa_advertising_service_commercial_credit'
-          | 'visa_community_growth_acceleration_program'
-          | 'visa_processing_guarantee_commercial_credit'
-          | 'pulse_switch_fee';
+        fee_type: 'visa_international_service_assessment_single_currency' | 'visa_international_service_assessment_cross_currency' | 'visa_authorization_domestic_point_of_sale' | 'visa_authorization_international_point_of_sale' | 'visa_authorization_canada_point_of_sale' | 'visa_authorization_reversal_point_of_sale' | 'visa_authorization_reversal_international_point_of_sale' | 'visa_authorization_address_verification_service' | 'visa_advanced_authorization' | 'visa_message_transmission' | 'visa_account_verification_domestic' | 'visa_account_verification_international' | 'visa_account_verification_canada' | 'visa_corporate_acceptance_fee' | 'visa_consumer_debit_acceptance_fee' | 'visa_business_debit_acceptance_fee' | 'visa_purchasing_acceptance_fee' | 'visa_purchase_domestic' | 'visa_purchase_international' | 'visa_credit_purchase_token' | 'visa_debit_purchase_token' | 'visa_clearing_transmission' | 'visa_direct_authorization' | 'visa_direct_transaction_domestic' | 'visa_service_commercial_credit' | 'visa_advertising_service_commercial_credit' | 'visa_community_growth_acceleration_program' | 'visa_processing_guarantee_commercial_credit' | 'pulse_switch_fee';
 
         /**
          * The fixed component of the fee, if applicable, given in major units of the fee
@@ -4555,13 +4139,7 @@ export namespace CardPayment {
            * - `postal_code_match_address_not_checked` - Postal code matches, but the street
            *   address was not verified. (deprecated)
            */
-          result:
-            | 'not_checked'
-            | 'postal_code_match_address_no_match'
-            | 'postal_code_no_match_address_match'
-            | 'match'
-            | 'no_match'
-            | 'postal_code_match_address_not_checked';
+          result: 'not_checked' | 'postal_code_match_address_no_match' | 'postal_code_no_match_address_match' | 'match' | 'no_match' | 'postal_code_match_address_not_checked';
         }
 
         /**
@@ -4647,7 +4225,7 @@ export namespace CardPayment {
        */
       updated_authorization_amount: number;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     export namespace CardFuelConfirmation {
@@ -4791,36 +4369,7 @@ export namespace CardPayment {
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
          */
-        fee_type:
-          | 'visa_international_service_assessment_single_currency'
-          | 'visa_international_service_assessment_cross_currency'
-          | 'visa_authorization_domestic_point_of_sale'
-          | 'visa_authorization_international_point_of_sale'
-          | 'visa_authorization_canada_point_of_sale'
-          | 'visa_authorization_reversal_point_of_sale'
-          | 'visa_authorization_reversal_international_point_of_sale'
-          | 'visa_authorization_address_verification_service'
-          | 'visa_advanced_authorization'
-          | 'visa_message_transmission'
-          | 'visa_account_verification_domestic'
-          | 'visa_account_verification_international'
-          | 'visa_account_verification_canada'
-          | 'visa_corporate_acceptance_fee'
-          | 'visa_consumer_debit_acceptance_fee'
-          | 'visa_business_debit_acceptance_fee'
-          | 'visa_purchasing_acceptance_fee'
-          | 'visa_purchase_domestic'
-          | 'visa_purchase_international'
-          | 'visa_credit_purchase_token'
-          | 'visa_debit_purchase_token'
-          | 'visa_clearing_transmission'
-          | 'visa_direct_authorization'
-          | 'visa_direct_transaction_domestic'
-          | 'visa_service_commercial_credit'
-          | 'visa_advertising_service_commercial_credit'
-          | 'visa_community_growth_acceleration_program'
-          | 'visa_processing_guarantee_commercial_credit'
-          | 'pulse_switch_fee';
+        fee_type: 'visa_international_service_assessment_single_currency' | 'visa_international_service_assessment_cross_currency' | 'visa_authorization_domestic_point_of_sale' | 'visa_authorization_international_point_of_sale' | 'visa_authorization_canada_point_of_sale' | 'visa_authorization_reversal_point_of_sale' | 'visa_authorization_reversal_international_point_of_sale' | 'visa_authorization_address_verification_service' | 'visa_advanced_authorization' | 'visa_message_transmission' | 'visa_account_verification_domestic' | 'visa_account_verification_international' | 'visa_account_verification_canada' | 'visa_corporate_acceptance_fee' | 'visa_consumer_debit_acceptance_fee' | 'visa_business_debit_acceptance_fee' | 'visa_purchasing_acceptance_fee' | 'visa_purchase_domestic' | 'visa_purchase_international' | 'visa_credit_purchase_token' | 'visa_debit_purchase_token' | 'visa_clearing_transmission' | 'visa_direct_authorization' | 'visa_direct_transaction_domestic' | 'visa_service_commercial_credit' | 'visa_advertising_service_commercial_credit' | 'visa_community_growth_acceleration_program' | 'visa_processing_guarantee_commercial_credit' | 'pulse_switch_fee';
 
         /**
          * The fixed component of the fee, if applicable, given in major units of the fee
@@ -4943,7 +4492,7 @@ export namespace CardPayment {
        */
       updated_authorization_amount: number;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     export namespace CardIncrement {
@@ -5326,36 +4875,7 @@ export namespace CardPayment {
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
          */
-        fee_type:
-          | 'visa_international_service_assessment_single_currency'
-          | 'visa_international_service_assessment_cross_currency'
-          | 'visa_authorization_domestic_point_of_sale'
-          | 'visa_authorization_international_point_of_sale'
-          | 'visa_authorization_canada_point_of_sale'
-          | 'visa_authorization_reversal_point_of_sale'
-          | 'visa_authorization_reversal_international_point_of_sale'
-          | 'visa_authorization_address_verification_service'
-          | 'visa_advanced_authorization'
-          | 'visa_message_transmission'
-          | 'visa_account_verification_domestic'
-          | 'visa_account_verification_international'
-          | 'visa_account_verification_canada'
-          | 'visa_corporate_acceptance_fee'
-          | 'visa_consumer_debit_acceptance_fee'
-          | 'visa_business_debit_acceptance_fee'
-          | 'visa_purchasing_acceptance_fee'
-          | 'visa_purchase_domestic'
-          | 'visa_purchase_international'
-          | 'visa_credit_purchase_token'
-          | 'visa_debit_purchase_token'
-          | 'visa_clearing_transmission'
-          | 'visa_direct_authorization'
-          | 'visa_direct_transaction_domestic'
-          | 'visa_service_commercial_credit'
-          | 'visa_advertising_service_commercial_credit'
-          | 'visa_community_growth_acceleration_program'
-          | 'visa_processing_guarantee_commercial_credit'
-          | 'pulse_switch_fee';
+        fee_type: 'visa_international_service_assessment_single_currency' | 'visa_international_service_assessment_cross_currency' | 'visa_authorization_domestic_point_of_sale' | 'visa_authorization_international_point_of_sale' | 'visa_authorization_canada_point_of_sale' | 'visa_authorization_reversal_point_of_sale' | 'visa_authorization_reversal_international_point_of_sale' | 'visa_authorization_address_verification_service' | 'visa_advanced_authorization' | 'visa_message_transmission' | 'visa_account_verification_domestic' | 'visa_account_verification_international' | 'visa_account_verification_canada' | 'visa_corporate_acceptance_fee' | 'visa_consumer_debit_acceptance_fee' | 'visa_business_debit_acceptance_fee' | 'visa_purchasing_acceptance_fee' | 'visa_purchase_domestic' | 'visa_purchase_international' | 'visa_credit_purchase_token' | 'visa_debit_purchase_token' | 'visa_clearing_transmission' | 'visa_direct_authorization' | 'visa_direct_transaction_domestic' | 'visa_service_commercial_credit' | 'visa_advertising_service_commercial_credit' | 'visa_community_growth_acceleration_program' | 'visa_processing_guarantee_commercial_credit' | 'pulse_switch_fee';
 
         /**
          * The fixed component of the fee, if applicable, given in major units of the fee
@@ -5488,7 +5008,7 @@ export namespace CardPayment {
        */
       type: 'card_refund';
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     export namespace CardRefund {
@@ -5622,13 +5142,7 @@ export namespace CardPayment {
          * - `hotel_folio_number` - Hotel folio number
          * - `invoice_number` - Invoice number
          */
-        purchase_identifier_format:
-          | 'free_text'
-          | 'order_number'
-          | 'rental_agreement_number'
-          | 'hotel_folio_number'
-          | 'invoice_number'
-          | null;
+        purchase_identifier_format: 'free_text' | 'order_number' | 'rental_agreement_number' | 'hotel_folio_number' | 'invoice_number' | null;
 
         /**
          * Fields specific to travel.
@@ -5678,14 +5192,7 @@ export namespace CardPayment {
            * - `one_way_service_fee` - One way service fee
            * - `parking_violation` - Parking violation
            */
-          extra_charges:
-            | 'no_extra_charge'
-            | 'gas'
-            | 'extra_mileage'
-            | 'late_return'
-            | 'one_way_service_fee'
-            | 'parking_violation'
-            | null;
+          extra_charges: 'no_extra_charge' | 'gas' | 'extra_mileage' | 'late_return' | 'one_way_service_fee' | 'parking_violation' | null;
 
           /**
            * Fuel charges for the vehicle.
@@ -5778,15 +5285,7 @@ export namespace CardPayment {
            * - `other` - Other
            * - `laundry` - Laundry
            */
-          extra_charges:
-            | 'no_extra_charge'
-            | 'restaurant'
-            | 'gift_shop'
-            | 'mini_bar'
-            | 'telephone'
-            | 'other'
-            | 'laundry'
-            | null;
+          extra_charges: 'no_extra_charge' | 'restaurant' | 'gift_shop' | 'mini_bar' | 'telephone' | 'other' | 'laundry' | null;
 
           /**
            * Folio cash advances for the room.
@@ -5884,14 +5383,7 @@ export namespace CardPayment {
            * - `other` - Other
            * - `partial_refund_of_airline_ticket` - Partial refund of airline ticket
            */
-          credit_reason_indicator:
-            | 'no_credit'
-            | 'passenger_transport_ancillary_purchase_cancellation'
-            | 'airline_ticket_and_passenger_transport_ancillary_purchase_cancellation'
-            | 'airline_ticket_cancellation'
-            | 'other'
-            | 'partial_refund_of_airline_ticket'
-            | null;
+          credit_reason_indicator: 'no_credit' | 'passenger_transport_ancillary_purchase_cancellation' | 'airline_ticket_and_passenger_transport_ancillary_purchase_cancellation' | 'airline_ticket_cancellation' | 'other' | 'partial_refund_of_airline_ticket' | null;
 
           /**
            * Date of departure.
@@ -5968,12 +5460,7 @@ export namespace CardPayment {
              *   Airline ticket and passenger transport ancillary purchase cancellation
              * - `other` - Other
              */
-            credit_reason_indicator:
-              | 'no_credit'
-              | 'passenger_transport_ancillary_purchase_cancellation'
-              | 'airline_ticket_and_passenger_transport_ancillary_purchase_cancellation'
-              | 'other'
-              | null;
+            credit_reason_indicator: 'no_credit' | 'passenger_transport_ancillary_purchase_cancellation' | 'airline_ticket_and_passenger_transport_ancillary_purchase_cancellation' | 'other' | null;
 
             /**
              * Name of the passenger or description of the ancillary purchase.
@@ -6021,32 +5508,7 @@ export namespace CardPayment {
                * - `upgrades` - Upgrades
                * - `wifi` - Wi-fi
                */
-              category:
-                | 'none'
-                | 'bundled_service'
-                | 'baggage_fee'
-                | 'change_fee'
-                | 'cargo'
-                | 'carbon_offset'
-                | 'frequent_flyer'
-                | 'gift_card'
-                | 'ground_transport'
-                | 'in_flight_entertainment'
-                | 'lounge'
-                | 'medical'
-                | 'meal_beverage'
-                | 'other'
-                | 'passenger_assist_fee'
-                | 'pets'
-                | 'seat_fees'
-                | 'standby'
-                | 'service_fee'
-                | 'store'
-                | 'travel_service'
-                | 'unaccompanied_travel'
-                | 'upgrades'
-                | 'wifi'
-                | null;
+              category: 'none' | 'bundled_service' | 'baggage_fee' | 'change_fee' | 'cargo' | 'carbon_offset' | 'frequent_flyer' | 'gift_card' | 'ground_transport' | 'in_flight_entertainment' | 'lounge' | 'medical' | 'meal_beverage' | 'other' | 'passenger_assist_fee' | 'pets' | 'seat_fees' | 'standby' | 'service_fee' | 'store' | 'travel_service' | 'unaccompanied_travel' | 'upgrades' | 'wifi' | null;
 
               /**
                * Sub-category of the ancillary service, free-form.
@@ -6203,36 +5665,7 @@ export namespace CardPayment {
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
          */
-        fee_type:
-          | 'visa_international_service_assessment_single_currency'
-          | 'visa_international_service_assessment_cross_currency'
-          | 'visa_authorization_domestic_point_of_sale'
-          | 'visa_authorization_international_point_of_sale'
-          | 'visa_authorization_canada_point_of_sale'
-          | 'visa_authorization_reversal_point_of_sale'
-          | 'visa_authorization_reversal_international_point_of_sale'
-          | 'visa_authorization_address_verification_service'
-          | 'visa_advanced_authorization'
-          | 'visa_message_transmission'
-          | 'visa_account_verification_domestic'
-          | 'visa_account_verification_international'
-          | 'visa_account_verification_canada'
-          | 'visa_corporate_acceptance_fee'
-          | 'visa_consumer_debit_acceptance_fee'
-          | 'visa_business_debit_acceptance_fee'
-          | 'visa_purchasing_acceptance_fee'
-          | 'visa_purchase_domestic'
-          | 'visa_purchase_international'
-          | 'visa_credit_purchase_token'
-          | 'visa_debit_purchase_token'
-          | 'visa_clearing_transmission'
-          | 'visa_direct_authorization'
-          | 'visa_direct_transaction_domestic'
-          | 'visa_service_commercial_credit'
-          | 'visa_advertising_service_commercial_credit'
-          | 'visa_community_growth_acceleration_program'
-          | 'visa_processing_guarantee_commercial_credit'
-          | 'pulse_switch_fee';
+        fee_type: 'visa_international_service_assessment_single_currency' | 'visa_international_service_assessment_cross_currency' | 'visa_authorization_domestic_point_of_sale' | 'visa_authorization_international_point_of_sale' | 'visa_authorization_canada_point_of_sale' | 'visa_authorization_reversal_point_of_sale' | 'visa_authorization_reversal_international_point_of_sale' | 'visa_authorization_address_verification_service' | 'visa_advanced_authorization' | 'visa_message_transmission' | 'visa_account_verification_domestic' | 'visa_account_verification_international' | 'visa_account_verification_canada' | 'visa_corporate_acceptance_fee' | 'visa_consumer_debit_acceptance_fee' | 'visa_business_debit_acceptance_fee' | 'visa_purchasing_acceptance_fee' | 'visa_purchase_domestic' | 'visa_purchase_international' | 'visa_credit_purchase_token' | 'visa_debit_purchase_token' | 'visa_clearing_transmission' | 'visa_direct_authorization' | 'visa_direct_transaction_domestic' | 'visa_service_commercial_credit' | 'visa_advertising_service_commercial_credit' | 'visa_community_growth_acceleration_program' | 'visa_processing_guarantee_commercial_credit' | 'pulse_switch_fee';
 
         /**
          * The fixed component of the fee, if applicable, given in major units of the fee
@@ -6357,12 +5790,7 @@ export namespace CardPayment {
        *   sale device.
        * - `partial_reversal` - The Card Reversal was a partial reversal, for any reason.
        */
-      reversal_reason:
-        | 'reversed_by_customer'
-        | 'reversed_by_network_or_acquirer'
-        | 'reversed_by_point_of_sale'
-        | 'partial_reversal'
-        | null;
+      reversal_reason: 'reversed_by_customer' | 'reversed_by_network_or_acquirer' | 'reversed_by_point_of_sale' | 'partial_reversal' | null;
 
       /**
        * The scheme fees associated with this card reversal.
@@ -6393,7 +5821,7 @@ export namespace CardPayment {
        */
       updated_authorization_presentment_amount: number;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     export namespace CardReversal {
@@ -6537,36 +5965,7 @@ export namespace CardPayment {
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
          */
-        fee_type:
-          | 'visa_international_service_assessment_single_currency'
-          | 'visa_international_service_assessment_cross_currency'
-          | 'visa_authorization_domestic_point_of_sale'
-          | 'visa_authorization_international_point_of_sale'
-          | 'visa_authorization_canada_point_of_sale'
-          | 'visa_authorization_reversal_point_of_sale'
-          | 'visa_authorization_reversal_international_point_of_sale'
-          | 'visa_authorization_address_verification_service'
-          | 'visa_advanced_authorization'
-          | 'visa_message_transmission'
-          | 'visa_account_verification_domestic'
-          | 'visa_account_verification_international'
-          | 'visa_account_verification_canada'
-          | 'visa_corporate_acceptance_fee'
-          | 'visa_consumer_debit_acceptance_fee'
-          | 'visa_business_debit_acceptance_fee'
-          | 'visa_purchasing_acceptance_fee'
-          | 'visa_purchase_domestic'
-          | 'visa_purchase_international'
-          | 'visa_credit_purchase_token'
-          | 'visa_debit_purchase_token'
-          | 'visa_clearing_transmission'
-          | 'visa_direct_authorization'
-          | 'visa_direct_transaction_domestic'
-          | 'visa_service_commercial_credit'
-          | 'visa_advertising_service_commercial_credit'
-          | 'visa_community_growth_acceleration_program'
-          | 'visa_processing_guarantee_commercial_credit'
-          | 'pulse_switch_fee';
+        fee_type: 'visa_international_service_assessment_single_currency' | 'visa_international_service_assessment_cross_currency' | 'visa_authorization_domestic_point_of_sale' | 'visa_authorization_international_point_of_sale' | 'visa_authorization_canada_point_of_sale' | 'visa_authorization_reversal_point_of_sale' | 'visa_authorization_reversal_international_point_of_sale' | 'visa_authorization_address_verification_service' | 'visa_advanced_authorization' | 'visa_message_transmission' | 'visa_account_verification_domestic' | 'visa_account_verification_international' | 'visa_account_verification_canada' | 'visa_corporate_acceptance_fee' | 'visa_consumer_debit_acceptance_fee' | 'visa_business_debit_acceptance_fee' | 'visa_purchasing_acceptance_fee' | 'visa_purchase_domestic' | 'visa_purchase_international' | 'visa_credit_purchase_token' | 'visa_debit_purchase_token' | 'visa_clearing_transmission' | 'visa_direct_authorization' | 'visa_direct_transaction_domestic' | 'visa_service_commercial_credit' | 'visa_advertising_service_commercial_credit' | 'visa_community_growth_acceleration_program' | 'visa_processing_guarantee_commercial_credit' | 'pulse_switch_fee';
 
         /**
          * The fixed component of the fee, if applicable, given in major units of the fee
@@ -6725,7 +6124,7 @@ export namespace CardPayment {
        */
       type: 'card_settlement';
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     export namespace CardSettlement {
@@ -6859,13 +6258,7 @@ export namespace CardPayment {
          * - `hotel_folio_number` - Hotel folio number
          * - `invoice_number` - Invoice number
          */
-        purchase_identifier_format:
-          | 'free_text'
-          | 'order_number'
-          | 'rental_agreement_number'
-          | 'hotel_folio_number'
-          | 'invoice_number'
-          | null;
+        purchase_identifier_format: 'free_text' | 'order_number' | 'rental_agreement_number' | 'hotel_folio_number' | 'invoice_number' | null;
 
         /**
          * Fields specific to travel.
@@ -6915,14 +6308,7 @@ export namespace CardPayment {
            * - `one_way_service_fee` - One way service fee
            * - `parking_violation` - Parking violation
            */
-          extra_charges:
-            | 'no_extra_charge'
-            | 'gas'
-            | 'extra_mileage'
-            | 'late_return'
-            | 'one_way_service_fee'
-            | 'parking_violation'
-            | null;
+          extra_charges: 'no_extra_charge' | 'gas' | 'extra_mileage' | 'late_return' | 'one_way_service_fee' | 'parking_violation' | null;
 
           /**
            * Fuel charges for the vehicle.
@@ -7015,15 +6401,7 @@ export namespace CardPayment {
            * - `other` - Other
            * - `laundry` - Laundry
            */
-          extra_charges:
-            | 'no_extra_charge'
-            | 'restaurant'
-            | 'gift_shop'
-            | 'mini_bar'
-            | 'telephone'
-            | 'other'
-            | 'laundry'
-            | null;
+          extra_charges: 'no_extra_charge' | 'restaurant' | 'gift_shop' | 'mini_bar' | 'telephone' | 'other' | 'laundry' | null;
 
           /**
            * Folio cash advances for the room.
@@ -7121,14 +6499,7 @@ export namespace CardPayment {
            * - `other` - Other
            * - `partial_refund_of_airline_ticket` - Partial refund of airline ticket
            */
-          credit_reason_indicator:
-            | 'no_credit'
-            | 'passenger_transport_ancillary_purchase_cancellation'
-            | 'airline_ticket_and_passenger_transport_ancillary_purchase_cancellation'
-            | 'airline_ticket_cancellation'
-            | 'other'
-            | 'partial_refund_of_airline_ticket'
-            | null;
+          credit_reason_indicator: 'no_credit' | 'passenger_transport_ancillary_purchase_cancellation' | 'airline_ticket_and_passenger_transport_ancillary_purchase_cancellation' | 'airline_ticket_cancellation' | 'other' | 'partial_refund_of_airline_ticket' | null;
 
           /**
            * Date of departure.
@@ -7205,12 +6576,7 @@ export namespace CardPayment {
              *   Airline ticket and passenger transport ancillary purchase cancellation
              * - `other` - Other
              */
-            credit_reason_indicator:
-              | 'no_credit'
-              | 'passenger_transport_ancillary_purchase_cancellation'
-              | 'airline_ticket_and_passenger_transport_ancillary_purchase_cancellation'
-              | 'other'
-              | null;
+            credit_reason_indicator: 'no_credit' | 'passenger_transport_ancillary_purchase_cancellation' | 'airline_ticket_and_passenger_transport_ancillary_purchase_cancellation' | 'other' | null;
 
             /**
              * Name of the passenger or description of the ancillary purchase.
@@ -7258,32 +6624,7 @@ export namespace CardPayment {
                * - `upgrades` - Upgrades
                * - `wifi` - Wi-fi
                */
-              category:
-                | 'none'
-                | 'bundled_service'
-                | 'baggage_fee'
-                | 'change_fee'
-                | 'cargo'
-                | 'carbon_offset'
-                | 'frequent_flyer'
-                | 'gift_card'
-                | 'ground_transport'
-                | 'in_flight_entertainment'
-                | 'lounge'
-                | 'medical'
-                | 'meal_beverage'
-                | 'other'
-                | 'passenger_assist_fee'
-                | 'pets'
-                | 'seat_fees'
-                | 'standby'
-                | 'service_fee'
-                | 'store'
-                | 'travel_service'
-                | 'unaccompanied_travel'
-                | 'upgrades'
-                | 'wifi'
-                | null;
+              category: 'none' | 'bundled_service' | 'baggage_fee' | 'change_fee' | 'cargo' | 'carbon_offset' | 'frequent_flyer' | 'gift_card' | 'ground_transport' | 'in_flight_entertainment' | 'lounge' | 'medical' | 'meal_beverage' | 'other' | 'passenger_assist_fee' | 'pets' | 'seat_fees' | 'standby' | 'service_fee' | 'store' | 'travel_service' | 'unaccompanied_travel' | 'upgrades' | 'wifi' | null;
 
               /**
                * Sub-category of the ancillary service, free-form.
@@ -7440,36 +6781,7 @@ export namespace CardPayment {
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
          */
-        fee_type:
-          | 'visa_international_service_assessment_single_currency'
-          | 'visa_international_service_assessment_cross_currency'
-          | 'visa_authorization_domestic_point_of_sale'
-          | 'visa_authorization_international_point_of_sale'
-          | 'visa_authorization_canada_point_of_sale'
-          | 'visa_authorization_reversal_point_of_sale'
-          | 'visa_authorization_reversal_international_point_of_sale'
-          | 'visa_authorization_address_verification_service'
-          | 'visa_advanced_authorization'
-          | 'visa_message_transmission'
-          | 'visa_account_verification_domestic'
-          | 'visa_account_verification_international'
-          | 'visa_account_verification_canada'
-          | 'visa_corporate_acceptance_fee'
-          | 'visa_consumer_debit_acceptance_fee'
-          | 'visa_business_debit_acceptance_fee'
-          | 'visa_purchasing_acceptance_fee'
-          | 'visa_purchase_domestic'
-          | 'visa_purchase_international'
-          | 'visa_credit_purchase_token'
-          | 'visa_debit_purchase_token'
-          | 'visa_clearing_transmission'
-          | 'visa_direct_authorization'
-          | 'visa_direct_transaction_domestic'
-          | 'visa_service_commercial_credit'
-          | 'visa_advertising_service_commercial_credit'
-          | 'visa_community_growth_acceleration_program'
-          | 'visa_processing_guarantee_commercial_credit'
-          | 'pulse_switch_fee';
+        fee_type: 'visa_international_service_assessment_single_currency' | 'visa_international_service_assessment_cross_currency' | 'visa_authorization_domestic_point_of_sale' | 'visa_authorization_international_point_of_sale' | 'visa_authorization_canada_point_of_sale' | 'visa_authorization_reversal_point_of_sale' | 'visa_authorization_reversal_international_point_of_sale' | 'visa_authorization_address_verification_service' | 'visa_advanced_authorization' | 'visa_message_transmission' | 'visa_account_verification_domestic' | 'visa_account_verification_international' | 'visa_account_verification_canada' | 'visa_corporate_acceptance_fee' | 'visa_consumer_debit_acceptance_fee' | 'visa_business_debit_acceptance_fee' | 'visa_purchasing_acceptance_fee' | 'visa_purchase_domestic' | 'visa_purchase_international' | 'visa_credit_purchase_token' | 'visa_debit_purchase_token' | 'visa_clearing_transmission' | 'visa_direct_authorization' | 'visa_direct_transaction_domestic' | 'visa_service_commercial_credit' | 'visa_advertising_service_commercial_credit' | 'visa_community_growth_acceleration_program' | 'visa_processing_guarantee_commercial_credit' | 'pulse_switch_fee';
 
         /**
          * The fixed component of the fee, if applicable, given in major units of the fee
@@ -7641,7 +6953,7 @@ export namespace CardPayment {
        */
       verification: CardValidation.Verification;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     export namespace CardValidation {
@@ -7911,7 +7223,8 @@ export namespace CardPayment {
         /**
          * Fields specific to the `pulse` network.
          */
-        export interface Pulse {}
+        export interface Pulse {
+        }
 
         /**
          * Fields specific to the `visa` network.
@@ -7952,16 +7265,7 @@ export namespace CardPayment {
            * - `non_secure_transaction` - Non-secure transaction: Use to identify an
            *   electronic commerce transaction that has no data protection.
            */
-          electronic_commerce_indicator:
-            | 'mail_phone_order'
-            | 'recurring'
-            | 'installment'
-            | 'unknown_mail_phone_order'
-            | 'secure_electronic_commerce'
-            | 'non_authenticated_security_transaction_at_3ds_capable_merchant'
-            | 'non_authenticated_security_transaction'
-            | 'non_secure_transaction'
-            | null;
+          electronic_commerce_indicator: 'mail_phone_order' | 'recurring' | 'installment' | 'unknown_mail_phone_order' | 'secure_electronic_commerce' | 'non_authenticated_security_transaction_at_3ds_capable_merchant' | 'non_authenticated_security_transaction' | 'non_secure_transaction' | null;
 
           /**
            * The method used to enter the cardholder's primary account number and card
@@ -7981,18 +7285,7 @@ export namespace CardPayment {
            * - `integrated_circuit_card_no_cvv` - Contact chip card, without card
            *   verification value
            */
-          point_of_service_entry_mode:
-            | 'unknown'
-            | 'manual'
-            | 'magnetic_stripe_no_cvv'
-            | 'optical_code'
-            | 'integrated_circuit_card'
-            | 'contactless'
-            | 'credential_on_file'
-            | 'magnetic_stripe'
-            | 'contactless_magnetic_stripe'
-            | 'integrated_circuit_card_no_cvv'
-            | null;
+          point_of_service_entry_mode: 'unknown' | 'manual' | 'magnetic_stripe_no_cvv' | 'optical_code' | 'integrated_circuit_card' | 'contactless' | 'credential_on_file' | 'magnetic_stripe' | 'contactless_magnetic_stripe' | 'integrated_circuit_card_no_cvv' | null;
 
           /**
            * Only present when `actioner: network`. Describes why a card authorization was
@@ -8018,16 +7311,7 @@ export namespace CardPayment {
            *   such as card testing.
            * - `other` - An unspecific reason for stand-in processing.
            */
-          stand_in_processing_reason:
-            | 'issuer_error'
-            | 'invalid_physical_card'
-            | 'invalid_cryptogram'
-            | 'invalid_cardholder_authentication_verification_value'
-            | 'internal_visa_error'
-            | 'merchant_transaction_advisory_service_authentication_required'
-            | 'payment_fraud_disruption_acquirer_block'
-            | 'other'
-            | null;
+          stand_in_processing_reason: 'issuer_error' | 'invalid_physical_card' | 'invalid_cryptogram' | 'invalid_cardholder_authentication_verification_value' | 'internal_visa_error' | 'merchant_transaction_advisory_service_authentication_required' | 'payment_fraud_disruption_acquirer_block' | 'other' | null;
 
           /**
            * The capability of the terminal being used to read the card. Shows whether a
@@ -8051,16 +7335,7 @@ export namespace CardPayment {
            *   capability.
            * - `no_capability` - The terminal has no card reading capability.
            */
-          terminal_entry_capability:
-            | 'unknown'
-            | 'terminal_not_used'
-            | 'magnetic_stripe'
-            | 'barcode'
-            | 'optical_character_recognition'
-            | 'chip_or_contactless'
-            | 'contactless_only'
-            | 'no_capability'
-            | null;
+          terminal_entry_capability: 'unknown' | 'terminal_not_used' | 'magnetic_stripe' | 'barcode' | 'optical_character_recognition' | 'chip_or_contactless' | 'contactless_only' | 'no_capability' | null;
         }
       }
 
@@ -8204,36 +7479,7 @@ export namespace CardPayment {
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
          */
-        fee_type:
-          | 'visa_international_service_assessment_single_currency'
-          | 'visa_international_service_assessment_cross_currency'
-          | 'visa_authorization_domestic_point_of_sale'
-          | 'visa_authorization_international_point_of_sale'
-          | 'visa_authorization_canada_point_of_sale'
-          | 'visa_authorization_reversal_point_of_sale'
-          | 'visa_authorization_reversal_international_point_of_sale'
-          | 'visa_authorization_address_verification_service'
-          | 'visa_advanced_authorization'
-          | 'visa_message_transmission'
-          | 'visa_account_verification_domestic'
-          | 'visa_account_verification_international'
-          | 'visa_account_verification_canada'
-          | 'visa_corporate_acceptance_fee'
-          | 'visa_consumer_debit_acceptance_fee'
-          | 'visa_business_debit_acceptance_fee'
-          | 'visa_purchasing_acceptance_fee'
-          | 'visa_purchase_domestic'
-          | 'visa_purchase_international'
-          | 'visa_credit_purchase_token'
-          | 'visa_debit_purchase_token'
-          | 'visa_clearing_transmission'
-          | 'visa_direct_authorization'
-          | 'visa_direct_transaction_domestic'
-          | 'visa_service_commercial_credit'
-          | 'visa_advertising_service_commercial_credit'
-          | 'visa_community_growth_acceleration_program'
-          | 'visa_processing_guarantee_commercial_credit'
-          | 'pulse_switch_fee';
+        fee_type: 'visa_international_service_assessment_single_currency' | 'visa_international_service_assessment_cross_currency' | 'visa_authorization_domestic_point_of_sale' | 'visa_authorization_international_point_of_sale' | 'visa_authorization_canada_point_of_sale' | 'visa_authorization_reversal_point_of_sale' | 'visa_authorization_reversal_international_point_of_sale' | 'visa_authorization_address_verification_service' | 'visa_advanced_authorization' | 'visa_message_transmission' | 'visa_account_verification_domestic' | 'visa_account_verification_international' | 'visa_account_verification_canada' | 'visa_corporate_acceptance_fee' | 'visa_consumer_debit_acceptance_fee' | 'visa_business_debit_acceptance_fee' | 'visa_purchasing_acceptance_fee' | 'visa_purchase_domestic' | 'visa_purchase_international' | 'visa_credit_purchase_token' | 'visa_debit_purchase_token' | 'visa_clearing_transmission' | 'visa_direct_authorization' | 'visa_direct_transaction_domestic' | 'visa_service_commercial_credit' | 'visa_advertising_service_commercial_credit' | 'visa_community_growth_acceleration_program' | 'visa_processing_guarantee_commercial_credit' | 'pulse_switch_fee';
 
         /**
          * The fixed component of the fee, if applicable, given in major units of the fee
@@ -8327,13 +7573,7 @@ export namespace CardPayment {
            * - `postal_code_match_address_not_checked` - Postal code matches, but the street
            *   address was not verified. (deprecated)
            */
-          result:
-            | 'not_checked'
-            | 'postal_code_match_address_no_match'
-            | 'postal_code_no_match_address_match'
-            | 'match'
-            | 'no_match'
-            | 'postal_code_match_address_not_checked';
+          result: 'not_checked' | 'postal_code_match_address_no_match' | 'postal_code_no_match_address_match' | 'match' | 'no_match' | 'postal_code_match_address_not_checked';
         }
 
         /**
@@ -8362,7 +7602,8 @@ export namespace CardPayment {
      * If the category of this Transaction source is equal to `other`, this field will
      * contain an empty object, otherwise it will contain null.
      */
-    export interface Other {}
+    export interface Other {
+    }
   }
 
   /**
@@ -8459,6 +7700,6 @@ export declare namespace CardPayments {
   export {
     type CardPayment as CardPayment,
     type CardPaymentsPage as CardPaymentsPage,
-    type CardPaymentListParams as CardPaymentListParams,
+    type CardPaymentListParams as CardPaymentListParams
   };
 }

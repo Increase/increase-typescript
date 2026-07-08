@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../core/resource';
+import * as TransactionsAPI from './transactions';
 import { APIPromise } from '../core/api-promise';
 import { Page, type PageParams, PagePromise } from '../core/pagination';
 import { RequestOptions } from '../internal/request-options';
@@ -32,15 +33,12 @@ export class Transactions extends APIResource {
    * }
    * ```
    */
-  list(
-    query: TransactionListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): PagePromise<TransactionsPage, Transaction> {
+  list(query: TransactionListParams | null | undefined = {}, options?: RequestOptions): PagePromise<TransactionsPage, Transaction> {
     return this._client.getAPIList('/transactions', Page<Transaction>, { query, ...options });
   }
 }
 
-export type TransactionsPage = Page<Transaction>;
+export type TransactionsPage = Page<Transaction>
 
 /**
  * Transactions are the immutable additions and removals of money from your bank
@@ -115,7 +113,7 @@ export interface Transaction {
    */
   type: 'transaction';
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export namespace Transaction {
@@ -210,45 +208,7 @@ export namespace Transaction {
      *   object.
      * - `other` - The Transaction was made for an undocumented or deprecated reason.
      */
-    category:
-      | 'account_transfer_intention'
-      | 'ach_transfer_intention'
-      | 'ach_transfer_rejection'
-      | 'ach_transfer_return'
-      | 'cashback_payment'
-      | 'card_dispute_acceptance'
-      | 'card_dispute_financial'
-      | 'card_dispute_loss'
-      | 'card_refund'
-      | 'card_settlement'
-      | 'card_financial'
-      | 'card_revenue_payment'
-      | 'check_deposit_acceptance'
-      | 'check_deposit_return'
-      | 'fednow_transfer_acknowledgement'
-      | 'check_transfer_deposit'
-      | 'fee_payment'
-      | 'inbound_ach_transfer'
-      | 'inbound_ach_transfer_return_intention'
-      | 'inbound_check_deposit_return_intention'
-      | 'inbound_check_adjustment'
-      | 'inbound_fednow_transfer_confirmation'
-      | 'inbound_real_time_payments_transfer_confirmation'
-      | 'inbound_wire_reversal'
-      | 'inbound_wire_transfer'
-      | 'inbound_wire_transfer_reversal'
-      | 'interest_payment'
-      | 'internal_source'
-      | 'real_time_payments_transfer_acknowledgement'
-      | 'sample_funds'
-      | 'wire_transfer_intention'
-      | 'swift_transfer_intention'
-      | 'swift_transfer_return'
-      | 'card_push_transfer_acceptance'
-      | 'account_revenue_payment'
-      | 'blockchain_onramp_transfer_intention'
-      | 'blockchain_offramp_transfer_settlement'
-      | 'other';
+    category: 'account_transfer_intention' | 'ach_transfer_intention' | 'ach_transfer_rejection' | 'ach_transfer_return' | 'cashback_payment' | 'card_dispute_acceptance' | 'card_dispute_financial' | 'card_dispute_loss' | 'card_refund' | 'card_settlement' | 'card_financial' | 'card_revenue_payment' | 'check_deposit_acceptance' | 'check_deposit_return' | 'fednow_transfer_acknowledgement' | 'check_transfer_deposit' | 'fee_payment' | 'inbound_ach_transfer' | 'inbound_ach_transfer_return_intention' | 'inbound_check_deposit_return_intention' | 'inbound_check_adjustment' | 'inbound_fednow_transfer_confirmation' | 'inbound_real_time_payments_transfer_confirmation' | 'inbound_wire_reversal' | 'inbound_wire_transfer' | 'inbound_wire_transfer_reversal' | 'interest_payment' | 'internal_source' | 'real_time_payments_transfer_acknowledgement' | 'sample_funds' | 'wire_transfer_intention' | 'swift_transfer_intention' | 'swift_transfer_return' | 'card_push_transfer_acceptance' | 'account_revenue_payment' | 'blockchain_onramp_transfer_intention' | 'blockchain_offramp_transfer_settlement' | 'other';
 
     /**
      * An Account Revenue Payment object. This field will be present in the JSON
@@ -556,7 +516,7 @@ export namespace Transaction {
      */
     wire_transfer_intention?: Source.WireTransferIntention | null;
 
-    [k: string]: unknown;
+  [k: string]: unknown
   }
 
   export namespace Source {
@@ -582,7 +542,7 @@ export namespace Transaction {
        */
       period_start: string;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -626,7 +586,7 @@ export namespace Transaction {
        */
       transfer_id: string;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -663,7 +623,7 @@ export namespace Transaction {
        */
       transfer_id: string;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -678,7 +638,7 @@ export namespace Transaction {
        */
       transfer_id: string;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -857,77 +817,7 @@ export namespace Transaction {
        * - `untimely_return` - Code R68. A rare return reason. The return was sent too
        *   late.
        */
-      return_reason_code:
-        | 'insufficient_fund'
-        | 'no_account'
-        | 'account_closed'
-        | 'invalid_account_number_structure'
-        | 'account_frozen_entry_returned_per_ofac_instruction'
-        | 'credit_entry_refused_by_receiver'
-        | 'unauthorized_debit_to_consumer_account_using_corporate_sec_code'
-        | 'corporate_customer_advised_not_authorized'
-        | 'payment_stopped'
-        | 'non_transaction_account'
-        | 'uncollected_funds'
-        | 'routing_number_check_digit_error'
-        | 'customer_advised_unauthorized_improper_ineligible_or_incomplete'
-        | 'amount_field_error'
-        | 'authorization_revoked_by_customer'
-        | 'invalid_ach_routing_number'
-        | 'file_record_edit_criteria'
-        | 'enr_invalid_individual_name'
-        | 'returned_per_odfi_request'
-        | 'limited_participation_dfi'
-        | 'incorrectly_coded_outbound_international_payment'
-        | 'account_sold_to_another_dfi'
-        | 'addenda_error'
-        | 'beneficiary_or_account_holder_deceased'
-        | 'customer_advised_not_within_authorization_terms'
-        | 'corrected_return'
-        | 'duplicate_entry'
-        | 'duplicate_return'
-        | 'enr_duplicate_enrollment'
-        | 'enr_invalid_dfi_account_number'
-        | 'enr_invalid_individual_id_number'
-        | 'enr_invalid_representative_payee_indicator'
-        | 'enr_invalid_transaction_code'
-        | 'enr_return_of_enr_entry'
-        | 'enr_routing_number_check_digit_error'
-        | 'entry_not_processed_by_gateway'
-        | 'field_error'
-        | 'foreign_receiving_dfi_unable_to_settle'
-        | 'iat_entry_coding_error'
-        | 'improper_effective_entry_date'
-        | 'improper_source_document_source_document_presented'
-        | 'invalid_company_id'
-        | 'invalid_foreign_receiving_dfi_identification'
-        | 'invalid_individual_id_number'
-        | 'item_and_rck_entry_presented_for_payment'
-        | 'item_related_to_rck_entry_is_ineligible'
-        | 'mandatory_field_error'
-        | 'misrouted_dishonored_return'
-        | 'misrouted_return'
-        | 'no_errors_found'
-        | 'non_acceptance_of_r62_dishonored_return'
-        | 'non_participant_in_iat_program'
-        | 'permissible_return_entry'
-        | 'permissible_return_entry_not_accepted'
-        | 'rdfi_non_settlement'
-        | 'rdfi_participant_in_check_truncation_program'
-        | 'representative_payee_deceased_or_unable_to_continue_in_that_capacity'
-        | 'return_not_a_duplicate'
-        | 'return_of_erroneous_or_reversing_debit'
-        | 'return_of_improper_credit_entry'
-        | 'return_of_improper_debit_entry'
-        | 'return_of_xck_entry'
-        | 'source_document_presented_for_payment'
-        | 'state_law_affecting_rck_acceptance'
-        | 'stop_payment_on_item_related_to_rck_entry'
-        | 'stop_payment_on_source_document'
-        | 'timely_original_return'
-        | 'trace_number_error'
-        | 'untimely_dishonored_return'
-        | 'untimely_return';
+      return_reason_code: 'insufficient_fund' | 'no_account' | 'account_closed' | 'invalid_account_number_structure' | 'account_frozen_entry_returned_per_ofac_instruction' | 'credit_entry_refused_by_receiver' | 'unauthorized_debit_to_consumer_account_using_corporate_sec_code' | 'corporate_customer_advised_not_authorized' | 'payment_stopped' | 'non_transaction_account' | 'uncollected_funds' | 'routing_number_check_digit_error' | 'customer_advised_unauthorized_improper_ineligible_or_incomplete' | 'amount_field_error' | 'authorization_revoked_by_customer' | 'invalid_ach_routing_number' | 'file_record_edit_criteria' | 'enr_invalid_individual_name' | 'returned_per_odfi_request' | 'limited_participation_dfi' | 'incorrectly_coded_outbound_international_payment' | 'account_sold_to_another_dfi' | 'addenda_error' | 'beneficiary_or_account_holder_deceased' | 'customer_advised_not_within_authorization_terms' | 'corrected_return' | 'duplicate_entry' | 'duplicate_return' | 'enr_duplicate_enrollment' | 'enr_invalid_dfi_account_number' | 'enr_invalid_individual_id_number' | 'enr_invalid_representative_payee_indicator' | 'enr_invalid_transaction_code' | 'enr_return_of_enr_entry' | 'enr_routing_number_check_digit_error' | 'entry_not_processed_by_gateway' | 'field_error' | 'foreign_receiving_dfi_unable_to_settle' | 'iat_entry_coding_error' | 'improper_effective_entry_date' | 'improper_source_document_source_document_presented' | 'invalid_company_id' | 'invalid_foreign_receiving_dfi_identification' | 'invalid_individual_id_number' | 'item_and_rck_entry_presented_for_payment' | 'item_related_to_rck_entry_is_ineligible' | 'mandatory_field_error' | 'misrouted_dishonored_return' | 'misrouted_return' | 'no_errors_found' | 'non_acceptance_of_r62_dishonored_return' | 'non_participant_in_iat_program' | 'permissible_return_entry' | 'permissible_return_entry_not_accepted' | 'rdfi_non_settlement' | 'rdfi_participant_in_check_truncation_program' | 'representative_payee_deceased_or_unable_to_continue_in_that_capacity' | 'return_not_a_duplicate' | 'return_of_erroneous_or_reversing_debit' | 'return_of_improper_credit_entry' | 'return_of_improper_debit_entry' | 'return_of_xck_entry' | 'source_document_presented_for_payment' | 'state_law_affecting_rck_acceptance' | 'stop_payment_on_item_related_to_rck_entry' | 'stop_payment_on_source_document' | 'timely_original_return' | 'trace_number_error' | 'untimely_dishonored_return' | 'untimely_return';
 
       /**
        * A 15 digit number that was generated by the bank that initiated the return. The
@@ -948,7 +838,7 @@ export namespace Transaction {
        */
       transfer_id: string;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -967,7 +857,7 @@ export namespace Transaction {
        */
       transfer_id: string;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -986,7 +876,7 @@ export namespace Transaction {
        */
       transfer_id: string;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -1007,7 +897,7 @@ export namespace Transaction {
        */
       transaction_id: string;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -1042,7 +932,7 @@ export namespace Transaction {
        */
       visa: CardDisputeFinancial.Visa | null;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     export namespace CardDisputeFinancial {
@@ -1066,14 +956,7 @@ export namespace Transaction {
          * - `user_prearbitration_submitted` - The user's pre-arbitration was submitted.
          * - `user_withdrawal_submitted` - The user withdrew from the dispute.
          */
-        event_type:
-          | 'chargeback_submitted'
-          | 'merchant_prearbitration_decline_submitted'
-          | 'merchant_prearbitration_received'
-          | 'represented'
-          | 'user_prearbitration_decline_received'
-          | 'user_prearbitration_submitted'
-          | 'user_withdrawal_submitted';
+        event_type: 'chargeback_submitted' | 'merchant_prearbitration_decline_submitted' | 'merchant_prearbitration_received' | 'represented' | 'user_prearbitration_decline_received' | 'user_prearbitration_submitted' | 'user_withdrawal_submitted';
       }
     }
 
@@ -1100,7 +983,7 @@ export namespace Transaction {
        */
       transaction_id: string;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -1268,18 +1151,7 @@ export namespace Transaction {
        *   of an account associated with a card.
        * - `unknown` - The processing category is unknown.
        */
-      processing_category:
-        | 'account_funding'
-        | 'automatic_fuel_dispenser'
-        | 'bill_payment'
-        | 'original_credit'
-        | 'purchase'
-        | 'quasi_cash'
-        | 'refund'
-        | 'cash_disbursement'
-        | 'cash_deposit'
-        | 'balance_inquiry'
-        | 'unknown';
+      processing_category: 'account_funding' | 'automatic_fuel_dispenser' | 'bill_payment' | 'original_credit' | 'purchase' | 'quasi_cash' | 'refund' | 'cash_disbursement' | 'cash_deposit' | 'balance_inquiry' | 'unknown';
 
       /**
        * The identifier of the Real-Time Decision sent to approve or decline this
@@ -1314,7 +1186,7 @@ export namespace Transaction {
        */
       verification: CardFinancial.Verification;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     export namespace CardFinancial {
@@ -1584,7 +1456,8 @@ export namespace Transaction {
         /**
          * Fields specific to the `pulse` network.
          */
-        export interface Pulse {}
+        export interface Pulse {
+        }
 
         /**
          * Fields specific to the `visa` network.
@@ -1625,16 +1498,7 @@ export namespace Transaction {
            * - `non_secure_transaction` - Non-secure transaction: Use to identify an
            *   electronic commerce transaction that has no data protection.
            */
-          electronic_commerce_indicator:
-            | 'mail_phone_order'
-            | 'recurring'
-            | 'installment'
-            | 'unknown_mail_phone_order'
-            | 'secure_electronic_commerce'
-            | 'non_authenticated_security_transaction_at_3ds_capable_merchant'
-            | 'non_authenticated_security_transaction'
-            | 'non_secure_transaction'
-            | null;
+          electronic_commerce_indicator: 'mail_phone_order' | 'recurring' | 'installment' | 'unknown_mail_phone_order' | 'secure_electronic_commerce' | 'non_authenticated_security_transaction_at_3ds_capable_merchant' | 'non_authenticated_security_transaction' | 'non_secure_transaction' | null;
 
           /**
            * The method used to enter the cardholder's primary account number and card
@@ -1654,18 +1518,7 @@ export namespace Transaction {
            * - `integrated_circuit_card_no_cvv` - Contact chip card, without card
            *   verification value
            */
-          point_of_service_entry_mode:
-            | 'unknown'
-            | 'manual'
-            | 'magnetic_stripe_no_cvv'
-            | 'optical_code'
-            | 'integrated_circuit_card'
-            | 'contactless'
-            | 'credential_on_file'
-            | 'magnetic_stripe'
-            | 'contactless_magnetic_stripe'
-            | 'integrated_circuit_card_no_cvv'
-            | null;
+          point_of_service_entry_mode: 'unknown' | 'manual' | 'magnetic_stripe_no_cvv' | 'optical_code' | 'integrated_circuit_card' | 'contactless' | 'credential_on_file' | 'magnetic_stripe' | 'contactless_magnetic_stripe' | 'integrated_circuit_card_no_cvv' | null;
 
           /**
            * Only present when `actioner: network`. Describes why a card authorization was
@@ -1691,16 +1544,7 @@ export namespace Transaction {
            *   such as card testing.
            * - `other` - An unspecific reason for stand-in processing.
            */
-          stand_in_processing_reason:
-            | 'issuer_error'
-            | 'invalid_physical_card'
-            | 'invalid_cryptogram'
-            | 'invalid_cardholder_authentication_verification_value'
-            | 'internal_visa_error'
-            | 'merchant_transaction_advisory_service_authentication_required'
-            | 'payment_fraud_disruption_acquirer_block'
-            | 'other'
-            | null;
+          stand_in_processing_reason: 'issuer_error' | 'invalid_physical_card' | 'invalid_cryptogram' | 'invalid_cardholder_authentication_verification_value' | 'internal_visa_error' | 'merchant_transaction_advisory_service_authentication_required' | 'payment_fraud_disruption_acquirer_block' | 'other' | null;
 
           /**
            * The capability of the terminal being used to read the card. Shows whether a
@@ -1724,16 +1568,7 @@ export namespace Transaction {
            *   capability.
            * - `no_capability` - The terminal has no card reading capability.
            */
-          terminal_entry_capability:
-            | 'unknown'
-            | 'terminal_not_used'
-            | 'magnetic_stripe'
-            | 'barcode'
-            | 'optical_character_recognition'
-            | 'chip_or_contactless'
-            | 'contactless_only'
-            | 'no_capability'
-            | null;
+          terminal_entry_capability: 'unknown' | 'terminal_not_used' | 'magnetic_stripe' | 'barcode' | 'optical_character_recognition' | 'chip_or_contactless' | 'contactless_only' | 'no_capability' | null;
         }
       }
 
@@ -1877,36 +1712,7 @@ export namespace Transaction {
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
          */
-        fee_type:
-          | 'visa_international_service_assessment_single_currency'
-          | 'visa_international_service_assessment_cross_currency'
-          | 'visa_authorization_domestic_point_of_sale'
-          | 'visa_authorization_international_point_of_sale'
-          | 'visa_authorization_canada_point_of_sale'
-          | 'visa_authorization_reversal_point_of_sale'
-          | 'visa_authorization_reversal_international_point_of_sale'
-          | 'visa_authorization_address_verification_service'
-          | 'visa_advanced_authorization'
-          | 'visa_message_transmission'
-          | 'visa_account_verification_domestic'
-          | 'visa_account_verification_international'
-          | 'visa_account_verification_canada'
-          | 'visa_corporate_acceptance_fee'
-          | 'visa_consumer_debit_acceptance_fee'
-          | 'visa_business_debit_acceptance_fee'
-          | 'visa_purchasing_acceptance_fee'
-          | 'visa_purchase_domestic'
-          | 'visa_purchase_international'
-          | 'visa_credit_purchase_token'
-          | 'visa_debit_purchase_token'
-          | 'visa_clearing_transmission'
-          | 'visa_direct_authorization'
-          | 'visa_direct_transaction_domestic'
-          | 'visa_service_commercial_credit'
-          | 'visa_advertising_service_commercial_credit'
-          | 'visa_community_growth_acceleration_program'
-          | 'visa_processing_guarantee_commercial_credit'
-          | 'pulse_switch_fee';
+        fee_type: 'visa_international_service_assessment_single_currency' | 'visa_international_service_assessment_cross_currency' | 'visa_authorization_domestic_point_of_sale' | 'visa_authorization_international_point_of_sale' | 'visa_authorization_canada_point_of_sale' | 'visa_authorization_reversal_point_of_sale' | 'visa_authorization_reversal_international_point_of_sale' | 'visa_authorization_address_verification_service' | 'visa_advanced_authorization' | 'visa_message_transmission' | 'visa_account_verification_domestic' | 'visa_account_verification_international' | 'visa_account_verification_canada' | 'visa_corporate_acceptance_fee' | 'visa_consumer_debit_acceptance_fee' | 'visa_business_debit_acceptance_fee' | 'visa_purchasing_acceptance_fee' | 'visa_purchase_domestic' | 'visa_purchase_international' | 'visa_credit_purchase_token' | 'visa_debit_purchase_token' | 'visa_clearing_transmission' | 'visa_direct_authorization' | 'visa_direct_transaction_domestic' | 'visa_service_commercial_credit' | 'visa_advertising_service_commercial_credit' | 'visa_community_growth_acceleration_program' | 'visa_processing_guarantee_commercial_credit' | 'pulse_switch_fee';
 
         /**
          * The fixed component of the fee, if applicable, given in major units of the fee
@@ -2000,13 +1806,7 @@ export namespace Transaction {
            * - `postal_code_match_address_not_checked` - Postal code matches, but the street
            *   address was not verified. (deprecated)
            */
-          result:
-            | 'not_checked'
-            | 'postal_code_match_address_no_match'
-            | 'postal_code_no_match_address_match'
-            | 'match'
-            | 'no_match'
-            | 'postal_code_match_address_not_checked';
+          result: 'not_checked' | 'postal_code_match_address_no_match' | 'postal_code_no_match_address_match' | 'match' | 'no_match' | 'postal_code_match_address_not_checked';
         }
 
         /**
@@ -2048,7 +1848,7 @@ export namespace Transaction {
        */
       transfer_id: string;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -2168,7 +1968,7 @@ export namespace Transaction {
        */
       type: 'card_refund';
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     export namespace CardRefund {
@@ -2302,13 +2102,7 @@ export namespace Transaction {
          * - `hotel_folio_number` - Hotel folio number
          * - `invoice_number` - Invoice number
          */
-        purchase_identifier_format:
-          | 'free_text'
-          | 'order_number'
-          | 'rental_agreement_number'
-          | 'hotel_folio_number'
-          | 'invoice_number'
-          | null;
+        purchase_identifier_format: 'free_text' | 'order_number' | 'rental_agreement_number' | 'hotel_folio_number' | 'invoice_number' | null;
 
         /**
          * Fields specific to travel.
@@ -2358,14 +2152,7 @@ export namespace Transaction {
            * - `one_way_service_fee` - One way service fee
            * - `parking_violation` - Parking violation
            */
-          extra_charges:
-            | 'no_extra_charge'
-            | 'gas'
-            | 'extra_mileage'
-            | 'late_return'
-            | 'one_way_service_fee'
-            | 'parking_violation'
-            | null;
+          extra_charges: 'no_extra_charge' | 'gas' | 'extra_mileage' | 'late_return' | 'one_way_service_fee' | 'parking_violation' | null;
 
           /**
            * Fuel charges for the vehicle.
@@ -2458,15 +2245,7 @@ export namespace Transaction {
            * - `other` - Other
            * - `laundry` - Laundry
            */
-          extra_charges:
-            | 'no_extra_charge'
-            | 'restaurant'
-            | 'gift_shop'
-            | 'mini_bar'
-            | 'telephone'
-            | 'other'
-            | 'laundry'
-            | null;
+          extra_charges: 'no_extra_charge' | 'restaurant' | 'gift_shop' | 'mini_bar' | 'telephone' | 'other' | 'laundry' | null;
 
           /**
            * Folio cash advances for the room.
@@ -2564,14 +2343,7 @@ export namespace Transaction {
            * - `other` - Other
            * - `partial_refund_of_airline_ticket` - Partial refund of airline ticket
            */
-          credit_reason_indicator:
-            | 'no_credit'
-            | 'passenger_transport_ancillary_purchase_cancellation'
-            | 'airline_ticket_and_passenger_transport_ancillary_purchase_cancellation'
-            | 'airline_ticket_cancellation'
-            | 'other'
-            | 'partial_refund_of_airline_ticket'
-            | null;
+          credit_reason_indicator: 'no_credit' | 'passenger_transport_ancillary_purchase_cancellation' | 'airline_ticket_and_passenger_transport_ancillary_purchase_cancellation' | 'airline_ticket_cancellation' | 'other' | 'partial_refund_of_airline_ticket' | null;
 
           /**
            * Date of departure.
@@ -2648,12 +2420,7 @@ export namespace Transaction {
              *   Airline ticket and passenger transport ancillary purchase cancellation
              * - `other` - Other
              */
-            credit_reason_indicator:
-              | 'no_credit'
-              | 'passenger_transport_ancillary_purchase_cancellation'
-              | 'airline_ticket_and_passenger_transport_ancillary_purchase_cancellation'
-              | 'other'
-              | null;
+            credit_reason_indicator: 'no_credit' | 'passenger_transport_ancillary_purchase_cancellation' | 'airline_ticket_and_passenger_transport_ancillary_purchase_cancellation' | 'other' | null;
 
             /**
              * Name of the passenger or description of the ancillary purchase.
@@ -2701,32 +2468,7 @@ export namespace Transaction {
                * - `upgrades` - Upgrades
                * - `wifi` - Wi-fi
                */
-              category:
-                | 'none'
-                | 'bundled_service'
-                | 'baggage_fee'
-                | 'change_fee'
-                | 'cargo'
-                | 'carbon_offset'
-                | 'frequent_flyer'
-                | 'gift_card'
-                | 'ground_transport'
-                | 'in_flight_entertainment'
-                | 'lounge'
-                | 'medical'
-                | 'meal_beverage'
-                | 'other'
-                | 'passenger_assist_fee'
-                | 'pets'
-                | 'seat_fees'
-                | 'standby'
-                | 'service_fee'
-                | 'store'
-                | 'travel_service'
-                | 'unaccompanied_travel'
-                | 'upgrades'
-                | 'wifi'
-                | null;
+              category: 'none' | 'bundled_service' | 'baggage_fee' | 'change_fee' | 'cargo' | 'carbon_offset' | 'frequent_flyer' | 'gift_card' | 'ground_transport' | 'in_flight_entertainment' | 'lounge' | 'medical' | 'meal_beverage' | 'other' | 'passenger_assist_fee' | 'pets' | 'seat_fees' | 'standby' | 'service_fee' | 'store' | 'travel_service' | 'unaccompanied_travel' | 'upgrades' | 'wifi' | null;
 
               /**
                * Sub-category of the ancillary service, free-form.
@@ -2883,36 +2625,7 @@ export namespace Transaction {
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
          */
-        fee_type:
-          | 'visa_international_service_assessment_single_currency'
-          | 'visa_international_service_assessment_cross_currency'
-          | 'visa_authorization_domestic_point_of_sale'
-          | 'visa_authorization_international_point_of_sale'
-          | 'visa_authorization_canada_point_of_sale'
-          | 'visa_authorization_reversal_point_of_sale'
-          | 'visa_authorization_reversal_international_point_of_sale'
-          | 'visa_authorization_address_verification_service'
-          | 'visa_advanced_authorization'
-          | 'visa_message_transmission'
-          | 'visa_account_verification_domestic'
-          | 'visa_account_verification_international'
-          | 'visa_account_verification_canada'
-          | 'visa_corporate_acceptance_fee'
-          | 'visa_consumer_debit_acceptance_fee'
-          | 'visa_business_debit_acceptance_fee'
-          | 'visa_purchasing_acceptance_fee'
-          | 'visa_purchase_domestic'
-          | 'visa_purchase_international'
-          | 'visa_credit_purchase_token'
-          | 'visa_debit_purchase_token'
-          | 'visa_clearing_transmission'
-          | 'visa_direct_authorization'
-          | 'visa_direct_transaction_domestic'
-          | 'visa_service_commercial_credit'
-          | 'visa_advertising_service_commercial_credit'
-          | 'visa_community_growth_acceleration_program'
-          | 'visa_processing_guarantee_commercial_credit'
-          | 'pulse_switch_fee';
+        fee_type: 'visa_international_service_assessment_single_currency' | 'visa_international_service_assessment_cross_currency' | 'visa_authorization_domestic_point_of_sale' | 'visa_authorization_international_point_of_sale' | 'visa_authorization_canada_point_of_sale' | 'visa_authorization_reversal_point_of_sale' | 'visa_authorization_reversal_international_point_of_sale' | 'visa_authorization_address_verification_service' | 'visa_advanced_authorization' | 'visa_message_transmission' | 'visa_account_verification_domestic' | 'visa_account_verification_international' | 'visa_account_verification_canada' | 'visa_corporate_acceptance_fee' | 'visa_consumer_debit_acceptance_fee' | 'visa_business_debit_acceptance_fee' | 'visa_purchasing_acceptance_fee' | 'visa_purchase_domestic' | 'visa_purchase_international' | 'visa_credit_purchase_token' | 'visa_debit_purchase_token' | 'visa_clearing_transmission' | 'visa_direct_authorization' | 'visa_direct_transaction_domestic' | 'visa_service_commercial_credit' | 'visa_advertising_service_commercial_credit' | 'visa_community_growth_acceleration_program' | 'visa_processing_guarantee_commercial_credit' | 'pulse_switch_fee';
 
         /**
          * The fixed component of the fee, if applicable, given in major units of the fee
@@ -2963,7 +2676,7 @@ export namespace Transaction {
        */
       transacted_on_account_id: string | null;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -3109,7 +2822,7 @@ export namespace Transaction {
        */
       type: 'card_settlement';
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     export namespace CardSettlement {
@@ -3243,13 +2956,7 @@ export namespace Transaction {
          * - `hotel_folio_number` - Hotel folio number
          * - `invoice_number` - Invoice number
          */
-        purchase_identifier_format:
-          | 'free_text'
-          | 'order_number'
-          | 'rental_agreement_number'
-          | 'hotel_folio_number'
-          | 'invoice_number'
-          | null;
+        purchase_identifier_format: 'free_text' | 'order_number' | 'rental_agreement_number' | 'hotel_folio_number' | 'invoice_number' | null;
 
         /**
          * Fields specific to travel.
@@ -3299,14 +3006,7 @@ export namespace Transaction {
            * - `one_way_service_fee` - One way service fee
            * - `parking_violation` - Parking violation
            */
-          extra_charges:
-            | 'no_extra_charge'
-            | 'gas'
-            | 'extra_mileage'
-            | 'late_return'
-            | 'one_way_service_fee'
-            | 'parking_violation'
-            | null;
+          extra_charges: 'no_extra_charge' | 'gas' | 'extra_mileage' | 'late_return' | 'one_way_service_fee' | 'parking_violation' | null;
 
           /**
            * Fuel charges for the vehicle.
@@ -3399,15 +3099,7 @@ export namespace Transaction {
            * - `other` - Other
            * - `laundry` - Laundry
            */
-          extra_charges:
-            | 'no_extra_charge'
-            | 'restaurant'
-            | 'gift_shop'
-            | 'mini_bar'
-            | 'telephone'
-            | 'other'
-            | 'laundry'
-            | null;
+          extra_charges: 'no_extra_charge' | 'restaurant' | 'gift_shop' | 'mini_bar' | 'telephone' | 'other' | 'laundry' | null;
 
           /**
            * Folio cash advances for the room.
@@ -3505,14 +3197,7 @@ export namespace Transaction {
            * - `other` - Other
            * - `partial_refund_of_airline_ticket` - Partial refund of airline ticket
            */
-          credit_reason_indicator:
-            | 'no_credit'
-            | 'passenger_transport_ancillary_purchase_cancellation'
-            | 'airline_ticket_and_passenger_transport_ancillary_purchase_cancellation'
-            | 'airline_ticket_cancellation'
-            | 'other'
-            | 'partial_refund_of_airline_ticket'
-            | null;
+          credit_reason_indicator: 'no_credit' | 'passenger_transport_ancillary_purchase_cancellation' | 'airline_ticket_and_passenger_transport_ancillary_purchase_cancellation' | 'airline_ticket_cancellation' | 'other' | 'partial_refund_of_airline_ticket' | null;
 
           /**
            * Date of departure.
@@ -3589,12 +3274,7 @@ export namespace Transaction {
              *   Airline ticket and passenger transport ancillary purchase cancellation
              * - `other` - Other
              */
-            credit_reason_indicator:
-              | 'no_credit'
-              | 'passenger_transport_ancillary_purchase_cancellation'
-              | 'airline_ticket_and_passenger_transport_ancillary_purchase_cancellation'
-              | 'other'
-              | null;
+            credit_reason_indicator: 'no_credit' | 'passenger_transport_ancillary_purchase_cancellation' | 'airline_ticket_and_passenger_transport_ancillary_purchase_cancellation' | 'other' | null;
 
             /**
              * Name of the passenger or description of the ancillary purchase.
@@ -3642,32 +3322,7 @@ export namespace Transaction {
                * - `upgrades` - Upgrades
                * - `wifi` - Wi-fi
                */
-              category:
-                | 'none'
-                | 'bundled_service'
-                | 'baggage_fee'
-                | 'change_fee'
-                | 'cargo'
-                | 'carbon_offset'
-                | 'frequent_flyer'
-                | 'gift_card'
-                | 'ground_transport'
-                | 'in_flight_entertainment'
-                | 'lounge'
-                | 'medical'
-                | 'meal_beverage'
-                | 'other'
-                | 'passenger_assist_fee'
-                | 'pets'
-                | 'seat_fees'
-                | 'standby'
-                | 'service_fee'
-                | 'store'
-                | 'travel_service'
-                | 'unaccompanied_travel'
-                | 'upgrades'
-                | 'wifi'
-                | null;
+              category: 'none' | 'bundled_service' | 'baggage_fee' | 'change_fee' | 'cargo' | 'carbon_offset' | 'frequent_flyer' | 'gift_card' | 'ground_transport' | 'in_flight_entertainment' | 'lounge' | 'medical' | 'meal_beverage' | 'other' | 'passenger_assist_fee' | 'pets' | 'seat_fees' | 'standby' | 'service_fee' | 'store' | 'travel_service' | 'unaccompanied_travel' | 'upgrades' | 'wifi' | null;
 
               /**
                * Sub-category of the ancillary service, free-form.
@@ -3824,36 +3479,7 @@ export namespace Transaction {
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
          */
-        fee_type:
-          | 'visa_international_service_assessment_single_currency'
-          | 'visa_international_service_assessment_cross_currency'
-          | 'visa_authorization_domestic_point_of_sale'
-          | 'visa_authorization_international_point_of_sale'
-          | 'visa_authorization_canada_point_of_sale'
-          | 'visa_authorization_reversal_point_of_sale'
-          | 'visa_authorization_reversal_international_point_of_sale'
-          | 'visa_authorization_address_verification_service'
-          | 'visa_advanced_authorization'
-          | 'visa_message_transmission'
-          | 'visa_account_verification_domestic'
-          | 'visa_account_verification_international'
-          | 'visa_account_verification_canada'
-          | 'visa_corporate_acceptance_fee'
-          | 'visa_consumer_debit_acceptance_fee'
-          | 'visa_business_debit_acceptance_fee'
-          | 'visa_purchasing_acceptance_fee'
-          | 'visa_purchase_domestic'
-          | 'visa_purchase_international'
-          | 'visa_credit_purchase_token'
-          | 'visa_debit_purchase_token'
-          | 'visa_clearing_transmission'
-          | 'visa_direct_authorization'
-          | 'visa_direct_transaction_domestic'
-          | 'visa_service_commercial_credit'
-          | 'visa_advertising_service_commercial_credit'
-          | 'visa_community_growth_acceleration_program'
-          | 'visa_processing_guarantee_commercial_credit'
-          | 'pulse_switch_fee';
+        fee_type: 'visa_international_service_assessment_single_currency' | 'visa_international_service_assessment_cross_currency' | 'visa_authorization_domestic_point_of_sale' | 'visa_authorization_international_point_of_sale' | 'visa_authorization_canada_point_of_sale' | 'visa_authorization_reversal_point_of_sale' | 'visa_authorization_reversal_international_point_of_sale' | 'visa_authorization_address_verification_service' | 'visa_advanced_authorization' | 'visa_message_transmission' | 'visa_account_verification_domestic' | 'visa_account_verification_international' | 'visa_account_verification_canada' | 'visa_corporate_acceptance_fee' | 'visa_consumer_debit_acceptance_fee' | 'visa_business_debit_acceptance_fee' | 'visa_purchasing_acceptance_fee' | 'visa_purchase_domestic' | 'visa_purchase_international' | 'visa_credit_purchase_token' | 'visa_debit_purchase_token' | 'visa_clearing_transmission' | 'visa_direct_authorization' | 'visa_direct_transaction_domestic' | 'visa_service_commercial_credit' | 'visa_advertising_service_commercial_credit' | 'visa_community_growth_acceleration_program' | 'visa_processing_guarantee_commercial_credit' | 'pulse_switch_fee';
 
         /**
          * The fixed component of the fee, if applicable, given in major units of the fee
@@ -3923,7 +3549,7 @@ export namespace Transaction {
        */
       period_start: string;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -3977,7 +3603,7 @@ export namespace Transaction {
        */
       serial_number: string | null;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -4053,33 +3679,7 @@ export namespace Transaction {
        * - `branch_or_account_sold` - The bank sold this account and no longer services
        *   this customer. (Check21 return code `R`)
        */
-      return_reason:
-        | 'ach_conversion_not_supported'
-        | 'closed_account'
-        | 'duplicate_submission'
-        | 'insufficient_funds'
-        | 'no_account'
-        | 'not_authorized'
-        | 'stale_dated'
-        | 'stop_payment'
-        | 'unknown_reason'
-        | 'unmatched_details'
-        | 'unreadable_image'
-        | 'endorsement_irregular'
-        | 'altered_or_fictitious_item'
-        | 'frozen_or_blocked_account'
-        | 'post_dated'
-        | 'endorsement_missing'
-        | 'signature_missing'
-        | 'stop_payment_suspect'
-        | 'unusable_image'
-        | 'image_fails_security_check'
-        | 'cannot_determine_amount'
-        | 'signature_irregular'
-        | 'non_cash_item'
-        | 'unable_to_process'
-        | 'item_exceeds_dollar_limit'
-        | 'branch_or_account_sold';
+      return_reason: 'ach_conversion_not_supported' | 'closed_account' | 'duplicate_submission' | 'insufficient_funds' | 'no_account' | 'not_authorized' | 'stale_dated' | 'stop_payment' | 'unknown_reason' | 'unmatched_details' | 'unreadable_image' | 'endorsement_irregular' | 'altered_or_fictitious_item' | 'frozen_or_blocked_account' | 'post_dated' | 'endorsement_missing' | 'signature_missing' | 'stop_payment_suspect' | 'unusable_image' | 'image_fails_security_check' | 'cannot_determine_amount' | 'signature_irregular' | 'non_cash_item' | 'unable_to_process' | 'item_exceeds_dollar_limit' | 'branch_or_account_sold';
 
       /**
        * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -4093,7 +3693,7 @@ export namespace Transaction {
        */
       transaction_id: string;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -4149,7 +3749,7 @@ export namespace Transaction {
        */
       type: 'check_transfer_deposit';
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -4164,7 +3764,7 @@ export namespace Transaction {
        */
       transfer_id: string;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -4197,7 +3797,7 @@ export namespace Transaction {
        */
       program_id: string | null;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -4268,7 +3868,7 @@ export namespace Transaction {
        */
       transfer_id: string;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     export namespace InboundACHTransfer {
@@ -4324,7 +3924,7 @@ export namespace Transaction {
        */
       inbound_ach_transfer_id: string;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -4360,7 +3960,7 @@ export namespace Transaction {
        */
       reason: 'late_return' | 'wrong_payee_credit' | 'adjusted_amount' | 'non_conforming_item' | 'paid';
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -4381,7 +3981,7 @@ export namespace Transaction {
        */
       transfer_id: string | null;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -4397,7 +3997,7 @@ export namespace Transaction {
        */
       transfer_id: string;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -4457,7 +4057,7 @@ export namespace Transaction {
        */
       unstructured_remittance_information: string | null;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -4542,7 +4142,7 @@ export namespace Transaction {
        */
       wire_transfer_id: string;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -4647,7 +4247,7 @@ export namespace Transaction {
        */
       unstructured_remittance_information: string | null;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -4663,7 +4263,7 @@ export namespace Transaction {
        */
       inbound_wire_transfer_id: string;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -4702,7 +4302,7 @@ export namespace Transaction {
        */
       period_start: string;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -4748,34 +4348,17 @@ export namespace Transaction {
        * - `sample_funds` - Sample funds
        * - `sample_funds_return` - Sample funds return
        */
-      reason:
-        | 'account_closure'
-        | 'account_revenue_payment_distribution'
-        | 'bank_drawn_check'
-        | 'bank_drawn_check_credit'
-        | 'bank_migration'
-        | 'check_adjustment'
-        | 'collection_payment'
-        | 'collection_receivable'
-        | 'dishonored_ach_return'
-        | 'empyreal_adjustment'
-        | 'error'
-        | 'error_correction'
-        | 'fees'
-        | 'general_ledger_transfer'
-        | 'interest'
-        | 'negative_balance_forgiveness'
-        | 'sample_funds'
-        | 'sample_funds_return';
+      reason: 'account_closure' | 'account_revenue_payment_distribution' | 'bank_drawn_check' | 'bank_drawn_check_credit' | 'bank_migration' | 'check_adjustment' | 'collection_payment' | 'collection_receivable' | 'dishonored_ach_return' | 'empyreal_adjustment' | 'error' | 'error_correction' | 'fees' | 'general_ledger_transfer' | 'interest' | 'negative_balance_forgiveness' | 'sample_funds' | 'sample_funds_return';
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
      * If the category of this Transaction source is equal to `other`, this field will
      * contain an empty object, otherwise it will contain null.
      */
-    export interface Other {}
+    export interface Other {
+    }
 
     /**
      * A Real-Time Payments Transfer Acknowledgement object. This field will be present
@@ -4810,7 +4393,7 @@ export namespace Transaction {
        */
       unstructured_remittance_information: string;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -4824,7 +4407,7 @@ export namespace Transaction {
        */
       originator: string;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -4838,7 +4421,7 @@ export namespace Transaction {
        */
       transfer_id: string;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -4852,7 +4435,7 @@ export namespace Transaction {
        */
       transfer_id: string;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -4886,7 +4469,7 @@ export namespace Transaction {
        */
       transfer_id: string;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
   }
 }
@@ -4914,46 +4497,7 @@ export namespace TransactionListParams {
      * Return results whose value is in the provided list. For GET requests, this
      * should be encoded as a comma-delimited string, such as `?in=one,two,three`.
      */
-    in?: Array<
-      | 'account_transfer_intention'
-      | 'ach_transfer_intention'
-      | 'ach_transfer_rejection'
-      | 'ach_transfer_return'
-      | 'cashback_payment'
-      | 'card_dispute_acceptance'
-      | 'card_dispute_financial'
-      | 'card_dispute_loss'
-      | 'card_refund'
-      | 'card_settlement'
-      | 'card_financial'
-      | 'card_revenue_payment'
-      | 'check_deposit_acceptance'
-      | 'check_deposit_return'
-      | 'fednow_transfer_acknowledgement'
-      | 'check_transfer_deposit'
-      | 'fee_payment'
-      | 'inbound_ach_transfer'
-      | 'inbound_ach_transfer_return_intention'
-      | 'inbound_check_deposit_return_intention'
-      | 'inbound_check_adjustment'
-      | 'inbound_fednow_transfer_confirmation'
-      | 'inbound_real_time_payments_transfer_confirmation'
-      | 'inbound_wire_reversal'
-      | 'inbound_wire_transfer'
-      | 'inbound_wire_transfer_reversal'
-      | 'interest_payment'
-      | 'internal_source'
-      | 'real_time_payments_transfer_acknowledgement'
-      | 'sample_funds'
-      | 'wire_transfer_intention'
-      | 'swift_transfer_intention'
-      | 'swift_transfer_return'
-      | 'card_push_transfer_acceptance'
-      | 'account_revenue_payment'
-      | 'blockchain_onramp_transfer_intention'
-      | 'blockchain_offramp_transfer_settlement'
-      | 'other'
-    >;
+    in?: Array<'account_transfer_intention' | 'ach_transfer_intention' | 'ach_transfer_rejection' | 'ach_transfer_return' | 'cashback_payment' | 'card_dispute_acceptance' | 'card_dispute_financial' | 'card_dispute_loss' | 'card_refund' | 'card_settlement' | 'card_financial' | 'card_revenue_payment' | 'check_deposit_acceptance' | 'check_deposit_return' | 'fednow_transfer_acknowledgement' | 'check_transfer_deposit' | 'fee_payment' | 'inbound_ach_transfer' | 'inbound_ach_transfer_return_intention' | 'inbound_check_deposit_return_intention' | 'inbound_check_adjustment' | 'inbound_fednow_transfer_confirmation' | 'inbound_real_time_payments_transfer_confirmation' | 'inbound_wire_reversal' | 'inbound_wire_transfer' | 'inbound_wire_transfer_reversal' | 'interest_payment' | 'internal_source' | 'real_time_payments_transfer_acknowledgement' | 'sample_funds' | 'wire_transfer_intention' | 'swift_transfer_intention' | 'swift_transfer_return' | 'card_push_transfer_acceptance' | 'account_revenue_payment' | 'blockchain_onramp_transfer_intention' | 'blockchain_offramp_transfer_settlement' | 'other'>;
   }
 
   export interface CreatedAt {
@@ -4987,6 +4531,6 @@ export declare namespace Transactions {
   export {
     type Transaction as Transaction,
     type TransactionsPage as TransactionsPage,
-    type TransactionListParams as TransactionListParams,
+    type TransactionListParams as TransactionListParams
   };
 }
