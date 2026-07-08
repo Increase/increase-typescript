@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../core/resource';
+import * as FileLinksAPI from './file-links';
 import { APIPromise } from '../core/api-promise';
 import { RequestOptions } from '../internal/request-options';
 
@@ -79,9 +80,12 @@ export interface FileLinkCreateParams {
    */
   expires_at?: string;
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export declare namespace FileLinks {
-  export { type FileLink as FileLink, type FileLinkCreateParams as FileLinkCreateParams };
+  export {
+    type FileLink as FileLink,
+    type FileLinkCreateParams as FileLinkCreateParams
+  };
 }

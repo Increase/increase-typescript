@@ -9,7 +9,9 @@
   "postCreateCommand": "pnpm install",
   "customizations": {
     "vscode": {
-      "extensions": ["oxc.oxc-vscode"]
+      "extensions": [
+        "oxc.oxc-vscode"
+      ]
     }
   }
 }
