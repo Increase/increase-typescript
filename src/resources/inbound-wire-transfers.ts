@@ -126,6 +126,11 @@ export interface InboundWireTransfer {
   creditor_name: string | null;
 
   /**
+   * The account number of the sender.
+   */
+  debtor_account_number: string | null;
+
+  /**
    * A free-form address field set by the sender.
    */
   debtor_address_line1: string | null;
@@ -144,6 +149,11 @@ export interface InboundWireTransfer {
    * A name set by the sender.
    */
   debtor_name: string | null;
+
+  /**
+   * The American Banking Association (ABA) routing number of the sender.
+   */
+  debtor_routing_number: string | null;
 
   /**
    * An Increase-constructed description of the transfer.

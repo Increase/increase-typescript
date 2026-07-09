@@ -18,8 +18,6 @@ export class CardSettlements extends APIResource {
    * const transaction =
    *   await client.simulations.cardSettlements.create({
    *     card_id: 'card_oubs0hwk5rn6knuecxg2',
-   *     pending_transaction_id:
-   *       'pending_transaction_k1sfetcau2qbvjbzgju4',
    *   });
    * ```
    */
@@ -38,16 +36,17 @@ export interface CardSettlementCreateParams {
   card_id: string;
 
   /**
-   * The identifier of the Pending Transaction for the Card Authorization you wish to
-   * settle.
-   */
-  pending_transaction_id: string;
-
-  /**
    * The amount to be settled. This defaults to the amount of the Pending Transaction
-   * being settled.
+   * being settled, or a random amount if `pending_transaction_id` is not provided.
    */
   amount?: number;
+
+  /**
+   * The identifier of the Pending Transaction for the Card Authorization you wish to
+   * settle. If not provided, the settlement will be force posted without a Card
+   * Authorization.
+   */
+  pending_transaction_id?: string;
 }
 
 export declare namespace CardSettlements {

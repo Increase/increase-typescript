@@ -234,6 +234,10 @@ export namespace EventSubscription {
      *   is updated.
      * - `inbound_mail_item.created` - Occurs whenever an Inbound Mail Item is created.
      * - `inbound_mail_item.updated` - Occurs whenever an Inbound Mail Item is updated.
+     * - `inbound_real_time_payments_request_for_payment.created` - Occurs whenever an
+     *   Inbound Real-Time Payments Request for Payment is created.
+     * - `inbound_real_time_payments_request_for_payment.updated` - Occurs whenever an
+     *   Inbound Real-Time Payments Request for Payment is updated.
      * - `inbound_real_time_payments_transfer.created` - Occurs whenever an Inbound
      *   Real-Time Payments Transfer is created.
      * - `inbound_real_time_payments_transfer.updated` - Occurs whenever an Inbound
@@ -379,6 +383,8 @@ export namespace EventSubscription {
       | 'inbound_fednow_transfer.updated'
       | 'inbound_mail_item.created'
       | 'inbound_mail_item.updated'
+      | 'inbound_real_time_payments_request_for_payment.created'
+      | 'inbound_real_time_payments_request_for_payment.updated'
       | 'inbound_real_time_payments_transfer.created'
       | 'inbound_real_time_payments_transfer.updated'
       | 'inbound_wire_drawdown_request.created'
@@ -566,6 +572,10 @@ export namespace EventSubscriptionCreateParams {
      *   is updated.
      * - `inbound_mail_item.created` - Occurs whenever an Inbound Mail Item is created.
      * - `inbound_mail_item.updated` - Occurs whenever an Inbound Mail Item is updated.
+     * - `inbound_real_time_payments_request_for_payment.created` - Occurs whenever an
+     *   Inbound Real-Time Payments Request for Payment is created.
+     * - `inbound_real_time_payments_request_for_payment.updated` - Occurs whenever an
+     *   Inbound Real-Time Payments Request for Payment is updated.
      * - `inbound_real_time_payments_transfer.created` - Occurs whenever an Inbound
      *   Real-Time Payments Transfer is created.
      * - `inbound_real_time_payments_transfer.updated` - Occurs whenever an Inbound
@@ -711,6 +721,8 @@ export namespace EventSubscriptionCreateParams {
       | 'inbound_fednow_transfer.updated'
       | 'inbound_mail_item.created'
       | 'inbound_mail_item.updated'
+      | 'inbound_real_time_payments_request_for_payment.created'
+      | 'inbound_real_time_payments_request_for_payment.updated'
       | 'inbound_real_time_payments_transfer.created'
       | 'inbound_real_time_payments_transfer.updated'
       | 'inbound_wire_drawdown_request.created'

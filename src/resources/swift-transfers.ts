@@ -185,6 +185,12 @@ export interface SwiftTransfer {
   instructed_currency: 'USD';
 
   /**
+   * The bank identification code (BIC) of the intermediary bank, if the transfer is
+   * routed through one.
+   */
+  intermediary_bank_identification_code: string | null;
+
+  /**
    * The ID for the pending transaction representing the transfer.
    */
   pending_transaction_id: string | null;
@@ -447,6 +453,12 @@ export interface SwiftTransferCreateParams {
    * Unstructured remittance information to include in the transfer.
    */
   unstructured_remittance_information: string;
+
+  /**
+   * The bank identification code (BIC) of the intermediary bank, if the transfer
+   * should be routed through one.
+   */
+  intermediary_bank_identification_code?: string;
 
   /**
    * Whether the transfer requires explicit approval via the dashboard or API.
