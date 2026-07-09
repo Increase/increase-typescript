@@ -479,7 +479,8 @@ export namespace CheckTransfer {
     signature: PhysicalCheck.Signature;
 
     /**
-     * Tracking updates relating to the physical check's delivery.
+     * Tracking updates relating to the physical check's delivery. Sorted by
+     * `created_at` in ascending order.
      */
     tracking_updates: Array<PhysicalCheck.TrackingUpdate>;
 

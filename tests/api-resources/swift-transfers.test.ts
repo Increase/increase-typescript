@@ -66,6 +66,7 @@ describe('resource swiftTransfers', () => {
       instructed_currency: 'USD',
       source_account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
       unstructured_remittance_information: 'New Swift transfer',
+      intermediary_bank_identification_code: '210BF73A',
       require_approval: true,
       routing_number: 'sq',
     });

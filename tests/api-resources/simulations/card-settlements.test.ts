@@ -11,7 +11,6 @@ describe('resource cardSettlements', () => {
   test('create: only required params', async () => {
     const responsePromise = client.simulations.cardSettlements.create({
       card_id: 'card_oubs0hwk5rn6knuecxg2',
-      pending_transaction_id: 'pending_transaction_k1sfetcau2qbvjbzgju4',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -25,8 +24,8 @@ describe('resource cardSettlements', () => {
   test('create: required and optional params', async () => {
     await client.simulations.cardSettlements.create({
       card_id: 'card_oubs0hwk5rn6knuecxg2',
-      pending_transaction_id: 'pending_transaction_k1sfetcau2qbvjbzgju4',
       amount: 1,
+      pending_transaction_id: 'pending_transaction_k1sfetcau2qbvjbzgju4',
     });
   });
 });
