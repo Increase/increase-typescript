@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.577.0](https://github.com/Increase/increase-typescript/compare/v0.576.0...v0.577.0) (2026-07-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* **api:** removed the `twin_city_bank` member from the Program simulation `bank` enum.
+
+### Features
+
+* **api:** add swift intermediary bic and inbound rtp request events ([#1423](https://github.com/Increase/increase-typescript/issues/1423)) ([2ed6869](https://github.com/Increase/increase-typescript/commit/2ed68695ab55994fe8a8ef6e870892f792be4a9e))
+
 ## [0.576.0](https://github.com/Increase/increase-typescript/compare/v0.575.0...v0.576.0) (2026-07-02)
 
 
