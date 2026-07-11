@@ -734,6 +734,16 @@ export namespace ACHTransfer {
    */
   export interface Return {
     /**
+     * Additional free-form information included by the receiving bank in the return's
+     * addenda record. This is raw, uninterpreted text whose presence and format are
+     * not guaranteed. For a `file_record_edit_criteria` (R17) return the receiving
+     * bank may set this to `QUESTIONABLE` (optionally followed by more text) to
+     * indicate it believes the transfer was initiated under questionable
+     * circumstances.
+     */
+    addenda_information: string | null;
+
+    /**
      * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
      * the transfer was created.
      */
@@ -781,8 +791,11 @@ export namespace ACHTransfer {
      * - `authorization_revoked_by_customer` - Code R07. The customer revoked their
      *   authorization for a previously authorized transfer.
      * - `invalid_ach_routing_number` - Code R13. The routing number is invalid.
-     * - `file_record_edit_criteria` - Code R17. The receiving bank is unable to
-     *   process a field in the transfer.
+     * - `file_record_edit_criteria` - Code R17. This return code has multiple
+     *   meanings. The receiving bank was either unable to process a field in the
+     *   transfer, or believes the transfer was initiated under questionable
+     *   circumstances (such as fraud), or identified an improperly-initiated reversing
+     *   entry.
      * - `enr_invalid_individual_name` - Code R45. A rare return reason. The individual
      *   name field was invalid.
      * - `returned_per_odfi_request` - Code R06. The originating financial institution

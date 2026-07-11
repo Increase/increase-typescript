@@ -25,8 +25,8 @@ describe('resource entities', () => {
       corporation: {
         address: {
           city: 'New York',
-          country: 'x',
           line1: '33 Liberty Street',
+          country: 'x',
           line2: 'x',
           state: 'NY',
           zip: '10045',
@@ -36,8 +36,8 @@ describe('resource entities', () => {
             individual: {
               address: {
                 city: 'New York',
-                country: 'x',
                 line1: '33 Liberty Street',
+                country: 'x',
                 line2: 'x',
                 state: 'NY',
                 zip: '10045',
@@ -100,8 +100,8 @@ describe('resource entities', () => {
           {
             address: {
               city: 'x',
-              country: 'x',
               line1: 'x',
+              country: 'x',
               line2: 'x',
               state: 'x',
               zip: 'x',
@@ -137,8 +137,8 @@ describe('resource entities', () => {
       natural_person: {
         address: {
           city: 'x',
-          country: 'x',
           line1: 'x',
+          country: 'x',
           line2: 'x',
           state: 'x',
           zip: 'x',
@@ -195,8 +195,8 @@ describe('resource entities', () => {
             individual: {
               address: {
                 city: 'x',
-                country: 'x',
                 line1: 'x',
+                country: 'x',
                 line2: 'x',
                 state: 'x',
                 zip: 'x',
@@ -234,8 +234,8 @@ describe('resource entities', () => {
         grantor: {
           address: {
             city: 'x',
-            country: 'x',
             line1: 'x',
+            country: 'x',
             line2: 'x',
             state: 'x',
             zip: 'x',
