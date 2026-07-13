@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.578.0](https://github.com/Increase/increase-typescript/compare/v0.577.0...v0.578.0) (2026-07-13)
+
+
+### Features
+
+* **api:** add ach transfer return addenda information ([#1426](https://github.com/Increase/increase-typescript/issues/1426)) ([643ebe3](https://github.com/Increase/increase-typescript/commit/643ebe3e2905d2d09a519710dc713eab9b39feda))
+
 ## [0.577.0](https://github.com/Increase/increase-typescript/compare/v0.576.0...v0.577.0) (2026-07-09)
 
 
