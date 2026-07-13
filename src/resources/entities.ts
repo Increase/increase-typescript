@@ -1397,14 +1397,15 @@ export namespace EntityCreateParams {
       city: string;
 
       /**
-       * The two-letter ISO 3166-1 alpha-2 code for the country of the address.
-       */
-      country: string;
-
-      /**
        * The first line of the address. This is usually the street number and street.
        */
       line1: string;
+
+      /**
+       * The two-letter ISO 3166-1 alpha-2 code for the country of the address. Defaults
+       * to `US`.
+       */
+      country?: string;
 
       /**
        * The second line of the address. This might be the floor or room number.
@@ -1491,14 +1492,15 @@ export namespace EntityCreateParams {
           city: string;
 
           /**
-           * The two-letter ISO 3166-1 alpha-2 code for the country of the address.
-           */
-          country: string;
-
-          /**
            * The first line of the address. This is usually the street number and street.
            */
           line1: string;
+
+          /**
+           * The two-letter ISO 3166-1 alpha-2 code for the country of the address. Defaults
+           * to `US`.
+           */
+          country?: string;
 
           /**
            * The second line of the address. This might be the floor or room number.
@@ -1821,14 +1823,15 @@ export namespace EntityCreateParams {
         city: string;
 
         /**
-         * The two-letter ISO 3166-1 alpha-2 code for the country of the address.
-         */
-        country: string;
-
-        /**
          * The first line of the address. This is usually the street number and street.
          */
         line1: string;
+
+        /**
+         * The two-letter ISO 3166-1 alpha-2 code for the country of the address. Defaults
+         * to `US`.
+         */
+        country?: string;
 
         /**
          * The second line of the address. This might be the floor or room number.
@@ -2032,14 +2035,15 @@ export namespace EntityCreateParams {
       city: string;
 
       /**
-       * The two-letter ISO 3166-1 alpha-2 code for the country of the address.
-       */
-      country: string;
-
-      /**
        * The first line of the address. This is usually the street number and street.
        */
       line1: string;
+
+      /**
+       * The two-letter ISO 3166-1 alpha-2 code for the country of the address. Defaults
+       * to `US`.
+       */
+      country?: string;
 
       /**
        * The second line of the address. This might be the floor or room number.
@@ -2411,14 +2415,15 @@ export namespace EntityCreateParams {
           city: string;
 
           /**
-           * The two-letter ISO 3166-1 alpha-2 code for the country of the address.
-           */
-          country: string;
-
-          /**
            * The first line of the address. This is usually the street number and street.
            */
           line1: string;
+
+          /**
+           * The two-letter ISO 3166-1 alpha-2 code for the country of the address. Defaults
+           * to `US`.
+           */
+          country?: string;
 
           /**
            * The second line of the address. This might be the floor or room number.
@@ -2619,14 +2624,15 @@ export namespace EntityCreateParams {
         city: string;
 
         /**
-         * The two-letter ISO 3166-1 alpha-2 code for the country of the address.
-         */
-        country: string;
-
-        /**
          * The first line of the address. This is usually the street number and street.
          */
         line1: string;
+
+        /**
+         * The two-letter ISO 3166-1 alpha-2 code for the country of the address. Defaults
+         * to `US`.
+         */
+        country?: string;
 
         /**
          * The second line of the address. This might be the floor or room number.
@@ -2898,14 +2904,15 @@ export namespace EntityUpdateParams {
       city: string;
 
       /**
-       * The two-letter ISO 3166-1 alpha-2 code for the country of the address.
-       */
-      country: string;
-
-      /**
        * The first line of the address. This is usually the street number and street.
        */
       line1: string;
+
+      /**
+       * The two-letter ISO 3166-1 alpha-2 code for the country of the address. Defaults
+       * to `US`.
+       */
+      country?: string;
 
       /**
        * The second line of the address. This might be the floor or room number.
@@ -3041,14 +3048,15 @@ export namespace EntityUpdateParams {
       city: string;
 
       /**
-       * The two-letter ISO 3166-1 alpha-2 code for the country of the address.
-       */
-      country: string;
-
-      /**
        * The first line of the address. This is usually the street number and street.
        */
       line1: string;
+
+      /**
+       * The two-letter ISO 3166-1 alpha-2 code for the country of the address. Defaults
+       * to `US`.
+       */
+      country?: string;
 
       /**
        * The second line of the address. This might be the floor or room number.
