@@ -12,7 +12,11 @@ describe('resource beneficialOwners', () => {
     const responsePromise = client.beneficialOwners.create({
       entity_id: 'entity_n8y8tnk2p9339ti393yi',
       individual: {
-        address: { city: 'New York', line1: '33 Liberty Street' },
+        address: {
+          city: 'New York',
+          country: 'US',
+          line1: '33 Liberty Street',
+        },
         date_of_birth: '1970-01-31',
         identification: { method: 'social_security_number', number: '078051120' },
         name: 'Ian Crease',
@@ -34,8 +38,8 @@ describe('resource beneficialOwners', () => {
       individual: {
         address: {
           city: 'New York',
-          line1: '33 Liberty Street',
           country: 'US',
+          line1: '33 Liberty Street',
           line2: 'x',
           state: 'NY',
           zip: '10045',

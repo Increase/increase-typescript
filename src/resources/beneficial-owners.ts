@@ -18,6 +18,7 @@ export class BeneficialOwners extends APIResource {
    *     individual: {
    *       address: {
    *         city: 'New York',
+   *         country: 'US',
    *         line1: '33 Liberty Street',
    *       },
    *       date_of_birth: '1970-01-31',
@@ -335,15 +336,14 @@ export namespace BeneficialOwnerCreateParams {
       city: string;
 
       /**
+       * The two-letter ISO 3166-1 alpha-2 code for the country of the address.
+       */
+      country: string;
+
+      /**
        * The first line of the address. This is usually the street number and street.
        */
       line1: string;
-
-      /**
-       * The two-letter ISO 3166-1 alpha-2 code for the country of the address. Defaults
-       * to `US`.
-       */
-      country?: string;
 
       /**
        * The second line of the address. This might be the floor or room number.
@@ -544,15 +544,14 @@ export namespace BeneficialOwnerUpdateParams {
     city: string;
 
     /**
+     * The two-letter ISO 3166-1 alpha-2 code for the country of the address.
+     */
+    country: string;
+
+    /**
      * The first line of the address. This is usually the street number and street.
      */
     line1: string;
-
-    /**
-     * The two-letter ISO 3166-1 alpha-2 code for the country of the address. Defaults
-     * to `US`.
-     */
-    country?: string;
 
     /**
      * The second line of the address. This might be the floor or room number.
