@@ -52,11 +52,6 @@ Alternatively, to link a local copy of the repo:
 $ git clone https://www.github.com/Increase/increase-typescript
 $ cd increase-typescript
 
-# With yarn
-$ yarn link
-$ cd ../my-package
-$ yarn link increase
-
 # With pnpm
 $ pnpm link --global
 $ cd ../my-package

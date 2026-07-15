@@ -521,6 +521,7 @@ Methods:
 - <code title="post /files">client.files.<a href="./src/resources/files.ts">create</a>({ ...params }) -> File</code>
 - <code title="get /files/{file_id}">client.files.<a href="./src/resources/files.ts">retrieve</a>(fileID) -> File</code>
 - <code title="get /files">client.files.<a href="./src/resources/files.ts">list</a>({ ...params }) -> FilesPage</code>
+- <code title="get /files/{file_id}/contents">client.files.<a href="./src/resources/files.ts">contents</a>(fileID) -> Response</code>
 
 # FileLinks
 
