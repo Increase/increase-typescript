@@ -283,10 +283,8 @@ export namespace EventSubscription {
      *   updated.
      * - `physical_check.created` - Occurs whenever a Physical Check is created.
      * - `physical_check.updated` - Occurs whenever a Physical Check is updated.
-     * - `physical_check_book.created` - Occurs whenever a Physical Check Book is
-     *   created.
-     * - `physical_check_book.updated` - Occurs whenever a Physical Check Book is
-     *   updated.
+     * - `checkbook.created` - Occurs whenever a Checkbook is created.
+     * - `checkbook.updated` - Occurs whenever a Checkbook is updated.
      * - `program.created` - Occurs whenever a Program is created.
      * - `program.updated` - Occurs whenever a Program is updated.
      * - `proof_of_authorization_request.created` - Occurs whenever a Proof of
@@ -420,8 +418,8 @@ export namespace EventSubscription {
       | 'physical_card_profile.updated'
       | 'physical_check.created'
       | 'physical_check.updated'
-      | 'physical_check_book.created'
-      | 'physical_check_book.updated'
+      | 'checkbook.created'
+      | 'checkbook.updated'
       | 'program.created'
       | 'program.updated'
       | 'proof_of_authorization_request.created'
@@ -627,10 +625,8 @@ export namespace EventSubscriptionCreateParams {
      *   updated.
      * - `physical_check.created` - Occurs whenever a Physical Check is created.
      * - `physical_check.updated` - Occurs whenever a Physical Check is updated.
-     * - `physical_check_book.created` - Occurs whenever a Physical Check Book is
-     *   created.
-     * - `physical_check_book.updated` - Occurs whenever a Physical Check Book is
-     *   updated.
+     * - `checkbook.created` - Occurs whenever a Checkbook is created.
+     * - `checkbook.updated` - Occurs whenever a Checkbook is updated.
      * - `program.created` - Occurs whenever a Program is created.
      * - `program.updated` - Occurs whenever a Program is updated.
      * - `proof_of_authorization_request.created` - Occurs whenever a Proof of
@@ -764,8 +760,8 @@ export namespace EventSubscriptionCreateParams {
       | 'physical_card_profile.updated'
       | 'physical_check.created'
       | 'physical_check.updated'
-      | 'physical_check_book.created'
-      | 'physical_check_book.updated'
+      | 'checkbook.created'
+      | 'checkbook.updated'
       | 'program.created'
       | 'program.updated'
       | 'proof_of_authorization_request.created'
