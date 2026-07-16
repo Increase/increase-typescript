@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.580.0](https://github.com/Increase/increase-typescript/compare/v0.579.0...v0.580.0) (2026-07-16)
+
+
+### Features
+
+* **api:** add physical_check_book event category ([c613a75](https://github.com/Increase/increase-typescript/commit/c613a759bf56d1f4696ebd531ac968eaad165f0d))
+
 ## [0.579.0](https://github.com/Increase/increase-typescript/compare/v0.578.0...v0.579.0) (2026-07-15)
 
 
