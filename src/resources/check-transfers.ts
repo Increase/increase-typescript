@@ -594,6 +594,12 @@ export namespace CheckTransfer {
 
     export interface TrackingUpdate {
       /**
+       * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time when the
+       * carrier expects the check to be delivered.
+       */
+      carrier_estimated_delivery_at: string | null;
+
+      /**
        * The type of tracking event.
        *
        * - `in_transit` - The check is in transit.
