@@ -912,29 +912,29 @@ export namespace Entity {
      */
     export interface Grantor {
       /**
-       * The person's address.
+       * The grantor's address.
        */
-      address: Grantor.Address;
+      address: Grantor.Address | null;
 
       /**
-       * The person's date of birth in YYYY-MM-DD format.
+       * The grantor's date of birth in YYYY-MM-DD format.
        */
-      date_of_birth: string;
+      date_of_birth: string | null;
 
       /**
-       * A means of verifying the person's identity.
+       * A means of verifying the grantor's identity.
        */
       identification: Grantor.Identification | null;
 
       /**
-       * The person's legal name.
+       * The grantor's legal name.
        */
       name: string;
     }
 
     export namespace Grantor {
       /**
-       * The person's address.
+       * The grantor's address.
        */
       export interface Address {
         /**
@@ -970,11 +970,11 @@ export namespace Entity {
       }
 
       /**
-       * A means of verifying the person's identity.
+       * A means of verifying the grantor's identity.
        */
       export interface Identification {
         /**
-         * A method that can be used to verify the individual's identity.
+         * A method that can be used to verify the grantor's identity.
          *
          * - `social_security_number` - A social security number.
          * - `individual_taxpayer_identification_number` - An individual taxpayer
@@ -992,7 +992,7 @@ export namespace Entity {
 
         /**
          * The last 4 digits of the identification number that can be used to verify the
-         * individual's identity.
+         * grantor's identity.
          */
         number_last4: string;
 
@@ -2578,13 +2578,13 @@ export namespace EntityCreateParams {
      */
     export interface Grantor {
       /**
-       * The individual's physical address. Mail receiving locations like PO Boxes and
-       * PMB's are disallowed.
+       * The grantor's physical address. Mail receiving locations like PO Boxes and PMB's
+       * are disallowed.
        */
       address: Grantor.Address;
 
       /**
-       * The person's date of birth in YYYY-MM-DD format.
+       * The grantor's date of birth in YYYY-MM-DD format.
        */
       date_of_birth: string;
 
@@ -2594,7 +2594,7 @@ export namespace EntityCreateParams {
       identification: Grantor.Identification;
 
       /**
-       * The person's legal name.
+       * The grantor's legal name.
        */
       name: string;
 
@@ -2609,8 +2609,8 @@ export namespace EntityCreateParams {
 
     export namespace Grantor {
       /**
-       * The individual's physical address. Mail receiving locations like PO Boxes and
-       * PMB's are disallowed.
+       * The grantor's physical address. Mail receiving locations like PO Boxes and PMB's
+       * are disallowed.
        */
       export interface Address {
         /**
