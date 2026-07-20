@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.582.1](https://github.com/Increase/increase-typescript/compare/v0.582.0...v0.582.1) (2026-07-20)
+
+
+### Bug Fixes
+
+* **docs:** expand check transfer shipping method descriptions ([d049168](https://github.com/Increase/increase-typescript/commit/d049168b1baee3768c852fcb1a889df954b35b10))
+
 ## [0.582.0](https://github.com/Increase/increase-typescript/compare/v0.581.0...v0.582.0) (2026-07-17)
 
 
