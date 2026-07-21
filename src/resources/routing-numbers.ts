@@ -61,6 +61,14 @@ export interface RoutingNumberListResponse {
   name: string;
 
   /**
+   * This routing number's support for Real-Time Payments Requests for Payment.
+   *
+   * - `supported` - The routing number can receive this transfer type.
+   * - `not_supported` - The routing number cannot receive this transfer type.
+   */
+  real_time_payments_request_for_payment: 'supported' | 'not_supported';
+
+  /**
    * This routing number's support for Real-Time Payments Transfers.
    *
    * - `supported` - The routing number can receive this transfer type.
