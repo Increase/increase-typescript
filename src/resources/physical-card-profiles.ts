@@ -229,7 +229,9 @@ export namespace PhysicalCardProfile {
 
 export interface PhysicalCardProfileCreateParams {
   /**
-   * The identifier of the File containing the physical card's carrier image.
+   * The identifier of the File containing the physical card's carrier image. This
+   * must have `purpose: physical_card_carrier` and be a 2550x3300 pixel PNG with a
+   * density of 300 dots per inch (DPI).
    */
   carrier_image_file_id: string;
 
@@ -244,7 +246,9 @@ export interface PhysicalCardProfileCreateParams {
   description: string;
 
   /**
-   * The identifier of the File containing the physical card's front image.
+   * The identifier of the File containing the physical card's front image. This must
+   * have `purpose: physical_card_front` and be a 2100x1344 pixel PNG with a density
+   * of 600 dots per inch (DPI).
    */
   front_image_file_id: string;
 

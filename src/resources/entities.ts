@@ -1398,6 +1398,8 @@ export namespace EntityCreateParams {
 
       /**
        * The two-letter ISO 3166-1 alpha-2 code for the country of the address.
+       *
+       * Defaults to `US`.
        */
       country: string;
 
@@ -1492,6 +1494,8 @@ export namespace EntityCreateParams {
 
           /**
            * The two-letter ISO 3166-1 alpha-2 code for the country of the address.
+           *
+           * Defaults to `US`.
            */
           country: string;
 
@@ -1668,8 +1672,7 @@ export namespace EntityCreateParams {
       value: string;
 
       /**
-       * The category of the legal identifier. If not provided, the default is
-       * `us_employer_identification_number`.
+       * The category of the legal identifier.
        *
        * - `us_employer_identification_number` - The Employer Identification Number (EIN)
        *   for the company. The EIN is a 9-digit number assigned by the IRS; submit it as
@@ -1822,6 +1825,8 @@ export namespace EntityCreateParams {
 
         /**
          * The two-letter ISO 3166-1 alpha-2 code for the country of the address.
+         *
+         * Defaults to `US`.
          */
         country: string;
 
@@ -2033,6 +2038,8 @@ export namespace EntityCreateParams {
 
       /**
        * The two-letter ISO 3166-1 alpha-2 code for the country of the address.
+       *
+       * Defaults to `US`.
        */
       country: string;
 
@@ -2412,6 +2419,8 @@ export namespace EntityCreateParams {
 
           /**
            * The two-letter ISO 3166-1 alpha-2 code for the country of the address.
+           *
+           * Defaults to `US`.
            */
           country: string;
 
@@ -2620,6 +2629,8 @@ export namespace EntityCreateParams {
 
         /**
          * The two-letter ISO 3166-1 alpha-2 code for the country of the address.
+         *
+         * Defaults to `US`.
          */
         country: string;
 
@@ -2899,6 +2910,8 @@ export namespace EntityUpdateParams {
 
       /**
        * The two-letter ISO 3166-1 alpha-2 code for the country of the address.
+       *
+       * Defaults to `US`.
        */
       country: string;
 
@@ -3042,6 +3055,8 @@ export namespace EntityUpdateParams {
 
       /**
        * The two-letter ISO 3166-1 alpha-2 code for the country of the address.
+       *
+       * Defaults to `US`.
        */
       country: string;
 
