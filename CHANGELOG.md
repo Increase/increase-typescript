@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.583.0](https://github.com/Increase/increase-typescript/compare/v0.582.1...v0.583.0) (2026-07-22)
+
+
+### Features
+
+* **api:** add interest rate plan events and new fields ([6cf8148](https://github.com/Increase/increase-typescript/commit/6cf8148a27a6128a7332c55fdbcb8f32feb769cf))
+
 ## [0.582.1](https://github.com/Increase/increase-typescript/compare/v0.582.0...v0.582.1) (2026-07-20)
 
 
