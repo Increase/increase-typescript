@@ -123,6 +123,13 @@ export interface InboundCheckDeposit {
   amount: number;
 
   /**
+   * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+   * the Inbound Check Deposit will be automatically resolved if it has not been
+   * actioned by then.
+   */
+  automatically_resolves_at: string;
+
+  /**
    * The ID for the File containing the image of the back of the check.
    */
   back_image_file_id: string | null;
