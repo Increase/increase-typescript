@@ -234,7 +234,7 @@ export namespace WireDrawdownRequest {
     line2: string | null;
 
     /**
-     * The ZIP code of the address.
+     * The postal code of the address.
      */
     postal_code: string | null;
 
@@ -271,7 +271,7 @@ export namespace WireDrawdownRequest {
     line2: string | null;
 
     /**
-     * The ZIP code of the address.
+     * The postal code of the address.
      */
     postal_code: string | null;
 
@@ -394,7 +394,7 @@ export namespace WireDrawdownRequestCreateParams {
     line2?: string;
 
     /**
-     * The ZIP code of the address.
+     * The postal code of the address.
      */
     postal_code?: string;
 
@@ -431,7 +431,7 @@ export namespace WireDrawdownRequestCreateParams {
     line2?: string;
 
     /**
-     * The ZIP code of the address.
+     * The postal code of the address.
      */
     postal_code?: string;
 

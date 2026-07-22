@@ -337,6 +337,8 @@ export namespace BeneficialOwnerCreateParams {
 
       /**
        * The two-letter ISO 3166-1 alpha-2 code for the country of the address.
+       *
+       * Defaults to `US`.
        */
       country: string;
 
@@ -545,6 +547,8 @@ export namespace BeneficialOwnerUpdateParams {
 
     /**
      * The two-letter ISO 3166-1 alpha-2 code for the country of the address.
+     *
+     * Defaults to `US`.
      */
     country: string;
 

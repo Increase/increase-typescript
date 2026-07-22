@@ -87,7 +87,10 @@ export class CheckTransfers extends APIResource {
   }
 
   /**
-   * Stop payment on a Check Transfer
+   * Request a stop payment on a Check Transfer. This can be done any time before the
+   * check is deposited. A stopped check cannot be deposited and the funds held by
+   * the transfer's Pending Transaction are released back to the account's available
+   * balance.
    *
    * @example
    * ```ts
@@ -468,10 +471,8 @@ export namespace CheckTransfer {
     /**
      * The shipping method for the check.
      *
-     * - `usps_first_class` - Ship the checks via USPS First Class, which supports a
-     *   maximum of 1000 pages (checks and attachments combined).
-     * - `fedex_overnight` - Ship the checks via FedEx Overnight, which supports a
-     *   maximum of 50 pages (checks and attachments combined).
+     * - `usps_first_class` - USPS First Class
+     * - `fedex_overnight` - FedEx Overnight
      */
     shipping_method: 'usps_first_class' | 'fedex_overnight';
 
@@ -906,10 +907,8 @@ export namespace CheckTransferCreateParams {
      * How to ship the check. For details on pricing, timing, and restrictions, see
      * https://increase.com/documentation/originating-checks#printing-checks .
      *
-     * - `usps_first_class` - Ship the checks via USPS First Class, which supports a
-     *   maximum of 1000 pages (checks and attachments combined).
-     * - `fedex_overnight` - Ship the checks via FedEx Overnight, which supports a
-     *   maximum of 50 pages (checks and attachments combined).
+     * - `usps_first_class` - USPS First Class
+     * - `fedex_overnight` - FedEx Overnight
      */
     shipping_method?: 'usps_first_class' | 'fedex_overnight';
 

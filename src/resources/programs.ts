@@ -60,8 +60,9 @@ export interface Program {
    * - `core_bank` - Core Bank
    * - `first_internet_bank` - First Internet Bank of Indiana
    * - `grasshopper_bank` - Grasshopper Bank
+   * - `increase_bank` - Increase Bank
    */
-  bank: 'core_bank' | 'first_internet_bank' | 'grasshopper_bank';
+  bank: 'core_bank' | 'first_internet_bank' | 'grasshopper_bank' | 'increase_bank';
 
   /**
    * The Program billing account.
