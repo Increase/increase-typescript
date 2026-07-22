@@ -181,7 +181,7 @@ export interface ExternalAccountCreateParams {
   account_holder?: 'business' | 'individual' | 'unknown';
 
   /**
-   * The type of the destination account. Defaults to `checking`.
+   * The type of the destination account.
    *
    * - `checking` - A checking account.
    * - `savings` - A savings account.

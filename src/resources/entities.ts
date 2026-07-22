@@ -1668,8 +1668,7 @@ export namespace EntityCreateParams {
       value: string;
 
       /**
-       * The category of the legal identifier. If not provided, the default is
-       * `us_employer_identification_number`.
+       * The category of the legal identifier.
        *
        * - `us_employer_identification_number` - The Employer Identification Number (EIN)
        *   for the company. The EIN is a 9-digit number assigned by the IRS; submit it as

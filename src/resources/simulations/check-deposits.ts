@@ -99,8 +99,7 @@ export interface CheckDepositAdjustmentParams {
   amount?: number;
 
   /**
-   * The reason for the adjustment. Defaults to `non_conforming_item`, which is often
-   * used for a low quality image that the recipient wasn't able to handle.
+   * The reason for the adjustment.
    *
    * - `late_return` - The return was initiated too late and the receiving
    *   institution has responded with a Late Return Claim.
