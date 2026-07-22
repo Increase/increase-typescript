@@ -381,6 +381,8 @@ export namespace WireTransfer {
        * Unstructured address lines.
        */
       unstructured: Address.Unstructured | null;
+
+      [k: string]: unknown;
     }
 
     export namespace Address {
@@ -430,6 +432,8 @@ export namespace WireTransfer {
        * Unstructured address lines.
        */
       unstructured: Address.Unstructured | null;
+
+      [k: string]: unknown;
     }
 
     export namespace Address {
@@ -704,7 +708,9 @@ export namespace WireTransferCreateParams {
       /**
        * Unstructured address lines.
        */
-      unstructured: Address.Unstructured;
+      unstructured?: Address.Unstructured;
+
+      [k: string]: unknown;
     }
 
     export namespace Address {
@@ -818,7 +824,9 @@ export namespace WireTransferCreateParams {
       /**
        * Unstructured address lines.
        */
-      unstructured: Address.Unstructured;
+      unstructured?: Address.Unstructured;
+
+      [k: string]: unknown;
     }
 
     export namespace Address {

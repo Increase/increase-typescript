@@ -156,7 +156,6 @@ export interface ACHTransferReturnParams {
 
   /**
    * The reason why the Federal Reserve or destination bank returned this transfer.
-   * Defaults to `no_account`.
    *
    * - `insufficient_fund` - Code R01. Insufficient funds in the receiving account.
    *   Sometimes abbreviated to "NSF."
