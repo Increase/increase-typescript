@@ -155,6 +155,12 @@ export interface Card {
   bin: string;
 
   /**
+   * The name of the cardholder. Used to respond to Account Name Inquiry requests
+   * from acquirers in Card Validations.
+   */
+  cardholder_name: Card.CardholderName | null;
+
+  /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
    * the Card was created.
    */
@@ -482,6 +488,27 @@ export namespace Card {
   }
 
   /**
+   * The name of the cardholder. Used to respond to Account Name Inquiry requests
+   * from acquirers in Card Validations.
+   */
+  export interface CardholderName {
+    /**
+     * The cardholder's first name.
+     */
+    first: string;
+
+    /**
+     * The cardholder's last name.
+     */
+    last: string;
+
+    /**
+     * The cardholder's middle name.
+     */
+    middle: string | null;
+  }
+
+  /**
    * The contact information used in the two-factor steps for digital wallet card
    * creation. At least one field must be present to complete the digital wallet
    * steps.
@@ -590,6 +617,12 @@ export interface CardCreateParams {
    * The card's billing address.
    */
   billing_address?: CardCreateParams.BillingAddress;
+
+  /**
+   * The name of the cardholder. Used to respond to Account Name Inquiry requests
+   * from acquirers in Card Validations.
+   */
+  cardholder_name?: CardCreateParams.CardholderName;
 
   /**
    * The description you choose to give the card.
@@ -882,6 +915,27 @@ export namespace CardCreateParams {
      * The second line of the billing address.
      */
     line2?: string;
+  }
+
+  /**
+   * The name of the cardholder. Used to respond to Account Name Inquiry requests
+   * from acquirers in Card Validations.
+   */
+  export interface CardholderName {
+    /**
+     * The cardholder's first name.
+     */
+    first: string;
+
+    /**
+     * The cardholder's last name.
+     */
+    last: string;
+
+    /**
+     * The cardholder's middle name.
+     */
+    middle?: string;
   }
 
   /**
