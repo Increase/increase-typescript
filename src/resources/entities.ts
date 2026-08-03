@@ -790,7 +790,7 @@ export namespace Entity {
     /**
      * The IP address the Entity accessed reviewed the terms from.
      */
-    ip_address: string;
+    ip_address: string | null;
 
     /**
      * The URL of the terms agreement. This link will be provided by your bank partner.

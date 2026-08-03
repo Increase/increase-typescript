@@ -709,6 +709,15 @@ export namespace RealTimeDecision {
     network_risk_score: number | null;
 
     /**
+     * The identifier of the Card Payment containing the original authorization or card
+     * validation this transaction references. For a merchant-initiated transaction,
+     * this is the Card Payment from when the card was first stored, which is typically
+     * where the CVV2 was verified. The reference this is derived from is supplied by
+     * the merchant or their acquirer, so it is not guaranteed to be present.
+     */
+    original_card_payment_id: string | null;
+
+    /**
      * Whether or not the authorization supports partial approvals.
      *
      * - `supported` - This transaction supports partial approvals.
