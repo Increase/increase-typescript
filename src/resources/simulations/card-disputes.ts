@@ -66,6 +66,8 @@ export namespace CardDisputeActionParams {
      * - `receive_merchant_prearbitration` - Simulate the merchant issuing
      *   pre-arbitration. This will move the dispute to a `user_submission_required`
      *   state.
+     * - `reject` - Simulate the dispute being rejected before it is submitted to the
+     *   network. This will move the dispute to a `rejected` state.
      * - `represent` - Simulate the merchant re-presenting the dispute. This will move
      *   the dispute to a `user_submission_required` state.
      * - `request_further_information` - Simulate further information being requested
@@ -85,6 +87,7 @@ export namespace CardDisputeActionParams {
       | 'accept_user_submission'
       | 'decline_user_prearbitration'
       | 'receive_merchant_prearbitration'
+      | 'reject'
       | 'represent'
       | 'request_further_information'
       | 'time_out_chargeback'
@@ -115,6 +118,12 @@ export namespace CardDisputeActionParams {
      * `action` is `receive_merchant_prearbitration`.
      */
     receive_merchant_prearbitration?: Visa.ReceiveMerchantPrearbitration;
+
+    /**
+     * The parameters for rejecting the dispute. Required if and only if `action` is
+     * `reject`.
+     */
+    reject?: Visa.Reject;
 
     /**
      * The parameters for re-presenting the dispute. Required if and only if `action`
@@ -177,6 +186,17 @@ export namespace CardDisputeActionParams {
      * `action` is `receive_merchant_prearbitration`.
      */
     export interface ReceiveMerchantPrearbitration {}
+
+    /**
+     * The parameters for rejecting the dispute. Required if and only if `action` is
+     * `reject`.
+     */
+    export interface Reject {
+      /**
+       * The explanation for rejecting the dispute.
+       */
+      explanation: string;
+    }
 
     /**
      * The parameters for re-presenting the dispute. Required if and only if `action`
