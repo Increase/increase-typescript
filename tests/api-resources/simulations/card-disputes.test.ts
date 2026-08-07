@@ -30,6 +30,7 @@ describe('resource cardDisputes', () => {
         accept_user_submission: {},
         decline_user_prearbitration: {},
         receive_merchant_prearbitration: {},
+        reject: { explanation: 'x' },
         represent: {},
         request_further_information: { reason: 'x' },
         time_out_chargeback: {},
