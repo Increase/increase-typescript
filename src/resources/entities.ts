@@ -790,7 +790,7 @@ export namespace Entity {
     /**
      * The IP address the Entity accessed reviewed the terms from.
      */
-    ip_address: string;
+    ip_address: string | null;
 
     /**
      * The URL of the terms agreement. This link will be provided by your bank partner.
@@ -1155,6 +1155,9 @@ export namespace Entity {
        * - `entity_address` - The entity's address could not be validated. Update the
        *   address with the
        *   [update an entity API](/documentation/api/entities#update-an-entity.corporation.address).
+       * - `entity_identity` - The entity's identity could not be verified. Update the
+       *   identification with the
+       *   [update an entity API](/documentation/api/entities#update-an-entity.natural_person.identification).
        * - `beneficial_owner_identity` - A beneficial owner's identity could not be
        *   verified. Update the identification with the
        *   [update a beneficial owner API](/documentation/api/beneficial-owners#update-a-beneficial-owner).
@@ -1165,6 +1168,7 @@ export namespace Entity {
       category:
         | 'entity_tax_identifier'
         | 'entity_address'
+        | 'entity_identity'
         | 'beneficial_owner_identity'
         | 'beneficial_owner_address';
 
@@ -1172,6 +1176,11 @@ export namespace Entity {
        * Details when the issue is with the entity's address.
        */
       entity_address: Issue.EntityAddress | null;
+
+      /**
+       * Details when the issue is with the entity's identity verification.
+       */
+      entity_identity: Issue.EntityIdentity | null;
 
       /**
        * Details when the issue is with the entity's tax ID.
@@ -1218,6 +1227,11 @@ export namespace Entity {
          */
         reason: 'mailbox_address';
       }
+
+      /**
+       * Details when the issue is with the entity's identity verification.
+       */
+      export interface EntityIdentity {}
 
       /**
        * Details when the issue is with the entity's tax ID.
