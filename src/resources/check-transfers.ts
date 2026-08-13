@@ -245,6 +245,8 @@ export interface CheckTransfer {
    *
    * - `pending_approval` - The transfer is awaiting approval.
    * - `canceled` - The transfer has been canceled.
+   * - `pending_batch_completing` - The transfer is waiting for its Physical Check
+   *   Batch to be completed.
    * - `pending_submission` - The transfer is pending submission.
    * - `pending_reviewing` - The transfer is pending review by Increase.
    * - `requires_attention` - The transfer requires attention from an Increase
@@ -259,6 +261,7 @@ export interface CheckTransfer {
   status:
     | 'pending_approval'
     | 'canceled'
+    | 'pending_batch_completing'
     | 'pending_submission'
     | 'pending_reviewing'
     | 'requires_attention'
@@ -452,6 +455,11 @@ export namespace CheckTransfer {
      * check and defaults to the return address if unspecified.
      */
     payer: Array<PhysicalCheck.Payer>;
+
+    /**
+     * The identifier of the Physical Check Batch that this check is a part of.
+     */
+    physical_check_batch_id: string | null;
 
     /**
      * The name that will be printed on the check.
@@ -850,7 +858,8 @@ export namespace CheckTransferCreateParams {
    */
   export interface PhysicalCheck {
     /**
-     * Details for where Increase will mail the check.
+     * Details for where Increase will mail the check. When `physical_check_batch_id`
+     * is set, the address must match the Physical Check Batch.
      */
     mailing_address: PhysicalCheck.MailingAddress;
 
@@ -891,9 +900,14 @@ export namespace CheckTransferCreateParams {
     note?: string;
 
     /**
-     * The return address to be printed on the check. If omitted this will default to
-     * an Increase-owned address that will mark checks as delivery failed and shred
-     * them.
+     * The identifier of the Physical Check Batch to mail this check as a part of.
+     */
+    physical_check_batch_id?: string;
+
+    /**
+     * Details for where the courier will return the check to if it is unable to be
+     * delivered. Defaults to an Increase-owned address that will mark checks as
+     * delivery failed and shred them.
      */
     return_address?: PhysicalCheck.ReturnAddress;
 
@@ -924,7 +938,8 @@ export namespace CheckTransferCreateParams {
 
   export namespace PhysicalCheck {
     /**
-     * Details for where Increase will mail the check.
+     * Details for where Increase will mail the check. When `physical_check_batch_id`
+     * is set, the address must match the Physical Check Batch.
      */
     export interface MailingAddress {
       /**
@@ -974,9 +989,9 @@ export namespace CheckTransferCreateParams {
     }
 
     /**
-     * The return address to be printed on the check. If omitted this will default to
-     * an Increase-owned address that will mark checks as delivery failed and shred
-     * them.
+     * Details for where the courier will return the check to if it is unable to be
+     * delivered. Defaults to an Increase-owned address that will mark checks as
+     * delivery failed and shred them.
      */
     export interface ReturnAddress {
       /**
