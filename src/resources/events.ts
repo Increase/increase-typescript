@@ -204,6 +204,8 @@ export interface Event {
    * - `loan_purchase.created` - Occurs whenever a Loan Purchase is created.
    * - `lockbox.created` - Occurs whenever a Lockbox is created.
    * - `lockbox.updated` - Occurs whenever a Lockbox is updated.
+   * - `lockbox_address.created` - Occurs whenever a Lockbox Address is created.
+   * - `lockbox_address.updated` - Occurs whenever a Lockbox Address is updated.
    * - `oauth_connection.created` - Occurs whenever an OAuth Connection is created.
    * - `oauth_connection.deactivated` - Occurs whenever an OAuth Connection is
    *   deactivated.
@@ -348,6 +350,8 @@ export interface Event {
     | 'loan_purchase.created'
     | 'lockbox.created'
     | 'lockbox.updated'
+    | 'lockbox_address.created'
+    | 'lockbox_address.updated'
     | 'oauth_connection.created'
     | 'oauth_connection.deactivated'
     | 'card_push_transfer.created'
@@ -545,6 +549,8 @@ export interface UnwrapWebhookEvent {
    * - `loan_purchase.created` - Occurs whenever a Loan Purchase is created.
    * - `lockbox.created` - Occurs whenever a Lockbox is created.
    * - `lockbox.updated` - Occurs whenever a Lockbox is updated.
+   * - `lockbox_address.created` - Occurs whenever a Lockbox Address is created.
+   * - `lockbox_address.updated` - Occurs whenever a Lockbox Address is updated.
    * - `oauth_connection.created` - Occurs whenever an OAuth Connection is created.
    * - `oauth_connection.deactivated` - Occurs whenever an OAuth Connection is
    *   deactivated.
@@ -689,6 +695,8 @@ export interface UnwrapWebhookEvent {
     | 'loan_purchase.created'
     | 'lockbox.created'
     | 'lockbox.updated'
+    | 'lockbox_address.created'
+    | 'lockbox_address.updated'
     | 'oauth_connection.created'
     | 'oauth_connection.deactivated'
     | 'card_push_transfer.created'
@@ -842,6 +850,8 @@ export namespace EventListParams {
       | 'loan_purchase.created'
       | 'lockbox.created'
       | 'lockbox.updated'
+      | 'lockbox_address.created'
+      | 'lockbox_address.updated'
       | 'oauth_connection.created'
       | 'oauth_connection.deactivated'
       | 'card_push_transfer.created'
