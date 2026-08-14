@@ -33,6 +33,7 @@ describe('resource realTimePaymentsTransfers', () => {
       account_number: '987654321',
       debtor_name: 'debtor_name',
       external_account_id: 'external_account_id',
+      inbound_real_time_payments_request_for_payment_id: 'inbound_real_time_payments_request_for_payment_id',
       require_approval: true,
       routing_number: '101050001',
       ultimate_creditor_name: 'ultimate_creditor_name',
