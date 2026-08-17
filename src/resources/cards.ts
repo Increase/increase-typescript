@@ -155,6 +155,12 @@ export interface Card {
   bin: string;
 
   /**
+   * The name of the cardholder. Used to respond to Account Name Inquiry requests
+   * from acquirers in Card Validations.
+   */
+  cardholder_name: Card.CardholderName | null;
+
+  /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
    * the Card was created.
    */
@@ -244,6 +250,8 @@ export namespace Card {
      * Controls how many times this card can be used.
      */
     usage: AuthorizationControls.Usage | null;
+
+    [k: string]: unknown;
   }
 
   export namespace AuthorizationControls {
@@ -482,6 +490,27 @@ export namespace Card {
   }
 
   /**
+   * The name of the cardholder. Used to respond to Account Name Inquiry requests
+   * from acquirers in Card Validations.
+   */
+  export interface CardholderName {
+    /**
+     * The cardholder's first name.
+     */
+    first: string;
+
+    /**
+     * The cardholder's last name.
+     */
+    last: string;
+
+    /**
+     * The cardholder's middle name.
+     */
+    middle: string | null;
+  }
+
+  /**
    * The contact information used in the two-factor steps for digital wallet card
    * creation. At least one field must be present to complete the digital wallet
    * steps.
@@ -592,6 +621,12 @@ export interface CardCreateParams {
   billing_address?: CardCreateParams.BillingAddress;
 
   /**
+   * The name of the cardholder. Used to respond to Account Name Inquiry requests
+   * from acquirers in Card Validations.
+   */
+  cardholder_name?: CardCreateParams.CardholderName;
+
+  /**
    * The description you choose to give the card.
    */
   description?: string;
@@ -641,6 +676,8 @@ export namespace CardCreateParams {
      * Controls how many times this card can be used.
      */
     usage?: AuthorizationControls.Usage;
+
+    [k: string]: unknown;
   }
 
   export namespace AuthorizationControls {
@@ -885,6 +922,27 @@ export namespace CardCreateParams {
   }
 
   /**
+   * The name of the cardholder. Used to respond to Account Name Inquiry requests
+   * from acquirers in Card Validations.
+   */
+  export interface CardholderName {
+    /**
+     * The cardholder's first name.
+     */
+    first: string;
+
+    /**
+     * The cardholder's last name.
+     */
+    last: string;
+
+    /**
+     * The cardholder's middle name.
+     */
+    middle?: string;
+  }
+
+  /**
    * The contact information used in the two-factor steps for digital wallet card
    * creation. To add the card to a digital wallet, you may supply an email or phone
    * number with this request. Otherwise, subscribe and then action a Real Time
@@ -977,6 +1035,8 @@ export namespace CardUpdateParams {
      * Controls how many times this card can be used.
      */
     usage?: AuthorizationControls.Usage;
+
+    [k: string]: unknown;
   }
 
   export namespace AuthorizationControls {

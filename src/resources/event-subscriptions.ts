@@ -261,11 +261,14 @@ export namespace EventSubscription {
      * - `loan_application.created` - Occurs whenever a Loan Application is created.
      * - `loan_application.updated` - Occurs whenever a Loan Application is updated.
      * - `loan_distribution.created` - Occurs whenever a Loan Distribution is created.
+     * - `loan_obligation.created` - Occurs whenever a Loan Obligation is created.
      * - `loan_offer.created` - Occurs whenever a Loan Offer is created.
      * - `loan_offer.updated` - Occurs whenever a Loan Offer is updated.
      * - `loan_purchase.created` - Occurs whenever a Loan Purchase is created.
      * - `lockbox.created` - Occurs whenever a Lockbox is created.
      * - `lockbox.updated` - Occurs whenever a Lockbox is updated.
+     * - `lockbox_address.created` - Occurs whenever a Lockbox Address is created.
+     * - `lockbox_address.updated` - Occurs whenever a Lockbox Address is updated.
      * - `oauth_connection.created` - Occurs whenever an OAuth Connection is created.
      * - `oauth_connection.deactivated` - Occurs whenever an OAuth Connection is
      *   deactivated.
@@ -405,11 +408,14 @@ export namespace EventSubscription {
       | 'loan_application.created'
       | 'loan_application.updated'
       | 'loan_distribution.created'
+      | 'loan_obligation.created'
       | 'loan_offer.created'
       | 'loan_offer.updated'
       | 'loan_purchase.created'
       | 'lockbox.created'
       | 'lockbox.updated'
+      | 'lockbox_address.created'
+      | 'lockbox_address.updated'
       | 'oauth_connection.created'
       | 'oauth_connection.deactivated'
       | 'card_push_transfer.created'
@@ -609,11 +615,14 @@ export namespace EventSubscriptionCreateParams {
      * - `loan_application.created` - Occurs whenever a Loan Application is created.
      * - `loan_application.updated` - Occurs whenever a Loan Application is updated.
      * - `loan_distribution.created` - Occurs whenever a Loan Distribution is created.
+     * - `loan_obligation.created` - Occurs whenever a Loan Obligation is created.
      * - `loan_offer.created` - Occurs whenever a Loan Offer is created.
      * - `loan_offer.updated` - Occurs whenever a Loan Offer is updated.
      * - `loan_purchase.created` - Occurs whenever a Loan Purchase is created.
      * - `lockbox.created` - Occurs whenever a Lockbox is created.
      * - `lockbox.updated` - Occurs whenever a Lockbox is updated.
+     * - `lockbox_address.created` - Occurs whenever a Lockbox Address is created.
+     * - `lockbox_address.updated` - Occurs whenever a Lockbox Address is updated.
      * - `oauth_connection.created` - Occurs whenever an OAuth Connection is created.
      * - `oauth_connection.deactivated` - Occurs whenever an OAuth Connection is
      *   deactivated.
@@ -753,11 +762,14 @@ export namespace EventSubscriptionCreateParams {
       | 'loan_application.created'
       | 'loan_application.updated'
       | 'loan_distribution.created'
+      | 'loan_obligation.created'
       | 'loan_offer.created'
       | 'loan_offer.updated'
       | 'loan_purchase.created'
       | 'lockbox.created'
       | 'lockbox.updated'
+      | 'lockbox_address.created'
+      | 'lockbox_address.updated'
       | 'oauth_connection.created'
       | 'oauth_connection.deactivated'
       | 'card_push_transfer.created'
