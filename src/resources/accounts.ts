@@ -307,6 +307,36 @@ export namespace BalanceLookup {
     due_balance: number;
 
     /**
+     * The fees on the loan that are due and unpaid.
+     */
+    due_fees: number | null;
+
+    /**
+     * The interest on the loan that is due and unpaid.
+     */
+    due_interest: number | null;
+
+    /**
+     * The principal on the loan that is due and unpaid.
+     */
+    due_principal: number | null;
+
+    /**
+     * The fees on the loan that are not yet due.
+     */
+    not_due_fees: number | null;
+
+    /**
+     * The interest on the loan that is not yet due.
+     */
+    not_due_interest: number | null;
+
+    /**
+     * The principal on the loan that is not yet due.
+     */
+    not_due_principal: number | null;
+
+    /**
      * The amount past due on the loan.
      */
     past_due_balance: number;
