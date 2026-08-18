@@ -706,32 +706,49 @@ export namespace WireTransferCreateParams {
      */
     export interface Address {
       /**
-       * Unstructured address lines.
+       * Structured address components. City and country are required.
        */
-      unstructured?: Address.Unstructured;
+      structured?: Address.Structured;
 
       [k: string]: unknown;
     }
 
     export namespace Address {
       /**
-       * Unstructured address lines.
+       * Structured address components. City and country are required.
        */
-      export interface Unstructured {
+      export interface Structured {
         /**
-         * The address line 1.
+         * The city, district, town, or village of the address.
          */
-        line1: string;
+        city: string;
 
         /**
-         * The address line 2.
+         * The two-letter
+         * [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code for
+         * the country of the address.
+         */
+        country: string;
+
+        /**
+         * The first line of the address.
+         */
+        line1?: string;
+
+        /**
+         * The second line of the address.
          */
         line2?: string;
 
         /**
-         * The address line 3.
+         * The postal code of the address.
          */
-        line3?: string;
+        postal_code?: string;
+
+        /**
+         * The address state.
+         */
+        state?: string;
       }
     }
   }
@@ -822,32 +839,49 @@ export namespace WireTransferCreateParams {
      */
     export interface Address {
       /**
-       * Unstructured address lines.
+       * Structured address components. City and country are required.
        */
-      unstructured?: Address.Unstructured;
+      structured?: Address.Structured;
 
       [k: string]: unknown;
     }
 
     export namespace Address {
       /**
-       * Unstructured address lines.
+       * Structured address components. City and country are required.
        */
-      export interface Unstructured {
+      export interface Structured {
         /**
-         * The address line 1.
+         * The city, district, town, or village of the address.
          */
-        line1: string;
+        city: string;
 
         /**
-         * The address line 2.
+         * The two-letter
+         * [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code for
+         * the country of the address.
+         */
+        country: string;
+
+        /**
+         * The first line of the address.
+         */
+        line1?: string;
+
+        /**
+         * The second line of the address.
          */
         line2?: string;
 
         /**
-         * The address line 3.
+         * The postal code of the address.
          */
-        line3?: string;
+        postal_code?: string;
+
+        /**
+         * The address state.
+         */
+        state?: string;
       }
     }
   }
