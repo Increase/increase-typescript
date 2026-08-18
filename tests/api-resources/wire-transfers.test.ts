@@ -31,10 +31,13 @@ describe('resource wireTransfers', () => {
       creditor: {
         name: 'Ian Crease',
         address: {
-          unstructured: {
+          structured: {
+            city: 'New York',
+            country: 'US',
             line1: '33 Liberty Street',
-            line2: 'New York',
-            line3: 'NY 10045',
+            line2: 'line2',
+            postal_code: '10045',
+            state: 'NY',
           },
         },
       },
@@ -51,10 +54,13 @@ describe('resource wireTransfers', () => {
       debtor: {
         name: 'name',
         address: {
-          unstructured: {
+          structured: {
+            city: 'city',
+            country: 'xx',
             line1: 'line1',
             line2: 'line2',
-            line3: 'line3',
+            postal_code: 'postal_code',
+            state: 'state',
           },
         },
       },

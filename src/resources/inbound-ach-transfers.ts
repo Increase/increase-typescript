@@ -545,7 +545,7 @@ export namespace InboundACHTransfer {
 
     /**
      * An identifier for the originating bank. One of an International Bank Account
-     * Number (IBAN) bank identifier, SWIFT Bank Identification Code (BIC), or a
+     * Number (IBAN) bank identifier, Swift Bank Identification Code (BIC), or a
      * domestic identifier like a US Routing Number.
      */
     originating_depository_financial_institution_id: string;
@@ -557,7 +557,7 @@ export namespace InboundACHTransfer {
      * - `national_clearing_system_number` - A domestic clearing system number. In the
      *   US, for example, this is the American Banking Association (ABA) routing
      *   number.
-     * - `bic_code` - The SWIFT Bank Identifier Code (BIC) of the bank.
+     * - `bic_code` - The Swift Bank Identifier Code (BIC) of the bank.
      * - `iban` - An International Bank Account Number.
      */
     originating_depository_financial_institution_id_qualifier:
@@ -664,7 +664,7 @@ export namespace InboundACHTransfer {
 
     /**
      * An identifier for the receiving bank. One of an International Bank Account
-     * Number (IBAN) bank identifier, SWIFT Bank Identification Code (BIC), or a
+     * Number (IBAN) bank identifier, Swift Bank Identification Code (BIC), or a
      * domestic identifier like a US Routing Number.
      */
     receiving_depository_financial_institution_id: string;
@@ -676,7 +676,7 @@ export namespace InboundACHTransfer {
      * - `national_clearing_system_number` - A domestic clearing system number. In the
      *   US, for example, this is the American Banking Association (ABA) routing
      *   number.
-     * - `bic_code` - The SWIFT Bank Identifier Code (BIC) of the bank.
+     * - `bic_code` - The Swift Bank Identifier Code (BIC) of the bank.
      * - `iban` - An International Bank Account Number.
      */
     receiving_depository_financial_institution_id_qualifier:

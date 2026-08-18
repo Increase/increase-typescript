@@ -1028,7 +1028,7 @@ export namespace ACHTransfer {
   export interface Submission {
     /**
      * The timestamp by which any administrative returns are expected to be received
-     * by. This follows the NACHA guidelines for return windows, which are: "In
+     * by. This follows the Nacha guidelines for return windows, which are: "In
      * general, return entries must be received by the RDFI’s ACH Operator by its
      * deposit deadline for the return entry to be made available to the ODFI no later
      * than the opening of business on the second banking day following the Settlement
@@ -1225,15 +1225,6 @@ export interface ACHTransferCreateParams {
     | 'corporate_trade_exchange'
     | 'prearranged_payments_and_deposit'
     | 'internet_initiated';
-
-  /**
-   * The timing of the transaction.
-   *
-   * - `synchronous` - A Transaction will be created immediately.
-   * - `asynchronous` - A Transaction will be created when the funds settle at the
-   *   Federal Reserve.
-   */
-  transaction_timing?: 'synchronous' | 'asynchronous';
 
   [k: string]: unknown;
 }
