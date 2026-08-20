@@ -1,6 +1,6 @@
 {
   "name": "increase",
-  "version": "0.583.0",
+  "version": "0.584.0",
   "private": false,
   "description": "The official TypeScript library for the Increase API",
   "license": "Apache-2.0",
