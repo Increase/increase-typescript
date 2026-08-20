@@ -516,6 +516,11 @@ export interface BeneficialOwnerUpdateParams {
   confirmed_no_us_tax_id?: boolean;
 
   /**
+   * The person's date of birth in YYYY-MM-DD format.
+   */
+  date_of_birth?: string;
+
+  /**
    * A means of verifying the person's identity.
    */
   identification?: BeneficialOwnerUpdateParams.Identification;

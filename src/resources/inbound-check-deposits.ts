@@ -224,6 +224,8 @@ export interface InboundCheckDeposit {
    * `inbound_check_deposit`.
    */
   type: 'inbound_check_deposit';
+
+  [k: string]: unknown;
 }
 
 export namespace InboundCheckDeposit {
