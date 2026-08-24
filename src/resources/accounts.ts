@@ -420,12 +420,17 @@ export namespace AccountCreateParams {
      * The number of days after the statement date that the Account can be past due
      * before being considered delinquent.
      */
-    grace_period_days: number;
+    grace_period_days?: number;
+
+    /**
+     * The date on which the loan matures.
+     */
+    maturity_date?: string;
 
     /**
      * The day of the month on which the loan statement is generated.
      */
-    statement_day_of_month: number;
+    statement_day_of_month?: number;
 
     /**
      * The type of statement payment for the account.
@@ -435,12 +440,7 @@ export namespace AccountCreateParams {
      * - `interest_until_maturity` - The borrower must pay the accrued interest at the
      *   end of the statement period.
      */
-    statement_payment_type: 'balance' | 'interest_until_maturity';
-
-    /**
-     * The date on which the loan matures.
-     */
-    maturity_date?: string;
+    statement_payment_type?: 'balance' | 'interest_until_maturity';
 
     [k: string]: unknown;
   }
