@@ -90,7 +90,10 @@ export interface InboundCheckDepositCreateParams {
 
 export interface InboundCheckDepositAdjustmentParams {
   /**
-   * The adjustment amount in cents. Defaults to the amount of the Inbound Check
+   * The adjustment amount in cents. A positive amount means that the funds are being
+   * returned to you by the other bank and is a credit to your account, as happens
+   * for a `wrong_payee_credit`. A negative amount is a debit to your account, as
+   * happens for a `late_return`. Defaults to the amount of the Inbound Check
    * Deposit.
    */
   amount?: number;

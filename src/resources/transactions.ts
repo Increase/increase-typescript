@@ -4353,7 +4353,8 @@ export namespace Transaction {
       adjusted_transaction_id: string;
 
       /**
-       * The amount of the check adjustment.
+       * The amount of the check adjustment in USD cents. A positive amount is a credit
+       * to your account and a negative amount is a debit.
        */
       amount: number;
 
