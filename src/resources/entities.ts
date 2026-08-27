@@ -156,6 +156,12 @@ export interface Entity {
   risk_rating: Entity.RiskRating | null;
 
   /**
+   * Details of the sole proprietorship entity. Will be present if `structure` is
+   * equal to `sole_proprietorship`.
+   */
+  sole_proprietorship: Entity.SoleProprietorship | null;
+
+  /**
    * The status of the entity.
    *
    * - `active` - The entity is active.
@@ -174,8 +180,15 @@ export interface Entity {
    * - `joint` - Multiple individual people.
    * - `trust` - A trust.
    * - `government_authority` - A government authority.
+   * - `sole_proprietorship` - A sole proprietorship.
    */
-  structure: 'corporation' | 'natural_person' | 'joint' | 'trust' | 'government_authority';
+  structure:
+    | 'corporation'
+    | 'natural_person'
+    | 'joint'
+    | 'trust'
+    | 'government_authority'
+    | 'sole_proprietorship';
 
   /**
    * Additional documentation associated with the entity. This is limited to the
@@ -779,6 +792,179 @@ export namespace Entity {
      * - `high` - Elevated risk of involvement in financial crime.
      */
     rating: 'low' | 'medium' | 'high';
+  }
+
+  /**
+   * Details of the sole proprietorship entity. Will be present if `structure` is
+   * equal to `sole_proprietorship`.
+   */
+  export interface SoleProprietorship {
+    /**
+     * The sole proprietorship's address.
+     */
+    address: SoleProprietorship.Address;
+
+    /**
+     * The name under which the sole proprietorship does business.
+     */
+    doing_business_as_name: string | null;
+
+    /**
+     * An email address for the sole proprietorship.
+     */
+    email: string | null;
+
+    /**
+     * The numeric North American Industry Classification System (NAICS) code submitted
+     * for the sole proprietorship.
+     */
+    industry_code: string | null;
+
+    /**
+     * The individual who operates the sole proprietorship.
+     */
+    sole_proprietor: SoleProprietorship.SoleProprietor;
+
+    /**
+     * The Employer Identification Number (EIN) for the sole proprietorship.
+     */
+    tax_identifier: string | null;
+
+    /**
+     * The sole proprietorship's website.
+     */
+    website: string | null;
+  }
+
+  export namespace SoleProprietorship {
+    /**
+     * The sole proprietorship's address.
+     */
+    export interface Address {
+      /**
+       * The city, district, town, or village of the address.
+       */
+      city: string | null;
+
+      /**
+       * The two-letter ISO 3166-1 alpha-2 code for the country of the address.
+       */
+      country: string;
+
+      /**
+       * The first line of the address.
+       */
+      line1: string;
+
+      /**
+       * The second line of the address.
+       */
+      line2: string | null;
+
+      /**
+       * The two-letter United States Postal Service (USPS) abbreviation for the US
+       * state, province, or region of the address.
+       */
+      state: string | null;
+
+      /**
+       * The ZIP or postal code of the address.
+       */
+      zip: string | null;
+    }
+
+    /**
+     * The individual who operates the sole proprietorship.
+     */
+    export interface SoleProprietor {
+      /**
+       * The person's address.
+       */
+      address: SoleProprietor.Address;
+
+      /**
+       * The person's date of birth in YYYY-MM-DD format.
+       */
+      date_of_birth: string;
+
+      /**
+       * A means of verifying the person's identity.
+       */
+      identification: SoleProprietor.Identification | null;
+
+      /**
+       * The person's legal name.
+       */
+      name: string;
+    }
+
+    export namespace SoleProprietor {
+      /**
+       * The person's address.
+       */
+      export interface Address {
+        /**
+         * The city, district, town, or village of the address.
+         */
+        city: string | null;
+
+        /**
+         * The two-letter ISO 3166-1 alpha-2 code for the country of the address.
+         */
+        country: string;
+
+        /**
+         * The first line of the address.
+         */
+        line1: string;
+
+        /**
+         * The second line of the address.
+         */
+        line2: string | null;
+
+        /**
+         * The two-letter United States Postal Service (USPS) abbreviation for the US
+         * state, province, or region of the address.
+         */
+        state: string | null;
+
+        /**
+         * The ZIP or postal code of the address.
+         */
+        zip: string | null;
+      }
+
+      /**
+       * A means of verifying the person's identity.
+       */
+      export interface Identification {
+        /**
+         * A method that can be used to verify the individual's identity.
+         *
+         * - `social_security_number` - A social security number.
+         * - `individual_taxpayer_identification_number` - An individual taxpayer
+         *   identification number (ITIN).
+         * - `passport` - A passport number.
+         * - `drivers_license` - A driver's license number.
+         * - `other` - Another identifying document.
+         */
+        method:
+          | 'social_security_number'
+          | 'individual_taxpayer_identification_number'
+          | 'passport'
+          | 'drivers_license'
+          | 'other';
+
+        /**
+         * The last 4 digits of the identification number that can be used to verify the
+         * individual's identity.
+         */
+        number_last4: string;
+
+        [k: string]: unknown;
+      }
+    }
   }
 
   export interface TermsAgreement {
