@@ -375,7 +375,8 @@ export interface PhysicalCardCreateParams {
   card_id: string;
 
   /**
-   * Details about the cardholder, as it will appear on the physical card.
+   * Details about the cardholder, as it will appear on the physical card. The
+   * combined first name and last name cannot exceed 25 characters.
    */
   cardholder: PhysicalCardCreateParams.Cardholder;
 
@@ -395,7 +396,8 @@ export interface PhysicalCardCreateParams {
 
 export namespace PhysicalCardCreateParams {
   /**
-   * Details about the cardholder, as it will appear on the physical card.
+   * Details about the cardholder, as it will appear on the physical card. The
+   * combined first name and last name cannot exceed 25 characters.
    */
   export interface Cardholder {
     /**

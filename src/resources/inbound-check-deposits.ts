@@ -236,7 +236,8 @@ export namespace InboundCheckDeposit {
     adjusted_at: string;
 
     /**
-     * The amount of the adjustment.
+     * The amount of the adjustment in USD cents. A positive amount is a credit to your
+     * account and a negative amount is a debit.
      */
     amount: number;
 
