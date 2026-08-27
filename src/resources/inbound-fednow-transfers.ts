@@ -116,6 +116,11 @@ export interface InboundFednowTransfer {
   decline: InboundFednowTransfer.Decline | null;
 
   /**
+   * A free-form reference string set by the sender, to help identify the transfer.
+   */
+  end_to_end_identification: string | null;
+
+  /**
    * The lifecycle status of the transfer.
    *
    * - `pending_confirming` - The transfer is pending confirmation.
@@ -132,6 +137,11 @@ export interface InboundFednowTransfer {
    * confirmed.
    */
   transaction_id: string | null;
+
+  /**
+   * The FedNow network identification of the transfer.
+   */
+  transaction_identification: string | null;
 
   /**
    * A constant representing the object's type. For this resource it will always be
