@@ -80,6 +80,13 @@ export interface InboundMailItem {
   id: string;
 
   /**
+   * The identifier for the Account that checks in this mail item are deposited into.
+   * For mail items that could not be routed to a Lockbox Recipient, this will be
+   * null.
+   */
+  account_id: string | null;
+
+  /**
    * The checks in the mail item.
    */
   checks: Array<InboundMailItem.Check>;
