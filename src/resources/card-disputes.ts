@@ -110,6 +110,11 @@ export interface CardDispute {
   id: string;
 
   /**
+   * The Account that the Card Dispute is associated with.
+   */
+  account_id: string;
+
+  /**
    * The amount of the dispute.
    */
   amount: number;
