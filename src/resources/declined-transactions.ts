@@ -1514,6 +1514,8 @@ export namespace DeclinedTransaction {
        * - `entity_not_active` - The account's entity is not active.
        * - `fednow_not_enabled` - Your account is not enabled to receive FedNow
        *   transfers.
+       * - `transaction_not_allowed` - The transaction is not allowed per Increase's
+       *   terms.
        */
       reason:
         | 'account_number_canceled'
@@ -1521,7 +1523,8 @@ export namespace DeclinedTransaction {
         | 'account_restricted'
         | 'group_locked'
         | 'entity_not_active'
-        | 'fednow_not_enabled';
+        | 'fednow_not_enabled'
+        | 'transaction_not_allowed';
 
       /**
        * The identifier of the FedNow Transfer that led to this declined transaction.
