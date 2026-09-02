@@ -55,6 +55,11 @@ export interface DigitalWalletToken {
   id: string;
 
   /**
+   * The identifier for the Account this Digital Wallet Token belongs to.
+   */
+  account_id: string;
+
+  /**
    * The identifier for the Card this Digital Wallet Token belongs to.
    */
   card_id: string;

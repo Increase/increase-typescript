@@ -441,7 +441,7 @@ export namespace Transaction {
      * An Inbound Check Adjustment object. This field will be present in the JSON
      * response if and only if `category` is equal to `inbound_check_adjustment`. An
      * Inbound Check Adjustment is created when Increase receives an adjustment for a
-     * check or return deposited through Check21.
+     * check or return deposited through Check 21.
      */
     inbound_check_adjustment?: Source.InboundCheckAdjustment | null;
 
@@ -4125,7 +4125,7 @@ export namespace Transaction {
       /**
        * The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
        * bank depositing this check. In some rare cases, this is not transmitted via
-       * Check21 and the value will be null.
+       * Check 21 and the value will be null.
        */
       bank_of_first_deposit_routing_number: string | null;
 
@@ -4344,7 +4344,7 @@ export namespace Transaction {
      * An Inbound Check Adjustment object. This field will be present in the JSON
      * response if and only if `category` is equal to `inbound_check_adjustment`. An
      * Inbound Check Adjustment is created when Increase receives an adjustment for a
-     * check or return deposited through Check21.
+     * check or return deposited through Check 21.
      */
     export interface InboundCheckAdjustment {
       /**
