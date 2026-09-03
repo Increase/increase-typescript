@@ -61,6 +61,12 @@ export interface InboundWireDrawdownRequest {
   id: string;
 
   /**
+   * The Account from which the recipient of this request is being requested to send
+   * funds.
+   */
+  account_id: string;
+
+  /**
    * The amount being requested in cents.
    */
   amount: number;
