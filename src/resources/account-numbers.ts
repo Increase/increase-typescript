@@ -157,7 +157,7 @@ export namespace AccountNumber {
   export interface InboundACH {
     /**
      * Whether ACH debits are allowed against this Account Number. Note that they will
-     * still be declined if this is `allowed` if the Account Number is not active.
+     * still be declined if this is `allowed` but the Account Number is not active.
      *
      * - `allowed` - ACH Debits are allowed.
      * - `blocked` - ACH Debits are blocked.
