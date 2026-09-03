@@ -974,7 +974,7 @@ export namespace Entity {
     agreed_at: string;
 
     /**
-     * The IP address the Entity accessed reviewed the terms from.
+     * The IP address the Entity reviewed the terms from.
      */
     ip_address: string | null;
 
@@ -1436,8 +1436,15 @@ export interface EntityCreateParams {
    * - `joint` - Multiple individual people.
    * - `trust` - A trust.
    * - `government_authority` - A government authority.
+   * - `sole_proprietorship` - A sole proprietorship.
    */
-  structure: 'corporation' | 'natural_person' | 'joint' | 'trust' | 'government_authority';
+  structure:
+    | 'corporation'
+    | 'natural_person'
+    | 'joint'
+    | 'trust'
+    | 'government_authority'
+    | 'sole_proprietorship';
 
   /**
    * Details of the corporation entity to create. Required if `structure` is equal to
@@ -1475,6 +1482,12 @@ export interface EntityCreateParams {
    * such as money laundering.
    */
   risk_rating?: EntityCreateParams.RiskRating;
+
+  /**
+   * Details of the sole proprietorship entity to create. Required if `structure` is
+   * equal to `sole_proprietorship`.
+   */
+  sole_proprietorship?: EntityCreateParams.SoleProprietorship;
 
   /**
    * Additional documentation associated with the entity.
@@ -1746,8 +1759,7 @@ export namespace EntityCreateParams {
            * An identification number that can be used to verify the individual's identity,
            * such as a social security number. For Social Security Numbers and Individual
            * Taxpayer Identification Numbers, submit nine digits with no dashes or other
-           * separators. When testing in sandbox, use one of our
-           * [sandbox test values](https://increase.com/documentation/sandbox-test-values).
+           * separators.
            */
           number: string;
 
@@ -1865,9 +1877,7 @@ export namespace EntityCreateParams {
     export interface LegalIdentifier {
       /**
        * The legal identifier itself. For US Employer Identification Numbers, submit nine
-       * digits with no dashes or other separators. When testing in sandbox, use one of
-       * our
-       * [sandbox test values](https://increase.com/documentation/sandbox-test-values).
+       * digits with no dashes or other separators.
        */
       value: string;
 
@@ -2077,8 +2087,7 @@ export namespace EntityCreateParams {
          * An identification number that can be used to verify the individual's identity,
          * such as a social security number. For Social Security Numbers and Individual
          * Taxpayer Identification Numbers, submit nine digits with no dashes or other
-         * separators. When testing in sandbox, use one of our
-         * [sandbox test values](https://increase.com/documentation/sandbox-test-values).
+         * separators.
          */
         number: string;
 
@@ -2290,8 +2299,7 @@ export namespace EntityCreateParams {
        * An identification number that can be used to verify the individual's identity,
        * such as a social security number. For Social Security Numbers and Individual
        * Taxpayer Identification Numbers, submit nine digits with no dashes or other
-       * separators. When testing in sandbox, use one of our
-       * [sandbox test values](https://increase.com/documentation/sandbox-test-values).
+       * separators.
        */
       number: string;
 
@@ -2421,6 +2429,182 @@ export namespace EntityCreateParams {
     rating: 'low' | 'medium' | 'high';
   }
 
+  /**
+   * Details of the sole proprietorship entity to create. Required if `structure` is
+   * equal to `sole_proprietorship`.
+   */
+  export interface SoleProprietorship {
+    /**
+     * The sole proprietorship's business address. Mail receiving locations like PO
+     * Boxes and PMB's are disallowed.
+     */
+    address: SoleProprietorship.Address;
+
+    /**
+     * The individual who operates the sole proprietorship.
+     */
+    sole_proprietor: SoleProprietorship.SoleProprietor;
+
+    /**
+     * The name under which the sole proprietorship does business, if it is different
+     * from the name of the sole proprietor.
+     */
+    doing_business_as_name?: string;
+
+    /**
+     * An email address for the sole proprietorship. Not every program requires an
+     * email for submitted Entities.
+     */
+    email?: string;
+
+    /**
+     * The North American Industry Classification System (NAICS) code for the sole
+     * proprietorship's primary line of business. This is a number, like `5132` for
+     * `Software Publishers`. A full list of classification codes is available
+     * [here](https://increase.com/documentation/data-dictionary#north-american-industry-classification-system-codes).
+     */
+    industry_code?: string;
+
+    /**
+     * The United States Employer Identification Number (EIN) for the sole
+     * proprietorship, if the sole proprietor has one. Submit nine digits with no
+     * dashes or other separators.
+     */
+    tax_identifier?: string;
+
+    /**
+     * A website for the sole proprietorship. Not every program requires a website for
+     * submitted Entities.
+     */
+    website?: string;
+  }
+
+  export namespace SoleProprietorship {
+    /**
+     * The sole proprietorship's business address. Mail receiving locations like PO
+     * Boxes and PMB's are disallowed.
+     */
+    export interface Address {
+      /**
+       * The city of the address.
+       */
+      city: string;
+
+      /**
+       * The first line of the address. This is usually the street number and street.
+       */
+      line1: string;
+
+      /**
+       * The two-letter United States Postal Service (USPS) abbreviation for the state of
+       * the address.
+       */
+      state: string;
+
+      /**
+       * The ZIP code of the address.
+       */
+      zip: string;
+
+      /**
+       * The second line of the address. This might be the floor or room number.
+       */
+      line2?: string;
+    }
+
+    /**
+     * The individual who operates the sole proprietorship.
+     */
+    export interface SoleProprietor {
+      /**
+       * The individual's physical address. Mail receiving locations like PO Boxes and
+       * PMB's are disallowed.
+       */
+      address: SoleProprietor.Address;
+
+      /**
+       * The person's date of birth in YYYY-MM-DD format.
+       */
+      date_of_birth: string;
+
+      /**
+       * A means of verifying the person's identity. Sole proprietors must be identified
+       * with a `social_security_number` or an
+       * `individual_taxpayer_identification_number`.
+       */
+      identification: SoleProprietor.Identification;
+
+      /**
+       * The person's legal name.
+       */
+      name: string;
+    }
+
+    export namespace SoleProprietor {
+      /**
+       * The individual's physical address. Mail receiving locations like PO Boxes and
+       * PMB's are disallowed.
+       */
+      export interface Address {
+        /**
+         * The city, district, town, or village of the address.
+         */
+        city: string;
+
+        /**
+         * The two-letter ISO 3166-1 alpha-2 code for the country of the address.
+         *
+         * Defaults to `US`.
+         */
+        country: string;
+
+        /**
+         * The first line of the address. This is usually the street number and street.
+         */
+        line1: string;
+
+        /**
+         * The second line of the address. This might be the floor or room number.
+         */
+        line2?: string;
+
+        /**
+         * The two-letter United States Postal Service (USPS) abbreviation for the US
+         * state, province, or region of the address. Required in certain countries.
+         */
+        state?: string;
+
+        /**
+         * The ZIP or postal code of the address. Required in certain countries.
+         */
+        zip?: string;
+      }
+
+      /**
+       * A means of verifying the person's identity. Sole proprietors must be identified
+       * with a `social_security_number` or an
+       * `individual_taxpayer_identification_number`.
+       */
+      export interface Identification {
+        /**
+         * A method that can be used to verify the individual's identity.
+         *
+         * - `social_security_number` - A social security number.
+         * - `individual_taxpayer_identification_number` - An individual taxpayer
+         *   identification number (ITIN).
+         */
+        method: 'social_security_number' | 'individual_taxpayer_identification_number';
+
+        /**
+         * An identification number that can be used to verify the individual's identity,
+         * such as a social security number. Submit nine digits with no dashes or other
+         * separators.
+         */
+        number: string;
+      }
+    }
+  }
+
   export interface SupplementalDocument {
     /**
      * The identifier of the File containing the document.
@@ -2435,7 +2619,7 @@ export namespace EntityCreateParams {
     agreed_at: string;
 
     /**
-     * The IP address the Entity accessed reviewed the terms from.
+     * The IP address the Entity reviewed the terms from.
      */
     ip_address: string;
 
@@ -2671,8 +2855,7 @@ export namespace EntityCreateParams {
            * An identification number that can be used to verify the individual's identity,
            * such as a social security number. For Social Security Numbers and Individual
            * Taxpayer Identification Numbers, submit nine digits with no dashes or other
-           * separators. When testing in sandbox, use one of our
-           * [sandbox test values](https://increase.com/documentation/sandbox-test-values).
+           * separators.
            */
           number: string;
 
@@ -2881,8 +3064,7 @@ export namespace EntityCreateParams {
          * An identification number that can be used to verify the individual's identity,
          * such as a social security number. For Social Security Numbers and Individual
          * Taxpayer Identification Numbers, submit nine digits with no dashes or other
-         * separators. When testing in sandbox, use one of our
-         * [sandbox test values](https://increase.com/documentation/sandbox-test-values).
+         * separators.
          */
         number: string;
 
@@ -3307,8 +3489,7 @@ export namespace EntityUpdateParams {
        * An identification number that can be used to verify the individual's identity,
        * such as a social security number. For Social Security Numbers and Individual
        * Taxpayer Identification Numbers, submit nine digits with no dashes or other
-       * separators. When testing in sandbox, use one of our
-       * [sandbox test values](https://increase.com/documentation/sandbox-test-values).
+       * separators.
        */
       number: string;
 
@@ -3445,7 +3626,7 @@ export namespace EntityUpdateParams {
     agreed_at: string;
 
     /**
-     * The IP address the Entity accessed reviewed the terms from.
+     * The IP address the Entity reviewed the terms from.
      */
     ip_address: string;
 
@@ -3640,8 +3821,7 @@ export namespace EntityUpdateParams {
          * An identification number that can be used to verify the individual's identity,
          * such as a social security number. For Social Security Numbers and Individual
          * Taxpayer Identification Numbers, submit nine digits with no dashes or other
-         * separators. When testing in sandbox, use one of our
-         * [sandbox test values](https://increase.com/documentation/sandbox-test-values).
+         * separators.
          */
         number: string;
 
@@ -3866,8 +4046,7 @@ export namespace EntityUpdateParams {
            * An identification number that can be used to verify the individual's identity,
            * such as a social security number. For Social Security Numbers and Individual
            * Taxpayer Identification Numbers, submit nine digits with no dashes or other
-           * separators. When testing in sandbox, use one of our
-           * [sandbox test values](https://increase.com/documentation/sandbox-test-values).
+           * separators.
            */
           number: string;
 

@@ -24,6 +24,7 @@ describe('resource programs', () => {
       name: 'For Benefit Of',
       bank: 'core_bank',
       lending_maximum_extendable_credit: 0,
+      loan_accounts_require_loan_offers: true,
       reserve_account_id: 'reserve_account_id',
     });
   });
