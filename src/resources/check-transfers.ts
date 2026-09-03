@@ -895,7 +895,9 @@ export namespace CheckTransferCreateParams {
     check_voucher_image_file_id?: string;
 
     /**
-     * The descriptor that will be printed on the letter included with the check.
+     * A few paragraphs of text printed on the letter included with the check. It can
+     * contain at most 22 lines. Paragraphs will wrap at about 120 characters, but
+     * depending on your exact message, it might be slightly more or slightly less.
      */
     note?: string;
 
