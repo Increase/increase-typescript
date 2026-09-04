@@ -42,7 +42,7 @@ export class EntityOnboardingSessions extends APIResource {
   }
 
   /**
-   * List Entity Onboarding Session
+   * List Entity Onboarding Sessions
    *
    * @example
    * ```ts
@@ -188,7 +188,7 @@ export interface EntityOnboardingSessionListParams extends PageParams {
 export namespace EntityOnboardingSessionListParams {
   export interface Status {
     /**
-     * Filter Entity Onboarding Session for those with the specified status or
+     * Filter Entity Onboarding Sessions for those with the specified status or
      * statuses. For GET requests, this should be encoded as a comma-delimited string,
      * such as `?in=one,two,three`.
      */

@@ -677,7 +677,7 @@ export interface WireTransferCreateParams {
   routing_number?: string;
 
   /**
-   * The ID of an Account Number that will be passed to the wire's recipient
+   * The ID of an Account Number that will be passed to the wire's recipient.
    */
   source_account_number_id?: string;
 
