@@ -110,7 +110,7 @@ export interface CardToken {
  */
 export interface CardTokenCapabilities {
   /**
-   * Each route represent a path e.g., a push transfer can take.
+   * Each route represents a path e.g., a push transfer can take.
    */
   routes: Array<CardTokenCapabilities.Route>;
 
