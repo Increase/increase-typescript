@@ -186,6 +186,13 @@ export interface FednowTransfer {
   rejection: FednowTransfer.Rejection | null;
 
   /**
+   * If the transfer is returned by the recipient's bank, this will contain details
+   * of each return. FedNow allows returning part of a transfer, so a transfer can be
+   * returned more than once.
+   */
+  returns: Array<FednowTransfer.Return>;
+
+  /**
    * The destination American Bankers' Association (ABA) Routing Transit Number
    * (RTN).
    */
@@ -202,7 +209,6 @@ export interface FednowTransfer {
    * - `pending_submitting` - The transfer is queued to be submitted to FedNow.
    * - `pending_reviewing` - The transfer is pending review by Increase.
    * - `canceled` - The transfer has been canceled.
-   * - `reviewing_rejected` - The transfer has been rejected by Increase.
    * - `requires_attention` - The transfer requires attention from an Increase
    *   operator.
    * - `pending_approval` - The transfer is pending approval.
@@ -210,17 +216,18 @@ export interface FednowTransfer {
    *   from FedNow.
    * - `complete` - The transfer has been sent successfully and is complete.
    * - `rejected` - The transfer was rejected by the network or the recipient's bank.
+   * - `returned` - The transfer was returned by the recipient's bank.
    */
   status:
     | 'pending_submitting'
     | 'pending_reviewing'
     | 'canceled'
-    | 'reviewing_rejected'
     | 'requires_attention'
     | 'pending_approval'
     | 'pending_response'
     | 'complete'
-    | 'rejected';
+    | 'rejected'
+    | 'returned';
 
   /**
    * After the transfer is submitted to FedNow, this will contain supplemental
@@ -446,6 +453,82 @@ export namespace FednowTransfer {
   }
 
   /**
+   * A FedNow Transfer Return is created when a FedNow Transfer sent from Increase is
+   * returned by the recipient's bank.
+   */
+  export interface Return {
+    /**
+     * The returned amount in USD cents. This is always a positive number.
+     */
+    amount: number;
+
+    /**
+     * Additional information about the return provided by the recipient's bank.
+     */
+    return_reason_additional_information: string | null;
+
+    /**
+     * The reason the transfer was returned as provided by the recipient's bank.
+     *
+     * - `account_closed` - The destination account is closed. Corresponds to the
+     *   FedNow reason codes `AC04` and `AC07`.
+     * - `account_blocked` - The destination account is currently blocked from
+     *   receiving transactions. Corresponds to the FedNow reason code `AC06`.
+     * - `invalid_agent` - The recipient's bank was not a valid agent for this
+     *   transfer. Corresponds to the FedNow reason codes `AC14` and `AGNT`.
+     * - `invalid_creditor_account_number` - The destination account does not exist.
+     *   Corresponds to the FedNow reason code `AC03`.
+     * - `incorrect_account_number` - The destination account number was incorrect.
+     *   Corresponds to the FedNow reason code `AC01`.
+     * - `end_customer_deceased` - The destination account holder is deceased.
+     *   Corresponds to the FedNow reason code `MD07`.
+     * - `transaction_forbidden` - The transfer was not permitted by the recipient's
+     *   bank. Corresponds to the FedNow reason code `AG01`.
+     * - `regulatory_reason` - The transfer was returned for a regulatory reason at the
+     *   recipient's bank. Corresponds to the FedNow reason code `RR04`.
+     * - `fraud` - The transfer was reported as fraudulent. Corresponds to the FedNow
+     *   reason code `FR01`.
+     * - `duplication` - The transfer duplicated another transfer. Corresponds to the
+     *   FedNow reason codes `AM05` and `DUPL`.
+     * - `wrong_amount` - The transfer amount was incorrect. Corresponds to the FedNow
+     *   reason code `AM09`.
+     * - `requested_by_customer` - The transfer was returned at the request of the
+     *   recipient's customer. Corresponds to the FedNow reason code `CUST`.
+     * - `unable_to_apply` - The recipient's bank could not apply the funds.
+     *   Corresponds to the FedNow reason code `RUTA`.
+     * - `not_specified` - The recipient's bank did not specify a reason. Corresponds
+     *   to the FedNow reason codes `MS02` and `MS03`.
+     * - `narrative` - The reason is provided as narrative information in the
+     *   additional information field. Corresponds to the FedNow reason code `NARR`.
+     * - `other` - The transfer was returned for some other reason.
+     */
+    return_reason_code:
+      | 'account_closed'
+      | 'account_blocked'
+      | 'invalid_agent'
+      | 'invalid_creditor_account_number'
+      | 'incorrect_account_number'
+      | 'end_customer_deceased'
+      | 'transaction_forbidden'
+      | 'regulatory_reason'
+      | 'fraud'
+      | 'duplication'
+      | 'wrong_amount'
+      | 'requested_by_customer'
+      | 'unable_to_apply'
+      | 'not_specified'
+      | 'narrative'
+      | 'other';
+
+    /**
+     * The identifier of the FedNow Transfer that led to this Transaction.
+     */
+    transfer_id: string;
+
+    [k: string]: unknown;
+  }
+
+  /**
    * After the transfer is submitted to FedNow, this will contain supplemental
    * details.
    */
@@ -635,12 +718,12 @@ export namespace FednowTransferListParams {
       | 'pending_submitting'
       | 'pending_reviewing'
       | 'canceled'
-      | 'reviewing_rejected'
       | 'requires_attention'
       | 'pending_approval'
       | 'pending_response'
       | 'complete'
       | 'rejected'
+      | 'returned'
     >;
   }
 }
