@@ -151,7 +151,7 @@ export interface InboundWireTransfer {
   debtor_name: string | null;
 
   /**
-   * The American Banking Association (ABA) routing number of the sender.
+   * The American Bankers' Association (ABA) routing number of the sender.
    */
   debtor_routing_number: string | null;
 
@@ -173,7 +173,7 @@ export interface InboundWireTransfer {
   input_message_accountability_data: string | null;
 
   /**
-   * The American Banking Association (ABA) routing number of the bank that sent the
+   * The American Bankers' Association (ABA) routing number of the bank that sent the
    * wire.
    */
   instructing_agent_routing_number: string | null;

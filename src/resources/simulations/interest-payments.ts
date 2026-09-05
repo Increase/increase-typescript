@@ -29,7 +29,7 @@ export class InterestPayments extends APIResource {
 
 export interface InterestPaymentCreateParams {
   /**
-   * The identifier of the Account the Interest Payment should be paid to is for.
+   * The identifier of the Account the Interest Payment should be paid to.
    */
   account_id: string;
 

@@ -167,7 +167,7 @@ export interface LockboxRecipientCreateParams {
   description?: string;
 
   /**
-   * The name of the Lockbox Recipient
+   * The name of the Lockbox Recipient.
    */
   recipient_name?: string;
 
