@@ -46,7 +46,13 @@ export interface ProgramCreateParams {
   lending_maximum_extendable_credit?: number;
 
   /**
-   * The identifier of the Account the Program should be added to is for.
+   * Whether opening a loan Account under this Program requires an accepted Loan
+   * Offer. Requires `lending_maximum_extendable_credit`. Defaults to `false`.
+   */
+  loan_accounts_require_loan_offers?: boolean;
+
+  /**
+   * The identifier of the Account the Program should be added to.
    */
   reserve_account_id?: string;
 

@@ -103,7 +103,7 @@ export interface IntrafiExclusion {
   entity_id: string;
 
   /**
-   * When this was exclusion was confirmed by IntraFi.
+   * When this exclusion was confirmed by IntraFi.
    */
   excluded_at: string | null;
 
@@ -132,7 +132,7 @@ export interface IntrafiExclusion {
   status: 'pending' | 'completed' | 'archived' | 'ineligible';
 
   /**
-   * When this was exclusion was submitted to IntraFi by Increase.
+   * When this exclusion was submitted to IntraFi by Increase.
    */
   submitted_at: string | null;
 

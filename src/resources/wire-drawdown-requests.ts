@@ -91,6 +91,12 @@ export interface WireDrawdownRequest {
   id: string;
 
   /**
+   * The Account to which the debtor—the recipient of this request—is being requested
+   * to send funds.
+   */
+  account_id: string;
+
+  /**
    * The Account Number to which the debtor—the recipient of this request—is being
    * requested to send funds.
    */

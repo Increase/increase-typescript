@@ -48,13 +48,13 @@ export namespace EntityUpdateValidationParams {
      *
      * - `entity_tax_identifier` - The entity's tax identifier could not be verified.
      *   Update the tax ID with the
-     *   [update an entity API](/documentation/api/entities#update-an-entity.corporation.legal_identifier).
+     *   [update an entity API](/documentation/api/entities#update-an-entity).
      * - `entity_address` - The entity's address could not be validated. Update the
      *   address with the
-     *   [update an entity API](/documentation/api/entities#update-an-entity.corporation.address).
+     *   [update an entity API](/documentation/api/entities#update-an-entity).
      * - `entity_identity` - The entity's identity could not be verified. Update the
      *   identification with the
-     *   [update an entity API](/documentation/api/entities#update-an-entity.natural_person.identification).
+     *   [update an entity API](/documentation/api/entities#update-an-entity).
      * - `beneficial_owner_identity` - A beneficial owner's identity could not be
      *   verified. Update the identification with the
      *   [update a beneficial owner API](/documentation/api/beneficial-owners#update-a-beneficial-owner).

@@ -41,16 +41,16 @@ export interface CardDisputeActionParams {
   network: 'visa';
 
   /**
-   * The Visa-specific parameters for the taking action on the dispute. Required if
-   * and only if `network` is `visa`.
+   * The Visa-specific parameters for taking action on the dispute. Required if and
+   * only if `network` is `visa`.
    */
   visa?: CardDisputeActionParams.Visa;
 }
 
 export namespace CardDisputeActionParams {
   /**
-   * The Visa-specific parameters for the taking action on the dispute. Required if
-   * and only if `network` is `visa`.
+   * The Visa-specific parameters for taking action on the dispute. Required if and
+   * only if `network` is `visa`.
    */
   export interface Visa {
     /**

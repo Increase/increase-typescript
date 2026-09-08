@@ -599,9 +599,9 @@ export namespace RealTimeDecision {
     account_id: string;
 
     /**
-     * Additional amounts associated with the card authorization, such as ATM
-     * surcharges fees. These are usually a subset of the `amount` field and are used
-     * to provide more detailed information about the transaction.
+     * Additional amounts associated with the card authorization, such as ATM surcharge
+     * fees. These are usually a subset of the `amount` field and are used to provide
+     * more detailed information about the transaction.
      */
     additional_amounts: CardAuthorization.AdditionalAmounts;
 
@@ -822,9 +822,9 @@ export namespace RealTimeDecision {
 
   export namespace CardAuthorization {
     /**
-     * Additional amounts associated with the card authorization, such as ATM
-     * surcharges fees. These are usually a subset of the `amount` field and are used
-     * to provide more detailed information about the transaction.
+     * Additional amounts associated with the card authorization, such as ATM surcharge
+     * fees. These are usually a subset of the `amount` field and are used to provide
+     * more detailed information about the transaction.
      */
     export interface AdditionalAmounts {
       /**
@@ -1498,9 +1498,9 @@ export namespace RealTimeDecision {
     account_id: string;
 
     /**
-     * Additional amounts associated with the card authorization, such as ATM
-     * surcharges fees. These are usually a subset of the `amount` field and are used
-     * to provide more detailed information about the transaction.
+     * Additional amounts associated with the card authorization, such as ATM surcharge
+     * fees. These are usually a subset of the `amount` field and are used to provide
+     * more detailed information about the transaction.
      */
     additional_amounts: CardBalanceInquiry.AdditionalAmounts;
 
@@ -1612,9 +1612,9 @@ export namespace RealTimeDecision {
 
   export namespace CardBalanceInquiry {
     /**
-     * Additional amounts associated with the card authorization, such as ATM
-     * surcharges fees. These are usually a subset of the `amount` field and are used
-     * to provide more detailed information about the transaction.
+     * Additional amounts associated with the card authorization, such as ATM surcharge
+     * fees. These are usually a subset of the `amount` field and are used to provide
+     * more detailed information about the transaction.
      */
     export interface AdditionalAmounts {
       /**

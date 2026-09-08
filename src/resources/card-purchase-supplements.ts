@@ -57,6 +57,11 @@ export interface CardPurchaseSupplement {
   id: string;
 
   /**
+   * The identifier for the Account the Card Purchase Supplement belongs to.
+   */
+  account_id: string;
+
+  /**
    * The ID of the Card Payment this transaction belongs to.
    */
   card_payment_id: string | null;

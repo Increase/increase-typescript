@@ -100,6 +100,11 @@ export interface PhysicalCard {
   id: string;
 
   /**
+   * The identifier for the Account this Physical Card belongs to.
+   */
+  account_id: string;
+
+  /**
    * The identifier for the Card this Physical Card represents.
    */
   card_id: string;

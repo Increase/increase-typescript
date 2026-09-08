@@ -350,9 +350,9 @@ export namespace DeclinedTransaction {
       actioner: 'user' | 'increase' | 'network';
 
       /**
-       * Additional amounts associated with the card authorization, such as ATM
-       * surcharges fees. These are usually a subset of the `amount` field and are used
-       * to provide more detailed information about the transaction.
+       * Additional amounts associated with the card authorization, such as ATM surcharge
+       * fees. These are usually a subset of the `amount` field and are used to provide
+       * more detailed information about the transaction.
        */
       additional_amounts: CardDecline.AdditionalAmounts;
 
@@ -626,9 +626,9 @@ export namespace DeclinedTransaction {
 
     export namespace CardDecline {
       /**
-       * Additional amounts associated with the card authorization, such as ATM
-       * surcharges fees. These are usually a subset of the `amount` field and are used
-       * to provide more detailed information about the transaction.
+       * Additional amounts associated with the card authorization, such as ATM surcharge
+       * fees. These are usually a subset of the `amount` field and are used to provide
+       * more detailed information about the transaction.
        */
       export interface AdditionalAmounts {
         /**
@@ -1514,6 +1514,8 @@ export namespace DeclinedTransaction {
        * - `entity_not_active` - The account's entity is not active.
        * - `fednow_not_enabled` - Your account is not enabled to receive FedNow
        *   transfers.
+       * - `transaction_not_allowed` - The transaction is not allowed per Increase's
+       *   terms.
        */
       reason:
         | 'account_number_canceled'
@@ -1521,7 +1523,8 @@ export namespace DeclinedTransaction {
         | 'account_restricted'
         | 'group_locked'
         | 'entity_not_active'
-        | 'fednow_not_enabled';
+        | 'fednow_not_enabled'
+        | 'transaction_not_allowed';
 
       /**
        * The identifier of the FedNow Transfer that led to this declined transaction.

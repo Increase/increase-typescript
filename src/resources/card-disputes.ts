@@ -110,6 +110,11 @@ export interface CardDispute {
   id: string;
 
   /**
+   * The Account that the Card Dispute is associated with.
+   */
+  account_id: string;
+
+  /**
    * The amount of the dispute.
    */
   amount: number;
@@ -6815,6 +6820,8 @@ export namespace CardDisputeSubmitUserSubmissionParams {
        */
       export interface CategoryChange {
         /**
+         * The category the dispute is being changed to.
+         *
          * - `authorization` - Authorization.
          * - `consumer_canceled_merchandise` - Consumer: canceled merchandise.
          * - `consumer_canceled_recurring_transaction` - Consumer: canceled recurring

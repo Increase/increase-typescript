@@ -518,9 +518,9 @@ export namespace PendingTransaction {
       actioner: 'user' | 'increase' | 'network';
 
       /**
-       * Additional amounts associated with the card authorization, such as ATM
-       * surcharges fees. These are usually a subset of the `amount` field and are used
-       * to provide more detailed information about the transaction.
+       * Additional amounts associated with the card authorization, such as ATM surcharge
+       * fees. These are usually a subset of the `amount` field and are used to provide
+       * more detailed information about the transaction.
        */
       additional_amounts: CardAuthorization.AdditionalAmounts;
 
@@ -561,8 +561,8 @@ export namespace PendingTransaction {
       direction: 'settlement' | 'refund';
 
       /**
-       * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) when this authorization
-       * will expire and the pending transaction will be released.
+       * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which this
+       * authorization will expire and the pending transaction will be released.
        */
       expires_at: string;
 
@@ -730,9 +730,9 @@ export namespace PendingTransaction {
 
     export namespace CardAuthorization {
       /**
-       * Additional amounts associated with the card authorization, such as ATM
-       * surcharges fees. These are usually a subset of the `amount` field and are used
-       * to provide more detailed information about the transaction.
+       * Additional amounts associated with the card authorization, such as ATM surcharge
+       * fees. These are usually a subset of the `amount` field and are used to provide
+       * more detailed information about the transaction.
        */
       export interface AdditionalAmounts {
         /**
@@ -1800,9 +1800,8 @@ export namespace PendingTransactionListParams {
   export interface Status {
     /**
      * Filter Pending Transactions for those with the specified status. By default only
-     * Pending Transactions in with status `pending` will be returned. For GET
-     * requests, this should be encoded as a comma-delimited string, such as
-     * `?in=one,two,three`.
+     * Pending Transactions with status `pending` will be returned. For GET requests,
+     * this should be encoded as a comma-delimited string, such as `?in=one,two,three`.
      */
     in?: Array<'pending' | 'complete'>;
   }

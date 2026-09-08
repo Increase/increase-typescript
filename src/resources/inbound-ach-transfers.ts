@@ -213,7 +213,7 @@ export interface InboundACHTransfer {
   originator_company_name: string;
 
   /**
-   * The American Banking Association (ABA) routing number of the bank originating
+   * The American Bankers' Association (ABA) routing number of the bank originating
    * the transfer.
    */
   originator_routing_number: string;

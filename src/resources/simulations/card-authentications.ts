@@ -117,7 +117,7 @@ export interface CardAuthenticationCreateParams {
   merchant_country?: string;
 
   /**
-   * The name of the merchant
+   * The name of the merchant.
    */
   merchant_name?: string;
 
