@@ -1585,6 +1585,8 @@ export namespace DeclinedTransaction {
        * - `entity_not_active` - The account's entity is not active.
        * - `real_time_payments_not_enabled` - Your account is not enabled to receive
        *   Real-Time Payments transfers.
+       * - `transaction_not_allowed` - The transaction is not allowed per Increase's
+       *   terms.
        */
       reason:
         | 'account_number_canceled'
@@ -1592,7 +1594,8 @@ export namespace DeclinedTransaction {
         | 'account_restricted'
         | 'group_locked'
         | 'entity_not_active'
-        | 'real_time_payments_not_enabled';
+        | 'real_time_payments_not_enabled'
+        | 'transaction_not_allowed';
 
       /**
        * The Real-Time Payments network identification of the declined transfer.
