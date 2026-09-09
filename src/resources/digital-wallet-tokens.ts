@@ -92,6 +92,11 @@ export interface DigitalWalletToken {
   dynamic_primary_account_number: DigitalWalletToken.DynamicPrimaryAccountNumber | null;
 
   /**
+   * The reference identifier assigned by the card network to the underlying Card.
+   */
+  primary_account_number_reference_identifier: string;
+
+  /**
    * This indicates if payments can be made with the Digital Wallet Token.
    *
    * - `active` - The digital wallet token is active.
@@ -102,6 +107,11 @@ export interface DigitalWalletToken {
    * - `declined` - The digital wallet token was declined during provisioning.
    */
   status: 'active' | 'inactive' | 'suspended' | 'deactivated' | 'declined';
+
+  /**
+   * The reference identifier assigned by the card network to the token.
+   */
+  token_reference_identifier: string;
 
   /**
    * The digital wallet app being used.
