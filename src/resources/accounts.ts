@@ -296,17 +296,6 @@ export namespace BalanceLookup {
    */
   export interface Loan {
     /**
-     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the loan
-     * payment is due.
-     */
-    due_at: string | null;
-
-    /**
-     * The total amount due on the loan.
-     */
-    due_balance: number;
-
-    /**
      * The fees on the loan that are due and unpaid.
      */
     due_fees: number | null;
@@ -336,32 +325,7 @@ export namespace BalanceLookup {
      */
     not_due_principal: number | null;
 
-    /**
-     * The amount past due on the loan.
-     */
-    past_due_balance: number;
-
-    /**
-     * The receivables balances for the loan.
-     */
-    receivables: Loan.Receivables | null;
-  }
-
-  export namespace Loan {
-    /**
-     * The receivables balances for the loan.
-     */
-    export interface Receivables {
-      /**
-       * The balance of seasoned receivables available to be purchased.
-       */
-      purchasable_balance: number;
-
-      /**
-       * The balance of receivables that have been purchased.
-       */
-      purchased_balance: number;
-    }
+    [k: string]: unknown;
   }
 }
 
