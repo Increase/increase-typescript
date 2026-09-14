@@ -210,6 +210,9 @@ export namespace Transaction {
      * - `blockchain_offramp_transfer_settlement` - Blockchain Off-Ramp Transfer
      *   Settlement: details will be under the `blockchain_offramp_transfer_settlement`
      *   object.
+     * - `uk_faster_payment_system_transfer_acceptance` - UK Faster Payment System
+     *   Transfer Acceptance: details will be under the
+     *   `uk_faster_payment_system_transfer_acceptance` object.
      * - `other` - The Transaction was made for an undocumented or deprecated reason.
      */
     category:
@@ -251,6 +254,7 @@ export namespace Transaction {
       | 'account_revenue_payment'
       | 'blockchain_onramp_transfer_intention'
       | 'blockchain_offramp_transfer_settlement'
+      | 'uk_faster_payment_system_transfer_acceptance'
       | 'other';
 
     /**
@@ -559,6 +563,15 @@ export namespace Transaction {
      * Return is created when a Swift Transfer is returned by the receiving bank.
      */
     swift_transfer_return?: Source.SwiftTransferReturn | null;
+
+    /**
+     * An UK Faster Payment System Transfer Acceptance object. This field will be
+     * present in the JSON response if and only if `category` is equal to
+     * `uk_faster_payment_system_transfer_acceptance`. A UK Faster Payment System
+     * Transfer Acceptance is created when a UK Faster Payment System Transfer sent
+     * from Increase is accepted by the recipient's bank.
+     */
+    uk_faster_payment_system_transfer_acceptance?: Source.UkFasterPaymentSystemTransferAcceptance | null;
 
     /**
      * A Wire Transfer Intention object. This field will be present in the JSON
@@ -4959,6 +4972,28 @@ export namespace Transaction {
     }
 
     /**
+     * An UK Faster Payment System Transfer Acceptance object. This field will be
+     * present in the JSON response if and only if `category` is equal to
+     * `uk_faster_payment_system_transfer_acceptance`. A UK Faster Payment System
+     * Transfer Acceptance is created when a UK Faster Payment System Transfer sent
+     * from Increase is accepted by the recipient's bank.
+     */
+    export interface UkFasterPaymentSystemTransferAcceptance {
+      /**
+       * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+       * the recipient's bank accepted the transfer.
+       */
+      accepted_at: string;
+
+      /**
+       * The transfer amount in USD cents.
+       */
+      settlement_amount: number;
+
+      [k: string]: unknown;
+    }
+
+    /**
      * A Wire Transfer Intention object. This field will be present in the JSON
      * response if and only if `category` is equal to `wire_transfer_intention`. A Wire
      * Transfer initiated via Increase and sent to a different bank.
@@ -5056,6 +5091,7 @@ export namespace TransactionListParams {
       | 'account_revenue_payment'
       | 'blockchain_onramp_transfer_intention'
       | 'blockchain_offramp_transfer_settlement'
+      | 'uk_faster_payment_system_transfer_acceptance'
       | 'other'
     >;
   }
