@@ -229,6 +229,11 @@ export namespace PendingTransaction {
      *   `blockchain_onramp_transfer_instruction` object.
      * - `blockchain_offramp_transfer` - Blockchain Off-Ramp Transfer: details will be
      *   under the `blockchain_offramp_transfer` object.
+     * - `uk_faster_payment_system_transfer_instruction` - UK Faster Payment System
+     *   Transfer Instruction: details will be under the
+     *   `uk_faster_payment_system_transfer_instruction` object.
+     * - `sepa_instant_transfer_instruction` - SEPA Instant Transfer Instruction:
+     *   details will be under the `sepa_instant_transfer_instruction` object.
      * - `other` - The Pending Transaction was made for an undocumented or deprecated
      *   reason.
      */
@@ -248,6 +253,8 @@ export namespace PendingTransaction {
       | 'card_push_transfer_instruction'
       | 'blockchain_onramp_transfer_instruction'
       | 'blockchain_offramp_transfer'
+      | 'uk_faster_payment_system_transfer_instruction'
+      | 'sepa_instant_transfer_instruction'
       | 'other';
 
     /**
@@ -339,10 +346,24 @@ export namespace PendingTransaction {
     real_time_payments_transfer_instruction?: Source.RealTimePaymentsTransferInstruction | null;
 
     /**
+     * A SEPA Instant Transfer Instruction object. This field will be present in the
+     * JSON response if and only if `category` is equal to
+     * `sepa_instant_transfer_instruction`.
+     */
+    sepa_instant_transfer_instruction?: Source.SepaInstantTransferInstruction | null;
+
+    /**
      * A Swift Transfer Instruction object. This field will be present in the JSON
      * response if and only if `category` is equal to `swift_transfer_instruction`.
      */
     swift_transfer_instruction?: Source.SwiftTransferInstruction | null;
+
+    /**
+     * An UK Faster Payment System Transfer Instruction object. This field will be
+     * present in the JSON response if and only if `category` is equal to
+     * `uk_faster_payment_system_transfer_instruction`.
+     */
+    uk_faster_payment_system_transfer_instruction?: Source.UkFasterPaymentSystemTransferInstruction | null;
 
     /**
      * An User Initiated Hold object. This field will be present in the JSON response
@@ -1658,6 +1679,28 @@ export namespace PendingTransaction {
     }
 
     /**
+     * A SEPA Instant Transfer Instruction object. This field will be present in the
+     * JSON response if and only if `category` is equal to
+     * `sepa_instant_transfer_instruction`.
+     */
+    export interface SepaInstantTransferInstruction {
+      /**
+       * The transfer amount in EUR cents.
+       */
+      amount: number;
+
+      /**
+       * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code for the
+       * transfer's currency. This is always `EUR`.
+       *
+       * - `EUR` - EUR
+       */
+      currency: 'EUR';
+
+      [k: string]: unknown;
+    }
+
+    /**
      * A Swift Transfer Instruction object. This field will be present in the JSON
      * response if and only if `category` is equal to `swift_transfer_instruction`.
      */
@@ -1666,6 +1709,28 @@ export namespace PendingTransaction {
        * The identifier of the Swift Transfer that led to this Pending Transaction.
        */
       transfer_id: string;
+
+      [k: string]: unknown;
+    }
+
+    /**
+     * An UK Faster Payment System Transfer Instruction object. This field will be
+     * present in the JSON response if and only if `category` is equal to
+     * `uk_faster_payment_system_transfer_instruction`.
+     */
+    export interface UkFasterPaymentSystemTransferInstruction {
+      /**
+       * The transfer amount in GBP pence.
+       */
+      amount: number;
+
+      /**
+       * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code for the
+       * transfer's currency. This is always `GBP`.
+       *
+       * - `GBP` - GBP
+       */
+      currency: 'GBP';
 
       [k: string]: unknown;
     }
@@ -1767,6 +1832,8 @@ export namespace PendingTransactionListParams {
       | 'card_push_transfer_instruction'
       | 'blockchain_onramp_transfer_instruction'
       | 'blockchain_offramp_transfer'
+      | 'uk_faster_payment_system_transfer_instruction'
+      | 'sepa_instant_transfer_instruction'
       | 'other'
     >;
   }
