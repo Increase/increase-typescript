@@ -322,9 +322,17 @@ export namespace EventSubscription {
      *   Payments Request for Payment is created.
      * - `real_time_payments_request_for_payment.updated` - Occurs whenever a Real-Time
      *   Payments Request for Payment is updated.
+     * - `sepa_instant_transfer.created` - Occurs whenever a SEPA Instant Transfer is
+     *   created.
+     * - `sepa_instant_transfer.updated` - Occurs whenever a SEPA Instant Transfer is
+     *   updated.
      * - `swift_transfer.created` - Occurs whenever a Swift Transfer is created.
      * - `swift_transfer.updated` - Occurs whenever a Swift Transfer is updated.
      * - `transaction.created` - Occurs whenever a Transaction is created.
+     * - `uk_faster_payment_system_transfer.created` - Occurs whenever a UK Faster
+     *   Payment System Transfer is created.
+     * - `uk_faster_payment_system_transfer.updated` - Occurs whenever a UK Faster
+     *   Payment System Transfer is updated.
      * - `wire_drawdown_request.created` - Occurs whenever a Wire Drawdown Request is
      *   created.
      * - `wire_drawdown_request.updated` - Occurs whenever a Wire Drawdown Request is
@@ -449,9 +457,13 @@ export namespace EventSubscription {
       | 'real_time_payments_transfer.updated'
       | 'real_time_payments_request_for_payment.created'
       | 'real_time_payments_request_for_payment.updated'
+      | 'sepa_instant_transfer.created'
+      | 'sepa_instant_transfer.updated'
       | 'swift_transfer.created'
       | 'swift_transfer.updated'
       | 'transaction.created'
+      | 'uk_faster_payment_system_transfer.created'
+      | 'uk_faster_payment_system_transfer.updated'
       | 'wire_drawdown_request.created'
       | 'wire_drawdown_request.updated'
       | 'wire_transfer.created'
@@ -679,9 +691,17 @@ export namespace EventSubscriptionCreateParams {
      *   Payments Request for Payment is created.
      * - `real_time_payments_request_for_payment.updated` - Occurs whenever a Real-Time
      *   Payments Request for Payment is updated.
+     * - `sepa_instant_transfer.created` - Occurs whenever a SEPA Instant Transfer is
+     *   created.
+     * - `sepa_instant_transfer.updated` - Occurs whenever a SEPA Instant Transfer is
+     *   updated.
      * - `swift_transfer.created` - Occurs whenever a Swift Transfer is created.
      * - `swift_transfer.updated` - Occurs whenever a Swift Transfer is updated.
      * - `transaction.created` - Occurs whenever a Transaction is created.
+     * - `uk_faster_payment_system_transfer.created` - Occurs whenever a UK Faster
+     *   Payment System Transfer is created.
+     * - `uk_faster_payment_system_transfer.updated` - Occurs whenever a UK Faster
+     *   Payment System Transfer is updated.
      * - `wire_drawdown_request.created` - Occurs whenever a Wire Drawdown Request is
      *   created.
      * - `wire_drawdown_request.updated` - Occurs whenever a Wire Drawdown Request is
@@ -806,9 +826,13 @@ export namespace EventSubscriptionCreateParams {
       | 'real_time_payments_transfer.updated'
       | 'real_time_payments_request_for_payment.created'
       | 'real_time_payments_request_for_payment.updated'
+      | 'sepa_instant_transfer.created'
+      | 'sepa_instant_transfer.updated'
       | 'swift_transfer.created'
       | 'swift_transfer.updated'
       | 'transaction.created'
+      | 'uk_faster_payment_system_transfer.created'
+      | 'uk_faster_payment_system_transfer.updated'
       | 'wire_drawdown_request.created'
       | 'wire_drawdown_request.updated'
       | 'wire_transfer.created'
