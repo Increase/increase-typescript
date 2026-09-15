@@ -2713,9 +2713,16 @@ export namespace EntityCreateParams {
      */
     export interface Address {
       /**
-       * The city of the address.
+       * The city, district, town, or village of the address.
        */
       city: string;
+
+      /**
+       * The two-letter ISO 3166-1 alpha-2 code for the country of the address.
+       *
+       * Defaults to `US`.
+       */
+      country: string;
 
       /**
        * The first line of the address. This is usually the street number and street.
@@ -2723,20 +2730,20 @@ export namespace EntityCreateParams {
       line1: string;
 
       /**
-       * The two-letter United States Postal Service (USPS) abbreviation for the state of
-       * the address.
-       */
-      state: string;
-
-      /**
-       * The ZIP code of the address.
-       */
-      zip: string;
-
-      /**
        * The second line of the address. This might be the floor or room number.
        */
       line2?: string;
+
+      /**
+       * The two-letter United States Postal Service (USPS) abbreviation for the US
+       * state, province, or region of the address. Required in certain countries.
+       */
+      state?: string;
+
+      /**
+       * The ZIP or postal code of the address. Required in certain countries.
+       */
+      zip?: string;
     }
 
     export interface Trustee {
@@ -3975,9 +3982,16 @@ export namespace EntityUpdateParams {
      */
     export interface Address {
       /**
-       * The city of the address.
+       * The city, district, town, or village of the address.
        */
       city: string;
+
+      /**
+       * The two-letter ISO 3166-1 alpha-2 code for the country of the address.
+       *
+       * Defaults to `US`.
+       */
+      country: string;
 
       /**
        * The first line of the address. This is usually the street number and street.
@@ -3985,20 +3999,20 @@ export namespace EntityUpdateParams {
       line1: string;
 
       /**
-       * The two-letter United States Postal Service (USPS) abbreviation for the state of
-       * the address.
-       */
-      state: string;
-
-      /**
-       * The ZIP code of the address.
-       */
-      zip: string;
-
-      /**
        * The second line of the address. This might be the floor or room number.
        */
       line2?: string;
+
+      /**
+       * The two-letter United States Postal Service (USPS) abbreviation for the US
+       * state, province, or region of the address. Required in certain countries.
+       */
+      state?: string;
+
+      /**
+       * The ZIP or postal code of the address. Required in certain countries.
+       */
+      zip?: string;
     }
 
     /**
