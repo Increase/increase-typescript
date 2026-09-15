@@ -87,13 +87,17 @@ export interface AccountStatement {
 
   /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time representing the end
-   * of the period the Account Statement covers.
+   * of the period the Account Statement covers. The statement covers all
+   * transactions up to, but not including this timestamp. Usually, this is the
+   * beginning of the following month.
    */
   statement_period_end: string;
 
   /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time representing the
-   * start of the period the Account Statement covers.
+   * start of the period the Account Statement covers. This is the first moment of
+   * the statement period and is inclusive. Usually, this is the beginning of the
+   * month this statement covers.
    */
   statement_period_start: string;
 
