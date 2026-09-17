@@ -90,17 +90,18 @@ export interface PhysicalCardCreateParams {
   carrier_estimated_delivery_at?: string;
 
   /**
-   * The city where the event took place.
+   * The city where the event took place. Required if postal_code is not provided.
    */
   city?: string;
 
   /**
-   * The postal code where the event took place.
+   * The postal code where the event took place. Required unless both city and state
+   * are provided.
    */
   postal_code?: string;
 
   /**
-   * The state where the event took place.
+   * The state where the event took place. Required if postal_code is not provided.
    */
   state?: string;
 }
