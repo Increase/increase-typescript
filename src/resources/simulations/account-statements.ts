@@ -8,7 +8,8 @@ import { RequestOptions } from '../../internal/request-options';
 export class AccountStatements extends APIResource {
   /**
    * Simulates an [Account Statement](#account-statements) being created for an
-   * account. In production, Account Statements are generated once per month.
+   * account. In production, Account Statements are generated once per month. As in
+   * production, the simulated statement covers the previous calendar month.
    *
    * @example
    * ```ts

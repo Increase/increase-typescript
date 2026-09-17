@@ -731,6 +731,11 @@ export namespace InboundACHTransfer {
    */
   export interface TransferReturn {
     /**
+     * The three character ACH return code, in the range R01 to R85.
+     */
+    raw_reason_code: string;
+
+    /**
      * The reason for the transfer return.
      *
      * - `insufficient_funds` - The customer's account has insufficient funds. This
