@@ -434,6 +434,8 @@ export namespace Entity {
            * A method that can be used to verify the individual's identity.
            *
            * - `social_security_number` - A social security number.
+           * - `social_security_number_last4` - The last four digits of a social security
+           *   number.
            * - `individual_taxpayer_identification_number` - An individual taxpayer
            *   identification number (ITIN).
            * - `passport` - A passport number.
@@ -442,6 +444,7 @@ export namespace Entity {
            */
           method:
             | 'social_security_number'
+            | 'social_security_number_last4'
             | 'individual_taxpayer_identification_number'
             | 'passport'
             | 'drivers_license'
@@ -655,6 +658,8 @@ export namespace Entity {
          * A method that can be used to verify the individual's identity.
          *
          * - `social_security_number` - A social security number.
+         * - `social_security_number_last4` - The last four digits of a social security
+         *   number.
          * - `individual_taxpayer_identification_number` - An individual taxpayer
          *   identification number (ITIN).
          * - `passport` - A passport number.
@@ -663,6 +668,7 @@ export namespace Entity {
          */
         method:
           | 'social_security_number'
+          | 'social_security_number_last4'
           | 'individual_taxpayer_identification_number'
           | 'passport'
           | 'drivers_license'
@@ -750,6 +756,8 @@ export namespace Entity {
        * A method that can be used to verify the individual's identity.
        *
        * - `social_security_number` - A social security number.
+       * - `social_security_number_last4` - The last four digits of a social security
+       *   number.
        * - `individual_taxpayer_identification_number` - An individual taxpayer
        *   identification number (ITIN).
        * - `passport` - A passport number.
@@ -758,6 +766,7 @@ export namespace Entity {
        */
       method:
         | 'social_security_number'
+        | 'social_security_number_last4'
         | 'individual_taxpayer_identification_number'
         | 'passport'
         | 'drivers_license'
@@ -943,6 +952,8 @@ export namespace Entity {
          * A method that can be used to verify the individual's identity.
          *
          * - `social_security_number` - A social security number.
+         * - `social_security_number_last4` - The last four digits of a social security
+         *   number.
          * - `individual_taxpayer_identification_number` - An individual taxpayer
          *   identification number (ITIN).
          * - `passport` - A passport number.
@@ -951,6 +962,7 @@ export namespace Entity {
          */
         method:
           | 'social_security_number'
+          | 'social_security_number_last4'
           | 'individual_taxpayer_identification_number'
           | 'passport'
           | 'drivers_license'
@@ -1163,6 +1175,8 @@ export namespace Entity {
          * A method that can be used to verify the grantor's identity.
          *
          * - `social_security_number` - A social security number.
+         * - `social_security_number_last4` - The last four digits of a social security
+         *   number.
          * - `individual_taxpayer_identification_number` - An individual taxpayer
          *   identification number (ITIN).
          * - `passport` - A passport number.
@@ -1171,6 +1185,7 @@ export namespace Entity {
          */
         method:
           | 'social_security_number'
+          | 'social_security_number_last4'
           | 'individual_taxpayer_identification_number'
           | 'passport'
           | 'drivers_license'
@@ -1273,6 +1288,8 @@ export namespace Entity {
            * A method that can be used to verify the individual's identity.
            *
            * - `social_security_number` - A social security number.
+           * - `social_security_number_last4` - The last four digits of a social security
+           *   number.
            * - `individual_taxpayer_identification_number` - An individual taxpayer
            *   identification number (ITIN).
            * - `passport` - A passport number.
@@ -1281,6 +1298,7 @@ export namespace Entity {
            */
           method:
             | 'social_security_number'
+            | 'social_security_number_last4'
             | 'individual_taxpayer_identification_number'
             | 'passport'
             | 'drivers_license'
@@ -1742,6 +1760,8 @@ export namespace EntityCreateParams {
            * A method that can be used to verify the individual's identity.
            *
            * - `social_security_number` - A social security number.
+           * - `social_security_number_last4` - The last four digits of a social security
+           *   number.
            * - `individual_taxpayer_identification_number` - An individual taxpayer
            *   identification number (ITIN).
            * - `passport` - A passport number.
@@ -1750,6 +1770,7 @@ export namespace EntityCreateParams {
            */
           method:
             | 'social_security_number'
+            | 'social_security_number_last4'
             | 'individual_taxpayer_identification_number'
             | 'passport'
             | 'drivers_license'
