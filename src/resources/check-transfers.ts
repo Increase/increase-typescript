@@ -210,8 +210,8 @@ export interface CheckTransfer {
   idempotency_key: string | null;
 
   /**
-   * If the check has been mailed by Increase, this will contain details of the
-   * shipment.
+   * Once the check has been mailed, this will contain details about the shipment.
+   * Only available when `fulfillment_method` is equal to `physical_check`.
    */
   mailing: CheckTransfer.Mailing | null;
 
@@ -279,7 +279,9 @@ export interface CheckTransfer {
   stop_payment_request: CheckTransfer.StopPaymentRequest | null;
 
   /**
-   * After the transfer is submitted, this will contain supplemental details.
+   * Once the check has been submitted to our printer, this will contain details
+   * about the submission. Only available when `fulfillment_method` is equal to
+   * `physical_check`.
    */
   submission: CheckTransfer.Submission | null;
 
@@ -407,8 +409,8 @@ export namespace CheckTransfer {
   }
 
   /**
-   * If the check has been mailed by Increase, this will contain details of the
-   * shipment.
+   * Once the check has been mailed, this will contain details about the shipment.
+   * Only available when `fulfillment_method` is equal to `physical_check`.
    */
   export interface Mailing {
     /**
@@ -693,7 +695,9 @@ export namespace CheckTransfer {
   }
 
   /**
-   * After the transfer is submitted, this will contain supplemental details.
+   * Once the check has been submitted to our printer, this will contain details
+   * about the submission. Only available when `fulfillment_method` is equal to
+   * `physical_check`.
    */
   export interface Submission {
     /**
