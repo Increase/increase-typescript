@@ -178,12 +178,12 @@ export interface WireDrawdownRequest {
    *
    * - `pending_submission` - The drawdown request is queued to be submitted to
    *   Fedwire.
-   * - `fulfilled` - The drawdown request has been fulfilled by the recipient.
    * - `pending_response` - The drawdown request has been sent and the recipient
    *   should respond in some way.
+   * - `fulfilled` - The drawdown request has been fulfilled by the recipient.
    * - `refused` - The drawdown request has been refused by the recipient.
    */
-  status: 'pending_submission' | 'fulfilled' | 'pending_response' | 'refused';
+  status: 'pending_submission' | 'pending_response' | 'fulfilled' | 'refused';
 
   /**
    * After the drawdown request is submitted to Fedwire, this will contain
@@ -467,7 +467,7 @@ export namespace WireDrawdownRequestListParams {
      * requests, this should be encoded as a comma-delimited string, such as
      * `?in=one,two,three`.
      */
-    in?: Array<'pending_submission' | 'fulfilled' | 'pending_response' | 'refused'>;
+    in?: Array<'pending_submission' | 'pending_response' | 'fulfilled' | 'refused'>;
   }
 }
 
