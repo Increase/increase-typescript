@@ -1,0 +1,80 @@
+# Ships the SDK on a fixed cadence by merging the open release-please PR.
+#
+# release-please keeps a single release PR continuously up to date as commits
+# land on main, so there is normally at most one PR for this job to merge.
+# Merging it is what actually releases: release.yml tags the merge commit and
+# creates the GitHub Release, and that release fires publish-npm.yml.
+#
+# If no release PR is open, nothing is pending and the job no-ops.
+name: Scheduled Release
+
+on:
+  schedule:
+    # Fridays at 17:00 UTC (10:00 PT / 13:00 ET). GitHub's cron is always UTC
+    # and does not follow DST, so this shifts an hour with the clocks.
+    - cron: "0 17 * * 5"
+  workflow_dispatch:
+
+# Never let the scheduled run race a manual "release now" dispatch.
+concurrency:
+  group: scheduled-release
+  cancel-in-progress: false
+
+jobs:
+  merge-release-pr:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      # Merge as the App rather than GITHUB_TOKEN: pushes made with
+      # GITHUB_TOKEN do not trigger downstream workflows, which would leave
+      # release.yml unrun and the release uncut.
+      - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        id: app-token
+        with:
+          client-id: ${{ vars.INCREASE_RELEASES_CLIENT_ID }}
+          private-key: ${{ secrets.INCREASE_RELEASES_PRIVATE_KEY }}
+
+      - name: Merge the pending release PR
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+
+          pr=$(gh pr list --repo "$REPO" --state open \
+                 --label 'autorelease: pending' \
+                 --json number --jq '.[0].number // empty')
+
+          if [ -z "$pr" ]; then
+            echo "No release PR open - nothing is pending release."
+            echo "No release PR open; nothing to release." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+
+          title=$(gh pr view "$pr" --repo "$REPO" --json title --jq .title)
+          echo "Found release PR #${pr}: ${title}"
+
+          # Refuse to ship on red or still-running CI. Without this the job
+          # would happily release a build that never passed.
+          if ! gh pr checks "$pr" --repo "$REPO" --required; then
+            echo "::error::Required checks are not green on release PR #${pr}; refusing to merge."
+            {
+              echo "Release **blocked**: required checks are not green on"
+              echo "[#${pr}](https://github.com/${REPO}/pull/${pr}) (${title})."
+            } >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+
+          # Squash to match how release PRs have always landed on main, so the
+          # tag points at a single `release: X.Y.Z (#N)` commit.
+          gh pr merge "$pr" --repo "$REPO" --squash
+
+          echo "Merged release PR #${pr}."
+          {
+            echo "Merged [#${pr}](https://github.com/${REPO}/pull/${pr}) (${title})."
+            echo ""
+            echo "\`release.yml\` will tag the merge commit and cut the GitHub Release,"
+            echo "which triggers \`publish-npm.yml\`."
+          } >> "$GITHUB_STEP_SUMMARY"
