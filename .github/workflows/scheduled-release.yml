@@ -12,7 +12,7 @@ on:
   schedule:
     # Fridays at 17:00 UTC (10:00 PT / 13:00 ET). GitHub's cron is always UTC
     # and does not follow DST, so this shifts an hour with the clocks.
-    - cron: "0 17 * * 5"
+    - cron: '0 17 * * 5'
   workflow_dispatch:
 
 # Never let the scheduled run race a manual "release now" dispatch.
