@@ -2311,6 +2311,11 @@ export namespace Transaction {
         customer_reference_identifier: string | null;
 
         /**
+         * Fields specific to fleet purchases.
+         */
+        fleet: PurchaseDetails.Fleet | null;
+
+        /**
          * The state or provincial tax amount in minor units.
          */
         local_tax_amount: number | null;
@@ -2474,6 +2479,363 @@ export namespace Transaction {
            * rental rate.
            */
           weekly_rental_rate_currency: string | null;
+        }
+
+        /**
+         * Fields specific to fleet purchases.
+         */
+        export interface Fleet {
+          /**
+           * The fleet employee number.
+           */
+          employee_number: string | null;
+
+          /**
+           * The quantity of fuel purchased, given as a string containing a decimal number in
+           * the indicated unit of measure.
+           */
+          fuel_quantity: string | null;
+
+          /**
+           * The type of fuel purchased.
+           *
+           * - `regular` - Regular
+           * - `mid_or_plus` - Mid or plus
+           * - `premium_or_super` - Premium or super
+           * - `mid_or_plus_2` - Mid or plus 2
+           * - `premium_or_super_2` - Premium or super 2
+           * - `regular_ethanol_5_blend_non_us` - Regular ethanol 5% blend outside the United
+           *   States
+           * - `mid_or_plus_ethanol_5_blend_non_us` - Mid or plus ethanol 5% blend outside
+           *   the United States
+           * - `premium_or_super_ethanol_5_blend_non_us` - Premium or super ethanol 5% blend
+           *   outside the United States
+           * - `ethanol_7_7_blend` - Ethanol 7.7% blend
+           * - `mid_or_plus_2_ethanol_5_blend_non_us` - Mid or plus 2 ethanol 5% blend
+           *   outside the United States
+           * - `green_gasoline_regular` - Green gasoline regular
+           * - `green_gasoline_mid_or_plus` - Green gasoline mid or plus
+           * - `green_gasoline_premium_or_super` - Green gasoline premium or super
+           * - `regular_diesel_2` - Regular diesel 2
+           * - `premium_diesel_2` - Premium diesel 2
+           * - `regular_diesel_1` - Regular diesel 1
+           * - `compressed_natural_gas` - Compressed natural gas
+           * - `liquid_propane_gas` - Liquid propane gas
+           * - `liquid_natural_gas` - Liquid natural gas
+           * - `e85` - E85
+           * - `regular_reformulated` - Regular reformulated
+           * - `mid_or_plus_reformulated` - Mid or plus reformulated
+           * - `premium_or_super_reformulated` - Premium or super reformulated
+           * - `mid_or_plus_2_reformulated` - Mid or plus 2 reformulated
+           * - `premium_or_super_2_reformulated` - Premium or super 2 reformulated
+           * - `diesel_off_road_1_2_non_taxable` - Diesel off-road 1/2 non-taxable
+           * - `diesel_off_road_non_taxable` - Diesel off-road non-taxable
+           * - `biodiesel_blend_off_road_non_taxable` - Biodiesel blend off-road non-taxable
+           * - `racing_fuel` - Racing fuel
+           * - `mid_or_plus_2_ethanol_10_blend` - Mid or plus 2 ethanol 10% blend
+           * - `premium_or_super_2_ethanol_10_blend` - Premium or super 2 ethanol 10% blend
+           * - `mid_or_plus_ethanol_2_15_blend` - Mid or plus ethanol 2–15% blend
+           * - `premium_or_super_ethanol_2_15_blend` - Premium or super ethanol 2–15% blend
+           * - `premium_or_super_2_ethanol_5_blend_non_us` - Premium or super 2 ethanol 5%
+           *   blend outside the United States
+           * - `regular_ethanol_10_blend` - Regular ethanol 10% blend
+           * - `mid_or_plus_ethanol_10_blend` - Mid or plus ethanol 10% blend
+           * - `premium_or_super_ethanol_10_blend` - Premium or super ethanol 10% blend
+           * - `b2_diesel_blend_2_biodiesel` - B2 diesel blend 2% biodiesel
+           * - `b5_diesel_blend_5_biodiesel` - B5 diesel blend 5% biodiesel
+           * - `b10_diesel_blend_10_biodiesel` - B10 diesel blend 10% biodiesel
+           * - `b11_diesel_blend_11_biodiesel` - B11 diesel blend 11% biodiesel
+           * - `b15_diesel_blend_15_biodiesel` - B15 diesel blend 15% biodiesel
+           * - `b20_diesel_blend_20_biodiesel` - B20 diesel blend 20% biodiesel
+           * - `b100_diesel_blend_100_biodiesel` - B100 diesel blend 100% biodiesel
+           * - `b1_diesel_blend_1_biodiesel` - B1 diesel blend 1% biodiesel
+           * - `additized_diesel_2` - Additized diesel 2
+           * - `additized_diesel_3` - Additized diesel 3
+           * - `b7_diesel_blend_7_biodiesel_non_us` - B7 diesel blend 7% biodiesel outside
+           *   the United States
+           * - `b7_premium_diesel_blend_7_biodiesel_non_us` - B7 premium diesel blend 7%
+           *   biodiesel outside the United States
+           * - `renewable_diesel_r95_or_greater` - Renewable diesel R95 or greater
+           * - `renewable_diesel_biodiesel_6_to_20` - Renewable diesel biodiesel 6% to 20%
+           * - `diesel_exhaust_fluid_pump` - Diesel exhaust fluid pump
+           * - `premium_diesel_1` - Premium diesel 1
+           * - `regular_ethanol_15_blend` - Regular ethanol 15% blend
+           * - `mid_or_plus_ethanol_15_blend` - Mid or plus ethanol 15% blend
+           * - `premium_or_super_ethanol_15_blend` - Premium or super ethanol 15% blend
+           * - `premium_diesel_blend_less_than_20_biodiesel` - Premium diesel blend less than
+           *   20% biodiesel
+           * - `premium_diesel_blend_20_or_more_biodiesel` - Premium diesel blend 20% or more
+           *   biodiesel
+           * - `b75_diesel_blend_75_biodiesel` - B75 diesel blend 75% biodiesel
+           * - `b99_diesel_blend_99_biodiesel` - B99 diesel blend 99% biodiesel
+           * - `reserved_for_preauthorization_use_only` - Reserved for preauthorization use
+           *   only
+           * - `undefined_fuel_reserved_for_proprietary_use` - Undefined fuel reserved for
+           *   proprietary use
+           * - `miscellaneous_fuel` - Miscellaneous fuel
+           * - `jet_fuel` - Jet fuel
+           * - `aviation_fuel_regular` - Aviation fuel regular
+           * - `aviation_fuel_premium` - Aviation fuel premium
+           * - `aviation_fuel_jp8` - Aviation fuel JP8
+           * - `aviation_fuel_4` - Aviation fuel 4
+           * - `aviation_fuel_5` - Aviation fuel 5
+           * - `biojet_diesel` - Biojet diesel
+           * - `aviation_biofuel_gasoline` - Aviation biofuel gasoline
+           * - `undefined_aviation_fuel_reserved_for_proprietary_use` - Undefined aviation
+           *   fuel reserved for proprietary use
+           * - `miscellaneous_aviation_fuel` - Miscellaneous aviation fuel
+           * - `marine_fuel_1` - Marine fuel 1
+           * - `marine_fuel_2` - Marine fuel 2
+           * - `marine_fuel_3` - Marine fuel 3
+           * - `marine_fuel_4` - Marine fuel 4
+           * - `marine_fuel_5` - Marine fuel 5
+           * - `marine_other` - Marine other
+           * - `marine_diesel` - Marine diesel
+           * - `miscellaneous_marine_fuel` - Miscellaneous marine fuel
+           * - `kerosene_low_sulfur` - Kerosene low sulfur
+           * - `white_gas` - White gas
+           * - `heating_oil` - Heating oil
+           * - `other_fuel_non_taxable` - Other fuel non-taxable
+           * - `kerosene_ultra_low_sulfur` - Kerosene ultra low sulfur
+           * - `electric_vehicle_charging_level_1_110_volt` - Electric vehicle charging level
+           *   1 110 volt
+           * - `electric_vehicle_charging_level_2_240_volt` - Electric vehicle charging level
+           *   2 240 volt
+           * - `electric_vehicle_charging_level_3_480_volt` - Electric vehicle charging level
+           *   3 480 volt
+           * - `renewable_diesel_r95_or_greater_off_road_non_taxable` - Renewable diesel R95
+           *   or greater off-road non-taxable
+           * - `biodiesel_blend_1_off_road_non_taxable` - Biodiesel blend 1% off-road
+           *   non-taxable
+           * - `biodiesel_blend_75_off_road_non_taxable` - Biodiesel blend 75% off-road
+           *   non-taxable
+           * - `biodiesel_blend_99_off_road_non_taxable` - Biodiesel blend 99% off-road
+           *   non-taxable
+           * - `biodiesel_blend_100_off_road_non_taxable` - Biodiesel blend 100% off-road
+           *   non-taxable
+           * - `renewable_diesel_biodiesel_6_to_20_off_road_non_taxable` - Renewable diesel
+           *   biodiesel 6% to 20% off-road non-taxable
+           * - `electric_vehicle_charging_level_4_800_volt` - Electric vehicle charging level
+           *   4 800 volt
+           * - `electric_vehicle_charging_level_5_megawatt` - Electric vehicle charging level
+           *   5 megawatt
+           * - `hydrotreated_vegetable_oil_100` - Hydrotreated vegetable oil 100
+           * - `bio_compressed_natural_gas` - Bio compressed natural gas
+           * - `miscellaneous_other_fuel` - Miscellaneous other fuel
+           */
+          fuel_type:
+            | 'regular'
+            | 'mid_or_plus'
+            | 'premium_or_super'
+            | 'mid_or_plus_2'
+            | 'premium_or_super_2'
+            | 'regular_ethanol_5_blend_non_us'
+            | 'mid_or_plus_ethanol_5_blend_non_us'
+            | 'premium_or_super_ethanol_5_blend_non_us'
+            | 'ethanol_7_7_blend'
+            | 'mid_or_plus_2_ethanol_5_blend_non_us'
+            | 'green_gasoline_regular'
+            | 'green_gasoline_mid_or_plus'
+            | 'green_gasoline_premium_or_super'
+            | 'regular_diesel_2'
+            | 'premium_diesel_2'
+            | 'regular_diesel_1'
+            | 'compressed_natural_gas'
+            | 'liquid_propane_gas'
+            | 'liquid_natural_gas'
+            | 'e85'
+            | 'regular_reformulated'
+            | 'mid_or_plus_reformulated'
+            | 'premium_or_super_reformulated'
+            | 'mid_or_plus_2_reformulated'
+            | 'premium_or_super_2_reformulated'
+            | 'diesel_off_road_1_2_non_taxable'
+            | 'diesel_off_road_non_taxable'
+            | 'biodiesel_blend_off_road_non_taxable'
+            | 'racing_fuel'
+            | 'mid_or_plus_2_ethanol_10_blend'
+            | 'premium_or_super_2_ethanol_10_blend'
+            | 'mid_or_plus_ethanol_2_15_blend'
+            | 'premium_or_super_ethanol_2_15_blend'
+            | 'premium_or_super_2_ethanol_5_blend_non_us'
+            | 'regular_ethanol_10_blend'
+            | 'mid_or_plus_ethanol_10_blend'
+            | 'premium_or_super_ethanol_10_blend'
+            | 'b2_diesel_blend_2_biodiesel'
+            | 'b5_diesel_blend_5_biodiesel'
+            | 'b10_diesel_blend_10_biodiesel'
+            | 'b11_diesel_blend_11_biodiesel'
+            | 'b15_diesel_blend_15_biodiesel'
+            | 'b20_diesel_blend_20_biodiesel'
+            | 'b100_diesel_blend_100_biodiesel'
+            | 'b1_diesel_blend_1_biodiesel'
+            | 'additized_diesel_2'
+            | 'additized_diesel_3'
+            | 'b7_diesel_blend_7_biodiesel_non_us'
+            | 'b7_premium_diesel_blend_7_biodiesel_non_us'
+            | 'renewable_diesel_r95_or_greater'
+            | 'renewable_diesel_biodiesel_6_to_20'
+            | 'diesel_exhaust_fluid_pump'
+            | 'premium_diesel_1'
+            | 'regular_ethanol_15_blend'
+            | 'mid_or_plus_ethanol_15_blend'
+            | 'premium_or_super_ethanol_15_blend'
+            | 'premium_diesel_blend_less_than_20_biodiesel'
+            | 'premium_diesel_blend_20_or_more_biodiesel'
+            | 'b75_diesel_blend_75_biodiesel'
+            | 'b99_diesel_blend_99_biodiesel'
+            | 'reserved_for_preauthorization_use_only'
+            | 'undefined_fuel_reserved_for_proprietary_use'
+            | 'miscellaneous_fuel'
+            | 'jet_fuel'
+            | 'aviation_fuel_regular'
+            | 'aviation_fuel_premium'
+            | 'aviation_fuel_jp8'
+            | 'aviation_fuel_4'
+            | 'aviation_fuel_5'
+            | 'biojet_diesel'
+            | 'aviation_biofuel_gasoline'
+            | 'undefined_aviation_fuel_reserved_for_proprietary_use'
+            | 'miscellaneous_aviation_fuel'
+            | 'marine_fuel_1'
+            | 'marine_fuel_2'
+            | 'marine_fuel_3'
+            | 'marine_fuel_4'
+            | 'marine_fuel_5'
+            | 'marine_other'
+            | 'marine_diesel'
+            | 'miscellaneous_marine_fuel'
+            | 'kerosene_low_sulfur'
+            | 'white_gas'
+            | 'heating_oil'
+            | 'other_fuel_non_taxable'
+            | 'kerosene_ultra_low_sulfur'
+            | 'electric_vehicle_charging_level_1_110_volt'
+            | 'electric_vehicle_charging_level_2_240_volt'
+            | 'electric_vehicle_charging_level_3_480_volt'
+            | 'renewable_diesel_r95_or_greater_off_road_non_taxable'
+            | 'biodiesel_blend_1_off_road_non_taxable'
+            | 'biodiesel_blend_75_off_road_non_taxable'
+            | 'biodiesel_blend_99_off_road_non_taxable'
+            | 'biodiesel_blend_100_off_road_non_taxable'
+            | 'renewable_diesel_biodiesel_6_to_20_off_road_non_taxable'
+            | 'electric_vehicle_charging_level_4_800_volt'
+            | 'electric_vehicle_charging_level_5_megawatt'
+            | 'hydrotreated_vegetable_oil_100'
+            | 'bio_compressed_natural_gas'
+            | 'miscellaneous_other_fuel'
+            | null;
+
+          /**
+           * The cost per unit of fuel in minor units.
+           */
+          fuel_unit_cost_amount: number | null;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the fuel unit
+           * cost.
+           */
+          fuel_unit_cost_currency: string | null;
+
+          /**
+           * The unit of measure for the fuel quantity.
+           *
+           * - `liter` - Liter
+           * - `us_gallon` - US gallon
+           * - `imperial_gallon` - Imperial gallon
+           * - `kilogram` - Kilogram
+           * - `pound` - Pound
+           * - `charging_minutes` - Charging minutes
+           * - `kilowatt_hour` - Kilowatt hour
+           */
+          fuel_unit_of_measure:
+            | 'liter'
+            | 'us_gallon'
+            | 'imperial_gallon'
+            | 'kilogram'
+            | 'pound'
+            | 'charging_minutes'
+            | 'kilowatt_hour'
+            | null;
+
+          /**
+           * The gross fuel price in minor units.
+           */
+          gross_fuel_price_amount: number | null;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the gross fuel
+           * price.
+           */
+          gross_fuel_price_currency: string | null;
+
+          /**
+           * The gross non-fuel price in minor units.
+           */
+          gross_non_fuel_price_amount: number | null;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the gross
+           * non-fuel price.
+           */
+          gross_non_fuel_price_currency: string | null;
+
+          /**
+           * The net fuel price in minor units.
+           */
+          net_fuel_price_amount: number | null;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the net fuel
+           * price.
+           */
+          net_fuel_price_currency: string | null;
+
+          /**
+           * The net non-fuel price in minor units.
+           */
+          net_non_fuel_price_amount: number | null;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the net non-fuel
+           * price.
+           */
+          net_non_fuel_price_currency: string | null;
+
+          /**
+           * The odometer reading reported by the merchant.
+           */
+          odometer_reading: number | null;
+
+          /**
+           * The type of fleet purchase.
+           *
+           * - `fuel_purchase` - Fuel purchase
+           * - `non_fuel_purchase` - Non-fuel purchase
+           * - `fuel_and_non_fuel_purchase` - Fuel and non-fuel purchase
+           * - `fuel_purchase_with_multiple_fuel_types` - Fuel purchase with multiple fuel
+           *   types
+           */
+          purchase_type:
+            | 'fuel_purchase'
+            | 'non_fuel_purchase'
+            | 'fuel_and_non_fuel_purchase'
+            | 'fuel_purchase_with_multiple_fuel_types'
+            | null;
+
+          /**
+           * The type of service provided.
+           *
+           * - `full_service` - Full service
+           * - `self_service` - Self service
+           * - `high_speed_dispense` - High speed dispense
+           */
+          service_type: 'full_service' | 'self_service' | 'high_speed_dispense' | null;
+
+          /**
+           * The fleet trailer number.
+           */
+          trailer_number: string | null;
         }
 
         /**
@@ -3252,6 +3614,11 @@ export namespace Transaction {
         customer_reference_identifier: string | null;
 
         /**
+         * Fields specific to fleet purchases.
+         */
+        fleet: PurchaseDetails.Fleet | null;
+
+        /**
          * The state or provincial tax amount in minor units.
          */
         local_tax_amount: number | null;
@@ -3415,6 +3782,363 @@ export namespace Transaction {
            * rental rate.
            */
           weekly_rental_rate_currency: string | null;
+        }
+
+        /**
+         * Fields specific to fleet purchases.
+         */
+        export interface Fleet {
+          /**
+           * The fleet employee number.
+           */
+          employee_number: string | null;
+
+          /**
+           * The quantity of fuel purchased, given as a string containing a decimal number in
+           * the indicated unit of measure.
+           */
+          fuel_quantity: string | null;
+
+          /**
+           * The type of fuel purchased.
+           *
+           * - `regular` - Regular
+           * - `mid_or_plus` - Mid or plus
+           * - `premium_or_super` - Premium or super
+           * - `mid_or_plus_2` - Mid or plus 2
+           * - `premium_or_super_2` - Premium or super 2
+           * - `regular_ethanol_5_blend_non_us` - Regular ethanol 5% blend outside the United
+           *   States
+           * - `mid_or_plus_ethanol_5_blend_non_us` - Mid or plus ethanol 5% blend outside
+           *   the United States
+           * - `premium_or_super_ethanol_5_blend_non_us` - Premium or super ethanol 5% blend
+           *   outside the United States
+           * - `ethanol_7_7_blend` - Ethanol 7.7% blend
+           * - `mid_or_plus_2_ethanol_5_blend_non_us` - Mid or plus 2 ethanol 5% blend
+           *   outside the United States
+           * - `green_gasoline_regular` - Green gasoline regular
+           * - `green_gasoline_mid_or_plus` - Green gasoline mid or plus
+           * - `green_gasoline_premium_or_super` - Green gasoline premium or super
+           * - `regular_diesel_2` - Regular diesel 2
+           * - `premium_diesel_2` - Premium diesel 2
+           * - `regular_diesel_1` - Regular diesel 1
+           * - `compressed_natural_gas` - Compressed natural gas
+           * - `liquid_propane_gas` - Liquid propane gas
+           * - `liquid_natural_gas` - Liquid natural gas
+           * - `e85` - E85
+           * - `regular_reformulated` - Regular reformulated
+           * - `mid_or_plus_reformulated` - Mid or plus reformulated
+           * - `premium_or_super_reformulated` - Premium or super reformulated
+           * - `mid_or_plus_2_reformulated` - Mid or plus 2 reformulated
+           * - `premium_or_super_2_reformulated` - Premium or super 2 reformulated
+           * - `diesel_off_road_1_2_non_taxable` - Diesel off-road 1/2 non-taxable
+           * - `diesel_off_road_non_taxable` - Diesel off-road non-taxable
+           * - `biodiesel_blend_off_road_non_taxable` - Biodiesel blend off-road non-taxable
+           * - `racing_fuel` - Racing fuel
+           * - `mid_or_plus_2_ethanol_10_blend` - Mid or plus 2 ethanol 10% blend
+           * - `premium_or_super_2_ethanol_10_blend` - Premium or super 2 ethanol 10% blend
+           * - `mid_or_plus_ethanol_2_15_blend` - Mid or plus ethanol 2–15% blend
+           * - `premium_or_super_ethanol_2_15_blend` - Premium or super ethanol 2–15% blend
+           * - `premium_or_super_2_ethanol_5_blend_non_us` - Premium or super 2 ethanol 5%
+           *   blend outside the United States
+           * - `regular_ethanol_10_blend` - Regular ethanol 10% blend
+           * - `mid_or_plus_ethanol_10_blend` - Mid or plus ethanol 10% blend
+           * - `premium_or_super_ethanol_10_blend` - Premium or super ethanol 10% blend
+           * - `b2_diesel_blend_2_biodiesel` - B2 diesel blend 2% biodiesel
+           * - `b5_diesel_blend_5_biodiesel` - B5 diesel blend 5% biodiesel
+           * - `b10_diesel_blend_10_biodiesel` - B10 diesel blend 10% biodiesel
+           * - `b11_diesel_blend_11_biodiesel` - B11 diesel blend 11% biodiesel
+           * - `b15_diesel_blend_15_biodiesel` - B15 diesel blend 15% biodiesel
+           * - `b20_diesel_blend_20_biodiesel` - B20 diesel blend 20% biodiesel
+           * - `b100_diesel_blend_100_biodiesel` - B100 diesel blend 100% biodiesel
+           * - `b1_diesel_blend_1_biodiesel` - B1 diesel blend 1% biodiesel
+           * - `additized_diesel_2` - Additized diesel 2
+           * - `additized_diesel_3` - Additized diesel 3
+           * - `b7_diesel_blend_7_biodiesel_non_us` - B7 diesel blend 7% biodiesel outside
+           *   the United States
+           * - `b7_premium_diesel_blend_7_biodiesel_non_us` - B7 premium diesel blend 7%
+           *   biodiesel outside the United States
+           * - `renewable_diesel_r95_or_greater` - Renewable diesel R95 or greater
+           * - `renewable_diesel_biodiesel_6_to_20` - Renewable diesel biodiesel 6% to 20%
+           * - `diesel_exhaust_fluid_pump` - Diesel exhaust fluid pump
+           * - `premium_diesel_1` - Premium diesel 1
+           * - `regular_ethanol_15_blend` - Regular ethanol 15% blend
+           * - `mid_or_plus_ethanol_15_blend` - Mid or plus ethanol 15% blend
+           * - `premium_or_super_ethanol_15_blend` - Premium or super ethanol 15% blend
+           * - `premium_diesel_blend_less_than_20_biodiesel` - Premium diesel blend less than
+           *   20% biodiesel
+           * - `premium_diesel_blend_20_or_more_biodiesel` - Premium diesel blend 20% or more
+           *   biodiesel
+           * - `b75_diesel_blend_75_biodiesel` - B75 diesel blend 75% biodiesel
+           * - `b99_diesel_blend_99_biodiesel` - B99 diesel blend 99% biodiesel
+           * - `reserved_for_preauthorization_use_only` - Reserved for preauthorization use
+           *   only
+           * - `undefined_fuel_reserved_for_proprietary_use` - Undefined fuel reserved for
+           *   proprietary use
+           * - `miscellaneous_fuel` - Miscellaneous fuel
+           * - `jet_fuel` - Jet fuel
+           * - `aviation_fuel_regular` - Aviation fuel regular
+           * - `aviation_fuel_premium` - Aviation fuel premium
+           * - `aviation_fuel_jp8` - Aviation fuel JP8
+           * - `aviation_fuel_4` - Aviation fuel 4
+           * - `aviation_fuel_5` - Aviation fuel 5
+           * - `biojet_diesel` - Biojet diesel
+           * - `aviation_biofuel_gasoline` - Aviation biofuel gasoline
+           * - `undefined_aviation_fuel_reserved_for_proprietary_use` - Undefined aviation
+           *   fuel reserved for proprietary use
+           * - `miscellaneous_aviation_fuel` - Miscellaneous aviation fuel
+           * - `marine_fuel_1` - Marine fuel 1
+           * - `marine_fuel_2` - Marine fuel 2
+           * - `marine_fuel_3` - Marine fuel 3
+           * - `marine_fuel_4` - Marine fuel 4
+           * - `marine_fuel_5` - Marine fuel 5
+           * - `marine_other` - Marine other
+           * - `marine_diesel` - Marine diesel
+           * - `miscellaneous_marine_fuel` - Miscellaneous marine fuel
+           * - `kerosene_low_sulfur` - Kerosene low sulfur
+           * - `white_gas` - White gas
+           * - `heating_oil` - Heating oil
+           * - `other_fuel_non_taxable` - Other fuel non-taxable
+           * - `kerosene_ultra_low_sulfur` - Kerosene ultra low sulfur
+           * - `electric_vehicle_charging_level_1_110_volt` - Electric vehicle charging level
+           *   1 110 volt
+           * - `electric_vehicle_charging_level_2_240_volt` - Electric vehicle charging level
+           *   2 240 volt
+           * - `electric_vehicle_charging_level_3_480_volt` - Electric vehicle charging level
+           *   3 480 volt
+           * - `renewable_diesel_r95_or_greater_off_road_non_taxable` - Renewable diesel R95
+           *   or greater off-road non-taxable
+           * - `biodiesel_blend_1_off_road_non_taxable` - Biodiesel blend 1% off-road
+           *   non-taxable
+           * - `biodiesel_blend_75_off_road_non_taxable` - Biodiesel blend 75% off-road
+           *   non-taxable
+           * - `biodiesel_blend_99_off_road_non_taxable` - Biodiesel blend 99% off-road
+           *   non-taxable
+           * - `biodiesel_blend_100_off_road_non_taxable` - Biodiesel blend 100% off-road
+           *   non-taxable
+           * - `renewable_diesel_biodiesel_6_to_20_off_road_non_taxable` - Renewable diesel
+           *   biodiesel 6% to 20% off-road non-taxable
+           * - `electric_vehicle_charging_level_4_800_volt` - Electric vehicle charging level
+           *   4 800 volt
+           * - `electric_vehicle_charging_level_5_megawatt` - Electric vehicle charging level
+           *   5 megawatt
+           * - `hydrotreated_vegetable_oil_100` - Hydrotreated vegetable oil 100
+           * - `bio_compressed_natural_gas` - Bio compressed natural gas
+           * - `miscellaneous_other_fuel` - Miscellaneous other fuel
+           */
+          fuel_type:
+            | 'regular'
+            | 'mid_or_plus'
+            | 'premium_or_super'
+            | 'mid_or_plus_2'
+            | 'premium_or_super_2'
+            | 'regular_ethanol_5_blend_non_us'
+            | 'mid_or_plus_ethanol_5_blend_non_us'
+            | 'premium_or_super_ethanol_5_blend_non_us'
+            | 'ethanol_7_7_blend'
+            | 'mid_or_plus_2_ethanol_5_blend_non_us'
+            | 'green_gasoline_regular'
+            | 'green_gasoline_mid_or_plus'
+            | 'green_gasoline_premium_or_super'
+            | 'regular_diesel_2'
+            | 'premium_diesel_2'
+            | 'regular_diesel_1'
+            | 'compressed_natural_gas'
+            | 'liquid_propane_gas'
+            | 'liquid_natural_gas'
+            | 'e85'
+            | 'regular_reformulated'
+            | 'mid_or_plus_reformulated'
+            | 'premium_or_super_reformulated'
+            | 'mid_or_plus_2_reformulated'
+            | 'premium_or_super_2_reformulated'
+            | 'diesel_off_road_1_2_non_taxable'
+            | 'diesel_off_road_non_taxable'
+            | 'biodiesel_blend_off_road_non_taxable'
+            | 'racing_fuel'
+            | 'mid_or_plus_2_ethanol_10_blend'
+            | 'premium_or_super_2_ethanol_10_blend'
+            | 'mid_or_plus_ethanol_2_15_blend'
+            | 'premium_or_super_ethanol_2_15_blend'
+            | 'premium_or_super_2_ethanol_5_blend_non_us'
+            | 'regular_ethanol_10_blend'
+            | 'mid_or_plus_ethanol_10_blend'
+            | 'premium_or_super_ethanol_10_blend'
+            | 'b2_diesel_blend_2_biodiesel'
+            | 'b5_diesel_blend_5_biodiesel'
+            | 'b10_diesel_blend_10_biodiesel'
+            | 'b11_diesel_blend_11_biodiesel'
+            | 'b15_diesel_blend_15_biodiesel'
+            | 'b20_diesel_blend_20_biodiesel'
+            | 'b100_diesel_blend_100_biodiesel'
+            | 'b1_diesel_blend_1_biodiesel'
+            | 'additized_diesel_2'
+            | 'additized_diesel_3'
+            | 'b7_diesel_blend_7_biodiesel_non_us'
+            | 'b7_premium_diesel_blend_7_biodiesel_non_us'
+            | 'renewable_diesel_r95_or_greater'
+            | 'renewable_diesel_biodiesel_6_to_20'
+            | 'diesel_exhaust_fluid_pump'
+            | 'premium_diesel_1'
+            | 'regular_ethanol_15_blend'
+            | 'mid_or_plus_ethanol_15_blend'
+            | 'premium_or_super_ethanol_15_blend'
+            | 'premium_diesel_blend_less_than_20_biodiesel'
+            | 'premium_diesel_blend_20_or_more_biodiesel'
+            | 'b75_diesel_blend_75_biodiesel'
+            | 'b99_diesel_blend_99_biodiesel'
+            | 'reserved_for_preauthorization_use_only'
+            | 'undefined_fuel_reserved_for_proprietary_use'
+            | 'miscellaneous_fuel'
+            | 'jet_fuel'
+            | 'aviation_fuel_regular'
+            | 'aviation_fuel_premium'
+            | 'aviation_fuel_jp8'
+            | 'aviation_fuel_4'
+            | 'aviation_fuel_5'
+            | 'biojet_diesel'
+            | 'aviation_biofuel_gasoline'
+            | 'undefined_aviation_fuel_reserved_for_proprietary_use'
+            | 'miscellaneous_aviation_fuel'
+            | 'marine_fuel_1'
+            | 'marine_fuel_2'
+            | 'marine_fuel_3'
+            | 'marine_fuel_4'
+            | 'marine_fuel_5'
+            | 'marine_other'
+            | 'marine_diesel'
+            | 'miscellaneous_marine_fuel'
+            | 'kerosene_low_sulfur'
+            | 'white_gas'
+            | 'heating_oil'
+            | 'other_fuel_non_taxable'
+            | 'kerosene_ultra_low_sulfur'
+            | 'electric_vehicle_charging_level_1_110_volt'
+            | 'electric_vehicle_charging_level_2_240_volt'
+            | 'electric_vehicle_charging_level_3_480_volt'
+            | 'renewable_diesel_r95_or_greater_off_road_non_taxable'
+            | 'biodiesel_blend_1_off_road_non_taxable'
+            | 'biodiesel_blend_75_off_road_non_taxable'
+            | 'biodiesel_blend_99_off_road_non_taxable'
+            | 'biodiesel_blend_100_off_road_non_taxable'
+            | 'renewable_diesel_biodiesel_6_to_20_off_road_non_taxable'
+            | 'electric_vehicle_charging_level_4_800_volt'
+            | 'electric_vehicle_charging_level_5_megawatt'
+            | 'hydrotreated_vegetable_oil_100'
+            | 'bio_compressed_natural_gas'
+            | 'miscellaneous_other_fuel'
+            | null;
+
+          /**
+           * The cost per unit of fuel in minor units.
+           */
+          fuel_unit_cost_amount: number | null;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the fuel unit
+           * cost.
+           */
+          fuel_unit_cost_currency: string | null;
+
+          /**
+           * The unit of measure for the fuel quantity.
+           *
+           * - `liter` - Liter
+           * - `us_gallon` - US gallon
+           * - `imperial_gallon` - Imperial gallon
+           * - `kilogram` - Kilogram
+           * - `pound` - Pound
+           * - `charging_minutes` - Charging minutes
+           * - `kilowatt_hour` - Kilowatt hour
+           */
+          fuel_unit_of_measure:
+            | 'liter'
+            | 'us_gallon'
+            | 'imperial_gallon'
+            | 'kilogram'
+            | 'pound'
+            | 'charging_minutes'
+            | 'kilowatt_hour'
+            | null;
+
+          /**
+           * The gross fuel price in minor units.
+           */
+          gross_fuel_price_amount: number | null;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the gross fuel
+           * price.
+           */
+          gross_fuel_price_currency: string | null;
+
+          /**
+           * The gross non-fuel price in minor units.
+           */
+          gross_non_fuel_price_amount: number | null;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the gross
+           * non-fuel price.
+           */
+          gross_non_fuel_price_currency: string | null;
+
+          /**
+           * The net fuel price in minor units.
+           */
+          net_fuel_price_amount: number | null;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the net fuel
+           * price.
+           */
+          net_fuel_price_currency: string | null;
+
+          /**
+           * The net non-fuel price in minor units.
+           */
+          net_non_fuel_price_amount: number | null;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the net non-fuel
+           * price.
+           */
+          net_non_fuel_price_currency: string | null;
+
+          /**
+           * The odometer reading reported by the merchant.
+           */
+          odometer_reading: number | null;
+
+          /**
+           * The type of fleet purchase.
+           *
+           * - `fuel_purchase` - Fuel purchase
+           * - `non_fuel_purchase` - Non-fuel purchase
+           * - `fuel_and_non_fuel_purchase` - Fuel and non-fuel purchase
+           * - `fuel_purchase_with_multiple_fuel_types` - Fuel purchase with multiple fuel
+           *   types
+           */
+          purchase_type:
+            | 'fuel_purchase'
+            | 'non_fuel_purchase'
+            | 'fuel_and_non_fuel_purchase'
+            | 'fuel_purchase_with_multiple_fuel_types'
+            | null;
+
+          /**
+           * The type of service provided.
+           *
+           * - `full_service` - Full service
+           * - `self_service` - Self service
+           * - `high_speed_dispense` - High speed dispense
+           */
+          service_type: 'full_service' | 'self_service' | 'high_speed_dispense' | null;
+
+          /**
+           * The fleet trailer number.
+           */
+          trailer_number: string | null;
         }
 
         /**
