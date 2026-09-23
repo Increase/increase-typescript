@@ -179,6 +179,11 @@ export interface InboundWireTransfer {
   instructing_agent_routing_number: string | null;
 
   /**
+   * A free-form instruction for the receiving bank set by the sender.
+   */
+  instruction_for_creditor_agent: string | null;
+
+  /**
    * The sending bank's identifier for the wire transfer.
    */
   instruction_identification: string | null;
