@@ -435,7 +435,7 @@ export namespace Entity {
            *
            * - `social_security_number` - A social security number.
            * - `social_security_number_last4` - The last four digits of a social security
-           *   number.
+           *   number. Not all programs can use this method.
            * - `individual_taxpayer_identification_number` - An individual taxpayer
            *   identification number (ITIN).
            * - `passport` - A passport number.
@@ -659,7 +659,7 @@ export namespace Entity {
          *
          * - `social_security_number` - A social security number.
          * - `social_security_number_last4` - The last four digits of a social security
-         *   number.
+         *   number. Not all programs can use this method.
          * - `individual_taxpayer_identification_number` - An individual taxpayer
          *   identification number (ITIN).
          * - `passport` - A passport number.
@@ -757,7 +757,7 @@ export namespace Entity {
        *
        * - `social_security_number` - A social security number.
        * - `social_security_number_last4` - The last four digits of a social security
-       *   number.
+       *   number. Not all programs can use this method.
        * - `individual_taxpayer_identification_number` - An individual taxpayer
        *   identification number (ITIN).
        * - `passport` - A passport number.
@@ -953,7 +953,7 @@ export namespace Entity {
          *
          * - `social_security_number` - A social security number.
          * - `social_security_number_last4` - The last four digits of a social security
-         *   number.
+         *   number. Not all programs can use this method.
          * - `individual_taxpayer_identification_number` - An individual taxpayer
          *   identification number (ITIN).
          * - `passport` - A passport number.
@@ -1176,7 +1176,7 @@ export namespace Entity {
          *
          * - `social_security_number` - A social security number.
          * - `social_security_number_last4` - The last four digits of a social security
-         *   number.
+         *   number. Not all programs can use this method.
          * - `individual_taxpayer_identification_number` - An individual taxpayer
          *   identification number (ITIN).
          * - `passport` - A passport number.
@@ -1289,7 +1289,7 @@ export namespace Entity {
            *
            * - `social_security_number` - A social security number.
            * - `social_security_number_last4` - The last four digits of a social security
-           *   number.
+           *   number. Not all programs can use this method.
            * - `individual_taxpayer_identification_number` - An individual taxpayer
            *   identification number (ITIN).
            * - `passport` - A passport number.
@@ -1761,7 +1761,7 @@ export namespace EntityCreateParams {
            *
            * - `social_security_number` - A social security number.
            * - `social_security_number_last4` - The last four digits of a social security
-           *   number.
+           *   number. Not all programs can use this method.
            * - `individual_taxpayer_identification_number` - An individual taxpayer
            *   identification number (ITIN).
            * - `passport` - A passport number.
