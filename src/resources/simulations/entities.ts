@@ -61,13 +61,18 @@ export namespace EntityUpdateValidationParams {
      * - `beneficial_owner_address` - A beneficial owner's address could not be
      *   validated. Update the address with the
      *   [update a beneficial owner API](/documentation/api/beneficial-owners#update-a-beneficial-owner).
+     * - `beneficial_owner_tax_identifier` - A beneficial owner's full tax identifier
+     *   is required. A non-US person can submit a passport or driver's license. Make
+     *   changes via the
+     *   [update a beneficial owner API](/documentation/api/beneficial-owners#update-a-beneficial-owner).
      */
     category:
       | 'entity_tax_identifier'
       | 'entity_address'
       | 'entity_identity'
       | 'beneficial_owner_identity'
-      | 'beneficial_owner_address';
+      | 'beneficial_owner_address'
+      | 'beneficial_owner_tax_identifier';
   }
 }
 

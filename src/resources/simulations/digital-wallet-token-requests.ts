@@ -43,6 +43,9 @@ export interface DigitalWalletTokenRequestCreateResponse {
    *   the Card Verification Code (CVC) was incorrect.
    * - `declined_by_token_requestor` - The tokenization attempt was declined by the
    *   token requestor.
+   * - `group_locked` - The group was locked.
+   * - `account_closed` - The account has been closed.
+   * - `entity_not_active` - The account's entity was not active.
    */
   decline_reason:
     | 'card_not_active'
@@ -51,6 +54,9 @@ export interface DigitalWalletTokenRequestCreateResponse {
     | 'webhook_declined'
     | 'incorrect_card_verification_code'
     | 'declined_by_token_requestor'
+    | 'group_locked'
+    | 'account_closed'
+    | 'entity_not_active'
     | null;
 
   /**
