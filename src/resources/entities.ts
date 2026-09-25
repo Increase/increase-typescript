@@ -435,7 +435,7 @@ export namespace Entity {
            *
            * - `social_security_number` - A social security number.
            * - `social_security_number_last4` - The last four digits of a social security
-           *   number.
+           *   number. Not all programs can use this method.
            * - `individual_taxpayer_identification_number` - An individual taxpayer
            *   identification number (ITIN).
            * - `passport` - A passport number.
@@ -659,7 +659,7 @@ export namespace Entity {
          *
          * - `social_security_number` - A social security number.
          * - `social_security_number_last4` - The last four digits of a social security
-         *   number.
+         *   number. Not all programs can use this method.
          * - `individual_taxpayer_identification_number` - An individual taxpayer
          *   identification number (ITIN).
          * - `passport` - A passport number.
@@ -757,7 +757,7 @@ export namespace Entity {
        *
        * - `social_security_number` - A social security number.
        * - `social_security_number_last4` - The last four digits of a social security
-       *   number.
+       *   number. Not all programs can use this method.
        * - `individual_taxpayer_identification_number` - An individual taxpayer
        *   identification number (ITIN).
        * - `passport` - A passport number.
@@ -953,7 +953,7 @@ export namespace Entity {
          *
          * - `social_security_number` - A social security number.
          * - `social_security_number_last4` - The last four digits of a social security
-         *   number.
+         *   number. Not all programs can use this method.
          * - `individual_taxpayer_identification_number` - An individual taxpayer
          *   identification number (ITIN).
          * - `passport` - A passport number.
@@ -1176,7 +1176,7 @@ export namespace Entity {
          *
          * - `social_security_number` - A social security number.
          * - `social_security_number_last4` - The last four digits of a social security
-         *   number.
+         *   number. Not all programs can use this method.
          * - `individual_taxpayer_identification_number` - An individual taxpayer
          *   identification number (ITIN).
          * - `passport` - A passport number.
@@ -1289,7 +1289,7 @@ export namespace Entity {
            *
            * - `social_security_number` - A social security number.
            * - `social_security_number_last4` - The last four digits of a social security
-           *   number.
+           *   number. Not all programs can use this method.
            * - `individual_taxpayer_identification_number` - An individual taxpayer
            *   identification number (ITIN).
            * - `passport` - A passport number.
@@ -1350,6 +1350,11 @@ export namespace Entity {
       beneficial_owner_identity: Issue.BeneficialOwnerIdentity | null;
 
       /**
+       * Details when the issue is with a beneficial owner's tax identifier.
+       */
+      beneficial_owner_tax_identifier: Issue.BeneficialOwnerTaxIdentifier | null;
+
+      /**
        * The type of issue. We may add additional possible values for this enum over
        * time; your application should be able to handle such additions gracefully.
        *
@@ -1368,13 +1373,18 @@ export namespace Entity {
        * - `beneficial_owner_address` - A beneficial owner's address could not be
        *   validated. Update the address with the
        *   [update a beneficial owner API](/documentation/api/beneficial-owners#update-a-beneficial-owner).
+       * - `beneficial_owner_tax_identifier` - A beneficial owner's full tax identifier
+       *   is required. A non-US person can submit a passport or driver's license. Make
+       *   changes via the
+       *   [update a beneficial owner API](/documentation/api/beneficial-owners#update-a-beneficial-owner).
        */
       category:
         | 'entity_tax_identifier'
         | 'entity_address'
         | 'entity_identity'
         | 'beneficial_owner_identity'
-        | 'beneficial_owner_address';
+        | 'beneficial_owner_address'
+        | 'beneficial_owner_tax_identifier';
 
       /**
        * Details when the issue is with the entity's address.
@@ -1414,6 +1424,16 @@ export namespace Entity {
        * Details when the issue is with a beneficial owner's identity verification.
        */
       export interface BeneficialOwnerIdentity {
+        /**
+         * The ID of the beneficial owner.
+         */
+        beneficial_owner_id: string;
+      }
+
+      /**
+       * Details when the issue is with a beneficial owner's tax identifier.
+       */
+      export interface BeneficialOwnerTaxIdentifier {
         /**
          * The ID of the beneficial owner.
          */
@@ -1761,7 +1781,7 @@ export namespace EntityCreateParams {
            *
            * - `social_security_number` - A social security number.
            * - `social_security_number_last4` - The last four digits of a social security
-           *   number.
+           *   number. Not all programs can use this method.
            * - `individual_taxpayer_identification_number` - An individual taxpayer
            *   identification number (ITIN).
            * - `passport` - A passport number.

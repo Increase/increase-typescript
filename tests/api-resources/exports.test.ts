@@ -94,7 +94,7 @@ describe('resource exports', () => {
     await expect(
       client.exports.list(
         {
-          category: 'account_statement_ofx',
+          category: 'account_statement_bai2',
           created_at: {
             after: '2019-12-27T18:11:19.117Z',
             before: '2019-12-27T18:11:19.117Z',
