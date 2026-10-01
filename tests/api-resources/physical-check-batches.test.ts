@@ -7,12 +7,23 @@ const client = new Increase({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource inboundCheckDeposits', () => {
+describe('resource physicalCheckBatches', () => {
   test('create: only required params', async () => {
-    const responsePromise = client.simulations.inboundCheckDeposits.create({
-      account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
-      amount: 1000,
-      check_number: '1234567890',
+    const responsePromise = client.physicalCheckBatches.create({
+      mailing_address: {
+        city: 'New York',
+        line1: '33 Liberty Street',
+        name: 'Ian Crease',
+        postal_code: '10045',
+        state: 'NY',
+      },
+      return_address: {
+        city: 'New York',
+        line1: '33 Liberty Street',
+        name: 'National Phonograph Company',
+        postal_code: '10045',
+        state: 'NY',
+      },
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -24,18 +35,31 @@ describe('resource inboundCheckDeposits', () => {
   });
 
   test('create: required and optional params', async () => {
-    await client.simulations.inboundCheckDeposits.create({
-      account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
-      amount: 1000,
-      check_number: '1234567890',
-      payee_name_analysis: 'name_matches',
+    await client.physicalCheckBatches.create({
+      mailing_address: {
+        city: 'New York',
+        line1: '33 Liberty Street',
+        name: 'Ian Crease',
+        postal_code: '10045',
+        state: 'NY',
+        line2: 'line2',
+        phone: 'x',
+      },
+      return_address: {
+        city: 'New York',
+        line1: '33 Liberty Street',
+        name: 'National Phonograph Company',
+        postal_code: '10045',
+        state: 'NY',
+        line2: 'line2',
+        phone: 'x',
+      },
+      shipping_method: 'usps_first_class',
     });
   });
 
-  test('accept', async () => {
-    const responsePromise = client.simulations.inboundCheckDeposits.accept(
-      'inbound_check_deposit_zoshvqybq0cjjm31mra',
-    );
+  test('cancel', async () => {
+    const responsePromise = client.physicalCheckBatches.cancel('physical_check_batch_yzdwjhdbw0in6191whce');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -45,11 +69,8 @@ describe('resource inboundCheckDeposits', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('adjustment', async () => {
-    const responsePromise = client.simulations.inboundCheckDeposits.adjustment(
-      'inbound_check_deposit_zoshvqybq0cjjm31mra',
-      {},
-    );
+  test('complete', async () => {
+    const responsePromise = client.physicalCheckBatches.complete('physical_check_batch_yzdwjhdbw0in6191whce');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;

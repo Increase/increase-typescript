@@ -63,6 +63,8 @@ import * as EntityOnboardingSessionsAPI from './entity-onboarding-sessions';
 import { EntityOnboardingSessions } from './entity-onboarding-sessions';
 import * as ExportsAPI from './exports';
 import { ExportCreateParams, Exports } from './exports';
+import * as FednowTransfersAPI from './fednow-transfers';
+import { FednowTransferCompleteParams, FednowTransfers } from './fednow-transfers';
 import * as InboundACHTransfersAPI from './inbound-ach-transfers';
 import { InboundACHTransferCreateParams, InboundACHTransfers } from './inbound-ach-transfers';
 import * as InboundCheckDepositsAPI from './inbound-check-deposits';
@@ -151,6 +153,7 @@ export class Simulations extends APIResource {
     new RealTimePaymentsTransfersAPI.RealTimePaymentsTransfers(this._client);
   inboundRealTimePaymentsTransfers: InboundRealTimePaymentsTransfersAPI.InboundRealTimePaymentsTransfers =
     new InboundRealTimePaymentsTransfersAPI.InboundRealTimePaymentsTransfers(this._client);
+  fednowTransfers: FednowTransfersAPI.FednowTransfers = new FednowTransfersAPI.FednowTransfers(this._client);
   inboundFednowTransfers: InboundFednowTransfersAPI.InboundFednowTransfers =
     new InboundFednowTransfersAPI.InboundFednowTransfers(this._client);
   checkDeposits: CheckDepositsAPI.CheckDeposits = new CheckDepositsAPI.CheckDeposits(this._client);
@@ -194,6 +197,7 @@ Simulations.CheckTransfers = CheckTransfers;
 Simulations.InboundCheckDeposits = InboundCheckDeposits;
 Simulations.RealTimePaymentsTransfers = RealTimePaymentsTransfers;
 Simulations.InboundRealTimePaymentsTransfers = InboundRealTimePaymentsTransfers;
+Simulations.FednowTransfers = FednowTransfers;
 Simulations.InboundFednowTransfers = InboundFednowTransfers;
 Simulations.CheckDeposits = CheckDeposits;
 Simulations.InboundMailItems = InboundMailItems;
@@ -316,6 +320,11 @@ export declare namespace Simulations {
   export {
     InboundRealTimePaymentsTransfers as InboundRealTimePaymentsTransfers,
     type InboundRealTimePaymentsTransferCreateParams as InboundRealTimePaymentsTransferCreateParams,
+  };
+
+  export {
+    FednowTransfers as FednowTransfers,
+    type FednowTransferCompleteParams as FednowTransferCompleteParams,
   };
 
   export {

@@ -99,6 +99,7 @@ export {
   Cards,
   type Card,
   type CardDetails,
+  type CardDetailsToken,
   type CardIframeURL,
   type CardCreateParams,
   type CardUpdateParams,
@@ -137,9 +138,16 @@ export {
   type DigitalCardProfilesPage,
 } from './digital-card-profiles';
 export {
+  DigitalWalletTokenRequests,
+  type DigitalWalletTokenRequest,
+  type DigitalWalletTokenRequestListParams,
+  type DigitalWalletTokenRequestsPage,
+} from './digital-wallet-token-requests';
+export {
   DigitalWalletTokens,
   type DigitalWalletToken,
   type DigitalWalletTokenListParams,
+  type DigitalWalletTokenTransitionParams,
   type DigitalWalletTokensPage,
 } from './digital-wallet-tokens';
 export {
@@ -220,6 +228,12 @@ export {
   type InboundMailItemActionParams,
   type InboundMailItemsPage,
 } from './inbound-mail-items';
+export {
+  InboundRealTimePaymentsRequestsForPayment,
+  type InboundRealTimePaymentsRequestForPayment,
+  type InboundRealTimePaymentsRequestsForPaymentListParams,
+  type InboundRealTimePaymentsRequestForPaymentsPage,
+} from './inbound-real-time-payments-requests-for-payment';
 export {
   InboundRealTimePaymentsTransfers,
   type InboundRealTimePaymentsTransfer,
@@ -306,12 +320,25 @@ export {
   type PhysicalCardListParams,
   type PhysicalCardsPage,
 } from './physical-cards';
+export {
+  PhysicalCheckBatches,
+  type PhysicalCheckBatch,
+  type PhysicalCheckBatchCreateParams,
+} from './physical-check-batches';
 export { Programs, type Program, type ProgramListParams, type ProgramsPage } from './programs';
 export {
   RealTimeDecisions,
   type RealTimeDecision,
   type RealTimeDecisionActionParams,
 } from './real-time-decisions';
+export {
+  RealTimePaymentsRequestsForPayment,
+  type RealTimePaymentsRequestForPayment,
+  type RealTimePaymentsRequestsForPaymentCreateParams,
+  type RealTimePaymentsRequestsForPaymentListParams,
+  type RealTimePaymentsRequestsForPaymentCancelParams,
+  type RealTimePaymentsRequestForPaymentsPage,
+} from './real-time-payments-requests-for-payment';
 export {
   RealTimePaymentsTransfers,
   type RealTimePaymentsTransfer,
