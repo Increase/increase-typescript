@@ -128,6 +128,17 @@ describe('resource cards', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
+  test('createDetailsToken', async () => {
+    const responsePromise = client.cards.createDetailsToken('card_oubs0hwk5rn6knuecxg2');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
   test('details', async () => {
     const responsePromise = client.cards.details('card_oubs0hwk5rn6knuecxg2');
     const rawResponse = await responsePromise.asResponse();

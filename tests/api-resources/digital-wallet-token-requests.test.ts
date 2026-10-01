@@ -7,9 +7,11 @@ const client = new Increase({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource digitalWalletTokens', () => {
+describe('resource digitalWalletTokenRequests', () => {
   test('retrieve', async () => {
-    const responsePromise = client.digitalWalletTokens.retrieve('digital_wallet_token_izi62go3h51p369jrie0');
+    const responsePromise = client.digitalWalletTokenRequests.retrieve(
+      'digital_wallet_token_request_dlsq0yabf7ev4xvke6ek',
+    );
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -20,7 +22,7 @@ describe('resource digitalWalletTokens', () => {
   });
 
   test('list', async () => {
-    const responsePromise = client.digitalWalletTokens.list();
+    const responsePromise = client.digitalWalletTokenRequests.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -33,7 +35,7 @@ describe('resource digitalWalletTokens', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.digitalWalletTokens.list(
+      client.digitalWalletTokenRequests.list(
         {
           card_id: 'card_id',
           created_at: {
@@ -48,25 +50,5 @@ describe('resource digitalWalletTokens', () => {
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(Increase.NotFoundError);
-  });
-
-  test('transition: only required params', async () => {
-    const responsePromise = client.digitalWalletTokens.transition(
-      'digital_wallet_token_izi62go3h51p369jrie0',
-      { status: 'suspended' },
-    );
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('transition: required and optional params', async () => {
-    await client.digitalWalletTokens.transition('digital_wallet_token_izi62go3h51p369jrie0', {
-      status: 'suspended',
-    });
   });
 });

@@ -39,6 +39,32 @@ export class DigitalWalletTokens extends APIResource {
   ): PagePromise<DigitalWalletTokensPage, DigitalWalletToken> {
     return this._client.getAPIList('/digital_wallet_tokens', Page<DigitalWalletToken>, { query, ...options });
   }
+
+  /**
+   * Submit a Digital Wallet Token status transition to the card network. The Digital
+   * Wallet Token will move to `pending_transitioning` until the card network
+   * confirms the transition, and a `digital_wallet_token.updated` webhook will be
+   * sent once the transition has been confirmed.
+   *
+   * @example
+   * ```ts
+   * const digitalWalletToken =
+   *   await client.digitalWalletTokens.transition(
+   *     'digital_wallet_token_izi62go3h51p369jrie0',
+   *     { status: 'suspended' },
+   *   );
+   * ```
+   */
+  transition(
+    digitalWalletTokenID: string,
+    body: DigitalWalletTokenTransitionParams,
+    options?: RequestOptions,
+  ): APIPromise<DigitalWalletToken> {
+    return this._client.post(path`/digital_wallet_tokens/${digitalWalletTokenID}/transition`, {
+      body,
+      ...options,
+    });
+  }
 }
 
 export type DigitalWalletTokensPage = Page<DigitalWalletToken>;
@@ -121,9 +147,10 @@ export interface DigitalWalletToken {
    * - `apple_pay` - Apple Pay
    * - `google_pay` - Google Pay
    * - `samsung_pay` - Samsung Pay
+   * - `garmin_pay` - Garmin Pay
    * - `unknown` - Unknown
    */
-  token_requestor: 'apple_pay' | 'google_pay' | 'samsung_pay' | 'unknown';
+  token_requestor: 'apple_pay' | 'google_pay' | 'samsung_pay' | 'garmin_pay' | 'unknown';
 
   /**
    * A constant representing the object's type. For this resource it will always be
@@ -302,10 +329,23 @@ export namespace DigitalWalletTokenListParams {
   }
 }
 
+export interface DigitalWalletTokenTransitionParams {
+  /**
+   * The status to transition the Digital Wallet Token to.
+   *
+   * - `active` - Reactivate a suspended Digital Wallet Token.
+   * - `suspended` - Temporarily pause an active Digital Wallet Token.
+   * - `deactivated` - Permanently cancel an active, inactive, or suspended Digital
+   *   Wallet Token.
+   */
+  status: 'active' | 'suspended' | 'deactivated';
+}
+
 export declare namespace DigitalWalletTokens {
   export {
     type DigitalWalletToken as DigitalWalletToken,
     type DigitalWalletTokensPage as DigitalWalletTokensPage,
     type DigitalWalletTokenListParams as DigitalWalletTokenListParams,
+    type DigitalWalletTokenTransitionParams as DigitalWalletTokenTransitionParams,
   };
 }

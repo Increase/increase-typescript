@@ -118,6 +118,7 @@ import {
   CardCreateDetailsIframeParams,
   CardCreateParams,
   CardDetails,
+  CardDetailsToken,
   CardIframeURL,
   CardListParams,
   CardUpdateParams,
@@ -155,8 +156,15 @@ import {
   DigitalCardProfilesPage,
 } from './resources/digital-card-profiles';
 import {
+  DigitalWalletTokenRequest,
+  DigitalWalletTokenRequestListParams,
+  DigitalWalletTokenRequests,
+  DigitalWalletTokenRequestsPage,
+} from './resources/digital-wallet-token-requests';
+import {
   DigitalWalletToken,
   DigitalWalletTokenListParams,
+  DigitalWalletTokenTransitionParams,
   DigitalWalletTokens,
   DigitalWalletTokensPage,
 } from './resources/digital-wallet-tokens';
@@ -232,6 +240,12 @@ import {
   InboundMailItems,
   InboundMailItemsPage,
 } from './resources/inbound-mail-items';
+import {
+  InboundRealTimePaymentsRequestForPayment,
+  InboundRealTimePaymentsRequestForPaymentsPage,
+  InboundRealTimePaymentsRequestsForPayment,
+  InboundRealTimePaymentsRequestsForPaymentListParams,
+} from './resources/inbound-real-time-payments-requests-for-payment';
 import {
   InboundRealTimePaymentsTransfer,
   InboundRealTimePaymentsTransferListParams,
@@ -318,12 +332,25 @@ import {
   PhysicalCards,
   PhysicalCardsPage,
 } from './resources/physical-cards';
+import {
+  PhysicalCheckBatch,
+  PhysicalCheckBatchCreateParams,
+  PhysicalCheckBatches,
+} from './resources/physical-check-batches';
 import { Program, ProgramListParams, Programs, ProgramsPage } from './resources/programs';
 import {
   RealTimeDecision,
   RealTimeDecisionActionParams,
   RealTimeDecisions,
 } from './resources/real-time-decisions';
+import {
+  RealTimePaymentsRequestForPayment,
+  RealTimePaymentsRequestForPaymentsPage,
+  RealTimePaymentsRequestsForPayment,
+  RealTimePaymentsRequestsForPaymentCancelParams,
+  RealTimePaymentsRequestsForPaymentCreateParams,
+  RealTimePaymentsRequestsForPaymentListParams,
+} from './resources/real-time-payments-requests-for-payment';
 import {
   RealTimePaymentsTransfer,
   RealTimePaymentsTransferCreateParams,
@@ -1153,6 +1180,7 @@ export class Increase {
   digitalCardProfiles: API.DigitalCardProfiles = new API.DigitalCardProfiles(this);
   physicalCardProfiles: API.PhysicalCardProfiles = new API.PhysicalCardProfiles(this);
   digitalWalletTokens: API.DigitalWalletTokens = new API.DigitalWalletTokens(this);
+  digitalWalletTokenRequests: API.DigitalWalletTokenRequests = new API.DigitalWalletTokenRequests(this);
   transactions: API.Transactions = new API.Transactions(this);
   pendingTransactions: API.PendingTransactions = new API.PendingTransactions(this);
   declinedTransactions: API.DeclinedTransactions = new API.DeclinedTransactions(this);
@@ -1168,6 +1196,10 @@ export class Increase {
   realTimePaymentsTransfers: API.RealTimePaymentsTransfers = new API.RealTimePaymentsTransfers(this);
   inboundRealTimePaymentsTransfers: API.InboundRealTimePaymentsTransfers =
     new API.InboundRealTimePaymentsTransfers(this);
+  realTimePaymentsRequestsForPayment: API.RealTimePaymentsRequestsForPayment =
+    new API.RealTimePaymentsRequestsForPayment(this);
+  inboundRealTimePaymentsRequestsForPayment: API.InboundRealTimePaymentsRequestsForPayment =
+    new API.InboundRealTimePaymentsRequestsForPayment(this);
   fednowTransfers: API.FednowTransfers = new API.FednowTransfers(this);
   inboundFednowTransfers: API.InboundFednowTransfers = new API.InboundFednowTransfers(this);
   swiftTransfers: API.SwiftTransfers = new API.SwiftTransfers(this);
@@ -1199,6 +1231,7 @@ export class Increase {
   cardTokens: API.CardTokens = new API.CardTokens(this);
   cardPushTransfers: API.CardPushTransfers = new API.CardPushTransfers(this);
   cardValidations: API.CardValidations = new API.CardValidations(this);
+  physicalCheckBatches: API.PhysicalCheckBatches = new API.PhysicalCheckBatches(this);
   simulations: API.Simulations = new API.Simulations(this);
 }
 
@@ -1213,6 +1246,7 @@ Increase.PhysicalCards = PhysicalCards;
 Increase.DigitalCardProfiles = DigitalCardProfiles;
 Increase.PhysicalCardProfiles = PhysicalCardProfiles;
 Increase.DigitalWalletTokens = DigitalWalletTokens;
+Increase.DigitalWalletTokenRequests = DigitalWalletTokenRequests;
 Increase.Transactions = Transactions;
 Increase.PendingTransactions = PendingTransactions;
 Increase.DeclinedTransactions = DeclinedTransactions;
@@ -1227,6 +1261,8 @@ Increase.CheckTransfers = CheckTransfers;
 Increase.InboundCheckDeposits = InboundCheckDeposits;
 Increase.RealTimePaymentsTransfers = RealTimePaymentsTransfers;
 Increase.InboundRealTimePaymentsTransfers = InboundRealTimePaymentsTransfers;
+Increase.RealTimePaymentsRequestsForPayment = RealTimePaymentsRequestsForPayment;
+Increase.InboundRealTimePaymentsRequestsForPayment = InboundRealTimePaymentsRequestsForPayment;
 Increase.FednowTransfers = FednowTransfers;
 Increase.InboundFednowTransfers = InboundFednowTransfers;
 Increase.SwiftTransfers = SwiftTransfers;
@@ -1258,6 +1294,7 @@ Increase.IntrafiExclusions = IntrafiExclusions;
 Increase.CardTokens = CardTokens;
 Increase.CardPushTransfers = CardPushTransfers;
 Increase.CardValidations = CardValidations;
+Increase.PhysicalCheckBatches = PhysicalCheckBatches;
 Increase.Simulations = Simulations;
 
 export declare namespace Increase {
@@ -1298,6 +1335,7 @@ export declare namespace Increase {
     Cards as Cards,
     type Card as Card,
     type CardDetails as CardDetails,
+    type CardDetailsToken as CardDetailsToken,
     type CardIframeURL as CardIframeURL,
     type CardsPage as CardsPage,
     type CardCreateParams as CardCreateParams,
@@ -1363,6 +1401,14 @@ export declare namespace Increase {
     type DigitalWalletToken as DigitalWalletToken,
     type DigitalWalletTokensPage as DigitalWalletTokensPage,
     type DigitalWalletTokenListParams as DigitalWalletTokenListParams,
+    type DigitalWalletTokenTransitionParams as DigitalWalletTokenTransitionParams,
+  };
+
+  export {
+    DigitalWalletTokenRequests as DigitalWalletTokenRequests,
+    type DigitalWalletTokenRequest as DigitalWalletTokenRequest,
+    type DigitalWalletTokenRequestsPage as DigitalWalletTokenRequestsPage,
+    type DigitalWalletTokenRequestListParams as DigitalWalletTokenRequestListParams,
   };
 
   export {
@@ -1474,6 +1520,22 @@ export declare namespace Increase {
     type InboundRealTimePaymentsTransfer as InboundRealTimePaymentsTransfer,
     type InboundRealTimePaymentsTransfersPage as InboundRealTimePaymentsTransfersPage,
     type InboundRealTimePaymentsTransferListParams as InboundRealTimePaymentsTransferListParams,
+  };
+
+  export {
+    RealTimePaymentsRequestsForPayment as RealTimePaymentsRequestsForPayment,
+    type RealTimePaymentsRequestForPayment as RealTimePaymentsRequestForPayment,
+    type RealTimePaymentsRequestForPaymentsPage as RealTimePaymentsRequestForPaymentsPage,
+    type RealTimePaymentsRequestsForPaymentCreateParams as RealTimePaymentsRequestsForPaymentCreateParams,
+    type RealTimePaymentsRequestsForPaymentListParams as RealTimePaymentsRequestsForPaymentListParams,
+    type RealTimePaymentsRequestsForPaymentCancelParams as RealTimePaymentsRequestsForPaymentCancelParams,
+  };
+
+  export {
+    InboundRealTimePaymentsRequestsForPayment as InboundRealTimePaymentsRequestsForPayment,
+    type InboundRealTimePaymentsRequestForPayment as InboundRealTimePaymentsRequestForPayment,
+    type InboundRealTimePaymentsRequestForPaymentsPage as InboundRealTimePaymentsRequestForPaymentsPage,
+    type InboundRealTimePaymentsRequestsForPaymentListParams as InboundRealTimePaymentsRequestsForPaymentListParams,
   };
 
   export {
@@ -1704,6 +1766,12 @@ export declare namespace Increase {
     type CardValidationsPage as CardValidationsPage,
     type CardValidationCreateParams as CardValidationCreateParams,
     type CardValidationListParams as CardValidationListParams,
+  };
+
+  export {
+    PhysicalCheckBatches as PhysicalCheckBatches,
+    type PhysicalCheckBatch as PhysicalCheckBatch,
+    type PhysicalCheckBatchCreateParams as PhysicalCheckBatchCreateParams,
   };
 
   export { Simulations as Simulations };

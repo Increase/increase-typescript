@@ -81,6 +81,7 @@ client.example.list(undefined, { headers: { ... } });
 - `client.digitalCardProfiles.list()`
 - `client.physicalCardProfiles.list()`
 - `client.digitalWalletTokens.list()`
+- `client.digitalWalletTokenRequests.list()`
 - `client.transactions.list()`
 - `client.pendingTransactions.list()`
 - `client.declinedTransactions.list()`
@@ -95,6 +96,8 @@ client.example.list(undefined, { headers: { ... } });
 - `client.inboundCheckDeposits.list()`
 - `client.realTimePaymentsTransfers.list()`
 - `client.inboundRealTimePaymentsTransfers.list()`
+- `client.realTimePaymentsRequestsForPayment.list()`
+- `client.inboundRealTimePaymentsRequestsForPayment.list()`
 - `client.fednowTransfers.list()`
 - `client.inboundFednowTransfers.list()`
 - `client.swiftTransfers.list()`

@@ -89,6 +89,24 @@ export class Cards extends APIResource {
   }
 
   /**
+   * Create a short-lived token that authorizes
+   * [Card Elements](/documentation/card-elements) to render the details of a Card in
+   * your frontend. Mint the token on your server and pass it to the browser; the
+   * token is valid for one hour and is scoped to a single Card.
+   *
+   * @example
+   * ```ts
+   * const cardDetailsToken =
+   *   await client.cards.createDetailsToken(
+   *     'card_oubs0hwk5rn6knuecxg2',
+   *   );
+   * ```
+   */
+  createDetailsToken(cardID: string, options?: RequestOptions): APIPromise<CardDetailsToken> {
+    return this._client.post(path`/cards/${cardID}/create_details_token`, options);
+  }
+
+  /**
    * Sensitive details for a Card include the primary account number, expiration,
    * card verification code, and PIN.
    *
@@ -581,6 +599,30 @@ export interface CardDetails {
    * Identification (CID).
    */
   verification_code: string;
+}
+
+/**
+ * A short-lived token that authorizes Increase Card Elements to render the details
+ * of a single Card.
+ */
+export interface CardDetailsToken {
+  /**
+   * The token. Pass this to the `@increasebank/card-elements` library in your
+   * frontend. Treat it as a credential: it authorizes anyone holding it to read the
+   * Card's details until it expires.
+   */
+  token: string;
+
+  /**
+   * The time the token will expire. Tokens are valid for one hour.
+   */
+  expires_at: string;
+
+  /**
+   * A constant representing the object's type. For this resource it will always be
+   * `card_details_token`.
+   */
+  type: 'card_details_token';
 }
 
 /**
@@ -1379,6 +1421,7 @@ export declare namespace Cards {
   export {
     type Card as Card,
     type CardDetails as CardDetails,
+    type CardDetailsToken as CardDetailsToken,
     type CardIframeURL as CardIframeURL,
     type CardsPage as CardsPage,
     type CardCreateParams as CardCreateParams,

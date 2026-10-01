@@ -47,6 +47,7 @@ Types:
 
 - <code><a href="./src/resources/cards.ts">Card</a></code>
 - <code><a href="./src/resources/cards.ts">CardDetails</a></code>
+- <code><a href="./src/resources/cards.ts">CardDetailsToken</a></code>
 - <code><a href="./src/resources/cards.ts">CardIframeURL</a></code>
 
 Methods:
@@ -56,6 +57,7 @@ Methods:
 - <code title="patch /cards/{card_id}">client.cards.<a href="./src/resources/cards.ts">update</a>(cardID, { ...params }) -> Card</code>
 - <code title="get /cards">client.cards.<a href="./src/resources/cards.ts">list</a>({ ...params }) -> CardsPage</code>
 - <code title="post /cards/{card_id}/create_details_iframe">client.cards.<a href="./src/resources/cards.ts">createDetailsIframe</a>(cardID, { ...params }) -> CardIframeURL</code>
+- <code title="post /cards/{card_id}/create_details_token">client.cards.<a href="./src/resources/cards.ts">createDetailsToken</a>(cardID) -> CardDetailsToken</code>
 - <code title="get /cards/{card_id}/details">client.cards.<a href="./src/resources/cards.ts">details</a>(cardID) -> CardDetails</code>
 - <code title="post /cards/{card_id}/update_pin">client.cards.<a href="./src/resources/cards.ts">updatePin</a>(cardID, { ...params }) -> CardDetails</code>
 
@@ -146,6 +148,18 @@ Methods:
 
 - <code title="get /digital_wallet_tokens/{digital_wallet_token_id}">client.digitalWalletTokens.<a href="./src/resources/digital-wallet-tokens.ts">retrieve</a>(digitalWalletTokenID) -> DigitalWalletToken</code>
 - <code title="get /digital_wallet_tokens">client.digitalWalletTokens.<a href="./src/resources/digital-wallet-tokens.ts">list</a>({ ...params }) -> DigitalWalletTokensPage</code>
+- <code title="post /digital_wallet_tokens/{digital_wallet_token_id}/transition">client.digitalWalletTokens.<a href="./src/resources/digital-wallet-tokens.ts">transition</a>(digitalWalletTokenID, { ...params }) -> DigitalWalletToken</code>
+
+# DigitalWalletTokenRequests
+
+Types:
+
+- <code><a href="./src/resources/digital-wallet-token-requests.ts">DigitalWalletTokenRequest</a></code>
+
+Methods:
+
+- <code title="get /digital_wallet_token_requests/{digital_wallet_token_request_id}">client.digitalWalletTokenRequests.<a href="./src/resources/digital-wallet-token-requests.ts">retrieve</a>(digitalWalletTokenRequestID) -> DigitalWalletTokenRequest</code>
+- <code title="get /digital_wallet_token_requests">client.digitalWalletTokenRequests.<a href="./src/resources/digital-wallet-token-requests.ts">list</a>({ ...params }) -> DigitalWalletTokenRequestsPage</code>
 
 # Transactions
 
@@ -323,6 +337,30 @@ Methods:
 
 - <code title="get /inbound_real_time_payments_transfers/{inbound_real_time_payments_transfer_id}">client.inboundRealTimePaymentsTransfers.<a href="./src/resources/inbound-real-time-payments-transfers.ts">retrieve</a>(inboundRealTimePaymentsTransferID) -> InboundRealTimePaymentsTransfer</code>
 - <code title="get /inbound_real_time_payments_transfers">client.inboundRealTimePaymentsTransfers.<a href="./src/resources/inbound-real-time-payments-transfers.ts">list</a>({ ...params }) -> InboundRealTimePaymentsTransfersPage</code>
+
+# RealTimePaymentsRequestsForPayment
+
+Types:
+
+- <code><a href="./src/resources/real-time-payments-requests-for-payment.ts">RealTimePaymentsRequestForPayment</a></code>
+
+Methods:
+
+- <code title="post /real_time_payments_requests_for_payment">client.realTimePaymentsRequestsForPayment.<a href="./src/resources/real-time-payments-requests-for-payment.ts">create</a>({ ...params }) -> RealTimePaymentsRequestForPayment</code>
+- <code title="get /real_time_payments_requests_for_payment/{real_time_payments_request_for_payment_id}">client.realTimePaymentsRequestsForPayment.<a href="./src/resources/real-time-payments-requests-for-payment.ts">retrieve</a>(realTimePaymentsRequestForPaymentID) -> RealTimePaymentsRequestForPayment</code>
+- <code title="get /real_time_payments_requests_for_payment">client.realTimePaymentsRequestsForPayment.<a href="./src/resources/real-time-payments-requests-for-payment.ts">list</a>({ ...params }) -> RealTimePaymentsRequestForPaymentsPage</code>
+- <code title="post /real_time_payments_requests_for_payment/{real_time_payments_request_for_payment_id}/cancel">client.realTimePaymentsRequestsForPayment.<a href="./src/resources/real-time-payments-requests-for-payment.ts">cancel</a>(realTimePaymentsRequestForPaymentID, { ...params }) -> RealTimePaymentsRequestForPayment</code>
+
+# InboundRealTimePaymentsRequestsForPayment
+
+Types:
+
+- <code><a href="./src/resources/inbound-real-time-payments-requests-for-payment.ts">InboundRealTimePaymentsRequestForPayment</a></code>
+
+Methods:
+
+- <code title="get /inbound_real_time_payments_requests_for_payment/{inbound_real_time_payments_request_for_payment_id}">client.inboundRealTimePaymentsRequestsForPayment.<a href="./src/resources/inbound-real-time-payments-requests-for-payment.ts">retrieve</a>(inboundRealTimePaymentsRequestForPaymentID) -> InboundRealTimePaymentsRequestForPayment</code>
+- <code title="get /inbound_real_time_payments_requests_for_payment">client.inboundRealTimePaymentsRequestsForPayment.<a href="./src/resources/inbound-real-time-payments-requests-for-payment.ts">list</a>({ ...params }) -> InboundRealTimePaymentsRequestForPaymentsPage</code>
 
 # FednowTransfers
 
@@ -699,6 +737,18 @@ Methods:
 - <code title="get /card_validations/{card_validation_id}">client.cardValidations.<a href="./src/resources/card-validations.ts">retrieve</a>(cardValidationID) -> CardValidation</code>
 - <code title="get /card_validations">client.cardValidations.<a href="./src/resources/card-validations.ts">list</a>({ ...params }) -> CardValidationsPage</code>
 
+# PhysicalCheckBatches
+
+Types:
+
+- <code><a href="./src/resources/physical-check-batches.ts">PhysicalCheckBatch</a></code>
+
+Methods:
+
+- <code title="post /physical_check_batches">client.physicalCheckBatches.<a href="./src/resources/physical-check-batches.ts">create</a>({ ...params }) -> PhysicalCheckBatch</code>
+- <code title="post /physical_check_batches/{physical_check_batch_id}/cancel">client.physicalCheckBatches.<a href="./src/resources/physical-check-batches.ts">cancel</a>(physicalCheckBatchID) -> PhysicalCheckBatch</code>
+- <code title="post /physical_check_batches/{physical_check_batch_id}/complete">client.physicalCheckBatches.<a href="./src/resources/physical-check-batches.ts">complete</a>(physicalCheckBatchID) -> PhysicalCheckBatch</code>
+
 # Simulations
 
 ## InterestPayments
@@ -861,6 +911,7 @@ Methods:
 Methods:
 
 - <code title="post /simulations/inbound_check_deposits">client.simulations.inboundCheckDeposits.<a href="./src/resources/simulations/inbound-check-deposits.ts">create</a>({ ...params }) -> InboundCheckDeposit</code>
+- <code title="post /simulations/inbound_check_deposits/{inbound_check_deposit_id}/accept">client.simulations.inboundCheckDeposits.<a href="./src/resources/simulations/inbound-check-deposits.ts">accept</a>(inboundCheckDepositID) -> InboundCheckDeposit</code>
 - <code title="post /simulations/inbound_check_deposits/{inbound_check_deposit_id}/adjustment">client.simulations.inboundCheckDeposits.<a href="./src/resources/simulations/inbound-check-deposits.ts">adjustment</a>(inboundCheckDepositID, { ...params }) -> InboundCheckDeposit</code>
 
 ## RealTimePaymentsTransfers
@@ -874,6 +925,12 @@ Methods:
 Methods:
 
 - <code title="post /simulations/inbound_real_time_payments_transfers">client.simulations.inboundRealTimePaymentsTransfers.<a href="./src/resources/simulations/inbound-real-time-payments-transfers.ts">create</a>({ ...params }) -> InboundRealTimePaymentsTransfer</code>
+
+## FednowTransfers
+
+Methods:
+
+- <code title="post /simulations/fednow_transfers/{fednow_transfer_id}/complete">client.simulations.fednowTransfers.<a href="./src/resources/simulations/fednow-transfers.ts">complete</a>(fednowTransferID, { ...params }) -> FednowTransfer</code>
 
 ## InboundFednowTransfers
 

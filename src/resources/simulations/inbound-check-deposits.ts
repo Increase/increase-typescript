@@ -35,6 +35,29 @@ export class InboundCheckDeposits extends APIResource {
   }
 
   /**
+   * Simulates the acceptance of an [Inbound Check Deposit](#inbound-check-deposits),
+   * creating a Transaction as a result. The Inbound Check Deposit must first have a
+   * `status` of `pending`.
+   *
+   * @example
+   * ```ts
+   * const inboundCheckDeposit =
+   *   await client.simulations.inboundCheckDeposits.accept(
+   *     'inbound_check_deposit_zoshvqybq0cjjm31mra',
+   *   );
+   * ```
+   */
+  accept(
+    inboundCheckDepositID: string,
+    options?: RequestOptions,
+  ): APIPromise<InboundCheckDepositsAPI.InboundCheckDeposit> {
+    return this._client.post(
+      path`/simulations/inbound_check_deposits/${inboundCheckDepositID}/accept`,
+      options,
+    );
+  }
+
+  /**
    * Simulates an adjustment on an Inbound Check Deposit. The Inbound Check Deposit
    * must have a `status` of `accepted`.
    *
