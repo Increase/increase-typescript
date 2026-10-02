@@ -160,7 +160,8 @@ export namespace AccountNumber {
      * still be declined if this is `allowed` but the Account Number is not active.
      *
      * - `allowed` - ACH Debits are allowed.
-     * - `blocked` - ACH Debits are blocked.
+     * - `blocked` - ACH Debits are blocked. Received debits will be declined and
+     *   returned with code `R20` (non-transaction account).
      */
     debit_status: 'allowed' | 'blocked';
   }
@@ -218,7 +219,8 @@ export namespace AccountNumberCreateParams {
      * you do not specify this field, the default is `allowed`.
      *
      * - `allowed` - ACH Debits are allowed.
-     * - `blocked` - ACH Debits are blocked.
+     * - `blocked` - ACH Debits are blocked. Received debits will be declined and
+     *   returned with code `R20` (non-transaction account).
      */
     debit_status: 'allowed' | 'blocked';
   }
@@ -278,7 +280,8 @@ export namespace AccountNumberUpdateParams {
      * will be declined if this is `allowed` but the Account Number is not active.
      *
      * - `allowed` - ACH Debits are allowed.
-     * - `blocked` - ACH Debits are blocked.
+     * - `blocked` - ACH Debits are blocked. Received debits will be declined and
+     *   returned with code `R20` (non-transaction account).
      */
     debit_status?: 'allowed' | 'blocked';
   }
