@@ -2363,6 +2363,7 @@ export namespace Transaction {
          * - `rental_agreement_number` - Rental agreement number
          * - `hotel_folio_number` - Hotel folio number
          * - `invoice_number` - Invoice number
+         * - `visa_recurrent_reference_identifier` - Visa Recurrent reference identifier
          */
         purchase_identifier_format:
           | 'free_text'
@@ -2370,6 +2371,7 @@ export namespace Transaction {
           | 'rental_agreement_number'
           | 'hotel_folio_number'
           | 'invoice_number'
+          | 'visa_recurrent_reference_identifier'
           | null;
 
         /**
@@ -3666,6 +3668,7 @@ export namespace Transaction {
          * - `rental_agreement_number` - Rental agreement number
          * - `hotel_folio_number` - Hotel folio number
          * - `invoice_number` - Invoice number
+         * - `visa_recurrent_reference_identifier` - Visa Recurrent reference identifier
          */
         purchase_identifier_format:
           | 'free_text'
@@ -3673,6 +3676,7 @@ export namespace Transaction {
           | 'rental_agreement_number'
           | 'hotel_folio_number'
           | 'invoice_number'
+          | 'visa_recurrent_reference_identifier'
           | null;
 
         /**
@@ -5217,8 +5221,16 @@ export namespace Transaction {
        *   usually happens for e.g., low quality images.
        * - `paid` - The check has already been deposited elsewhere and so this is a
        *   duplicate.
+       * - `duplicate_entry` - A previous adjustment for the check was applied twice and
+       *   the duplicate has been reversed.
        */
-      reason: 'late_return' | 'wrong_payee_credit' | 'adjusted_amount' | 'non_conforming_item' | 'paid';
+      reason:
+        | 'late_return'
+        | 'wrong_payee_credit'
+        | 'adjusted_amount'
+        | 'non_conforming_item'
+        | 'paid'
+        | 'duplicate_entry';
 
       [k: string]: unknown;
     }
