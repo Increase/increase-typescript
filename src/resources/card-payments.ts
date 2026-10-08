@@ -583,7 +583,8 @@ export namespace CardPayment {
          *
          * - `text_message` - The one-time code was sent via text message.
          * - `email` - The one-time code was sent via email.
-         * - `none_available` - The one-time code was not successfully delivered.
+         * - `none_available` - The one-time code could not be delivered because the card
+         *   has no phone number or email on file.
          */
         verification_method: 'text_message' | 'email' | 'none_available';
 
