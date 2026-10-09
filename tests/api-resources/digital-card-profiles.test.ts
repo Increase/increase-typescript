@@ -12,9 +12,8 @@ describe('resource digitalCardProfiles', () => {
     const responsePromise = client.digitalCardProfiles.create({
       app_icon_file_id: 'file_8zxqkwlh43wo144u8yec',
       background_image_file_id: 'file_1ai913suu1zfn1pdetru',
-      card_description: 'MyBank Signature Card',
+      card_description: 'National Phonograph Card',
       description: 'My Card Profile',
-      issuer_name: 'MyBank',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -29,10 +28,10 @@ describe('resource digitalCardProfiles', () => {
     await client.digitalCardProfiles.create({
       app_icon_file_id: 'file_8zxqkwlh43wo144u8yec',
       background_image_file_id: 'file_1ai913suu1zfn1pdetru',
-      card_description: 'MyBank Signature Card',
+      card_description: 'National Phonograph Card',
       description: 'My Card Profile',
-      issuer_name: 'MyBank',
       contact_email: 'user@example.com',
+      contact_name: 'National Phonograph Company',
       contact_phone: '+18885551212',
       contact_website: 'https://example.com',
       text_color: {

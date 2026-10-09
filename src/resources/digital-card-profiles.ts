@@ -16,9 +16,8 @@ export class DigitalCardProfiles extends APIResource {
    *   await client.digitalCardProfiles.create({
    *     app_icon_file_id: 'file_8zxqkwlh43wo144u8yec',
    *     background_image_file_id: 'file_1ai913suu1zfn1pdetru',
-   *     card_description: 'MyBank Signature Card',
+   *     card_description: 'National Phonograph Card',
    *     description: 'My Card Profile',
-   *     issuer_name: 'MyBank',
    *   });
    * ```
    */
@@ -131,6 +130,12 @@ export interface DigitalCardProfile {
   contact_email: string | null;
 
   /**
+   * The name of your company or card program, shown to the user as who to contact
+   * for support with their card.
+   */
+  contact_name: string;
+
+  /**
    * A phone number the user can contact to receive support for their card.
    */
   contact_phone: string | null;
@@ -157,11 +162,6 @@ export interface DigitalCardProfile {
    * about [idempotency](https://increase.com/documentation/idempotency-keys).
    */
   idempotency_key: string | null;
-
-  /**
-   * A user-facing description for whoever is issuing the card.
-   */
-  issuer_name: string;
 
   /**
    * The status of the Card Profile.
@@ -232,14 +232,15 @@ export interface DigitalCardProfileCreateParams {
   description: string;
 
   /**
-   * A user-facing description for whoever is issuing the card.
-   */
-  issuer_name: string;
-
-  /**
    * An email address the user can contact to receive support for their card.
    */
   contact_email?: string;
+
+  /**
+   * The name of your company or card program, shown to the user as who to contact
+   * for support with their card.
+   */
+  contact_name?: string;
 
   /**
    * A phone number the user can contact to receive support for their card.
@@ -326,6 +327,12 @@ export interface DigitalCardProfileCloneParams {
   contact_email?: string;
 
   /**
+   * The name of your company or card program, shown to the user as who to contact
+   * for support with their card.
+   */
+  contact_name?: string;
+
+  /**
    * A phone number the user can contact to receive support for their card.
    */
   contact_phone?: string;
@@ -339,11 +346,6 @@ export interface DigitalCardProfileCloneParams {
    * A description you can use to identify the Card Profile.
    */
   description?: string;
-
-  /**
-   * A user-facing description for whoever is issuing the card.
-   */
-  issuer_name?: string;
 
   /**
    * The Card's text color, specified as an RGB triple. The default is white.
