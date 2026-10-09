@@ -583,7 +583,8 @@ export namespace CardPayment {
          *
          * - `text_message` - The one-time code was sent via text message.
          * - `email` - The one-time code was sent via email.
-         * - `none_available` - The one-time code was not successfully delivered.
+         * - `none_available` - The one-time code could not be delivered because the card
+         *   has no phone number or email on file.
          */
         verification_method: 'text_message' | 'email' | 'none_available';
 
@@ -1603,6 +1604,8 @@ export namespace CardPayment {
          *   for Commercial Credit cards.
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
+         * - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
+         *   Pulse network for processing tokenized transactions on its network.
          */
         fee_type:
           | 'visa_international_service_assessment_single_currency'
@@ -1633,7 +1636,8 @@ export namespace CardPayment {
           | 'visa_advertising_service_commercial_credit'
           | 'visa_community_growth_acceleration_program'
           | 'visa_processing_guarantee_commercial_credit'
-          | 'pulse_switch_fee';
+          | 'pulse_switch_fee'
+          | 'pulse_tokenization_fee';
 
         /**
          * The fixed component of the fee, if applicable, given in major units of the fee
@@ -2502,6 +2506,8 @@ export namespace CardPayment {
          *   for Commercial Credit cards.
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
+         * - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
+         *   Pulse network for processing tokenized transactions on its network.
          */
         fee_type:
           | 'visa_international_service_assessment_single_currency'
@@ -2532,7 +2538,8 @@ export namespace CardPayment {
           | 'visa_advertising_service_commercial_credit'
           | 'visa_community_growth_acceleration_program'
           | 'visa_processing_guarantee_commercial_credit'
-          | 'pulse_switch_fee';
+          | 'pulse_switch_fee'
+          | 'pulse_tokenization_fee';
 
         /**
          * The fixed component of the fee, if applicable, given in major units of the fee
@@ -3515,6 +3522,8 @@ export namespace CardPayment {
          *   for Commercial Credit cards.
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
+         * - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
+         *   Pulse network for processing tokenized transactions on its network.
          */
         fee_type:
           | 'visa_international_service_assessment_single_currency'
@@ -3545,7 +3554,8 @@ export namespace CardPayment {
           | 'visa_advertising_service_commercial_credit'
           | 'visa_community_growth_acceleration_program'
           | 'visa_processing_guarantee_commercial_credit'
-          | 'pulse_switch_fee';
+          | 'pulse_switch_fee'
+          | 'pulse_tokenization_fee';
 
         /**
          * The fixed component of the fee, if applicable, given in major units of the fee
@@ -4443,6 +4453,8 @@ export namespace CardPayment {
          *   for Commercial Credit cards.
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
+         * - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
+         *   Pulse network for processing tokenized transactions on its network.
          */
         fee_type:
           | 'visa_international_service_assessment_single_currency'
@@ -4473,7 +4485,8 @@ export namespace CardPayment {
           | 'visa_advertising_service_commercial_credit'
           | 'visa_community_growth_acceleration_program'
           | 'visa_processing_guarantee_commercial_credit'
-          | 'pulse_switch_fee';
+          | 'pulse_switch_fee'
+          | 'pulse_tokenization_fee';
 
         /**
          * The fixed component of the fee, if applicable, given in major units of the fee
@@ -4802,6 +4815,8 @@ export namespace CardPayment {
          *   for Commercial Credit cards.
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
+         * - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
+         *   Pulse network for processing tokenized transactions on its network.
          */
         fee_type:
           | 'visa_international_service_assessment_single_currency'
@@ -4832,7 +4847,8 @@ export namespace CardPayment {
           | 'visa_advertising_service_commercial_credit'
           | 'visa_community_growth_acceleration_program'
           | 'visa_processing_guarantee_commercial_credit'
-          | 'pulse_switch_fee';
+          | 'pulse_switch_fee'
+          | 'pulse_tokenization_fee';
 
         /**
          * The fixed component of the fee, if applicable, given in major units of the fee
@@ -5337,6 +5353,8 @@ export namespace CardPayment {
          *   for Commercial Credit cards.
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
+         * - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
+         *   Pulse network for processing tokenized transactions on its network.
          */
         fee_type:
           | 'visa_international_service_assessment_single_currency'
@@ -5367,7 +5385,8 @@ export namespace CardPayment {
           | 'visa_advertising_service_commercial_credit'
           | 'visa_community_growth_acceleration_program'
           | 'visa_processing_guarantee_commercial_credit'
-          | 'pulse_switch_fee';
+          | 'pulse_switch_fee'
+          | 'pulse_tokenization_fee';
 
         /**
          * The fixed component of the fee, if applicable, given in major units of the fee
@@ -5646,6 +5665,7 @@ export namespace CardPayment {
          * - `rental_agreement_number` - Rental agreement number
          * - `hotel_folio_number` - Hotel folio number
          * - `invoice_number` - Invoice number
+         * - `visa_recurrent_reference_identifier` - Visa Recurrent reference identifier
          */
         purchase_identifier_format:
           | 'free_text'
@@ -5653,6 +5673,7 @@ export namespace CardPayment {
           | 'rental_agreement_number'
           | 'hotel_folio_number'
           | 'invoice_number'
+          | 'visa_recurrent_reference_identifier'
           | null;
 
         /**
@@ -6584,6 +6605,8 @@ export namespace CardPayment {
          *   for Commercial Credit cards.
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
+         * - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
+         *   Pulse network for processing tokenized transactions on its network.
          */
         fee_type:
           | 'visa_international_service_assessment_single_currency'
@@ -6614,7 +6637,8 @@ export namespace CardPayment {
           | 'visa_advertising_service_commercial_credit'
           | 'visa_community_growth_acceleration_program'
           | 'visa_processing_guarantee_commercial_credit'
-          | 'pulse_switch_fee';
+          | 'pulse_switch_fee'
+          | 'pulse_tokenization_fee';
 
         /**
          * The fixed component of the fee, if applicable, given in major units of the fee
@@ -6918,6 +6942,8 @@ export namespace CardPayment {
          *   for Commercial Credit cards.
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
+         * - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
+         *   Pulse network for processing tokenized transactions on its network.
          */
         fee_type:
           | 'visa_international_service_assessment_single_currency'
@@ -6948,7 +6974,8 @@ export namespace CardPayment {
           | 'visa_advertising_service_commercial_credit'
           | 'visa_community_growth_acceleration_program'
           | 'visa_processing_guarantee_commercial_credit'
-          | 'pulse_switch_fee';
+          | 'pulse_switch_fee'
+          | 'pulse_tokenization_fee';
 
         /**
          * The fixed component of the fee, if applicable, given in major units of the fee
@@ -7245,6 +7272,7 @@ export namespace CardPayment {
          * - `rental_agreement_number` - Rental agreement number
          * - `hotel_folio_number` - Hotel folio number
          * - `invoice_number` - Invoice number
+         * - `visa_recurrent_reference_identifier` - Visa Recurrent reference identifier
          */
         purchase_identifier_format:
           | 'free_text'
@@ -7252,6 +7280,7 @@ export namespace CardPayment {
           | 'rental_agreement_number'
           | 'hotel_folio_number'
           | 'invoice_number'
+          | 'visa_recurrent_reference_identifier'
           | null;
 
         /**
@@ -8183,6 +8212,8 @@ export namespace CardPayment {
          *   for Commercial Credit cards.
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
+         * - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
+         *   Pulse network for processing tokenized transactions on its network.
          */
         fee_type:
           | 'visa_international_service_assessment_single_currency'
@@ -8213,7 +8244,8 @@ export namespace CardPayment {
           | 'visa_advertising_service_commercial_credit'
           | 'visa_community_growth_acceleration_program'
           | 'visa_processing_guarantee_commercial_credit'
-          | 'pulse_switch_fee';
+          | 'pulse_switch_fee'
+          | 'pulse_tokenization_fee';
 
         /**
          * The fixed component of the fee, if applicable, given in major units of the fee
@@ -8947,6 +8979,8 @@ export namespace CardPayment {
          *   for Commercial Credit cards.
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
+         * - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
+         *   Pulse network for processing tokenized transactions on its network.
          */
         fee_type:
           | 'visa_international_service_assessment_single_currency'
@@ -8977,7 +9011,8 @@ export namespace CardPayment {
           | 'visa_advertising_service_commercial_credit'
           | 'visa_community_growth_acceleration_program'
           | 'visa_processing_guarantee_commercial_credit'
-          | 'pulse_switch_fee';
+          | 'pulse_switch_fee'
+          | 'pulse_tokenization_fee';
 
         /**
          * The fixed component of the fee, if applicable, given in major units of the fee

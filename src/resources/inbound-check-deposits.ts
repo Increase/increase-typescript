@@ -132,7 +132,7 @@ export interface InboundCheckDeposit {
   /**
    * The ID for the File containing the image of the back of the check.
    */
-  back_image_file_id: string | null;
+  back_image_file_id: string;
 
   /**
    * The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
@@ -187,7 +187,7 @@ export interface InboundCheckDeposit {
   /**
    * The ID for the File containing the image of the front of the check.
    */
-  front_image_file_id: string | null;
+  front_image_file_id: string;
 
   /**
    * Whether the details on the check match the recipient name of the check transfer.
@@ -248,8 +248,10 @@ export namespace InboundCheckDeposit {
      *   institution has responded with a Late Return Claim.
      * - `wrong_payee_credit` - The check was deposited to the wrong payee and the
      *   depositing institution has reimbursed the funds with a Wrong Payee Credit.
+     * - `duplicate_entry` - A previous adjustment for the check was applied twice and
+     *   the duplicate has been reversed.
      */
-    reason: 'late_return' | 'wrong_payee_credit';
+    reason: 'late_return' | 'wrong_payee_credit' | 'duplicate_entry';
 
     /**
      * The id of the transaction for the adjustment.
