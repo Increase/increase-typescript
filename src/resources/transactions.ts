@@ -1925,6 +1925,8 @@ export namespace Transaction {
          *   for Commercial Credit cards.
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
+         * - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
+         *   Pulse network for processing tokenized transactions on its network.
          */
         fee_type:
           | 'visa_international_service_assessment_single_currency'
@@ -1955,7 +1957,8 @@ export namespace Transaction {
           | 'visa_advertising_service_commercial_credit'
           | 'visa_community_growth_acceleration_program'
           | 'visa_processing_guarantee_commercial_credit'
-          | 'pulse_switch_fee';
+          | 'pulse_switch_fee'
+          | 'pulse_tokenization_fee';
 
         /**
          * The fixed component of the fee, if applicable, given in major units of the fee
@@ -2363,6 +2366,7 @@ export namespace Transaction {
          * - `rental_agreement_number` - Rental agreement number
          * - `hotel_folio_number` - Hotel folio number
          * - `invoice_number` - Invoice number
+         * - `visa_recurrent_reference_identifier` - Visa Recurrent reference identifier
          */
         purchase_identifier_format:
           | 'free_text'
@@ -2370,6 +2374,7 @@ export namespace Transaction {
           | 'rental_agreement_number'
           | 'hotel_folio_number'
           | 'invoice_number'
+          | 'visa_recurrent_reference_identifier'
           | null;
 
         /**
@@ -3301,6 +3306,8 @@ export namespace Transaction {
          *   for Commercial Credit cards.
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
+         * - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
+         *   Pulse network for processing tokenized transactions on its network.
          */
         fee_type:
           | 'visa_international_service_assessment_single_currency'
@@ -3331,7 +3338,8 @@ export namespace Transaction {
           | 'visa_advertising_service_commercial_credit'
           | 'visa_community_growth_acceleration_program'
           | 'visa_processing_guarantee_commercial_credit'
-          | 'pulse_switch_fee';
+          | 'pulse_switch_fee'
+          | 'pulse_tokenization_fee';
 
         /**
          * The fixed component of the fee, if applicable, given in major units of the fee
@@ -3666,6 +3674,7 @@ export namespace Transaction {
          * - `rental_agreement_number` - Rental agreement number
          * - `hotel_folio_number` - Hotel folio number
          * - `invoice_number` - Invoice number
+         * - `visa_recurrent_reference_identifier` - Visa Recurrent reference identifier
          */
         purchase_identifier_format:
           | 'free_text'
@@ -3673,6 +3682,7 @@ export namespace Transaction {
           | 'rental_agreement_number'
           | 'hotel_folio_number'
           | 'invoice_number'
+          | 'visa_recurrent_reference_identifier'
           | null;
 
         /**
@@ -4604,6 +4614,8 @@ export namespace Transaction {
          *   for Commercial Credit cards.
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
+         * - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
+         *   Pulse network for processing tokenized transactions on its network.
          */
         fee_type:
           | 'visa_international_service_assessment_single_currency'
@@ -4634,7 +4646,8 @@ export namespace Transaction {
           | 'visa_advertising_service_commercial_credit'
           | 'visa_community_growth_acceleration_program'
           | 'visa_processing_guarantee_commercial_credit'
-          | 'pulse_switch_fee';
+          | 'pulse_switch_fee'
+          | 'pulse_tokenization_fee';
 
         /**
          * The fixed component of the fee, if applicable, given in major units of the fee
@@ -5217,8 +5230,16 @@ export namespace Transaction {
        *   usually happens for e.g., low quality images.
        * - `paid` - The check has already been deposited elsewhere and so this is a
        *   duplicate.
+       * - `duplicate_entry` - A previous adjustment for the check was applied twice and
+       *   the duplicate has been reversed.
        */
-      reason: 'late_return' | 'wrong_payee_credit' | 'adjusted_amount' | 'non_conforming_item' | 'paid';
+      reason:
+        | 'late_return'
+        | 'wrong_payee_credit'
+        | 'adjusted_amount'
+        | 'non_conforming_item'
+        | 'paid'
+        | 'duplicate_entry';
 
       [k: string]: unknown;
     }
