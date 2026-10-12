@@ -253,7 +253,7 @@ export namespace Export {
     account_id: string | null;
 
     /**
-     * The date for which to retrieve the balance.
+     * The UTC date for which to retrieve the balance.
      */
     effective_date: string | null;
 
@@ -307,7 +307,7 @@ export namespace Export {
     account_number_id: string;
 
     /**
-     * The date of the balance to include in the letter.
+     * The UTC date of the balance to include in the letter.
      */
     balance_date: string | null;
   }
@@ -356,12 +356,12 @@ export namespace Export {
     bookkeeping_account_id: string | null;
 
     /**
-     * Filter balances to those on or after this date.
+     * Filter balances to those on or after this UTC date.
      */
     on_or_after_date: string | null;
 
     /**
-     * Filter balances to those on or before this date.
+     * Filter balances to those on or before this UTC date.
      */
     on_or_before_date: string | null;
   }
@@ -377,12 +377,12 @@ export namespace Export {
     account_id: string | null;
 
     /**
-     * Filter balances on or after this date.
+     * Filter balances on or after this UTC date.
      */
     on_or_after_date: string | null;
 
     /**
-     * Filter balances on or before this date.
+     * Filter balances on or before this UTC date.
      */
     on_or_before_date: string | null;
   }
@@ -690,10 +690,9 @@ export namespace ExportCreateParams {
     account_id?: string;
 
     /**
-     * The date to create a BAI2 report for. If not provided, the current date will be
-     * used. The timezone is UTC. If the current date is used, the report will include
-     * intraday balances, otherwise it will include end-of-day balances for the
-     * provided date.
+     * The UTC date to create a BAI2 report for. If not provided, the current date will
+     * be used. If the current date is used, the report will include intraday balances,
+     * otherwise it will include end-of-day balances for the provided date.
      */
     effective_date?: string;
 
@@ -750,7 +749,8 @@ export namespace ExportCreateParams {
     account_number_id: string;
 
     /**
-     * The date of the balance to include in the letter. Defaults to the current date.
+     * The UTC date of the balance to include in the letter. Defaults to the current
+     * date.
      */
     balance_date?: string;
   }
@@ -767,12 +767,12 @@ export namespace ExportCreateParams {
     bookkeeping_account_id?: string;
 
     /**
-     * Filter exported Balances to those on or after this date.
+     * Filter exported Balances to those on or after this UTC date.
      */
     on_or_after_date?: string;
 
     /**
-     * Filter exported Balances to those on or before this date.
+     * Filter exported Balances to those on or before this UTC date.
      */
     on_or_before_date?: string;
   }
@@ -788,12 +788,12 @@ export namespace ExportCreateParams {
     account_id?: string;
 
     /**
-     * Filter exported Balances to those on or after this date.
+     * Filter exported Balances to those on or after this UTC date.
      */
     on_or_after_date?: string;
 
     /**
-     * Filter exported Balances to those on or before this date.
+     * Filter exported Balances to those on or before this UTC date.
      */
     on_or_before_date?: string;
   }
