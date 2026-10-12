@@ -1186,6 +1186,8 @@ export namespace DeclinedTransaction {
          *   for Commercial Credit cards.
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
+         * - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
+         *   Pulse network for processing tokenized transactions on its network.
          */
         fee_type:
           | 'visa_international_service_assessment_single_currency'
@@ -1216,7 +1218,8 @@ export namespace DeclinedTransaction {
           | 'visa_advertising_service_commercial_credit'
           | 'visa_community_growth_acceleration_program'
           | 'visa_processing_guarantee_commercial_credit'
-          | 'pulse_switch_fee';
+          | 'pulse_switch_fee'
+          | 'pulse_tokenization_fee';
 
         /**
          * The fixed component of the fee, if applicable, given in major units of the fee

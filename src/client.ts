@@ -964,9 +964,6 @@ export class Increase {
     // Retry on request timeouts.
     if (response.status === 408) return true;
 
-    // Retry on lock timeouts.
-    if (response.status === 409) return true;
-
     // Retry on rate limits.
     if (response.status === 429) return true;
 

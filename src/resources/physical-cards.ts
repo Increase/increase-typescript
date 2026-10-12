@@ -273,6 +273,11 @@ export namespace PhysicalCard {
       name: string;
 
       /**
+       * The phone number of the recipient.
+       */
+      phone_number: string | null;
+
+      /**
        * The postal code of the shipping address.
        */
       postal_code: string;
