@@ -153,7 +153,7 @@ Error codes are as follows:
 ### Retries
 
 Certain errors will be automatically retried 2 times by default, with a short exponential backoff.
-Connection errors (for example, due to a network connectivity problem), 408 Request Timeout, 409 Conflict,
+Connection errors (for example, due to a network connectivity problem), 408 Request Timeout,
 429 Rate Limit, and >=500 Internal errors will all be retried by default.
 
 You can use the `maxRetries` option to configure or disable this:
