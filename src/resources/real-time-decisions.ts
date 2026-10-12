@@ -130,6 +130,8 @@ export interface RealTimeDecision {
    * `real_time_decision`.
    */
   type: 'real_time_decision';
+
+  [k: string]: unknown;
 }
 
 export namespace RealTimeDecision {
