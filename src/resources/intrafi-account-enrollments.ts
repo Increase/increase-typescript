@@ -8,7 +8,7 @@ import { path } from '../internal/utils/path';
 
 export class IntrafiAccountEnrollments extends APIResource {
   /**
-   * Enroll an account in the IntraFi deposit sweep network
+   * Enroll an Account in the IntraFi deposit sweep network
    *
    * @example
    * ```ts
@@ -66,7 +66,7 @@ export class IntrafiAccountEnrollments extends APIResource {
   }
 
   /**
-   * Unenroll an account from IntraFi
+   * Unenroll an Account from IntraFi
    *
    * @example
    * ```ts
