@@ -121,6 +121,11 @@ export interface InboundFednowTransfer {
   end_to_end_identification: string | null;
 
   /**
+   * The FedNow network identification of the transfer.
+   */
+  message_identification: string;
+
+  /**
    * The lifecycle status of the transfer.
    *
    * - `pending_confirming` - The transfer is pending confirmation.
@@ -139,7 +144,7 @@ export interface InboundFednowTransfer {
   transaction_id: string | null;
 
   /**
-   * The FedNow network identification of the transfer.
+   * An optional identifier for the transfer set by the sending bank.
    */
   transaction_identification: string | null;
 
