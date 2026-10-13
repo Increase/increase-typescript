@@ -7,7 +7,7 @@ import { RequestOptions } from '../internal/request-options';
 
 export class SupplementalDocuments extends APIResource {
   /**
-   * Create a supplemental document for an Entity
+   * Create a Supplemental Document
    *
    * @example
    * ```ts
@@ -26,7 +26,7 @@ export class SupplementalDocuments extends APIResource {
   }
 
   /**
-   * List Entity Supplemental Document Submissions
+   * List Supplemental Documents
    *
    * @example
    * ```ts
