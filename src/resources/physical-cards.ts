@@ -121,6 +121,18 @@ export interface PhysicalCard {
   created_at: string;
 
   /**
+   * The month printed on the Physical Card as its expiration, in M format (e.g.,
+   * August is 8). This stays the same when the Card is renewed.
+   */
+  expiration_month: number;
+
+  /**
+   * The year printed on the Physical Card as its expiration, in YYYY format (e.g.,
+   * 2025). This stays the same when the Card is renewed.
+   */
+  expiration_year: number;
+
+  /**
    * The idempotency key you chose for this object. This value is unique across
    * Increase and is used to ensure that a request is only processed once. Learn more
    * about [idempotency](https://increase.com/documentation/idempotency-keys).

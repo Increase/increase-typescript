@@ -150,6 +150,17 @@ describe('resource cards', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
+  test('renew', async () => {
+    const responsePromise = client.cards.renew('card_oubs0hwk5rn6knuecxg2');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
   test('updatePin: only required params', async () => {
     const responsePromise = client.cards.updatePin('card_oubs0hwk5rn6knuecxg2', { pin: '1234' });
     const rawResponse = await responsePromise.asResponse();

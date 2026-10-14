@@ -41,7 +41,7 @@ export class DigitalCardProfiles extends APIResource {
   }
 
   /**
-   * List Card Profiles
+   * List Digital Card Profiles
    *
    * @example
    * ```ts
@@ -74,7 +74,7 @@ export class DigitalCardProfiles extends APIResource {
   }
 
   /**
-   * Clones a Digital Card Profile
+   * Clone a Digital Card Profile
    *
    * @example
    * ```ts
