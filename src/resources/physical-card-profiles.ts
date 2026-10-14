@@ -27,7 +27,7 @@ export class PhysicalCardProfiles extends APIResource {
   }
 
   /**
-   * Retrieve a Card Profile
+   * Retrieve a Physical Card Profile
    *
    * @example
    * ```ts
