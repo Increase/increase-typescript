@@ -122,6 +122,24 @@ export class Cards extends APIResource {
   }
 
   /**
+   * Renew a Card in place. The Card keeps its identifier, card number, PIN, and
+   * Physical Cards, and receives a new expiration date in the current month four
+   * years from now along with a new verification code, which the Card's details will
+   * return afterwards. Physical Cards that have already shipped keep working until
+   * they are canceled.
+   *
+   * @example
+   * ```ts
+   * const card = await client.cards.renew(
+   *   'card_oubs0hwk5rn6knuecxg2',
+   * );
+   * ```
+   */
+  renew(cardID: string, options?: RequestOptions): APIPromise<Card> {
+    return this._client.post(path`/cards/${cardID}/renew`, options);
+  }
+
+  /**
    * Update a Card's PIN
    *
    * @example
@@ -222,6 +240,12 @@ export interface Card {
    * The last 4 digits of the Card's Primary Account Number.
    */
   last4: string;
+
+  /**
+   * Completed renewals of this Card, sorted by `renewed_at` in ascending order. Each
+   * renewal records the expiration date the Card had before it was renewed.
+   */
+  renewals: Array<Card.Renewal>;
 
   /**
    * This indicates if payments can be made with the card.
@@ -551,6 +575,25 @@ export namespace Card {
      * over SMS.
      */
     phone: string | null;
+  }
+
+  export interface Renewal {
+    /**
+     * The month the Card expired in before this renewal, in M format (e.g., August is
+     * 8).
+     */
+    previous_expiration_month: number;
+
+    /**
+     * The year the Card expired in before this renewal, in YYYY format (e.g., 2025).
+     */
+    previous_expiration_year: number;
+
+    /**
+     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+     * the Card was renewed.
+     */
+    renewed_at: string;
   }
 }
 
