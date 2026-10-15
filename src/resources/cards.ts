@@ -122,6 +122,24 @@ export class Cards extends APIResource {
   }
 
   /**
+   * Renew a Card in place. The Card keeps its identifier, card number, PIN, and
+   * Physical Cards, and receives a new expiration date in the current month four
+   * years from now along with a new verification code, which the Card's details will
+   * return afterwards. Physical Cards that have already shipped keep working until
+   * they are canceled.
+   *
+   * @example
+   * ```ts
+   * const card = await client.cards.renew(
+   *   'card_oubs0hwk5rn6knuecxg2',
+   * );
+   * ```
+   */
+  renew(cardID: string, options?: RequestOptions): APIPromise<Card> {
+    return this._client.post(path`/cards/${cardID}/renew`, options);
+  }
+
+  /**
    * Update a Card's PIN
    *
    * @example
@@ -222,6 +240,17 @@ export interface Card {
    * The last 4 digits of the Card's Primary Account Number.
    */
   last4: string;
+
+  /**
+   * Completed renewals of this Card, sorted by `renewed_at` in ascending order. Each
+   * renewal records the expiration date the Card had before it was renewed.
+   */
+  renewals: Array<Card.Renewal>;
+
+  /**
+   * Details about the Card this Card replaces, if it was created as a replacement.
+   */
+  replacement_for: Card.ReplacementFor | null;
 
   /**
    * This indicates if payments can be made with the card.
@@ -552,6 +581,52 @@ export namespace Card {
      */
     phone: string | null;
   }
+
+  export interface Renewal {
+    /**
+     * The month the Card expired in before this renewal, in M format (e.g., August is
+     * 8).
+     */
+    previous_expiration_month: number;
+
+    /**
+     * The year the Card expired in before this renewal, in YYYY format (e.g., 2025).
+     */
+    previous_expiration_year: number;
+
+    /**
+     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+     * the Card was renewed.
+     */
+    renewed_at: string;
+  }
+
+  /**
+   * Details about the Card this Card replaces, if it was created as a replacement.
+   */
+  export interface ReplacementFor {
+    /**
+     * The identifier of the replaced Card.
+     */
+    card_id: string;
+
+    /**
+     * Why the Card was replaced. Only `expiring` notifies merchants that have the
+     * replaced Card on file of the new Card and moves Digital Wallet Tokens on the
+     * replaced Card that have not been deactivated to the new Card.
+     *
+     * - `expiring` - The replaced card is expiring. Merchants with the replaced card
+     *   on file will be notified of the new card, and its digital wallet tokens that
+     *   have not been deactivated will move to the new card.
+     * - `lost` - The replaced card was lost. Merchants will not be notified of the new
+     *   card.
+     * - `stolen` - The replaced card was stolen. Merchants will not be notified of the
+     *   new card.
+     * - `fraud` - The replaced card was used fraudulently. Merchants will not be
+     *   notified of the new card.
+     */
+    reason: 'expiring' | 'lost' | 'stolen' | 'fraud';
+  }
 }
 
 /**
@@ -687,6 +762,12 @@ export interface CardCreateParams {
    * when the card is not for the Account holder.
    */
   entity_id?: string;
+
+  /**
+   * Details about the Card this Card replaces. Supply this when issuing a new Card
+   * to take over from an existing one. The replaced Card is not canceled.
+   */
+  replacement_for?: CardCreateParams.ReplacementFor;
 
   [k: string]: unknown;
 }
@@ -1008,6 +1089,34 @@ export namespace CardCreateParams {
      * one-time passcode over SMS.
      */
     phone?: string;
+  }
+
+  /**
+   * Details about the Card this Card replaces. Supply this when issuing a new Card
+   * to take over from an existing one. The replaced Card is not canceled.
+   */
+  export interface ReplacementFor {
+    /**
+     * The identifier of the Card being replaced.
+     */
+    card_id: string;
+
+    /**
+     * Why the Card is being replaced. Only `expiring` notifies merchants that have the
+     * replaced Card on file of the new Card and moves Digital Wallet Tokens on the
+     * replaced Card that have not been deactivated to the new Card.
+     *
+     * - `expiring` - The replaced card is expiring. Merchants with the replaced card
+     *   on file will be notified of the new card, and its digital wallet tokens that
+     *   have not been deactivated will move to the new card.
+     * - `lost` - The replaced card was lost. Merchants will not be notified of the new
+     *   card.
+     * - `stolen` - The replaced card was stolen. Merchants will not be notified of the
+     *   new card.
+     * - `fraud` - The replaced card was used fraudulently. Merchants will not be
+     *   notified of the new card.
+     */
+    reason: 'expiring' | 'lost' | 'stolen' | 'fraud';
   }
 }
 
