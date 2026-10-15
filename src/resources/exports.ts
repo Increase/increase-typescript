@@ -405,16 +405,18 @@ export namespace Export {
    */
   export interface FeeCsv {
     /**
-     * Filter fees by their created date. The time range must not include any fees that
-     * are part of an open fee statement.
+     * Filter fees by their created date. The time range must not include any fees on
+     * an open fee statement.
      */
     created_at: FeeCsv.CreatedAt | null;
+
+    [k: string]: unknown;
   }
 
   export namespace FeeCsv {
     /**
-     * Filter fees by their created date. The time range must not include any fees that
-     * are part of an open fee statement.
+     * Filter fees by their created date. The time range must not include any fees on
+     * an open fee statement.
      */
     export interface CreatedAt {
       /**
@@ -816,6 +818,8 @@ export namespace ExportCreateParams {
      * Filter exported Fees to the specified Program.
      */
     program_id?: string;
+
+    [k: string]: unknown;
   }
 
   export namespace FeeCsv {
