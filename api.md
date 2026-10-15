@@ -59,6 +59,7 @@ Methods:
 - <code title="post /cards/{card_id}/create_details_iframe">client.cards.<a href="./src/resources/cards.ts">createDetailsIframe</a>(cardID, { ...params }) -> CardIframeURL</code>
 - <code title="post /cards/{card_id}/create_details_token">client.cards.<a href="./src/resources/cards.ts">createDetailsToken</a>(cardID) -> CardDetailsToken</code>
 - <code title="get /cards/{card_id}/details">client.cards.<a href="./src/resources/cards.ts">details</a>(cardID) -> CardDetails</code>
+- <code title="post /cards/{card_id}/renew">client.cards.<a href="./src/resources/cards.ts">renew</a>(cardID) -> Card</code>
 - <code title="post /cards/{card_id}/update_pin">client.cards.<a href="./src/resources/cards.ts">updatePin</a>(cardID, { ...params }) -> CardDetails</code>
 
 # CardPayments
