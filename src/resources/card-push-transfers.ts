@@ -711,6 +711,7 @@ export namespace CardPushTransfer {
      * - `DZD` - DZD
      * - `USD` - USD
      * - `AOA` - AOA
+     * - `XCD` - XCD
      * - `ARS` - ARS
      * - `AMD` - AMD
      * - `AWG` - AWG
@@ -722,6 +723,7 @@ export namespace CardPushTransfer {
      * - `BBD` - BBD
      * - `BYN` - BYN
      * - `BZD` - BZD
+     * - `XOF` - XOF
      * - `BMD` - BMD
      * - `INR` - INR
      * - `BTN` - BTN
@@ -732,10 +734,10 @@ export namespace CardPushTransfer {
      * - `NOK` - NOK
      * - `BRL` - BRL
      * - `BND` - BND
-     * - `BGN` - BGN
      * - `BIF` - BIF
      * - `CVE` - CVE
      * - `KHR` - KHR
+     * - `XAF` - XAF
      * - `CAD` - CAD
      * - `KYD` - KYD
      * - `CLP` - CLP
@@ -748,6 +750,7 @@ export namespace CardPushTransfer {
      * - `NZD` - NZD
      * - `CRC` - CRC
      * - `CUP` - CUP
+     * - `XCG` - XCG
      * - `CZK` - CZK
      * - `DKK` - DKK
      * - `DJF` - DJF
@@ -759,6 +762,7 @@ export namespace CardPushTransfer {
      * - `ETB` - ETB
      * - `FKP` - FKP
      * - `FJD` - FJD
+     * - `XPF` - XPF
      * - `GMD` - GMD
      * - `GEL` - GEL
      * - `GHS` - GHS
@@ -865,6 +869,7 @@ export namespace CardPushTransfer {
      * - `YER` - YER
      * - `ZMW` - ZMW
      * - `ZWG` - ZWG
+     * - `BGN` - BGN
      */
     currency:
       | 'AFN'
@@ -873,6 +878,7 @@ export namespace CardPushTransfer {
       | 'DZD'
       | 'USD'
       | 'AOA'
+      | 'XCD'
       | 'ARS'
       | 'AMD'
       | 'AWG'
@@ -884,6 +890,7 @@ export namespace CardPushTransfer {
       | 'BBD'
       | 'BYN'
       | 'BZD'
+      | 'XOF'
       | 'BMD'
       | 'INR'
       | 'BTN'
@@ -894,10 +901,10 @@ export namespace CardPushTransfer {
       | 'NOK'
       | 'BRL'
       | 'BND'
-      | 'BGN'
       | 'BIF'
       | 'CVE'
       | 'KHR'
+      | 'XAF'
       | 'CAD'
       | 'KYD'
       | 'CLP'
@@ -910,6 +917,7 @@ export namespace CardPushTransfer {
       | 'NZD'
       | 'CRC'
       | 'CUP'
+      | 'XCG'
       | 'CZK'
       | 'DKK'
       | 'DJF'
@@ -921,6 +929,7 @@ export namespace CardPushTransfer {
       | 'ETB'
       | 'FKP'
       | 'FJD'
+      | 'XPF'
       | 'GMD'
       | 'GEL'
       | 'GHS'
@@ -1026,7 +1035,8 @@ export namespace CardPushTransfer {
       | 'VND'
       | 'YER'
       | 'ZMW'
-      | 'ZWG';
+      | 'ZWG'
+      | 'BGN';
 
     /**
      * The amount value represented as a string containing a decimal number in major
@@ -1244,6 +1254,7 @@ export namespace CardPushTransferCreateParams {
      * - `DZD` - DZD
      * - `USD` - USD
      * - `AOA` - AOA
+     * - `XCD` - XCD
      * - `ARS` - ARS
      * - `AMD` - AMD
      * - `AWG` - AWG
@@ -1255,6 +1266,7 @@ export namespace CardPushTransferCreateParams {
      * - `BBD` - BBD
      * - `BYN` - BYN
      * - `BZD` - BZD
+     * - `XOF` - XOF
      * - `BMD` - BMD
      * - `INR` - INR
      * - `BTN` - BTN
@@ -1265,10 +1277,10 @@ export namespace CardPushTransferCreateParams {
      * - `NOK` - NOK
      * - `BRL` - BRL
      * - `BND` - BND
-     * - `BGN` - BGN
      * - `BIF` - BIF
      * - `CVE` - CVE
      * - `KHR` - KHR
+     * - `XAF` - XAF
      * - `CAD` - CAD
      * - `KYD` - KYD
      * - `CLP` - CLP
@@ -1281,6 +1293,7 @@ export namespace CardPushTransferCreateParams {
      * - `NZD` - NZD
      * - `CRC` - CRC
      * - `CUP` - CUP
+     * - `XCG` - XCG
      * - `CZK` - CZK
      * - `DKK` - DKK
      * - `DJF` - DJF
@@ -1292,6 +1305,7 @@ export namespace CardPushTransferCreateParams {
      * - `ETB` - ETB
      * - `FKP` - FKP
      * - `FJD` - FJD
+     * - `XPF` - XPF
      * - `GMD` - GMD
      * - `GEL` - GEL
      * - `GHS` - GHS
@@ -1398,6 +1412,7 @@ export namespace CardPushTransferCreateParams {
      * - `YER` - YER
      * - `ZMW` - ZMW
      * - `ZWG` - ZWG
+     * - `BGN` - BGN
      */
     currency:
       | 'AFN'
@@ -1406,6 +1421,7 @@ export namespace CardPushTransferCreateParams {
       | 'DZD'
       | 'USD'
       | 'AOA'
+      | 'XCD'
       | 'ARS'
       | 'AMD'
       | 'AWG'
@@ -1417,6 +1433,7 @@ export namespace CardPushTransferCreateParams {
       | 'BBD'
       | 'BYN'
       | 'BZD'
+      | 'XOF'
       | 'BMD'
       | 'INR'
       | 'BTN'
@@ -1427,10 +1444,10 @@ export namespace CardPushTransferCreateParams {
       | 'NOK'
       | 'BRL'
       | 'BND'
-      | 'BGN'
       | 'BIF'
       | 'CVE'
       | 'KHR'
+      | 'XAF'
       | 'CAD'
       | 'KYD'
       | 'CLP'
@@ -1443,6 +1460,7 @@ export namespace CardPushTransferCreateParams {
       | 'NZD'
       | 'CRC'
       | 'CUP'
+      | 'XCG'
       | 'CZK'
       | 'DKK'
       | 'DJF'
@@ -1454,6 +1472,7 @@ export namespace CardPushTransferCreateParams {
       | 'ETB'
       | 'FKP'
       | 'FJD'
+      | 'XPF'
       | 'GMD'
       | 'GEL'
       | 'GHS'
@@ -1559,7 +1578,8 @@ export namespace CardPushTransferCreateParams {
       | 'VND'
       | 'YER'
       | 'ZMW'
-      | 'ZWG';
+      | 'ZWG'
+      | 'BGN';
 
     /**
      * The amount value as a decimal string in the currency's major unit. For example,
