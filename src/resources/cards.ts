@@ -162,7 +162,8 @@ export type CardsPage = Page<Card>;
  * for online purchases after you create them. All cards work on a good funds
  * model, and maintain a maximum limit of 100% of the Account’s available balance
  * at the time of transaction. Funds are deducted from the Account upon transaction
- * settlement.
+ * settlement. For more information, see our guide on
+ * [managing cards](https://increase.com/documentation/managing-cards).
  */
 export interface Card {
   /**
@@ -577,7 +578,8 @@ export namespace Card {
 
     /**
      * A phone number that can be used to verify the cardholder via one-time passcode
-     * over SMS.
+     * over SMS. Returned in [E.164](https://en.wikipedia.org/wiki/E.164) format, for
+     * example `+14155550123`.
      */
     phone: string | null;
   }
@@ -1086,7 +1088,8 @@ export namespace CardCreateParams {
 
     /**
      * A phone number that can be used to contact and verify the cardholder via
-     * one-time passcode over SMS.
+     * one-time passcode over SMS. Accepts formats like `+14155550123`, `4155550123`,
+     * `415-555-0123`, or `(415) 555-0123`.
      */
     phone?: string;
   }
@@ -1450,7 +1453,8 @@ export namespace CardUpdateParams {
 
     /**
      * A phone number that can be used to verify the cardholder via one-time passcode
-     * over SMS.
+     * over SMS. Accepts formats like `+14155550123`, `4155550123`, `415-555-0123`, or
+     * `(415) 555-0123`.
      */
     phone?: string;
   }
