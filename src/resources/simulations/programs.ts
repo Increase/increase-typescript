@@ -31,7 +31,7 @@ export interface ProgramCreateParams {
   name: string;
 
   /**
-   * The bank for the program's accounts, defaults to First Internet Bank.
+   * The bank for the program's accounts, defaults to Increase Bank.
    *
    * - `core_bank` - Core Bank
    * - `first_internet_bank` - First Internet Bank of Indiana
