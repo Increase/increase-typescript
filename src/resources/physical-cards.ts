@@ -8,7 +8,8 @@ import { path } from '../internal/utils/path';
 
 export class PhysicalCards extends APIResource {
   /**
-   * Create a Physical Card
+   * Physical Cards start in the status `disabled`. Activate the card once it arrives
+   * at the destination and the recipient confirms receipt.
    *
    * @example
    * ```ts
@@ -151,7 +152,7 @@ export interface PhysicalCard {
   shipment: PhysicalCard.Shipment;
 
   /**
-   * The status of the Physical Card.
+   * The status of the Physical Card. The initial status is `disabled`.
    *
    * - `active` - The physical card is active.
    * - `disabled` - The physical card is temporarily disabled.
