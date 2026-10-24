@@ -115,6 +115,11 @@ export interface DigitalCardProfile {
   app_icon_file_id: string;
 
   /**
+   * Apple Pay specific settings for the Card Profile.
+   */
+  apple_pay: DigitalCardProfile.ApplePay | null;
+
+  /**
    * The identifier of the File containing the card's front image.
    */
   background_image_file_id: string;
@@ -190,6 +195,39 @@ export interface DigitalCardProfile {
 
 export namespace DigitalCardProfile {
   /**
+   * Apple Pay specific settings for the Card Profile.
+   */
+  export interface ApplePay {
+    /**
+     * The applications associated with cards using this Card Profile.
+     */
+    associated_application_identifiers: Array<ApplePay.AssociatedApplicationIdentifier>;
+
+    /**
+     * The App Store listings of the applications associated with cards using this Card
+     * Profile.
+     */
+    associated_store_identifiers: Array<ApplePay.AssociatedStoreIdentifier>;
+  }
+
+  export namespace ApplePay {
+    export interface AssociatedApplicationIdentifier {
+      /**
+       * The application identifier, composed of your Apple Developer Team ID and the
+       * application's bundle identifier, like `ABCDE12345.com.example.app`.
+       */
+      identifier: string;
+    }
+
+    export interface AssociatedStoreIdentifier {
+      /**
+       * The numeric App Store identifier.
+       */
+      identifier: string;
+    }
+  }
+
+  /**
    * The Card's text color, specified as an RGB triple.
    */
   export interface TextColor {
@@ -232,6 +270,11 @@ export interface DigitalCardProfileCreateParams {
   description: string;
 
   /**
+   * Apple Pay specific settings for the Card Profile.
+   */
+  apple_pay?: DigitalCardProfileCreateParams.ApplePay;
+
+  /**
    * An email address the user can contact to receive support for their card.
    */
   contact_email?: string;
@@ -261,6 +304,39 @@ export interface DigitalCardProfileCreateParams {
 }
 
 export namespace DigitalCardProfileCreateParams {
+  /**
+   * Apple Pay specific settings for the Card Profile.
+   */
+  export interface ApplePay {
+    /**
+     * The applications to associate with cards using this Card Profile.
+     */
+    associated_application_identifiers?: Array<ApplePay.AssociatedApplicationIdentifier>;
+
+    /**
+     * The App Store listings of the applications to associate with cards using this
+     * Card Profile.
+     */
+    associated_store_identifiers?: Array<ApplePay.AssociatedStoreIdentifier>;
+  }
+
+  export namespace ApplePay {
+    export interface AssociatedApplicationIdentifier {
+      /**
+       * The application identifier, composed of your Apple Developer Team ID and the
+       * application's bundle identifier, like `ABCDE12345.com.example.app`.
+       */
+      identifier: string;
+    }
+
+    export interface AssociatedStoreIdentifier {
+      /**
+       * The numeric App Store identifier.
+       */
+      identifier: string;
+    }
+  }
+
   /**
    * The Card's text color, specified as an RGB triple. The default is white.
    */
@@ -312,6 +388,12 @@ export interface DigitalCardProfileCloneParams {
   app_icon_file_id?: string;
 
   /**
+   * Apple Pay specific settings for the Card Profile. Each list you leave out is
+   * copied from the original Card Profile.
+   */
+  apple_pay?: DigitalCardProfileCloneParams.ApplePay;
+
+  /**
    * The identifier of the File containing the card's front image.
    */
   background_image_file_id?: string;
@@ -356,6 +438,40 @@ export interface DigitalCardProfileCloneParams {
 }
 
 export namespace DigitalCardProfileCloneParams {
+  /**
+   * Apple Pay specific settings for the Card Profile. Each list you leave out is
+   * copied from the original Card Profile.
+   */
+  export interface ApplePay {
+    /**
+     * The applications to associate with cards using this Card Profile.
+     */
+    associated_application_identifiers?: Array<ApplePay.AssociatedApplicationIdentifier>;
+
+    /**
+     * The App Store listings of the applications to associate with cards using this
+     * Card Profile.
+     */
+    associated_store_identifiers?: Array<ApplePay.AssociatedStoreIdentifier>;
+  }
+
+  export namespace ApplePay {
+    export interface AssociatedApplicationIdentifier {
+      /**
+       * The application identifier, composed of your Apple Developer Team ID and the
+       * application's bundle identifier, like `ABCDE12345.com.example.app`.
+       */
+      identifier: string;
+    }
+
+    export interface AssociatedStoreIdentifier {
+      /**
+       * The numeric App Store identifier.
+       */
+      identifier: string;
+    }
+  }
+
   /**
    * The Card's text color, specified as an RGB triple. The default is white.
    */
