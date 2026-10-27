@@ -123,6 +123,11 @@ export interface InboundRealTimePaymentsTransfer {
   decline: InboundRealTimePaymentsTransfer.Decline | null;
 
   /**
+   * A free-form reference string set by the sender, to help identify the transfer.
+   */
+  end_to_end_identification: string | null;
+
+  /**
    * The lifecycle status of the transfer.
    *
    * - `pending_confirming` - The transfer is pending confirmation.
