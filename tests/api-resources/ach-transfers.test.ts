@@ -12,7 +12,7 @@ describe('resource achTransfers', () => {
     const responsePromise = client.achTransfers.create({
       account_id: 'account_in71c4amph0vgo2qllky',
       amount: 100,
-      statement_descriptor: 'New ACH transfer',
+      statement_descriptor: 'INVOICE 2468',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -27,7 +27,7 @@ describe('resource achTransfers', () => {
     await client.achTransfers.create({
       account_id: 'account_in71c4amph0vgo2qllky',
       amount: 100,
-      statement_descriptor: 'New ACH transfer',
+      statement_descriptor: 'INVOICE 2468',
       account_number: '987654321',
       addenda: {
         category: 'freeform',
@@ -37,12 +37,12 @@ describe('resource achTransfers', () => {
       company_descriptive_date: 'J!',
       company_discretionary_data: 'J!',
       company_entry_description: 'J!',
-      company_name: 'company_name',
+      company_name: 'Phonographs Inc',
       destination_account_holder: 'business',
       external_account_id: 'external_account_id',
       funding: 'checking',
       individual_id: 'individual_id',
-      individual_name: 'individual_name',
+      individual_name: 'Ian Crease',
       preferred_effective_date: { date: '2019-12-27', settlement_schedule: 'same_day' },
       require_approval: true,
       routing_number: '101050001',
