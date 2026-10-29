@@ -79,5 +79,5 @@ export {
   type RealTimePaymentsTransferCompleteParams,
 } from './real-time-payments-transfers';
 export { Simulations } from './simulations';
-export { WireDrawdownRequests } from './wire-drawdown-requests';
+export { WireDrawdownRequests, type WireDrawdownRequestRefuseParams } from './wire-drawdown-requests';
 export { WireTransfers } from './wire-transfers';

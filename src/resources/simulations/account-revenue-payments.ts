@@ -15,7 +15,7 @@ export class AccountRevenuePayments extends APIResource {
    * const transaction =
    *   await client.simulations.accountRevenuePayments.create({
    *     account_id: 'account_in71c4amph0vgo2qllky',
-   *     amount: 1000,
+   *     amount: 100,
    *   });
    * ```
    */

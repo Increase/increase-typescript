@@ -892,7 +892,7 @@ Methods:
 
 Methods:
 
-- <code title="post /simulations/wire_drawdown_requests/{wire_drawdown_request_id}/refuse">client.simulations.wireDrawdownRequests.<a href="./src/resources/simulations/wire-drawdown-requests.ts">refuse</a>(wireDrawdownRequestID) -> WireDrawdownRequest</code>
+- <code title="post /simulations/wire_drawdown_requests/{wire_drawdown_request_id}/refuse">client.simulations.wireDrawdownRequests.<a href="./src/resources/simulations/wire-drawdown-requests.ts">refuse</a>(wireDrawdownRequestID, { ...params }) -> WireDrawdownRequest</code>
 - <code title="post /simulations/wire_drawdown_requests/{wire_drawdown_request_id}/submit">client.simulations.wireDrawdownRequests.<a href="./src/resources/simulations/wire-drawdown-requests.ts">submit</a>(wireDrawdownRequestID) -> WireDrawdownRequest</code>
 
 ## InboundWireDrawdownRequests
