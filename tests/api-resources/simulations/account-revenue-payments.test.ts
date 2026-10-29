@@ -11,7 +11,7 @@ describe('resource accountRevenuePayments', () => {
   test('create: only required params', async () => {
     const responsePromise = client.simulations.accountRevenuePayments.create({
       account_id: 'account_in71c4amph0vgo2qllky',
-      amount: 1000,
+      amount: 100,
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -25,7 +25,7 @@ describe('resource accountRevenuePayments', () => {
   test('create: required and optional params', async () => {
     await client.simulations.accountRevenuePayments.create({
       account_id: 'account_in71c4amph0vgo2qllky',
-      amount: 1000,
+      amount: 100,
       accrued_on_account_id: 'accrued_on_account_id',
       period_end: '2019-12-27T18:11:19.117Z',
       period_start: '2019-12-27T18:11:19.117Z',
