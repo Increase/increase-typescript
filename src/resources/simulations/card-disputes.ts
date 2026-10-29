@@ -59,17 +59,20 @@ export namespace CardDisputeActionParams {
      *
      * - `accept_chargeback` - Simulate the merchant accepting the chargeback. This
      *   will move the dispute to a `won` state.
+     * - `accept_user_prearbitration` - Simulate the merchant accepting the user's
+     *   pre-arbitration. This will move the dispute to a `won` state.
      * - `accept_user_submission` - Accept the user's submission and transmit it to the
      *   network. This will move the dispute to a `pending_response` state.
      * - `decline_user_prearbitration` - Simulate the merchant declining the user's
      *   pre-arbitration. This will move the dispute to a `lost` state.
      * - `receive_merchant_prearbitration` - Simulate the merchant issuing
-     *   pre-arbitration. This will move the dispute to a `user_submission_required`
-     *   state.
+     *   pre-arbitration. Only available for disputes in the fraud or authorization
+     *   category. This will move the dispute to a `user_submission_required` state.
      * - `reject` - Simulate the dispute being rejected before it is submitted to the
      *   network. This will move the dispute to a `rejected` state.
-     * - `represent` - Simulate the merchant re-presenting the dispute. This will move
-     *   the dispute to a `user_submission_required` state.
+     * - `represent` - Simulate the merchant re-presenting the dispute. Only available
+     *   for disputes in a consumer or processing error category. This will move the
+     *   dispute to a `user_submission_required` state.
      * - `request_further_information` - Simulate further information being requested
      *   from the user. This will move the dispute to a `user_submission_required`
      *   state.
@@ -80,10 +83,11 @@ export namespace CardDisputeActionParams {
      * - `time_out_representment` - Simulate the user timing out responding to a
      *   merchant re-presentment. This will move the dispute to a `lost` state.
      * - `time_out_user_prearbitration` - Simulate the merchant timing out responding
-     *   to a user pre-arbitration. This will move the dispute to a `win` state.
+     *   to a user pre-arbitration. This will move the dispute to a `won` state.
      */
     action:
       | 'accept_chargeback'
+      | 'accept_user_prearbitration'
       | 'accept_user_submission'
       | 'decline_user_prearbitration'
       | 'receive_merchant_prearbitration'
@@ -100,6 +104,12 @@ export namespace CardDisputeActionParams {
      * `accept_chargeback`.
      */
     accept_chargeback?: Visa.AcceptChargeback;
+
+    /**
+     * The parameters for accepting the user prearbitration. Required if and only if
+     * `action` is `accept_user_prearbitration`.
+     */
+    accept_user_prearbitration?: Visa.AcceptUserPrearbitration;
 
     /**
      * The parameters for accepting the user submission. Required if and only if
@@ -168,6 +178,12 @@ export namespace CardDisputeActionParams {
      * `accept_chargeback`.
      */
     export interface AcceptChargeback {}
+
+    /**
+     * The parameters for accepting the user prearbitration. Required if and only if
+     * `action` is `accept_user_prearbitration`.
+     */
+    export interface AcceptUserPrearbitration {}
 
     /**
      * The parameters for accepting the user submission. Required if and only if

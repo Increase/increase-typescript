@@ -103,7 +103,7 @@ import {
   RealTimePaymentsTransfers,
 } from './real-time-payments-transfers';
 import * as WireDrawdownRequestsAPI from './wire-drawdown-requests';
-import { WireDrawdownRequests } from './wire-drawdown-requests';
+import { WireDrawdownRequestRefuseParams, WireDrawdownRequests } from './wire-drawdown-requests';
 import * as WireTransfersAPI from './wire-transfers';
 import { WireTransfers } from './wire-transfers';
 
@@ -297,7 +297,10 @@ export declare namespace Simulations {
     type InboundWireTransferCreateParams as InboundWireTransferCreateParams,
   };
 
-  export { WireDrawdownRequests as WireDrawdownRequests };
+  export {
+    WireDrawdownRequests as WireDrawdownRequests,
+    type WireDrawdownRequestRefuseParams as WireDrawdownRequestRefuseParams,
+  };
 
   export {
     InboundWireDrawdownRequests as InboundWireDrawdownRequests,

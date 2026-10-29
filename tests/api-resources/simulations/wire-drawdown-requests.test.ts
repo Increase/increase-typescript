@@ -11,6 +11,7 @@ describe('resource wireDrawdownRequests', () => {
   test('refuse', async () => {
     const responsePromise = client.simulations.wireDrawdownRequests.refuse(
       'wire_drawdown_request_q6lmocus3glo0lr2bfv3',
+      {},
     );
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);

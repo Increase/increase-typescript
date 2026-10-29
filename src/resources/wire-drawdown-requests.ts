@@ -174,6 +174,12 @@ export interface WireDrawdownRequest {
   idempotency_key: string | null;
 
   /**
+   * If the debtor refuses the drawdown request, this will contain supplemental
+   * details.
+   */
+  refusal: WireDrawdownRequest.Refusal | null;
+
+  /**
    * The lifecycle status of the drawdown request.
    *
    * - `pending_submission` - The drawdown request is queued to be submitted to
@@ -285,6 +291,47 @@ export namespace WireDrawdownRequest {
      * The address state.
      */
     state: string | null;
+  }
+
+  /**
+   * If the debtor refuses the drawdown request, this will contain supplemental
+   * details.
+   */
+  export interface Refusal {
+    /**
+     * Additional information about the refusal provided by the debtor bank. This is
+     * typically present when the `refusal_reason_code` is `narrative`.
+     */
+    refusal_reason_additional_information: string | null;
+
+    /**
+     * The reason the wire drawdown request was refused as provided by the debtor bank.
+     *
+     * - `invalid_debtor_account_number` - The debtor's account number is invalid or
+     *   missing. Corresponds to the Fedwire reason code `AC02`.
+     * - `transaction_forbidden` - The debtor account does not allow drawdown requests.
+     *   Corresponds to the Fedwire reason code `AG01`.
+     * - `unsuccessful_direct_debit` - The debtor account cannot be debited for a
+     *   generic reason. Corresponds to the Fedwire reason code `AG07`.
+     * - `inconsistent_with_end_customer` - The debtor's identification is inconsistent
+     *   with the debtor account number. Corresponds to the Fedwire reason code `BE01`.
+     * - `narrative` - The reason is provided as narrative information in the
+     *   additional information field. Corresponds to the Fedwire reason code `NARR`.
+     * - `other` - Some other error or issue has occurred.
+     */
+    refusal_reason_code:
+      | 'invalid_debtor_account_number'
+      | 'transaction_forbidden'
+      | 'unsuccessful_direct_debit'
+      | 'inconsistent_with_end_customer'
+      | 'narrative'
+      | 'other';
+
+    /**
+     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+     * the wire drawdown request was refused.
+     */
+    refused_at: string;
   }
 
   /**
