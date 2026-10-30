@@ -333,11 +333,13 @@ Methods:
 Types:
 
 - <code><a href="./src/resources/inbound-real-time-payments-transfers.ts">InboundRealTimePaymentsTransfer</a></code>
+- <code><a href="./src/resources/inbound-real-time-payments-transfers.ts">RealTimePaymentsTransfer</a></code>
 
 Methods:
 
 - <code title="get /inbound_real_time_payments_transfers/{inbound_real_time_payments_transfer_id}">client.inboundRealTimePaymentsTransfers.<a href="./src/resources/inbound-real-time-payments-transfers.ts">retrieve</a>(inboundRealTimePaymentsTransferID) -> InboundRealTimePaymentsTransfer</code>
 - <code title="get /inbound_real_time_payments_transfers">client.inboundRealTimePaymentsTransfers.<a href="./src/resources/inbound-real-time-payments-transfers.ts">list</a>({ ...params }) -> InboundRealTimePaymentsTransfersPage</code>
+- <code title="post /inbound_real_time_payments_transfers/{inbound_real_time_payments_transfer_id}/return">client.inboundRealTimePaymentsTransfers.<a href="./src/resources/inbound-real-time-payments-transfers.ts">return</a>(inboundRealTimePaymentsTransferID, { ...params }) -> RealTimePaymentsTransfer</code>
 
 # RealTimePaymentsRequestsForPayment
 
@@ -620,48 +622,6 @@ Methods:
 
 - <code title="get /real_time_decisions/{real_time_decision_id}">client.realTimeDecisions.<a href="./src/resources/real-time-decisions.ts">retrieve</a>(realTimeDecisionID) -> RealTimeDecision</code>
 - <code title="post /real_time_decisions/{real_time_decision_id}/action">client.realTimeDecisions.<a href="./src/resources/real-time-decisions.ts">action</a>(realTimeDecisionID, { ...params }) -> RealTimeDecision</code>
-
-# Groups
-
-Types:
-
-- <code><a href="./src/resources/groups.ts">Group</a></code>
-
-Methods:
-
-- <code title="get /groups/current">client.groups.<a href="./src/resources/groups.ts">retrieve</a>() -> Group</code>
-
-# OAuthApplications
-
-Types:
-
-- <code><a href="./src/resources/oauth-applications.ts">OAuthApplication</a></code>
-
-Methods:
-
-- <code title="get /oauth_applications/{oauth_application_id}">client.oauthApplications.<a href="./src/resources/oauth-applications.ts">retrieve</a>(oauthApplicationID) -> OAuthApplication</code>
-- <code title="get /oauth_applications">client.oauthApplications.<a href="./src/resources/oauth-applications.ts">list</a>({ ...params }) -> OAuthApplicationsPage</code>
-
-# OAuthConnections
-
-Types:
-
-- <code><a href="./src/resources/oauth-connections.ts">OAuthConnection</a></code>
-
-Methods:
-
-- <code title="get /oauth_connections/{oauth_connection_id}">client.oauthConnections.<a href="./src/resources/oauth-connections.ts">retrieve</a>(oauthConnectionID) -> OAuthConnection</code>
-- <code title="get /oauth_connections">client.oauthConnections.<a href="./src/resources/oauth-connections.ts">list</a>({ ...params }) -> OAuthConnectionsPage</code>
-
-# OAuthTokens
-
-Types:
-
-- <code><a href="./src/resources/oauth-tokens.ts">OAuthToken</a></code>
-
-Methods:
-
-- <code title="post /oauth/tokens">client.oauthTokens.<a href="./src/resources/oauth-tokens.ts">create</a>({ ...params }) -> OAuthToken</code>
 
 # IntrafiAccountEnrollments
 
