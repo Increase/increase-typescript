@@ -305,7 +305,7 @@ export interface ACHTransfer {
   /**
    * The descriptor that will show on the recipient's bank statement.
    */
-  statement_descriptor: string;
+  statement_descriptor: string | null;
 
   /**
    * The lifecycle status of the transfer.
