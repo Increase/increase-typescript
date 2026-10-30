@@ -143,22 +143,31 @@ export interface ACHTransfer {
   cancellation: ACHTransfer.Cancellation | null;
 
   /**
-   * The description of the date of the transfer.
+   * A description of the transfer date (typically `YYMMDD`), sent in the company
+   * batch header. This value is informational and does not affect funds movement,
+   * settlement timing, or returns.
    */
   company_descriptive_date: string | null;
 
   /**
-   * The data you chose to associate with the transfer.
+   * Custom data sent in the company batch header, meant as metadata for the
+   * originator. This value is informational and does not affect funds movement,
+   * settlement timing, or returns.
    */
   company_discretionary_data: string | null;
 
   /**
-   * The description of the transfer you set to be shown to the recipient.
+   * A short description sent in the company batch header, meant to provide the
+   * receiver with a reason for the transfer. Many receivers do not surface this data
+   * on the receiver's bank statement.
    */
   company_entry_description: string | null;
 
   /**
-   * The company ID associated with the transfer.
+   * The Company ID sent in the batch header, which identifies the originator to the
+   * receiving bank. Businesses use this value to allowlist the companies permitted
+   * to debit their accounts. This value is configured by Increase and will be the
+   * same for all your transfers.
    */
   company_id: string;
 
@@ -255,10 +264,8 @@ export interface ACHTransfer {
   pending_transaction_id: string | null;
 
   /**
-   * Configuration for how the effective date of the transfer will be set. This
-   * determines same-day vs future-dated settlement timing. If not set, defaults to a
-   * `settlement_schedule` of `same_day`. If set, exactly one of the child attributes
-   * must be set.
+   * Configuration for how the effective date of the transfer was set. This
+   * determines same-day vs future-dated settlement timing.
    */
   preferred_effective_date: ACHTransfer.PreferredEffectiveDate;
 
@@ -305,7 +312,7 @@ export interface ACHTransfer {
   /**
    * The descriptor that will show on the recipient's bank statement.
    */
-  statement_descriptor: string;
+  statement_descriptor: string | null;
 
   /**
    * The lifecycle status of the transfer.
@@ -708,10 +715,8 @@ export namespace ACHTransfer {
   }
 
   /**
-   * Configuration for how the effective date of the transfer will be set. This
-   * determines same-day vs future-dated settlement timing. If not set, defaults to a
-   * `settlement_schedule` of `same_day`. If set, exactly one of the child attributes
-   * must be set.
+   * Configuration for how the effective date of the transfer was set. This
+   * determines same-day vs future-dated settlement timing.
    */
   export interface PreferredEffectiveDate {
     /**
