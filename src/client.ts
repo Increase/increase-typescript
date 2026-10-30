@@ -210,7 +210,6 @@ import {
 } from './resources/fednow-transfers';
 import { FileLink, FileLinkCreateParams, FileLinks } from './resources/file-links';
 import { File, FileCreateParams, FileListParams, Files, FilesPage } from './resources/files';
-import { Group, Groups } from './resources/groups';
 import {
   InboundACHTransfer,
   InboundACHTransferCreateNotificationOfChangeParams,
@@ -296,19 +295,6 @@ import {
   LockboxRecipients,
   LockboxRecipientsPage,
 } from './resources/lockbox-recipients';
-import {
-  OAuthApplication,
-  OAuthApplicationListParams,
-  OAuthApplications,
-  OAuthApplicationsPage,
-} from './resources/oauth-applications';
-import {
-  OAuthConnection,
-  OAuthConnectionListParams,
-  OAuthConnections,
-  OAuthConnectionsPage,
-} from './resources/oauth-connections';
-import { OAuthToken, OAuthTokenCreateParams, OAuthTokens } from './resources/oauth-tokens';
 import {
   PendingTransaction,
   PendingTransactionCreateParams,
@@ -1218,10 +1204,6 @@ export class Increase {
   events: API.Events = new API.Events(this);
   eventSubscriptions: API.EventSubscriptions = new API.EventSubscriptions(this);
   realTimeDecisions: API.RealTimeDecisions = new API.RealTimeDecisions(this);
-  groups: API.Groups = new API.Groups(this);
-  oauthApplications: API.OAuthApplications = new API.OAuthApplications(this);
-  oauthConnections: API.OAuthConnections = new API.OAuthConnections(this);
-  oauthTokens: API.OAuthTokens = new API.OAuthTokens(this);
   intrafiAccountEnrollments: API.IntrafiAccountEnrollments = new API.IntrafiAccountEnrollments(this);
   intrafiBalances: API.IntrafiBalances = new API.IntrafiBalances(this);
   intrafiExclusions: API.IntrafiExclusions = new API.IntrafiExclusions(this);
@@ -1281,10 +1263,6 @@ Increase.Exports = Exports;
 Increase.Events = Events;
 Increase.EventSubscriptions = EventSubscriptions;
 Increase.RealTimeDecisions = RealTimeDecisions;
-Increase.Groups = Groups;
-Increase.OAuthApplications = OAuthApplications;
-Increase.OAuthConnections = OAuthConnections;
-Increase.OAuthTokens = OAuthTokens;
 Increase.IntrafiAccountEnrollments = IntrafiAccountEnrollments;
 Increase.IntrafiBalances = IntrafiBalances;
 Increase.IntrafiExclusions = IntrafiExclusions;
@@ -1699,28 +1677,6 @@ export declare namespace Increase {
     RealTimeDecisions as RealTimeDecisions,
     type RealTimeDecision as RealTimeDecision,
     type RealTimeDecisionActionParams as RealTimeDecisionActionParams,
-  };
-
-  export { Groups as Groups, type Group as Group };
-
-  export {
-    OAuthApplications as OAuthApplications,
-    type OAuthApplication as OAuthApplication,
-    type OAuthApplicationsPage as OAuthApplicationsPage,
-    type OAuthApplicationListParams as OAuthApplicationListParams,
-  };
-
-  export {
-    OAuthConnections as OAuthConnections,
-    type OAuthConnection as OAuthConnection,
-    type OAuthConnectionsPage as OAuthConnectionsPage,
-    type OAuthConnectionListParams as OAuthConnectionListParams,
-  };
-
-  export {
-    OAuthTokens as OAuthTokens,
-    type OAuthToken as OAuthToken,
-    type OAuthTokenCreateParams as OAuthTokenCreateParams,
   };
 
   export {
