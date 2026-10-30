@@ -1,6 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../core/resource';
+import * as InboundRealTimePaymentsTransfersAPI from './inbound-real-time-payments-transfers';
+import { RealTimePaymentsTransfersPage } from './inbound-real-time-payments-transfers';
 import { APIPromise } from '../core/api-promise';
 import { Page, type PageParams, PagePromise } from '../core/pagination';
 import { RequestOptions } from '../internal/request-options';
@@ -25,7 +27,7 @@ export class RealTimePaymentsTransfers extends APIResource {
   create(
     body: RealTimePaymentsTransferCreateParams,
     options?: RequestOptions,
-  ): APIPromise<RealTimePaymentsTransfer> {
+  ): APIPromise<InboundRealTimePaymentsTransfersAPI.RealTimePaymentsTransfer> {
     return this._client.post('/real_time_payments_transfers', { body, ...options });
   }
 
@@ -43,7 +45,7 @@ export class RealTimePaymentsTransfers extends APIResource {
   retrieve(
     realTimePaymentsTransferID: string,
     options?: RequestOptions,
-  ): APIPromise<RealTimePaymentsTransfer> {
+  ): APIPromise<InboundRealTimePaymentsTransfersAPI.RealTimePaymentsTransfer> {
     return this._client.get(path`/real_time_payments_transfers/${realTimePaymentsTransferID}`, options);
   }
 
@@ -61,11 +63,15 @@ export class RealTimePaymentsTransfers extends APIResource {
   list(
     query: RealTimePaymentsTransferListParams | null | undefined = {},
     options?: RequestOptions,
-  ): PagePromise<RealTimePaymentsTransfersPage, RealTimePaymentsTransfer> {
-    return this._client.getAPIList('/real_time_payments_transfers', Page<RealTimePaymentsTransfer>, {
-      query,
-      ...options,
-    });
+  ): PagePromise<
+    RealTimePaymentsTransfersPage,
+    InboundRealTimePaymentsTransfersAPI.RealTimePaymentsTransfer
+  > {
+    return this._client.getAPIList(
+      '/real_time_payments_transfers',
+      Page<InboundRealTimePaymentsTransfersAPI.RealTimePaymentsTransfer>,
+      { query, ...options },
+    );
   }
 
   /**
@@ -82,7 +88,7 @@ export class RealTimePaymentsTransfers extends APIResource {
   approve(
     realTimePaymentsTransferID: string,
     options?: RequestOptions,
-  ): APIPromise<RealTimePaymentsTransfer> {
+  ): APIPromise<InboundRealTimePaymentsTransfersAPI.RealTimePaymentsTransfer> {
     return this._client.post(
       path`/real_time_payments_transfers/${realTimePaymentsTransferID}/approve`,
       options,
@@ -100,15 +106,16 @@ export class RealTimePaymentsTransfers extends APIResource {
    *   );
    * ```
    */
-  cancel(realTimePaymentsTransferID: string, options?: RequestOptions): APIPromise<RealTimePaymentsTransfer> {
+  cancel(
+    realTimePaymentsTransferID: string,
+    options?: RequestOptions,
+  ): APIPromise<InboundRealTimePaymentsTransfersAPI.RealTimePaymentsTransfer> {
     return this._client.post(
       path`/real_time_payments_transfers/${realTimePaymentsTransferID}/cancel`,
       options,
     );
   }
 }
-
-export type RealTimePaymentsTransfersPage = Page<RealTimePaymentsTransfer>;
 
 /**
  * Real-Time Payments transfers move funds, within seconds, between your Increase
@@ -215,6 +222,12 @@ export interface RealTimePaymentsTransfer {
    * institution, this will contain supplemental details.
    */
   rejection: RealTimePaymentsTransfer.Rejection | null;
+
+  /**
+   * The identifier of the Inbound Real-Time Payments Transfer this transfer returns,
+   * if any.
+   */
+  return_of_inbound_real_time_payments_transfer_id: string | null;
 
   /**
    * The destination American Bankers' Association (ABA) Routing Transit Number
@@ -656,8 +669,9 @@ export namespace RealTimePaymentsTransferListParams {
 export declare namespace RealTimePaymentsTransfers {
   export {
     type RealTimePaymentsTransfer as RealTimePaymentsTransfer,
-    type RealTimePaymentsTransfersPage as RealTimePaymentsTransfersPage,
     type RealTimePaymentsTransferCreateParams as RealTimePaymentsTransferCreateParams,
     type RealTimePaymentsTransferListParams as RealTimePaymentsTransferListParams,
   };
 }
+
+export { type RealTimePaymentsTransfersPage };
