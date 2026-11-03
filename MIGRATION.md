@@ -114,8 +114,6 @@ client.example.list(undefined, { headers: { ... } });
 - `client.exports.list()`
 - `client.events.list()`
 - `client.eventSubscriptions.list()`
-- `client.oauthApplications.list()`
-- `client.oauthConnections.list()`
 - `client.intrafiAccountEnrollments.list()`
 - `client.intrafiExclusions.list()`
 - `client.cardTokens.list()`

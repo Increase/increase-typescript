@@ -217,6 +217,12 @@ export interface RealTimePaymentsTransfer {
   rejection: RealTimePaymentsTransfer.Rejection | null;
 
   /**
+   * The identifier of the Inbound Real-Time Payments Transfer this transfer returns,
+   * if any.
+   */
+  return_of_inbound_real_time_payments_transfer_id: string | null;
+
+  /**
    * The destination American Bankers' Association (ABA) Routing Transit Number
    * (RTN).
    */

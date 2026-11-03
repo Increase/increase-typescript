@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../core/resource';
+import * as RealTimePaymentsTransfersAPI from './real-time-payments-transfers';
 import { APIPromise } from '../core/api-promise';
 import { Page, type PageParams, PagePromise } from '../core/pagination';
 import { RequestOptions } from '../internal/request-options';
@@ -47,6 +48,28 @@ export class InboundRealTimePaymentsTransfers extends APIResource {
       '/inbound_real_time_payments_transfers',
       Page<InboundRealTimePaymentsTransfer>,
       { query, ...options },
+    );
+  }
+
+  /**
+   * Return an Inbound Real-Time Payments Transfer
+   *
+   * @example
+   * ```ts
+   * const realTimePaymentsTransfer =
+   *   await client.inboundRealTimePaymentsTransfers.return(
+   *     'inbound_real_time_payments_transfer_63hlz498vcxg644hcrzr',
+   *   );
+   * ```
+   */
+  return(
+    inboundRealTimePaymentsTransferID: string,
+    body: InboundRealTimePaymentsTransferReturnParams,
+    options?: RequestOptions,
+  ): APIPromise<RealTimePaymentsTransfersAPI.RealTimePaymentsTransfer> {
+    return this._client.post(
+      path`/inbound_real_time_payments_transfers/${inboundRealTimePaymentsTransferID}/return`,
+      { body, ...options },
     );
   }
 }
@@ -126,6 +149,11 @@ export interface InboundRealTimePaymentsTransfer {
    * A free-form reference string set by the sender, to help identify the transfer.
    */
   end_to_end_identification: string | null;
+
+  /**
+   * The identifier of the Real-Time Payments Transfer this transfer returns, if any.
+   */
+  return_of_real_time_payments_transfer_id: string | null;
 
   /**
    * The lifecycle status of the transfer.
@@ -255,10 +283,19 @@ export namespace InboundRealTimePaymentsTransferListParams {
   }
 }
 
+export interface InboundRealTimePaymentsTransferReturnParams {
+  /**
+   * The amount to return, in USD cents. Defaults to the full amount of the Inbound
+   * Real-Time Payments Transfer, and can't be higher than it.
+   */
+  amount?: number;
+}
+
 export declare namespace InboundRealTimePaymentsTransfers {
   export {
     type InboundRealTimePaymentsTransfer as InboundRealTimePaymentsTransfer,
     type InboundRealTimePaymentsTransfersPage as InboundRealTimePaymentsTransfersPage,
     type InboundRealTimePaymentsTransferListParams as InboundRealTimePaymentsTransferListParams,
+    type InboundRealTimePaymentsTransferReturnParams as InboundRealTimePaymentsTransferReturnParams,
   };
 }
