@@ -523,7 +523,7 @@ export namespace CheckTransfer {
       /**
        * The name component of the check's mailing address.
        */
-      name: string | null;
+      name: string;
 
       /**
        * The phone number to be used in case of delivery issues at the check's mailing
