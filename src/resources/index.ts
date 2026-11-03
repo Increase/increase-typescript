@@ -198,7 +198,6 @@ export {
 } from './fednow-transfers';
 export { FileLinks, type FileLink, type FileLinkCreateParams } from './file-links';
 export { Files, type File, type FileCreateParams, type FileListParams, type FilesPage } from './files';
-export { Groups, type Group } from './groups';
 export {
   InboundACHTransfers,
   type InboundACHTransfer,
@@ -238,6 +237,7 @@ export {
   InboundRealTimePaymentsTransfers,
   type InboundRealTimePaymentsTransfer,
   type InboundRealTimePaymentsTransferListParams,
+  type InboundRealTimePaymentsTransferReturnParams,
   type InboundRealTimePaymentsTransfersPage,
 } from './inbound-real-time-payments-transfers';
 export {
@@ -284,19 +284,6 @@ export {
   type LockboxRecipientListParams,
   type LockboxRecipientsPage,
 } from './lockbox-recipients';
-export {
-  OAuthApplications,
-  type OAuthApplication,
-  type OAuthApplicationListParams,
-  type OAuthApplicationsPage,
-} from './oauth-applications';
-export {
-  OAuthConnections,
-  type OAuthConnection,
-  type OAuthConnectionListParams,
-  type OAuthConnectionsPage,
-} from './oauth-connections';
-export { OAuthTokens, type OAuthToken, type OAuthTokenCreateParams } from './oauth-tokens';
 export {
   PendingTransactions,
   type PendingTransaction,

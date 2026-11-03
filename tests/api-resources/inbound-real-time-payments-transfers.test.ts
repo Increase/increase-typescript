@@ -52,4 +52,18 @@ describe('resource inboundRealTimePaymentsTransfers', () => {
       ),
     ).rejects.toThrow(Increase.NotFoundError);
   });
+
+  test('return', async () => {
+    const responsePromise = client.inboundRealTimePaymentsTransfers.return(
+      'inbound_real_time_payments_transfer_63hlz498vcxg644hcrzr',
+      {},
+    );
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
 });

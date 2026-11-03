@@ -692,7 +692,7 @@ export namespace Transaction {
       /**
        * A description set when the ACH Transfer was created.
        */
-      statement_descriptor: string;
+      statement_descriptor: string | null;
 
       /**
        * The identifier of the ACH Transfer that led to this Transaction.

@@ -454,7 +454,7 @@ export namespace CheckTransfer {
 
     /**
      * The payer of the check. This will be printed on the top-left portion of the
-     * check and defaults to the return address if unspecified.
+     * check.
      */
     payer: Array<PhysicalCheck.Payer>;
 
@@ -471,7 +471,7 @@ export namespace CheckTransfer {
     /**
      * The return address to be printed on the check.
      */
-    return_address: PhysicalCheck.ReturnAddress | null;
+    return_address: PhysicalCheck.ReturnAddress;
 
     /**
      * A custom name printed above the Increase-managed return address.
@@ -508,12 +508,12 @@ export namespace CheckTransfer {
       /**
        * The city of the check's destination.
        */
-      city: string | null;
+      city: string;
 
       /**
        * The street address of the check's destination.
        */
-      line1: string | null;
+      line1: string;
 
       /**
        * The second line of the address of the check's destination.
@@ -534,12 +534,12 @@ export namespace CheckTransfer {
       /**
        * The postal code of the check's destination.
        */
-      postal_code: string | null;
+      postal_code: string;
 
       /**
        * The state of the check's destination.
        */
-      state: string | null;
+      state: string;
     }
 
     export interface Payer {
@@ -556,12 +556,12 @@ export namespace CheckTransfer {
       /**
        * The city of the check's destination.
        */
-      city: string | null;
+      city: string;
 
       /**
        * The street address of the check's destination.
        */
-      line1: string | null;
+      line1: string;
 
       /**
        * The second line of the address of the check's destination.
@@ -571,7 +571,7 @@ export namespace CheckTransfer {
       /**
        * The name component of the check's return address.
        */
-      name: string | null;
+      name: string;
 
       /**
        * The shipper's phone number to be used in case of delivery issues. Only used for
@@ -582,12 +582,12 @@ export namespace CheckTransfer {
       /**
        * The postal code of the check's destination.
        */
-      postal_code: string | null;
+      postal_code: string;
 
       /**
        * The state of the check's destination.
        */
-      state: string | null;
+      state: string;
     }
 
     /**
