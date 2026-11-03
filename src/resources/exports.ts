@@ -410,7 +410,11 @@ export namespace Export {
      */
     created_at: FeeCsv.CreatedAt | null;
 
-    [k: string]: unknown;
+    /**
+     * Filter fees by the UTC start date of their fee statement's period, such as
+     * `2026-08-01`.
+     */
+    fee_statement_period_start: string | null;
   }
 
   export namespace FeeCsv {
@@ -810,21 +814,32 @@ export namespace ExportCreateParams {
    */
   export interface FeeCsv {
     /**
-     * Filter results by time range on the `created_at` attribute.
+     * Filter exported Fees by the time they were created. This suits historical
+     * exports across many fee statements. To get all of the Fees for a given fee
+     * statement period, we recommend using `fee_statement_period_start` instead. The
+     * time range must not include any Fees on an open fee statement.
      */
     created_at?: FeeCsv.CreatedAt;
+
+    /**
+     * Filter exported Fees to the fee statements whose period starts on this UTC date,
+     * such as `2026-08-01`. Use this filter to export all of the Fees on a fee
+     * statement. The matching fee statements must be closed.
+     */
+    fee_statement_period_start?: string;
 
     /**
      * Filter exported Fees to the specified Program.
      */
     program_id?: string;
-
-    [k: string]: unknown;
   }
 
   export namespace FeeCsv {
     /**
-     * Filter results by time range on the `created_at` attribute.
+     * Filter exported Fees by the time they were created. This suits historical
+     * exports across many fee statements. To get all of the Fees for a given fee
+     * statement period, we recommend using `fee_statement_period_start` instead. The
+     * time range must not include any Fees on an open fee statement.
      */
     export interface CreatedAt {
       /**

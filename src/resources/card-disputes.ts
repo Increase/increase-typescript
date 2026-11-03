@@ -489,6 +489,8 @@ export namespace CardDispute {
        * request to withdraw the dispute has been submitted to the network.
        */
       user_withdrawal_submitted?: NetworkEvent.UserWithdrawalSubmitted | null;
+
+      [k: string]: unknown;
     }
 
     export namespace NetworkEvent {

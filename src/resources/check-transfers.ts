@@ -454,7 +454,7 @@ export namespace CheckTransfer {
 
     /**
      * The payer of the check. This will be printed on the top-left portion of the
-     * check and defaults to the return address if unspecified.
+     * check.
      */
     payer: Array<PhysicalCheck.Payer>;
 
