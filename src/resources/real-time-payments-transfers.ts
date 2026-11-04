@@ -185,6 +185,11 @@ export interface RealTimePaymentsTransfer {
   debtor_name: string | null;
 
   /**
+   * A free-form reference string set by the sender, to help identify the transfer.
+   */
+  end_to_end_identification: string | null;
+
+  /**
    * The identifier of the External Account the transfer was made to, if any.
    */
   external_account_id: string | null;
