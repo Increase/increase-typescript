@@ -453,6 +453,12 @@ export namespace CheckTransfer {
     note: string | null;
 
     /**
+     * The payee of the check. This will be printed in the Pay to the Order Of portion
+     * of the check.
+     */
+    payee: Array<PhysicalCheck.Payee> | null;
+
+    /**
      * The payer of the check. This will be printed on the top-left portion of the
      * check.
      */
@@ -540,6 +546,13 @@ export namespace CheckTransfer {
        * The state of the check's destination.
        */
       state: string;
+    }
+
+    export interface Payee {
+      /**
+       * The contents of the line.
+       */
+      contents: string;
     }
 
     export interface Payer {
@@ -873,16 +886,18 @@ export namespace CheckTransferCreateParams {
     memo: string;
 
     /**
+     * The payee of the check. This will be printed in the Pay to the Order Of portion
+     * of the check. This should be an array of up to 4 elements, each of which
+     * represents a line of the payee.
+     */
+    payee: Array<PhysicalCheck.Payee>;
+
+    /**
      * The payer of the check. This will be printed on the top-left portion of the
      * check. This should be an array of up to 4 elements, each of which represents a
      * line of the payer.
      */
     payer: Array<PhysicalCheck.Payer>;
-
-    /**
-     * The name that will be printed on the check in the 'To:' field.
-     */
-    recipient_name: string;
 
     /**
      * The ID of a File to be attached to the check. This must have
@@ -959,6 +974,11 @@ export namespace CheckTransferCreateParams {
       line1: string;
 
       /**
+       * The name component of the check's destination address.
+       */
+      name: string;
+
+      /**
        * The postal code component of the check's destination address.
        */
       postal_code: string;
@@ -974,17 +994,18 @@ export namespace CheckTransferCreateParams {
       line2?: string;
 
       /**
-       * The name component of the check's destination address. Defaults to the provided
-       * `recipient_name` parameter if `name` is not provided.
-       */
-      name?: string;
-
-      /**
        * The phone number to associate with the check's destination address. The phone
        * number is only used when `shipping_method` is `fedex_overnight` and will be
        * supplied to FedEx to be used in case of delivery issues.
        */
       phone?: string;
+    }
+
+    export interface Payee {
+      /**
+       * The contents of the line.
+       */
+      contents: string;
     }
 
     export interface Payer {
