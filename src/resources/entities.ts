@@ -150,12 +150,6 @@ export interface Entity {
   natural_person: Entity.NaturalPerson | null;
 
   /**
-   * An assessment of the entity’s potential risk of involvement in financial crimes,
-   * such as money laundering.
-   */
-  risk_rating: Entity.RiskRating | null;
-
-  /**
    * Details of the sole proprietorship entity. Will be present if `structure` is
    * equal to `sole_proprietorship`.
    */
@@ -780,27 +774,6 @@ export namespace Entity {
 
       [k: string]: unknown;
     }
-  }
-
-  /**
-   * An assessment of the entity’s potential risk of involvement in financial crimes,
-   * such as money laundering.
-   */
-  export interface RiskRating {
-    /**
-     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the risk
-     * rating was performed.
-     */
-    rated_at: string;
-
-    /**
-     * The rating given to this entity.
-     *
-     * - `low` - Minimal risk of involvement in financial crime.
-     * - `medium` - Moderate risk of involvement in financial crime.
-     * - `high` - Elevated risk of involvement in financial crime.
-     */
-    rating: 'low' | 'medium' | 'high';
   }
 
   /**
@@ -1514,12 +1487,6 @@ export interface EntityCreateParams {
    * identification methods.
    */
   natural_person?: EntityCreateParams.NaturalPerson;
-
-  /**
-   * An assessment of the entity's potential risk of involvement in financial crimes,
-   * such as money laundering.
-   */
-  risk_rating?: EntityCreateParams.RiskRating;
 
   /**
    * Details of the sole proprietorship entity to create. Required if `structure` is
@@ -2451,27 +2418,6 @@ export namespace EntityCreateParams {
   }
 
   /**
-   * An assessment of the entity's potential risk of involvement in financial crimes,
-   * such as money laundering.
-   */
-  export interface RiskRating {
-    /**
-     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the risk
-     * rating was performed.
-     */
-    rated_at: string;
-
-    /**
-     * The rating given to this entity.
-     *
-     * - `low` - Minimal risk of involvement in financial crime.
-     * - `medium` - Moderate risk of involvement in financial crime.
-     * - `high` - Elevated risk of involvement in financial crime.
-     */
-    rating: 'low' | 'medium' | 'high';
-  }
-
-  /**
    * Details of the sole proprietorship entity to create. Required if `structure` is
    * equal to `sole_proprietorship`.
    */
@@ -3252,12 +3198,6 @@ export interface EntityUpdateParams {
   natural_person?: EntityUpdateParams.NaturalPerson;
 
   /**
-   * An assessment of the entity’s potential risk of involvement in financial crimes,
-   * such as money laundering.
-   */
-  risk_rating?: EntityUpdateParams.RiskRating;
-
-  /**
    * Details of the sole proprietorship entity to update. If you specify this
    * parameter and the entity is not a sole proprietorship, the request will fail.
    */
@@ -3281,6 +3221,8 @@ export interface EntityUpdateParams {
    * entity is not a trust, the request will fail.
    */
   trust?: EntityUpdateParams.Trust;
+
+  [k: string]: unknown;
 }
 
 export namespace EntityUpdateParams {
@@ -3653,27 +3595,6 @@ export namespace EntityUpdateParams {
         file_id: string;
       }
     }
-  }
-
-  /**
-   * An assessment of the entity’s potential risk of involvement in financial crimes,
-   * such as money laundering.
-   */
-  export interface RiskRating {
-    /**
-     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the risk
-     * rating was performed.
-     */
-    rated_at: string;
-
-    /**
-     * The rating given to this entity.
-     *
-     * - `low` - Minimal risk of involvement in financial crime.
-     * - `medium` - Moderate risk of involvement in financial crime.
-     * - `high` - Elevated risk of involvement in financial crime.
-     */
-    rating: 'low' | 'medium' | 'high';
   }
 
   /**
