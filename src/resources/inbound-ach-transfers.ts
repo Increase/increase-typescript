@@ -229,8 +229,8 @@ export interface InboundACHTransfer {
   receiver_name: string | null;
 
   /**
-   * A subhash containing information about when and how the transfer settled at the
-   * Federal Reserve.
+   * A subhash containing information about when the transfer settled (or will
+   * settle) at the Federal Reserve.
    */
   settlement: InboundACHTransfer.Settlement;
 
@@ -707,8 +707,8 @@ export namespace InboundACHTransfer {
   }
 
   /**
-   * A subhash containing information about when and how the transfer settled at the
-   * Federal Reserve.
+   * A subhash containing information about when the transfer settled (or will
+   * settle) at the Federal Reserve.
    */
   export interface Settlement {
     /**
