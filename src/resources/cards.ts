@@ -1447,16 +1447,18 @@ export namespace CardUpdateParams {
 
     /**
      * An email address that can be used to verify the cardholder via one-time passcode
-     * over email.
+     * over email. Send `null` to clear the email address. Omit this field to leave it
+     * unchanged.
      */
-    email?: string;
+    email?: string | null;
 
     /**
      * A phone number that can be used to verify the cardholder via one-time passcode
      * over SMS. Accepts formats like `+14155550123`, `4155550123`, `415-555-0123`, or
-     * `(415) 555-0123`.
+     * `(415) 555-0123`. Send `null` to clear the phone number. Omit this field to
+     * leave it unchanged.
      */
-    phone?: string;
+    phone?: string | null;
   }
 }
 
