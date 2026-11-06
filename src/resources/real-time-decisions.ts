@@ -2283,9 +2283,44 @@ export namespace RealTimeDecision {
      */
     export interface Device {
       /**
+       * Device type.
+       *
+       * - `unknown` - Unknown
+       * - `mobile_phone` - Mobile Phone
+       * - `tablet` - Tablet
+       * - `watch` - Watch
+       * - `mobilephone_or_tablet` - Mobile Phone or Tablet
+       * - `pc` - PC
+       * - `household_device` - Household Device
+       * - `wearable_device` - Wearable Device
+       * - `automobile_device` - Automobile Device
+       */
+      device_type:
+        | 'unknown'
+        | 'mobile_phone'
+        | 'tablet'
+        | 'watch'
+        | 'mobilephone_or_tablet'
+        | 'pc'
+        | 'household_device'
+        | 'wearable_device'
+        | 'automobile_device'
+        | null;
+
+      /**
        * ID assigned to the device by the digital wallet provider.
        */
       identifier: string | null;
+
+      /**
+       * IP address of the device.
+       */
+      ip_address: string | null;
+
+      /**
+       * Name of the device, for example "My Work Phone".
+       */
+      name: string | null;
     }
   }
 }

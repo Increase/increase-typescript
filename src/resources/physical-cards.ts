@@ -165,6 +165,8 @@ export interface PhysicalCard {
    * `physical_card`.
    */
   type: 'physical_card';
+
+  [k: string]: unknown;
 }
 
 export namespace PhysicalCard {
