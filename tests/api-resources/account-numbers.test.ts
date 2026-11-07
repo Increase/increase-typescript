@@ -26,8 +26,8 @@ describe('resource accountNumbers', () => {
     await client.accountNumbers.create({
       account_id: 'account_in71c4amph0vgo2qllky',
       name: 'Rent payments',
-      inbound_ach: { debit_status: 'allowed' },
-      inbound_checks: { status: 'allowed' },
+      inbound_ach_debits: 'allowed',
+      unregistered_inbound_checks: 'allowed',
     });
   });
 
@@ -70,7 +70,6 @@ describe('resource accountNumbers', () => {
       client.accountNumbers.list(
         {
           account_id: 'account_id',
-          ach_debit_status: { in: ['allowed'] },
           created_at: {
             after: '2019-12-27T18:11:19.117Z',
             before: '2019-12-27T18:11:19.117Z',
@@ -79,6 +78,7 @@ describe('resource accountNumbers', () => {
           },
           cursor: 'cursor',
           idempotency_key: 'x',
+          inbound_ach_debits: { in: ['allowed'] },
           limit: 1,
           status: { in: ['active'] },
         },

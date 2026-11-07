@@ -40,6 +40,7 @@ export {
   type CheckDepositSubmitParams,
 } from './check-deposits';
 export { CheckTransfers } from './check-transfers';
+export { Checkbooks } from './checkbooks';
 export {
   DigitalWalletTokenRequests,
   type DigitalWalletTokenRequestCreateResponse,

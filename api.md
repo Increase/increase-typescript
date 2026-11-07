@@ -301,6 +301,31 @@ Methods:
 - <code title="post /check_transfers/{check_transfer_id}/cancel">client.checkTransfers.<a href="./src/resources/check-transfers.ts">cancel</a>(checkTransferID) -> CheckTransfer</code>
 - <code title="post /check_transfers/{check_transfer_id}/stop_payment">client.checkTransfers.<a href="./src/resources/check-transfers.ts">stopPayment</a>(checkTransferID, { ...params }) -> CheckTransfer</code>
 
+# Checkbooks
+
+Types:
+
+- <code><a href="./src/resources/checkbooks.ts">Checkbook</a></code>
+
+Methods:
+
+- <code title="post /checkbooks">client.checkbooks.<a href="./src/resources/checkbooks.ts">create</a>({ ...params }) -> Checkbook</code>
+- <code title="get /checkbooks/{checkbook_id}">client.checkbooks.<a href="./src/resources/checkbooks.ts">retrieve</a>(checkbookID) -> Checkbook</code>
+- <code title="get /checkbooks">client.checkbooks.<a href="./src/resources/checkbooks.ts">list</a>({ ...params }) -> CheckbooksPage</code>
+- <code title="post /checkbooks/{checkbook_id}/stop">client.checkbooks.<a href="./src/resources/checkbooks.ts">stop</a>(checkbookID) -> Checkbook</code>
+
+# CheckbookChecks
+
+Types:
+
+- <code><a href="./src/resources/checkbook-checks.ts">CheckbookCheck</a></code>
+
+Methods:
+
+- <code title="get /checkbook_checks/{checkbook_check_id}">client.checkbookChecks.<a href="./src/resources/checkbook-checks.ts">retrieve</a>(checkbookCheckID) -> CheckbookCheck</code>
+- <code title="get /checkbook_checks">client.checkbookChecks.<a href="./src/resources/checkbook-checks.ts">list</a>({ ...params }) -> CheckbookChecksPage</code>
+- <code title="post /checkbook_checks/{checkbook_check_id}/stop">client.checkbookChecks.<a href="./src/resources/checkbook-checks.ts">stop</a>(checkbookCheckID) -> CheckbookCheck</code>
+
 # InboundCheckDeposits
 
 Types:
@@ -865,6 +890,12 @@ Methods:
 Methods:
 
 - <code title="post /simulations/check_transfers/{check_transfer_id}/mail">client.simulations.checkTransfers.<a href="./src/resources/simulations/check-transfers.ts">mail</a>(checkTransferID) -> CheckTransfer</code>
+
+## Checkbooks
+
+Methods:
+
+- <code title="post /simulations/checkbooks/{checkbook_id}/mail">client.simulations.checkbooks.<a href="./src/resources/simulations/checkbooks.ts">mail</a>(checkbookID) -> Checkbook</code>
 
 ## InboundCheckDeposits
 

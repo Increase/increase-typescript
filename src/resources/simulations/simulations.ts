@@ -51,6 +51,8 @@ import * as CheckDepositsAPI from './check-deposits';
 import { CheckDepositAdjustmentParams, CheckDepositSubmitParams, CheckDeposits } from './check-deposits';
 import * as CheckTransfersAPI from './check-transfers';
 import { CheckTransfers } from './check-transfers';
+import * as CheckbooksAPI from './checkbooks';
+import { Checkbooks } from './checkbooks';
 import * as DigitalWalletTokenRequestsAPI from './digital-wallet-token-requests';
 import {
   DigitalWalletTokenRequestCreateParams,
@@ -147,6 +149,7 @@ export class Simulations extends APIResource {
   inboundWireDrawdownRequests: InboundWireDrawdownRequestsAPI.InboundWireDrawdownRequests =
     new InboundWireDrawdownRequestsAPI.InboundWireDrawdownRequests(this._client);
   checkTransfers: CheckTransfersAPI.CheckTransfers = new CheckTransfersAPI.CheckTransfers(this._client);
+  checkbooks: CheckbooksAPI.Checkbooks = new CheckbooksAPI.Checkbooks(this._client);
   inboundCheckDeposits: InboundCheckDepositsAPI.InboundCheckDeposits =
     new InboundCheckDepositsAPI.InboundCheckDeposits(this._client);
   realTimePaymentsTransfers: RealTimePaymentsTransfersAPI.RealTimePaymentsTransfers =
@@ -194,6 +197,7 @@ Simulations.InboundWireTransfers = InboundWireTransfers;
 Simulations.WireDrawdownRequests = WireDrawdownRequests;
 Simulations.InboundWireDrawdownRequests = InboundWireDrawdownRequests;
 Simulations.CheckTransfers = CheckTransfers;
+Simulations.Checkbooks = Checkbooks;
 Simulations.InboundCheckDeposits = InboundCheckDeposits;
 Simulations.RealTimePaymentsTransfers = RealTimePaymentsTransfers;
 Simulations.InboundRealTimePaymentsTransfers = InboundRealTimePaymentsTransfers;
@@ -308,6 +312,8 @@ export declare namespace Simulations {
   };
 
   export { CheckTransfers as CheckTransfers };
+
+  export { Checkbooks as Checkbooks };
 
   export {
     InboundCheckDeposits as InboundCheckDeposits,
