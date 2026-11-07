@@ -1373,6 +1373,11 @@ export namespace DeclinedTransaction {
       check_transfer_id: string | null;
 
       /**
+       * The identifier of the Checkbook Check object associated with this decline.
+       */
+      checkbook_check_id: string | null;
+
+      /**
        * The identifier of the API File object containing an image of the front of the
        * declined check.
        */

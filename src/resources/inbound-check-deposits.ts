@@ -153,6 +153,12 @@ export interface InboundCheckDeposit {
   check_transfer_id: string | null;
 
   /**
+   * If this deposit is for an existing Checkbook Check, the identifier of that
+   * Checkbook Check.
+   */
+  checkbook_check_id: string | null;
+
+  /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
    * the deposit was attempted.
    */
@@ -224,8 +230,6 @@ export interface InboundCheckDeposit {
    * `inbound_check_deposit`.
    */
   type: 'inbound_check_deposit';
-
-  [k: string]: unknown;
 }
 
 export namespace InboundCheckDeposit {

@@ -124,6 +124,19 @@ export {
   type CheckTransfersPage,
 } from './check-transfers';
 export {
+  CheckbookChecks,
+  type CheckbookCheck,
+  type CheckbookCheckListParams,
+  type CheckbookChecksPage,
+} from './checkbook-checks';
+export {
+  Checkbooks,
+  type Checkbook,
+  type CheckbookCreateParams,
+  type CheckbookListParams,
+  type CheckbooksPage,
+} from './checkbooks';
+export {
   DeclinedTransactions,
   type DeclinedTransaction,
   type DeclinedTransactionListParams,

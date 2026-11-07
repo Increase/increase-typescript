@@ -142,6 +142,19 @@ import {
   CheckTransfersPage,
 } from './resources/check-transfers';
 import {
+  CheckbookCheck,
+  CheckbookCheckListParams,
+  CheckbookChecks,
+  CheckbookChecksPage,
+} from './resources/checkbook-checks';
+import {
+  Checkbook,
+  CheckbookCreateParams,
+  CheckbookListParams,
+  Checkbooks,
+  CheckbooksPage,
+} from './resources/checkbooks';
+import {
   DeclinedTransaction,
   DeclinedTransactionListParams,
   DeclinedTransactions,
@@ -1176,6 +1189,8 @@ export class Increase {
   wireDrawdownRequests: API.WireDrawdownRequests = new API.WireDrawdownRequests(this);
   inboundWireDrawdownRequests: API.InboundWireDrawdownRequests = new API.InboundWireDrawdownRequests(this);
   checkTransfers: API.CheckTransfers = new API.CheckTransfers(this);
+  checkbooks: API.Checkbooks = new API.Checkbooks(this);
+  checkbookChecks: API.CheckbookChecks = new API.CheckbookChecks(this);
   inboundCheckDeposits: API.InboundCheckDeposits = new API.InboundCheckDeposits(this);
   realTimePaymentsTransfers: API.RealTimePaymentsTransfers = new API.RealTimePaymentsTransfers(this);
   inboundRealTimePaymentsTransfers: API.InboundRealTimePaymentsTransfers =
@@ -1238,6 +1253,8 @@ Increase.InboundWireTransfers = InboundWireTransfers;
 Increase.WireDrawdownRequests = WireDrawdownRequests;
 Increase.InboundWireDrawdownRequests = InboundWireDrawdownRequests;
 Increase.CheckTransfers = CheckTransfers;
+Increase.Checkbooks = Checkbooks;
+Increase.CheckbookChecks = CheckbookChecks;
 Increase.InboundCheckDeposits = InboundCheckDeposits;
 Increase.RealTimePaymentsTransfers = RealTimePaymentsTransfers;
 Increase.InboundRealTimePaymentsTransfers = InboundRealTimePaymentsTransfers;
@@ -1473,6 +1490,21 @@ export declare namespace Increase {
     type CheckTransferCreateParams as CheckTransferCreateParams,
     type CheckTransferListParams as CheckTransferListParams,
     type CheckTransferStopPaymentParams as CheckTransferStopPaymentParams,
+  };
+
+  export {
+    Checkbooks as Checkbooks,
+    type Checkbook as Checkbook,
+    type CheckbooksPage as CheckbooksPage,
+    type CheckbookCreateParams as CheckbookCreateParams,
+    type CheckbookListParams as CheckbookListParams,
+  };
+
+  export {
+    CheckbookChecks as CheckbookChecks,
+    type CheckbookCheck as CheckbookCheck,
+    type CheckbookChecksPage as CheckbookChecksPage,
+    type CheckbookCheckListParams as CheckbookCheckListParams,
   };
 
   export {
