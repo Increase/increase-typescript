@@ -80,7 +80,6 @@ describe('resource entities', () => {
         industry_code: 'x',
         website: 'https://example.com',
       },
-      description: 'x',
       government_authority: {
         address: {
           city: 'x',
@@ -169,7 +168,6 @@ describe('resource entities', () => {
         name: 'x',
         confirmed_no_us_tax_id: true,
       },
-      risk_rating: { rated_at: '2019-12-27T18:11:19.117Z', rating: 'low' },
       sole_proprietorship: {
         address: {
           city: 'x',
