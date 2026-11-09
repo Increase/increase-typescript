@@ -112,15 +112,15 @@ export interface AccountNumber {
   idempotency_key: string | null;
 
   /**
-   * Properties related to how this Account Number handles inbound ACH transfers.
+   * Whether inbound ACH debits are allowed against this Account Number. Note that
+   * they will still be declined if this is `allowed` but the Account Number is not
+   * active.
+   *
+   * - `allowed` - ACH Debits are allowed.
+   * - `blocked` - ACH Debits are blocked. Received debits will be declined and
+   *   returned with code `R20` (non-transaction account).
    */
-  inbound_ach: AccountNumber.InboundACH;
-
-  /**
-   * Properties related to how this Account Number should handle inbound check
-   * withdrawals.
-   */
-  inbound_checks: AccountNumber.InboundChecks;
+  inbound_ach_debits: 'allowed' | 'blocked';
 
   /**
    * The name you choose for the Account Number.
@@ -147,40 +147,17 @@ export interface AccountNumber {
    */
   type: 'account_number';
 
+  /**
+   * Whether unregistered inbound checks for this Account Number can be deposited.
+   *
+   * - `allowed` - Accept all Inbound Check Deposits, even if they are not associated
+   *   with a Check Transfer or Checkbook Check.
+   * - `blocked` - Only accept Inbound Check Deposits if they can be matched to a
+   *   Check Transfer or Checkbook Check.
+   */
+  unregistered_inbound_checks: 'allowed' | 'blocked';
+
   [k: string]: unknown;
-}
-
-export namespace AccountNumber {
-  /**
-   * Properties related to how this Account Number handles inbound ACH transfers.
-   */
-  export interface InboundACH {
-    /**
-     * Whether ACH debits are allowed against this Account Number. Note that they will
-     * still be declined if this is `allowed` but the Account Number is not active.
-     *
-     * - `allowed` - ACH Debits are allowed.
-     * - `blocked` - ACH Debits are blocked. Received debits will be declined and
-     *   returned with code `R20` (non-transaction account).
-     */
-    debit_status: 'allowed' | 'blocked';
-  }
-
-  /**
-   * Properties related to how this Account Number should handle inbound check
-   * withdrawals.
-   */
-  export interface InboundChecks {
-    /**
-     * How Increase should process checks with this account number printed on them.
-     *
-     * - `allowed` - Checks with this Account Number will be processed even if they are
-     *   not associated with a Check Transfer.
-     * - `check_transfers_only` - Checks with this Account Number will be processed
-     *   only if they can be matched to an existing Check Transfer.
-     */
-    status: 'allowed' | 'check_transfers_only';
-  }
 }
 
 export interface AccountNumberCreateParams {
@@ -195,65 +172,41 @@ export interface AccountNumberCreateParams {
   name: string;
 
   /**
-   * Options related to how this Account Number should handle inbound ACH transfers.
+   * Whether inbound ACH debits are allowed against this Account Number. Note that
+   * ACH debits will be declined if this is `allowed` but the Account Number is not
+   * active. If you do not specify this field, the default is `allowed`.
+   *
+   * - `allowed` - ACH Debits are allowed.
+   * - `blocked` - ACH Debits are blocked. Received debits will be declined and
+   *   returned with code `R20` (non-transaction account).
    */
-  inbound_ach?: AccountNumberCreateParams.InboundACH;
+  inbound_ach_debits?: 'allowed' | 'blocked';
 
   /**
-   * Options related to how this Account Number should handle inbound check
-   * withdrawals.
+   * Whether unregistered inbound checks for this Account Number can be deposited. If
+   * you do not specify this field, the default is `blocked`.
+   *
+   * - `allowed` - Accept all Inbound Check Deposits, even if they are not associated
+   *   with a Check Transfer or Checkbook Check.
+   * - `blocked` - Only accept Inbound Check Deposits if they can be matched to a
+   *   Check Transfer or Checkbook Check.
    */
-  inbound_checks?: AccountNumberCreateParams.InboundChecks;
+  unregistered_inbound_checks?: 'allowed' | 'blocked';
 
   [k: string]: unknown;
 }
 
-export namespace AccountNumberCreateParams {
-  /**
-   * Options related to how this Account Number should handle inbound ACH transfers.
-   */
-  export interface InboundACH {
-    /**
-     * Whether ACH debits are allowed against this Account Number. Note that ACH debits
-     * will be declined if this is `allowed` but the Account Number is not active. If
-     * you do not specify this field, the default is `allowed`.
-     *
-     * - `allowed` - ACH Debits are allowed.
-     * - `blocked` - ACH Debits are blocked. Received debits will be declined and
-     *   returned with code `R20` (non-transaction account).
-     */
-    debit_status: 'allowed' | 'blocked';
-  }
-
-  /**
-   * Options related to how this Account Number should handle inbound check
-   * withdrawals.
-   */
-  export interface InboundChecks {
-    /**
-     * How Increase should process checks with this account number printed on them. If
-     * you do not specify this field, the default is `check_transfers_only`.
-     *
-     * - `allowed` - Checks with this Account Number will be processed even if they are
-     *   not associated with a Check Transfer.
-     * - `check_transfers_only` - Checks with this Account Number will be processed
-     *   only if they can be matched to an existing Check Transfer.
-     */
-    status: 'allowed' | 'check_transfers_only';
-  }
-}
-
 export interface AccountNumberUpdateParams {
   /**
-   * Options related to how this Account Number handles inbound ACH transfers.
+   * Whether inbound ACH debits are allowed against this Account Number. Note that
+   * ACH debits will be declined if this is `allowed` but the Account Number is not
+   * active.
+   *
+   * - `allowed` - ACH Debits are allowed.
+   * - `blocked` - ACH Debits are blocked. Received debits will be declined and
+   *   returned with code `R20` (non-transaction account).
    */
-  inbound_ach?: AccountNumberUpdateParams.InboundACH;
-
-  /**
-   * Options related to how this Account Number should handle inbound check
-   * withdrawals.
-   */
-  inbound_checks?: AccountNumberUpdateParams.InboundChecks;
+  inbound_ach_debits?: 'allowed' | 'blocked';
 
   /**
    * The name you choose for the Account Number.
@@ -268,39 +221,18 @@ export interface AccountNumberUpdateParams {
    * - `canceled` - The account number is permanently disabled.
    */
   status?: 'active' | 'disabled' | 'canceled';
-}
-
-export namespace AccountNumberUpdateParams {
-  /**
-   * Options related to how this Account Number handles inbound ACH transfers.
-   */
-  export interface InboundACH {
-    /**
-     * Whether ACH debits are allowed against this Account Number. Note that ACH debits
-     * will be declined if this is `allowed` but the Account Number is not active.
-     *
-     * - `allowed` - ACH Debits are allowed.
-     * - `blocked` - ACH Debits are blocked. Received debits will be declined and
-     *   returned with code `R20` (non-transaction account).
-     */
-    debit_status?: 'allowed' | 'blocked';
-  }
 
   /**
-   * Options related to how this Account Number should handle inbound check
-   * withdrawals.
+   * Whether unregistered inbound checks for this Account Number can be deposited.
+   *
+   * - `allowed` - Accept all Inbound Check Deposits, even if they are not associated
+   *   with a Check Transfer or Checkbook Check.
+   * - `blocked` - Only accept Inbound Check Deposits if they can be matched to a
+   *   Check Transfer or Checkbook Check.
    */
-  export interface InboundChecks {
-    /**
-     * How Increase should process checks with this account number printed on them.
-     *
-     * - `allowed` - Checks with this Account Number will be processed even if they are
-     *   not associated with a Check Transfer.
-     * - `check_transfers_only` - Checks with this Account Number will be processed
-     *   only if they can be matched to an existing Check Transfer.
-     */
-    status: 'allowed' | 'check_transfers_only';
-  }
+  unregistered_inbound_checks?: 'allowed' | 'blocked';
+
+  [k: string]: unknown;
 }
 
 export interface AccountNumberListParams extends PageParams {
@@ -308,8 +240,6 @@ export interface AccountNumberListParams extends PageParams {
    * Filter Account Numbers to those belonging to the specified Account.
    */
   account_id?: string;
-
-  ach_debit_status?: AccountNumberListParams.ACHDebitStatus;
 
   created_at?: AccountNumberListParams.CreatedAt;
 
@@ -321,18 +251,12 @@ export interface AccountNumberListParams extends PageParams {
    */
   idempotency_key?: string;
 
+  inbound_ach_debits?: AccountNumberListParams.InboundACHDebits;
+
   status?: AccountNumberListParams.Status;
 }
 
 export namespace AccountNumberListParams {
-  export interface ACHDebitStatus {
-    /**
-     * The ACH Debit status to retrieve Account Numbers for. For GET requests, this
-     * should be encoded as a comma-delimited string, such as `?in=one,two,three`.
-     */
-    in?: Array<'allowed' | 'blocked'>;
-  }
-
   export interface CreatedAt {
     /**
      * Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
@@ -357,6 +281,14 @@ export namespace AccountNumberListParams {
      * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
      */
     on_or_before?: string;
+  }
+
+  export interface InboundACHDebits {
+    /**
+     * The inbound ACH debits status to retrieve Account Numbers for. For GET requests,
+     * this should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+     */
+    in?: Array<'allowed' | 'blocked'>;
   }
 
   export interface Status {

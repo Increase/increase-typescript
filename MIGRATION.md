@@ -93,6 +93,8 @@ client.example.list(undefined, { headers: { ... } });
 - `client.wireDrawdownRequests.list()`
 - `client.inboundWireDrawdownRequests.list()`
 - `client.checkTransfers.list()`
+- `client.checkbooks.list()`
+- `client.checkbookChecks.list()`
 - `client.inboundCheckDeposits.list()`
 - `client.realTimePaymentsTransfers.list()`
 - `client.inboundRealTimePaymentsTransfers.list()`
