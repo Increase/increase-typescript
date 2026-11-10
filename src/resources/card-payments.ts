@@ -5558,6 +5558,12 @@ export namespace CardPayment {
        */
       export interface Interchange {
         /**
+         * An adjustment the card network made to the interchange after this transaction
+         * cleared, if any.
+         */
+        adjustment: Interchange.Adjustment | null;
+
+        /**
          * The interchange amount given as a string containing a decimal number in major
          * units (so e.g., "3.14" for $3.14). The amount is a positive number if it is
          * credited to Increase (e.g., settlements) and a negative number if it is debited
@@ -5577,6 +5583,32 @@ export namespace CardPayment {
          * - `USD` - US Dollar (USD)
          */
         currency: 'USD';
+      }
+
+      export namespace Interchange {
+        /**
+         * An adjustment the card network made to the interchange after this transaction
+         * cleared, if any.
+         */
+        export interface Adjustment {
+          /**
+           * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+           * the interchange was adjusted.
+           */
+          adjusted_at: string;
+
+          /**
+           * The adjustment amount given as a string containing a decimal number in major
+           * units (so e.g., "3.14" for $3.14). The amount is a positive number if it is
+           * credited to Increase and a negative number if it is debited.
+           */
+          amount: string;
+
+          /**
+           * The card network specific interchange code that applies after the adjustment.
+           */
+          code: string;
+        }
       }
 
       /**
@@ -7167,6 +7199,12 @@ export namespace CardPayment {
        */
       export interface Interchange {
         /**
+         * An adjustment the card network made to the interchange after this transaction
+         * cleared, if any.
+         */
+        adjustment: Interchange.Adjustment | null;
+
+        /**
          * The interchange amount given as a string containing a decimal number in major
          * units (so e.g., "3.14" for $3.14). The amount is a positive number if it is
          * credited to Increase (e.g., settlements) and a negative number if it is debited
@@ -7186,6 +7224,32 @@ export namespace CardPayment {
          * - `USD` - US Dollar (USD)
          */
         currency: 'USD';
+      }
+
+      export namespace Interchange {
+        /**
+         * An adjustment the card network made to the interchange after this transaction
+         * cleared, if any.
+         */
+        export interface Adjustment {
+          /**
+           * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+           * the interchange was adjusted.
+           */
+          adjusted_at: string;
+
+          /**
+           * The adjustment amount given as a string containing a decimal number in major
+           * units (so e.g., "3.14" for $3.14). The amount is a positive number if it is
+           * credited to Increase and a negative number if it is debited.
+           */
+          amount: string;
+
+          /**
+           * The card network specific interchange code that applies after the adjustment.
+           */
+          code: string;
+        }
       }
 
       /**
