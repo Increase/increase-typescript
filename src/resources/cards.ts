@@ -735,7 +735,9 @@ export interface CardCreateParams {
   authorization_controls?: CardCreateParams.AuthorizationControls;
 
   /**
-   * The card's billing address.
+   * The card's billing address. This is used in card authorizations to
+   * [validate the address provided by the acquirer](/documentation/address-verification-system-codes-and-overrides).
+   * If not provided, the address associated with the account's entity will be used.
    */
   billing_address?: CardCreateParams.BillingAddress;
 
@@ -1017,7 +1019,9 @@ export namespace CardCreateParams {
   }
 
   /**
-   * The card's billing address.
+   * The card's billing address. This is used in card authorizations to
+   * [validate the address provided by the acquirer](/documentation/address-verification-system-codes-and-overrides).
+   * If not provided, the address associated with the account's entity will be used.
    */
   export interface BillingAddress {
     /**
@@ -1130,7 +1134,9 @@ export interface CardUpdateParams {
   authorization_controls?: CardUpdateParams.AuthorizationControls;
 
   /**
-   * The card's updated billing address.
+   * The card's billing address. This is used in card authorizations to
+   * [validate the address provided by the acquirer](/documentation/address-verification-system-codes-and-overrides).
+   * If not provided, the address associated with the account's entity will be used.
    */
   billing_address?: CardUpdateParams.BillingAddress;
 
@@ -1405,7 +1411,9 @@ export namespace CardUpdateParams {
   }
 
   /**
-   * The card's updated billing address.
+   * The card's billing address. This is used in card authorizations to
+   * [validate the address provided by the acquirer](/documentation/address-verification-system-codes-and-overrides).
+   * If not provided, the address associated with the account's entity will be used.
    */
   export interface BillingAddress {
     /**

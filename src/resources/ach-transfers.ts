@@ -20,7 +20,8 @@ export class ACHTransfers extends APIResource {
    * const achTransfer = await client.achTransfers.create({
    *   account_id: 'account_in71c4amph0vgo2qllky',
    *   amount: 100,
-   *   statement_descriptor: 'INVOICE 2468',
+   *   company_name: 'Phonographs Inc',
+   *   individual_name: 'Ian Crease',
    * });
    * ```
    */
@@ -310,7 +311,10 @@ export interface ACHTransfer {
     | 'internet_initiated';
 
   /**
-   * The descriptor that will show on the recipient's bank statement.
+   * A description you chose to give the transfer. If `individual_name` and
+   * `company_name` were not explicitly set, the `statement_descriptor` will be sent
+   * in those fields to the receiving bank to help the customer recognize the
+   * transfer.
    */
   statement_descriptor: string | null;
 
@@ -1107,14 +1111,22 @@ export interface ACHTransferCreateParams {
   amount: number;
 
   /**
-   * A description you choose to give the transfer. This will be saved with the
-   * transfer details, displayed in the dashboard, and returned by the API. If
-   * `individual_name` and `company_name` are not explicitly set by this API, the
-   * `statement_descriptor` will be sent in those fields to the receiving bank to
-   * help the customer recognize the transfer. You are highly encouraged to pass
-   * `individual_name` and `company_name` instead of relying on this fallback.
+   * The name by which the recipient knows the counterparty of this transaction. If
+   * you're processing payments on behalf of another party, use their name, not your
+   * own, so that it's more likely the recipient understands the context of the
+   * payment. This value is usually displayed to the recipient on their bank
+   * statement. We recommend setting this on every transfer; if you do not, we fall
+   * back to the `statement_descriptor`.
    */
-  statement_descriptor: string;
+  company_name: string;
+
+  /**
+   * The name of the transfer recipient. This value is informational and generally
+   * not verified by the recipient's bank. This value is usually displayed to the
+   * recipient on their bank statement. We recommend setting this on every transfer;
+   * if you do not, we fall back to the `statement_descriptor`.
+   */
+  individual_name: string;
 
   /**
    * The receiver's account number. For credit transfers (transfers with a positive
@@ -1158,16 +1170,6 @@ export interface ACHTransferCreateParams {
   company_entry_description?: string;
 
   /**
-   * The name by which the recipient knows the counterparty of this transaction. If
-   * you're processing payments on behalf of another party, use their name, not your
-   * own, so that it's more likely the recipient understands the context of the
-   * payment. This value is usually displayed to the recipient on their bank
-   * statement. We recommend setting this on every transfer; if you do not, we fall
-   * back to the `statement_descriptor`.
-   */
-  company_name?: string;
-
-  /**
    * The type of entity that owns the receiver's account.
    *
    * - `business` - The External Account is owned by a business.
@@ -1199,14 +1201,6 @@ export interface ACHTransferCreateParams {
    * entry class code, this must include the name of the payer.
    */
   individual_id?: string;
-
-  /**
-   * The name of the transfer recipient. This value is informational and generally
-   * not verified by the recipient's bank. This value is usually displayed to the
-   * recipient on their bank statement. We recommend setting this on every transfer;
-   * if you do not, we fall back to the `statement_descriptor`.
-   */
-  individual_name?: string;
 
   /**
    * Configuration for how the effective date of the transfer will be set. This
