@@ -1552,7 +1552,8 @@ export namespace CardPayment {
          * - `visa_advanced_authorization` - Advanced Authorization is a fraud detection
          *   tool that monitors and risk evaluates 100 percent of US VisaNet authorizations
          *   in real-time. Activity related to Purchase (includes Signature Authenticated
-         *   Visa and PIN Authenticated Visa Debit (PAVD) transactions).
+         *   Visa and PIN Authenticated Visa Debit (PAVD) transactions) and ATM
+         *   transactions.
          * - `visa_message_transmission` - Issuer Transactions Visa represents a charge
          *   based on total actual monthly processing (Visa transactions only) through a
          *   VisaNet Access Point (VAP). Charges are assessed to the processor for each
@@ -1604,6 +1605,12 @@ export namespace CardPayment {
          *   Acceleration Program Fee.
          * - `visa_processing_guarantee_commercial_credit` - Issuer Processing Guarantee
          *   for Commercial Credit cards.
+         * - `visa_atm_cash_withdrawal_domestic` - Activity and fees for the processing of
+         *   an original cash withdrawal at a domestic ATM.
+         * - `visa_atm_cash_withdrawal_international` - Activity and fees for the
+         *   processing of an original cash withdrawal at an international ATM.
+         * - `visa_atm_cash_deposit_domestic` - Activity and fees for the processing of an
+         *   original deposit at a domestic ATM.
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
          * - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
@@ -1638,6 +1645,9 @@ export namespace CardPayment {
           | 'visa_advertising_service_commercial_credit'
           | 'visa_community_growth_acceleration_program'
           | 'visa_processing_guarantee_commercial_credit'
+          | 'visa_atm_cash_withdrawal_domestic'
+          | 'visa_atm_cash_withdrawal_international'
+          | 'visa_atm_cash_deposit_domestic'
           | 'pulse_switch_fee'
           | 'pulse_tokenization_fee';
 
@@ -2454,7 +2464,8 @@ export namespace CardPayment {
          * - `visa_advanced_authorization` - Advanced Authorization is a fraud detection
          *   tool that monitors and risk evaluates 100 percent of US VisaNet authorizations
          *   in real-time. Activity related to Purchase (includes Signature Authenticated
-         *   Visa and PIN Authenticated Visa Debit (PAVD) transactions).
+         *   Visa and PIN Authenticated Visa Debit (PAVD) transactions) and ATM
+         *   transactions.
          * - `visa_message_transmission` - Issuer Transactions Visa represents a charge
          *   based on total actual monthly processing (Visa transactions only) through a
          *   VisaNet Access Point (VAP). Charges are assessed to the processor for each
@@ -2506,6 +2517,12 @@ export namespace CardPayment {
          *   Acceleration Program Fee.
          * - `visa_processing_guarantee_commercial_credit` - Issuer Processing Guarantee
          *   for Commercial Credit cards.
+         * - `visa_atm_cash_withdrawal_domestic` - Activity and fees for the processing of
+         *   an original cash withdrawal at a domestic ATM.
+         * - `visa_atm_cash_withdrawal_international` - Activity and fees for the
+         *   processing of an original cash withdrawal at an international ATM.
+         * - `visa_atm_cash_deposit_domestic` - Activity and fees for the processing of an
+         *   original deposit at a domestic ATM.
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
          * - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
@@ -2540,6 +2557,9 @@ export namespace CardPayment {
           | 'visa_advertising_service_commercial_credit'
           | 'visa_community_growth_acceleration_program'
           | 'visa_processing_guarantee_commercial_credit'
+          | 'visa_atm_cash_withdrawal_domestic'
+          | 'visa_atm_cash_withdrawal_international'
+          | 'visa_atm_cash_deposit_domestic'
           | 'pulse_switch_fee'
           | 'pulse_tokenization_fee';
 
@@ -3470,7 +3490,8 @@ export namespace CardPayment {
          * - `visa_advanced_authorization` - Advanced Authorization is a fraud detection
          *   tool that monitors and risk evaluates 100 percent of US VisaNet authorizations
          *   in real-time. Activity related to Purchase (includes Signature Authenticated
-         *   Visa and PIN Authenticated Visa Debit (PAVD) transactions).
+         *   Visa and PIN Authenticated Visa Debit (PAVD) transactions) and ATM
+         *   transactions.
          * - `visa_message_transmission` - Issuer Transactions Visa represents a charge
          *   based on total actual monthly processing (Visa transactions only) through a
          *   VisaNet Access Point (VAP). Charges are assessed to the processor for each
@@ -3522,6 +3543,12 @@ export namespace CardPayment {
          *   Acceleration Program Fee.
          * - `visa_processing_guarantee_commercial_credit` - Issuer Processing Guarantee
          *   for Commercial Credit cards.
+         * - `visa_atm_cash_withdrawal_domestic` - Activity and fees for the processing of
+         *   an original cash withdrawal at a domestic ATM.
+         * - `visa_atm_cash_withdrawal_international` - Activity and fees for the
+         *   processing of an original cash withdrawal at an international ATM.
+         * - `visa_atm_cash_deposit_domestic` - Activity and fees for the processing of an
+         *   original deposit at a domestic ATM.
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
          * - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
@@ -3556,6 +3583,9 @@ export namespace CardPayment {
           | 'visa_advertising_service_commercial_credit'
           | 'visa_community_growth_acceleration_program'
           | 'visa_processing_guarantee_commercial_credit'
+          | 'visa_atm_cash_withdrawal_domestic'
+          | 'visa_atm_cash_withdrawal_international'
+          | 'visa_atm_cash_deposit_domestic'
           | 'pulse_switch_fee'
           | 'pulse_tokenization_fee';
 
@@ -4401,7 +4431,8 @@ export namespace CardPayment {
          * - `visa_advanced_authorization` - Advanced Authorization is a fraud detection
          *   tool that monitors and risk evaluates 100 percent of US VisaNet authorizations
          *   in real-time. Activity related to Purchase (includes Signature Authenticated
-         *   Visa and PIN Authenticated Visa Debit (PAVD) transactions).
+         *   Visa and PIN Authenticated Visa Debit (PAVD) transactions) and ATM
+         *   transactions.
          * - `visa_message_transmission` - Issuer Transactions Visa represents a charge
          *   based on total actual monthly processing (Visa transactions only) through a
          *   VisaNet Access Point (VAP). Charges are assessed to the processor for each
@@ -4453,6 +4484,12 @@ export namespace CardPayment {
          *   Acceleration Program Fee.
          * - `visa_processing_guarantee_commercial_credit` - Issuer Processing Guarantee
          *   for Commercial Credit cards.
+         * - `visa_atm_cash_withdrawal_domestic` - Activity and fees for the processing of
+         *   an original cash withdrawal at a domestic ATM.
+         * - `visa_atm_cash_withdrawal_international` - Activity and fees for the
+         *   processing of an original cash withdrawal at an international ATM.
+         * - `visa_atm_cash_deposit_domestic` - Activity and fees for the processing of an
+         *   original deposit at a domestic ATM.
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
          * - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
@@ -4487,6 +4524,9 @@ export namespace CardPayment {
           | 'visa_advertising_service_commercial_credit'
           | 'visa_community_growth_acceleration_program'
           | 'visa_processing_guarantee_commercial_credit'
+          | 'visa_atm_cash_withdrawal_domestic'
+          | 'visa_atm_cash_withdrawal_international'
+          | 'visa_atm_cash_deposit_domestic'
           | 'pulse_switch_fee'
           | 'pulse_tokenization_fee';
 
@@ -4763,7 +4803,8 @@ export namespace CardPayment {
          * - `visa_advanced_authorization` - Advanced Authorization is a fraud detection
          *   tool that monitors and risk evaluates 100 percent of US VisaNet authorizations
          *   in real-time. Activity related to Purchase (includes Signature Authenticated
-         *   Visa and PIN Authenticated Visa Debit (PAVD) transactions).
+         *   Visa and PIN Authenticated Visa Debit (PAVD) transactions) and ATM
+         *   transactions.
          * - `visa_message_transmission` - Issuer Transactions Visa represents a charge
          *   based on total actual monthly processing (Visa transactions only) through a
          *   VisaNet Access Point (VAP). Charges are assessed to the processor for each
@@ -4815,6 +4856,12 @@ export namespace CardPayment {
          *   Acceleration Program Fee.
          * - `visa_processing_guarantee_commercial_credit` - Issuer Processing Guarantee
          *   for Commercial Credit cards.
+         * - `visa_atm_cash_withdrawal_domestic` - Activity and fees for the processing of
+         *   an original cash withdrawal at a domestic ATM.
+         * - `visa_atm_cash_withdrawal_international` - Activity and fees for the
+         *   processing of an original cash withdrawal at an international ATM.
+         * - `visa_atm_cash_deposit_domestic` - Activity and fees for the processing of an
+         *   original deposit at a domestic ATM.
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
          * - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
@@ -4849,6 +4896,9 @@ export namespace CardPayment {
           | 'visa_advertising_service_commercial_credit'
           | 'visa_community_growth_acceleration_program'
           | 'visa_processing_guarantee_commercial_credit'
+          | 'visa_atm_cash_withdrawal_domestic'
+          | 'visa_atm_cash_withdrawal_international'
+          | 'visa_atm_cash_deposit_domestic'
           | 'pulse_switch_fee'
           | 'pulse_tokenization_fee';
 
@@ -5301,7 +5351,8 @@ export namespace CardPayment {
          * - `visa_advanced_authorization` - Advanced Authorization is a fraud detection
          *   tool that monitors and risk evaluates 100 percent of US VisaNet authorizations
          *   in real-time. Activity related to Purchase (includes Signature Authenticated
-         *   Visa and PIN Authenticated Visa Debit (PAVD) transactions).
+         *   Visa and PIN Authenticated Visa Debit (PAVD) transactions) and ATM
+         *   transactions.
          * - `visa_message_transmission` - Issuer Transactions Visa represents a charge
          *   based on total actual monthly processing (Visa transactions only) through a
          *   VisaNet Access Point (VAP). Charges are assessed to the processor for each
@@ -5353,6 +5404,12 @@ export namespace CardPayment {
          *   Acceleration Program Fee.
          * - `visa_processing_guarantee_commercial_credit` - Issuer Processing Guarantee
          *   for Commercial Credit cards.
+         * - `visa_atm_cash_withdrawal_domestic` - Activity and fees for the processing of
+         *   an original cash withdrawal at a domestic ATM.
+         * - `visa_atm_cash_withdrawal_international` - Activity and fees for the
+         *   processing of an original cash withdrawal at an international ATM.
+         * - `visa_atm_cash_deposit_domestic` - Activity and fees for the processing of an
+         *   original deposit at a domestic ATM.
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
          * - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
@@ -5387,6 +5444,9 @@ export namespace CardPayment {
           | 'visa_advertising_service_commercial_credit'
           | 'visa_community_growth_acceleration_program'
           | 'visa_processing_guarantee_commercial_credit'
+          | 'visa_atm_cash_withdrawal_domestic'
+          | 'visa_atm_cash_withdrawal_international'
+          | 'visa_atm_cash_deposit_domestic'
           | 'pulse_switch_fee'
           | 'pulse_tokenization_fee';
 
@@ -5558,6 +5618,12 @@ export namespace CardPayment {
        */
       export interface Interchange {
         /**
+         * An adjustment the card network made to the interchange after this transaction
+         * cleared, if any.
+         */
+        adjustment: Interchange.Adjustment | null;
+
+        /**
          * The interchange amount given as a string containing a decimal number in major
          * units (so e.g., "3.14" for $3.14). The amount is a positive number if it is
          * credited to Increase (e.g., settlements) and a negative number if it is debited
@@ -5577,6 +5643,32 @@ export namespace CardPayment {
          * - `USD` - US Dollar (USD)
          */
         currency: 'USD';
+      }
+
+      export namespace Interchange {
+        /**
+         * An adjustment the card network made to the interchange after this transaction
+         * cleared, if any.
+         */
+        export interface Adjustment {
+          /**
+           * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+           * the interchange was adjusted.
+           */
+          adjusted_at: string;
+
+          /**
+           * The adjustment amount given as a string containing a decimal number in major
+           * units (so e.g., "3.14" for $3.14). The amount is a positive number if it is
+           * credited to Increase and a negative number if it is debited.
+           */
+          amount: string;
+
+          /**
+           * The card network specific interchange code that applies after the adjustment.
+           */
+          code: string;
+        }
       }
 
       /**
@@ -6555,7 +6647,8 @@ export namespace CardPayment {
          * - `visa_advanced_authorization` - Advanced Authorization is a fraud detection
          *   tool that monitors and risk evaluates 100 percent of US VisaNet authorizations
          *   in real-time. Activity related to Purchase (includes Signature Authenticated
-         *   Visa and PIN Authenticated Visa Debit (PAVD) transactions).
+         *   Visa and PIN Authenticated Visa Debit (PAVD) transactions) and ATM
+         *   transactions.
          * - `visa_message_transmission` - Issuer Transactions Visa represents a charge
          *   based on total actual monthly processing (Visa transactions only) through a
          *   VisaNet Access Point (VAP). Charges are assessed to the processor for each
@@ -6607,6 +6700,12 @@ export namespace CardPayment {
          *   Acceleration Program Fee.
          * - `visa_processing_guarantee_commercial_credit` - Issuer Processing Guarantee
          *   for Commercial Credit cards.
+         * - `visa_atm_cash_withdrawal_domestic` - Activity and fees for the processing of
+         *   an original cash withdrawal at a domestic ATM.
+         * - `visa_atm_cash_withdrawal_international` - Activity and fees for the
+         *   processing of an original cash withdrawal at an international ATM.
+         * - `visa_atm_cash_deposit_domestic` - Activity and fees for the processing of an
+         *   original deposit at a domestic ATM.
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
          * - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
@@ -6641,6 +6740,9 @@ export namespace CardPayment {
           | 'visa_advertising_service_commercial_credit'
           | 'visa_community_growth_acceleration_program'
           | 'visa_processing_guarantee_commercial_credit'
+          | 'visa_atm_cash_withdrawal_domestic'
+          | 'visa_atm_cash_withdrawal_international'
+          | 'visa_atm_cash_deposit_domestic'
           | 'pulse_switch_fee'
           | 'pulse_tokenization_fee';
 
@@ -6892,7 +6994,8 @@ export namespace CardPayment {
          * - `visa_advanced_authorization` - Advanced Authorization is a fraud detection
          *   tool that monitors and risk evaluates 100 percent of US VisaNet authorizations
          *   in real-time. Activity related to Purchase (includes Signature Authenticated
-         *   Visa and PIN Authenticated Visa Debit (PAVD) transactions).
+         *   Visa and PIN Authenticated Visa Debit (PAVD) transactions) and ATM
+         *   transactions.
          * - `visa_message_transmission` - Issuer Transactions Visa represents a charge
          *   based on total actual monthly processing (Visa transactions only) through a
          *   VisaNet Access Point (VAP). Charges are assessed to the processor for each
@@ -6944,6 +7047,12 @@ export namespace CardPayment {
          *   Acceleration Program Fee.
          * - `visa_processing_guarantee_commercial_credit` - Issuer Processing Guarantee
          *   for Commercial Credit cards.
+         * - `visa_atm_cash_withdrawal_domestic` - Activity and fees for the processing of
+         *   an original cash withdrawal at a domestic ATM.
+         * - `visa_atm_cash_withdrawal_international` - Activity and fees for the
+         *   processing of an original cash withdrawal at an international ATM.
+         * - `visa_atm_cash_deposit_domestic` - Activity and fees for the processing of an
+         *   original deposit at a domestic ATM.
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
          * - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
@@ -6978,6 +7087,9 @@ export namespace CardPayment {
           | 'visa_advertising_service_commercial_credit'
           | 'visa_community_growth_acceleration_program'
           | 'visa_processing_guarantee_commercial_credit'
+          | 'visa_atm_cash_withdrawal_domestic'
+          | 'visa_atm_cash_withdrawal_international'
+          | 'visa_atm_cash_deposit_domestic'
           | 'pulse_switch_fee'
           | 'pulse_tokenization_fee';
 
@@ -7167,6 +7279,12 @@ export namespace CardPayment {
        */
       export interface Interchange {
         /**
+         * An adjustment the card network made to the interchange after this transaction
+         * cleared, if any.
+         */
+        adjustment: Interchange.Adjustment | null;
+
+        /**
          * The interchange amount given as a string containing a decimal number in major
          * units (so e.g., "3.14" for $3.14). The amount is a positive number if it is
          * credited to Increase (e.g., settlements) and a negative number if it is debited
@@ -7186,6 +7304,32 @@ export namespace CardPayment {
          * - `USD` - US Dollar (USD)
          */
         currency: 'USD';
+      }
+
+      export namespace Interchange {
+        /**
+         * An adjustment the card network made to the interchange after this transaction
+         * cleared, if any.
+         */
+        export interface Adjustment {
+          /**
+           * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+           * the interchange was adjusted.
+           */
+          adjusted_at: string;
+
+          /**
+           * The adjustment amount given as a string containing a decimal number in major
+           * units (so e.g., "3.14" for $3.14). The amount is a positive number if it is
+           * credited to Increase and a negative number if it is debited.
+           */
+          amount: string;
+
+          /**
+           * The card network specific interchange code that applies after the adjustment.
+           */
+          code: string;
+        }
       }
 
       /**
@@ -8164,7 +8308,8 @@ export namespace CardPayment {
          * - `visa_advanced_authorization` - Advanced Authorization is a fraud detection
          *   tool that monitors and risk evaluates 100 percent of US VisaNet authorizations
          *   in real-time. Activity related to Purchase (includes Signature Authenticated
-         *   Visa and PIN Authenticated Visa Debit (PAVD) transactions).
+         *   Visa and PIN Authenticated Visa Debit (PAVD) transactions) and ATM
+         *   transactions.
          * - `visa_message_transmission` - Issuer Transactions Visa represents a charge
          *   based on total actual monthly processing (Visa transactions only) through a
          *   VisaNet Access Point (VAP). Charges are assessed to the processor for each
@@ -8216,6 +8361,12 @@ export namespace CardPayment {
          *   Acceleration Program Fee.
          * - `visa_processing_guarantee_commercial_credit` - Issuer Processing Guarantee
          *   for Commercial Credit cards.
+         * - `visa_atm_cash_withdrawal_domestic` - Activity and fees for the processing of
+         *   an original cash withdrawal at a domestic ATM.
+         * - `visa_atm_cash_withdrawal_international` - Activity and fees for the
+         *   processing of an original cash withdrawal at an international ATM.
+         * - `visa_atm_cash_deposit_domestic` - Activity and fees for the processing of an
+         *   original deposit at a domestic ATM.
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
          * - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
@@ -8250,6 +8401,9 @@ export namespace CardPayment {
           | 'visa_advertising_service_commercial_credit'
           | 'visa_community_growth_acceleration_program'
           | 'visa_processing_guarantee_commercial_credit'
+          | 'visa_atm_cash_withdrawal_domestic'
+          | 'visa_atm_cash_withdrawal_international'
+          | 'visa_atm_cash_deposit_domestic'
           | 'pulse_switch_fee'
           | 'pulse_tokenization_fee';
 
@@ -8931,7 +9085,8 @@ export namespace CardPayment {
          * - `visa_advanced_authorization` - Advanced Authorization is a fraud detection
          *   tool that monitors and risk evaluates 100 percent of US VisaNet authorizations
          *   in real-time. Activity related to Purchase (includes Signature Authenticated
-         *   Visa and PIN Authenticated Visa Debit (PAVD) transactions).
+         *   Visa and PIN Authenticated Visa Debit (PAVD) transactions) and ATM
+         *   transactions.
          * - `visa_message_transmission` - Issuer Transactions Visa represents a charge
          *   based on total actual monthly processing (Visa transactions only) through a
          *   VisaNet Access Point (VAP). Charges are assessed to the processor for each
@@ -8983,6 +9138,12 @@ export namespace CardPayment {
          *   Acceleration Program Fee.
          * - `visa_processing_guarantee_commercial_credit` - Issuer Processing Guarantee
          *   for Commercial Credit cards.
+         * - `visa_atm_cash_withdrawal_domestic` - Activity and fees for the processing of
+         *   an original cash withdrawal at a domestic ATM.
+         * - `visa_atm_cash_withdrawal_international` - Activity and fees for the
+         *   processing of an original cash withdrawal at an international ATM.
+         * - `visa_atm_cash_deposit_domestic` - Activity and fees for the processing of an
+         *   original deposit at a domestic ATM.
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
          * - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
@@ -9017,6 +9178,9 @@ export namespace CardPayment {
           | 'visa_advertising_service_commercial_credit'
           | 'visa_community_growth_acceleration_program'
           | 'visa_processing_guarantee_commercial_credit'
+          | 'visa_atm_cash_withdrawal_domestic'
+          | 'visa_atm_cash_withdrawal_international'
+          | 'visa_atm_cash_deposit_domestic'
           | 'pulse_switch_fee'
           | 'pulse_tokenization_fee';
 
