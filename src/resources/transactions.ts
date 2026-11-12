@@ -144,6 +144,8 @@ export namespace Transaction {
      *   under the `card_dispute_acceptance` object.
      * - `card_dispute_financial` - Card Dispute Financial: details will be under the
      *   `card_dispute_financial` object.
+     * - `card_dispute_provisional_credit` - Card Dispute Provisional Credit: details
+     *   will be under the `card_dispute_provisional_credit` object.
      * - `card_dispute_loss` - Legacy Card Dispute Loss: details will be under the
      *   `card_dispute_loss` object.
      * - `card_refund` - Card Refund: details will be under the `card_refund` object.
@@ -225,6 +227,7 @@ export namespace Transaction {
       | 'cashback_payment'
       | 'card_dispute_acceptance'
       | 'card_dispute_financial'
+      | 'card_dispute_provisional_credit'
       | 'card_dispute_loss'
       | 'card_refund'
       | 'card_settlement'
@@ -337,6 +340,16 @@ export namespace Transaction {
      * details of a lost Card Dispute.
      */
     card_dispute_loss?: Source.CardDisputeLoss | null;
+
+    /**
+     * A Card Dispute Provisional Credit object. This field will be present in the JSON
+     * response if and only if `category` is equal to
+     * `card_dispute_provisional_credit`. A provisional credit given to the cardholder
+     * while a Card Dispute is investigated, or its reversal. Two Transactions are
+     * created: one on the cardholder's Account, and the other on the provisional
+     * credit funding Account.
+     */
+    card_dispute_provisional_credit?: Source.CardDisputeProvisionalCredit | null;
 
     /**
      * A Card Financial object. This field will be present in the JSON response if and
@@ -1159,6 +1172,58 @@ export namespace Transaction {
     }
 
     /**
+     * A Card Dispute Provisional Credit object. This field will be present in the JSON
+     * response if and only if `category` is equal to
+     * `card_dispute_provisional_credit`. A provisional credit given to the cardholder
+     * while a Card Dispute is investigated, or its reversal. Two Transactions are
+     * created: one on the cardholder's Account, and the other on the provisional
+     * credit funding Account.
+     */
+    export interface CardDisputeProvisionalCredit {
+      /**
+       * The amount in the minor unit of the transaction's currency. For dollars, for
+       * example, this is cents.
+       */
+      amount: number;
+
+      /**
+       * The identifier of the Card Dispute the provisional credit was given for.
+       */
+      card_dispute_id: string;
+
+      /**
+       * The identifier of the cardholder's Account. It is credited when the provisional
+       * credit is provided, and debited when it is reversed.
+       */
+      cardholder_account_id: string;
+
+      /**
+       * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the provisional
+       * credit's currency.
+       *
+       * - `USD` - US Dollar (USD)
+       */
+      currency: 'USD';
+
+      /**
+       * Whether the provisional credit was provided or reversed.
+       *
+       * - `provided` - The provisional credit was provided to the cardholder.
+       * - `reversed` - The provisional credit was reversed from the cardholder.
+       */
+      event_type: 'provided' | 'reversed';
+
+      /**
+       * The identifier of the provisional credit funding Account, the Account that funds
+       * the provisional credit. It is debited when the provisional credit is provided,
+       * and credited when it is reversed.
+       */
+      provisional_credit_funding_account_id: string;
+
+      [k: string]: unknown;
+    }
+
+    /**
      * A Card Financial object. This field will be present in the JSON response if and
      * only if `category` is equal to `card_financial`. Card Financials are card
      * transactions that have cleared and settled. Unlike a Card Settlement, which
@@ -1877,7 +1942,8 @@ export namespace Transaction {
          * - `visa_advanced_authorization` - Advanced Authorization is a fraud detection
          *   tool that monitors and risk evaluates 100 percent of US VisaNet authorizations
          *   in real-time. Activity related to Purchase (includes Signature Authenticated
-         *   Visa and PIN Authenticated Visa Debit (PAVD) transactions).
+         *   Visa and PIN Authenticated Visa Debit (PAVD) transactions) and ATM
+         *   transactions.
          * - `visa_message_transmission` - Issuer Transactions Visa represents a charge
          *   based on total actual monthly processing (Visa transactions only) through a
          *   VisaNet Access Point (VAP). Charges are assessed to the processor for each
@@ -1929,6 +1995,12 @@ export namespace Transaction {
          *   Acceleration Program Fee.
          * - `visa_processing_guarantee_commercial_credit` - Issuer Processing Guarantee
          *   for Commercial Credit cards.
+         * - `visa_atm_cash_withdrawal_domestic` - Activity and fees for the processing of
+         *   an original cash withdrawal at a domestic ATM.
+         * - `visa_atm_cash_withdrawal_international` - Activity and fees for the
+         *   processing of an original cash withdrawal at an international ATM.
+         * - `visa_atm_cash_deposit_domestic` - Activity and fees for the processing of an
+         *   original deposit at a domestic ATM.
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
          * - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
@@ -1963,6 +2035,9 @@ export namespace Transaction {
           | 'visa_advertising_service_commercial_credit'
           | 'visa_community_growth_acceleration_program'
           | 'visa_processing_guarantee_commercial_credit'
+          | 'visa_atm_cash_withdrawal_domestic'
+          | 'visa_atm_cash_withdrawal_international'
+          | 'visa_atm_cash_deposit_domestic'
           | 'pulse_switch_fee'
           | 'pulse_tokenization_fee';
 
@@ -2263,6 +2338,12 @@ export namespace Transaction {
        */
       export interface Interchange {
         /**
+         * An adjustment the card network made to the interchange after this transaction
+         * cleared, if any.
+         */
+        adjustment: Interchange.Adjustment | null;
+
+        /**
          * The interchange amount given as a string containing a decimal number in major
          * units (so e.g., "3.14" for $3.14). The amount is a positive number if it is
          * credited to Increase (e.g., settlements) and a negative number if it is debited
@@ -2282,6 +2363,32 @@ export namespace Transaction {
          * - `USD` - US Dollar (USD)
          */
         currency: 'USD';
+      }
+
+      export namespace Interchange {
+        /**
+         * An adjustment the card network made to the interchange after this transaction
+         * cleared, if any.
+         */
+        export interface Adjustment {
+          /**
+           * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+           * the interchange was adjusted.
+           */
+          adjusted_at: string;
+
+          /**
+           * The adjustment amount given as a string containing a decimal number in major
+           * units (so e.g., "3.14" for $3.14). The amount is a positive number if it is
+           * credited to Increase and a negative number if it is debited.
+           */
+          amount: string;
+
+          /**
+           * The card network specific interchange code that applies after the adjustment.
+           */
+          code: string;
+        }
       }
 
       /**
@@ -2616,13 +2723,47 @@ export namespace Transaction {
            * - `heating_oil` - Heating oil
            * - `other_fuel_non_taxable` - Other fuel non-taxable
            * - `kerosene_ultra_low_sulfur` - Kerosene ultra low sulfur
+           * - `kerosene_low_sulfur_non_taxable` - Kerosene low sulfur non-taxable
+           * - `kerosene_ultra_low_sulfur_non_taxable` - Kerosene ultra low sulfur
+           *   non-taxable
            * - `electric_vehicle_charging_level_1_110_volt` - Electric vehicle charging level
            *   1 110 volt
            * - `electric_vehicle_charging_level_2_240_volt` - Electric vehicle charging level
            *   2 240 volt
            * - `electric_vehicle_charging_level_3_480_volt` - Electric vehicle charging level
            *   3 480 volt
+           * - `biodiesel_blend_2_off_road_non_taxable` - Biodiesel blend 2% off-road
+           *   non-taxable
+           * - `biodiesel_blend_5_off_road_non_taxable` - Biodiesel blend 5% off-road
+           *   non-taxable
+           * - `biodiesel_blend_10_off_road_non_taxable` - Biodiesel blend 10% off-road
+           *   non-taxable
+           * - `biodiesel_blend_11_off_road_non_taxable` - Biodiesel blend 11% off-road
+           *   non-taxable
+           * - `biodiesel_blend_15_off_road_non_taxable` - Biodiesel blend 15% off-road
+           *   non-taxable
+           * - `biodiesel_blend_20_off_road_non_taxable` - Biodiesel blend 20% off-road
+           *   non-taxable
            * - `diesel_1_off_road_non_taxable` - Diesel 1 off-road non-taxable
+           * - `diesel_2_off_road_non_taxable` - Diesel 2 off-road non-taxable
+           * - `diesel_1_premium_off_road_non_taxable` - Diesel 1 premium off-road
+           *   non-taxable
+           * - `diesel_2_premium_off_road_non_taxable` - Diesel 2 premium off-road
+           *   non-taxable
+           * - `additive_dosage` - Additive dosage
+           * - `ethanol_blends_e16_to_e84` - Ethanol blends E16 to E84
+           * - `low_octane_unleaded` - Low octane unleaded
+           * - `blended_diesel_1_and_2` - Blended diesel 1 and 2
+           * - `off_road_regular_non_taxable` - Off-road regular non-taxable
+           * - `off_road_mid_or_plus_non_taxable` - Off-road mid or plus non-taxable
+           * - `off_road_premium_or_super_non_taxable` - Off-road premium or super
+           *   non-taxable
+           * - `off_road_mid_or_plus_2_non_taxable` - Off-road mid or plus 2 non-taxable
+           * - `off_road_premium_or_super_2_non_taxable` - Off-road premium or super 2
+           *   non-taxable
+           * - `recreational_fuel_90_octane` - Recreational fuel 90 octane
+           * - `hydrogen_h35` - Hydrogen H35
+           * - `hydrogen_h70` - Hydrogen H70
            * - `renewable_diesel_r95_or_greater_off_road_non_taxable` - Renewable diesel R95
            *   or greater off-road non-taxable
            * - `biodiesel_blend_1_off_road_non_taxable` - Biodiesel blend 1% off-road
@@ -2635,6 +2776,8 @@ export namespace Transaction {
            *   non-taxable
            * - `renewable_diesel_biodiesel_6_to_20_off_road_non_taxable` - Renewable diesel
            *   biodiesel 6% to 20% off-road non-taxable
+           * - `renewable_diesel_r25_hydrotreated_vegetable_oil_25_blend` - Renewable diesel
+           *   R25 hydrotreated vegetable oil 25% blend
            * - `electric_vehicle_charging_level_4_800_volt` - Electric vehicle charging level
            *   4 800 volt
            * - `electric_vehicle_charging_level_5_megawatt` - Electric vehicle charging level
@@ -2730,16 +2873,40 @@ export namespace Transaction {
             | 'heating_oil'
             | 'other_fuel_non_taxable'
             | 'kerosene_ultra_low_sulfur'
+            | 'kerosene_low_sulfur_non_taxable'
+            | 'kerosene_ultra_low_sulfur_non_taxable'
             | 'electric_vehicle_charging_level_1_110_volt'
             | 'electric_vehicle_charging_level_2_240_volt'
             | 'electric_vehicle_charging_level_3_480_volt'
+            | 'biodiesel_blend_2_off_road_non_taxable'
+            | 'biodiesel_blend_5_off_road_non_taxable'
+            | 'biodiesel_blend_10_off_road_non_taxable'
+            | 'biodiesel_blend_11_off_road_non_taxable'
+            | 'biodiesel_blend_15_off_road_non_taxable'
+            | 'biodiesel_blend_20_off_road_non_taxable'
             | 'diesel_1_off_road_non_taxable'
+            | 'diesel_2_off_road_non_taxable'
+            | 'diesel_1_premium_off_road_non_taxable'
+            | 'diesel_2_premium_off_road_non_taxable'
+            | 'additive_dosage'
+            | 'ethanol_blends_e16_to_e84'
+            | 'low_octane_unleaded'
+            | 'blended_diesel_1_and_2'
+            | 'off_road_regular_non_taxable'
+            | 'off_road_mid_or_plus_non_taxable'
+            | 'off_road_premium_or_super_non_taxable'
+            | 'off_road_mid_or_plus_2_non_taxable'
+            | 'off_road_premium_or_super_2_non_taxable'
+            | 'recreational_fuel_90_octane'
+            | 'hydrogen_h35'
+            | 'hydrogen_h70'
             | 'renewable_diesel_r95_or_greater_off_road_non_taxable'
             | 'biodiesel_blend_1_off_road_non_taxable'
             | 'biodiesel_blend_75_off_road_non_taxable'
             | 'biodiesel_blend_99_off_road_non_taxable'
             | 'biodiesel_blend_100_off_road_non_taxable'
             | 'renewable_diesel_biodiesel_6_to_20_off_road_non_taxable'
+            | 'renewable_diesel_r25_hydrotreated_vegetable_oil_25_blend'
             | 'electric_vehicle_charging_level_4_800_volt'
             | 'electric_vehicle_charging_level_5_megawatt'
             | 'hydrotreated_vegetable_oil_100'
@@ -3260,7 +3427,8 @@ export namespace Transaction {
          * - `visa_advanced_authorization` - Advanced Authorization is a fraud detection
          *   tool that monitors and risk evaluates 100 percent of US VisaNet authorizations
          *   in real-time. Activity related to Purchase (includes Signature Authenticated
-         *   Visa and PIN Authenticated Visa Debit (PAVD) transactions).
+         *   Visa and PIN Authenticated Visa Debit (PAVD) transactions) and ATM
+         *   transactions.
          * - `visa_message_transmission` - Issuer Transactions Visa represents a charge
          *   based on total actual monthly processing (Visa transactions only) through a
          *   VisaNet Access Point (VAP). Charges are assessed to the processor for each
@@ -3312,6 +3480,12 @@ export namespace Transaction {
          *   Acceleration Program Fee.
          * - `visa_processing_guarantee_commercial_credit` - Issuer Processing Guarantee
          *   for Commercial Credit cards.
+         * - `visa_atm_cash_withdrawal_domestic` - Activity and fees for the processing of
+         *   an original cash withdrawal at a domestic ATM.
+         * - `visa_atm_cash_withdrawal_international` - Activity and fees for the
+         *   processing of an original cash withdrawal at an international ATM.
+         * - `visa_atm_cash_deposit_domestic` - Activity and fees for the processing of an
+         *   original deposit at a domestic ATM.
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
          * - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
@@ -3346,6 +3520,9 @@ export namespace Transaction {
           | 'visa_advertising_service_commercial_credit'
           | 'visa_community_growth_acceleration_program'
           | 'visa_processing_guarantee_commercial_credit'
+          | 'visa_atm_cash_withdrawal_domestic'
+          | 'visa_atm_cash_withdrawal_international'
+          | 'visa_atm_cash_deposit_domestic'
           | 'pulse_switch_fee'
           | 'pulse_tokenization_fee';
 
@@ -3573,6 +3750,12 @@ export namespace Transaction {
        */
       export interface Interchange {
         /**
+         * An adjustment the card network made to the interchange after this transaction
+         * cleared, if any.
+         */
+        adjustment: Interchange.Adjustment | null;
+
+        /**
          * The interchange amount given as a string containing a decimal number in major
          * units (so e.g., "3.14" for $3.14). The amount is a positive number if it is
          * credited to Increase (e.g., settlements) and a negative number if it is debited
@@ -3592,6 +3775,32 @@ export namespace Transaction {
          * - `USD` - US Dollar (USD)
          */
         currency: 'USD';
+      }
+
+      export namespace Interchange {
+        /**
+         * An adjustment the card network made to the interchange after this transaction
+         * cleared, if any.
+         */
+        export interface Adjustment {
+          /**
+           * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+           * the interchange was adjusted.
+           */
+          adjusted_at: string;
+
+          /**
+           * The adjustment amount given as a string containing a decimal number in major
+           * units (so e.g., "3.14" for $3.14). The amount is a positive number if it is
+           * credited to Increase and a negative number if it is debited.
+           */
+          amount: string;
+
+          /**
+           * The card network specific interchange code that applies after the adjustment.
+           */
+          code: string;
+        }
       }
 
       /**
@@ -3926,13 +4135,47 @@ export namespace Transaction {
            * - `heating_oil` - Heating oil
            * - `other_fuel_non_taxable` - Other fuel non-taxable
            * - `kerosene_ultra_low_sulfur` - Kerosene ultra low sulfur
+           * - `kerosene_low_sulfur_non_taxable` - Kerosene low sulfur non-taxable
+           * - `kerosene_ultra_low_sulfur_non_taxable` - Kerosene ultra low sulfur
+           *   non-taxable
            * - `electric_vehicle_charging_level_1_110_volt` - Electric vehicle charging level
            *   1 110 volt
            * - `electric_vehicle_charging_level_2_240_volt` - Electric vehicle charging level
            *   2 240 volt
            * - `electric_vehicle_charging_level_3_480_volt` - Electric vehicle charging level
            *   3 480 volt
+           * - `biodiesel_blend_2_off_road_non_taxable` - Biodiesel blend 2% off-road
+           *   non-taxable
+           * - `biodiesel_blend_5_off_road_non_taxable` - Biodiesel blend 5% off-road
+           *   non-taxable
+           * - `biodiesel_blend_10_off_road_non_taxable` - Biodiesel blend 10% off-road
+           *   non-taxable
+           * - `biodiesel_blend_11_off_road_non_taxable` - Biodiesel blend 11% off-road
+           *   non-taxable
+           * - `biodiesel_blend_15_off_road_non_taxable` - Biodiesel blend 15% off-road
+           *   non-taxable
+           * - `biodiesel_blend_20_off_road_non_taxable` - Biodiesel blend 20% off-road
+           *   non-taxable
            * - `diesel_1_off_road_non_taxable` - Diesel 1 off-road non-taxable
+           * - `diesel_2_off_road_non_taxable` - Diesel 2 off-road non-taxable
+           * - `diesel_1_premium_off_road_non_taxable` - Diesel 1 premium off-road
+           *   non-taxable
+           * - `diesel_2_premium_off_road_non_taxable` - Diesel 2 premium off-road
+           *   non-taxable
+           * - `additive_dosage` - Additive dosage
+           * - `ethanol_blends_e16_to_e84` - Ethanol blends E16 to E84
+           * - `low_octane_unleaded` - Low octane unleaded
+           * - `blended_diesel_1_and_2` - Blended diesel 1 and 2
+           * - `off_road_regular_non_taxable` - Off-road regular non-taxable
+           * - `off_road_mid_or_plus_non_taxable` - Off-road mid or plus non-taxable
+           * - `off_road_premium_or_super_non_taxable` - Off-road premium or super
+           *   non-taxable
+           * - `off_road_mid_or_plus_2_non_taxable` - Off-road mid or plus 2 non-taxable
+           * - `off_road_premium_or_super_2_non_taxable` - Off-road premium or super 2
+           *   non-taxable
+           * - `recreational_fuel_90_octane` - Recreational fuel 90 octane
+           * - `hydrogen_h35` - Hydrogen H35
+           * - `hydrogen_h70` - Hydrogen H70
            * - `renewable_diesel_r95_or_greater_off_road_non_taxable` - Renewable diesel R95
            *   or greater off-road non-taxable
            * - `biodiesel_blend_1_off_road_non_taxable` - Biodiesel blend 1% off-road
@@ -3945,6 +4188,8 @@ export namespace Transaction {
            *   non-taxable
            * - `renewable_diesel_biodiesel_6_to_20_off_road_non_taxable` - Renewable diesel
            *   biodiesel 6% to 20% off-road non-taxable
+           * - `renewable_diesel_r25_hydrotreated_vegetable_oil_25_blend` - Renewable diesel
+           *   R25 hydrotreated vegetable oil 25% blend
            * - `electric_vehicle_charging_level_4_800_volt` - Electric vehicle charging level
            *   4 800 volt
            * - `electric_vehicle_charging_level_5_megawatt` - Electric vehicle charging level
@@ -4040,16 +4285,40 @@ export namespace Transaction {
             | 'heating_oil'
             | 'other_fuel_non_taxable'
             | 'kerosene_ultra_low_sulfur'
+            | 'kerosene_low_sulfur_non_taxable'
+            | 'kerosene_ultra_low_sulfur_non_taxable'
             | 'electric_vehicle_charging_level_1_110_volt'
             | 'electric_vehicle_charging_level_2_240_volt'
             | 'electric_vehicle_charging_level_3_480_volt'
+            | 'biodiesel_blend_2_off_road_non_taxable'
+            | 'biodiesel_blend_5_off_road_non_taxable'
+            | 'biodiesel_blend_10_off_road_non_taxable'
+            | 'biodiesel_blend_11_off_road_non_taxable'
+            | 'biodiesel_blend_15_off_road_non_taxable'
+            | 'biodiesel_blend_20_off_road_non_taxable'
             | 'diesel_1_off_road_non_taxable'
+            | 'diesel_2_off_road_non_taxable'
+            | 'diesel_1_premium_off_road_non_taxable'
+            | 'diesel_2_premium_off_road_non_taxable'
+            | 'additive_dosage'
+            | 'ethanol_blends_e16_to_e84'
+            | 'low_octane_unleaded'
+            | 'blended_diesel_1_and_2'
+            | 'off_road_regular_non_taxable'
+            | 'off_road_mid_or_plus_non_taxable'
+            | 'off_road_premium_or_super_non_taxable'
+            | 'off_road_mid_or_plus_2_non_taxable'
+            | 'off_road_premium_or_super_2_non_taxable'
+            | 'recreational_fuel_90_octane'
+            | 'hydrogen_h35'
+            | 'hydrogen_h70'
             | 'renewable_diesel_r95_or_greater_off_road_non_taxable'
             | 'biodiesel_blend_1_off_road_non_taxable'
             | 'biodiesel_blend_75_off_road_non_taxable'
             | 'biodiesel_blend_99_off_road_non_taxable'
             | 'biodiesel_blend_100_off_road_non_taxable'
             | 'renewable_diesel_biodiesel_6_to_20_off_road_non_taxable'
+            | 'renewable_diesel_r25_hydrotreated_vegetable_oil_25_blend'
             | 'electric_vehicle_charging_level_4_800_volt'
             | 'electric_vehicle_charging_level_5_megawatt'
             | 'hydrotreated_vegetable_oil_100'
@@ -4570,7 +4839,8 @@ export namespace Transaction {
          * - `visa_advanced_authorization` - Advanced Authorization is a fraud detection
          *   tool that monitors and risk evaluates 100 percent of US VisaNet authorizations
          *   in real-time. Activity related to Purchase (includes Signature Authenticated
-         *   Visa and PIN Authenticated Visa Debit (PAVD) transactions).
+         *   Visa and PIN Authenticated Visa Debit (PAVD) transactions) and ATM
+         *   transactions.
          * - `visa_message_transmission` - Issuer Transactions Visa represents a charge
          *   based on total actual monthly processing (Visa transactions only) through a
          *   VisaNet Access Point (VAP). Charges are assessed to the processor for each
@@ -4622,6 +4892,12 @@ export namespace Transaction {
          *   Acceleration Program Fee.
          * - `visa_processing_guarantee_commercial_credit` - Issuer Processing Guarantee
          *   for Commercial Credit cards.
+         * - `visa_atm_cash_withdrawal_domestic` - Activity and fees for the processing of
+         *   an original cash withdrawal at a domestic ATM.
+         * - `visa_atm_cash_withdrawal_international` - Activity and fees for the
+         *   processing of an original cash withdrawal at an international ATM.
+         * - `visa_atm_cash_deposit_domestic` - Activity and fees for the processing of an
+         *   original deposit at a domestic ATM.
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
          * - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
@@ -4656,6 +4932,9 @@ export namespace Transaction {
           | 'visa_advertising_service_commercial_credit'
           | 'visa_community_growth_acceleration_program'
           | 'visa_processing_guarantee_commercial_credit'
+          | 'visa_atm_cash_withdrawal_domestic'
+          | 'visa_atm_cash_withdrawal_international'
+          | 'visa_atm_cash_deposit_domestic'
           | 'pulse_switch_fee'
           | 'pulse_tokenization_fee';
 
@@ -5872,6 +6151,7 @@ export namespace TransactionListParams {
       | 'cashback_payment'
       | 'card_dispute_acceptance'
       | 'card_dispute_financial'
+      | 'card_dispute_provisional_credit'
       | 'card_dispute_loss'
       | 'card_refund'
       | 'card_settlement'
