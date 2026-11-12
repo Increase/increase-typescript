@@ -225,6 +225,8 @@ export interface CardDispute {
    * withdrawal.
    */
   withdrawal: CardDispute.Withdrawal | null;
+
+  [k: string]: unknown;
 }
 
 export namespace CardDispute {
