@@ -225,6 +225,8 @@ export interface CardDispute {
    * withdrawal.
    */
   withdrawal: CardDispute.Withdrawal | null;
+
+  [k: string]: unknown;
 }
 
 export namespace CardDispute {
@@ -3107,8 +3109,8 @@ export interface CardDisputeCreateParams {
   disputed_transaction_id: string;
 
   /**
-   * The network of the disputed transaction. Details specific to the network are
-   * required under the sub-object with the same identifier as the network.
+   * The network of the disputed transaction. Details specific to the network can be
+   * provided under the sub-object with the same identifier as the network.
    *
    * - `visa` - Visa
    */
@@ -3123,19 +3125,21 @@ export interface CardDisputeCreateParams {
   amount?: number;
 
   /**
-   * The files to be attached to the initial dispute submission.
+   * The files to be attached to the initial dispute submission. Can only be provided
+   * along with the network-specific details.
    */
   attachment_files?: Array<CardDisputeCreateParams.AttachmentFile>;
 
   /**
    * The free-form explanation provided to Increase to provide more context for the
-   * user submission. This field is not sent directly to the card networks.
+   * user submission. This field is not sent directly to the card networks. Can only
+   * be provided along with the network-specific details.
    */
   explanation?: string;
 
   /**
-   * The Visa-specific parameters for the dispute. Required if and only if `network`
-   * is `visa`.
+   * The Visa-specific parameters for the initial User Submission. If omitted, a
+   * later User Submission will be required.
    */
   visa?: CardDisputeCreateParams.Visa;
 
@@ -3152,8 +3156,8 @@ export namespace CardDisputeCreateParams {
   }
 
   /**
-   * The Visa-specific parameters for the dispute. Required if and only if `network`
-   * is `visa`.
+   * The Visa-specific parameters for the initial User Submission. If omitted, a
+   * later User Submission will be required.
    */
   export interface Visa {
     /**

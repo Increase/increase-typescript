@@ -150,6 +150,7 @@ export namespace InboundACHTransferCreateParams {
 
     /**
      * Unstructured `payment_related_information` passed through with the transfer.
+     * Required if and only if `category` is `freeform`.
      */
     freeform?: Addenda.Freeform;
   }
@@ -157,6 +158,7 @@ export namespace InboundACHTransferCreateParams {
   export namespace Addenda {
     /**
      * Unstructured `payment_related_information` passed through with the transfer.
+     * Required if and only if `category` is `freeform`.
      */
     export interface Freeform {
       /**

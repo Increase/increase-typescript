@@ -175,7 +175,7 @@ export interface ACHTransfer {
   /**
    * The name by which the recipient knows you.
    */
-  company_name: string | null;
+  company_name: string;
 
   /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -243,7 +243,7 @@ export interface ACHTransfer {
    * The name of the transfer recipient. This value is informational and not verified
    * by the recipient's bank.
    */
-  individual_name: string | null;
+  individual_name: string;
 
   /**
    * The transfer's network.
