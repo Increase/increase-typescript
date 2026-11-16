@@ -308,6 +308,28 @@ describe('resource cardDisputes', () => {
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
+  test('provideProvisionalCredit', async () => {
+    const responsePromise = client.cardDisputes.provideProvisionalCredit('card_dispute_h9sc95nbl1cgltpp7men');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('reverseProvisionalCredit', async () => {
+    const responsePromise = client.cardDisputes.reverseProvisionalCredit('card_dispute_h9sc95nbl1cgltpp7men');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
   test('submitUserSubmission: only required params', async () => {
     const responsePromise = client.cardDisputes.submitUserSubmission('card_dispute_h9sc95nbl1cgltpp7men', {
       network: 'visa',

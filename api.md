@@ -95,6 +95,8 @@ Methods:
 - <code title="post /card_disputes">client.cardDisputes.<a href="./src/resources/card-disputes.ts">create</a>({ ...params }) -> CardDispute</code>
 - <code title="get /card_disputes/{card_dispute_id}">client.cardDisputes.<a href="./src/resources/card-disputes.ts">retrieve</a>(cardDisputeID) -> CardDispute</code>
 - <code title="get /card_disputes">client.cardDisputes.<a href="./src/resources/card-disputes.ts">list</a>({ ...params }) -> CardDisputesPage</code>
+- <code title="post /card_disputes/{card_dispute_id}/provide_provisional_credit">client.cardDisputes.<a href="./src/resources/card-disputes.ts">provideProvisionalCredit</a>(cardDisputeID) -> CardDispute</code>
+- <code title="post /card_disputes/{card_dispute_id}/reverse_provisional_credit">client.cardDisputes.<a href="./src/resources/card-disputes.ts">reverseProvisionalCredit</a>(cardDisputeID) -> CardDispute</code>
 - <code title="post /card_disputes/{card_dispute_id}/submit_user_submission">client.cardDisputes.<a href="./src/resources/card-disputes.ts">submitUserSubmission</a>(cardDisputeID, { ...params }) -> CardDispute</code>
 - <code title="post /card_disputes/{card_dispute_id}/withdraw">client.cardDisputes.<a href="./src/resources/card-disputes.ts">withdraw</a>(cardDisputeID, { ...params }) -> CardDispute</code>
 

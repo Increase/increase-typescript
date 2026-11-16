@@ -56,6 +56,38 @@ export class CardDisputes extends APIResource {
   }
 
   /**
+   * Credits the cardholder's Account for the Card Dispute amount, funded by your
+   * program's provisional credit Account.
+   *
+   * @example
+   * ```ts
+   * const cardDispute =
+   *   await client.cardDisputes.provideProvisionalCredit(
+   *     'card_dispute_h9sc95nbl1cgltpp7men',
+   *   );
+   * ```
+   */
+  provideProvisionalCredit(cardDisputeID: string, options?: RequestOptions): APIPromise<CardDispute> {
+    return this._client.post(path`/card_disputes/${cardDisputeID}/provide_provisional_credit`, options);
+  }
+
+  /**
+   * Debits the cardholder's Account for the provisional credit and returns it to
+   * your program's provisional credit Account.
+   *
+   * @example
+   * ```ts
+   * const cardDispute =
+   *   await client.cardDisputes.reverseProvisionalCredit(
+   *     'card_dispute_h9sc95nbl1cgltpp7men',
+   *   );
+   * ```
+   */
+  reverseProvisionalCredit(cardDisputeID: string, options?: RequestOptions): APIPromise<CardDispute> {
+    return this._client.post(path`/card_disputes/${cardDisputeID}/reverse_provisional_credit`, options);
+  }
+
+  /**
    * Submit a User Submission for a Card Dispute
    *
    * @example
@@ -159,6 +191,12 @@ export interface CardDispute {
   network: 'visa' | 'pulse';
 
   /**
+   * If a provisional credit has been provided for the Card Dispute, this will
+   * contain details of the provisional credit.
+   */
+  provisional_credit: CardDispute.ProvisionalCredit | null;
+
+  /**
    * If the Card Dispute has been rejected, this will contain details of the
    * rejection.
    */
@@ -246,6 +284,72 @@ export namespace CardDispute {
      * - `loss` - The Card Dispute was lost according to network rules.
      */
     reason: 'user_withdrawn' | 'loss';
+  }
+
+  /**
+   * If a provisional credit has been provided for the Card Dispute, this will
+   * contain details of the provisional credit.
+   */
+  export interface ProvisionalCredit {
+    /**
+     * The amount of the provisional credit in the minor unit of its currency. For
+     * dollars, for example, this is cents.
+     */
+    amount: number;
+
+    /**
+     * The identifier of the Transaction that credited the cardholder's Account.
+     */
+    cardholder_account_transaction_id: string;
+
+    /**
+     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+     * the provisional credit was provided.
+     */
+    provided_at: string;
+
+    /**
+     * The identifier of the Transaction that debited the provisional credit funding
+     * Account.
+     */
+    provisional_credit_funding_account_transaction_id: string;
+
+    /**
+     * If the provisional credit has been reversed, this will contain details of the
+     * reversal.
+     */
+    reversal: ProvisionalCredit.Reversal | null;
+  }
+
+  export namespace ProvisionalCredit {
+    /**
+     * If the provisional credit has been reversed, this will contain details of the
+     * reversal.
+     */
+    export interface Reversal {
+      /**
+       * The amount of the reversal in the minor unit of its currency. For dollars, for
+       * example, this is cents.
+       */
+      amount: number;
+
+      /**
+       * The identifier of the Transaction that debited the cardholder's Account.
+       */
+      cardholder_account_transaction_id: string;
+
+      /**
+       * The identifier of the Transaction that credited the provisional credit funding
+       * Account.
+       */
+      provisional_credit_funding_account_transaction_id: string;
+
+      /**
+       * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+       * the provisional credit was reversed.
+       */
+      reversed_at: string;
+    }
   }
 
   /**
@@ -365,6 +469,11 @@ export namespace CardDispute {
        * the Visa Card Dispute Network Event was created.
        */
       created_at: string;
+
+      /**
+       * The account the dispute financial transaction was posted to, if any.
+       */
+      dispute_financial_account_id: string | null;
 
       /**
        * The dispute financial transaction that resulted from the network event, if any.
@@ -489,8 +598,6 @@ export namespace CardDispute {
        * request to withdraw the dispute has been submitted to the network.
        */
       user_withdrawal_submitted?: NetworkEvent.UserWithdrawalSubmitted | null;
-
-      [k: string]: unknown;
     }
 
     export namespace NetworkEvent {
@@ -3107,8 +3214,8 @@ export interface CardDisputeCreateParams {
   disputed_transaction_id: string;
 
   /**
-   * The network of the disputed transaction. Details specific to the network are
-   * required under the sub-object with the same identifier as the network.
+   * The network of the disputed transaction. Details specific to the network can be
+   * provided under the sub-object with the same identifier as the network.
    *
    * - `visa` - Visa
    */
@@ -3123,19 +3230,21 @@ export interface CardDisputeCreateParams {
   amount?: number;
 
   /**
-   * The files to be attached to the initial dispute submission.
+   * The files to be attached to the initial dispute submission. Can only be provided
+   * along with the network-specific details.
    */
   attachment_files?: Array<CardDisputeCreateParams.AttachmentFile>;
 
   /**
    * The free-form explanation provided to Increase to provide more context for the
-   * user submission. This field is not sent directly to the card networks.
+   * user submission. This field is not sent directly to the card networks. Can only
+   * be provided along with the network-specific details.
    */
   explanation?: string;
 
   /**
-   * The Visa-specific parameters for the dispute. Required if and only if `network`
-   * is `visa`.
+   * The Visa-specific parameters for the initial User Submission. If omitted, a
+   * later User Submission will be required.
    */
   visa?: CardDisputeCreateParams.Visa;
 
@@ -3152,8 +3261,8 @@ export namespace CardDisputeCreateParams {
   }
 
   /**
-   * The Visa-specific parameters for the dispute. Required if and only if `network`
-   * is `visa`.
+   * The Visa-specific parameters for the initial User Submission. If omitted, a
+   * later User Submission will be required.
    */
   export interface Visa {
     /**
