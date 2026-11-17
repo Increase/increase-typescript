@@ -72,7 +72,11 @@ describe('resource entities', () => {
             company_title: 'CEO',
           },
         ],
-        legal_identifier: { value: '602214076', category: 'us_employer_identification_number' },
+        legal_identifier: {
+          value: '602214076',
+          category: 'us_employer_identification_number',
+          issued_on: '2019-12-27',
+        },
         name: 'National Phonograph Company',
         beneficial_ownership_exemption_reason: 'regulated_financial_institution',
         email: 'dev@stainless.com',
