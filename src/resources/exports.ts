@@ -253,14 +253,23 @@ export namespace Export {
     account_id: string | null;
 
     /**
-     * The UTC date for which to retrieve the balance.
+     * The first as-of date (UTC) reported in the BAI2 file. If null, the report
+     * started from the earliest included Account.
      */
-    effective_date: string | null;
+    on_or_after_date: string | null;
+
+    /**
+     * The last as-of date (UTC) reported in the BAI2 file. If null, the report ran
+     * through the date the Export was created.
+     */
+    on_or_before_date: string | null;
 
     /**
      * Filter results by Program.
      */
     program_id: string | null;
+
+    [k: string]: unknown;
   }
 
   /**
@@ -619,7 +628,11 @@ export interface ExportCreateParams {
 
   /**
    * Options for the created export. Required if `category` is equal to
-   * `account_statement_bai2`.
+   * `account_statement_bai2`. Each as-of date from `on_or_after_date` through
+   * `on_or_before_date` gets its own BAI2 group (`02` record) in the file. If a
+   * group's as-of date is before the UTC date the Export was created, it has
+   * end-of-day balances. If it's the UTC date the Export was created, it has
+   * intraday balances as of the time the Export was created.
    */
   account_statement_bai2?: ExportCreateParams.AccountStatementBai2;
 
@@ -686,7 +699,11 @@ export interface ExportCreateParams {
 export namespace ExportCreateParams {
   /**
    * Options for the created export. Required if `category` is equal to
-   * `account_statement_bai2`.
+   * `account_statement_bai2`. Each as-of date from `on_or_after_date` through
+   * `on_or_before_date` gets its own BAI2 group (`02` record) in the file. If a
+   * group's as-of date is before the UTC date the Export was created, it has
+   * end-of-day balances. If it's the UTC date the Export was created, it has
+   * intraday balances as of the time the Export was created.
    */
   export interface AccountStatementBai2 {
     /**
@@ -696,17 +713,25 @@ export namespace ExportCreateParams {
     account_id?: string;
 
     /**
-     * The UTC date to create a BAI2 report for. If not provided, the current date will
-     * be used. If the current date is used, the report will include intraday balances,
-     * otherwise it will include end-of-day balances for the provided date.
+     * The first as-of date (UTC) to report. Each as-of date gets its own group in the
+     * BAI2 file. If not provided, the report starts from the earliest included
+     * Account.
      */
-    effective_date?: string;
+    on_or_after_date?: string;
+
+    /**
+     * The last as-of date (UTC) to report. If not provided, the report runs through
+     * the current UTC date.
+     */
+    on_or_before_date?: string;
 
     /**
      * The Program to create a BAI2 report for. If not provided, all open accounts will
      * be included.
      */
     program_id?: string;
+
+    [k: string]: unknown;
   }
 
   /**

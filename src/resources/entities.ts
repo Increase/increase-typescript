@@ -1890,6 +1890,11 @@ export namespace EntityCreateParams {
        *   identification number or registration number.
        */
       category?: 'us_employer_identification_number' | 'other';
+
+      /**
+       * The date on which the legal identifier was issued.
+       */
+      issued_on?: string;
     }
   }
 
@@ -3329,6 +3334,11 @@ export namespace EntityUpdateParams {
        *   identification number or registration number.
        */
       category?: 'us_employer_identification_number' | 'other';
+
+      /**
+       * The date on which the legal identifier was issued.
+       */
+      issued_on?: string;
     }
   }
 
