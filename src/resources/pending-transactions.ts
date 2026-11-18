@@ -209,6 +209,8 @@ export namespace PendingTransaction {
      *   under the `check_transfer_instruction` object.
      * - `fednow_transfer_instruction` - FedNow Transfer Instruction: details will be
      *   under the `fednow_transfer_instruction` object.
+     * - `inbound_fednow_transfer_return` - Inbound FedNow Transfer Return: details
+     *   will be under the `inbound_fednow_transfer_return` object.
      * - `inbound_funds_hold` - Inbound Funds Hold: details will be under the
      *   `inbound_funds_hold` object.
      * - `user_initiated_hold` - User Initiated Hold: details will be under the
@@ -244,6 +246,7 @@ export namespace PendingTransaction {
       | 'check_deposit_instruction'
       | 'check_transfer_instruction'
       | 'fednow_transfer_instruction'
+      | 'inbound_fednow_transfer_return'
       | 'inbound_funds_hold'
       | 'user_initiated_hold'
       | 'real_time_payments_transfer_instruction'
@@ -315,6 +318,14 @@ export namespace PendingTransaction {
      * response if and only if `category` is equal to `fednow_transfer_instruction`.
      */
     fednow_transfer_instruction?: Source.FednowTransferInstruction | null;
+
+    /**
+     * An Inbound FedNow Transfer Return object. This field will be present in the JSON
+     * response if and only if `category` is equal to `inbound_fednow_transfer_return`.
+     * An Inbound FedNow Transfer Return is created when Increase has received a FedNow
+     * transfer and the User requests that it be returned.
+     */
+    inbound_fednow_transfer_return?: Source.InboundFednowTransferReturn | null;
 
     /**
      * An Inbound Funds Hold object. This field will be present in the JSON response if
@@ -1588,6 +1599,39 @@ export namespace PendingTransaction {
     }
 
     /**
+     * An Inbound FedNow Transfer Return object. This field will be present in the JSON
+     * response if and only if `category` is equal to `inbound_fednow_transfer_return`.
+     * An Inbound FedNow Transfer Return is created when Increase has received a FedNow
+     * transfer and the User requests that it be returned.
+     */
+    export interface InboundFednowTransferReturn {
+      /**
+       * The identifier of the Inbound FedNow Transfer that is being returned.
+       */
+      inbound_fednow_transfer_id: string;
+
+      /**
+       * The reason for the return.
+       *
+       * - `duplicate` - The inbound FedNow transfer was a duplicate. Corresponds to the
+       *   FedNow reason code `DUPL`.
+       * - `creditor_request` - The recipient of the inbound FedNow transfer requested
+       *   the funds be returned to the sender. Corresponds to the FedNow reason code
+       *   `CUST`.
+       * - `wrong_amount` - The inbound FedNow transfer was for the wrong amount.
+       *   Corresponds to the FedNow reason code `AM09`.
+       * - `undue_payment` - The recipient of the inbound FedNow transfer was not owed
+       *   the funds. Corresponds to the FedNow reason code `UPAY`.
+       * - `fraud` - The inbound FedNow transfer was determined to be fraudulent.
+       *   Corresponds to the FedNow reason code `FR01`, and reports the fraud to the
+       *   Federal Reserve and the sending bank.
+       */
+      reason: 'duplicate' | 'creditor_request' | 'wrong_amount' | 'undue_payment' | 'fraud';
+
+      [k: string]: unknown;
+    }
+
+    /**
      * An Inbound Funds Hold object. This field will be present in the JSON response if
      * and only if `category` is equal to `inbound_funds_hold`. We hold funds for
      * certain transaction types to account for return windows where funds might still
@@ -1836,6 +1880,7 @@ export namespace PendingTransactionListParams {
       | 'check_deposit_instruction'
       | 'check_transfer_instruction'
       | 'fednow_transfer_instruction'
+      | 'inbound_fednow_transfer_return'
       | 'inbound_funds_hold'
       | 'user_initiated_hold'
       | 'real_time_payments_transfer_instruction'

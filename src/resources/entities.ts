@@ -1890,6 +1890,8 @@ export namespace EntityCreateParams {
        *   identification number or registration number.
        */
       category?: 'us_employer_identification_number' | 'other';
+
+      [k: string]: unknown;
     }
   }
 
@@ -3329,6 +3331,8 @@ export namespace EntityUpdateParams {
        *   identification number or registration number.
        */
       category?: 'us_employer_identification_number' | 'other';
+
+      [k: string]: unknown;
     }
   }
 
