@@ -132,10 +132,12 @@ export interface InboundFednowTransfer {
    * - `timed_out` - The transfer was not responded to in time.
    * - `confirmed` - The transfer has been received successfully and is confirmed.
    * - `declined` - The transfer has been declined.
+   * - `returned` - The transfer has been returned, in full or in part, to its
+   *   sender.
    * - `requires_attention` - The transfer requires attention from an Increase
    *   operator.
    */
-  status: 'pending_confirming' | 'timed_out' | 'confirmed' | 'declined' | 'requires_attention';
+  status: 'pending_confirming' | 'timed_out' | 'confirmed' | 'declined' | 'returned' | 'requires_attention';
 
   /**
    * The identifier of the Transaction object created when the transfer was
