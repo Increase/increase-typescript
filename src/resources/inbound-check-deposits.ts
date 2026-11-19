@@ -197,7 +197,6 @@ export interface InboundCheckDeposit {
 
   /**
    * Whether the details on the check match the recipient name of the check transfer.
-   * This is an optional feature, contact sales to enable.
    *
    * - `name_matches` - The details on the check match the recipient name of the
    *   check transfer.
