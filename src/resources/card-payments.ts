@@ -1613,6 +1613,9 @@ export namespace CardPayment {
          *   original deposit at a domestic ATM.
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
+         * - `pulse_switch_fee_credit` - Pulse Switch Fee Credit is a credit of the Pulse
+         *   Switch Fee charged for an authorization that was subsequently reversed in
+         *   full.
          * - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
          *   Pulse network for processing tokenized transactions on its network.
          */
@@ -1649,6 +1652,7 @@ export namespace CardPayment {
           | 'visa_atm_cash_withdrawal_international'
           | 'visa_atm_cash_deposit_domestic'
           | 'pulse_switch_fee'
+          | 'pulse_switch_fee_credit'
           | 'pulse_tokenization_fee';
 
         /**
@@ -2525,6 +2529,9 @@ export namespace CardPayment {
          *   original deposit at a domestic ATM.
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
+         * - `pulse_switch_fee_credit` - Pulse Switch Fee Credit is a credit of the Pulse
+         *   Switch Fee charged for an authorization that was subsequently reversed in
+         *   full.
          * - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
          *   Pulse network for processing tokenized transactions on its network.
          */
@@ -2561,6 +2568,7 @@ export namespace CardPayment {
           | 'visa_atm_cash_withdrawal_international'
           | 'visa_atm_cash_deposit_domestic'
           | 'pulse_switch_fee'
+          | 'pulse_switch_fee_credit'
           | 'pulse_tokenization_fee';
 
         /**
@@ -3551,6 +3559,9 @@ export namespace CardPayment {
          *   original deposit at a domestic ATM.
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
+         * - `pulse_switch_fee_credit` - Pulse Switch Fee Credit is a credit of the Pulse
+         *   Switch Fee charged for an authorization that was subsequently reversed in
+         *   full.
          * - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
          *   Pulse network for processing tokenized transactions on its network.
          */
@@ -3587,6 +3598,7 @@ export namespace CardPayment {
           | 'visa_atm_cash_withdrawal_international'
           | 'visa_atm_cash_deposit_domestic'
           | 'pulse_switch_fee'
+          | 'pulse_switch_fee_credit'
           | 'pulse_tokenization_fee';
 
         /**
@@ -4492,6 +4504,9 @@ export namespace CardPayment {
          *   original deposit at a domestic ATM.
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
+         * - `pulse_switch_fee_credit` - Pulse Switch Fee Credit is a credit of the Pulse
+         *   Switch Fee charged for an authorization that was subsequently reversed in
+         *   full.
          * - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
          *   Pulse network for processing tokenized transactions on its network.
          */
@@ -4528,6 +4543,7 @@ export namespace CardPayment {
           | 'visa_atm_cash_withdrawal_international'
           | 'visa_atm_cash_deposit_domestic'
           | 'pulse_switch_fee'
+          | 'pulse_switch_fee_credit'
           | 'pulse_tokenization_fee';
 
         /**
@@ -4864,6 +4880,9 @@ export namespace CardPayment {
          *   original deposit at a domestic ATM.
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
+         * - `pulse_switch_fee_credit` - Pulse Switch Fee Credit is a credit of the Pulse
+         *   Switch Fee charged for an authorization that was subsequently reversed in
+         *   full.
          * - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
          *   Pulse network for processing tokenized transactions on its network.
          */
@@ -4900,6 +4919,7 @@ export namespace CardPayment {
           | 'visa_atm_cash_withdrawal_international'
           | 'visa_atm_cash_deposit_domestic'
           | 'pulse_switch_fee'
+          | 'pulse_switch_fee_credit'
           | 'pulse_tokenization_fee';
 
         /**
@@ -5412,6 +5432,9 @@ export namespace CardPayment {
          *   original deposit at a domestic ATM.
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
+         * - `pulse_switch_fee_credit` - Pulse Switch Fee Credit is a credit of the Pulse
+         *   Switch Fee charged for an authorization that was subsequently reversed in
+         *   full.
          * - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
          *   Pulse network for processing tokenized transactions on its network.
          */
@@ -5448,6 +5471,7 @@ export namespace CardPayment {
           | 'visa_atm_cash_withdrawal_international'
           | 'visa_atm_cash_deposit_domestic'
           | 'pulse_switch_fee'
+          | 'pulse_switch_fee_credit'
           | 'pulse_tokenization_fee';
 
         /**
@@ -6768,6 +6792,9 @@ export namespace CardPayment {
          *   original deposit at a domestic ATM.
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
+         * - `pulse_switch_fee_credit` - Pulse Switch Fee Credit is a credit of the Pulse
+         *   Switch Fee charged for an authorization that was subsequently reversed in
+         *   full.
          * - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
          *   Pulse network for processing tokenized transactions on its network.
          */
@@ -6804,6 +6831,7 @@ export namespace CardPayment {
           | 'visa_atm_cash_withdrawal_international'
           | 'visa_atm_cash_deposit_domestic'
           | 'pulse_switch_fee'
+          | 'pulse_switch_fee_credit'
           | 'pulse_tokenization_fee';
 
         /**
@@ -7115,6 +7143,9 @@ export namespace CardPayment {
          *   original deposit at a domestic ATM.
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
+         * - `pulse_switch_fee_credit` - Pulse Switch Fee Credit is a credit of the Pulse
+         *   Switch Fee charged for an authorization that was subsequently reversed in
+         *   full.
          * - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
          *   Pulse network for processing tokenized transactions on its network.
          */
@@ -7151,6 +7182,7 @@ export namespace CardPayment {
           | 'visa_atm_cash_withdrawal_international'
           | 'visa_atm_cash_deposit_domestic'
           | 'pulse_switch_fee'
+          | 'pulse_switch_fee_credit'
           | 'pulse_tokenization_fee';
 
         /**
@@ -8489,6 +8521,9 @@ export namespace CardPayment {
          *   original deposit at a domestic ATM.
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
+         * - `pulse_switch_fee_credit` - Pulse Switch Fee Credit is a credit of the Pulse
+         *   Switch Fee charged for an authorization that was subsequently reversed in
+         *   full.
          * - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
          *   Pulse network for processing tokenized transactions on its network.
          */
@@ -8525,6 +8560,7 @@ export namespace CardPayment {
           | 'visa_atm_cash_withdrawal_international'
           | 'visa_atm_cash_deposit_domestic'
           | 'pulse_switch_fee'
+          | 'pulse_switch_fee_credit'
           | 'pulse_tokenization_fee';
 
         /**
@@ -9266,6 +9302,9 @@ export namespace CardPayment {
          *   original deposit at a domestic ATM.
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
+         * - `pulse_switch_fee_credit` - Pulse Switch Fee Credit is a credit of the Pulse
+         *   Switch Fee charged for an authorization that was subsequently reversed in
+         *   full.
          * - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
          *   Pulse network for processing tokenized transactions on its network.
          */
@@ -9302,6 +9341,7 @@ export namespace CardPayment {
           | 'visa_atm_cash_withdrawal_international'
           | 'visa_atm_cash_deposit_domestic'
           | 'pulse_switch_fee'
+          | 'pulse_switch_fee_credit'
           | 'pulse_tokenization_fee';
 
         /**

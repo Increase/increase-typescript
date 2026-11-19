@@ -178,6 +178,9 @@ export namespace Transaction {
      *   the `inbound_check_adjustment` object.
      * - `inbound_fednow_transfer_confirmation` - Inbound FedNow Transfer Confirmation:
      *   details will be under the `inbound_fednow_transfer_confirmation` object.
+     * - `inbound_fednow_transfer_return_acknowledgement` - Inbound FedNow Transfer
+     *   Return Acknowledgement: details will be under the
+     *   `inbound_fednow_transfer_return_acknowledgement` object.
      * - `inbound_real_time_payments_transfer_confirmation` - Inbound Real-Time
      *   Payments Transfer Confirmation: details will be under the
      *   `inbound_real_time_payments_transfer_confirmation` object.
@@ -244,6 +247,7 @@ export namespace Transaction {
       | 'inbound_check_deposit_return_intention'
       | 'inbound_check_adjustment'
       | 'inbound_fednow_transfer_confirmation'
+      | 'inbound_fednow_transfer_return_acknowledgement'
       | 'inbound_real_time_payments_transfer_confirmation'
       | 'inbound_wire_reversal'
       | 'inbound_wire_transfer'
@@ -493,6 +497,15 @@ export namespace Transaction {
      * Increase.
      */
     inbound_fednow_transfer_confirmation?: Source.InboundFednowTransferConfirmation | null;
+
+    /**
+     * An Inbound FedNow Transfer Return Acknowledgement object. This field will be
+     * present in the JSON response if and only if `category` is equal to
+     * `inbound_fednow_transfer_return_acknowledgement`. An Inbound FedNow Transfer
+     * Return Acknowledgement is created when a return of an Inbound FedNow Transfer
+     * has been accepted and settled by the FedNow Service.
+     */
+    inbound_fednow_transfer_return_acknowledgement?: Source.InboundFednowTransferReturnAcknowledgement | null;
 
     /**
      * An Inbound Real-Time Payments Transfer Confirmation object. This field will be
@@ -2003,6 +2016,9 @@ export namespace Transaction {
          *   original deposit at a domestic ATM.
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
+         * - `pulse_switch_fee_credit` - Pulse Switch Fee Credit is a credit of the Pulse
+         *   Switch Fee charged for an authorization that was subsequently reversed in
+         *   full.
          * - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
          *   Pulse network for processing tokenized transactions on its network.
          */
@@ -2039,6 +2055,7 @@ export namespace Transaction {
           | 'visa_atm_cash_withdrawal_international'
           | 'visa_atm_cash_deposit_domestic'
           | 'pulse_switch_fee'
+          | 'pulse_switch_fee_credit'
           | 'pulse_tokenization_fee';
 
         /**
@@ -3488,6 +3505,9 @@ export namespace Transaction {
          *   original deposit at a domestic ATM.
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
+         * - `pulse_switch_fee_credit` - Pulse Switch Fee Credit is a credit of the Pulse
+         *   Switch Fee charged for an authorization that was subsequently reversed in
+         *   full.
          * - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
          *   Pulse network for processing tokenized transactions on its network.
          */
@@ -3524,6 +3544,7 @@ export namespace Transaction {
           | 'visa_atm_cash_withdrawal_international'
           | 'visa_atm_cash_deposit_domestic'
           | 'pulse_switch_fee'
+          | 'pulse_switch_fee_credit'
           | 'pulse_tokenization_fee';
 
         /**
@@ -4900,6 +4921,9 @@ export namespace Transaction {
          *   original deposit at a domestic ATM.
          * - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
          *   for processing transactions on its network.
+         * - `pulse_switch_fee_credit` - Pulse Switch Fee Credit is a credit of the Pulse
+         *   Switch Fee charged for an authorization that was subsequently reversed in
+         *   full.
          * - `pulse_tokenization_fee` - Pulse Tokenization Fee is a fee charged by the
          *   Pulse network for processing tokenized transactions on its network.
          */
@@ -4936,6 +4960,7 @@ export namespace Transaction {
           | 'visa_atm_cash_withdrawal_international'
           | 'visa_atm_cash_deposit_domestic'
           | 'pulse_switch_fee'
+          | 'pulse_switch_fee_credit'
           | 'pulse_tokenization_fee';
 
         /**
@@ -5581,6 +5606,40 @@ export namespace Transaction {
     }
 
     /**
+     * An Inbound FedNow Transfer Return Acknowledgement object. This field will be
+     * present in the JSON response if and only if `category` is equal to
+     * `inbound_fednow_transfer_return_acknowledgement`. An Inbound FedNow Transfer
+     * Return Acknowledgement is created when a return of an Inbound FedNow Transfer
+     * has been accepted and settled by the FedNow Service.
+     */
+    export interface InboundFednowTransferReturnAcknowledgement {
+      /**
+       * The identifier of the Inbound FedNow Transfer that was returned.
+       */
+      inbound_fednow_transfer_id: string;
+
+      /**
+       * The reason for the return.
+       *
+       * - `duplicate` - The inbound FedNow transfer was a duplicate. Corresponds to the
+       *   FedNow reason code `DUPL`.
+       * - `creditor_request` - The recipient of the inbound FedNow transfer requested
+       *   the funds be returned to the sender. Corresponds to the FedNow reason code
+       *   `CUST`.
+       * - `wrong_amount` - The inbound FedNow transfer was for the wrong amount.
+       *   Corresponds to the FedNow reason code `AM09`.
+       * - `undue_payment` - The recipient of the inbound FedNow transfer was not owed
+       *   the funds. Corresponds to the FedNow reason code `UPAY`.
+       * - `fraud` - The inbound FedNow transfer was determined to be fraudulent.
+       *   Corresponds to the FedNow reason code `FR01`, and reports the fraud to the
+       *   Federal Reserve and the sending bank.
+       */
+      reason: 'duplicate' | 'creditor_request' | 'wrong_amount' | 'undue_payment' | 'fraud';
+
+      [k: string]: unknown;
+    }
+
+    /**
      * An Inbound Real-Time Payments Transfer Confirmation object. This field will be
      * present in the JSON response if and only if `category` is equal to
      * `inbound_real_time_payments_transfer_confirmation`. An Inbound Real-Time
@@ -6168,6 +6227,7 @@ export namespace TransactionListParams {
       | 'inbound_check_deposit_return_intention'
       | 'inbound_check_adjustment'
       | 'inbound_fednow_transfer_confirmation'
+      | 'inbound_fednow_transfer_return_acknowledgement'
       | 'inbound_real_time_payments_transfer_confirmation'
       | 'inbound_wire_reversal'
       | 'inbound_wire_transfer'

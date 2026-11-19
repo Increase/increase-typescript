@@ -470,6 +470,8 @@ export namespace Entity {
        * The legal identifier itself.
        */
       value: string;
+
+      [k: string]: unknown;
     }
   }
 
@@ -1890,6 +1892,8 @@ export namespace EntityCreateParams {
        *   identification number or registration number.
        */
       category?: 'us_employer_identification_number' | 'other';
+
+      [k: string]: unknown;
     }
   }
 
@@ -3329,6 +3333,8 @@ export namespace EntityUpdateParams {
        *   identification number or registration number.
        */
       category?: 'us_employer_identification_number' | 'other';
+
+      [k: string]: unknown;
     }
   }
 
