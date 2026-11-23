@@ -65,6 +65,11 @@ export interface DigitalWalletTokenRequest {
   card_id: string;
 
   /**
+   * The cardholder adding the card to the digital wallet.
+   */
+  cardholder: DigitalWalletTokenRequest.Cardholder;
+
+  /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
    * the Digital Wallet Token Request was created.
    */
@@ -79,6 +84,13 @@ export interface DigitalWalletTokenRequest {
    * The device that requested the tokenization.
    */
   device: DigitalWalletTokenRequest.Device;
+
+  /**
+   * The card network the token is being provisioned on.
+   *
+   * - `visa` - Visa
+   */
+  network: 'visa';
 
   /**
    * The outcome of the tokenization request.
@@ -112,13 +124,44 @@ export interface DigitalWalletTokenRequest {
   token_requestor: 'apple_pay' | 'google_pay' | 'samsung_pay' | 'garmin_pay' | 'unknown';
 
   /**
+   * The digital wallet or merchant that requested the token.
+   */
+  token_requestor_details: DigitalWalletTokenRequest.TokenRequestorDetails;
+
+  /**
    * A constant representing the object's type. For this resource it will always be
    * `digital_wallet_token_request`.
    */
   type: 'digital_wallet_token_request';
+
+  /**
+   * Fields related to verification of cardholder-provided values.
+   */
+  verification: DigitalWalletTokenRequest.Verification;
+
+  /**
+   * Risk scores provided by Visa for the provisioning request. This field will be
+   * present in the JSON response if and only if `network` is equal to `visa`.
+   */
+  visa: DigitalWalletTokenRequest.Visa | null;
+
+  /**
+   * Details about the digital wallet.
+   */
+  wallet: DigitalWalletTokenRequest.Wallet;
 }
 
 export namespace DigitalWalletTokenRequest {
+  /**
+   * The cardholder adding the card to the digital wallet.
+   */
+  export interface Cardholder {
+    /**
+     * The cardholder's name, as entered in the digital wallet.
+     */
+    name: string | null;
+  }
+
   /**
    * Details of the decline. Present if and only if `outcome` is `declined`.
    */
@@ -209,6 +252,134 @@ export namespace DigitalWalletTokenRequest {
      * The identifier of the Digital Wallet Token that was provisioned.
      */
     digital_wallet_token_id: string;
+  }
+
+  /**
+   * The digital wallet or merchant that requested the token.
+   */
+  export interface TokenRequestorDetails {
+    /**
+     * The identifier assigned to the token requestor by the card network.
+     */
+    identifier: string;
+
+    /**
+     * The name of the token requestor, for example "Apple Inc.".
+     */
+    name: string | null;
+  }
+
+  /**
+   * Fields related to verification of cardholder-provided values.
+   */
+  export interface Verification {
+    /**
+     * Cardholder address provided in the provisioning request and the address on file
+     * we verified it against.
+     */
+    cardholder_address: Verification.CardholderAddress;
+  }
+
+  export namespace Verification {
+    /**
+     * Cardholder address provided in the provisioning request and the address on file
+     * we verified it against.
+     */
+    export interface CardholderAddress {
+      /**
+       * Line 1 of the address on file for the cardholder.
+       */
+      actual_line1: string | null;
+
+      /**
+       * The postal code of the address on file for the cardholder.
+       */
+      actual_postal_code: string | null;
+
+      /**
+       * The cardholder address line 1 provided for verification in the provisioning
+       * request.
+       */
+      provided_line1: string | null;
+
+      /**
+       * The postal code provided for verification in the provisioning request.
+       */
+      provided_postal_code: string | null;
+
+      /**
+       * The address verification result.
+       *
+       * - `not_checked` - No address information was provided in the authorization
+       *   request.
+       * - `postal_code_match_address_no_match` - Postal code matches, but the street
+       *   address does not match or was not provided.
+       * - `postal_code_no_match_address_match` - Postal code does not match, but the
+       *   street address matches or was not provided.
+       * - `match` - Postal code and street address match.
+       * - `no_match` - Postal code and street address do not match.
+       * - `postal_code_match_address_not_checked` - Postal code matches, but the street
+       *   address was not verified. (deprecated)
+       */
+      result:
+        | 'not_checked'
+        | 'postal_code_match_address_no_match'
+        | 'postal_code_no_match_address_match'
+        | 'match'
+        | 'no_match'
+        | 'postal_code_match_address_not_checked';
+    }
+  }
+
+  /**
+   * Risk scores provided by Visa for the provisioning request. This field will be
+   * present in the JSON response if and only if `network` is equal to `visa`.
+   */
+  export interface Visa {
+    /**
+     * Visa's risk score for the card, based on its transaction history, from 0 to 99.
+     * A higher score indicates a higher risk.
+     */
+    network_risk_score: number | null;
+
+    /**
+     * Visa's risk score for the provisioning request, from 1 to 99. A higher score
+     * indicates a higher risk.
+     */
+    provisioning_risk_score: number | null;
+  }
+
+  /**
+   * Details about the digital wallet.
+   */
+  export interface Wallet {
+    /**
+     * The number of days since the email address was added to the cardholder's digital
+     * wallet account, up to 999.
+     */
+    account_email_age_days: number | null;
+
+    /**
+     * An identifier for the cardholder's account with the digital wallet.
+     */
+    account_identifier: string | null;
+
+    /**
+     * How much the digital wallet trusts the cardholder's account, from 1 to 5. A
+     * higher score indicates more trust.
+     */
+    account_score: number | null;
+
+    /**
+     * How much the digital wallet trusts the device the card is being added to, from 1
+     * to 5. A higher score indicates more trust.
+     */
+    device_score: number | null;
+
+    /**
+     * A hash of the email address on the cardholder's digital wallet account.
+     */
+    email_hash: string | null;
   }
 }
 
