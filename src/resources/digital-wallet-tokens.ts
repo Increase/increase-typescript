@@ -146,6 +146,11 @@ export interface DigitalWalletToken {
   token_requestor: 'apple_pay' | 'google_pay' | 'samsung_pay' | 'garmin_pay' | 'unknown';
 
   /**
+   * The token requestor.
+   */
+  token_requestor_details: DigitalWalletToken.TokenRequestorDetails;
+
+  /**
    * A constant representing the object's type. For this resource it will always be
    * `digital_wallet_token`.
    */
@@ -155,6 +160,11 @@ export interface DigitalWalletToken {
    * Updates to the Digital Wallet Token.
    */
   updates: Array<DigitalWalletToken.Update>;
+
+  /**
+   * The digital wallet account.
+   */
+  wallet: DigitalWalletToken.Wallet;
 
   [k: string]: unknown;
 }
@@ -230,6 +240,21 @@ export namespace DigitalWalletToken {
     last4: string;
   }
 
+  /**
+   * The token requestor.
+   */
+  export interface TokenRequestorDetails {
+    /**
+     * The token requestor identifier.
+     */
+    identifier: string;
+
+    /**
+     * The token requestor name, for example "Apple Inc.".
+     */
+    name: string | null;
+  }
+
   export interface Update {
     /**
      * The status the update changed this Digital Wallet Token to.
@@ -249,6 +274,21 @@ export namespace DigitalWalletToken {
      * the update happened.
      */
     timestamp: string;
+  }
+
+  /**
+   * The digital wallet account.
+   */
+  export interface Wallet {
+    /**
+     * The wallet account identifier.
+     */
+    account_identifier: string | null;
+
+    /**
+     * A hash of the wallet account email address.
+     */
+    email_hash: string | null;
   }
 }
 
