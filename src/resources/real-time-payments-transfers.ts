@@ -179,6 +179,11 @@ export interface RealTimePaymentsTransfer {
   currency: 'USD';
 
   /**
+   * The address of the transfer's sender.
+   */
+  debtor_address: RealTimePaymentsTransfer.DebtorAddress | null;
+
+  /**
    * The name of the transfer's sender. If not provided, defaults to the name of the
    * account's entity.
    */
@@ -412,6 +417,47 @@ export namespace RealTimePaymentsTransfer {
   }
 
   /**
+   * The address of the transfer's sender.
+   */
+  export interface DebtorAddress {
+    /**
+     * A second address line, such as an apartment or suite number. The first address
+     * line is separated into `building_number` and `street_name`.
+     */
+    address_line2: string | null;
+
+    /**
+     * The number identifying the position of the building on the street.
+     */
+    building_number: string | null;
+
+    /**
+     * The town or city.
+     */
+    city: string | null;
+
+    /**
+     * The ISO 3166, Alpha-2 country code.
+     */
+    country: string | null;
+
+    /**
+     * The postal code or zip.
+     */
+    postal_code: string | null;
+
+    /**
+     * The US state component of the address.
+     */
+    state: string | null;
+
+    /**
+     * The street name without the street number.
+     */
+    street_name: string | null;
+  }
+
+  /**
    * If the transfer is rejected by Real-Time Payments or the destination financial
    * institution, this will contain supplemental details.
    */
@@ -551,6 +597,12 @@ export interface RealTimePaymentsTransferCreateParams {
   account_number?: string;
 
   /**
+   * The address of the transfer's sender. If not provided, no debtor address is sent
+   * with the transfer.
+   */
+  debtor_address?: RealTimePaymentsTransferCreateParams.DebtorAddress;
+
+  /**
    * The name of the transfer's sender. If not provided, defaults to the name of the
    * account's entity.
    */
@@ -592,6 +644,52 @@ export interface RealTimePaymentsTransferCreateParams {
   ultimate_debtor_name?: string;
 
   [k: string]: unknown;
+}
+
+export namespace RealTimePaymentsTransferCreateParams {
+  /**
+   * The address of the transfer's sender. If not provided, no debtor address is sent
+   * with the transfer.
+   */
+  export interface DebtorAddress {
+    /**
+     * The town or city.
+     */
+    city: string;
+
+    /**
+     * The ISO 3166, Alpha-2 country code.
+     *
+     * Defaults to `US`.
+     */
+    country: string;
+
+    /**
+     * The postal code or zip.
+     */
+    postal_code: string;
+
+    /**
+     * The US state component of the address.
+     */
+    state: string;
+
+    /**
+     * The street name without the street number.
+     */
+    street_name: string;
+
+    /**
+     * A second address line, such as an apartment or suite number. The first address
+     * line is separated into `building_number` and `street_name`.
+     */
+    address_line2?: string;
+
+    /**
+     * The number identifying the position of the building on the street.
+     */
+    building_number?: string;
+  }
 }
 
 export interface RealTimePaymentsTransferListParams extends PageParams {
