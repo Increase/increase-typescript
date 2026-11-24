@@ -2252,6 +2252,11 @@ export namespace RealTimeDecision {
     card_id: string;
 
     /**
+     * The cardholder adding the card to the digital wallet.
+     */
+    cardholder: DigitalWalletToken.Cardholder;
+
+    /**
      * Whether or not the provisioning request was approved. This will be null until
      * the real time decision is responded to.
      *
@@ -2275,9 +2280,68 @@ export namespace RealTimeDecision {
      * - `unknown` - Unknown
      */
     digital_wallet: 'apple_pay' | 'google_pay' | 'samsung_pay' | 'garmin_pay' | 'unknown';
+
+    /**
+     * The card network the token is being provisioned on.
+     *
+     * - `visa` - Visa
+     */
+    network: 'visa';
+
+    /**
+     * How the card number was provided to the digital wallet.
+     *
+     * - `key_entered` - The cardholder entered the card number manually.
+     * - `on_file` - The card number was already on file with the token requestor.
+     * - `mobile_app` - The card was added from your mobile app using push
+     *   provisioning.
+     * - `token` - The card number was sourced from an existing token.
+     * - `chip_dip` - The card number was read from the chip of the physical card.
+     * - `contactless_tap` - The card number was read by tapping the physical card on
+     *   the device.
+     */
+    primary_account_number_source:
+      | 'key_entered'
+      | 'on_file'
+      | 'mobile_app'
+      | 'token'
+      | 'chip_dip'
+      | 'contactless_tap'
+      | null;
+
+    /**
+     * The digital wallet or merchant that requested the token.
+     */
+    token_requestor_details: DigitalWalletToken.TokenRequestorDetails;
+
+    /**
+     * Fields related to verification of cardholder-provided values.
+     */
+    verification: DigitalWalletToken.Verification;
+
+    /**
+     * Risk scores provided by Visa for the provisioning request. This field will be
+     * present in the JSON response if and only if `network` is equal to `visa`.
+     */
+    visa: DigitalWalletToken.Visa | null;
+
+    /**
+     * Details about the digital wallet.
+     */
+    wallet: DigitalWalletToken.Wallet;
   }
 
   export namespace DigitalWalletToken {
+    /**
+     * The cardholder adding the card to the digital wallet.
+     */
+    export interface Cardholder {
+      /**
+       * The cardholder's name, as entered in the digital wallet.
+       */
+      name: string | null;
+    }
+
     /**
      * Device that is being used to provision the digital wallet token.
      */
@@ -2321,6 +2385,134 @@ export namespace RealTimeDecision {
        * Name of the device, for example "My Work Phone".
        */
       name: string | null;
+    }
+
+    /**
+     * The digital wallet or merchant that requested the token.
+     */
+    export interface TokenRequestorDetails {
+      /**
+       * The identifier assigned to the token requestor by the card network.
+       */
+      identifier: string;
+
+      /**
+       * The name of the token requestor, for example "Apple Inc.".
+       */
+      name: string | null;
+    }
+
+    /**
+     * Fields related to verification of cardholder-provided values.
+     */
+    export interface Verification {
+      /**
+       * Cardholder address provided in the provisioning request and the address on file
+       * we verified it against.
+       */
+      cardholder_address: Verification.CardholderAddress;
+    }
+
+    export namespace Verification {
+      /**
+       * Cardholder address provided in the provisioning request and the address on file
+       * we verified it against.
+       */
+      export interface CardholderAddress {
+        /**
+         * Line 1 of the address on file for the cardholder.
+         */
+        actual_line1: string | null;
+
+        /**
+         * The postal code of the address on file for the cardholder.
+         */
+        actual_postal_code: string | null;
+
+        /**
+         * The cardholder address line 1 provided for verification in the provisioning
+         * request.
+         */
+        provided_line1: string | null;
+
+        /**
+         * The postal code provided for verification in the provisioning request.
+         */
+        provided_postal_code: string | null;
+
+        /**
+         * The address verification result.
+         *
+         * - `not_checked` - No address information was provided in the authorization
+         *   request.
+         * - `postal_code_match_address_no_match` - Postal code matches, but the street
+         *   address does not match or was not provided.
+         * - `postal_code_no_match_address_match` - Postal code does not match, but the
+         *   street address matches or was not provided.
+         * - `match` - Postal code and street address match.
+         * - `no_match` - Postal code and street address do not match.
+         * - `postal_code_match_address_not_checked` - Postal code matches, but the street
+         *   address was not verified. (deprecated)
+         */
+        result:
+          | 'not_checked'
+          | 'postal_code_match_address_no_match'
+          | 'postal_code_no_match_address_match'
+          | 'match'
+          | 'no_match'
+          | 'postal_code_match_address_not_checked';
+      }
+    }
+
+    /**
+     * Risk scores provided by Visa for the provisioning request. This field will be
+     * present in the JSON response if and only if `network` is equal to `visa`.
+     */
+    export interface Visa {
+      /**
+       * Visa's risk score for the card, based on its transaction history, from 0 to 99.
+       * A higher score indicates a higher risk.
+       */
+      network_risk_score: number | null;
+
+      /**
+       * Visa's risk score for the provisioning request, from 1 to 99. A higher score
+       * indicates a higher risk.
+       */
+      provisioning_risk_score: number | null;
+    }
+
+    /**
+     * Details about the digital wallet.
+     */
+    export interface Wallet {
+      /**
+       * The number of days since the email address was added to the cardholder's digital
+       * wallet account, up to 999.
+       */
+      account_email_age_days: number | null;
+
+      /**
+       * An identifier for the cardholder's account with the digital wallet.
+       */
+      account_identifier: string | null;
+
+      /**
+       * How much the digital wallet trusts the cardholder's account, from 1 to 5. A
+       * higher score indicates more trust.
+       */
+      account_score: number | null;
+
+      /**
+       * How much the digital wallet trusts the device the card is being added to, from 1
+       * to 5. A higher score indicates more trust.
+       */
+      device_score: number | null;
+
+      /**
+       * A hash of the email address on the cardholder's digital wallet account.
+       */
+      email_hash: string | null;
     }
   }
 }
