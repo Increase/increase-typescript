@@ -257,14 +257,20 @@ export namespace InboundWireTransfer {
    */
   export interface Reversal {
     /**
+     * The amount that was reversed in USD cents.
+     */
+    amount: number;
+
+    /**
      * The reason for the reversal.
      *
      * - `duplicate` - The inbound wire transfer was a duplicate.
      * - `creditor_request` - The recipient of the wire transfer requested the funds be
      *   returned to the sender.
      * - `transaction_forbidden` - The account cannot currently receive inbound wires.
+     * - `fraud` - The inbound wire transfer was fraudulent.
      */
-    reason: 'duplicate' | 'creditor_request' | 'transaction_forbidden';
+    reason: 'duplicate' | 'creditor_request' | 'transaction_forbidden' | 'fraud';
 
     /**
      * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -341,8 +347,16 @@ export interface InboundWireTransferReverseParams {
    * - `creditor_request` - The recipient of the wire transfer requested the funds be
    *   returned to the sender.
    * - `transaction_forbidden` - The account cannot currently receive inbound wires.
+   * - `fraud` - The inbound wire transfer was fraudulent.
    */
-  reason: 'duplicate' | 'creditor_request' | 'transaction_forbidden';
+  reason: 'duplicate' | 'creditor_request' | 'transaction_forbidden' | 'fraud';
+
+  /**
+   * The amount to return, in USD cents. Defaults to the full amount of the Inbound
+   * Wire Transfer. A transfer can only be reversed once, so any amount you don't
+   * return now stays with the recipient.
+   */
+  amount?: number;
 }
 
 export declare namespace InboundWireTransfers {
