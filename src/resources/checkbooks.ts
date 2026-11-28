@@ -26,6 +26,7 @@ export class Checkbooks extends APIResource {
    *     { contents: '33 Liberty Street' },
    *     { contents: 'New York, NY 10045' },
    *   ],
+   *   style: 'three_ring_binder',
    * });
    * ```
    */
@@ -141,11 +142,13 @@ export interface Checkbook {
   /**
    * The physical format of the Checkbook.
    *
+   * - `top_tear_pad` - A 3x6 inch pad of 25 checks, each torn off along a
+   *   perforation at the top.
    * - `three_ring_binder` - A half-inch three-ring binder holding 75 pages of checks
    *   with 3 checks per page.
    * - `folder` - A folder holding 15 pages of checks with 3 checks per page.
    */
-  style: 'three_ring_binder' | 'folder';
+  style: 'top_tear_pad' | 'three_ring_binder' | 'folder';
 
   /**
    * Tracking updates relating to the Checkbook's delivery.
@@ -296,6 +299,16 @@ export interface CheckbookCreateParams {
    * line of the payer.
    */
   payer: Array<CheckbookCreateParams.Payer>;
+
+  /**
+   * The physical format of the Checkbook.
+   *
+   * - `top_tear_pad` - A 3x6 inch pad of 25 checks, each torn off along a
+   *   perforation at the top.
+   * - `three_ring_binder` - A half-inch three-ring binder holding 75 pages of checks
+   *   with 3 checks per page.
+   */
+  style: 'top_tear_pad' | 'three_ring_binder';
 
   [k: string]: unknown;
 }

@@ -1154,6 +1154,7 @@ export class Increase {
   static InternalServerError = Errors.InternalServerError;
   static ObjectNotFoundError = Errors.ObjectNotFoundError;
   static PrivateFeatureError = Errors.PrivateFeatureError;
+  static RequestTimeoutError = Errors.RequestTimeoutError;
   static PermissionDeniedError = Errors.PermissionDeniedError;
   static InvalidOperationError = Errors.InvalidOperationError;
   static MalformedRequestError = Errors.MalformedRequestError;
