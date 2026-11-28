@@ -93,6 +93,10 @@ export class APIError<
       return new ObjectNotFoundError(status, error, message, headers);
     }
 
+    if (type === 'request_timeout_error' && status === 408) {
+      return new RequestTimeoutError(status, error, message, headers);
+    }
+
     if (type === 'idempotency_key_already_used_error' && status === 409) {
       return new IdempotencyKeyAlreadyUsedError(status, error, message, headers);
     }
@@ -365,6 +369,26 @@ export class ObjectNotFoundError extends NotFoundError {
     this.title = data?.['title'];
     this.type = data?.['type'];
     this.likely_environment = data?.['likely_environment'];
+  }
+}
+
+export class RequestTimeoutError extends APIError {
+  detail: string | null;
+
+  override status: 408;
+
+  title: string;
+
+  type: 'request_timeout_error';
+
+  constructor(status: 408, error: Object, message: string | undefined, headers: Headers) {
+    const data = error as Record<string, any>;
+    super(status, error, data?.['title'] || message, headers);
+
+    this.detail = data?.['detail'];
+    this.status = data?.['status'];
+    this.title = data?.['title'];
+    this.type = data?.['type'];
   }
 }
 

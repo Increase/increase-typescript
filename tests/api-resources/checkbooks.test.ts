@@ -23,6 +23,7 @@ describe('resource checkbooks', () => {
         { contents: '33 Liberty Street' },
         { contents: 'New York, NY 10045' },
       ],
+      style: 'three_ring_binder',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -49,6 +50,7 @@ describe('resource checkbooks', () => {
         { contents: '33 Liberty Street' },
         { contents: 'New York, NY 10045' },
       ],
+      style: 'three_ring_binder',
     });
   });
 

@@ -22,6 +22,7 @@ export {
   InternalServerError,
   ObjectNotFoundError,
   PrivateFeatureError,
+  RequestTimeoutError,
   PermissionDeniedError,
   InvalidOperationError,
   MalformedRequestError,
